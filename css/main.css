@@ -2,17 +2,24 @@
   color: #4caf50 !important;
 }
 .category.text-info a:nth-child(6n+1) {
-  color: #89229b !important;
+  color: #ff9800 !important;
 }
 .category.text-info a:nth-child(6n+2) {
-  color: #00bcd4 !important;
+  color: #00E5FF !important;
 }
 .category.text-info a:nth-child(6n+3) {
   color: #f44336 !important;
 }
 .category.text-info a:nth-child(6n+4) {
-  color: #ff9800 !important;
+  color: #51A1FC !important;
 }
 .category.text-info a:nth-child(6n+5) {
   color: #e91e63 !important;
+}
+
+nav.navbar {
+  background-color: rgba(255, 255, 255, 0.90) !important;
+}
+.pagination {
+  width: auto;
 }

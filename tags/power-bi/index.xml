@@ -2,21 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Power BI on Marczak IO</title>
-    <link>http://example.org/tags/power-bi/</link>
+    <link>https://adammarczak.github.io/tags/power-bi/</link>
     <description>Recent content in Power BI on Marczak IO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Sep 2017 13:55:25 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 15 Sep 2017 13:55:25 +0200</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/power-bi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://adammarczak.github.io/tags/power-bi/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Dynamic Measures in Power BI</title>
+      <link>https://adammarczak.github.io/posts/pbi-dynamic-measures/</link>
+      <pubDate>Fri, 15 Sep 2017 13:55:25 +0200</pubDate>
+      
+      <guid>https://adammarczak.github.io/posts/pbi-dynamic-measures/</guid>
+      <description>Test
+Test Test Test</description>
+    </item>
+    
+    <item>
       <title>Dynamic Hierarchies in Power BI</title>
-      <link>http://example.org/posts/pbi-dynamic-hierarchies/</link>
+      <link>https://adammarczak.github.io/posts/pbi-dynamic-hierarchies/</link>
       <pubDate>Wed, 13 Sep 2017 13:55:25 +0200</pubDate>
       
-      <guid>http://example.org/posts/pbi-dynamic-hierarchies/</guid>
+      <guid>https://adammarczak.github.io/posts/pbi-dynamic-hierarchies/</guid>
       <description>Test
 Test Test Test</description>
     </item>
