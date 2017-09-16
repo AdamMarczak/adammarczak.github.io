@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://example.org/posts/pbi-dynamic-hierarchies/</loc>
+    <lastmod>2017-09-13T13:55:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/azure-service/</loc>
+    <lastmod>2017-09-13T13:55:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/hack-the-tool/</loc>
+    <lastmod>2017-09-13T13:55:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/</loc>
+    <lastmod>2017-09-13T13:55:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/</loc>
+    <lastmod>2017-09-13T13:55:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/power-bi/</loc>
+    <lastmod>2017-09-13T13:55:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/</loc>
+    <lastmod>2017-09-13T13:55:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

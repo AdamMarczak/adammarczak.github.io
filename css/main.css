@@ -1,0 +1,18 @@
+.category.text-info a:nth-child(6n) {
+  color: #4caf50 !important;
+}
+.category.text-info a:nth-child(6n+1) {
+  color: #89229b !important;
+}
+.category.text-info a:nth-child(6n+2) {
+  color: #00bcd4 !important;
+}
+.category.text-info a:nth-child(6n+3) {
+  color: #f44336 !important;
+}
+.category.text-info a:nth-child(6n+4) {
+  color: #ff9800 !important;
+}
+.category.text-info a:nth-child(6n+5) {
+  color: #e91e63 !important;
+}
