@@ -23,3 +23,13 @@ nav.navbar {
 .pagination {
   width: auto;
 }
+.blog-image {
+  width: 100%;
+  max-width: 600px;
+  display:block;
+  margin:auto;
+  padding-bottom: 20px;
+}
+.article-section {
+  padding: 0 0 70px 0;
+}

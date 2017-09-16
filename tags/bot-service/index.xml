@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bot Service on Marczak IO</title>
-    <link>https://adammarczak.github.io/tags/bot-service/</link>
+    <link>https://marczak.io/tags/bot-service/</link>
     <description>Recent content in Bot Service on Marczak IO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 10 Sep 2017 13:55:25 +0200</lastBuildDate>
     
-	<atom:link href="https://adammarczak.github.io/tags/bot-service/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://marczak.io/tags/bot-service/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Azure Bot Service with VS17 functions tooling</title>
-      <link>https://adammarczak.github.io/posts/az-bots-compilable/</link>
+      <title>VS17 Functions with Bot Service</title>
+      <link>https://marczak.io/posts/az-bots-compilable/</link>
       <pubDate>Sun, 10 Sep 2017 13:55:25 +0200</pubDate>
       
-      <guid>https://adammarczak.github.io/posts/az-bots-compilable/</guid>
+      <guid>https://marczak.io/posts/az-bots-compilable/</guid>
       <description>Test
 Test Test Test</description>
     </item>

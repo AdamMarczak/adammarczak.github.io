@@ -3,63 +3,63 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://adammarczak.github.io/posts/pbi-dynamic-measures/</loc>
+    <loc>https://marczak.io/posts/pbi-dynamic-measures/</loc>
     <lastmod>2017-09-15T13:55:25+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://adammarczak.github.io/posts/pbi-dynamic-hierarchies/</loc>
+    <loc>https://marczak.io/posts/pbi-dynamic-hierarchies/</loc>
     <lastmod>2017-09-13T13:55:25+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://adammarczak.github.io/posts/az-bots-compilable/</loc>
+    <loc>https://marczak.io/posts/az-bots-compilable/</loc>
     <lastmod>2017-09-10T13:55:25+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://adammarczak.github.io/tags/azure/</loc>
-    <lastmod>2017-09-10T13:55:25+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://adammarczak.github.io/tags/bot-service/</loc>
+    <loc>https://marczak.io/tags/azure/</loc>
     <lastmod>2017-09-10T13:55:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://adammarczak.github.io/tags/bots/</loc>
+    <loc>https://marczak.io/tags/bot-service/</loc>
     <lastmod>2017-09-10T13:55:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://adammarczak.github.io/tags/hack-the-tool/</loc>
+    <loc>https://marczak.io/tags/bots/</loc>
+    <lastmod>2017-09-10T13:55:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/hack-the-tool/</loc>
     <lastmod>2017-09-13T13:55:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://adammarczak.github.io/</loc>
+    <loc>https://marczak.io/</loc>
     <lastmod>2017-09-15T13:55:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://adammarczak.github.io/posts/</loc>
+    <loc>https://marczak.io/posts/</loc>
     <lastmod>2017-09-15T13:55:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://adammarczak.github.io/tags/power-bi/</loc>
+    <loc>https://marczak.io/tags/power-bi/</loc>
     <lastmod>2017-09-15T13:55:25+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://adammarczak.github.io/tags/</loc>
+    <loc>https://marczak.io/tags/</loc>
     <lastmod>2017-09-10T13:55:25+02:00</lastmod>
     <priority>0</priority>
   </url>

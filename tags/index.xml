@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Marczak IO</title>
-    <link>https://adammarczak.github.io/tags/</link>
+    <link>https://marczak.io/tags/</link>
     <description>Recent content in Tags on Marczak IO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 10 Sep 2017 13:55:25 +0200</lastBuildDate>
     
-	<atom:link href="https://adammarczak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://marczak.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Azure</title>
-      <link>https://adammarczak.github.io/tags/azure/</link>
+      <link>https://marczak.io/tags/azure/</link>
       <pubDate>Sun, 10 Sep 2017 13:55:25 +0200</pubDate>
       
-      <guid>https://adammarczak.github.io/tags/azure/</guid>
+      <guid>https://marczak.io/tags/azure/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bot Service</title>
-      <link>https://adammarczak.github.io/tags/bot-service/</link>
+      <link>https://marczak.io/tags/bot-service/</link>
       <pubDate>Sun, 10 Sep 2017 13:55:25 +0200</pubDate>
       
-      <guid>https://adammarczak.github.io/tags/bot-service/</guid>
+      <guid>https://marczak.io/tags/bot-service/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bots</title>
-      <link>https://adammarczak.github.io/tags/bots/</link>
+      <link>https://marczak.io/tags/bots/</link>
       <pubDate>Sun, 10 Sep 2017 13:55:25 +0200</pubDate>
       
-      <guid>https://adammarczak.github.io/tags/bots/</guid>
+      <guid>https://marczak.io/tags/bots/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hack the Tool</title>
-      <link>https://adammarczak.github.io/tags/hack-the-tool/</link>
+      <link>https://marczak.io/tags/hack-the-tool/</link>
       <pubDate>Wed, 13 Sep 2017 13:55:25 +0200</pubDate>
       
-      <guid>https://adammarczak.github.io/tags/hack-the-tool/</guid>
+      <guid>https://marczak.io/tags/hack-the-tool/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Power BI</title>
-      <link>https://adammarczak.github.io/tags/power-bi/</link>
+      <link>https://marczak.io/tags/power-bi/</link>
       <pubDate>Fri, 15 Sep 2017 13:55:25 +0200</pubDate>
       
-      <guid>https://adammarczak.github.io/tags/power-bi/</guid>
+      <guid>https://marczak.io/tags/power-bi/</guid>
       <description></description>
     </item>
     
