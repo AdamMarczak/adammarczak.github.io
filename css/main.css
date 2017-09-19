@@ -1,63 +1,35 @@
-body {
-    background: url('https://images7.alphacoders.com/411/411820.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+.category.text-info a:nth-child(6n) {
+  color: #4caf50 !important;
+}
+.category.text-info a:nth-child(6n+1) {
+  color: #ff9800 !important;
+}
+.category.text-info a:nth-child(6n+2) {
+  color: #00E5FF !important;
+}
+.category.text-info a:nth-child(6n+3) {
+  color: #f44336 !important;
+}
+.category.text-info a:nth-child(6n+4) {
+  color: #51A1FC !important;
+}
+.category.text-info a:nth-child(6n+5) {
+  color: #e91e63 !important;
 }
 
-.card {
-    width: 400px;
-    height: 400px;
-    margin: 50px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: stretch;
-    -ms-flex-align: stretch;
-    align-items: stretch;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    box-shadow: 8px 10px 66px 1px rgba(0, 0, 0, 0.4), -1px -1px 0px 1px white, -1px -1px 0px 1px white, inset 1px 0px 0px white;
-    position: relative; 
-    height: 400px;
-    width: 30%;
-    will-change: transform, top, left, opacity, position, box-shadow;
+nav.navbar {
+  background-color: rgba(255, 255, 255, 0.90) !important;
 }
-
-.card > .body {
-    background: rgba(247, 247, 247, 0.6);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding: 0 24px 24px 114px;
-    z-index: 1;
+.pagination {
+  width: auto;
 }
-
-.blur {  
-    background: url('https://images7.alphacoders.com/411/411820.jpg') no-repeat center center fixed;
-    background-size: cover;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 0;
+.blog-image {
+  width: 100%;
+  max-width: 600px;
+  display:block;
+  margin:auto;
+  padding-bottom: 20px;
+}
+.article-section {
+  padding: 0 0 70px 0;
 }
