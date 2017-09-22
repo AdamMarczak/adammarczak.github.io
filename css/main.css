@@ -17,9 +17,6 @@
   color: #e91e63 !important;
 }
 
-nav.navbar {
-  background-color: rgba(255, 255, 255, 0.90) !important;
-}
 .pagination {
   width: auto;
 }
@@ -32,4 +29,36 @@ nav.navbar {
 }
 .article-section {
   padding: 0 0 70px 0;
+}
+
+.narrow-main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.text-center {
+  text-align: center;
+}
+.row.padded-bottom {
+  padding-bottom: 30px;
+}
+.padded-sides {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.spaced-rows .row {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.spaced-rows .row:first-child {
+  padding-top: 0px;
+  padding-bottom: 15px;
+}
+div.avatar {
+  border-radius: 50%;
+  background-image: url('/images/avatar.jpg');
+  width: 120px;
+  height: 120px;
+  background-position: center center;
+  background-size: cover;
+  margin: 15px auto;
 }
