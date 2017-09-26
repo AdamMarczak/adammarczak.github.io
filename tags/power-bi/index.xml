@@ -1,33 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Power BI on Marczak IO</title>
+    <title>Power BI on Marczak.IO</title>
     <link>https://marczak.io/tags/power-bi/</link>
-    <description>Recent content in Power BI on Marczak IO</description>
+    <description>Recent content in Power BI on Marczak.IO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Sep 2017 13:55:25 +0200</lastBuildDate>
     
 	<atom:link href="https://marczak.io/tags/power-bi/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Dynamic Measures in Power BI</title>
-      <link>https://marczak.io/posts/pbi-dynamic-measures/</link>
-      <pubDate>Fri, 15 Sep 2017 13:55:25 +0200</pubDate>
-      
-      <guid>https://marczak.io/posts/pbi-dynamic-measures/</guid>
-      <description> Dynamic Measures? What is that? </description>
-    </item>
-    
-    <item>
-      <title>Dynamic Hierarchies in Power BI</title>
-      <link>https://marczak.io/posts/pbi-dynamic-hierarchies/</link>
-      <pubDate>Wed, 13 Sep 2017 13:55:25 +0200</pubDate>
-      
-      <guid>https://marczak.io/posts/pbi-dynamic-hierarchies/</guid>
-      <description>Where do we start? Test Test Test</description>
-    </item>
     
   </channel>
 </rss>

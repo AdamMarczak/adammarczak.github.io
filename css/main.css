@@ -62,3 +62,12 @@ div.avatar {
   background-size: cover;
   margin: 15px auto;
 }
+.btn-social {
+  background: #fff;
+  border: 1px solid #ccc;
+  color: #999999;
+}
+.single-posts-wrap, .blog-posts-wrap {
+  padding-left: 30px;
+  padding-right: 30px;
+}
