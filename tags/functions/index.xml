@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Marczak.IO</title>
-    <link>https://marczak.io/posts/</link>
-    <description>Recent content in Posts on Marczak.IO</description>
+    <title>Functions on Marczak.IO</title>
+    <link>https://marczak.io/tags/functions/</link>
+    <description>Recent content in Functions on Marczak.IO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 15 Sep 2017 13:55:25 +0200</lastBuildDate>
     
-	<atom:link href="https://marczak.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://marczak.io/tags/functions/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

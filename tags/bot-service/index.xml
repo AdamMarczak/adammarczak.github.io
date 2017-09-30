@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bot Service on Marczak IO</title>
+    <title>Bot Service on Marczak.IO</title>
     <link>https://marczak.io/tags/bot-service/</link>
-    <description>Recent content in Bot Service on Marczak IO</description>
+    <description>Recent content in Bot Service on Marczak.IO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Sep 2017 13:55:25 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 15 Sep 2017 13:55:25 +0200</lastBuildDate>
     
 	<atom:link href="https://marczak.io/tags/bot-service/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>VS17 Functions with Bot Service</title>
-      <link>https://marczak.io/posts/az-bots-compilable/</link>
-      <pubDate>Sun, 10 Sep 2017 13:55:25 +0200</pubDate>
+      <title>Precompiled Bots with VS 2017 tooling</title>
+      <link>https://marczak.io/posts/precompiled-bots-for-bot-service/</link>
+      <pubDate>Fri, 15 Sep 2017 13:55:25 +0200</pubDate>
       
-      <guid>https://marczak.io/posts/az-bots-compilable/</guid>
-      <description>Test
-Test Test Test</description>
+      <guid>https://marczak.io/posts/precompiled-bots-for-bot-service/</guid>
+      <description>&lt;p&gt;With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.&lt;/p&gt;</description>
     </item>
     
   </channel>
