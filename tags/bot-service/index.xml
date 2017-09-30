@@ -6,7 +6,7 @@
     <description>Recent content in Bot Service on Marczak.IO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Sep 2017 13:55:25 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 30 Sep 2017 18:20:25 +0200</lastBuildDate>
     
 	<atom:link href="https://marczak.io/tags/bot-service/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Precompiled Bots with VS 2017 tooling</title>
       <link>https://marczak.io/posts/precompiled-bots-for-bot-service/</link>
-      <pubDate>Fri, 15 Sep 2017 13:55:25 +0200</pubDate>
+      <pubDate>Sat, 30 Sep 2017 18:20:25 +0200</pubDate>
       
       <guid>https://marczak.io/posts/precompiled-bots-for-bot-service/</guid>
       <description>&lt;p&gt;With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.&lt;/p&gt;</description>
