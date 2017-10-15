@@ -78,6 +78,8 @@ div.avatar {
   box-shadow: none;
   margin-top: 0px;
 }
+.btn-social-about:hover { background: #D1BA52; }
+.btn-social-linkedin:hover { background: #0077b5; }
 .btn-social-facebook:hover { background: #4367b1; }
 .btn-social-youtube:hover { background: #fe0101; }
 .btn-social-twitter:hover { background: #55acee; }
