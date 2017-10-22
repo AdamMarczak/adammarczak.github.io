@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Marczak.IO  | Azure Bot Series - Introduction to chatbots</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
+  <link rel="stylesheet" id="hestia_fonts-css" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700%7CRoboto+Slab%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=1.1.47"
+    type="text/css" media="all">
+  <link rel="stylesheet" id="bootstrap-css" href="https://marczak.io/css/bootstrap.min.css"
+    type="text/css" media="all">
+  <link rel="stylesheet" id="font-awesome-css" href="https://marczak.io/css/fontawesome.css"
+    type="text/css" media="all">
+  <link href='https://marczak.io/css/hestia.css' rel="stylesheet" type="text/css" />
+  <link href='https://marczak.io/css/main.css?ver=1.02' rel='stylesheet' type="text/css" />
+  <link href='https://marczak.io/css/syntax.css' rel='stylesheet' type="text/css" />
+  
+  
+  <meta name="description" content="Microsoft Bot Framework with conjunction with Azure Bot Service provides the platform for quick bot development. Learn what are chat bots for and how to leverage those tools to deliver basic bots in just minutes.">
+  <meta name="author" content="Adam Marczak">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Azure Bot Series - Introduction to chatbots">
+  <meta property="og:description" content="Microsoft Bot Framework with conjunction with Azure Bot Service provides the platform for quick bot development. Learn what are chat bots for and how to leverage those tools to deliver basic bots in just minutes.">
+  <meta property="og:url" content="https://marczak.io/posts/botseries-introductiontobots/">
+  <meta property="og:site_name" content="Marczak.IO">
+  <meta property="og:image" content="https://marczak.io/images/botseries-intro/botseries-intro.png">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@MarczakIO">
+  
+  <meta name="twitter:title" content="Azure Bot Series - Introduction to chatbots">
+  <meta name="twitter:description" content="Microsoft Bot Framework with conjunction with Azure Bot Service provides the platform for quick bot development. Learn what are chat bots for and how to leverage those tools to deliver basic bots in just minutes.">
+  <meta name="twitter:url" content="https://marczak.io/posts/botseries-introductiontobots/">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106560028-1');
+</script>
+</head>
+ 
+<body class="home blog">
+  <div class="wrapper">
+    
+    <header class="header ">
+  <nav class="navbar navbar-default navbar-fixed-top  hestia_left">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="title-logo-wrapper">
+          <a class="navbar-brand" href="/" title="Marczak.IO">
+            <p>
+              Adam Marczak
+            </p>
+          </a>
+        </div>
+        
+      </div>
+      <div id="main-navigation" class="collapse navbar-collapse">
+        <div class="entry-social">
+  
+  <a target="_top" class="btn btn-just-icon btn-social btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope-o"></i>
+  </a>
+  
+  
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  
+  
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-github"
+     href="https://github.com/MarczakIO">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-youtube"
+     href="https://www.youtube.com/channel/UCbbjOn2UosI_yaD5d4w_Flw">
+    <i class="fa fa-youtube"></i>
+  </a>
+  
+</div>
+      </div>
+      
+    </div>
+  </nav>
+  <div id="primary" class="boxed-layout-header page-header header-small" data-parallax="active" style="margin-top: 50px;">
+    <div class="container" style="padding-top: 150px;">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+          <h1 class="hestia-title">Azure Bot Series - Introduction to chatbots</h1>
+          
+            <h4 class="author">
+              Published by 
+              <a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a>
+              </a> on 
+              <time class="date updated published" datetime="2017-10-22 22:34:37 &#43;0200 CEST">
+                  Oct 22 2017
+              </time>
+            </h4>
+           
+        </div>
+      </div>
+    </div>
+    <div class="header-filter" 
+         style="background-image: url('/images/background.jpg');">
+    </div>
+
+  </div>
+</header>
+    <div class="main main-raised">
+      <div class="hestia-blogs">
+        <div class="container">
+          <div class="row">
+            
+<div class="col-md-8 single-posts-wrap">
+    <article id="/posts/botseries-introductiontobots/" class="article-section section-text">
+        
+            <img class="blog-image" alt="Azure Bot Series - Introduction to chatbots" src="/images/botseries-intro/botseries-intro.png">
+        
+        
+            <a target="_blank" 
+   rel="tooltip" 
+   class="btn btn-round btn-github"
+   href="https://github.com/MarczakIO/botseries-intro">
+    <i class="fa fa-github"></i>
+    Source Code
+</a>
+        
+        <h2>Highlight</h2>
+        <p>Microsoft Bot Framework with conjunction with Azure Bot Service provides the platform for quick bot development. Learn what are chat bots for and how to leverage those tools to deliver basic bots in just minutes.</p>
+
+<p>In recent years increased availability of internet across the world and evolution of mobile devices popularized messaging applications which became most common way to communicate in private life as well as everyday business. It is no surprise that leveraging those communication channels has huge potential in any business.</p>
+
+<h3 id="what-are-chat-bots">What are chat bots?</h3>
+
+<p>Chat bots are applications whose main role is extension of usually already existing applications and therefore it is often said that they are <strong>application interfaces</strong>. While a developer can build full-fledged application purely within chat bot app it is not what chat bots are for.</p>
+
+<p>Bots can handle multitude of business scenarios, few examples are</p>
+
+<ol>
+<li>Level 0/1 support roles responding to basic user queries.</li>
+<li>Granting access to resources and websites.</li>
+<li>Informing of events.</li>
+<li>Prompting for approvals and other actions.</li>
+<li>Allowing control over systems. Fantastic example is <a href="https://bots.botframework.com/bot?id=azurebot">Azure Bot</a> in bot directory.</li>
+<li>Knowledge base for wiki or FAQ</li>
+</ol>
+
+<p>Often people wonder if chat bots are win it all application. They are not. But they have fantastic set of uses and they are best for enhancing service quality not completly removing human interaction from them. Best scenario for bots is to handle 50-80% of common cases and redirect users to human for cases that bot is not suited to do. While it&rsquo;s possible to code those cases too it&rsquo;s often not worth the cost.</p>
+
+<h3 id="how-are-chat-bots-built">How are chat bots built?</h3>
+
+<p>Building bots with use of Microsoft stack usually consists of two main components</p>
+
+<p><a href="https://dev.botframework.com/"><img class="icon" src="/images/symbols/botframework.png"/>Microsoft Bot Framework</a></p>
+
+<p><a href="https://azure.microsoft.com/en-us/services/bot-service/"><img class="icon" src="/images/symbols/botservice.svg"/>Azure Bot Service</a></p>
+
+<p>Those are connected as follows
+<div class="sm-250"><img src="/images/botseries-intro/arch1.png" alt="Screenshot" /></div></p>
+
+<h2 id="microsoft-bot-framework">Microsoft Bot Framework</h2>
+
+<p>Open source SDK and platform delivered by Microsoft for rapid bot development.</p>
+
+<p>Platform consists of several components</p>
+
+<ol>
+<li>Bot Builder SDK
+
+<ol>
+<li>Open Source library written with <strong>.NET</strong> and <strong>Node.js</strong> available at <a href="https://github.com/Microsoft/BotBuilder">github</a> for anyone to explore and contribute.</li>
+<li><a href="https://docs.microsoft.com/en-us/bot-framework/rest-api/bot-framework-rest-overview">REST API</a> for those who want to integrate it from different languages and platforms.</li>
+<li><a href="https://docs.microsoft.com/en-us/bot-framework/debug-bots-emulator">Bot Emulator</a> for testing bots locally and remotely without a need for any channel. It works great with <a href="https://ngrok.com/">Ngrok tunneling tool</a> for remote connectivity
+<div class="sm-300"><img src="/images/botseries-intro/0.png" alt="Screenshot" /></div></li>
+</ol></li>
+<li>Bot Connectors (channels) which are API proxies delivered and maintained by Microsoft which connect to existing services and proxy/format messages between the messaging platform (client origin) and bot service.
+
+<ol>
+<li>Two enabled by default which are SKype and Web Chat
+<div class="sm-100"><img src="/images/botseries-intro/1.png" alt="Screenshot" /></div></li>
+<li>And 12 more to configure which include Bing, Cortana, Direct Line, Email, Messenger, GroupMe, Kik, Microsoft Teams, Skype for Business, Slack, Telegram and Twillio SMS
+<div class="sm-150"><img src="/images/botseries-intro/2.png" alt="Screenshot" /></div></li>
+</ol></li>
+<li>Registration and management portal (fully integrated with Azure Bot Service) for maintaining directory of bot applications.
+<div class="sm-250"><img src="/images/botseries-intro/3.png" alt="Screenshot" /></div></li>
+<li>Bot Catalog - bot directory is great place to find real examples of useful bots that are ready to be implemented in any company.
+<div class="sm-300"><img src="/images/botseries-intro/4.png" alt="Screenshot" /></div></li>
+</ol>
+
+<h2 id="azure-bot-service">Azure Bot Service</h2>
+
+<p>Bot Service is specialized version of Azure App Service with full web IDE (just like Azure Functions) as well as basic tooling for bot development and management. Key features of this service are</p>
+
+<ol>
+<li>IDE for bot development
+<div class="sm-350"><img src="/images/botseries-intro/5.png" alt="Screenshot" /></div></li>
+<li>Channel configuration page
+<div class="sm-350"><img src="/images/botseries-intro/6.png" alt="Screenshot" /></div></li>
+<li>Application settings and web configuration
+<div class="sm-300"><img src="/images/botseries-intro/8.png" alt="Screenshot" /></div></li>
+<li>Chat testing tools and logging/analytics
+<div class="sm-250"><img src="/images/botseries-intro/7.png" alt="Screenshot" /></div></li>
+</ol>
+
+<h2 id="creation-of-a-chat-bot">Creation of a chat bot</h2>
+
+<p>In this article a basic form bot will be built which will serve users with a questionaire about their favorite mobile device and color. Nothing complicated but it gives a decent idea of how bots operate and how developer can create simple bot in just minutes.</p>
+
+<p>Instead of reading you can watch!</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kbu6zZJDtco" frameborder="0" allowfullscreen></iframe>
+
+<p>Or just follow the steps</p>
+
+<ol>
+<li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
+<li>Find Azure Bot Service in Marketplace
+<div class="sm-150"><img src="/images/botseries-intro/9.png" alt="Screenshot" /></div></li>
+<li>Create Bot Service
+<div class="sm-200"><img src="/images/botseries-intro/10.jpg" alt="Screenshot" /></div></li>
+<li>Fill in the data.
+
+<ul>
+<li><strong>Consumption Plan</strong> will <a href="https://azure.microsoft.com/en-us/pricing/details/functions/">Functions pricing</a> model (pay per execution). Preferred for most bots.</li>
+<li><strong>App Service Plan</strong> will use <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/">App Service</a> (pay for reserved capacity). Preferred if using Free Tier for learning purposes.
+<div class="sm-350"><img src="/images/botseries-intro/11.png" alt="Screenshot" /></div>
+Portal should automatically open bot editor after deployment is successful. If not open bot can be opened via either Portal &gt; App Services, Notifications or Dashboard if &lsquo;Pin to Dashboard&rsquo; option was selected.</li>
+</ul></li>
+<li>Click create button redirects to bot wizard where C# should be set language and Form as a bot template.
+<div class="sm-any"><img src="/images/botseries-intro/12.jpg" alt="Screenshot" /></div></li>
+<li>Microsoft App Registration page where application must be first registered.
+<div class="sm-200"><img src="/images/botseries-intro/13.png" alt="Screenshot" /></div>
+<strong>Note</strong>: Forgetting to save app password might be troublesome in some scenarios but this isn&rsquo;t the case. App password will be available in bot app settings</li>
+<li>Once bot is created developer is transferred back to Azure Development portal and after hitting Create button the bot is provisioned. Provisioning takes between 2 and 5 minutes and during that time template sets up Bot Framework application, storage account for the code and logic, bot service application and application insights.</li>
+<li>Test the bot with IDE chat control
+<div class="sm-400"><img src="/images/botseries-intro/14.png" alt="Screenshot" /></div></li>
+</ol>
+
+<p>Additionally, developer can set up <a href="https://docs.microsoft.com/en-us/bot-framework/debug-bots-emulator">Bot Emulator</a> for testing which takes just minutes.</p>
+
+<ol>
+<li>Download Emulator from Bot Framework website</li>
+<li>Download <a href="https://ngrok.com/">Ngrok tunneling tool</a> for remote connectivity and extract it at convenient location</li>
+<li>Run Bot Emulator</li>
+<li>Open App Settings
+<div class="sm-200"><img src="/images/botseries-intro/15.png" alt="Screenshot" /></div></li>
+<li>Provide path to ngrok.exe where it was previously extracted
+<div class="sm-250"><img src="/images/botseries-intro/16.png" alt="Screenshot" /></div></li>
+<li>Click on the &lsquo;Enter your endpoint URL&rsquo; text bot in emulator and provide bot details
+
+<ol>
+<li>Get messaging endpoint to chatbot by going to Azure Portal IDE and selecting Settings Tab. Scroll down to Configuration section and copy paste the link into emulator
+<div class="sm-100"><img src="/images/botseries-intro/17.png" alt="Screenshot" /></div></li>
+<li>Emulator will prompt for Microsoft App ID and Password, to get App ID again scroll down in app settings tab
+<div class="sm-100"><img src="/images/botseries-intro/18.png" alt="Screenshot" /></div></li>
+<li>To get password click on Open button in Application Settings section and scroll down to field called MicrosoftAppPassword and copy its value
+<div class="sm-100"><img src="/images/botseries-intro/19.png" alt="Screenshot" /></div>
+<div class="sm-300"><img src="/images/botseries-intro/20.png" alt="Screenshot" /></div></li>
+</ol></li>
+<li>Click Connect
+<div class="sm-150"><img src="/images/botseries-intro/21.png" alt="Screenshot" /></div></li>
+<li>Test the bot
+<div class="sm-350"><img src="/images/botseries-intro/22.png" alt="Screenshot" /></div></li>
+</ol>
+
+<h4 id="editing-the-business-logic">Editing the business logic</h4>
+
+<p>Now that the bot is set up and running editing the default logic to mobile device questionnaire is pretty straightforward.</p>
+
+<ol>
+<li><p>Open BasicForm.csx file in the browser IDE and paste in the code
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="s3e8">using</span><span class="s1f40"> </span><span class="s7d0">System</span><span class="s1388">;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">using</span><span class="s1f40"> </span><span class="s7d0">Microsoft</span><span class="s1388">.</span><span class="s7d0">Bot</span><span class="s1388">.</span><span class="s7d0">Builder</span><span class="s1388">.</span><span class="s7d0">FormFlow</span><span class="s1388">;</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="hl"><span class="s1f40"></span><span class="s3e8">public</span><span class="s1f40"> </span><span class="s3e8">enum</span><span class="s1f40"> </span><span class="s7d0">MobileOptions</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="s7d0">Laptop</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc80">1</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">Smartphone</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">Tablet</span><span class="s1f40"> </span><span class="s1388">};</span><span class="s1f40">
+</span></span><span class="hl"><span class="s1f40"></span><span class="s3e8">public</span><span class="s1f40"> </span><span class="s3e8">enum</span><span class="s1f40"> </span><span class="s7d0">ColorOptions</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="s7d0">Black</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc80">1</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">Silver</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">Gold</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">White</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">Red</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">Blue</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">Green</span><span class="s1f40"> </span><span class="s1388">};</span><span class="s1f40">
+</span></span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">[</span><span class="s7d0">Serializable</span><span class="s1388">]</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">public</span><span class="s1f40"> </span><span class="s3e8">class</span><span class="s1f40"> </span><span class="s7d4">BasicForm</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7d0">Prompt</span><span class="s1388">(</span><span class="sc1c"></span><span class="sc1c">&#34;Hello! What is your {&amp;}?&#34;</span><span class="s1388">)]</span><span class="s1f40">
+</span><span class="hl"><span class="s1f40">    </span><span class="s3e8">public</span><span class="s1f40"> </span><span class="s7d0">string</span><span class="s1f40"> </span><span class="s7d0">FullName</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="s7d0">get</span><span class="s1388">;</span><span class="s1f40"> </span><span class="s7d0">set</span><span class="s1388">;</span><span class="s1f40"> </span><span class="s1388">}</span><span class="s1f40">
+</span></span><span class="s1f40">
+</span><span class="hl"><span class="s1f40">    </span><span class="s1388">[</span><span class="s7d0">Prompt</span><span class="s1388">(</span><span class="sc1c"></span><span class="sc1c">&#34;Please select your favorite mobile device type {||}&#34;</span><span class="s1388">)]</span><span class="s1f40">
+</span></span><span class="hl"><span class="s1f40">    </span><span class="s3e8">public</span><span class="s1f40"> </span><span class="s7d0">MobileOptions</span><span class="s1f40"> </span><span class="s7d0">MobileDevice</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="s7d0">get</span><span class="s1388">;</span><span class="s1f40"> </span><span class="s7d0">set</span><span class="s1388">;</span><span class="s1f40"> </span><span class="s1388">}</span><span class="s1f40">
+</span></span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7d0">Prompt</span><span class="s1388">(</span><span class="sc1c"></span><span class="sc1c">&#34;Please select your favorite {&amp;} {||}&#34;</span><span class="s1388">)]</span><span class="s1f40">
+</span><span class="hl"><span class="s1f40">    </span><span class="s3e8">public</span><span class="s1f40"> </span><span class="s7d0">ColorOptions</span><span class="s1f40"> </span><span class="s7d0">Color</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="s7d0">get</span><span class="s1388">;</span><span class="s1f40"> </span><span class="s7d0">set</span><span class="s1388">;</span><span class="s1f40"> </span><span class="s1388">}</span><span class="s1f40">
+</span></span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s3e8">public</span><span class="s1f40"> </span><span class="s3e8">static</span><span class="s1f40"> </span><span class="s7d0">IForm</span><span class="sfa0">&lt;</span><span class="s7d0">BasicForm</span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">BuildForm</span><span class="s1388">()</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">{</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s3e8">return</span><span class="s1f40"> </span><span class="s3e8">new</span><span class="s1f40"> </span><span class="s7d0">FormBuilder</span><span class="sfa0">&lt;</span><span class="s7d0">BasicForm</span><span class="sfa0">&gt;</span><span class="s1388">().</span><span class="s7d0">Build</span><span class="s1388">();</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">}</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s3e8">public</span><span class="s1f40"> </span><span class="s3e8">static</span><span class="s1f40"> </span><span class="s7d0">IFormDialog</span><span class="sfa0">&lt;</span><span class="s7d0">BasicForm</span><span class="sfa0">&gt;</span><span class="s1f40"> </span><span class="s7d0">BuildFormDialog</span><span class="s1388">(</span><span class="s7d0">FormOptions</span><span class="s1f40"> </span><span class="s7d0">options</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">FormOptions</span><span class="s1388">.</span><span class="s7d0">PromptInStart</span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">{</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s3e8">return</span><span class="s1f40"> </span><span class="s7d0">FormDialog</span><span class="s1388">.</span><span class="s7d0">FromForm</span><span class="s1388">(</span><span class="s7d0">BuildForm</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">options</span><span class="s1388">);</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">}</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
+</div>
+Highlighted lines are the ones that has been changed for purpose of this scenario. So in details</p>
+
+<ol>
+<li>All <strong>string</strong> types are translated to simple user prompts for text. This is good when users can&rsquo;t be provided with options.</li>
+<li>All <strong>enum</strong> types are translated to single selection card prompts. This is good when there is set amount of options to choose from.</li>
+<li>All <strong>List&lt;enum&gt;</strong> types are translated to multiple selection card prompts. This is good when there is set amount of options to choose from but users should be able to select multiple options.
+More info about form flows at <a href="https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow">Bot Framwork Form Flow</a> tutorial</li>
+</ol></li>
+
+<li><p>Click Save and Test the bot!</p></li>
+</ol>
+
+<p>That&rsquo;s it. In just about 10 minutes of work questionnaire bot is done and ready to be deployed to users.</p>
+
+<h3 id="play-around-with-it">Play around with it!</h3>
+
+<p>Deployed and compiled chatbot is now ready to use. Clicking on below button will open live chat window.</p>
+
+<div class="webchat inactive" src="https://webchat.botframework.com/embed/marczakio-introduction-to-bots?s=nTZViqW-GIk.cwA.VdA.3d4zXBwHAWszFckD5OTtMANev_rnm0fxbhFMGXksG8U">
+    <button class="btn btn-round chatbot-button btn-webchat">Click to test the chatbot!</button>
+    <iframe class="chatbot" frameborder="0"></iframe>
+</div>
+        
+            <a target="_blank" 
+   rel="tooltip" 
+   class="btn btn-round btn-github"
+   href="https://github.com/MarczakIO/botseries-intro">
+    <i class="fa fa-github"></i>
+    Source Code
+</a>
+        
+    </article>
+    <div class="section-blog-info">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="entry-tags">
+                    Tags: 
+
+  <h6 class="category text-info">
+    
+      <a href="/tags/bot-service" title="View all posts in x">Bot Service</a>
+    
+      <a href="/tags/azure" title="View all posts in x">Azure</a>
+    
+      <a href="/tags/bot-series" title="View all posts in x">Bot Series</a>
+    
+ </h6>
+
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="entry-social">
+                    <a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Facebook" 
+   class="btn btn-just-icon btn-round btn-facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmarczak.io%2fposts%2fbotseries-introductiontobots%2f">
+    <i class="fa fa-facebook"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Twitter" 
+   class="btn btn-just-icon btn-round btn-twitter" 
+   href="https://twitter.com/home?status=Azure%20Bot%20Series%20-%20Introduction%20to%20chatbots - https%3a%2f%2fmarczak.io%2fposts%2fbotseries-introductiontobots%2f">
+   <i class="fa fa-twitter"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Google+" 
+   class="btn btn-just-icon btn-round btn-google" 
+   href="https://plus.google.com/share?url=https%3a%2f%2fmarczak.io%2fposts%2fbotseries-introductiontobots%2f"><i 
+   class="fa fa-google"></i>
+</a>
+            
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "https:\/\/marczak.io\/posts\/botseries-introductiontobots\/"; 
+this.page.identifier = "\/posts\/botseries-introductiontobots\/";
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://marczak-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+    </div>
+</div>
+
+            <div class="col-md-3 blog-sidebar-wrapper">
+              <aside id="secondary" class="blog-sidebar" role="complementary">
+                <div id="recent-posts-3" class="widget widget_recent_entries">
+<h5>Recent Posts</h5>
+<ul>
+
+
+    <li><a href="/posts/botseries-introductiontobots/" title="Azure Bot Series - Introduction to chatbots" rel="bookmark">Azure Bot Series - Introduction to chatbots</a></li>
+
+
+
+    <li><a href="/posts/precompiled-bots-for-bot-service/" title="Precompiled Bots with VS 2017 tooling" rel="bookmark">Precompiled Bots with VS 2017 tooling</a></li>
+
+
+
+    <li><a href="/about/" title="" rel="bookmark"></a></li>
+
+
+</ul>
+</div>
+                
+
+<div id="categories-3" class="widget widget_categories">
+  
+  <h5>Tags</h5>
+  <ul>
+      
+        <li> 
+          <a href="/tags/azure">
+            Azure
+          </a> 
+          (2)
+        </li>
+      
+        <li> 
+          <a href="/tags/bot-series">
+            Bot Series
+          </a> 
+          (1)
+        </li>
+      
+        <li> 
+          <a href="/tags/bot-service">
+            Bot Service
+          </a> 
+          (2)
+        </li>
+      
+        <li> 
+          <a href="/tags/functions">
+            Functions
+          </a> 
+          (1)
+        </li>
+      
+  </ul>
+  
+</div>
+
+
+              </aside>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      
+<footer class="footer footer-black footer-big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="connected-title">Stay Connected</h5>
+                <div class="">
+  
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-about"
+     href="/about">
+    <i class="fa fa-user"></i>
+  </a>
+  
+  
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  
+  
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-github"
+     href="https://github.com/MarczakIO">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
+     href="https://www.youtube.com/channel/UCbbjOn2UosI_yaD5d4w_Flw">
+    <i class="fa fa-youtube"></i>
+  </a>
+  
+  
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
+     href="t">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
+     href="https://marczak.io/index.xml">
+    <i class="fa fa-rss"></i>
+  </a>
+</div>
+            </div>
+            &copy;<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> <a href="https://themeisle.com/themes/hestia/" target="_blank" rel="nofollow">Hestia Theme</a>
+        </div>
+    </div>
+</footer>
+    </div>
+    
+  </div>
+
+  <script type="text/javascript" src="https://marczak.io/js/jquery.js?ver=1.12.4"></script>
+  <script type="text/javascript" src="https://marczak.io/js/bootstrap.min.js?ver=1.0.1"></script>
+  <script type="text/javascript" src="https://marczak.io/js/chat.js?ver=1.0.1"></script>
+</body>
+
+</html>

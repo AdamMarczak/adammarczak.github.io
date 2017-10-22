@@ -6,10 +6,22 @@
     <description>Private blog created for purpose of personal contribution to communities around world.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Sep 2017 16:20:25 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 22 Oct 2017 22:34:37 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Azure Bot Series - Introduction to chatbots</title>
+      <link>https://marczak.io/posts/botseries-introductiontobots/</link>
+      <pubDate>Sun, 22 Oct 2017 22:34:37 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/botseries-introductiontobots/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/botseries-intro/botseries-intro.png&quot;&gt;
+        &lt;p&gt;Microsoft Bot Framework with conjunction with Azure Bot Service provides the platform for quick bot development. Learn what are chat bots for and how to leverage those tools to deliver basic bots in just minutes.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>Precompiled Bots with VS 2017 tooling</title>
@@ -18,7 +30,7 @@
       
       <guid>https://marczak.io/posts/precompiled-bots-for-bot-service/</guid>
       <description>
-        &lt;img src=&quot;https://marczak.io/images/az-bs-compilable-bots.jpg&quot;&gt;
+        &lt;img src=&quot;https://marczak.io/images/compilable-bots/az-bs-compilable-bots.jpg&quot;&gt;
         &lt;p&gt;With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.&lt;/p&gt;
       </description>
     </item>
