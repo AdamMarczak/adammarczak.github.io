@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Functions on Marczak.IO</title>
+    <title>Marczak.IO</title>
     <link>https://marczak.io/tags/functions/</link>
     <description>Private blog created for purpose of personal contribution to communities around world.</description>
     <generator>Hugo -- gohugo.io</generator>

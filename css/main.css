@@ -138,3 +138,18 @@ img.icon {
   margin-left: 3px;
   margin-right: 9px;
 }
+img.tag-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: -2px;
+}
+
+.tag-list {
+  margin-top: 3px;
+}
+
+.card .card-image img {
+  float: none;
+}
