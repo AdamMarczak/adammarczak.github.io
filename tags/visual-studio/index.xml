@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<<<<<<< HEAD
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Visual Studio on Marczak.IO</title>
@@ -25,31 +24,4 @@
     </item>
     
   </channel>
-=======
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Visual Studio on Marczak.IO</title>
-    <link>https://marczak.io/tags/visual-studio/</link>
-    <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 30 Sep 2017 16:20:25 +0200</lastBuildDate>
-    
-        <atom:link href="https://marczak.io/tags/visual-studio/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Precompiled Bots with VS 2017 tooling</title>
-      <link>https://marczak.io/posts/precompiled-bots-for-bot-service/</link>
-      <pubDate>Sat, 30 Sep 2017 16:20:25 +0200</pubDate>
-      
-      <guid>https://marczak.io/posts/precompiled-bots-for-bot-service/</guid>
-      <description>
-        &lt;img src=&quot;https://marczak.io/images/compilable-bots/az-bs-compilable-bots.jpg&quot;&gt;
-        &lt;p&gt;With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.&lt;/p&gt;
-      </description>
-    </item>
-    
-  </channel>
->>>>>>> 6b683bf09018dd7de918f167918bcd616b732735
 </rss>
