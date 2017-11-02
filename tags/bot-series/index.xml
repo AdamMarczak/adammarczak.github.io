@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<<<<<<< HEAD
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Marczak.IO</title>
@@ -11,4 +12,18 @@
     
     
   </channel>
+=======
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Marczak.IO</title>
+    <link>https://marczak.io/tags/bot-series/</link>
+    <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+        <atom:link href="https://marczak.io/tags/bot-series/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+>>>>>>> 6b683bf09018dd7de918f167918bcd616b732735
 </rss>

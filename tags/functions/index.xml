@@ -18,7 +18,11 @@
       
       <guid>https://marczak.io/posts/precompiled-bots-for-bot-service/</guid>
       <description>
+<<<<<<< HEAD
         &lt;img src=&quot;https://marczak.io/images/compilable-bots/splash.svg&quot;&gt;
+=======
+        &lt;img src=&quot;https://marczak.io/images/compilable-bots/az-bs-compilable-bots.jpg&quot;&gt;
+>>>>>>> 6b683bf09018dd7de918f167918bcd616b732735
         &lt;p&gt;With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.&lt;/p&gt;
       </description>
     </item>

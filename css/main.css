@@ -149,6 +149,7 @@ img.tag-icon {
 .tag-list {
   margin-top: 3px;
 }
+<<<<<<< HEAD
 .tag-list svg,
 .tag-list img {
   width: 20px;
@@ -182,4 +183,9 @@ article svg {
 }
 .comments {
   padding-top: 40px;
+=======
+
+.card .card-image img {
+  float: none;
+>>>>>>> 6b683bf09018dd7de918f167918bcd616b732735
 }
