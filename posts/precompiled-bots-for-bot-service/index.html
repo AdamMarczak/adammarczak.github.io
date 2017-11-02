@@ -4,9 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Marczak.IO  | Precompiled Bots with VS 2017 tooling</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
   <link rel="stylesheet" id="hestia_fonts-css" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700%7CRoboto+Slab%3A400%2C700&amp;subset=latin%2Clatin-ext&amp;ver=1.1.47"
     type="text/css" media="all">
   <link rel="stylesheet" id="bootstrap-css" href="https://marczak.io/css/bootstrap.min.css"
@@ -14,12 +17,14 @@
   <link rel="stylesheet" id="font-awesome-css" href="https://marczak.io/css/fontawesome.css"
     type="text/css" media="all">
   <link href='https://marczak.io/css/hestia.css' rel="stylesheet" type="text/css" />
-  <link href='https://marczak.io/css/main.css?ver=1.00' rel='stylesheet' type="text/css" />
+  <link href='https://marczak.io/css/main.css?ver=1.04' rel='stylesheet' type="text/css" />
   <link href='https://marczak.io/css/syntax.css' rel='stylesheet' type="text/css" />
   
   
-    <meta name="description" content="With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.">
-    <meta name="author" content="Adam Marczak">
+  <meta name="description" content="With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.">
+  <meta name="author" content="Adam Marczak">
+  <meta name="copyright" content="Adam Marczak">
+  <meta name="title" content="Marczak.IO | Adam Marczak | Precompiled Bots with VS 2017 tooling">
   <meta property="og:locale" content="en_US">
   <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
   <meta property="og:type" content="article">
@@ -27,7 +32,7 @@
   <meta property="og:description" content="With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.">
   <meta property="og:url" content="https://marczak.io/posts/precompiled-bots-for-bot-service/">
   <meta property="og:site_name" content="Marczak.IO">
-  <meta property="og:image" content="https://marczak.io/images/az-bs-compilable-bots.jpg">
+  <meta property="og:image" content="https://marczak.io/images/compilable-bots/splash.svg">
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@MarczakIO">
@@ -55,9 +60,7 @@
       <div class="navbar-header">
         <div class="title-logo-wrapper">
           <a class="navbar-brand" href="/" title="Marczak.IO">
-            <p>
-              Adam Marczak
-            </p>
+            <p>Adam Marczak</p>
           </a>
         </div>
         
@@ -83,9 +86,9 @@
   </a>
   
   
-  <a target="_blank" class="btn btn-just-icon btn-social btn-social-github"
-     href="https://github.com/MarczakIO">
-    <i class="fa fa-github"></i>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
   </a>
   
   
@@ -131,12 +134,12 @@
 <div class="col-md-8 single-posts-wrap">
     <article id="/posts/precompiled-bots-for-bot-service/" class="article-section section-text">
         
-            <img class="blog-image" alt="Precompiled Bots with VS 2017 tooling" src="/images/az-bs-compilable-bots.jpg">
+            <img src="https://marczak.io/images/compilable-bots/splash.svg">
         
         
             <a target="_blank" 
    rel="tooltip" 
-   class="btn btn-round btn-github"
+   class="btn btn-github"
    href="https://github.com/MarczakIO/precompiled-bots">
     <i class="fa fa-github"></i>
     Source Code
@@ -318,13 +321,13 @@ Note: Only body of the function should be copied, function definition should be 
 <p>Deployed and compiled chatbot is now ready to use. Clicking on below button will open live chat window.</p>
 
 <div class="webchat inactive" src="https://webchat.botframework.com/embed/precompiled-bot_KPYYsDRFdC4?s=3MPqhp7I1fI.cwA.PTE.dCJJChIHAqirIJ-VbptG5T7QxMyulwGZHx-c3QBJjw0">
-    <button class="btn btn-round chatbot-button btn-webchat">Click to test the chatbot!</button>
+    <button class="btn chatbot-button btn-webchat">Click to test the chatbot!</button>
     <iframe class="chatbot" frameborder="0"></iframe>
 </div>
         
             <a target="_blank" 
    rel="tooltip" 
-   class="btn btn-round btn-github"
+   class="btn btn-github"
    href="https://github.com/MarczakIO/precompiled-bots">
     <i class="fa fa-github"></i>
     Source Code
@@ -333,26 +336,12 @@ Note: Only body of the function should be copied, function definition should be 
     </article>
     <div class="section-blog-info">
         <div class="row">
-            <div class="col-md-6">
-                <div class="entry-tags">
-                    Tags: 
-
-  <h6 class="category text-info">
-    
-      <a href="/tags/functions" title="View all posts in x">Functions</a>
-    
-      <a href="/tags/bot-service" title="View all posts in x">Bot Service</a>
-    
-      <a href="/tags/azure" title="View all posts in x">Azure</a>
-    
- </h6>
-
-
-                </div>
+            <div class="col-md-12 text-center">
+                <h3 class="text-center">Did you enjoy the article?</h3>
             </div>
-            <div class="col-md-6">
-                <div class="entry-social">
-                    <a target="_blank" 
+            <div class="col-md-6 text-center">
+                <h4 class="">Share it!</h4>
+                <a target="_blank" 
    rel="tooltip" 
    data-original-title="Share on Facebook" 
    class="btn btn-just-icon btn-round btn-facebook"
@@ -374,11 +363,75 @@ Note: Only body of the function should be copied, function definition should be 
    class="fa fa-google"></i>
 </a>
             
-                </div>
+            </div>
+            <div class="col-md-6 text-center large">
+                <h4 class="">More tagged posts</h4>
+                
+
+
+  <div class="tag-list">
+    
+    
+      
+      
+      
+        
+      
+        
+          <a href="https://marczak.io/tags/azure" title="View all posts in Azure" class="">
+            <img src="https://marczak.io/images/symbols/azure.svg"/>
+          </a>
+        
+      
+      
+    
+      
+      
+      
+        
+      
+        
+          <a href="https://marczak.io/tags/bot-service" title="View all posts in Bot Service" class="">
+            <img src="https://marczak.io/images/symbols/botservice.svg"/>
+          </a>
+        
+      
+      
+    
+      
+      
+      
+        
+      
+        
+          <a href="https://marczak.io/tags/functions" title="View all posts in Functions" class="">
+            <img src="https://marczak.io/images/symbols/functions.svg"/>
+          </a>
+        
+      
+      
+    
+      
+      
+      
+        
+      
+        
+          <a href="https://marczak.io/tags/visual-studio" title="View all posts in Visual Studio" class="">
+            <img src="https://marczak.io/images/symbols/vs17.svg"/>
+          </a>
+        
+      
+      
+    
+ </div>
+
+
             </div>
         </div>
-        <hr>
-        <div id="disqus_thread"></div>
+        <div class="row comments">
+            <div class="col-md-12">
+                <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
 this.page.url = "https:\/\/marczak.io\/posts\/precompiled-bots-for-bot-service\/"; 
@@ -392,6 +445,9 @@ s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
+            </div>
+        </div>
+                
     </div>
 </div>
 
@@ -400,6 +456,10 @@ s.setAttribute('data-timestamp', +new Date());
                 <div id="recent-posts-3" class="widget widget_recent_entries">
 <h5>Recent Posts</h5>
 <ul>
+
+
+    <li><a href="/posts/botseries-introductiontobots/" title="Azure Bot Series - Introduction to chatbots" rel="bookmark">Azure Bot Series - Introduction to chatbots</a></li>
+
 
 
     <li><a href="/posts/precompiled-bots-for-bot-service/" title="Precompiled Bots with VS 2017 tooling" rel="bookmark">Precompiled Bots with VS 2017 tooling</a></li>
@@ -419,22 +479,29 @@ s.setAttribute('data-timestamp', +new Date());
   <ul>
       
         <li> 
-          <a href="/tags/azure">
+          <a href="https://marczak.io/tags/azure">
             Azure
           </a> 
-          (1)
+          (2)
         </li>
       
         <li> 
-          <a href="/tags/bot-service">
+          <a href="https://marczak.io/tags/bot-service">
             Bot Service
+          </a> 
+          (2)
+        </li>
+      
+        <li> 
+          <a href="https://marczak.io/tags/functions">
+            Functions
           </a> 
           (1)
         </li>
       
         <li> 
-          <a href="/tags/functions">
-            Functions
+          <a href="https://marczak.io/tags/visual-studio">
+            Visual Studio
           </a> 
           (1)
         </li>
@@ -459,9 +526,15 @@ s.setAttribute('data-timestamp', +new Date());
                 <h5 class="connected-title">Stay Connected</h5>
                 <div class="">
   
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-about"
+     href="/about">
+    <i class="fa fa-user"></i>
+  </a>
+  
+  
   <a target="_top" class="btn btn-just-icon btn-social-small btn-social-mail"
      href="mailto:adam@marczak.io">
-    <i class="fa fa-envelope-o"></i>
+    <i class="fa fa-envelope"></i>
   </a>
   
   
@@ -486,6 +559,12 @@ s.setAttribute('data-timestamp', +new Date());
   <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
      href="https://www.youtube.com/channel/UCbbjOn2UosI_yaD5d4w_Flw">
     <i class="fa fa-youtube"></i>
+  </a>
+  
+  
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
   </a>
   
   <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
