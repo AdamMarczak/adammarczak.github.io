@@ -162,7 +162,12 @@
 
 <p>Different people prefer different medium and with this in mind this video was created. It contains no sound just presents the tutorial.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XExRoqocHDA" frameborder="0" allowfullscreen></iframe>
+
+<div class="interactive-frame inactive" src="https://www.youtube.com/embed/XExRoqocHDA">
+    <button class="btn iframe-button btn-youtube">Watch on youtube</button>
+    <iframe class="youtube" frameborder="0"></iframe>
+</div>
+
 
 <h2 id="creating-a-bot-in-azure-portal">Creating a Bot in Azure Portal</h2>
 
@@ -317,9 +322,10 @@ Note: Only body of the function should be copied, function definition should be 
 
 <p>Deployed and compiled chatbot is now ready to use. Clicking on below button will open live chat window.</p>
 
-<div class="webchat inactive" src="https://webchat.botframework.com/embed/precompiled-bot_KPYYsDRFdC4?s=3MPqhp7I1fI.cwA.PTE.dCJJChIHAqirIJ-VbptG5T7QxMyulwGZHx-c3QBJjw0">
-    <button class="btn chatbot-button btn-webchat">Click to test the chatbot!</button>
-    <iframe class="chatbot" frameborder="0"></iframe>
+
+<div class="interactive-frame inactive" src="https://webchat.botframework.com/embed/precompiled-bot_KPYYsDRFdC4?s=3MPqhp7I1fI.cwA.PTE.dCJJChIHAqirIJ-VbptG5T7QxMyulwGZHx-c3QBJjw0">
+    <button class="btn iframe-button btn-webchat">Click to test the chatbot!</button>
+    <iframe class="webchat" frameborder="0"></iframe>
 </div>
         
             <a target="_blank" 
@@ -598,7 +604,7 @@ s.setAttribute('data-timestamp', +new Date());
     });
   </script>
 
-  <script type="text/javascript" src="https://marczak.io/js/chat.min.js"></script>
+  <script type="text/javascript" src="https://marczak.io/js/iframe.min.js"></script>
 </body>
 
 </html>

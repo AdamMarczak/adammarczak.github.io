@@ -225,7 +225,12 @@
 
 <p>Instead of reading you can watch!</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/npbMDq9mYYo" frameborder="0" allowfullscreen></iframe>
+
+<div class="interactive-frame inactive" src="https://www.youtube.com/embed/npbMDq9mYYo">
+    <button class="btn iframe-button btn-youtube">Watch on youtube</button>
+    <iframe class="youtube" frameborder="0"></iframe>
+</div>
+
 
 <p>Or just follow the steps</p>
 
@@ -333,9 +338,10 @@ More info about form flows at <a href="https://docs.microsoft.com/en-us/bot-fram
 
 <p>Deployed and compiled chatbot is now ready to use. Clicking on below button will open live chat window.</p>
 
-<div class="webchat inactive" src="https://webchat.botframework.com/embed/marczakio-introduction-to-bots?s=nTZViqW-GIk.cwA.VdA.3d4zXBwHAWszFckD5OTtMANev_rnm0fxbhFMGXksG8U">
-    <button class="btn chatbot-button btn-webchat">Click to test the chatbot!</button>
-    <iframe class="chatbot" frameborder="0"></iframe>
+
+<div class="interactive-frame inactive" src="https://webchat.botframework.com/embed/marczakio-introduction-to-bots?s=nTZViqW-GIk.cwA.VdA.3d4zXBwHAWszFckD5OTtMANev_rnm0fxbhFMGXksG8U">
+    <button class="btn iframe-button btn-webchat">Click to test the chatbot!</button>
+    <iframe class="webchat" frameborder="0"></iframe>
 </div>
         
             <a target="_blank" 
@@ -588,7 +594,7 @@ s.setAttribute('data-timestamp', +new Date());
     });
   </script>
 
-  <script type="text/javascript" src="https://marczak.io/js/chat.min.js"></script>
+  <script type="text/javascript" src="https://marczak.io/js/iframe.min.js"></script>
 </body>
 
 </html>
