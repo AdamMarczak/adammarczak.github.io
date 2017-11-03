@@ -159,7 +159,7 @@ img.tag-icon {
 .large .tag-list img {
   width: 30px;
   height: 30px;
-  margin-top: 9px;
+  margin-top: 19px;
 }
 
 article svg {
@@ -182,8 +182,4 @@ article svg {
 }
 .comments {
   padding-top: 40px;
-}
-
-.btn-share {
-  margin-top: 0px;
 }
