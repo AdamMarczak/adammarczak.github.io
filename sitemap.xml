@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://marczak.io/posts/botseries-smarter-bots-with-nlp/</loc>
+    <lastmod>2017-11-06T08:37:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/posts/botseries-introductiontobots/</loc>
     <lastmod>2017-10-22T22:34:37+02:00</lastmod>
   </url>
@@ -18,7 +23,7 @@
   
   <url>
     <loc>https://marczak.io/tags/azure/</loc>
-    <lastmod>2017-10-22T22:34:37+02:00</lastmod>
+    <lastmod>2017-11-06T08:37:23+02:00</lastmod>
   </url>
   
   <url>
@@ -27,11 +32,12 @@
   
   <url>
     <loc>https://marczak.io/tags/bot-service/</loc>
-    <lastmod>2017-10-22T22:34:37+02:00</lastmod>
+    <lastmod>2017-11-06T08:37:23+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://marczak.io/tags/cognitive-series/</loc>
+    <loc>https://marczak.io/tags/cognitive-services/</loc>
+    <lastmod>2017-11-06T08:37:23+02:00</lastmod>
   </url>
   
   <url>
@@ -41,33 +47,29 @@
   
   <url>
     <loc>https://marczak.io/tags/luis/</loc>
-  </url>
-  
-  <url>
-    <loc>https://marczak.io/tags/visual-studio/</loc>
-  </url>
-  
-  <url>
-    <loc>https://marczak.io/</loc>
-    <lastmod>2017-10-22T22:34:37+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://marczak.io/posts/</loc>
-    <lastmod>2017-10-22T22:34:37+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://marczak.io/tags/</loc>
-    <lastmod>2017-10-22T22:34:37+02:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2017-11-06T08:37:23+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://marczak.io/tags/visual-studio/</loc>
     <lastmod>2017-09-30T16:20:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/</loc>
+    <lastmod>2017-11-06T08:37:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/</loc>
+    <lastmod>2017-11-06T08:37:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/</loc>
+    <lastmod>2017-11-06T08:37:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
