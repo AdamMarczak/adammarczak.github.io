@@ -1,24 +1,19 @@
-a {
-  color: #337ab7;
+/* Background */ .chroma { background-color: #ffffff }
+/* LineHighlight */ .chroma .hl { background-color: #eaf2f9; display: block; width: 100% }
+/* LineNumbers */ .chroma .ln { margin-right: 0.4em; padding: 0 0.4em 0 0.4em; }
+/* Keyword */ .chroma .k { color: #0000ff }
+/* Keyword */ .chroma .kt { color: #0000ff }
+/* GenericSubheading */ .chroma .nn { color: #212121 }
+/* Comment */ .chroma .c1 { color: #3ec33e }
+/* NameAttribute */ .chroma .na { color: #2B91AF }
+/* Namespace */ .chroma .s { color: #b83bb9 }
+pre.chroma {
+  border: 0px;
+  font-size: 12px;
 }
 
-.category.text-info a:nth-child(6n) {
-  color: #4caf50 !important;
-}
-.category.text-info a:nth-child(6n+1) {
-  color: #ff9800 !important;
-}
-.category.text-info a:nth-child(6n+2) {
-  color: #00E5FF !important;
-}
-.category.text-info a:nth-child(6n+3) {
-  color: #f44336 !important;
-}
-.category.text-info a:nth-child(6n+4) {
-  color: #51A1FC !important;
-}
-.category.text-info a:nth-child(6n+5) {
-  color: #e91e63 !important;
+a {
+  color: #337ab7;
 }
 
 .pagination {
@@ -95,6 +90,9 @@ div.avatar {
   padding-left: 30px;
   padding-right: 30px;
 }
+.single-posts-wrap {
+  max-width: 800px;
+}
 
 article li > img, article li > div > img {
   margin-top: 10px;
@@ -127,6 +125,9 @@ article li > img, article li > div > img {
 }
 .inactive > iframe {
   display: none;
+}
+.tall > iframe.webchat {
+  height: 680px;
 }
 iframe.webchat {
   width: 100%;
@@ -195,4 +196,7 @@ article svg {
 
 .btn-share {
   margin-top: 0px;
+}
+.blog-sidebar {
+  padding-right: 30px;
 }

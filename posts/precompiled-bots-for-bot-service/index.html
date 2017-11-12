@@ -13,8 +13,7 @@
 <link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
 <link href='https://marczak.io/css/hestia.min.css' rel="stylesheet" type="text/css" />
-<link href='https://marczak.io/css/main.css?ver=1.06' rel='stylesheet' type="text/css" />
-<link href='https://marczak.io/css/syntax.css' rel='stylesheet' type="text/css" />
+<link href='https://marczak.io/css/main.css?ver=1.07' rel='stylesheet' type="text/css" />
 
 <meta name="description" content="With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.">
 <meta name="author" content="Adam Marczak">
@@ -110,7 +109,7 @@
       <div class="hestia-blogs">
         <div class="container">
           <div class="row">
-<div class="col-md-8 single-posts-wrap">
+<div class="col-md-9 single-posts-wrap">
     <article id="/posts/precompiled-bots-for-bot-service/" class="article-section section-text">
             <img src="https://marczak.io/images/compilable-bots/splash.svg">
             <a target="_blank" 
@@ -236,59 +235,57 @@ Note: Only body of the function should be copied, function definition should be 
 <ol>
 <li>Add new class to project called AzureFunctionsResolveAssembly.cs</li>
 <li>Copy paste following class <a href="https://github.com/MarczakIO/precompiled-bots/blob/master/PrecompiledBot/AzureFunctionsResolveAssembly.cs">source code here</a>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="s3e8">public</span><span class="s1f40"> </span><span class="s3e8">class</span><span class="s1f40"> </span><span class="s7d4">AzureFunctionsResolveAssembly</span><span class="s1f40"> </span><span class="sfa0">:</span><span class="s1f40"> </span><span class="s7d0">IDisposable</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s3e8">public</span><span class="s1f40"> </span><span class="s7d0">AzureFunctionsResolveAssembly</span><span class="s1388">()</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s7d0">AppDomain</span><span class="s1388">.</span><span class="s7d0">CurrentDomain</span><span class="s1388">.</span><span class="s7d0">AssemblyResolve</span><span class="s1f40"> </span><span class="sfa0">+=</span><span class="s1f40"> </span><span class="s7d0">CurrentDomain_AssemblyResolve</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d0">IDisposable</span><span class="s1388">.</span><span class="s7d0">Dispose</span><span class="s1388">()</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s7d0">AppDomain</span><span class="s1388">.</span><span class="s7d0">CurrentDomain</span><span class="s1388">.</span><span class="s7d0">AssemblyResolve</span><span class="s1f40"> </span><span class="sfa0">-=</span><span class="s1f40"> </span><span class="s7d0">CurrentDomain_AssemblyResolve</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s3e8">private</span><span class="s1f40"> </span><span class="s7d0">Assembly</span><span class="s1f40"> </span><span class="s7d0">CurrentDomain_AssemblyResolve</span><span class="s1388">(</span><span class="s7d0">object</span><span class="s1f40"> </span><span class="s7d0">sender</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">ResolveEventArgs</span><span class="s1f40"> </span><span class="s7d0">arguments</span><span class="s1388">)</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s7d0">var</span><span class="s1f40"> </span><span class="s7d0">assembly</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">AppDomain</span><span class="s1388">.</span><span class="s7d0">CurrentDomain</span><span class="s1388">.</span><span class="s7d0">GetAssemblies</span><span class="s1388">()</span><span class="s1f40">
-</span><span class="s1f40">            </span><span class="s1388">.</span><span class="s7d0">FirstOrDefault</span><span class="s1388">(</span><span class="s7d0">a</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7d0">a</span><span class="s1388">.</span><span class="s7d0">GetName</span><span class="s1388">().</span><span class="s7d0">FullName</span><span class="s1f40"> </span><span class="sfa0">==</span><span class="s1f40"> </span><span class="s7d0">arguments</span><span class="s1388">.</span><span class="s7d0">Name</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s3e8">if</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d0">assembly</span><span class="s1f40"> </span><span class="sfa0">!=</span><span class="s1f40"> </span><span class="s7d0">null</span><span class="s1388">)</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">            </span><span class="s3e8">return</span><span class="s1f40"> </span><span class="s7d0">assembly</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s1770">// try to load assembly from file
-</span><span class="s1770"></span><span class="s1f40">        </span><span class="s7d0">var</span><span class="s1f40"> </span><span class="s7d0">assemblyDirectory</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">Path</span><span class="s1388">.</span><span class="s7d0">GetDirectoryName</span><span class="s1388">(</span><span class="s7d0">Assembly</span><span class="s1388">.</span><span class="s7d0">GetExecutingAssembly</span><span class="s1388">().</span><span class="s7d0">Location</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s7d0">var</span><span class="s1f40"> </span><span class="s7d0">assemblyName</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s3e8">new</span><span class="s1f40"> </span><span class="s7d0">AssemblyName</span><span class="s1388">(</span><span class="s7d0">arguments</span><span class="s1388">.</span><span class="s7d0">Name</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s7d0">var</span><span class="s1f40"> </span><span class="s7d0">assemblyFileName</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">assemblyName</span><span class="s1388">.</span><span class="s7d0">Name</span><span class="s1f40"> </span><span class="sfa0">+</span><span class="s1f40"> </span><span class="sc1c"></span><span class="sc1c">&#34;.dll&#34;</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s7d0">string</span><span class="s1f40"> </span><span class="s7d0">assemblyPath</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s3e8">if</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d0">assemblyName</span><span class="s1388">.</span><span class="s7d0">Name</span><span class="s1388">.</span><span class="s7d0">EndsWith</span><span class="s1388">(</span><span class="sc1c"></span><span class="sc1c">&#34;.resources&#34;</span><span class="s1388">))</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">            </span><span class="s7d0">var</span><span class="s1f40"> </span><span class="s7d0">resourceDirectory</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">Path</span><span class="s1388">.</span><span class="s7d0">Combine</span><span class="s1388">(</span><span class="s7d0">assemblyDirectory</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">assemblyName</span><span class="s1388">.</span><span class="s7d0">CultureName</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">            </span><span class="s7d0">assemblyPath</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">Path</span><span class="s1388">.</span><span class="s7d0">Combine</span><span class="s1388">(</span><span class="s7d0">resourceDirectory</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">assemblyFileName</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s3e8">else</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">            </span><span class="s7d0">assemblyPath</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">Path</span><span class="s1388">.</span><span class="s7d0">Combine</span><span class="s1388">(</span><span class="s7d0">assemblyDirectory</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">assemblyFileName</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s3e8">if</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d0">File</span><span class="s1388">.</span><span class="s7d0">Exists</span><span class="s1388">(</span><span class="s7d0">assemblyPath</span><span class="s1388">))</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">            </span><span class="s3e8">return</span><span class="s1f40"> </span><span class="s7d0">Assembly</span><span class="s1388">.</span><span class="s7d0">LoadFrom</span><span class="s1388">(</span><span class="s7d0">assemblyPath</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">        </span><span class="s3e8">return</span><span class="s1f40"> </span><span class="s7d0">null</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
-</div></li>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">AzureFunctionsResolveAssembly</span> <span class="p">:</span> <span class="n">IDisposable</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">AzureFunctionsResolveAssembly</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">AppDomain</span><span class="p">.</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">AssemblyResolve</span> <span class="p">+=</span> <span class="n">CurrentDomain_AssemblyResolve</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="n">IDisposable</span><span class="p">.</span><span class="n">Dispose</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">AppDomain</span><span class="p">.</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">AssemblyResolve</span> <span class="p">-=</span> <span class="n">CurrentDomain_AssemblyResolve</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="n">Assembly</span> <span class="n">CurrentDomain_AssemblyResolve</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ResolveEventArgs</span> <span class="n">arguments</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">assembly</span> <span class="p">=</span> <span class="n">AppDomain</span><span class="p">.</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">GetAssemblies</span><span class="p">()</span>
+            <span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">(</span><span class="n">a</span> <span class="p">=&gt;</span> <span class="n">a</span><span class="p">.</span><span class="n">GetName</span><span class="p">().</span><span class="n">FullName</span> <span class="p">==</span> <span class="n">arguments</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">assembly</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">assembly</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// try to load assembly from file
+</span><span class="c1"></span>        <span class="kt">var</span> <span class="n">assemblyDirectory</span> <span class="p">=</span> <span class="n">Path</span><span class="p">.</span><span class="n">GetDirectoryName</span><span class="p">(</span><span class="n">Assembly</span><span class="p">.</span><span class="n">GetExecutingAssembly</span><span class="p">().</span><span class="n">Location</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">assemblyName</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AssemblyName</span><span class="p">(</span><span class="n">arguments</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">assemblyFileName</span> <span class="p">=</span> <span class="n">assemblyName</span><span class="p">.</span><span class="n">Name</span> <span class="p">+</span> <span class="s">&#34;.dll&#34;</span><span class="p">;</span>
+        <span class="kt">string</span> <span class="n">assemblyPath</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">assemblyName</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="n">EndsWith</span><span class="p">(</span><span class="s">&#34;.resources&#34;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">resourceDirectory</span> <span class="p">=</span> <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">assemblyDirectory</span><span class="p">,</span> <span class="n">assemblyName</span><span class="p">.</span><span class="n">CultureName</span><span class="p">);</span>
+            <span class="n">assemblyPath</span> <span class="p">=</span> <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">resourceDirectory</span><span class="p">,</span> <span class="n">assemblyFileName</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">assemblyPath</span> <span class="p">=</span> <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">assemblyDirectory</span><span class="p">,</span> <span class="n">assemblyFileName</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">File</span><span class="p">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">assemblyPath</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Assembly</span><span class="p">.</span><span class="n">LoadFrom</span><span class="p">(</span><span class="n">assemblyPath</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div></li>
 <li>And modify the Messages.cs class by adding AzureFunctionsResolveAssembly initialization just before BotService initialization
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="ln">22</span><span class="s1f40">    </span><span class="s7d0">log</span><span class="s1388">.</span><span class="s7d0">Info</span><span class="s1388">(</span><span class="ss4">$</span><span class="sc1c"></span><span class="sc1c">&#34;Webhook was triggered!&#34;</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="ln">23</span><span class="s1f40">
-</span><span class="hl"><span class="ln">24</span><span class="s1f40">    </span><span class="s3e8">using</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s3e8">new</span><span class="s1f40"> </span><span class="s7d0">AzureFunctionsResolveAssembly</span><span class="s1388">())</span><span class="s1f40">
-</span></span><span class="ln">25</span><span class="s1f40">    </span><span class="s3e8">using</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d0">BotService</span><span class="s1388">.</span><span class="s7d0">Initialize</span><span class="s1388">())</span></code></pre>
-</div></li>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="ln">22</span>    <span class="n">log</span><span class="p">.</span><span class="n">Info</span><span class="p">(</span><span class="s">$&#34;Webhook was triggered!&#34;</span><span class="p">);</span>
+<span class="ln">23</span>
+<span class="hl"><span class="ln">24</span>    <span class="k">using</span> <span class="p">(</span><span class="k">new</span> <span class="n">AzureFunctionsResolveAssembly</span><span class="p">())</span>
+</span><span class="ln">25</span>    <span class="k">using</span> <span class="p">(</span><span class="n">BotService</span><span class="p">.</span><span class="n">Initialize</span><span class="p">())</span></code></pre></div></li>
 <li>republish the bot</li>
 <li>Test it
 <div class="sm-300"><img src="/images/compilable-bots/16.jpg" alt="Azure Bot Service" /></div></li>
@@ -301,7 +298,7 @@ Note: Only body of the function should be copied, function definition should be 
 <p>Deployed and compiled chatbot is now ready to use. Clicking on below button will open live chat window.</p>
 
 
-<div class="interactive-frame inactive" src="https://webchat.botframework.com/embed/precompiled-bot_KPYYsDRFdC4?s=3MPqhp7I1fI.cwA.PTE.dCJJChIHAqirIJ-VbptG5T7QxMyulwGZHx-c3QBJjw0">
+<div class="interactive-frame inactive " src="https://webchat.botframework.com/embed/precompiled-bot_KPYYsDRFdC4?s=3MPqhp7I1fI.cwA.PTE.dCJJChIHAqirIJ-VbptG5T7QxMyulwGZHx-c3QBJjw0">
     <button class="btn iframe-button btn-webchat">Click to test the chatbot!</button>
     <iframe class="webchat" frameborder="0"></iframe>
 </div>
@@ -386,8 +383,8 @@ s.setAttribute('data-timestamp', +new Date());
               <aside id="secondary" class="blog-sidebar" role="complementary"><div id="recent-posts-3" class="widget widget_recent_entries">
 <h5>Recent Posts</h5>
 <ul>
-    <li><a href="/posts/botseries-smarter-bots-with-nlp/" title="Azure Bot Series - Smarter bots with natural language processing" rel="bookmark">Azure Bot Series - Smarter bots with natural language processing</a></li>
-    <li><a href="/posts/botseries-introductiontobots/" title="Azure Bot Series - Introduction to chatbots" rel="bookmark">Azure Bot Series - Introduction to chatbots</a></li>
+    <li><a href="/posts/botseries-smarter-bots-with-nlp/" title="Smarter bots with natural language processing" rel="bookmark">Smarter bots with natural language processing</a></li>
+    <li><a href="/posts/botseries-introductiontobots/" title="Introduction to chatbots" rel="bookmark">Introduction to chatbots</a></li>
     <li><a href="/posts/precompiled-bots-for-bot-service/" title="Precompiled Bots with VS 2017 tooling" rel="bookmark">Precompiled Bots with VS 2017 tooling</a></li>
 </ul>
 </div><div id="categories-3" class="widget widget_categories">
