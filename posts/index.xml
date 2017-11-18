@@ -6,10 +6,22 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Nov 2017 08:37:23 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 18 Nov 2017 22:00:37 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Better chatbot interactions with Rich Cards</title>
+      <link>https://marczak.io/posts/botseries-rich-cards/</link>
+      <pubDate>Sat, 18 Nov 2017 22:00:37 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/botseries-rich-cards/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/botseries-rich-cards/splash.png&quot;&gt;
+        &lt;p&gt;Driving user conversations is key for any successful bot. By leveraging bot framework&amp;rsquo;s rich cards in conversations developers can enrich user experience by allowing them to interact with bots without need of a typing.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>Smarter bots with natural language processing</title>

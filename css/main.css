@@ -110,7 +110,12 @@ article li > img, article li > div > img {
 .sm-350 > img { max-height: 350px; }
 .sm-400 > img { max-height: 400px; }
 .sm-500 > img { max-height: 500px; }
-
+.check {
+  color: #1fa67a;
+}
+.cross {
+  color: #a94442;
+}
 .active > iframe.chatbot {
   display: block;
 }
