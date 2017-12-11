@@ -6,10 +6,22 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Nov 2017 22:00:37 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 10 Dec 2017 22:34:37 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Analyze user feedback with sentiment analysis</title>
+      <link>https://marczak.io/posts/cognitive-text-analytics/</link>
+      <pubDate>Sun, 10 Dec 2017 22:34:37 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/cognitive-text-analytics/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/cognitive-text-analytics/splash.png&quot;&gt;
+        &lt;p&gt;Building brand visibility requires a lot of effort. Analysis of social media reactions is key aspect of this process. With Azure Cognitive Services Text Analytics API companies can start analyzing feedback right away with ease.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>Better chatbot interactions with Rich Cards</title>

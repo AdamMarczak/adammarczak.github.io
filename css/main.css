@@ -28,6 +28,15 @@ a {
 .article-section {
   padding: 0 0 30px 0;
 }
+.widget ul li {
+  line-height: 20px;
+  padding-top: 15px;
+  font-weight: normal;
+}
+aside .widget a {
+  color: #23527c;
+  font-weight: normal;
+}
 
 .narrow-main {
   max-width: 800px;
@@ -163,6 +172,9 @@ img.tag-icon {
 
 .tag-list {
   margin-top: 3px;
+}
+.tag-list > .child {
+  margin-left: 30px;
 }
 .tag-list svg,
 .tag-list img {

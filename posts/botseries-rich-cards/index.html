@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html prefix="og: http://ogp.me/ns#" lang="en-us">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -13,7 +13,7 @@
 <link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
 <link href='https://marczak.io/css/hestia.min.css' rel="stylesheet" type="text/css" />
-<link href='https://marczak.io/css/main.css?ver=1.07' rel='stylesheet' type="text/css" />
+<link href='https://marczak.io/css/main.css?ver=1.08' rel='stylesheet' type="text/css" />
 
 <meta name="description" content="Driving user conversations is key for any successful bot. By leveraging bot framework&rsquo;s rich cards in conversations developers can enrich user experience by allowing them to interact with bots without need of a typing.">
 <meta name="author" content="Adam Marczak">
@@ -774,12 +774,12 @@ which outputs <div><img src="/images/botseries-rich-cards/8.png" alt="Screenshot
                 <h4 class="">More tagged posts</h4>
                 
   <div class="tag-list">
-          <a href="https://marczak.io/tags/azure" title="View all posts in Azure" class="">
-            <img src="https://marczak.io/images/symbols/azure.svg"/>
-          </a>
-          <a href="https://marczak.io/tags/bot-service" title="View all posts in Bot Service" class="">
-            <img src="https://marczak.io/images/symbols/botservice.svg"/>
-          </a>
+    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
+      <img src="https://marczak.io/images/tags//azure.svg" alt="Azure"/>
+    </a>
+    <a href="https://marczak.io/tags/bot-service" title="View all posts in Bot Service">
+      <img src="https://marczak.io/images/tags//bot-service.svg" alt="Bot Service"/>
+    </a>
   </div>
             </div>
         </div>
@@ -807,31 +807,57 @@ s.setAttribute('data-timestamp', +new Date());
               <aside id="secondary" class="blog-sidebar" role="complementary"><div id="recent-posts-3" class="widget widget_recent_entries">
 <h5>Recent Posts</h5>
 <ul>
-    <li><a href="/posts/botseries-rich-cards/" title="Better chatbot interactions with Rich Cards" rel="bookmark">Better chatbot interactions with Rich Cards</a></li>
-    <li><a href="/posts/botseries-smarter-bots-with-nlp/" title="Smarter bots with natural language processing" rel="bookmark">Smarter bots with natural language processing</a></li>
-    <li><a href="/posts/botseries-introductiontobots/" title="Introduction to chatbots" rel="bookmark">Introduction to chatbots</a></li>
-    <li><a href="/posts/precompiled-bots-for-bot-service/" title="Precompiled Bots with VS 2017 tooling" rel="bookmark">Precompiled Bots with VS 2017 tooling</a></li>
+    <li>2017 Dec 10
+        <a href="/posts/cognitive-text-analytics/" title="Analyze user feedback with sentiment analysis" rel="bookmark">Analyze user feedback with sentiment analysis</a>
+    </li>
+    <li>2017 Nov 18
+        <a href="/posts/botseries-rich-cards/" title="Better chatbot interactions with Rich Cards" rel="bookmark">Better chatbot interactions with Rich Cards</a>
+    </li>
+    <li>2017 Nov 6
+        <a href="/posts/botseries-smarter-bots-with-nlp/" title="Smarter bots with natural language processing" rel="bookmark">Smarter bots with natural language processing</a>
+    </li>
+    <li>2017 Oct 22
+        <a href="/posts/botseries-introductiontobots/" title="Introduction to chatbots" rel="bookmark">Introduction to chatbots</a>
+    </li>
 </ul>
 </div><div id="categories-3" class="widget widget_categories">
   <h5>Tags</h5>
-  <ul>
+  <ul class="tag-list">
       <li> 
-        <a href="https://marczak.io/tags/azure">Azure</a> (4)
+        <img src="https://marczak.io/images/tags//azure.svg" alt="Azure"/>
+        <a href="https://marczak.io/tags/azure">Azure (5)</a>
       </li>
       <li> 
-        <a href="https://marczak.io/tags/bot-service">Bot Service</a> (4)
+        <img src="https://marczak.io/images/tags//bot-service.svg" alt="Bot Service"/>
+        <a href="https://marczak.io/tags/bot-service">Bot Service (4)</a>
       </li>
       <li> 
-        <a href="https://marczak.io/tags/cognitive-services">Cognitive Services</a> (1)
+        <img src="https://marczak.io/images/tags//cognitive-services.svg" alt="Cognitive Services"/>
+        <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
+      </li>
+      <li class="child"> 
+        <img src="https://marczak.io/images/tags//luis.svg" alt="Luis"/>
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
+      <li class="child"> 
+        <img src="https://marczak.io/images/tags//text-analytics.svg" alt="Text Analytics"/>
+        <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
       <li> 
-        <a href="https://marczak.io/tags/functions">Functions</a> (1)
+        <img src="https://marczak.io/images/tags//flow.svg" alt="Flow"/>
+        <a href="https://marczak.io/tags/flow">Flow (1)</a>
       </li>
       <li> 
-        <a href="https://marczak.io/tags/luis">Luis</a> (1)
+        <img src="https://marczak.io/images/tags//functions.svg" alt="Functions"/>
+        <a href="https://marczak.io/tags/functions">Functions (1)</a>
       </li>
       <li> 
-        <a href="https://marczak.io/tags/visual-studio">Visual Studio</a> (1)
+        <img src="https://marczak.io/images/tags//teams.svg" alt="Teams"/>
+        <a href="https://marczak.io/tags/teams">Teams (1)</a>
+      </li>
+      <li> 
+        <img src="https://marczak.io/images/tags//visual-studio.svg" alt="Visual Studio"/>
+        <a href="https://marczak.io/tags/visual-studio">Visual Studio (1)</a>
       </li>
   </ul>
 </div>
