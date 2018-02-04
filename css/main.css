@@ -1,12 +1,13 @@
 /* Background */ .chroma { background-color: #ffffff }
 /* LineHighlight */ .chroma .hl { background-color: #eaf2f9; display: block; width: 100% }
 /* LineNumbers */ .chroma .ln { margin-right: 0.4em; padding: 0 0.4em 0 0.4em; }
-/* Keyword */ .chroma .k { color: #0000ff }
-/* Keyword */ .chroma .kt { color: #0000ff }
+/* Keyword */ .chroma .k, .chroma .kd, .chroma .kt, .chroma .kc { color: #0000ff }
 /* GenericSubheading */ .chroma .nn { color: #212121 }
 /* Comment */ .chroma .c1 { color: #3ec33e }
-/* NameAttribute */ .chroma .na { color: #2B91AF }
-/* Namespace */ .chroma .s { color: #b83bb9 }
+/* NameAttribute */ .chroma .na, .chroma .nx, .chroma .err { color: #2B91AF }
+/* String */ .chroma .s, .chroma .s1, .chroma .s2, .chroma .sr { color: #b83bb9 }
+/* GenericSubheading */ .chroma .nb, .chroma .nt { font-weight: bold; color: #0000ff }
+
 pre.chroma {
   border: 0px;
   font-size: 12px;
@@ -169,7 +170,9 @@ img.tag-icon {
   margin-right: 3px;
   margin-top: -2px;
 }
-
+.list-header {
+  color: #23527c;
+}
 .tag-list {
   margin-top: 3px;
 }
@@ -188,7 +191,13 @@ img.tag-icon {
   height: 30px;
   margin-top: 9px;
 }
-
+.recent-posts .indented {
+  margin-left: 20px;
+}
+.recent-posts h4 {
+  padding-top: 4px;
+  margin: 0px;
+}
 article svg {
   width: 100%;
   height: 100%;

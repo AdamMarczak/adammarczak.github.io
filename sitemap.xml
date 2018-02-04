@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://marczak.io/posts/netcore-vuejs/</loc>
+    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/posts/cognitive-text-analytics/</loc>
     <lastmod>2017-12-10T22:34:37+02:00</lastmod>
   </url>
@@ -50,6 +55,12 @@
   </url>
   
   <url>
+    <loc>https://marczak.io/tags/dotnet-core/</loc>
+    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/tags/flow/</loc>
     <lastmod>2017-12-10T22:34:37+02:00</lastmod>
     <priority>0</priority>
@@ -68,13 +79,13 @@
   
   <url>
     <loc>https://marczak.io/</loc>
-    <lastmod>2017-12-10T22:34:37+02:00</lastmod>
+    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/posts/</loc>
-    <lastmod>2017-12-10T22:34:37+02:00</lastmod>
+    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -98,6 +109,24 @@
   <url>
     <loc>https://marczak.io/tags/visual-studio/</loc>
     <lastmod>2017-09-30T16:20:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/visual-studio-code/</loc>
+    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/vue.js/</loc>
+    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/webpack/</loc>
+    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
