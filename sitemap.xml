@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://marczak.io/posts/netcore-vuejs-crud/</loc>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/posts/netcore-vuejs/</loc>
     <lastmod>2018-02-04T22:37:23+02:00</lastmod>
   </url>
@@ -38,7 +43,7 @@
   
   <url>
     <loc>https://marczak.io/tags/azure/</loc>
-    <lastmod>2017-12-10T22:34:37+02:00</lastmod>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -55,8 +60,14 @@
   </url>
   
   <url>
+    <loc>https://marczak.io/tags/cosmos-db/</loc>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/tags/dotnet-core/</loc>
-    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -79,19 +90,19 @@
   
   <url>
     <loc>https://marczak.io/</loc>
-    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/posts/</loc>
-    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/tags/</loc>
-    <lastmod>2017-12-10T22:34:37+02:00</lastmod>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -114,13 +125,13 @@
   
   <url>
     <loc>https://marczak.io/tags/visual-studio-code/</loc>
-    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/tags/vue.js/</loc>
-    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   

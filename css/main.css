@@ -16,9 +16,30 @@ pre.chroma {
 a {
   color: #337ab7;
 }
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
 
 .pagination {
   width: auto;
+}
+.page-link {
+
+}
+.pagination>.active>a, .pagination>.active>a:hover, {
+  background-color: #323437;
+  border-color: #323437;
+}
+.pagination>.active>a {
+  background-color: #323437;
+  border-color: #323437;
+}
+.pagination>.disabled>a {
+  color: #b5b5b5;
+}
+.pagination>li>a, .pagination>li>span {
+  color: #323437;
+  border: 1px solid #ddd !important;
 }
 .blog-image {
   width: 100%;
