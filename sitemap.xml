@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://marczak.io/posts/botseries-dev-done-easy/</loc>
+    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/posts/netcore-vuejs-crud/</loc>
     <lastmod>2018-02-17T19:27:23+02:00</lastmod>
   </url>
@@ -43,13 +48,13 @@
   
   <url>
     <loc>https://marczak.io/tags/azure/</loc>
-    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
+    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/tags/bot-service/</loc>
-    <lastmod>2017-11-18T22:00:37+02:00</lastmod>
+    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -90,25 +95,25 @@
   
   <url>
     <loc>https://marczak.io/</loc>
-    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
+    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/posts/</loc>
-    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
+    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/tags/</loc>
-    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
+    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/tags/teams/</loc>
-    <lastmod>2017-12-10T22:34:37+02:00</lastmod>
+    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -119,7 +124,7 @@
   
   <url>
     <loc>https://marczak.io/tags/visual-studio/</loc>
-    <lastmod>2017-09-30T16:20:25+02:00</lastmod>
+    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   

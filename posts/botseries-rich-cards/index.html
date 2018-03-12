@@ -407,11 +407,11 @@ which outputs <div><img src="/images/botseries-rich-cards/3.png" alt="Screenshot
             <span class="k">new</span> <span class="n">ReceiptItem</span><span class="p">(</span><span class="s">&#34;Func App&#34;</span><span class="p">,</span> 
                 <span class="n">price</span><span class="p">:</span> <span class="s">&#34;$ 11.21&#34;</span><span class="p">,</span> 
                 <span class="n">quantity</span><span class="p">:</span> <span class="s">&#34;16&#34;</span><span class="p">,</span> 
-                <span class="n">image</span><span class="p">:</span> <span class="k">new</span> <span class="n">CardImage</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="s">&#34;https://marczak.io/images/symbols/functions.svg&#34;</span><span class="p">)),</span>
+                <span class="n">image</span><span class="p">:</span> <span class="k">new</span> <span class="n">CardImage</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="s">&#34;https://marczak.io/images/tags/functions.svg&#34;</span><span class="p">)),</span>
             <span class="k">new</span> <span class="n">ReceiptItem</span><span class="p">(</span><span class="s">&#34;VS License&#34;</span><span class="p">,</span> 
                 <span class="n">price</span><span class="p">:</span> <span class="s">&#34;$ 450.00&#34;</span><span class="p">,</span> 
                 <span class="n">quantity</span><span class="p">:</span> <span class="s">&#34;1&#34;</span><span class="p">,</span> 
-                <span class="n">image</span><span class="p">:</span> <span class="k">new</span> <span class="n">CardImage</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="s">&#34;https://marczak.io/images/symbols/vs17.svg&#34;</span><span class="p">)),</span>
+                <span class="n">image</span><span class="p">:</span> <span class="k">new</span> <span class="n">CardImage</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="s">&#34;https://marczak.io/images/tags/vs17.svg&#34;</span><span class="p">)),</span>
         <span class="p">},</span>
         <span class="n">Tax</span> <span class="p">=</span> <span class="s">&#34;$ 7.50&#34;</span><span class="p">,</span>
         <span class="n">Total</span> <span class="p">=</span> <span class="s">&#34;$ 468.71&#34;</span><span class="p">,</span>
@@ -420,7 +420,7 @@ which outputs <div><img src="/images/botseries-rich-cards/3.png" alt="Screenshot
             <span class="k">new</span> <span class="n">CardAction</span><span class="p">(</span>
                 <span class="n">ActionTypes</span><span class="p">.</span><span class="n">OpenUrl</span><span class="p">,</span>
                 <span class="s">&#34;More information&#34;</span><span class="p">,</span>
-                <span class="s">&#34;https://marczak.io/images/symbols/azure.svg&#34;</span><span class="p">,</span>
+                <span class="s">&#34;https://marczak.io/images/tags/azure.svg&#34;</span><span class="p">,</span>
                 <span class="s">&#34;https://azure.microsoft.com/en-us/pricing/&#34;</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">};</span>
@@ -793,6 +793,7 @@ this.page.identifier = "\/posts\/botseries-rich-cards\/";
 };
 
 (function() {
+if (window.location.hostname == "localhost")return;
 var d = document, s = d.createElement('script');
 s.src = 'https://marczak-io.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
@@ -807,6 +808,12 @@ s.setAttribute('data-timestamp', +new Date());
               <aside id="secondary" class="blog-sidebar" role="complementary"><div id="recent-posts" class="recent-posts widget widget_recent_entries">
 <h5>Recent Posts</h5>
 <ul>
+        <li><b class="list-header">March</b></li>
+        <li class="indented">
+            <a href="/posts/botseries-dev-done-easy/" title="Effective chatbot development with ngrok" rel="bookmark">
+                <b>12th </b>Effective chatbot development with ngrok
+            </a>
+        </li>
         <li><b class="list-header">February</b></li>
         <li class="indented">
             <a href="/posts/netcore-vuejs-crud/" title="Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB" rel="bookmark">
@@ -830,22 +837,17 @@ s.setAttribute('data-timestamp', +new Date());
                 <b>18th </b>Better chatbot interactions with Rich Cards
             </a>
         </li>
-        <li class="indented">
-            <a href="/posts/botseries-smarter-bots-with-nlp/" title="Smarter bots with natural language processing" rel="bookmark">
-                <b>6th </b>Smarter bots with natural language processing
-            </a>
-        </li>
 </ul>
 </div><div id="categories-3" class="widget widget_categories">
   <h5>Tags</h5>
   <ul class="tag-list">
       <li> 
         <img src="https://marczak.io/images/tags//azure.svg" alt="Azure"/>
-        <a href="https://marczak.io/tags/azure">Azure (6)</a>
+        <a href="https://marczak.io/tags/azure">Azure (7)</a>
       </li>
       <li> 
         <img src="https://marczak.io/images/tags//bot-service.svg" alt="Bot Service"/>
-        <a href="https://marczak.io/tags/bot-service">Bot Service (4)</a>
+        <a href="https://marczak.io/tags/bot-service">Bot Service (5)</a>
       </li>
       <li> 
         <img src="https://marczak.io/images/tags//cognitive-services.svg" alt="Cognitive Services"/>
@@ -877,11 +879,11 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li> 
         <img src="https://marczak.io/images/tags//teams.svg" alt="Teams"/>
-        <a href="https://marczak.io/tags/teams">Teams (1)</a>
+        <a href="https://marczak.io/tags/teams">Teams (2)</a>
       </li>
       <li> 
         <img src="https://marczak.io/images/tags//visual-studio.svg" alt="Visual Studio"/>
-        <a href="https://marczak.io/tags/visual-studio">Visual Studio (1)</a>
+        <a href="https://marczak.io/tags/visual-studio">Visual Studio (2)</a>
       </li>
       <li> 
         <img src="https://marczak.io/images/tags//visual-studio-code.svg" alt="Visual Studio Code"/>
