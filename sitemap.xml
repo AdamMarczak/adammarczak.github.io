@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://marczak.io/posts/azure-loading-csv-to-sql/</loc>
+    <lastmod>2018-06-03T11:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/posts/botseries-dev-done-easy/</loc>
     <lastmod>2018-03-12T21:00:23+02:00</lastmod>
   </url>
@@ -48,7 +53,7 @@
   
   <url>
     <loc>https://marczak.io/tags/azure/</loc>
-    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
+    <lastmod>2018-06-03T11:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -89,25 +94,37 @@
   </url>
   
   <url>
+    <loc>https://marczak.io/tags/logic-apps/</loc>
+    <lastmod>2018-06-03T11:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/tags/luis/</loc>
     <lastmod>2017-11-06T08:37:23+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://marczak.io/</loc>
-    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
+    <lastmod>2018-06-03T11:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/posts/</loc>
-    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
+    <lastmod>2018-06-03T11:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/sql/</loc>
+    <lastmod>2018-06-03T11:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/tags/</loc>
-    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
+    <lastmod>2018-06-03T11:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
