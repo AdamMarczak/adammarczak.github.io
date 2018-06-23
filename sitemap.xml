@@ -52,6 +52,12 @@
   </url>
   
   <url>
+    <loc>https://marczak.io/</loc>
+    <lastmod>2018-06-03T11:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/tags/azure/</loc>
     <lastmod>2018-06-03T11:00:23+02:00</lastmod>
     <priority>0</priority>
@@ -102,12 +108,6 @@
   <url>
     <loc>https://marczak.io/tags/luis/</loc>
     <lastmod>2017-11-06T08:37:23+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://marczak.io/</loc>
-    <lastmod>2018-06-03T11:00:23+02:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
