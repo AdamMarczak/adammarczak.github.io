@@ -9,7 +9,7 @@
             
         });
 
-        $(".lazy").Lazy();
+        $(".lazy > img").Lazy();
     });
 
 })(window.timer = window.timer || {}, jQuery);
