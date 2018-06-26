@@ -6,7 +6,7 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Jun 2018 11:00:23 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 26 Jun 2018 18:00:23 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/tags/sql/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Azure Analysis Services hybrid enrivonment with on-premises databases</title>
       <link>https://marczak.io/posts/analysis-services-onprem-integration/</link>
-      <pubDate>Mon, 18 Jun 2018 11:00:23 +0200</pubDate>
+      <pubDate>Tue, 26 Jun 2018 18:00:23 +0200</pubDate>
       
       <guid>https://marczak.io/posts/analysis-services-onprem-integration/</guid>
       <description>
