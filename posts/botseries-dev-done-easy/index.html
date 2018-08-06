@@ -183,43 +183,54 @@ This basically means that bot app will be available under <strong><a href="https
 
 <ul>
 <li>Bot Profile
-<div class="sm-300"><img src="/images/botseries-dev-done-easy/1.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/1.png" src="" data-width="624" data-height="436" style='width:624px;height:1px'/></div> </li>
 <li><strong>Display name</strong> name for the bot, this is only display name in the Bot Framework Portal for developers to recognize their bots by name. This does not affect bot functionality in any way.</li>
 <li><strong>Bot handle</strong> reference to bot, does not matter in this example.</li>
 <li><strong>Long description</strong> bot description. Does not affect functionality.</li>
 <li>Configuration
-<div class="sm-200"><img src="/images/botseries-dev-done-easy/3.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/3.png" src="" data-width="616" data-height="278" style='width:616px;height:1px'/></div> </li>
 <li><strong>Messaging endpoint</strong> public url endpoint for bot framework to redirect messages to. This is built by combining public endpoint and /api/messages route. In this example url is <a href="https://89a332c9.ngrok.io/api/messages">https://89a332c9.ngrok.io/api/messages</a></li>
 <li><strong>Microsoft App ID</strong> unique identifier for application registered from Microsoft App portal. Click on the create Microsoft App button to register the app or provide already existing app id. Do NOT share same ID across multiple bot instances.
-<div class="sm-250"><img src="/images/botseries-dev-done-easy/6.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/6.png" src="" data-width="513" data-height="343" style='width:513px;height:1px'/></div> 
 And by clicking Generate password new password will be generated. Copy password as it won&rsquo;t be shown anywhere later on.
-<div class="sm-200"><img src="/images/botseries-dev-done-easy/7.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/7.png" src="" data-width="450" data-height="276" style='width:450px;height:1px'/></div> </li>
 <li>Analytics
-<div class="sm-200"><img src="/images/botseries-dev-done-easy/4.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/4.png" src="" data-width="626" data-height="297" style='width:626px;height:1px'/></div> </li>
 <li>Application insights section. Leave this empty for localhost development. In case of bot service Azure fill this for developer during bot creation process.</li>
 <li>Admin Section</li>
 <li><strong>Owners</strong> list of accounts which have administrative access to the bot.</li>
 </ul></li>
 <li>Click Create button</li>
 <li>Go to bot settings tab
-<div class="sm-200"><img src="/images/botseries-dev-done-easy/10.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/10.png" src="" data-width="410" data-height="71" style='width:410px;height:1px'/></div> </li>
 <li>Add Teams Channel
-<div class="sm-100"><img src="/images/botseries-dev-done-easy/11.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/11.png" src="" data-width="538" data-height="161" style='width:538px;height:1px'/></div> 
 Agree to TOS (terms of use)
-<div class="sm-200"><img src="/images/botseries-dev-done-easy/12.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/12.png" src="" data-width="964" data-height="402" style='width:964px;height:1px'/></div> </li>
 <li>Run git clone to copy solution and start development
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/MarczakIO/msteams-samples-hello-world-csharp.git
 <span class="nb">cd</span> msteams-samples-hello-world-csharp
 Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
 <li>Restore packages by right clicking the solution and clicking
-<div class="sm-250"><img src="/images/botseries-dev-done-easy/8.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/8.png" src="" data-width="466" data-height="263" style='width:466px;height:1px'/></div> </li>
 <li>Edit Web.config file and supply Microsoft App ID and password
 <div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&#34;MicrosoftAppId&#34;</span> <span class="na">value=</span><span class="s">&#34;d008dfca-c5d7-4b1b-a074-ad76081d6e3b&#34;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&#34;MicrosoftAppPassword&#34;</span> <span class="na">value=</span><span class="s">&#34;eymiSZXF86||%ktzWFP781!&#34;</span> <span class="nt">/&gt;</span></code></pre></div></li>
 <li>Start Solution (keep it running dont close it)
-<div class="sm-200"><img src="/images/botseries-dev-done-easy/9.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/9.png" src="" data-width="385" data-height="163" style='width:385px;height:1px'/></div> </li>
 <li>Configure Manifest
-<div class="sm-200"><img src="/images/botseries-dev-done-easy/13.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/13.png" src="" data-width="215" data-height="76" style='width:215px;height:1px'/></div> 
 
 <ul>
 <li>Replace <strong>id</strong> and <strong>botId</strong> fields with Microsoft App ID</li>
@@ -291,25 +302,33 @@ Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
 
 <ol>
 <li>Open Teams app and create new team
-<div class="sm-200"><img src="/images/botseries-dev-done-easy/14.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/14.png" src="" data-width="286" data-height="279" style='width:286px;height:1px'/></div> </li>
 <li>Supply name for the Team
-<div class="sm-400"><img src="/images/botseries-dev-done-easy/15.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/15.png" src="" data-width="654" data-height="563" style='width:654px;height:1px'/></div> </li>
 <li>Add bot to the team
 
 <ol>
 <li>Go to manage Team option
-<div class="sm-100"><img src="/images/botseries-dev-done-easy/16.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/16.png" src="" data-width="447" data-height="152" style='width:447px;height:1px'/></div> </li>
 <li>Go to Apps tab and click on Upload a custom app and select manifest.zip file
-<div class="sm-400"><img src="/images/botseries-dev-done-easy/17.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/17.png" src="" data-width="598" data-height="570" style='width:598px;height:1px'/></div> </li>
 <li>Check if the app uploaded successfully
-<div class="sm-100"><img src="/images/botseries-dev-done-easy/18.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/18.png" src="" data-width="571" data-height="64" style='width:571px;height:1px'/></div> </li>
 </ol></li>
 <li>Talk to bot by mentioning it by typing @Local and pressing tab
-<div class="sm-200"><img src="/images/botseries-dev-done-easy/19.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/19.png" src="" data-width="595" data-height="239" style='width:595px;height:1px'/></div> </li>
 <li>Say hey to the bot
-<div class="sm-300"><img src="/images/botseries-dev-done-easy/20.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/20.png" src="" data-width="545" data-height="273" style='width:545px;height:1px'/></div> </li>
 <li>Put a breakpoint in <strong>EchoBot.cs</strong> file <strong>at line 17</strong> and say something to the bot
-<div class="sm-300"><img src="/images/botseries-dev-done-easy/21.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-dev-done-easy/21.png" src="" data-width="800" data-height="126" style='width:800px;height:1px'/></div> </li>
 <li>Check ngrok and check bot responses coming through
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ngrok by @inconshreveable   
 Session Status                online
@@ -576,8 +595,6 @@ s.setAttribute('data-timestamp', +new Date());
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
   
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   

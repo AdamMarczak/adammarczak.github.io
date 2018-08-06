@@ -143,11 +143,14 @@
 <ol>
 <li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
 <li>Click on <strong>plus</strong> sign on the left-hand side corner, type in <strong>cosmos</strong> is search box and then press <strong>enter</strong>
-<div class="sm-200"><img src="/images/netcore-vuejs-crud/1.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/1.png" src="" data-width="645" data-height="237" style='width:645px;height:1px'/></div> </li>
 <li>From available list of services click on <strong>Azure Cosmos DB</strong> and press <strong>Create</strong> button
-<div class="sm-200"><img src="/images/netcore-vuejs-crud/2.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/2.png" src="" data-width="851" data-height="275" style='width:851px;height:1px'/></div> </li>
 <li>Fill in the service details
-<div class="sm-350"><img src="/images/netcore-vuejs-crud/3.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/3.png" src="" data-width="311" data-height="399" style='width:311px;height:1px'/></div> 
 
 <ul>
 <li><strong>ID</strong> - name of the service, it will be available as public DNS and therefore must be globally unique</li>
@@ -157,9 +160,11 @@
 <li><strong>Enable Geo Redundancy</strong> - setting which will replicate database across multiple datacenter regions</li>
 </ul></li>
 <li>Create new collection by navigating to <strong>Data Explorer</strong> and clicking on <strong>New Collection</strong> button
-<div class="sm-300"><img src="/images/netcore-vuejs-crud/4.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/4.png" src="" data-width="509" data-height="355" style='width:509px;height:1px'/></div> </li>
 <li>Provide collection details and hit <strong>OK</strong>
-<div class="sm-400"><img src="/images/netcore-vuejs-crud/5.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/5.png" src="" data-width="430" data-height="462" style='width:430px;height:1px'/></div> 
 
 <ul>
 <li><strong>Database Id</strong> - logical container name for collections</li>
@@ -184,7 +189,8 @@
 
 <p>Next step is to create a web app backbone that will allow for creation of new to-do items and a web api that will handle the request.</p>
 
-<p><img src="/images/netcore-vuejs-crud/6.png" alt="Screenshot" /></p>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/6.png" src="" data-width="261" data-height="199" style='width:261px;height:1px'/></div> 
 
 <p>This section will cover all 4 (four) basic actions for to-do&rsquo;s which are create, read, update and delete.</p>
 
@@ -213,9 +219,11 @@ In order to get those properties for created database
 
 <ol>
 <li>Navigate to <strong>Keys</strong> blade on azure portal
-<div class="sm-200"><img src="/images/netcore-vuejs-crud/8.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/8.png" src="" data-width="206" data-height="183" style='width:206px;height:1px'/></div> </li>
 <li>Copy value of <strong>URI</strong> and paste it into <strong>Endpoint</strong> value and <strong>Primary Key</strong> into <strong>AuthKey</strong> inside of <strong>appsettings.local.json</strong> file
-<div class="sm-300"><img src="/images/netcore-vuejs-crud/9.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/9.png" src="" data-width="272" data-height="311" style='width:272px;height:1px'/></div> </li>
 <li>DatabaseId is the name of the database created earlier. In case of this article the name was &ldquo;Demo&rdquo;</li>
 </ol></li>
 <li>Create folder called <strong>Models</strong> in root directory</li>
@@ -305,7 +313,8 @@ By configuring <strong>DatabaseOptions</strong> with <strong>Configure</strong> 
 
 <p>Order of which actions developer builds first is not of high importance although usually it&rsquo;s best to start with create or read actions. In this article read action will be built first as it&rsquo;s possible to create document objects in azure portal. It will also make it much easier to work with other methods when it&rsquo;s possible to see results immediately.</p>
 
-<p><img src="/images/netcore-vuejs-crud/10.png" alt="Screenshot" /></p>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/10.png" src="" data-width="176" data-height="109" style='width:176px;height:1px'/></div> 
 
 <h4 id="build-a-web-api-for-document-reading">Build a Web API for document reading</h4>
 
@@ -552,20 +561,25 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 </span><span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Run the project. This is what should be displayed on the screen.
-<div><img src="/images/netcore-vuejs-crud/1.gif" alt="Screenshot" /></div></li>
+<div> 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/1.gif" src="" data-width="534" data-height="202" style='width:534px;height:1px'/></div> </li>
 <li>Add static items to the application to verify application works. Open azure portal and click on *8Todo** collection and then <strong>Documents</strong> and click on <strong>New Document</strong> button
-<div><img src="/images/netcore-vuejs-crud/11.png" alt="Screenshot" /></div></li>
+<div> 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/11.png" src="" data-width="519" data-height="302" style='width:519px;height:1px'/></div> </li>
 <li>Add few test items
-<div><img src="/images/netcore-vuejs-crud/12.png" alt="Screenshot" /></div></li>
+<div> 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/12.png" src="" data-width="492" data-height="253" style='width:492px;height:1px'/></div> </li>
 <li>Refresh the page.
-<div><img src="/images/netcore-vuejs-crud/2.gif" alt="Screenshot" /></div></li>
+<div> 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/2.gif" src="" data-width="520" data-height="220" style='width:520px;height:1px'/></div> </li>
 </ol>
 
 <h3 id="creating-documents">Creating documents</h3>
 
 <p>Now that the reading and displaing data is done. Creation of new documents can be quickly added.</p>
 
-<p><img src="/images/netcore-vuejs-crud/7.png" alt="Screenshot" /></p>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/7.png" src="" data-width="176" data-height="109" style='width:176px;height:1px'/></div> 
 
 <h4 id="build-a-web-api-for-document-creation">Build a Web API for document creation</h4>
 
@@ -739,16 +753,19 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
     <span class="p">});</span>
 <span class="p">}</span></code></pre></div></li>
 <li>Test the application
-<div><img src="/images/netcore-vuejs-crud/3.gif" alt="Screenshot" /></div>
+<div> 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/3.gif" src="" data-width="520" data-height="481" style='width:520px;height:1px'/></div> 
 New items can be also seen in the Cosmos DB
-<img src="/images/netcore-vuejs-crud/13.png" alt="Screenshot" /></li>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/13.png" src="" data-width="777" data-height="332" style='width:777px;height:1px'/></div> </li>
 </ol>
 
 <h3 id="deleting-documents">Deleting documents</h3>
 
 <p>To get application fully functional a deletion operation must be created next.</p>
 
-<p><img src="/images/netcore-vuejs-crud/14.png" alt="Screenshot" /></p>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/14.png" src="" data-width="176" data-height="109" style='width:176px;height:1px'/></div> 
 
 <h4 id="build-a-web-api-for-document-deletion">Build a Web API for document deletion</h4>
 
@@ -794,14 +811,16 @@ New items can be also seen in the Cosmos DB
     <span class="p">});</span>
 <span class="p">}</span></code></pre></div></li>
 <li>Test the application
-<div><img src="/images/netcore-vuejs-crud/4.gif" alt="Screenshot" /></div></li>
+<div> 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/4.gif" src="" data-width="512" data-height="336" style='width:512px;height:1px'/></div> </li>
 </ol>
 
 <h3 id="modifying-documents">Modifying documents</h3>
 
 <p>Last operation is item modification. This example will show inline editing but for larger apps it is advised to create dedicated screen or popup.</p>
 
-<p><img src="/images/netcore-vuejs-crud/15.png" alt="Screenshot" /></p>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/15.png" src="" data-width="176" data-height="109" style='width:176px;height:1px'/></div> 
 
 <h4 id="build-a-web-api-for-document-deletion-1">Build a Web API for document deletion</h4>
 
@@ -1026,7 +1045,8 @@ New items can be also seen in the Cosmos DB
     <span class="p">});</span>
 <span class="p">}</span></code></pre></div></li>
 <li>Test the application
-<div><img src="/images/netcore-vuejs-crud/5.gif" alt="Screenshot" /></div></li>
+<div> 
+<div class="lazy"><img data-src="/images/netcore-vuejs-crud/5.gif" src="" data-width="512" data-height="476" style='width:512px;height:1px'/></div> </li>
 </ol>
             <a target="_blank" 
    rel="tooltip" 
@@ -1274,8 +1294,6 @@ s.setAttribute('data-timestamp', +new Date());
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
   
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   

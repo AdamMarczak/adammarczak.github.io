@@ -158,7 +158,8 @@
 dotnet new mvc
 code .</code></pre></div>
 This should bring up Visual Studio Code with initialized template
-<img src="/images/netcore-vuejs/1.png" alt="Screenshot" /></li>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs/1.png" src="" data-width="423" data-height="325" style='width:423px;height:1px'/></div> </li>
 <li>Configure <strong>Startup.cs</strong> for Web Pack &amp; SPA fallback routes.
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
@@ -366,13 +367,16 @@ This should bring up Visual Studio Code with initialized template
   <span class="p">]</span>
 <span class="p">}</span></code></pre></div></li>
 <li>Open Terminal by clicking <strong>View &gt; Integrated Terminal</strong> or hitting <strong>Ctrl+`</strong>
-<img src="/images/netcore-vuejs/2.png" alt="Screenshot" />
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs/2.png" src="" data-width="424" data-height="320" style='width:424px;height:1px'/></div> 
 
 <ol>
 <li>Execute <strong>dotnet restore</strong> command in the terminal to restore missing .NET packages
-<img src="/images/netcore-vuejs/3.png" alt="Screenshot" /></li>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs/3.png" src="" data-width="602" data-height="104" style='width:602px;height:1px'/></div> </li>
 <li>Execute <strong>npm install</strong> command in the terminal to restore missing Node modules
-<img src="/images/netcore-vuejs/5.png" alt="Screenshot" /></li>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs/5.png" src="" data-width="608" data-height="376" style='width:608px;height:1px'/></div> </li>
 </ol></li>
 <li>Modify the <strong>_Layout.cshtml</strong> view in <strong>Views/Shared</strong> catalog
 <div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML"><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -444,8 +448,10 @@ This should bring up Visual Studio Code with initialized template
 <span class="o">&lt;</span><span class="err">/style&gt;</span></code></pre></div></li>
 </ol></li>
 <li>Press F5 and see first SPA app template working. On the first execution VS Code will ask what environment to start the app in, in which case choose .NET Core.
-<div><img src="/images/netcore-vuejs/6.png" alt="Screenshot" /></div>
-<div><img src="/images/netcore-vuejs/7.png" alt="Screenshot" /></div></li>
+<div> 
+<div class="lazy"><img data-src="/images/netcore-vuejs/6.png" src="" data-width="281" data-height="106" style='width:281px;height:1px'/></div> </div>
+<div> 
+<div class="lazy"><img data-src="/images/netcore-vuejs/7.png" src="" data-width="245" data-height="80" style='width:245px;height:1px'/></div> </div></li>
 </ol>
 
 <h4 id="to-summarize-what-has-been-done">To summarize what has been done</h4>
@@ -498,7 +504,8 @@ This should bring up Visual Studio Code with initialized template
 </span><span class="hl"><span class="p">}</span>
 </span><span class="o">&lt;</span><span class="err">/style&gt;</span></code></pre></div>
 And the result is presented below
-<img src="/images/netcore-vuejs/8.png" alt="Screenshot" /></li>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs/8.png" src="" data-width="524" data-height="87" style='width:524px;height:1px'/></div> </li>
 </ol>
 
 <h3 id="adding-components-and-routes">Adding components and routes</h3>
@@ -703,10 +710,12 @@ And the result is presented below
 
 <p>Now when page is refreshed user should see.</p>
 
-<p><img src="/images/netcore-vuejs/9.png" alt="Screenshot" /></p>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs/9.png" src="" data-width="399" data-height="97" style='width:399px;height:1px'/></div> 
 
 <p>After clicking <strong>Todo list</strong> hyperlink user will be moved to <strong>/todo</strong> route
-<img src="/images/netcore-vuejs/10.png" alt="Screenshot" /></p>
+ 
+<div class="lazy"><img data-src="/images/netcore-vuejs/10.png" src="" data-width="387" data-height="201" style='width:387px;height:1px'/></div> </p>
 
 <h4 id="to-summarize-what-has-been-done-1">To summarize what has been done</h4>
 
@@ -899,7 +908,8 @@ And the result is presented below
 <span class="o">&lt;</span><span class="err">/style&gt;</span></code></pre></div></p></li>
 
 <li><p>Test the app
-<div><img src="/images/netcore-vuejs/11.png" alt="Screenshot" /></div></p></li>
+<div> 
+<div class="lazy"><img data-src="/images/netcore-vuejs/11.png" src="" data-width="386" data-height="339" style='width:386px;height:1px'/></div> </div></p></li>
 </ol>
 
 <h4 id="to-summarize-what-has-been-done-2">To summarize what has been done</h4>
@@ -1153,8 +1163,6 @@ s.setAttribute('data-timestamp', +new Date());
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
   
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   

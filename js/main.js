@@ -9,7 +9,33 @@
             
         });
 
-        $(".lazy > img").Lazy();
+        function isScrolledIntoView(el) {
+            var r = el.getBoundingClientRect();
+            var isVisible = (r.top >= 0) && (r.top <= window.innerHeight) || 
+                (r.bottom >= 0) && (r.bottom <= window.innerHeight);
+            return isVisible;
+        }
+        var lazyLoad = function() {
+            $(".lazy > img[src='']").each(function() { 
+                if(isScrolledIntoView(this))
+                    $(this)
+                        .attr("src", $(this).attr('data-src'));
+            });
+        }
+        lazyLoad();
+        $( window ).scroll(lazyLoad);
+        
+        var resizeImg = function() {
+            $(".lazy > img").each(function() {
+                var iw = $(this).attr("data-width"); 
+                var w = $(this).width();
+                var ih = $(this).attr("data-height"); 
+                var h = (w / iw * ih);
+                $(this).css("min-height", h + "px"); 
+             });
+        }
+        resizeImg();
+        $( window ).resize(resizeImg);
     });
 
 })(window.timer = window.timer || {}, jQuery);

@@ -152,20 +152,27 @@
 <ol>
 <li>Log in to Microsoft Teams at <a href="https://teams.microsoft.com">teams.microsoft.com</a></li>
 <li>Create Microsoft Team Account
-<div class="sm-250"><img src="/images/cognitive-text-analytics/1.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/1.png" src="" data-width="395" data-height="379" style='width:395px;height:1px'/></div> </li>
 <li>Give name to a team and set it to private
-<div class="sm-400"><img src="/images/cognitive-text-analytics/2.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/2.png" src="" data-width="664" data-height="532" style='width:664px;height:1px'/></div> </li>
 <li>Create Twitter Account (optional but good for testing)</li>
 <li>Log in to Azure Portal at <a href="https://portal.azure.com">portal.azure.com</a></li>
 <li>Add create Text Analytics API
-<div class="sm-150"><img src="/images/cognitive-text-analytics/3.png" alt="Screenshot" /></div>
-<div class="sm-400"><img src="/images/cognitive-text-analytics/4.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/3.png" src="" data-width="802" data-height="236" style='width:802px;height:1px'/></div> 
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/4.png" src="" data-width="725" data-height="739" style='width:725px;height:1px'/></div> </li>
 <li>Provide properties for API
-<div class="sm-400"><img src="/images/cognitive-text-analytics/5.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/5.png" src="" data-width="383" data-height="778" style='width:383px;height:1px'/></div> </li>
 <li>Go to Text Analytics API and click on Keys blade
-<div class="sm-200"><img src="/images/cognitive-text-analytics/6.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/6.png" src="" data-width="1012" data-height="353" style='width:1012px;height:1px'/></div> </li>
 <li>Copy the Key 1 value
-<div class="sm-250"><img src="/images/cognitive-text-analytics/7.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/7.png" src="" data-width="384" data-height="446" style='width:384px;height:1px'/></div> </li>
 </ol>
 
 <h2 id="create-the-flow">Create the flow</h2>
@@ -174,26 +181,35 @@
 <li>Open Microsoft Flow Portal at <a href="https://flow.microsoft.com">flow.microsoft.com</a></li>
 <li>Open My Flows tab</li>
 <li>Click on +Create from blank button
-<div class="sm-50"><img src="/images/cognitive-text-analytics/8.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="images/cognitive-text-analytics/8.png" src="" data-width="461" data-height="50" style='width:461px;height:1px'/></div> 
 Optionally selecting from template also works. There are templates set up exactly for this purpose. Sometimes they can be outdated so it is recommended for production use to build flow from scratch.</li>
 <li>Select first step &lsquo;When a new tweet is posted&rsquo;
-<div class="sm-250"><img src="/images/cognitive-text-analytics/9.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/9.png" src="" data-width="1077" data-height="364" style='width:1077px;height:1px'/></div> </li>
 <li>Type in sentence or hashtag for analysis. For purpose of this demo #MarczakIOTester was used. In cases of companies it&rsquo;s usually hashtag with their company, products or events names.
-<div class="sm-100"><img src="/images/cognitive-text-analytics/10.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/10.png" src="" data-width="622" data-height="119" style='width:622px;height:1px'/></div> </li>
 <li>Add new step
-<div class="sm-150"><img src="/images/cognitive-text-analytics/11.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/11.png" src="" data-width="1043" data-height="155" style='width:1043px;height:1px'/></div> </li>
 <li>Find Text Analytics - Detect Sentiment step
-<div class="sm-300"><img src="/images/cognitive-text-analytics/12.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/12.png" src="" data-width="612" data-height="584" style='width:612px;height:1px'/></div> 
 
 <ol>
 <li>Define new Text Analytics API connection
-<div class="sm-200"><img src="/images/cognitive-text-analytics/13.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/13.png" src="" data-width="616" data-height="323" style='width:616px;height:1px'/></div> </li>
 <li>Copy paste the Key and provide the Site URL. For site URL go to Text Analytics API Overview and copy paste the API endpoint.
-<div class="sm-150"><img src="/images/cognitive-text-analytics/14.png" alt="Screenshot" /></div>
-<div class="sm-150"><img src="/images/cognitive-text-analytics/15.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/14.png" src="" data-width="321" data-height="264" style='width:321px;height:1px'/></div> 
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/15.png" src="" data-width="519" data-height="202" style='width:519px;height:1px'/></div> </li>
 </ol></li>
 <li>Add new condition step with following parameters
-<div class="sm-100"><img src="/images/cognitive-text-analytics/16.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/16.png" src="" data-width="610" data-height="160" style='width:610px;height:1px'/></div> 
 
 <ul>
 <li><strong>Left Value</strong>: Detect Sentiment -&gt; Score</li>
@@ -201,9 +217,11 @@ Optionally selecting from template also works. There are templates set up exactl
 <li><strong>Right Value</strong>: 0.5</li>
 </ul></li>
 <li>In &lsquo;If yes&rsquo; condition add an Teams - Post Message action
-<div class="sm-300"><img src="/images/cognitive-text-analytics/17.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/17.png" src="" data-width="648" data-height="772" style='width:648px;height:1px'/></div> </li>
 <li>And supply Post Message Action with values
-<div class="sm-150"><img src="/images/cognitive-text-analytics/18.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/18.png" src="" data-width="612" data-height="240" style='width:612px;height:1px'/></div> 
 
 <ul>
 <li><strong>Team Id</strong>: Name of the MS team where sentiment analysis results will be posted.</li>
@@ -211,9 +229,11 @@ Optionally selecting from template also works. There are templates set up exactl
 <li><strong>Message</strong>: Message that will be posted. In case of this demo &lsquo;A positive sentiment for tweet [Tweet Text] sent by [Tweeted by] with score [Score]&rsquo;</li>
 </ul></li>
 <li>In &lsquo;If yes&rsquo; condition add an Teams - Post Message action
-<div class="sm-300"><img src="/images/cognitive-text-analytics/19.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/19.png" src="" data-width="652" data-height="768" style='width:652px;height:1px'/></div> </li>
 <li>And supply Post Message Action with values
-<div class="sm-150"><img src="/images/cognitive-text-analytics/20.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/20.png" src="" data-width="613" data-height="240" style='width:613px;height:1px'/></div> 
 
 <ul>
 <li><strong>Team Id</strong>: Name of the MS team where sentiment analysis results will be posted.</li>
@@ -228,13 +248,18 @@ Optionally selecting from template also works. There are templates set up exactl
 <ol>
 <li>Open Twitter at <a href="https://twitter.com">twitter.com</a></li>
 <li>Post negative and positive tweets for testing. Remember to add hashtag
-<div class="sm-100"><img src="/images/cognitive-text-analytics/21.png" alt="Screenshot" /></div>
-<div class="sm-100"><img src="/images/cognitive-text-analytics/22.png" alt="Screenshot" /></div>
-<div class="sm-150"><img src="/images/cognitive-text-analytics/23.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/21.png" src="" data-width="580" data-height="144" style='width:580px;height:1px'/></div> 
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/22.png" src="" data-width="580" data-height="144" style='width:580px;height:1px'/></div> 
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/23.png" src="" data-width="484" data-height="176" style='width:484px;height:1px'/></div> </li>
 <li>In couple of minutes (between 1 and 10) check flow for recent flows. In case of this demo it took 3 minutes to trigger flows.
-<div class="sm-300"><img src="/images/cognitive-text-analytics/24.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/24.png" src="" data-width="746" data-height="451" style='width:746px;height:1px'/></div> </li>
 <li>Check MS teams for flow results
-<div class="sm-200"><img src="/images/cognitive-text-analytics/25.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/cognitive-text-analytics/25.png" src="" data-width="672" data-height="255" style='width:672px;height:1px'/></div> 
 Notice how sure bot is about the results. First tweet got result of 98% that it&rsquo;s positive and second one 99.99% that it&rsquo;s negative.</li>
 </ol>
 
@@ -478,8 +503,6 @@ s.setAttribute('data-timestamp', +new Date());
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
   
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   

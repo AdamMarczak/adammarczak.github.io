@@ -152,9 +152,8 @@
 
 <p>Presented design will be focus of this article. </p>
 
-
-<div class="lazy "><img data-src="/images/analysis-services-onprem-integration/1.png" /></div>
-
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/1.png" src="" data-width="819" data-height="158" style='width:819px;height:1px'/></div> 
 
 <h4 id="components">Components</h4>
 
@@ -181,9 +180,8 @@
 
 <ol>
 <li>Create DevTest Lab environment
-
-<div class="lazy sm-150"><img data-src="/images/analysis-services-onprem-integration/2.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/2.png" src="" data-width="584" data-height="196" style='width:584px;height:1px'/></div> </li>
 <li>For the parameters fill
 
 <ul>
@@ -191,14 +189,12 @@
 <li><strong>Location</strong>: North Europe (choose one region and stick with it for entire setup)</li>
 </ul></li>
 <li>Once provisioned go to lab and click on Add new
-
-<div class="lazy sm-75"><img data-src="/images/analysis-services-onprem-integration/3.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/3.png" src="" data-width="581" data-height="102" style='width:581px;height:1px'/></div> </li>
 <li>Select Windows 10 Enterprise VM image</li>
 <li>Fill VM form fields
-
-<div class="lazy sm-500"><img data-src="/images/analysis-services-onprem-integration/4.png" /></div>
-
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/4.png" src="" data-width="330" data-height="619" style='width:330px;height:1px'/></div> 
 
 <ul>
 <li><strong>Virtual Machine Name</strong>: devtestlab001, name is important when connecting to SQL server later on. Any name works though.</li>
@@ -209,40 +205,33 @@
 <li><strong>Artifacts</strong>: Chrome.</li>
 </ul></li>
 <li>Connect to VM
-
-<div class="lazy sm-100"><img data-src="/images/analysis-services-onprem-integration/5.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/5.png" src="" data-width="466" data-height="128" style='width:466px;height:1px'/></div> </li>
 <li>Install following tools
 
 <ol>
 <li><a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">SQL Server Developer Edition</a>
-
-<div class="lazy sm-300"><img data-src="/images/analysis-services-onprem-integration/6.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/6.png" src="" data-width="833" data-height="660" style='width:833px;height:1px'/></div> </li>
 <li><a href="https://docs.microsoft.com/en-us/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017">SQL Server Data Tools</a>
-
-<div class="lazy sm-300"><img data-src="/images/analysis-services-onprem-integration/7.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/7.png" src="" data-width="771" data-height="534" style='width:771px;height:1px'/></div> </li>
 <li><a href="https://visualstudio.microsoft.com/vs/community/">Visual Studio Community</a>
 Make Sure to select Data and storage tools.
-
-<div class="lazy sm-75"><img data-src="/images/analysis-services-onprem-integration/8.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/8.png" src="" data-width="420" data-height="96" style='width:420px;height:1px'/></div> </li>
 </ol></li>
 <li>Open Visual Studio</li>
 <li>Open SQL Server Object Explorer. If it is not visible, it can be enabled in View options.</li>
 <li>Connect to local SQL database
-
-<div class="lazy sm-150"><img data-src="/images/analysis-services-onprem-integration/9.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/9.png" src="" data-width="307" data-height="147" style='width:307px;height:1px'/></div> </li>
 <li>Select local instance (should have the same name as VM name)
-
-<div class="lazy sm-400"><img data-src="/images/analysis-services-onprem-integration/10.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/10.png" src="" data-width="481" data-height="588" style='width:481px;height:1px'/></div> </li>
 <li>Open new query
-
-<div class="lazy sm-200"><img data-src="/images/analysis-services-onprem-integration/11.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/11.png" src="" data-width="317" data-height="264" style='width:317px;height:1px'/></div> </li>
 <li>Run Query to Setup demo database
 <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">database</span> <span class="n">asdemodb</span><span class="p">;</span>
 <span class="k">GO</span>
@@ -301,26 +290,22 @@ Output
 <li><strong>Important</strong>: Personal account can&rsquo;t be used, this must be work account. In case of personal MSDN subscription go to Azure and create static user and grant him privileges go execute this scenario (resource group owner is enough).</li>
 </ul></li>
 <li>Select register a new gateway option
-
-<div class="lazy sm-150"><img data-src="/images/analysis-services-onprem-integration/12.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/12.png" src="" data-width="540" data-height="245" style='width:540px;height:1px'/></div> </li>
 <li>Give it a recognizable name and type in recovery key. Make sure to back up this key.
-
-<div class="lazy sm-200"><img data-src="/images/analysis-services-onprem-integration/13.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/13.png" src="" data-width="599" data-height="305" style='width:599px;height:1px'/></div> </li>
 <li>Finish installation and verify status. Properly working gateway should show <em>Ready</em> status
-
-<div class="lazy sm-350"><img data-src="/images/analysis-services-onprem-integration/14.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/14.png" src="" data-width="626" data-height="518" style='width:626px;height:1px'/></div> </li>
 </ol>
 
 <h2 id="provision-azure-resources">Provision Azure Resources</h2>
 
 <ol>
 <li>Create new Analysis Services resource
-
-<div class="lazy sm-400"><img data-src="/images/analysis-services-onprem-integration/15.png" /></div>
-
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/15.png" src="" data-width="332" data-height="469" style='width:332px;height:1px'/></div> 
 
 <ul>
 <li><strong>Server Name</strong> unique name for Analysis Services instance</li>
@@ -329,12 +314,10 @@ Output
 <li><strong>Location</strong> North Europe (or the same as the lab for low latency)</li>
 </ul></li>
 <li>Create new On-premises data gateway resource
-
-<div class="lazy sm-150"><img data-src="/images/analysis-services-onprem-integration/16.png" /></div>
-
-
-<div class="lazy sm-450"><img data-src="/images/analysis-services-onprem-integration/17.png" /></div>
-
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/16.png" src="" data-width="295" data-height="199" style='width:295px;height:1px'/></div> 
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/17.png" src="" data-width="325" data-height="557" style='width:325px;height:1px'/></div> 
 
 <ul>
 <li><strong>Resource Name</strong> name for gateway resource</li>
@@ -344,17 +327,14 @@ Output
 </ul></li>
 <li>Open Analysis Services resource</li>
 <li>Open On-premises data gateway blade
-
-<div class="lazy sm-150"><img data-src="/images/analysis-services-onprem-integration/18.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/18.png" src="" data-width="220" data-height="152" style='width:220px;height:1px'/></div> </li>
 <li>Connect gateway by providing previously created region and gateway resource
-
-<div class="lazy sm-200"><img data-src="/images/analysis-services-onprem-integration/19.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/19.png" src="" data-width="328" data-height="238" style='width:328px;height:1px'/></div> </li>
 <li>Successful connection will be indicated by checkmark
-
-<div class="lazy sm-200"><img data-src="/images/analysis-services-onprem-integration/20.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/20.png" src="" data-width="309" data-height="251" style='width:309px;height:1px'/></div> </li>
 </ol>
 
 <h2 id="deploy-model">Deploy Model</h2>
@@ -388,9 +368,8 @@ Output
 <ol>
 <li>Open Visual Studio</li>
 <li>Create new Tabular project
-
-<div class="lazy sm-400"><img data-src="/images/analysis-services-onprem-integration/21.png" /></div>
-
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/21.png" src="" data-width="935" data-height="648" style='width:935px;height:1px'/></div> 
 
 <ul>
 <li><strong>Note</strong> If project template is missing verify if Sql Server data tools are correctly installed.</li>
@@ -398,59 +377,46 @@ Output
 <li><strong>Compatibility Level</strong> choose SQL Server 2017 / Azure Analysis Services (1400), this will allow you to use newest features including Query Editor like in Power BI and Excel Power Query.</li>
 </ul></li>
 <li>In the Solution Explorer of project right-click on the Data Sources and select Import from data source option
-
-<div class="lazy sm-200"><img data-src="/images/analysis-services-onprem-integration/22.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/22.png" src="" data-width="447" data-height="211" style='width:447px;height:1px'/></div> </li>
 <li>Select SQL server database as the data source
-
-<div class="lazy sm-450"><img data-src="/images/analysis-services-onprem-integration/23.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/23.png" src="" data-width="581" data-height="636" style='width:581px;height:1px'/></div> </li>
 <li>Type in database details from previous steps
-
-<div class="lazy sm-200"><img data-src="/images/analysis-services-onprem-integration/24.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/24.png" src="" data-width="290" data-height="253" style='width:290px;height:1px'/></div> </li>
 <li>Select connection credentials as Impersonate Service Account
-
-<div class="lazy sm-150"><img data-src="/images/analysis-services-onprem-integration/25.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/25.png" src="" data-width="504" data-height="145" style='width:504px;height:1px'/></div> </li>
 <li>Verify data and click Load
-
-<div class="lazy sm-500"><img data-src="/images/analysis-services-onprem-integration/26.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/26.png" src="" data-width="853" data-height="666" style='width:853px;height:1px'/></div> </li>
 <li>Successfully loaded model should appear in the designer
-
-<div class="lazy sm-500"><img data-src="/images/analysis-services-onprem-integration/27.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/27.png" src="" data-width="341" data-height="595" style='width:341px;height:1px'/></div> </li>
 <li>In the Tabular Model Explorer right-click on the Model.bim file and select properties</li>
 <li>Change parameter DirectQyert Mode from Off to On
-
-<div class="lazy sm-250"><img data-src="/images/analysis-services-onprem-integration/28.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/28.png" src="" data-width="349" data-height="322" style='width:349px;height:1px'/></div> </li>
 <li>Navigate back to Azure Analysis Service and in the Overview blade copy Server name
-
-<div class="lazy sm-150"><img data-src="/images/analysis-services-onprem-integration/29.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/29.png" src="" data-width="426" data-height="87" style='width:426px;height:1px'/></div> </li>
 <li>In the Tabular Model Explorer right-click on the ModelProject project file and select Properties option</li>
 <li>Paste in copied AAS in the server address property field
-
-<div class="lazy sm-250"><img data-src="/images/analysis-services-onprem-integration/30.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/30.png" src="" data-width="762" data-height="250" style='width:762px;height:1px'/></div> </li>
 <li>Again right-click on the ModelProject project file and select Deploy option
-
-<div class="lazy sm-75"><img data-src="/images/analysis-services-onprem-integration/31.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/31.png" src="" data-width="415" data-height="98" style='width:415px;height:1px'/></div> </li>
 <li>Successful deployment should look like this
-
-<div class="lazy sm-200"><img data-src="/images/analysis-services-onprem-integration/32.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/32.png" src="" data-width="565" data-height="239" style='width:565px;height:1px'/></div> </li>
 <li>Navigate back to Azure Analysis Service and in the Overview blade click on the Web Designer Open button
-
-<div class="lazy sm-50"><img data-src="/images/analysis-services-onprem-integration/33.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/33.png" src="" data-width="197" data-height="40" style='width:197px;height:1px'/></div> </li>
 <li>Click on the &lsquo;eye&rsquo; icon in the Models panel
-
-<div class="lazy sm-250"><img data-src="/images/analysis-services-onprem-integration/34.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/34.png" src="" data-width="699" data-height="292" style='width:699px;height:1px'/></div> </li>
 <li>Select &lsquo;Show DAX&rsquo; and paste in the script
 <div class="highlight"><pre class="chroma"><code class="language-DAX" data-lang="DAX">EVALUATE (
   TOPN (
@@ -465,10 +431,9 @@ Output
   )
 )</code></pre></div></li>
 <li>Verify results
-
-<div class="lazy "><img data-src="/images/analysis-services-onprem-integration/35.png" /></div>
-</li>
-<li>Change results in the database to demo out live connection</li>
+ 
+<div class="lazy"><img data-src="/images/analysis-services-onprem-integration/35.png" src="" data-width="1909" data-height="746" style='width:1909px;height:1px'/></div> 
+Change results in the database to demo out live connection</li>
 </ol>
 
 <h2 id="summary">Summary</h2>
@@ -730,8 +695,6 @@ s.setAttribute('data-timestamp', +new Date());
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
   
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   

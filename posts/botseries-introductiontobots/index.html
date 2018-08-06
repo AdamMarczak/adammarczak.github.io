@@ -147,10 +147,11 @@
 
 <p><a href="https://dev.botframework.com/"><img class="icon" src="/images/tags/botframework.png"/>Microsoft Bot Framework</a></p>
 
-<p><a href="https://azure.microsoft.com/en-us/services/bot-service/"><img class="icon" src="/images/tags/botservice.svg"/>Azure Bot Service</a></p>
+<p><a href="https://azure.microsoft.com/en-us/services/bot-service/"><img class="icon" src="/images/tags/bot-service.svg"/>Azure Bot Service</a></p>
 
 <p>Those are connected as follows
-<div class="sm-250"><img src="/images/botseries-intro/arch1.png" alt="Screenshot" /></div></p>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/arch1.png" src="" data-width="2253" data-height="861" style='width:2253px;height:1px'/></div> </p>
 
 <h2 id="microsoft-bot-framework">Microsoft Bot Framework</h2>
 
@@ -165,20 +166,25 @@
 <li>Open Source library written with <strong>.NET</strong> and <strong>Node.js</strong> available at <a href="https://github.com/Microsoft/BotBuilder">github</a> for anyone to explore and contribute.</li>
 <li><a href="https://docs.microsoft.com/en-us/bot-framework/rest-api/bot-framework-rest-overview">REST API</a> for those who want to integrate it from different languages and platforms.</li>
 <li><a href="https://docs.microsoft.com/en-us/bot-framework/debug-bots-emulator">Bot Emulator</a> for testing bots locally and remotely without a need for any channel. It works great with <a href="https://ngrok.com/">Ngrok tunneling tool</a> for remote connectivity
-<div class="sm-300"><img src="/images/botseries-intro/0.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/0.png" src="" data-width="833" data-height="549" style='width:833px;height:1px'/></div> </li>
 </ol></li>
 <li>Bot Connectors (channels) which are API proxies delivered and maintained by Microsoft which connect to existing services and proxy/format messages between the messaging platform (client origin) and bot service.
 
 <ol>
 <li>Two enabled by default which are SKype and Web Chat
-<div class="sm-100"><img src="/images/botseries-intro/1.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/1.png" src="" data-width="371" data-height="155" style='width:371px;height:1px'/></div> </li>
 <li>And 12 more to configure which include Bing, Cortana, Direct Line, Email, Messenger, GroupMe, Kik, Microsoft Teams, Skype for Business, Slack, Telegram and Twillio SMS
-<div class="sm-150"><img src="/images/botseries-intro/2.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/2.png" src="" data-width="727" data-height="249" style='width:727px;height:1px'/></div> </li>
 </ol></li>
 <li>Registration and management portal (fully integrated with Azure Bot Service) for maintaining directory of bot applications.
-<div class="sm-250"><img src="/images/botseries-intro/3.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/3.png" src="" data-width="943" data-height="470" style='width:943px;height:1px'/></div> </li>
 <li>Bot Catalog - bot directory is great place to find real examples of useful bots that are ready to be implemented in any company.
-<div class="sm-300"><img src="/images/botseries-intro/4.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/4.png" src="" data-width="1310" data-height="769" style='width:1310px;height:1px'/></div> </li>
 </ol>
 
 <h2 id="azure-bot-service">Azure Bot Service</h2>
@@ -187,13 +193,17 @@
 
 <ol>
 <li>IDE for bot development
-<div class="sm-350"><img src="/images/botseries-intro/5.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/5.png" src="" data-width="1104" data-height="768" style='width:1104px;height:1px'/></div> </li>
 <li>Channel configuration page
-<div class="sm-350"><img src="/images/botseries-intro/6.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/6.png" src="" data-width="1101" data-height="751" style='width:1101px;height:1px'/></div> </li>
 <li>Application settings and web configuration
-<div class="sm-300"><img src="/images/botseries-intro/8.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/8.png" src="" data-width="1102" data-height="758" style='width:1102px;height:1px'/></div> </li>
 <li>Chat testing tools and logging/analytics
-<div class="sm-250"><img src="/images/botseries-intro/7.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/7.png" src="" data-width="1097" data-height="597" style='width:1097px;height:1px'/></div> </li>
 </ol>
 
 <h2 id="creation-of-a-chat-bot">Creation of a chat bot</h2>
@@ -214,25 +224,31 @@
 <ol>
 <li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
 <li>Find Azure Bot Service in Marketplace
-<div class="sm-150"><img src="/images/botseries-intro/9.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/9.png" src="" data-width="478" data-height="173" style='width:478px;height:1px'/></div> </li>
 <li>Create Bot Service
-<div class="sm-200"><img src="/images/botseries-intro/10.jpg" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/10.jpg" src="" data-width="729" data-height="476" style='width:729px;height:1px'/></div> </li>
 <li>Fill in the data.
 
 <ul>
 <li><strong>Consumption Plan</strong> will <a href="https://azure.microsoft.com/en-us/pricing/details/functions/">Functions pricing</a> model (pay per execution). Preferred for most bots.</li>
 <li><strong>App Service Plan</strong> will use <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/">App Service</a> (pay for reserved capacity). Preferred if using Free Tier for learning purposes.
-<div class="sm-350"><img src="/images/botseries-intro/11.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/11.png" src="" data-width="231" data-height="295" style='width:231px;height:1px'/></div> 
 Portal should automatically open bot editor after deployment is successful. If not open bot can be opened via either Portal &gt; App Services, Notifications or Dashboard if &lsquo;Pin to Dashboard&rsquo; option was selected.</li>
 </ul></li>
 <li>Click create button redirects to bot wizard where C# should be set language and Form as a bot template.
-<div class="sm-any"><img src="/images/botseries-intro/12.jpg" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/12.jpg" src="" data-width="1098" data-height="875" style='width:1098px;height:1px'/></div> </li>
 <li>Microsoft App Registration page where application must be first registered.
-<div class="sm-200"><img src="/images/botseries-intro/13.png" alt="Screenshot" /></div>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/13.png" src="" data-width="847" data-height="278" style='width:847px;height:1px'/></div> 
 <strong>Note</strong>: Forgetting to save app password might be troublesome in some scenarios but this isn&rsquo;t the case. App password will be available in bot app settings</li>
 <li>Once bot is created developer is transferred back to Azure Development portal and after hitting Create button the bot is provisioned. Provisioning takes between 2 and 5 minutes and during that time template sets up Bot Framework application, storage account for the code and logic, bot service application and application insights.</li>
 <li>Test the bot with IDE chat control
-<div class="sm-400"><img src="/images/botseries-intro/14.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/14.png" src="" data-width="322" data-height="592" style='width:322px;height:1px'/></div> </li>
 </ol>
 
 <p>Additionally, developer can set up <a href="https://docs.microsoft.com/en-us/bot-framework/debug-bots-emulator">Bot Emulator</a> for testing which takes just minutes.</p>
@@ -242,24 +258,32 @@ Portal should automatically open bot editor after deployment is successful. If n
 <li>Download <a href="https://ngrok.com/">Ngrok tunneling tool</a> for remote connectivity and extract it at convenient location</li>
 <li>Run Bot Emulator</li>
 <li>Open App Settings
-<div class="sm-200"><img src="/images/botseries-intro/15.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/15.png" src="" data-width="523" data-height="226" style='width:523px;height:1px'/></div> </li>
 <li>Provide path to ngrok.exe where it was previously extracted
-<div class="sm-250"><img src="/images/botseries-intro/16.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/16.png" src="" data-width="403" data-height="380" style='width:403px;height:1px'/></div> </li>
 <li>Click on the &lsquo;Enter your endpoint URL&rsquo; text bot in emulator and provide bot details
 
 <ol>
 <li>Get messaging endpoint to chatbot by going to Azure Portal IDE and selecting Settings Tab. Scroll down to Configuration section and copy paste the link into emulator
-<div class="sm-100"><img src="/images/botseries-intro/17.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/17.png" src="" data-width="535" data-height="123" style='width:535px;height:1px'/></div> </li>
 <li>Emulator will prompt for Microsoft App ID and Password, to get App ID again scroll down in app settings tab
-<div class="sm-100"><img src="/images/botseries-intro/18.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/18.png" src="" data-width="517" data-height="140" style='width:517px;height:1px'/></div> </li>
 <li>To get password click on Open button in Application Settings section and scroll down to field called MicrosoftAppPassword and copy its value
-<div class="sm-100"><img src="/images/botseries-intro/19.png" alt="Screenshot" /></div>
-<div class="sm-300"><img src="/images/botseries-intro/20.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/19.png" src="" data-width="607" data-height="87" style='width:607px;height:1px'/></div> 
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/20.png" src="" data-width="487" data-height="439" style='width:487px;height:1px'/></div> </li>
 </ol></li>
 <li>Click Connect
-<div class="sm-150"><img src="/images/botseries-intro/21.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/21.png" src="" data-width="437" data-height="204" style='width:437px;height:1px'/></div> </li>
 <li>Test the bot
-<div class="sm-350"><img src="/images/botseries-intro/22.png" alt="Screenshot" /></div></li>
+ 
+<div class="lazy"><img data-src="/images/botseries-intro/22.png" src="" data-width="831" data-height="532" style='width:831px;height:1px'/></div> </li>
 </ol>
 
 <h4 id="editing-the-business-logic">Editing the business logic</h4>
@@ -556,8 +580,6 @@ s.setAttribute('data-timestamp', +new Date());
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
   
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   

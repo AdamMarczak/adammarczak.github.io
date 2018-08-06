@@ -116,6 +116,10 @@ div.avatar {
 .btn-webchat:hover { background: #4367b1; }
 .btn-github { line-height: 20px; }
 
+body,h1,h2,h3,h4,h5,h6{font-family:Helvetica,Arial,sans-serif;font-weight:300}
+/*body,h1,h2,h3,h4,h5,h6{
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}*/
 .connected-title {
   margin-bottom: 4px;
 }
@@ -128,33 +132,14 @@ div.avatar {
 }
 
 article li > img, article li > div > img {
-  margin-top: 10px;
-  margin-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 25px;
 }
 
 [class^="sm-"] > img {
   --box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
-div.sm-50 { min-height: 50px; }
-div.sm-75 { min-height: 75px; }
-div.sm-100 { min-height: 100px; }
-div.sm-150 { min-height: 150px; }
-div.sm-200 { min-height: 200px; }
-div.sm-250 { min-height: 250px; }
-div.sm-300 { min-height: 300px; }
-div.sm-350 { min-height: 350px; }
-div.sm-400 { min-height: 400px; }
-div.sm-500 { min-height: 500px; }
-.sm-50 > img { max-height: 50px; }
-.sm-75 > img { max-height: 75px; }
-.sm-100 > img { max-height: 100px; }
-.sm-150 > img { max-height: 150px; }
-.sm-200 > img { max-height: 200px; }
-.sm-250 > img { max-height: 250px; }
-.sm-300 > img { max-height: 300px; }
-.sm-350 > img { max-height: 350px; }
-.sm-400 > img { max-height: 400px; }
-.sm-500 > img { max-height: 500px; }
+
 .check {
   color: #1fa67a;
 }

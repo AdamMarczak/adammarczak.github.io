@@ -154,9 +154,8 @@
 <h3 id="process-flow">Process flow</h3>
 
 <p>It only takes three very small components for this scenario to be implemented. With that said let&rsquo;s now discuss how will the process look like. Diagram below presents overall architecture of the solution.
-
-<div class="lazy "><img data-src="/images/azure-loading-csv-to-sql/1.png" /></div>
-</p>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/1.png" src="" data-width="884" data-height="429" style='width:884px;height:1px'/></div> </p>
 
 <p>Diagram covers following high level steps</p>
 
@@ -176,54 +175,45 @@
 
 <ol>
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>Resource Group</strong> in Search window
-
-<div class="lazy sm-200"><img data-src="/images/azure-loading-csv-to-sql/2.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/2.png" src="" data-width="389" data-height="304" style='width:389px;height:1px'/></div> </li>
 <li>Click on the result and click on <strong>Create</strong> button</li>
 <li>Give it a name and hit Create again
-
-<div class="lazy sm-200"><img data-src="/images/azure-loading-csv-to-sql/3.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/3.png" src="" data-width="371" data-height="282" style='width:371px;height:1px'/></div> </li>
 </ol>
 
 <h3 id="blob-storage">Blob Storage</h3>
 
 <ol>
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>Storage account</strong> in Search window
-
-<div class="lazy sm-100"><img data-src="/images/azure-loading-csv-to-sql/4.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/4.png" src="" data-width="342" data-height="103" style='width:342px;height:1px'/></div> </li>
 <li>Click on the result and click on <strong>Create</strong> button</li>
 <li>Give it any name and leave everything else default. For the resource group select <strong>Use existing</strong> and select resource group from previous step
-
-<div class="lazy sm-100"><img data-src="/images/azure-loading-csv-to-sql/5.png" /></div>
-
-
-<div class="lazy sm-100"><img data-src="/images/azure-loading-csv-to-sql/6.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/5.png" src="" data-width="340" data-height="87" style='width:340px;height:1px'/></div> 
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/6.png" src="" data-width="335" data-height="115" style='width:335px;height:1px'/></div> </li>
 <li>Hit Create (optionally select pin to dashboard before clicking)</li>
 <li>When the resource is created go to its options and click on <strong>Containers</strong> blade
-
-<div class="lazy sm-150"><img data-src="/images/azure-loading-csv-to-sql/7.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/7.png" src="" data-width="264" data-height="206" style='width:264px;height:1px'/></div> </li>
 <li>Create two new private containers called <strong>input</strong> and <strong>output</strong>
-
-<div class="lazy sm-250"><img data-src="/images/azure-loading-csv-to-sql/8.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/8.png" src="" data-width="596" data-height="346" style='width:596px;height:1px'/></div> </li>
 </ol>
 
 <h3 id="sql-server-database">SQL Server &amp; Database</h3>
 
 <ol>
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>SQL Database</strong> in Search window
-
-<div class="lazy sm-100"><img data-src="/images/azure-loading-csv-to-sql/9.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/9.png" src="" data-width="347" data-height="108" style='width:347px;height:1px'/></div> </li>
 <li>Click on the result and click on <strong>Create</strong> button</li>
 <li>Provide following values to the prompt
-
-<div class="lazy sm-500"><img data-src="/images/azure-loading-csv-to-sql/10.png" /></div>
-
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/10.png" src="" data-width="365" data-height="635" style='width:365px;height:1px'/></div> 
 
 <ol>
 <li>Name for the database</li>
@@ -231,9 +221,8 @@
 </ol></li>
 <li>Since there is no SQL Server yet to host our database it is also required to create on at this point. For this click on the server and then <strong>Create a new server</strong> button.</li>
 <li>Provide server name (this will be public DNS address of created server), admin login name and password
-
-<div class="lazy sm-350"><img data-src="/images/azure-loading-csv-to-sql/11.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/11.png" src="" data-width="370" data-height="469" style='width:370px;height:1px'/></div> </li>
 <li>Hit Select button</li>
 <li>Hit Create (optionally select pin to dashboard before clicking)</li>
 </ol>
@@ -242,14 +231,12 @@
 
 <ol>
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>Logic App</strong> in Search window
-
-<div class="lazy sm-100"><img data-src="/images/azure-loading-csv-to-sql/12.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/12.png" src="" data-width="322" data-height="105" style='width:322px;height:1px'/></div> </li>
 <li>Click on the result and click on <strong>Create</strong> button</li>
 <li>Give it a any name, for the resource group select <strong>Use existing</strong> and select resource group from previous step
-
-<div class="lazy sm-350"><img data-src="/images/azure-loading-csv-to-sql/13.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/13.png" src="" data-width="372" data-height="463" style='width:372px;height:1px'/></div> </li>
 <li>Hit Create (optionally select pin to dashboard before clicking)</li>
 </ol>
 
@@ -264,24 +251,20 @@
 <ol>
 <li>Navigate to previously created blob storage in Azure Portal</li>
 <li>Select Shared Access Signature blade
-
-<div class="lazy sm-150"><img data-src="/images/azure-loading-csv-to-sql/16.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/16.png" src="" data-width="256" data-height="165" style='width:256px;height:1px'/></div> </li>
 <li>Create SAS token with following settings
-
-<div class="lazy sm-550"><img data-src="/images/azure-loading-csv-to-sql/17.png" /></div>
-
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/17.png" src="" data-width="845" data-height="632" style='width:845px;height:1px'/></div> 
 Ensure that the <strong>End Date</strong> is far enough in future and replace this once it&rsquo;s expired. In production system an operations team can handle this or simply create a very small logic app that will generate new token and update the database credential.</li>
 <li>Click <strong>Generate SAS and connection string</strong> and copy value of generated SAS token for further use. When this screen is closed a new token will have to be created if lost.
-
-<div class="lazy sm-200"><img data-src="/images/azure-loading-csv-to-sql/18.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/18.png" src="" data-width="849" data-height="219" style='width:849px;height:1px'/></div> </li>
 <li>Navigate to <strong>Containers</strong> blade</li>
 <li>Click on the input container</li>
 <li>Click on the properties blade
-
-<div class="lazy sm-250"><img data-src="/images/azure-loading-csv-to-sql/19.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/19.png" src="" data-width="229" data-height="291" style='width:229px;height:1px'/></div> </li>
 <li>Copy the URL value from the properties tab</li>
 </ol>
 
@@ -292,16 +275,14 @@ Ensure that the <strong>End Date</strong> is far enough in future and replace th
 <ol>
 <li>Navigate to previously created SQL database in Azure Portal</li>
 <li>Click on Query Editor
-
-<div class="lazy sm-150"><img data-src="/images/azure-loading-csv-to-sql/14.png" /></div>
-
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/14.png" src="" data-width="273" data-height="178" style='width:273px;height:1px'/></div> 
 Optionally and recommended way to do this is via SQL Server Management Studio but for such simple scenario query editor is good enough.</li>
 <li>Click on the Login button and provide previously set password</li>
 <li>In the query window execute following SQL statement and replace unique string with secret key for the database. This creates master key which is used to encrypt all secrets in the database.
 <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="n">MASTER</span> <span class="k">KEY</span> <span class="n">ENCRYPTION</span> <span class="k">BY</span> <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;UNIQUE_STRING_HERE&#39;</span></code></pre></div>
-
-<div class="lazy sm-200"><img data-src="/images/azure-loading-csv-to-sql/15.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/15.png" src="" data-width="711" data-height="314" style='width:711px;height:1px'/></div> </li>
 <li>Create new credential object that will be used by the database to connect to blob storage. Replace SAS token value with value from previous steps. Note that there is no question mark at the begining of the secret
 <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">SCOPED</span> <span class="n">CREDENTIAL</span> <span class="n">BlobCredential</span>
 <span class="k">WITH</span> <span class="k">IDENTITY</span> <span class="o">=</span> <span class="s1">&#39;SHARED ACCESS SIGNATURE&#39;</span><span class="p">,</span>
@@ -361,56 +342,44 @@ Few important things to note here
 <li>Navigate to previously created blob storage in Azure Portal</li>
 <li>Select Edit button</li>
 <li>Select Blank Logic App
-
-<div class="lazy sm-200"><img data-src="/images/azure-loading-csv-to-sql/21.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/21.png" src="" data-width="279" data-height="351" style='width:279px;height:1px'/></div> </li>
 <li>Type in Blob in the search window and select Blob Storage trigger that appears
-
-<div class="lazy sm-250"><img data-src="/images/azure-loading-csv-to-sql/22.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/22.png" src="" data-width="616" data-height="366" style='width:616px;height:1px'/></div> </li>
 <li>Define new blob connection and give it a name. Select storage account created earlier so that azure automatically saves connection info.
-
-<div class="lazy sm-250"><img data-src="/images/azure-loading-csv-to-sql/23.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/23.png" src="" data-width="615" data-height="284" style='width:615px;height:1px'/></div> </li>
 <li>Select input container
-
-<div class="lazy sm-250"><img data-src="/images/azure-loading-csv-to-sql/24.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/24.png" src="" data-width="785" data-height="229" style='width:785px;height:1px'/></div> </li>
 <li>Add new action
-
-<div class="lazy sm-100"><img data-src="/images/azure-loading-csv-to-sql/25.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/25.png" src="" data-width="309" data-height="124" style='width:309px;height:1px'/></div> </li>
 <li>Find SQL server and select Execute Stored Procedure in Actions Tab
-
-<div class="lazy sm-200"><img data-src="/images/azure-loading-csv-to-sql/26.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/26.png" src="" data-width="560" data-height="255" style='width:560px;height:1px'/></div> </li>
 <li>Define new connection to SQL server, select previously created database and provide credentials for connectivity
-
-<div class="lazy sm-350"><img data-src="/images/azure-loading-csv-to-sql/27.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/27.png" src="" data-width="569" data-height="435" style='width:569px;height:1px'/></div> </li>
 <li>Once connected select previously created procedure
-
-<div class="lazy sm-150"><img data-src="/images/azure-loading-csv-to-sql/28.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/28.png" src="" data-width="560" data-height="159" style='width:560px;height:1px'/></div> </li>
 <li>Add new action</li>
 <li>Select Blob Storage <strong>Copy Blob</strong> Action - because there is no &lsquo;move&rsquo; action it is required for blob to be copied to new location and then for the old one to be removed.
 In the source URL select <strong>Path</strong> object from the trigger step.
-
-<div class="lazy sm-450"><img data-src="/images/azure-loading-csv-to-sql/29.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/29.png" src="" data-width="916" data-height="539" style='width:916px;height:1px'/></div> </li>
 <li>Define destination path as conjunction of static path <strong>/output/</strong> and dynamic name of file from the trigger step <strong>DisplayName</strong> and static underscore <strong>_</strong> and finishing it with expression <strong>utcNow()</strong> so that uploading new input files will create different output files with the date suffix.
-
-<div class="lazy sm-300"><img data-src="/images/azure-loading-csv-to-sql/30.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/30.png" src="" data-width="1011" data-height="294" style='width:1011px;height:1px'/></div> </li>
 <li>Copy blob action should look like this.
-
-<div class="lazy sm-250"><img data-src="/images/azure-loading-csv-to-sql/31.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/31.png" src="" data-width="559" data-height="225" style='width:559px;height:1px'/></div> </li>
 <li>Add new action</li>
 <li>Select blob <strong>delete blob</strong> action and add <strong>Path</strong> object from the trigger.
-
-<div class="lazy sm-250"><img data-src="/images/azure-loading-csv-to-sql/32.png" /></div>
-
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/32.png" src="" data-width="553" data-height="171" style='width:553px;height:1px'/></div> 
 <strong>WARNING</strong> Make sure to select Path from the trigger. If Path from Copy Blob action will be selected a newly created file will be removed.</li>
 <li>Click save</li>
 </ol>
@@ -420,21 +389,17 @@ In the source URL select <strong>Path</strong> object from the trigger step.
 <ol>
 <li>Navigate to blob storage input container</li>
 <li>Click on the upload button and upload input.csv file
-
-<div class="lazy sm-250"><img data-src="/images/azure-loading-csv-to-sql/20.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/20.png" src="" data-width="990" data-height="349" style='width:990px;height:1px'/></div> </li>
 <li>Check if the logic app ran by going to logic app interface
-
-<div class="lazy sm-250"><img data-src="/images/azure-loading-csv-to-sql/34.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/34.png" src="" data-width="852" data-height="170" style='width:852px;height:1px'/></div> </li>
 <li>Check out the output container
-
-<div class="lazy sm-250"><img data-src="/images/azure-loading-csv-to-sql/33.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/33.png" src="" data-width="693" data-height="301" style='width:693px;height:1px'/></div> </li>
 <li>And finally check the data in the database from the query editor
-
-<div class="lazy sm-400"><img data-src="/images/azure-loading-csv-to-sql/35.png" /></div>
-</li>
+ 
+<div class="lazy"><img data-src="/images/azure-loading-csv-to-sql/35.png" src="" data-width="559" data-height="531" style='width:559px;height:1px'/></div> </li>
 </ol>
 
 <h2 id="what-s-next">What&rsquo;s next?</h2>
@@ -686,8 +651,6 @@ s.setAttribute('data-timestamp', +new Date());
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
   
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
