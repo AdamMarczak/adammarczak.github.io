@@ -142,7 +142,7 @@
 
 <h2 id="design">Design</h2>
 
-<p>In this article Azure Analysis Services REST api will be used. This second covers high level principles on how this process should be done.</p>
+<p>In this article Azure Analysis Services REST API will be used. This second covers high level principles on how this process should be done.</p>
 
 <p>In high level Azure Analysis Services API looks as follows
  
@@ -154,8 +154,9 @@
 <h3 id="refreshing-model-with-post-refreshes">Refreshing model with POST /refreshes</h3>
 
 <p>In order to refresh model on analysis services a REST call must be performed on
-https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt;serverName&gt;</strong>/models/<strong>&lt;resource&gt;</strong>/refresh
-As per diagram
+https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt;serverName&gt;</strong>/models/<strong>&lt;resource&gt;</strong>/refresh</p>
+
+<p>As per diagram
  
 <div class="lazy" style="max-height: 155px">
     <div style="padding-bottom:17.51412429378531%"></div>
@@ -163,8 +164,8 @@ As per diagram
 </div>  </p>
 
 <ul>
-<li><strong>&lt;rollout&gt;</strong> region name where analysis services is deployed. This can be retreived from analysis services URL.</li>
-<li><strong>&lt;serverName&gt;</strong> name of azure resource, this is also unique public dns name for analysis services.</li>
+<li><strong>&lt;rollout&gt;</strong> region name where analysis services is deployed. This can be retrieved from analysis services URL.</li>
+<li><strong>&lt;serverName&gt;</strong> name of azure resource, this is also unique public DNS name for analysis services.</li>
 <li><strong>&lt;resource&gt;</strong> name of analysis services model deployed on the server.</li>
 </ul>
 
@@ -188,7 +189,7 @@ As per diagram
 
 <ul>
 <li><strong>Type</strong> a <a href="https://docs.microsoft.com/en-us/bi-reference/tmsl/refresh-command-tmsl">TMSL refresh type</a>. Accepted options are: full, clearValues, calculate, dataOnly, automatic, add, defragment.</li>
-<li><strong>CommitMode</strong> is defining if objects during refresh will be commited in batches or only when completed. Currently only three options are valid: default, transactional, partialBatch.</li>
+<li><strong>CommitMode</strong> is defining if objects during refresh will be committed in batches or only when completed. Currently only three options are valid: default, transactional, partialBatch.</li>
 <li><strong>MaxParallelism</strong> how many parallel threads are processing the model. Must be within MaxParallelism setting of the server.</li>
 <li><strong>RetryCount</strong> how many times server retries operation before failing.</li>
 <li><strong>Objects</strong> array of objects to refresh. Tables or partitions are accepted. No objects on the list means entire model.</li>
@@ -237,8 +238,8 @@ https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt
 </div>  </p>
 
 <ul>
-<li><strong>&lt;rollout&gt;</strong> region name where analysis services is deployed. This can be retreived from analysis services URL.</li>
-<li><strong>&lt;serverName&gt;</strong> name of azure resource, this is also unique public dns name for analysis services.</li>
+<li><strong>&lt;rollout&gt;</strong> region name where analysis services is deployed. This can be retrieved from analysis services URL.</li>
+<li><strong>&lt;serverName&gt;</strong> name of azure resource, this is also unique public DNS name for analysis services.</li>
 <li><strong>&lt;resource&gt;</strong> name of analysis services model deployed on the server.</li>
 <li><strong>&lt;refreshId&gt;</strong> name of analysis services model deployed on the server.</li>
 </ul>
@@ -359,7 +360,7 @@ https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt
     <div style="padding-bottom:38.71559633027523%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/29.png" src=""/> 
 </div>  </li>
-<li>Click on <strong>Certificates &amp; secres</strong>
+<li>Click on <strong>Certificates &amp; secrets</strong>
 
 <div class="lazy" style="max-height: 359px">
     <div style="padding-bottom:124.65277777777777%"></div>
@@ -485,7 +486,7 @@ In this example this would mean value
 
 <ul>
 <li><strong>Method</strong> - submitting new refresh schedules are always done with <strong>POST</strong> calls</li>
-<li><strong>URI</strong> is build as https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt;serverName&gt;</strong>/models/<strong>&lt;resource&gt;</strong>/refresh
+<li><strong>URI</strong> is built as https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt;serverName&gt;</strong>/models/<strong>&lt;resource&gt;</strong>/refresh
 
 <div class="lazy" style="max-height: 155px">
     <div style="padding-bottom:17.51412429378531%"></div>
@@ -632,7 +633,7 @@ HTTP call which submits refresh to analysis services return &ldquo;Location&rdqu
     <div style="padding-bottom:18.97482014388489%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/22.png" src=""/> 
 </div>  </li>
-<li>Configure with expression which replaces current value with retreived status using following expression
+<li>Configure with expression which replaces current value with retrieved status using following expression
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">body(&#39;HTTP_</span><span class="mi">2</span><span class="err">&#39;)</span><span class="p">[</span><span class="err">&#39;status&#39;</span><span class="p">]</span></code></pre></div></li>
 <li>Save Logic App and run it
 
