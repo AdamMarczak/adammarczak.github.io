@@ -100,7 +100,7 @@
       </div>
     </div>
     <div class="header-filter" 
-         style="background-image: url('/images/background.jpg');">
+         style="background-image: url('/images/background.jpg');background-color: #283743;">
     </div>
 
   </div>
@@ -110,9 +110,11 @@
         <div class="container">
           <div class="row">
 <div class="col-md-9 single-posts-wrap">
-    <article id="/posts/precompiled-bots-for-bot-service/" class="article-section section-text">
-            <img src="https://marczak.io/images/compilable-bots/splash.png">
-            <a target="_blank" 
+    <article id="/posts/precompiled-bots-for-bot-service/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 1080px">
+    <div style="padding-bottom:56.36743215031315%"></div>
+    <img data-src="/images/compilable-bots/splash.png" src=""/> 
+</div> <a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
    href="https://github.com/MarczakIO/precompiled-bots">
@@ -153,29 +155,47 @@
 <ol>
 <li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
 <li>Find Azure Bot Service in Marketplace
- 
-<div class="lazy"><img data-src="/images/compilable-bots/1.jpg" src="" data-width="1012" data-height="303" style='width:1012px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 303px">
+    <div style="padding-bottom:29.940711462450594%"></div>
+    <img data-src="/images/compilable-bots/1.jpg" src=""/> 
+</div>  </li>
 <li>Create Bot Service
- 
-<div class="lazy"><img data-src="/images/compilable-bots/2.jpg" src="" data-width="729" data-height="476" style='width:729px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 476px">
+    <div style="padding-bottom:65.29492455418381%"></div>
+    <img data-src="/images/compilable-bots/2.jpg" src=""/> 
+</div>  </li>
 <li>Fill in the data.
 
 <ul>
 <li><strong>Consumption Plan</strong> will <a href="https://azure.microsoft.com/en-us/pricing/details/functions/">Functions pricing</a> model (pay per execution). Preferred for most bots.</li>
 <li><strong>App Service Plan</strong> will use <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/">App Service</a> (pay for reserved capacity). Preferred if using Free Tier for learning purposes.
- 
-<div class="lazy"><img data-src="/images/compilable-bots/3.jpg" src="" data-width="673" data-height="684" style='width:673px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 684px">
+    <div style="padding-bottom:101.63447251114412%"></div>
+    <img data-src="/images/compilable-bots/3.jpg" src=""/> 
+</div>  
 Portal should automatically open bot editor after deployment is successful. If not open bot can be opened via either Portal &gt; App Services, Notifications or Dashboard if &lsquo;Pin to Dashboard&rsquo; option was selected.</li>
 </ul></li>
 <li>Click create button redirects to Microsoft App Registration page where application must be first registered.
- 
-<div class="lazy"><img data-src="/images/compilable-bots/4.jpg" src="" data-width="836" data-height="390" style='width:836px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 390px">
+    <div style="padding-bottom:46.65071770334928%"></div>
+    <img data-src="/images/compilable-bots/4.jpg" src=""/> 
+</div>  
 <strong>Note</strong>: Forgetting to save app password might be troublesome in some scenarios but this isn&rsquo;t the case. App password will be available in bot app settings
- 
-<div class="lazy"><img data-src="/images/compilable-bots/5.jpg" src="" data-width="470" data-height="672" style='width:470px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 672px">
+    <div style="padding-bottom:142.9787234042553%"></div>
+    <img data-src="/images/compilable-bots/5.jpg" src=""/> 
+</div>  </li>
 <li>Set C# as language and choose Form template.
- 
-<div class="lazy"><img data-src="/images/compilable-bots/6.jpg" src="" data-width="1098" data-height="875" style='width:1098px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 875px">
+    <div style="padding-bottom:79.69034608378871%"></div>
+    <img data-src="/images/compilable-bots/6.jpg" src=""/> 
+</div>  </li>
 </ol>
 
 <h2 id="converting-template">Converting template</h2>
@@ -184,16 +204,22 @@ Portal should automatically open bot editor after deployment is successful. If n
 
 <ol>
 <li>Create new Functions Project in Visual Studio by selecting Azure Functions project
- 
-<div class="lazy"><img data-src="/images/compilable-bots/8.jpg" src="" data-width="527" data-height="325" style='width:527px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 325px">
+    <div style="padding-bottom:61.66982922201139%"></div>
+    <img data-src="/images/compilable-bots/8.jpg" src=""/> 
+</div>  
 In order for Azure Functions to appear on the list following items must be met
 
 <ul>
 <li>Visual Studio is in version 15.3 and above</li>
 <li>Visual Studio Azure development tools are installed</li>
 <li>Visual Studio Azure Function Tools extension is up to date
- 
-<div class="lazy"><img data-src="/images/compilable-bots/7.jpg" src="" data-width="1512" data-height="850" style='width:1512px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 850px">
+    <div style="padding-bottom:56.216931216931215%"></div>
+    <img data-src="/images/compilable-bots/7.jpg" src=""/> 
+</div>  </li>
 <li>More into at <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs">MSDN article</a></li>
 </ul></li>
 <li>Right-click on project references and select Manage Nuget Packages
@@ -207,11 +233,17 @@ There are three files that needs to be moved <strong>Messages.csx</strong> to <s
 
 <ol>
 <li>Right-click the project and Select Add New Item
- 
-<div class="lazy"><img data-src="/images/compilable-bots/9.jpg" src="" data-width="535" data-height="289" style='width:535px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 289px">
+    <div style="padding-bottom:54.018691588785046%"></div>
+    <img data-src="/images/compilable-bots/9.jpg" src=""/> 
+</div>  </li>
 <li>Select Http Trigger template and name the file Messages
- 
-<div class="lazy"><img data-src="/images/compilable-bots/10.jpg" src="" data-width="797" data-height="516" style='width:797px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 516px">
+    <div style="padding-bottom:64.74278544542032%"></div>
+    <img data-src="/images/compilable-bots/10.jpg" src=""/> 
+</div>  </li>
 <li>Copy the body of messages function from messages.csx to messages.cs file and fix missing namespaces. Use <strong>CTRL+.</strong> shortcut.
 Note: Only body of the function should be copied, function definition should be left as it was generated by VS.</li>
 <li>Right-click the project and Select Add New Item and add two new classes MainDialog.cs and BasicForm.cs</li>
@@ -221,18 +253,30 @@ Note: Only body of the function should be copied, function definition should be 
 
 <ol>
 <li>Go to portal and in your bot editing window select Settings tab and in Advanced Settings section click Open button
- 
-<div class="lazy"><img data-src="/images/compilable-bots/11.jpg" src="" data-width="937" data-height="545" style='width:937px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 545px">
+    <div style="padding-bottom:58.16435432230523%"></div>
+    <img data-src="/images/compilable-bots/11.jpg" src=""/> 
+</div>  </li>
 <li>Click download Publish Profile
- 
-<div class="lazy"><img data-src="/images/compilable-bots/12.jpg" src="" data-width="786" data-height="175" style='width:786px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 175px">
+    <div style="padding-bottom:22.264631043256998%"></div>
+    <img data-src="/images/compilable-bots/12.jpg" src=""/> 
+</div>  </li>
 </ol></li>
 <li>Right-click on the Visual Studio project and select Publish. From the given options click on <strong>Import Profile</strong> and hit Publish.
- 
-<div class="lazy"><img data-src="/images/compilable-bots/13.jpg" src="" data-width="733" data-height="315" style='width:733px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 315px">
+    <div style="padding-bottom:42.97407912687585%"></div>
+    <img data-src="/images/compilable-bots/13.jpg" src=""/> 
+</div>  </li>
 <li>Select location of your profile download location and publishing process will automatically start. Project automatically rebuilds and restores packages at this point so it might take longer the first time.
- 
-<div class="lazy"><img data-src="/images/compilable-bots/14.jpg" src="" data-width="824" data-height="347" style='width:824px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 347px">
+    <div style="padding-bottom:42.11165048543689%"></div>
+    <img data-src="/images/compilable-bots/14.jpg" src=""/> 
+</div>  </li>
 </ol>
 
 <p>After successful publishing give platform a moment to rebuild the bot and start testing it right away. Testing in browser works fine although developers no longer will be able to see or modify the code there.</p>
@@ -240,8 +284,11 @@ Note: Only body of the function should be copied, function definition should be 
 <h3 id="but-hey-something-is-wrong">But HEY! Something is wrong!</h3>
 
 <p>It takes less than a minute to notice that something is wrong. When talking to bot every conversation resets to the beginning. The root cause of this issue is that in current version of bot framework and azure functions there is a deserialization issue which results in bot losing it state and therefore starting every conversation from the beginning.
- 
-<div class="lazy"><img data-src="/images/compilable-bots/15.jpg" src="" data-width="587" data-height="872" style='width:587px;height:1px'/></div> </p>
+
+<div class="lazy" style="max-height: 872px">
+    <div style="padding-bottom:148.5519591141397%"></div>
+    <img data-src="/images/compilable-bots/15.jpg" src=""/> 
+</div>  </p>
 
 <p>Happily for everyone Github user <a href="https://github.com/berhir">berhir</a> found a decent workaround which he posted <a href="https://github.com/Microsoft/BotBuilder/issues/2407">here</a>.</p>
 
@@ -303,8 +350,11 @@ Note: Only body of the function should be copied, function definition should be 
 </span><span class="ln">25</span>    <span class="k">using</span> <span class="p">(</span><span class="n">BotService</span><span class="p">.</span><span class="n">Initialize</span><span class="p">())</span></code></pre></div></li>
 <li>republish the bot</li>
 <li>Test it
- 
-<div class="lazy"><img data-src="/images/compilable-bots/16.jpg" src="" data-width="591" data-height="823" style='width:591px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 823px">
+    <div style="padding-bottom:139.2554991539763%"></div>
+    <img data-src="/images/compilable-bots/16.jpg" src=""/> 
+</div>  </li>
 </ol>
 
 <p>That&rsquo;s it. In just about 10 minutes of work precompiled bot is fully functional and now proper CI/CD and unit testing can be done.</p>
@@ -317,8 +367,7 @@ Note: Only body of the function should be copied, function definition should be 
 <div class="interactive-frame inactive " src="https://webchat.botframework.com/embed/precompiled-bot_KPYYsDRFdC4?s=3MPqhp7I1fI.cwA.PTE.dCJJChIHAqirIJ-VbptG5T7QxMyulwGZHx-c3QBJjw0">
     <button class="btn iframe-button btn-webchat">Click to test the chatbot!</button>
     <iframe class="webchat" frameborder="0"></iframe>
-</div>
-            <a target="_blank" 
+</div><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
    href="https://github.com/MarczakIO/precompiled-bots">
@@ -332,8 +381,7 @@ Note: Only body of the function should be copied, function definition should be 
                 <h3 class="text-center">Did you enjoy the article?</h3>
             </div>
             <div class="col-md-6 text-center">
-                <h4 class="">Share it!</h4>
-                <a target="_blank" 
+                <h4 class="">Share it!</h4><a target="_blank" 
    rel="tooltip" 
    data-original-title="Share on Facebook" 
    class="btn btn-just-icon btn-share btn-facebook"
@@ -358,7 +406,6 @@ Note: Only body of the function should be copied, function definition should be 
             </div>
             <div class="col-md-6 text-center large">
                 <h4 class="">More tagged posts</h4>
-                
   <div class="tag-list">
     <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
       <img src="https://marczak.io/images/tags//azure.svg" alt="Azure"/>
@@ -376,8 +423,7 @@ Note: Only body of the function should be copied, function definition should be 
             </div>
         </div>
         <div class="row comments">
-            <div class="col-md-12">
-                <div id="disqus_thread"></div>
+            <div class="col-md-12"><div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
 this.page.url = "https:\/\/marczak.io\/posts\/precompiled-bots-for-bot-service\/"; 
@@ -400,7 +446,13 @@ s.setAttribute('data-timestamp', +new Date());
               <aside id="secondary" class="blog-sidebar" role="complementary"><div id="recent-posts" class="recent-posts widget widget_recent_entries">
 <h5>Recent Posts</h5>
 <ul>
-        <li><b class="list-header">June</b></li>
+        <li><b class="list-header">2019 June</b></li>
+        <li class="indented">
+            <a href="/posts/2019/06/logic-apps-refresh-analysis-services/" title="Refreshing Azure Analysis Services models using Logic Apps" rel="bookmark">
+                <b>15th </b>Refreshing Azure Analysis Services models using Logic Apps
+            </a>
+        </li>
+        <li><b class="list-header">2018 June</b></li>
         <li class="indented">
             <a href="/posts/analysis-services-onprem-integration/" title="Azure Analysis Services hybrid enrivonment with on-premises databases" rel="bookmark">
                 <b>26th </b>Azure Analysis Services hybrid enrivonment with on-premises databases
@@ -411,41 +463,44 @@ s.setAttribute('data-timestamp', +new Date());
                 <b>3rd </b>Quick, easy and cheap way to automate data loading from CSV file into Azure SQL
             </a>
         </li>
-        <li><b class="list-header">March</b></li>
+        <li><b class="list-header">2018 March</b></li>
         <li class="indented">
             <a href="/posts/botseries-dev-done-easy/" title="Effective chatbot development with ngrok" rel="bookmark">
                 <b>12th </b>Effective chatbot development with ngrok
             </a>
         </li>
-        <li><b class="list-header">February</b></li>
+        <li><b class="list-header">2018 February</b></li>
         <li class="indented">
             <a href="/posts/netcore-vuejs-crud/" title="Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB" rel="bookmark">
                 <b>17th </b>Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB
-            </a>
-        </li>
-        <li class="indented">
-            <a href="/posts/netcore-vuejs/" title="Building .NET Core 2.0 web apps with Vue.js single file components using VS Code" rel="bookmark">
-                <b>4th </b>Building .NET Core 2.0 web apps with Vue.js single file components using VS Code
             </a>
         </li>
 </ul>
 </div><div id="categories-3" class="widget widget_categories">
   <h5>Tags</h5>
   <ul class="tag-list">
-      <li> 
-        <img src="https://marczak.io/images/tags//analysis-services.svg" alt="Analysis Services"/>
-        <a href="https://marczak.io/tags/analysis-services">Analysis Services (1)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//azure.svg" alt="Azure"/>
-        <a href="https://marczak.io/tags/azure">Azure (9)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (10)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//bot-service.svg" alt="Bot Service"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//bot-service.svg" alt="Bot Service"/> 
+        </div> 
         <a href="https://marczak.io/tags/bot-service">Bot Service (5)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//cognitive-services.svg" alt="Cognitive Services"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
         <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
       </li>
       <li class="child"> 
@@ -456,52 +511,76 @@ s.setAttribute('data-timestamp', +new Date());
         <img src="https://marczak.io/images/tags//text-analytics.svg" alt="Text Analytics"/>
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//cosmos-db.svg" alt="Cosmos Db"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//cosmos-db.svg" alt="Cosmos Db"/> 
+        </div> 
         <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//data-gateway.svg" alt="Data Gateway"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
         <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//dotnet-core.svg" alt="Dotnet Core"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//dotnet-core.svg" alt="Dotnet Core"/> 
+        </div> 
         <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//flow.svg" alt="Flow"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//flow.svg" alt="Flow"/> 
+        </div> 
         <a href="https://marczak.io/tags/flow">Flow (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//functions.svg" alt="Functions"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//functions.svg" alt="Functions"/> 
+        </div> 
         <a href="https://marczak.io/tags/functions">Functions (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//logic-apps.svg" alt="Logic Apps"/>
-        <a href="https://marczak.io/tags/logic-apps">Logic Apps (1)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//sql.svg" alt="Sql"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//sql.svg" alt="Sql"/> 
+        </div> 
         <a href="https://marczak.io/tags/sql">Sql (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//teams.svg" alt="Teams"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//teams.svg" alt="Teams"/> 
+        </div> 
         <a href="https://marczak.io/tags/teams">Teams (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//visual-studio.svg" alt="Visual Studio"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
         <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//visual-studio-code.svg" alt="Visual Studio Code"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
         <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//vue.js.svg" alt="Vue.js"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//vue.js.svg" alt="Vue.js"/> 
+        </div> 
         <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//webpack.svg" alt="Webpack"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//webpack.svg" alt="Webpack"/> 
+        </div> 
         <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
       </li>
   </ul>

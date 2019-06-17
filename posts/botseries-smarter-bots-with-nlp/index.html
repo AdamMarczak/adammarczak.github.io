@@ -100,7 +100,7 @@
       </div>
     </div>
     <div class="header-filter" 
-         style="background-image: url('/images/background.jpg');">
+         style="background-image: url('/images/background.jpg');background-color: #283743;">
     </div>
 
   </div>
@@ -110,9 +110,11 @@
         <div class="container">
           <div class="row">
 <div class="col-md-9 single-posts-wrap">
-    <article id="/posts/botseries-smarter-bots-with-nlp/" class="article-section section-text">
-            <img src="https://marczak.io/images/botseries-luis/splash.png">
-            <a target="_blank" 
+    <article id="/posts/botseries-smarter-bots-with-nlp/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 1090px">
+    <div style="padding-bottom:56.74128058302967%"></div>
+    <img data-src="/images/botseries-luis/splash.png" src=""/> 
+</div> <a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
    href="https://github.com/MarczakIO/botseries-luisbot">
@@ -168,8 +170,11 @@ In LUIS building language models is very simple. At the very least a single inte
 <p><a href="https://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/"><img class="icon" src="/images/tags/luis.svg"/>LUIS</a></p>
 
 <p>Connected into final design
- 
-<div class="lazy"><img data-src="/images/botseries-luis/3.png" src="" data-width="1400" data-height="539" style='width:1400px;height:1px'/></div> </p>
+
+<div class="lazy" style="max-height: 539px">
+    <div style="padding-bottom:38.5%"></div>
+    <img data-src="/images/botseries-luis/3.png" src=""/> 
+</div>  </p>
 
 <h3 id="luis-portal">LUIS portal</h3>
 
@@ -203,31 +208,49 @@ In LUIS building language models is very simple. At the very least a single inte
 <ol>
 <li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
 <li>Find Azure Bot Service in Marketplace
- 
-<div class="lazy"><img data-src="/images/botseries-luis/6.png" src="" data-width="717" data-height="258" style='width:717px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 258px">
+    <div style="padding-bottom:35.98326359832636%"></div>
+    <img data-src="/images/botseries-luis/6.png" src=""/> 
+</div>  </li>
 <li>Create Bot Service
- 
-<div class="lazy"><img data-src="/images/botseries-luis/7.png" src="" data-width="655" data-height="338" style='width:655px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 338px">
+    <div style="padding-bottom:51.603053435114504%"></div>
+    <img data-src="/images/botseries-luis/7.png" src=""/> 
+</div>  </li>
 <li>Fill in the data.
 
 <ul>
 <li><strong>Consumption Plan</strong> will <a href="https://azure.microsoft.com/en-us/pricing/details/functions/">Functions pricing</a> model (pay per execution). Preferred for most bots.</li>
 <li><strong>App Service Plan</strong> will use <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/">App Service</a> (pay for reserved capacity). Preferred if using Free Tier for learning purposes.
- 
-<div class="lazy"><img data-src="/images/botseries-luis/8.png" src="" data-width="344" data-height="443" style='width:344px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 443px">
+    <div style="padding-bottom:128.77906976744185%"></div>
+    <img data-src="/images/botseries-luis/8.png" src=""/> 
+</div>  
 Portal should automatically open bot editor after deployment is successful. If not open bot can be opened via either Portal &gt; App Services, Notifications or Dashboard if &lsquo;Pin to Dashboard&rsquo; option was selected.</li>
 </ul></li>
 <li>Click create button redirects to bot wizard where C# should be set language and <strong>Language Understanding</strong> as a bot template.
- 
-<div class="lazy"><img data-src="/images/botseries-luis/9.png" src="" data-width="1347" data-height="642" style='width:1347px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 642px">
+    <div style="padding-bottom:47.661469933184854%"></div>
+    <img data-src="/images/botseries-luis/9.png" src=""/> 
+</div>  </li>
 <li>Microsoft App Registration page where application must be first registered.<br />
- 
-<div class="lazy"><img data-src="/images/botseries-luis/10.png" src="" data-width="678" data-height="292" style='width:678px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 292px">
+    <div style="padding-bottom:43.067846607669615%"></div>
+    <img data-src="/images/botseries-luis/10.png" src=""/> 
+</div>  
 <strong>Note</strong>: Forgetting to save app password might be troublesome in some scenarios but this isn&rsquo;t the case. App password will be available in bot app settings</li>
 <li>Once bot is created developer is transferred back to Azure Development portal and after hitting Create button the bot is provisioned. Provisioning takes between 2 and 5 minutes and during that time template sets up Bot Framework application, storage account for the code and logic, bot service application and application insights.</li>
 <li>Test the bot with IDE chat control
- 
-<div class="lazy"><img data-src="/images/botseries-luis/11.png" src="" data-width="423" data-height="241" style='width:423px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 241px">
+    <div style="padding-bottom:56.973995271867615%"></div>
+    <img data-src="/images/botseries-luis/11.png" src=""/> 
+</div>  </li>
 </ol>
 
 <h2 id="model-learning">Model Learning</h2>
@@ -258,17 +281,29 @@ Portal should automatically open bot editor after deployment is successful. If n
 <ol>
 <li>Log into <a href="https://luis.ai">LUIS.AI</a> portal</li>
 <li>Select application from the list
- 
-<div class="lazy"><img data-src="/images/botseries-luis/12.png" src="" data-width="352" data-height="355" style='width:352px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 355px">
+    <div style="padding-bottom:100.85227272727273%"></div>
+    <img data-src="/images/botseries-luis/12.png" src=""/> 
+</div>  </li>
 <li>When presented with dashboard navigate to Intents section
- 
-<div class="lazy"><img data-src="/images/botseries-luis/13.png" src="" data-width="1297" data-height="705" style='width:1297px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 705px">
+    <div style="padding-bottom:54.3562066306862%"></div>
+    <img data-src="/images/botseries-luis/13.png" src=""/> 
+</div>  </li>
 <li>Select Add Intent button to provide first intent name Series.Info
- 
-<div class="lazy"><img data-src="/images/botseries-luis/14.png" src="" data-width="701" data-height="447" style='width:701px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 447px">
+    <div style="padding-bottom:63.7660485021398%"></div>
+    <img data-src="/images/botseries-luis/14.png" src=""/> 
+</div>  </li>
 <li>And enter few utterances into the field and press enter
- 
-<div class="lazy"><img data-src="/images/botseries-luis/15.png" src="" data-width="488" data-height="265" style='width:488px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 265px">
+    <div style="padding-bottom:54.30327868852459%"></div>
+    <img data-src="/images/botseries-luis/15.png" src=""/> 
+</div>  
 Sentences used for this demo are
 
 <ul>
@@ -299,14 +334,20 @@ Sentences used for this demo are
 </ul></li>
 <li>Social.Location intent will be skipped for now to keep it simple</li>
 <li>Go to Train and Test section and select Train Application button
- 
-<div class="lazy"><img data-src="/images/botseries-luis/16.png" src="" data-width="457" data-height="134" style='width:457px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 134px">
+    <div style="padding-bottom:29.321663019693656%"></div>
+    <img data-src="/images/botseries-luis/16.png" src=""/> 
+</div>  </li>
 <li>At this point to avoid mistakes and pointless debugging sessions a testing panel should be used to check trained model
 <img src="/images/botseries-luis/17.png" alt="Screenshot" />
 Intents are scored from 0 to 1 which means from 0% to 100%. If bot is not responding as intended it might be that it wasn&rsquo;t learned properly. Usually it means that sentences were either too similar or too generic.</li>
 <li>Navigate to Publish App section and select Publish to production slot. Sometimes, I&rsquo;m not sure why, portal fails to publish the app so in case this happens just republish the app.
- 
-<div class="lazy"><img data-src="/images/botseries-luis/18.png" src="" data-width="590" data-height="338" style='width:590px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 338px">
+    <div style="padding-bottom:57.28813559322034%"></div>
+    <img data-src="/images/botseries-luis/18.png" src=""/> 
+</div>  </li>
 <li>Now that the bot is published each of the intents must find its own action within BasicLuisDialog.csx class. Class method name does not matter but the attribute on the class does. Each method that should be mapped to luis intent must have <strong>LuisIntent</strong> attribute with parameter being exact intent name from LUIS service.
 End State of the class should be looking like this with highlighted the key parts that were changed.
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
@@ -348,8 +389,11 @@ End State of the class should be looking like this with highlighted the key part
     <span class="p">}</span>
 <span class="p">}</span></code></pre></div></li>
 <li>Save and test the application. Notice how sentences do not have to be the same as provided in the learning model. This is exactly the power of machine learning.
- 
-<div class="lazy"><img data-src="/images/botseries-luis/19.png" src="" data-width="425" data-height="414" style='width:425px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 414px">
+    <div style="padding-bottom:97.41176470588235%"></div>
+    <img data-src="/images/botseries-luis/19.png" src=""/> 
+</div>  
 In case a bot would return None intent multiple of times try
 
 <ol>
@@ -367,8 +411,11 @@ In case a bot would return None intent multiple of times try
 <ol>
 <li>Go back to LUIS.AI portal and navigate to entities section</li>
 <li>Create new entity of by pressing Add Custom Entity button
- 
-<div class="lazy"><img data-src="/images/botseries-luis/20.png" src="" data-width="684" data-height="490" style='width:684px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 490px">
+    <div style="padding-bottom:71.6374269005848%"></div>
+    <img data-src="/images/botseries-luis/20.png" src=""/> 
+</div>  
 Give it a name SocialName and a type of <strong>List</strong>. Reason for this is that list entities are best for predefined set of items like list of available social media. To learn more about entity types visit <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-concept-entity-types">LUIS documenation</a></li>
 <li>When created list entity must be provided with canonical form of names and optionally any synonyms or aliases. For this demo following list was used.
 
@@ -379,8 +426,11 @@ Give it a name SocialName and a type of <strong>List</strong>. Reason for this i
 <li>twitter</li>
 <li>email with alias mail</li>
 <li>linkedin with alias ln
- 
-<div class="lazy"><img data-src="/images/botseries-luis/21.png" src="" data-width="372" data-height="473" style='width:372px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 473px">
+    <div style="padding-bottom:127.15053763440861%"></div>
+    <img data-src="/images/botseries-luis/21.png" src=""/> 
+</div>  </li>
 </ul></li>
 <li>Go to Intents and select Add Intent button to provide first intent name Social.Location</li>
 <li>And enter few utterances into the field and press enter
@@ -395,13 +445,19 @@ Sentences used for this demo are
 <li>give me email url</li>
 <li>what is the linkedin address</li>
 <li>Correctly recognized entities should be marked as <strong>[$SocialName]</strong>
- 
-<div class="lazy"><img data-src="/images/botseries-luis/22.png" src="" data-width="432" data-height="411" style='width:432px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 411px">
+    <div style="padding-bottom:95.13888888888889%"></div>
+    <img data-src="/images/botseries-luis/22.png" src=""/> 
+</div>  
 Of&rsquo;course link, address and url could be optimized with LUIS phrases but this isn&rsquo;t part of this tutorial.</li>
 </ul></li>
 <li>Retrain and test the bot
- 
-<div class="lazy"><img data-src="/images/botseries-luis/23.png" src="" data-width="871" data-height="181" style='width:871px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 181px">
+    <div style="padding-bottom:20.780711825487945%"></div>
+    <img data-src="/images/botseries-luis/23.png" src=""/> 
+</div>  </li>
 <li>Publish the app</li>
 <li>Go back to Azure Portal to the BasicLuisDialog.csx, there is couple of things that has to be done
 
@@ -440,8 +496,11 @@ Of&rsquo;course link, address and url could be optimized with LUIS phrases but t
     <span class="n">context</span><span class="p">.</span><span class="n">Wait</span><span class="p">(</span><span class="n">MessageReceived</span><span class="p">);</span>
 <span class="p">}</span></code></pre></div></li>
 <li>Test the bot
- 
-<div class="lazy"><img data-src="/images/botseries-luis/24.png" src="" data-width="465" data-height="813" style='width:465px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 813px">
+    <div style="padding-bottom:174.83870967741936%"></div>
+    <img data-src="/images/botseries-luis/24.png" src=""/> 
+</div>  </li>
 </ol>
 
 <h3 id="play-around-with-it">Play around with it!</h3>
@@ -452,8 +511,7 @@ Of&rsquo;course link, address and url could be optimized with LUIS phrases but t
 <div class="interactive-frame inactive " src="https://webchat.botframework.com/embed/marczakio-luisbot_8AztBVUjGUL?s=pXSnwtFYtA0.cwA.tyU.xn7HNf6CVYOPHLgaBUG1DlHtormOJbggoxdKMYScD40">
     <button class="btn iframe-button btn-webchat">Click to test the chatbot!</button>
     <iframe class="webchat" frameborder="0"></iframe>
-</div>
-            <a target="_blank" 
+</div><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
    href="https://github.com/MarczakIO/botseries-luisbot">
@@ -467,8 +525,7 @@ Of&rsquo;course link, address and url could be optimized with LUIS phrases but t
                 <h3 class="text-center">Did you enjoy the article?</h3>
             </div>
             <div class="col-md-6 text-center">
-                <h4 class="">Share it!</h4>
-                <a target="_blank" 
+                <h4 class="">Share it!</h4><a target="_blank" 
    rel="tooltip" 
    data-original-title="Share on Facebook" 
    class="btn btn-just-icon btn-share btn-facebook"
@@ -493,7 +550,6 @@ Of&rsquo;course link, address and url could be optimized with LUIS phrases but t
             </div>
             <div class="col-md-6 text-center large">
                 <h4 class="">More tagged posts</h4>
-                
   <div class="tag-list">
     <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
       <img src="https://marczak.io/images/tags//azure.svg" alt="Azure"/>
@@ -511,8 +567,7 @@ Of&rsquo;course link, address and url could be optimized with LUIS phrases but t
             </div>
         </div>
         <div class="row comments">
-            <div class="col-md-12">
-                <div id="disqus_thread"></div>
+            <div class="col-md-12"><div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
 this.page.url = "https:\/\/marczak.io\/posts\/botseries-smarter-bots-with-nlp\/"; 
@@ -535,7 +590,13 @@ s.setAttribute('data-timestamp', +new Date());
               <aside id="secondary" class="blog-sidebar" role="complementary"><div id="recent-posts" class="recent-posts widget widget_recent_entries">
 <h5>Recent Posts</h5>
 <ul>
-        <li><b class="list-header">June</b></li>
+        <li><b class="list-header">2019 June</b></li>
+        <li class="indented">
+            <a href="/posts/2019/06/logic-apps-refresh-analysis-services/" title="Refreshing Azure Analysis Services models using Logic Apps" rel="bookmark">
+                <b>15th </b>Refreshing Azure Analysis Services models using Logic Apps
+            </a>
+        </li>
+        <li><b class="list-header">2018 June</b></li>
         <li class="indented">
             <a href="/posts/analysis-services-onprem-integration/" title="Azure Analysis Services hybrid enrivonment with on-premises databases" rel="bookmark">
                 <b>26th </b>Azure Analysis Services hybrid enrivonment with on-premises databases
@@ -546,41 +607,44 @@ s.setAttribute('data-timestamp', +new Date());
                 <b>3rd </b>Quick, easy and cheap way to automate data loading from CSV file into Azure SQL
             </a>
         </li>
-        <li><b class="list-header">March</b></li>
+        <li><b class="list-header">2018 March</b></li>
         <li class="indented">
             <a href="/posts/botseries-dev-done-easy/" title="Effective chatbot development with ngrok" rel="bookmark">
                 <b>12th </b>Effective chatbot development with ngrok
             </a>
         </li>
-        <li><b class="list-header">February</b></li>
+        <li><b class="list-header">2018 February</b></li>
         <li class="indented">
             <a href="/posts/netcore-vuejs-crud/" title="Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB" rel="bookmark">
                 <b>17th </b>Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB
-            </a>
-        </li>
-        <li class="indented">
-            <a href="/posts/netcore-vuejs/" title="Building .NET Core 2.0 web apps with Vue.js single file components using VS Code" rel="bookmark">
-                <b>4th </b>Building .NET Core 2.0 web apps with Vue.js single file components using VS Code
             </a>
         </li>
 </ul>
 </div><div id="categories-3" class="widget widget_categories">
   <h5>Tags</h5>
   <ul class="tag-list">
-      <li> 
-        <img src="https://marczak.io/images/tags//analysis-services.svg" alt="Analysis Services"/>
-        <a href="https://marczak.io/tags/analysis-services">Analysis Services (1)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//azure.svg" alt="Azure"/>
-        <a href="https://marczak.io/tags/azure">Azure (9)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (10)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//bot-service.svg" alt="Bot Service"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//bot-service.svg" alt="Bot Service"/> 
+        </div> 
         <a href="https://marczak.io/tags/bot-service">Bot Service (5)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//cognitive-services.svg" alt="Cognitive Services"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
         <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
       </li>
       <li class="child"> 
@@ -591,52 +655,76 @@ s.setAttribute('data-timestamp', +new Date());
         <img src="https://marczak.io/images/tags//text-analytics.svg" alt="Text Analytics"/>
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//cosmos-db.svg" alt="Cosmos Db"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//cosmos-db.svg" alt="Cosmos Db"/> 
+        </div> 
         <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//data-gateway.svg" alt="Data Gateway"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
         <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//dotnet-core.svg" alt="Dotnet Core"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//dotnet-core.svg" alt="Dotnet Core"/> 
+        </div> 
         <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//flow.svg" alt="Flow"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//flow.svg" alt="Flow"/> 
+        </div> 
         <a href="https://marczak.io/tags/flow">Flow (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//functions.svg" alt="Functions"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//functions.svg" alt="Functions"/> 
+        </div> 
         <a href="https://marczak.io/tags/functions">Functions (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//logic-apps.svg" alt="Logic Apps"/>
-        <a href="https://marczak.io/tags/logic-apps">Logic Apps (1)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//sql.svg" alt="Sql"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//sql.svg" alt="Sql"/> 
+        </div> 
         <a href="https://marczak.io/tags/sql">Sql (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//teams.svg" alt="Teams"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//teams.svg" alt="Teams"/> 
+        </div> 
         <a href="https://marczak.io/tags/teams">Teams (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//visual-studio.svg" alt="Visual Studio"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
         <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//visual-studio-code.svg" alt="Visual Studio Code"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
         <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//vue.js.svg" alt="Vue.js"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//vue.js.svg" alt="Vue.js"/> 
+        </div> 
         <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//webpack.svg" alt="Webpack"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//webpack.svg" alt="Webpack"/> 
+        </div> 
         <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
       </li>
   </ul>

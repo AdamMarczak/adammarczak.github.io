@@ -100,7 +100,7 @@
       </div>
     </div>
     <div class="header-filter" 
-         style="background-image: url('/images/background.jpg');">
+         style="background-image: url('/images/background.jpg');background-color: #283743;">
     </div>
 
   </div>
@@ -110,9 +110,11 @@
         <div class="container">
           <div class="row">
 <div class="col-md-9 single-posts-wrap">
-    <article id="/posts/botseries-rich-cards/" class="article-section section-text">
-            <img src="https://marczak.io/images/botseries-rich-cards/splash.png">
-            <a target="_blank" 
+    <article id="/posts/botseries-rich-cards/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 1080px">
+    <div style="padding-bottom:56.25%"></div>
+    <img data-src="/images/botseries-rich-cards/splash.png" src=""/> 
+</div> <a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
    href="https://github.com/MarczakIO/botseries-rich-cards">
@@ -269,8 +271,11 @@ Portal should automatically open bot editor after deployment is successful. If n
 
     <span class="k">return</span> <span class="n">heroCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
 <span class="p">}</span></code></pre></div>
-which outputs  
-<div class="lazy"><img data-src="/images/botseries-rich-cards/2.png" src="" data-width="362" data-height="412" style='width:362px;height:1px'/></div> </li>
+which outputs 
+<div class="lazy" style="max-height: 412px">
+    <div style="padding-bottom:113.8121546961326%"></div>
+    <img data-src="/images/botseries-rich-cards/2.png" src=""/> 
+</div>  </li>
 <li>Modify function <strong>GetSelectedCard</strong> by adding new case for Hero Card
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;</span> <span class="n">GetSelectedCard</span><span class="p">(</span><span class="kt">string</span> <span class="n">selectedCard</span><span class="p">)</span>
 <span class="p">{</span>
@@ -321,13 +326,19 @@ which outputs
 <p><div class="row">
     <div class="col-sm-6">
         <h5><b>PromptStyle.PerLine</b></h5>
-         
-<div class="lazy"><img data-src="/images/botseries-rich-cards/1a.png" src="" data-width="390" data-height="208" style='width:390px;height:1px'/></div> 
+        
+<div class="lazy" style="max-height: 208px">
+    <div style="padding-bottom:53.333333333333336%"></div>
+    <img data-src="/images/botseries-rich-cards/1a.png" src=""/> 
+</div>  
     </div>
     <div class="col-sm-6">
         <h5><b>PromptStyle.Keyboard</b></h5>
-         
-<div class="lazy"><img data-src="/images/botseries-rich-cards/1b.png" src="" data-width="396" data-height="248" style='width:396px;height:1px'/></div> 
+        
+<div class="lazy" style="max-height: 248px">
+    <div style="padding-bottom:62.62626262626262%"></div>
+    <img data-src="/images/botseries-rich-cards/1b.png" src=""/> 
+</div>  
     </div>
 </div>
 <br/></p>
@@ -361,8 +372,11 @@ which outputs
 
     <span class="k">return</span> <span class="n">heroCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
 <span class="p">}</span></code></pre></div>
-which outputs  
-<div class="lazy"><img data-src="/images/botseries-rich-cards/3.png" src="" data-width="359" data-height="243" style='width:359px;height:1px'/></div> </li>
+which outputs 
+<div class="lazy" style="max-height: 243px">
+    <div style="padding-bottom:67.68802228412257%"></div>
+    <img data-src="/images/botseries-rich-cards/3.png" src=""/> 
+</div>  </li>
 <li>Modify function <strong>GetSelectedCard</strong> by adding new case for Thumbnail Card
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;</span> <span class="n">GetSelectedCard</span><span class="p">(</span><span class="kt">string</span> <span class="n">selectedCard</span><span class="p">)</span>
 <span class="p">{</span>
@@ -431,8 +445,11 @@ which outputs
 
     <span class="k">return</span> <span class="n">receiptCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
 <span class="p">}</span></code></pre></div>
-which outputs  
-<div class="lazy"><img data-src="/images/botseries-rich-cards/4.png" src="" data-width="357" data-height="317" style='width:357px;height:1px'/></div> </li>
+which outputs 
+<div class="lazy" style="max-height: 317px">
+    <div style="padding-bottom:88.79551820728291%"></div>
+    <img data-src="/images/botseries-rich-cards/4.png" src=""/> 
+</div>  </li>
 <li>Modify function <strong>GetSelectedCard</strong> by adding new case for Thumbnail Card
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;</span> <span class="n">GetSelectedCard</span><span class="p">(</span><span class="kt">string</span> <span class="n">selectedCard</span><span class="p">)</span>
 <span class="p">{</span>
@@ -499,8 +516,11 @@ which outputs
 
     <span class="k">return</span> <span class="n">videoCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
 <span class="p">}</span></code></pre></div>
-which outputs  
-<div class="lazy"><img data-src="/images/botseries-rich-cards/5.png" src="" data-width="357" data-height="427" style='width:357px;height:1px'/></div> </li>
+which outputs 
+<div class="lazy" style="max-height: 427px">
+    <div style="padding-bottom:119.6078431372549%"></div>
+    <img data-src="/images/botseries-rich-cards/5.png" src=""/> 
+</div>  </li>
 <li>Modify function <strong>GetSelectedCard</strong> by adding new case for Thumbnail Card
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;</span> <span class="n">GetSelectedCard</span><span class="p">(</span><span class="kt">string</span> <span class="n">selectedCard</span><span class="p">)</span>
 <span class="p">{</span>
@@ -569,8 +589,11 @@ which outputs
 
     <span class="k">return</span> <span class="n">audioCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
 <span class="p">}</span></code></pre></div>
-which outputs  
-<div class="lazy"><img data-src="/images/botseries-rich-cards/6.png" src="" data-width="356" data-height="256" style='width:356px;height:1px'/></div> </li>
+which outputs 
+<div class="lazy" style="max-height: 256px">
+    <div style="padding-bottom:71.91011235955057%"></div>
+    <img data-src="/images/botseries-rich-cards/6.png" src=""/> 
+</div>  </li>
 <li>Modify function <strong>GetSelectedCard</strong> by adding new case for Thumbnail Card
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;</span> <span class="n">GetSelectedCard</span><span class="p">(</span><span class="kt">string</span> <span class="n">selectedCard</span><span class="p">)</span>
 <span class="p">{</span>
@@ -625,8 +648,11 @@ which outputs
 
     <span class="k">return</span> <span class="n">signinCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
 <span class="p">}</span></code></pre></div>
-which outputs  
-<div class="lazy"><img data-src="/images/botseries-rich-cards/7.png" src="" data-width="353" data-height="99" style='width:353px;height:1px'/></div> </li>
+which outputs 
+<div class="lazy" style="max-height: 99px">
+    <div style="padding-bottom:28.045325779036826%"></div>
+    <img data-src="/images/botseries-rich-cards/7.png" src=""/> 
+</div>  </li>
 <li>Modify function <strong>GetSelectedCard</strong> by adding new case for Thumbnail Card
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;</span> <span class="n">GetSelectedCard</span><span class="p">(</span><span class="kt">string</span> <span class="n">selectedCard</span><span class="p">)</span>
 <span class="p">{</span>
@@ -680,8 +706,11 @@ which outputs
         <span class="n">GetVideoCard</span><span class="p">()</span>
     <span class="p">};</span>
 <span class="p">}</span></code></pre></div>
-which outputs  
-<div class="lazy"><img data-src="/images/botseries-rich-cards/8.png" src="" data-width="719" data-height="428" style='width:719px;height:1px'/></div> </li>
+which outputs 
+<div class="lazy" style="max-height: 428px">
+    <div style="padding-bottom:59.52712100139082%"></div>
+    <img data-src="/images/botseries-rich-cards/8.png" src=""/> 
+</div>  </li>
 <li>Modify function <strong>GetSelectedCard</strong> by adding new case for Thumbnail Card
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;</span> <span class="n">GetSelectedCard</span><span class="p">(</span><span class="kt">string</span> <span class="n">selectedCard</span><span class="p">)</span>
 <span class="p">{</span>
@@ -740,8 +769,7 @@ which outputs
 <div class="interactive-frame inactive tall" src="https://webchat.botframework.com/embed/marczakio-rich-cards?s=1LJ4dXnAX7k.cwA.arI.ICj1CqaB_OcfGg0ABUEN81xWL1zz8uL91n30RFCksX4">
     <button class="btn iframe-button btn-webchat">Click to test the chatbot!</button>
     <iframe class="webchat" frameborder="0"></iframe>
-</div>
-            <a target="_blank" 
+</div><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
    href="https://github.com/MarczakIO/botseries-rich-cards">
@@ -755,8 +783,7 @@ which outputs
                 <h3 class="text-center">Did you enjoy the article?</h3>
             </div>
             <div class="col-md-6 text-center">
-                <h4 class="">Share it!</h4>
-                <a target="_blank" 
+                <h4 class="">Share it!</h4><a target="_blank" 
    rel="tooltip" 
    data-original-title="Share on Facebook" 
    class="btn btn-just-icon btn-share btn-facebook"
@@ -781,7 +808,6 @@ which outputs
             </div>
             <div class="col-md-6 text-center large">
                 <h4 class="">More tagged posts</h4>
-                
   <div class="tag-list">
     <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
       <img src="https://marczak.io/images/tags//azure.svg" alt="Azure"/>
@@ -793,8 +819,7 @@ which outputs
             </div>
         </div>
         <div class="row comments">
-            <div class="col-md-12">
-                <div id="disqus_thread"></div>
+            <div class="col-md-12"><div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
 this.page.url = "https:\/\/marczak.io\/posts\/botseries-rich-cards\/"; 
@@ -817,7 +842,13 @@ s.setAttribute('data-timestamp', +new Date());
               <aside id="secondary" class="blog-sidebar" role="complementary"><div id="recent-posts" class="recent-posts widget widget_recent_entries">
 <h5>Recent Posts</h5>
 <ul>
-        <li><b class="list-header">June</b></li>
+        <li><b class="list-header">2019 June</b></li>
+        <li class="indented">
+            <a href="/posts/2019/06/logic-apps-refresh-analysis-services/" title="Refreshing Azure Analysis Services models using Logic Apps" rel="bookmark">
+                <b>15th </b>Refreshing Azure Analysis Services models using Logic Apps
+            </a>
+        </li>
+        <li><b class="list-header">2018 June</b></li>
         <li class="indented">
             <a href="/posts/analysis-services-onprem-integration/" title="Azure Analysis Services hybrid enrivonment with on-premises databases" rel="bookmark">
                 <b>26th </b>Azure Analysis Services hybrid enrivonment with on-premises databases
@@ -828,41 +859,44 @@ s.setAttribute('data-timestamp', +new Date());
                 <b>3rd </b>Quick, easy and cheap way to automate data loading from CSV file into Azure SQL
             </a>
         </li>
-        <li><b class="list-header">March</b></li>
+        <li><b class="list-header">2018 March</b></li>
         <li class="indented">
             <a href="/posts/botseries-dev-done-easy/" title="Effective chatbot development with ngrok" rel="bookmark">
                 <b>12th </b>Effective chatbot development with ngrok
             </a>
         </li>
-        <li><b class="list-header">February</b></li>
+        <li><b class="list-header">2018 February</b></li>
         <li class="indented">
             <a href="/posts/netcore-vuejs-crud/" title="Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB" rel="bookmark">
                 <b>17th </b>Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB
-            </a>
-        </li>
-        <li class="indented">
-            <a href="/posts/netcore-vuejs/" title="Building .NET Core 2.0 web apps with Vue.js single file components using VS Code" rel="bookmark">
-                <b>4th </b>Building .NET Core 2.0 web apps with Vue.js single file components using VS Code
             </a>
         </li>
 </ul>
 </div><div id="categories-3" class="widget widget_categories">
   <h5>Tags</h5>
   <ul class="tag-list">
-      <li> 
-        <img src="https://marczak.io/images/tags//analysis-services.svg" alt="Analysis Services"/>
-        <a href="https://marczak.io/tags/analysis-services">Analysis Services (1)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//azure.svg" alt="Azure"/>
-        <a href="https://marczak.io/tags/azure">Azure (9)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (10)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//bot-service.svg" alt="Bot Service"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//bot-service.svg" alt="Bot Service"/> 
+        </div> 
         <a href="https://marczak.io/tags/bot-service">Bot Service (5)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//cognitive-services.svg" alt="Cognitive Services"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
         <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
       </li>
       <li class="child"> 
@@ -873,52 +907,76 @@ s.setAttribute('data-timestamp', +new Date());
         <img src="https://marczak.io/images/tags//text-analytics.svg" alt="Text Analytics"/>
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//cosmos-db.svg" alt="Cosmos Db"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//cosmos-db.svg" alt="Cosmos Db"/> 
+        </div> 
         <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//data-gateway.svg" alt="Data Gateway"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
         <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//dotnet-core.svg" alt="Dotnet Core"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//dotnet-core.svg" alt="Dotnet Core"/> 
+        </div> 
         <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//flow.svg" alt="Flow"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//flow.svg" alt="Flow"/> 
+        </div> 
         <a href="https://marczak.io/tags/flow">Flow (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//functions.svg" alt="Functions"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//functions.svg" alt="Functions"/> 
+        </div> 
         <a href="https://marczak.io/tags/functions">Functions (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//logic-apps.svg" alt="Logic Apps"/>
-        <a href="https://marczak.io/tags/logic-apps">Logic Apps (1)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//sql.svg" alt="Sql"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//sql.svg" alt="Sql"/> 
+        </div> 
         <a href="https://marczak.io/tags/sql">Sql (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//teams.svg" alt="Teams"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//teams.svg" alt="Teams"/> 
+        </div> 
         <a href="https://marczak.io/tags/teams">Teams (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//visual-studio.svg" alt="Visual Studio"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
         <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//visual-studio-code.svg" alt="Visual Studio Code"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
         <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//vue.js.svg" alt="Vue.js"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//vue.js.svg" alt="Vue.js"/> 
+        </div> 
         <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//webpack.svg" alt="Webpack"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//webpack.svg" alt="Webpack"/> 
+        </div> 
         <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
       </li>
   </ul>

@@ -25,9 +25,6 @@ img {
 .pagination {
   width: auto;
 }
-.page-link {
-
-}
 .pagination>.active>a, .pagination>.active>a:hover, {
   background-color: #323437;
   border-color: #323437;
@@ -117,9 +114,7 @@ div.avatar {
 .btn-github { line-height: 20px; }
 
 body,h1,h2,h3,h4,h5,h6{font-family:Helvetica,Arial,sans-serif;font-weight:300}
-/*body,h1,h2,h3,h4,h5,h6{
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-}*/
+
 .connected-title {
   margin-bottom: 4px;
 }
@@ -130,14 +125,19 @@ body,h1,h2,h3,h4,h5,h6{font-family:Helvetica,Arial,sans-serif;font-weight:300}
 .single-posts-wrap {
   max-width: 800px;
 }
-
-article li > img, article li > div > img {
+.lazy {
+  position: relative; 
+  overflow: hidden;
+}
+.lazy > img {
+  position:absolute;
+  top:0;
+  min-width: 1px;
+  min-height: 1px;
+}
+.single-posts-wrap .lazy {
   margin-top: 20px;
   margin-bottom: 25px;
-}
-
-[class^="sm-"] > img {
-  --box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 .check {
@@ -223,19 +223,10 @@ article svg {
   height: 100%;
 }
 
-.thumbnail-image img,
-.thumbnail-image svg {
-  float: none;
-  display: block;
-  border-radius: 3px;
-  width: 100%;
-  height: 100%;
+.thumbnail > div.lazy {
   box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
-.thumbnail-image {
-  padding-bottom: 15px;
-}
 .comments {
   padding-top: 40px;
 }

@@ -6,10 +6,22 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Jun 2018 18:00:23 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jun 2019 11:00:23 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/tags/analysis-services/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Refreshing Azure Analysis Services models using Logic Apps</title>
+      <link>https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/</link>
+      <pubDate>Sat, 15 Jun 2019 11:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/logic-apps-refresh-analysis-services/splash.png&quot;&gt;
+        &lt;p&gt;In 2017 asynchronous refresh API was released for Azure Analysis Services which allows users to refresh their models with simple REST calls. This allows for easy integration with their orchestration solutions. Learn how to build very simple logic apps and manage Azure Analysis Services refresh schedule.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>Azure Analysis Services hybrid enrivonment with on-premises databases</title>

@@ -1,4 +1,4 @@
-(function (timer, $) {
+(function (app, $) {
 
     $(document).ready(function() {
         $(".iframe-button").click(function() {
@@ -6,7 +6,6 @@
             $(this).parent().removeClass("inactive")
             $(this).siblings("iframe")
                 .attr("src", src);
-            
         });
 
         function isScrolledIntoView(el) {
@@ -17,25 +16,12 @@
         }
         var lazyLoad = function() {
             $(".lazy > img[src='']").each(function() { 
-                if(isScrolledIntoView(this))
-                    $(this)
-                        .attr("src", $(this).attr('data-src'));
+                if(isScrolledIntoView($(this).parent().get(0)))
+                    $(this).attr("src", $(this).attr('data-src'));
             });
         }
         lazyLoad();
-        $( window ).scroll(lazyLoad);
-        
-        var resizeImg = function() {
-            $(".lazy > img").each(function() {
-                var iw = $(this).attr("data-width"); 
-                var w = $(this).width();
-                var ih = $(this).attr("data-height"); 
-                var h = (w / iw * ih);
-                $(this).css("min-height", h + "px"); 
-             });
-        }
-        resizeImg();
-        $( window ).resize(resizeImg);
+        $( window ).scroll(lazyLoad).resize(lazyLoad);
     });
 
-})(window.timer = window.timer || {}, jQuery);
+})(window.app = window.app || {}, jQuery);

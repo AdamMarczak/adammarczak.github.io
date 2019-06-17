@@ -100,7 +100,7 @@
       </div>
     </div>
     <div class="header-filter" 
-         style="background-image: url('/images/background.jpg');">
+         style="background-image: url('/images/background.jpg');background-color: #283743;">
     </div>
 
   </div>
@@ -110,9 +110,11 @@
         <div class="container">
           <div class="row">
 <div class="col-md-9 single-posts-wrap">
-    <article id="/posts/botseries-dev-done-easy/" class="article-section section-text">
-            <img src="https://marczak.io/images/botseries-dev-done-easy/splash.png">
-            <a target="_blank" 
+    <article id="/posts/botseries-dev-done-easy/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 1083px">
+    <div style="padding-bottom:56.76100628930818%"></div>
+    <img data-src="/images/botseries-dev-done-easy/splash.png" src=""/> 
+</div> <a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
    href="https://github.com/MarczakIO/msteams-samples-hello-world-csharp">
@@ -122,7 +124,7 @@
         <h2>Highlight</h2>
         <p>Proper set up of environment is one of most important things during development. Leverage ngrok tunneling service to speed up development process.</p>
 
-<h2 id="problem-definition">Problem definition</h2>
+<h2 id="intro">Intro</h2>
 
 <p>When developing bots for public chatting platforms like Microsoft Teams, Facebook, Slack etc. it is very that often not all features are available and therefore can&rsquo;t be tested using Microsoft Bot Framework Emulator. Public chatting platforms need public endpoints which removes ability for developers to debug applications which extends development process greatly. A solution to this problem is a Software as a Service solution called ngrok.</p>
 
@@ -183,54 +185,87 @@ This basically means that bot app will be available under <strong><a href="https
 
 <ul>
 <li>Bot Profile
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/1.png" src="" data-width="624" data-height="436" style='width:624px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 436px">
+    <div style="padding-bottom:69.87179487179488%"></div>
+    <img data-src="/images/botseries-dev-done-easy/1.png" src=""/> 
+</div>  </li>
 <li><strong>Display name</strong> name for the bot, this is only display name in the Bot Framework Portal for developers to recognize their bots by name. This does not affect bot functionality in any way.</li>
 <li><strong>Bot handle</strong> reference to bot, does not matter in this example.</li>
 <li><strong>Long description</strong> bot description. Does not affect functionality.</li>
 <li>Configuration
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/3.png" src="" data-width="616" data-height="278" style='width:616px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 278px">
+    <div style="padding-bottom:45.12987012987013%"></div>
+    <img data-src="/images/botseries-dev-done-easy/3.png" src=""/> 
+</div>  </li>
 <li><strong>Messaging endpoint</strong> public url endpoint for bot framework to redirect messages to. This is built by combining public endpoint and /api/messages route. In this example url is <a href="https://89a332c9.ngrok.io/api/messages">https://89a332c9.ngrok.io/api/messages</a></li>
 <li><strong>Microsoft App ID</strong> unique identifier for application registered from Microsoft App portal. Click on the create Microsoft App button to register the app or provide already existing app id. Do NOT share same ID across multiple bot instances.
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/6.png" src="" data-width="513" data-height="343" style='width:513px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 343px">
+    <div style="padding-bottom:66.8615984405458%"></div>
+    <img data-src="/images/botseries-dev-done-easy/6.png" src=""/> 
+</div>  
 And by clicking Generate password new password will be generated. Copy password as it won&rsquo;t be shown anywhere later on.
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/7.png" src="" data-width="450" data-height="276" style='width:450px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 276px">
+    <div style="padding-bottom:61.333333333333336%"></div>
+    <img data-src="/images/botseries-dev-done-easy/7.png" src=""/> 
+</div>  </li>
 <li>Analytics
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/4.png" src="" data-width="626" data-height="297" style='width:626px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 297px">
+    <div style="padding-bottom:47.44408945686901%"></div>
+    <img data-src="/images/botseries-dev-done-easy/4.png" src=""/> 
+</div>  </li>
 <li>Application insights section. Leave this empty for localhost development. In case of bot service Azure fill this for developer during bot creation process.</li>
 <li>Admin Section</li>
 <li><strong>Owners</strong> list of accounts which have administrative access to the bot.</li>
 </ul></li>
 <li>Click Create button</li>
 <li>Go to bot settings tab
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/10.png" src="" data-width="410" data-height="71" style='width:410px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 71px">
+    <div style="padding-bottom:17.317073170731707%"></div>
+    <img data-src="/images/botseries-dev-done-easy/10.png" src=""/> 
+</div>  </li>
 <li>Add Teams Channel
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/11.png" src="" data-width="538" data-height="161" style='width:538px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 161px">
+    <div style="padding-bottom:29.925650557620816%"></div>
+    <img data-src="/images/botseries-dev-done-easy/11.png" src=""/> 
+</div>  
 Agree to TOS (terms of use)
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/12.png" src="" data-width="964" data-height="402" style='width:964px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 402px">
+    <div style="padding-bottom:41.70124481327801%"></div>
+    <img data-src="/images/botseries-dev-done-easy/12.png" src=""/> 
+</div>  </li>
 <li>Run git clone to copy solution and start development
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/MarczakIO/msteams-samples-hello-world-csharp.git
 <span class="nb">cd</span> msteams-samples-hello-world-csharp
 Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
 <li>Restore packages by right clicking the solution and clicking
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/8.png" src="" data-width="466" data-height="263" style='width:466px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 263px">
+    <div style="padding-bottom:56.437768240343345%"></div>
+    <img data-src="/images/botseries-dev-done-easy/8.png" src=""/> 
+</div>  </li>
 <li>Edit Web.config file and supply Microsoft App ID and password
 <div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&#34;MicrosoftAppId&#34;</span> <span class="na">value=</span><span class="s">&#34;d008dfca-c5d7-4b1b-a074-ad76081d6e3b&#34;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&#34;MicrosoftAppPassword&#34;</span> <span class="na">value=</span><span class="s">&#34;eymiSZXF86||%ktzWFP781!&#34;</span> <span class="nt">/&gt;</span></code></pre></div></li>
 <li>Start Solution (keep it running dont close it)
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/9.png" src="" data-width="385" data-height="163" style='width:385px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 163px">
+    <div style="padding-bottom:42.33766233766234%"></div>
+    <img data-src="/images/botseries-dev-done-easy/9.png" src=""/> 
+</div>  </li>
 <li>Configure Manifest
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/13.png" src="" data-width="215" data-height="76" style='width:215px;height:1px'/></div> 
+
+<div class="lazy" style="max-height: 76px">
+    <div style="padding-bottom:35.348837209302324%"></div>
+    <img data-src="/images/botseries-dev-done-easy/13.png" src=""/> 
+</div>  
 
 <ul>
 <li>Replace <strong>id</strong> and <strong>botId</strong> fields with Microsoft App ID</li>
@@ -302,33 +337,57 @@ Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
 
 <ol>
 <li>Open Teams app and create new team
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/14.png" src="" data-width="286" data-height="279" style='width:286px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 279px">
+    <div style="padding-bottom:97.55244755244755%"></div>
+    <img data-src="/images/botseries-dev-done-easy/14.png" src=""/> 
+</div>  </li>
 <li>Supply name for the Team
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/15.png" src="" data-width="654" data-height="563" style='width:654px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 563px">
+    <div style="padding-bottom:86.08562691131499%"></div>
+    <img data-src="/images/botseries-dev-done-easy/15.png" src=""/> 
+</div>  </li>
 <li>Add bot to the team
 
 <ol>
 <li>Go to manage Team option
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/16.png" src="" data-width="447" data-height="152" style='width:447px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 152px">
+    <div style="padding-bottom:34.00447427293065%"></div>
+    <img data-src="/images/botseries-dev-done-easy/16.png" src=""/> 
+</div>  </li>
 <li>Go to Apps tab and click on Upload a custom app and select manifest.zip file
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/17.png" src="" data-width="598" data-height="570" style='width:598px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 570px">
+    <div style="padding-bottom:95.31772575250837%"></div>
+    <img data-src="/images/botseries-dev-done-easy/17.png" src=""/> 
+</div>  </li>
 <li>Check if the app uploaded successfully
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/18.png" src="" data-width="571" data-height="64" style='width:571px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 64px">
+    <div style="padding-bottom:11.208406304728546%"></div>
+    <img data-src="/images/botseries-dev-done-easy/18.png" src=""/> 
+</div>  </li>
 </ol></li>
 <li>Talk to bot by mentioning it by typing @Local and pressing tab
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/19.png" src="" data-width="595" data-height="239" style='width:595px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 239px">
+    <div style="padding-bottom:40.168067226890756%"></div>
+    <img data-src="/images/botseries-dev-done-easy/19.png" src=""/> 
+</div>  </li>
 <li>Say hey to the bot
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/20.png" src="" data-width="545" data-height="273" style='width:545px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 273px">
+    <div style="padding-bottom:50.091743119266056%"></div>
+    <img data-src="/images/botseries-dev-done-easy/20.png" src=""/> 
+</div>  </li>
 <li>Put a breakpoint in <strong>EchoBot.cs</strong> file <strong>at line 17</strong> and say something to the bot
- 
-<div class="lazy"><img data-src="/images/botseries-dev-done-easy/21.png" src="" data-width="800" data-height="126" style='width:800px;height:1px'/></div> </li>
+
+<div class="lazy" style="max-height: 126px">
+    <div style="padding-bottom:15.75%"></div>
+    <img data-src="/images/botseries-dev-done-easy/21.png" src=""/> 
+</div>  </li>
 <li>Check ngrok and check bot responses coming through
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ngrok by @inconshreveable   
 Session Status                online
@@ -351,8 +410,7 @@ HTTP Requests
 
 <h3 id="what-s-next">What&rsquo;s next?</h3>
 
-<p>Follow the same process and publish bot to Azure. While the Azure UI changed a bit, it is still very easy to follow <a href="/posts/botseries-introductiontobots/">Introduction to chatbots</a> post. With that setup everyone can deliver DevOps for bots effectively.</p>
-            <a target="_blank" 
+<p>Follow the same process and publish bot to Azure. While the Azure UI changed a bit, it is still very easy to follow <a href="/posts/botseries-introductiontobots/">Introduction to chatbots</a> post. With that setup everyone can deliver DevOps for bots effectively.</p><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
    href="https://github.com/MarczakIO/msteams-samples-hello-world-csharp">
@@ -366,8 +424,7 @@ HTTP Requests
                 <h3 class="text-center">Did you enjoy the article?</h3>
             </div>
             <div class="col-md-6 text-center">
-                <h4 class="">Share it!</h4>
-                <a target="_blank" 
+                <h4 class="">Share it!</h4><a target="_blank" 
    rel="tooltip" 
    data-original-title="Share on Facebook" 
    class="btn btn-just-icon btn-share btn-facebook"
@@ -392,7 +449,6 @@ HTTP Requests
             </div>
             <div class="col-md-6 text-center large">
                 <h4 class="">More tagged posts</h4>
-                
   <div class="tag-list">
     <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
       <img src="https://marczak.io/images/tags//azure.svg" alt="Azure"/>
@@ -410,8 +466,7 @@ HTTP Requests
             </div>
         </div>
         <div class="row comments">
-            <div class="col-md-12">
-                <div id="disqus_thread"></div>
+            <div class="col-md-12"><div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
 this.page.url = "https:\/\/marczak.io\/posts\/botseries-dev-done-easy\/"; 
@@ -434,7 +489,13 @@ s.setAttribute('data-timestamp', +new Date());
               <aside id="secondary" class="blog-sidebar" role="complementary"><div id="recent-posts" class="recent-posts widget widget_recent_entries">
 <h5>Recent Posts</h5>
 <ul>
-        <li><b class="list-header">June</b></li>
+        <li><b class="list-header">2019 June</b></li>
+        <li class="indented">
+            <a href="/posts/2019/06/logic-apps-refresh-analysis-services/" title="Refreshing Azure Analysis Services models using Logic Apps" rel="bookmark">
+                <b>15th </b>Refreshing Azure Analysis Services models using Logic Apps
+            </a>
+        </li>
+        <li><b class="list-header">2018 June</b></li>
         <li class="indented">
             <a href="/posts/analysis-services-onprem-integration/" title="Azure Analysis Services hybrid enrivonment with on-premises databases" rel="bookmark">
                 <b>26th </b>Azure Analysis Services hybrid enrivonment with on-premises databases
@@ -445,41 +506,44 @@ s.setAttribute('data-timestamp', +new Date());
                 <b>3rd </b>Quick, easy and cheap way to automate data loading from CSV file into Azure SQL
             </a>
         </li>
-        <li><b class="list-header">March</b></li>
+        <li><b class="list-header">2018 March</b></li>
         <li class="indented">
             <a href="/posts/botseries-dev-done-easy/" title="Effective chatbot development with ngrok" rel="bookmark">
                 <b>12th </b>Effective chatbot development with ngrok
             </a>
         </li>
-        <li><b class="list-header">February</b></li>
+        <li><b class="list-header">2018 February</b></li>
         <li class="indented">
             <a href="/posts/netcore-vuejs-crud/" title="Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB" rel="bookmark">
                 <b>17th </b>Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB
-            </a>
-        </li>
-        <li class="indented">
-            <a href="/posts/netcore-vuejs/" title="Building .NET Core 2.0 web apps with Vue.js single file components using VS Code" rel="bookmark">
-                <b>4th </b>Building .NET Core 2.0 web apps with Vue.js single file components using VS Code
             </a>
         </li>
 </ul>
 </div><div id="categories-3" class="widget widget_categories">
   <h5>Tags</h5>
   <ul class="tag-list">
-      <li> 
-        <img src="https://marczak.io/images/tags//analysis-services.svg" alt="Analysis Services"/>
-        <a href="https://marczak.io/tags/analysis-services">Analysis Services (1)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//azure.svg" alt="Azure"/>
-        <a href="https://marczak.io/tags/azure">Azure (9)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (10)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//bot-service.svg" alt="Bot Service"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//bot-service.svg" alt="Bot Service"/> 
+        </div> 
         <a href="https://marczak.io/tags/bot-service">Bot Service (5)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//cognitive-services.svg" alt="Cognitive Services"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
         <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
       </li>
       <li class="child"> 
@@ -490,52 +554,76 @@ s.setAttribute('data-timestamp', +new Date());
         <img src="https://marczak.io/images/tags//text-analytics.svg" alt="Text Analytics"/>
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//cosmos-db.svg" alt="Cosmos Db"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//cosmos-db.svg" alt="Cosmos Db"/> 
+        </div> 
         <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//data-gateway.svg" alt="Data Gateway"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
         <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//dotnet-core.svg" alt="Dotnet Core"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//dotnet-core.svg" alt="Dotnet Core"/> 
+        </div> 
         <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//flow.svg" alt="Flow"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//flow.svg" alt="Flow"/> 
+        </div> 
         <a href="https://marczak.io/tags/flow">Flow (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//functions.svg" alt="Functions"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//functions.svg" alt="Functions"/> 
+        </div> 
         <a href="https://marczak.io/tags/functions">Functions (1)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//logic-apps.svg" alt="Logic Apps"/>
-        <a href="https://marczak.io/tags/logic-apps">Logic Apps (1)</a>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//sql.svg" alt="Sql"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//sql.svg" alt="Sql"/> 
+        </div> 
         <a href="https://marczak.io/tags/sql">Sql (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//teams.svg" alt="Teams"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//teams.svg" alt="Teams"/> 
+        </div> 
         <a href="https://marczak.io/tags/teams">Teams (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//visual-studio.svg" alt="Visual Studio"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
         <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//visual-studio-code.svg" alt="Visual Studio Code"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
         <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//vue.js.svg" alt="Vue.js"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//vue.js.svg" alt="Vue.js"/> 
+        </div> 
         <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
       </li>
-      <li> 
-        <img src="https://marczak.io/images/tags//webpack.svg" alt="Webpack"/>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags//webpack.svg" alt="Webpack"/> 
+        </div> 
         <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
       </li>
   </ul>
