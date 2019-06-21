@@ -281,7 +281,7 @@ https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt
 <p>All calls must be authenticated with a valid Azure Active Directory (OAuth 2) token in the Authorization header and must meet the following requirements:</p>
 
 <ul>
-<li>Only user or service principal tokens are accepted. It would appear that Managed Identity tokens are not accepted at the time of writing.</li>
+<li>Only user or service principal tokens are accepted. If you want to use MSI (Managed Service Identity), then you must enable identity on logic app and use CLI or PowerShell to get application ID of new service principal. Which then must be added as admin to analysis Services.</li>
 <li>Audience of the token must be set to https://*.asazure.windows.net.</li>
 <li>User or service principal must have AAS administrator privileges.</li>
 </ul>
@@ -368,20 +368,20 @@ https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt
 </div>  </li>
 <li>Click on <strong>New Client secret</strong>
 
-<div class="lazy" style="max-height: 538px">
-    <div style="padding-bottom:84.7244094488189%"></div>
+<div class="lazy" style="max-height: 208px">
+    <div style="padding-bottom:33.17384370015949%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/33.png" src=""/> 
 </div>  </li>
 <li>Give it a name and expiration date and then select <strong>add</strong>
 
-<div class="lazy" style="max-height: 542px">
-    <div style="padding-bottom:61.10484780157835%"></div>
+<div class="lazy" style="max-height: 295px">
+    <div style="padding-bottom:33.44671201814059%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/10.png" src=""/> 
 </div>  </li>
 <li>Go to newly generated key and copy the value, this will be required for later steps
 
-<div class="lazy" style="max-height: 536px">
-    <div style="padding-bottom:54.91803278688525%"></div>
+<div class="lazy" style="max-height: 197px">
+    <div style="padding-bottom:20.435684647302903%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/34.png" src=""/> 
 </div>  </li>
 <li>Go to <strong>Azure Active Directory</strong> into <strong>Properties</strong></li>
@@ -670,7 +670,17 @@ HTTP call which submits refresh to analysis services return &ldquo;Location&rdqu
 <li>Orchestrate workflows using Logic Apps</li>
 </ul>
 
-<p>If you enjoyed this article you might want to check <a href="/posts/analysis-services-onprem-integration/">how to set up Analysis Services with On-premises gateway</a>.</p><a target="_blank" 
+<p>If you enjoyed this article you might want to check <a href="https://marczak.io/posts/analysis-services-onprem-integration/">how to set up Analysis Services with On-premises gateway</a>.</p>
+
+<p><a href="https://marczak.io/posts/analysis-services-onprem-integration/"></p>
+
+
+<div class="lazy" style="max-height: 282px">
+    <div style="padding-bottom:31.614349775784753%"></div>
+    <img data-src="/images/logic-apps-refresh-analysis-services/000073.png" src=""/> 
+</div>  
+
+<p></a></p><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
    href="https://github.com/MarczakIO/aas-refresh-logic-apps">
