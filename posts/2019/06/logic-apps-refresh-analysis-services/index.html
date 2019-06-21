@@ -144,6 +144,21 @@
 
 <p>In this article Azure Analysis Services REST API will be used. This second covers high level principles on how this process should be done.</p>
 
+<p>High level architecture of this refresh will look like this.
+ 
+<div class="lazy" style="max-height: 849px">
+    <div style="padding-bottom:102.04326923076923%"></div>
+    <img data-src="/images/logic-apps-refresh-analysis-services/000078.png" src=""/> 
+</div>  </p>
+
+<p>With few principles in mind</p>
+
+<ul>
+<li>Analysis Services Refresh API is asynchronous so after first call logic app will only receive accepted (202) response containing refresh ID.</li>
+<li>Logic app will asking for refresh status until failed or succeeded status is received</li>
+<li>Logic app will wait 30 seconds between retries to give analysis services refresh time to refresh the model</li>
+</ul>
+
 <p>In high level Azure Analysis Services API looks as follows
  
 <div class="lazy" style="max-height: 155px">
@@ -302,7 +317,7 @@ https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt
 
 <p>Check Application Account and Privilege setup sections to find out proper values for this template.</p>
 
-<h3 id="resource-group">Resource Group</h3>
+<h3 id="resources">Resources</h3>
 
 <ol>
 <li>Click on &ldquo;+&rdquo; sign to create new resource
@@ -311,7 +326,7 @@ https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt
     <div style="padding-bottom:29.34131736526946%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/1.png" src=""/> 
 </div>  </li>
-<li>Type in logic app** in Search window and press enter
+<li>Type in <strong>logic app</strong> in Search window and press enter
 
 <div class="lazy" style="max-height: 213px">
     <div style="padding-bottom:43.46938775510204%"></div>
