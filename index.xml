@@ -6,10 +6,22 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Jun 2019 11:00:23 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2019 17:00:23 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Azure Data Factory versus Logic Apps for Analysis Services Refresh</title>
+      <link>https://marczak.io/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/</link>
+      <pubDate>Fri, 28 Jun 2019 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/logic-app-vs-data-factory-for-aas-refresh/splash.png&quot;&gt;
+        &lt;p&gt;Data factory is currently go-to service for data load and transformation processes in Azure. In this article a common scenario of refreshing models in Azure Analysis Services will be implemented using ADF components including a  comparison with the same process using Azure Logic Apps.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>Refreshing Azure Analysis Services models using Logic Apps</title>
