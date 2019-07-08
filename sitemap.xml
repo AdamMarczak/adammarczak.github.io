@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://marczak.io/posts/2019/07/azure-jumpstart/</loc>
+    <lastmod>2019-07-08T14:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/</loc>
     <lastmod>2019-06-28T17:00:23+02:00</lastmod>
   </url>
@@ -74,7 +79,7 @@
   
   <url>
     <loc>https://marczak.io/tags/azure/</loc>
-    <lastmod>2019-06-28T17:00:23+02:00</lastmod>
+    <lastmod>2019-07-08T14:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -139,13 +144,13 @@
   
   <url>
     <loc>https://marczak.io/</loc>
-    <lastmod>2019-06-28T17:00:23+02:00</lastmod>
+    <lastmod>2019-07-08T14:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/posts/</loc>
-    <lastmod>2019-06-28T17:00:23+02:00</lastmod>
+    <lastmod>2019-07-08T14:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -6,10 +6,22 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Jun 2019 17:00:23 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jul 2019 14:00:23 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/tags/azure/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Azure Jumpstart - how to learn, practice and certify in Azure</title>
+      <link>https://marczak.io/posts/2019/07/azure-jumpstart/</link>
+      <pubDate>Mon, 08 Jul 2019 14:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2019/07/azure-jumpstart/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2019-07-azure-jumpstart/splash.png&quot;&gt;
+        &lt;p&gt;How to start with Azure at no cost? Where to learn and practice Azure? Which subscription is the best for me? Are there any services for free to use? I&amp;rsquo;m preparing for certification, are there any labs I can practice on? Those are typical questions asked by a lot of IT specialists every day. This article puts anyone on the right track.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>Azure Data Factory versus Logic Apps for Analysis Services Refresh</title>
