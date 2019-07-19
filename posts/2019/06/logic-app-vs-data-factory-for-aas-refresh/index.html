@@ -13,7 +13,7 @@
 <link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
 <link href='https://marczak.io/css/hestia.min.css' rel="stylesheet" type="text/css" />
-<link href='https://marczak.io/css/main.min.css?ver=1.16' rel='stylesheet' type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.17' rel='stylesheet' type="text/css" />
 
 <meta name="description" content="Data factory is currently go-to service for data load and transformation processes in Azure. In this article a common scenario of refreshing models in Azure Analysis Services will be implemented using ADF components including a  comparison with the same process using Azure Logic Apps.">
 <meta name="author" content="Adam Marczak">
@@ -227,18 +227,15 @@
 
 <ol>
 <li>To search by <strong>Object ID</strong> a following command must be executed
-<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-ObjectID</span> <span class="s2">&#34;&lt;object id&gt;&#34;</span>
- </code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-ObjectID</span> <span class="s2">&#34;&lt;object id&gt;&#34;</span></code></pre></div></li>
 <li>To search by <strong>Name</strong> a following command must be executed. Note that name of managed identity is always the same as the resource. Since some resources do not require unique names it is possible to have multiple managed identities with the same name, so this is not recommended way for production scripts.
-<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of azure resource&gt;&#34;</span>
- </code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of azure resource&gt;&#34;</span></code></pre></div></li>
 </ol></li>
 <li>Run following script
 <div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Connect-AzAccount</span>
  <span class="nb">Get-AzSubscription</span>
  <span class="nb">Select-AzSubscription</span> <span class="s2">&#34;&lt;name of subscription you are working on&gt;&#34;</span>
- <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-ObjectID</span> <span class="s2">&#34;&lt;object id of logic app&gt;&#34;</span>
- </code></pre></div>
+ <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-ObjectID</span> <span class="s2">&#34;&lt;object id of logic app&gt;&#34;</span></code></pre></div>
 
 <div class="lazy" style="max-height: 489px">
     <div style="padding-bottom:58.422939068100355%"></div>
@@ -257,8 +254,7 @@ From the output of this script two things should be saved
 <li><strong>ApplicationId</strong> - application ID of managed identity</li>
 </ol></li>
 <li>Since Data Factory doesn&rsquo;t give out right Object ID of its identity the simplest way is to find it by azure resource name. In the same PowerShell window run command to find application ID of data factory identity.
-<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of data factory&gt;&#34;</span>
- </code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of data factory&gt;&#34;</span></code></pre></div>
 
 <div class="lazy" style="max-height: 145px">
     <div style="padding-bottom:21.323529411764707%"></div>
@@ -295,11 +291,9 @@ From the output of this script two things should be saved
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000039.png" src=""/> 
 </div>  
 Convention IS
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:&lt;application_id&gt;@&lt;tenant_id&gt;
- </code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:&lt;application_id&gt;@&lt;tenant_id&gt;</code></pre></div>
 For example
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:df1b8569-352d-4be0-acf3-847a2e72aee0@564006af-8627-42d3-b8a6-30a1f1e69fab
- </code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:df1b8569-352d-4be0-acf3-847a2e72aee0@564006af-8627-42d3-b8a6-30a1f1e69fab</code></pre></div></li>
 <li>Click <strong>Add</strong>
 
 <div class="lazy" style="max-height: 197px">
@@ -412,8 +406,7 @@ For example
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span>
-<span class="p">}</span>
- </code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>Change method to <strong>POST</strong></li>
 </ol></li>
 <li>Add new action</li>
@@ -460,8 +453,7 @@ For example
   <span class="nt">&#34;body&#34;</span><span class="p">:</span> <span class="err">@</span><span class="p">{</span><span class="err">body(&#39;HTTP&#39;)</span><span class="p">},</span>
   <span class="nt">&#34;headers&#34;</span><span class="p">:</span> <span class="err">@</span><span class="p">{</span><span class="err">outputs(&#39;HTTP&#39;)[&#39;headers&#39;]</span><span class="p">},</span>
   <span class="nt">&#34;status&#34;</span><span class="p">:</span> <span class="err">@</span><span class="p">{</span><span class="err">outputs(&#39;HTTP&#39;)[&#39;statusCode&#39;]</span><span class="p">}</span>
-<span class="p">}</span>
- </code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 </ol></li>
 </ol>
 
@@ -496,8 +488,7 @@ For example
         <span class="nt">&#34;RetryCount&#34;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
         <span class="nt">&#34;Type&#34;</span><span class="p">:</span><span class="s2">&#34;Full&#34;</span>
     <span class="p">}</span>
-<span class="p">}</span>
- </code></pre></div>
+<span class="p">}</span></code></pre></div>
 For more details on the properties check <a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services//#design">my previous article</a>.</li>
 <li>Everything else is default.</li>
 </ol></li>
@@ -514,8 +505,7 @@ For more details on the properties check <a href="https://marczak.io/posts/2019/
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000085-1.png" src=""/> 
 </div>  
 And configure exit loop condition as follows
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@or(equals(variables(&#39;RefreshStatus&#39;),&#39;succeeded&#39;),equals(variables(&#39;RefreshStatus&#39;),&#39;failed&#39;))</span>
- </code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@or(equals(variables(&#39;RefreshStatus&#39;),&#39;succeeded&#39;),equals(variables(&#39;RefreshStatus&#39;),&#39;failed&#39;))</span></code></pre></div></li>
 <li>Double click on Until loop action and add <strong>Wait</strong>, <strong>Web</strong> and <strong>Set Variable Actions</strong> action and link the together
 
 <div class="lazy" style="max-height: 142px">
@@ -535,8 +525,7 @@ And configure exit loop condition as follows
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000066.png" src=""/> 
 </div>  
 Configure <strong>URL</strong> as per sample blow, resource as <strong>https://*.asazure.windows.net</strong>, Authentication as MSI. Thanks to previous setup ADF can authenticate and authorize connection to AAS as admin.
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Refresh</span> <span class="err">AAS&#39;).output.headers</span><span class="p">[</span><span class="err">&#39;location&#39;</span><span class="p">]</span>
- </code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Refresh</span> <span class="err">AAS&#39;).output.headers</span><span class="p">[</span><span class="err">&#39;location&#39;</span><span class="p">]</span></code></pre></div></li>
 <li>Configure <strong>Wait</strong> Action to wait 30 seconds between tries
 
 <div class="lazy" style="max-height: 343px">
@@ -544,8 +533,7 @@ Configure <strong>URL</strong> as per sample blow, resource as <strong>https://*
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000067.png" src=""/> 
 </div>  
 And configure <strong>Value</strong> it as follows
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Get</span> <span class="err">AAS</span> <span class="err">Refresh</span> <span class="err">Status&#39;).output.status</span>
- </code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Get</span> <span class="err">AAS</span> <span class="err">Refresh</span> <span class="err">Status&#39;).output.status</span></code></pre></div></li>
 <li>Hit Debug and watch for execution steps
 
 <div class="lazy" style="max-height: 485px">
@@ -564,7 +552,7 @@ And configure <strong>Value</strong> it as follows
 
 <p>Logic apps are much more flexible than data factory. It was possible to implement entire solution without any workarounds. In case of data factory there was no way to avoid using Logic Apps or Functions as workaround. Logic apps are clear winner here.</p>
 
-<h4 id="hahahugoshortcode-56hbhb-logic-apps-vs-hahahugoshortcode-57hbhb-data-factory"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> </span> Logic Apps vs <span class="cross"><i class="fa fa-times" aria-hidden="true"></i> </span> Data Factory</h4>
+<h4 id="hahahugoshortcode-56hbhb-are-better-than-hahahugoshortcode-57hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are better than <span class="cross"><i class="fa fa-times" aria-hidden="true"></i>  Data Factory </span></h4>
 
 <h3 id="cost-effectiveness">Cost Effectiveness</h3>
 
@@ -584,17 +572,17 @@ And configure <strong>Value</strong> it as follows
 
 <p>For larger solutions logic apps is clear winner.</p>
 
-<h4 id="hahahugoshortcode-60hbhb-logic-apps-vs-hahahugoshortcode-61hbhb-data-factory"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> </span> Logic Apps vs <span class="cross"><i class="fa fa-times" aria-hidden="true"></i> </span> Data Factory</h4>
+<h4 id="hahahugoshortcode-60hbhb-are-better-than-hahahugoshortcode-61hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are better than <span class="cross"><i class="fa fa-times" aria-hidden="true"></i>  Data Factory </span></h4>
 
 <h3 id="extensibility">Extensibility</h3>
 
 <p>This is a tie. Both Logic Apps and Data Factory allow for remote executions and mixing with other processes. This means they can be integrated with pretty much any solution out there.</p>
 
-<h4 id="hahahugoshortcode-62hbhb-logic-apps-vs-hahahugoshortcode-63hbhb-data-factory"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> </span> Logic Apps vs <span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> </span> Data Factory</h4>
+<h4 id="hahahugoshortcode-62hbhb-are-as-good-as-hahahugoshortcode-63hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are as good as <span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Data Factory </span></h4>
 
 <p>Which means my end result</p>
 
-<h3 id="hahahugoshortcode-64hbhb-azure-logic-apps-are-superior-choice-for-this-scenario"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> </span> Azure Logic Apps are superior choice for this scenario</h3>
+<h3 id="hahahugoshortcode-64hbhb-are-superior-choice-for-this-scenario"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Azure Logic Apps </span> are superior choice for this scenario</h3>
 
 <p>If you enjoyed this article you might want to check <a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/">how to implement this scenario using Azure Logic Apps</a>.</p>
 
@@ -681,6 +669,11 @@ s.setAttribute('data-timestamp', +new Date());
 <ul>
         <li><b class="list-header">2019 July</b></li>
         <li class="indented">
+            <a href="/posts/2019/07/securing-websites-with-msi/" title="Securing Azure Services with Managed Identities" rel="bookmark">
+                <b>19th </b>Securing Azure Services with Managed Identities
+            </a>
+        </li>
+        <li class="indented">
             <a href="/posts/2019/07/azure-4-everyone-logic-apps-intro/" title="Azure 4 Everyone - Azure Logic Apps Introduction" rel="bookmark">
                 <b>14th </b>Azure 4 Everyone - Azure Logic Apps Introduction
             </a>
@@ -701,16 +694,16 @@ s.setAttribute('data-timestamp', +new Date());
                 <b>15th </b>Refreshing Azure Analysis Services models using Logic Apps
             </a>
         </li>
-        <li><b class="list-header">2018 June</b></li>
-        <li class="indented">
-            <a href="/posts/analysis-services-onprem-integration/" title="Azure Analysis Services hybrid enrivonment with on-premises databases" rel="bookmark">
-                <b>26th </b>Azure Analysis Services hybrid enrivonment with on-premises databases
-            </a>
-        </li>
 </ul>
 </div><div id="categories-3" class="widget widget_categories">
   <h5>Tags</h5>
   <ul class="tag-list">
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/active-directory">Active Directory (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/analysis-services.svg" alt="Analysis Services"/> 
@@ -719,9 +712,15 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-service.svg" alt="App Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-service">App Service (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
         </div> 
-        <a href="https://marczak.io/tags/azure">Azure (13)</a>
+        <a href="https://marczak.io/tags/azure">Azure (14)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -781,13 +780,19 @@ s.setAttribute('data-timestamp', +new Date());
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/functions.svg" alt="Functions"/> 
         </div> 
-        <a href="https://marczak.io/tags/functions">Functions (1)</a>
+        <a href="https://marczak.io/tags/functions">Functions (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/> 
         </div> 
-        <a href="https://marczak.io/tags/logic-apps">Logic Apps (3)</a>
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/security.svg" alt="Security"/> 
+        </div> 
+        <a href="https://marczak.io/tags/security">Security (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
