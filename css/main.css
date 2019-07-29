@@ -24,7 +24,7 @@ img {
 .pagination {
   width: auto;
 }
-.pagination>.active>a, .pagination>.active>a:hover, {
+.pagination>.active>a, .pagination>.active>a:hover {
   background-color: #323437;
   border-color: #323437;
 }
@@ -57,7 +57,22 @@ aside .widget a {
   color: #23527c;
   font-weight: normal;
 }
-
+.page-header.header-small div.container {
+  padding-top: 80px;
+  padding-bottom: 50px;
+}
+@media (max-width: 991px) {
+  .blog .page-header.header-small .container {
+    padding-top: 80px;
+  padding-bottom: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .blog .page-header.header-small .container {
+    padding-top: 80px;
+  padding-bottom: 50px;
+  }
+}
 .narrow-main {
   max-width: 800px;
   margin: 0 auto;

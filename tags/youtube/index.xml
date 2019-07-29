@@ -6,34 +6,10 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Jul 2019 01:11:23 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jul 2019 14:00:23 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/tags/youtube/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Azure 4 Everyone - Azure Data Factory Introduction</title>
-      <link>https://marczak.io/posts/2019/07/azure-4-everyone-data-factory-intro/</link>
-      <pubDate>Mon, 22 Jul 2019 01:11:23 +0200</pubDate>
-      
-      <guid>https://marczak.io/posts/2019/07/azure-4-everyone-data-factory-intro/</guid>
-      <description>
-        &lt;img src=&quot;https://marczak.io/images/2019-07-a4e-data-factory-intro/splash.jpg&quot;&gt;
-        &lt;p&gt;Azure Data Factory is essential service in all data related activities in Azure. It is flexible and powerful Platform as a Service offering with multitude of connectors and inetgration capabilities. It is a heart of ETL in Azure. &lt;/p&gt;
-      </description>
-    </item>
-    
-    <item>
-      <title>Azure 4 Everyone - Azure Logic Apps Introduction</title>
-      <link>https://marczak.io/posts/2019/07/azure-4-everyone-logic-apps-intro/</link>
-      <pubDate>Sun, 14 Jul 2019 14:00:23 +0200</pubDate>
-      
-      <guid>https://marczak.io/posts/2019/07/azure-4-everyone-logic-apps-intro/</guid>
-      <description>
-        &lt;img src=&quot;https://marczak.io/images/2019-07-a4e-logic-apps-intro/splash.jpg&quot;&gt;
-        &lt;p&gt;Azure Logic Apps are Enterprise Integration Service and as such their main purpose is orchestration, integration and scheduling of tasks in a simple way. With easy to use user interface, no coding design and powerful extensibility you can easily integrate services in minutes.&lt;/p&gt;
-      </description>
-    </item>
     
   </channel>
 </rss>

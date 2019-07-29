@@ -3,7 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://marczak.io/posts/2019/07/azure-4-everyone-data-factory-intro/</loc>
+    <loc>https://marczak.io/youtube/2019/07/app-service-intro/</loc>
+    <lastmod>2019-07-29T14:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/07/data-factory-intro/</loc>
     <lastmod>2019-07-22T01:11:23+02:00</lastmod>
   </url>
   
@@ -13,7 +18,7 @@
   </url>
   
   <url>
-    <loc>https://marczak.io/posts/2019/07/azure-4-everyone-logic-apps-intro/</loc>
+    <loc>https://marczak.io/youtube/2019/07/logic-apps-intro/</loc>
     <lastmod>2019-07-14T14:00:23+02:00</lastmod>
   </url>
   
@@ -100,13 +105,13 @@
   
   <url>
     <loc>https://marczak.io/tags/app-service/</loc>
-    <lastmod>2019-07-19T16:00:23+02:00</lastmod>
+    <lastmod>2019-07-29T14:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/tags/azure/</loc>
-    <lastmod>2019-07-22T01:11:23+02:00</lastmod>
+    <lastmod>2019-07-29T14:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -171,13 +176,13 @@
   
   <url>
     <loc>https://marczak.io/</loc>
-    <lastmod>2019-07-22T01:11:23+02:00</lastmod>
+    <lastmod>2019-07-29T14:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/posts/</loc>
-    <lastmod>2019-07-22T01:11:23+02:00</lastmod>
+    <lastmod>2019-07-19T16:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -236,7 +241,13 @@
   
   <url>
     <loc>https://marczak.io/tags/youtube/</loc>
-    <lastmod>2019-07-22T01:11:23+02:00</lastmod>
+    <lastmod>2019-07-29T14:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/</loc>
+    <lastmod>2019-07-29T14:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   

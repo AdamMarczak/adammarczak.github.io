@@ -12,18 +12,6 @@
     
     
     <item>
-      <title>Azure 4 Everyone - Azure Data Factory Introduction</title>
-      <link>https://marczak.io/posts/2019/07/azure-4-everyone-data-factory-intro/</link>
-      <pubDate>Mon, 22 Jul 2019 01:11:23 +0200</pubDate>
-      
-      <guid>https://marczak.io/posts/2019/07/azure-4-everyone-data-factory-intro/</guid>
-      <description>
-        &lt;img src=&quot;https://marczak.io/images/2019-07-a4e-data-factory-intro/splash.jpg&quot;&gt;
-        &lt;p&gt;Azure Data Factory is essential service in all data related activities in Azure. It is flexible and powerful Platform as a Service offering with multitude of connectors and inetgration capabilities. It is a heart of ETL in Azure. &lt;/p&gt;
-      </description>
-    </item>
-    
-    <item>
       <title>Azure Data Factory versus Logic Apps for Analysis Services Refresh</title>
       <link>https://marczak.io/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/</link>
       <pubDate>Fri, 28 Jun 2019 17:00:23 +0200</pubDate>
