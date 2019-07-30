@@ -6,7 +6,7 @@
 /* NameAttribute */ .chroma .na, .chroma .nx, .chroma .err { color: #2B91AF }
 /* String */ .chroma .s, .chroma .s1, .chroma .s2, .chroma .sr { color: #b83bb9 }
 /* GenericSubheading */ .chroma .nb, .chroma .nt { font-weight: bold; color: #0000ff }
-/* cyrillic-ext */
+/* cyrillic-ext*/
 @font-face {
   font-family: 'Open Sans Condensed';
   font-style: normal;
