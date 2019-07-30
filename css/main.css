@@ -20,7 +20,25 @@ a {
 img {
   image-rendering: -webkit-optimize-contrast;
 }
+.navbar .container {
+  min-height: 64px !important;
+}
 
+.navbar-custom {
+    display: table-cell!important;
+    vertical-align: middle!important;
+    text-align: right!important;
+    width: 100%!important;
+}
+
+.navbar-brand {
+  margin-right: 30px;
+  line-height: 20px !important;
+}
+.navbar .navbar-brand p {
+  font-size: 18px;
+  margin-bottom: 0;
+}
 .pagination {
   width: auto;
 }
@@ -61,16 +79,35 @@ aside .widget a {
   padding-top: 80px;
   padding-bottom: 50px;
 }
+.btn-friendly-site {
+  font-family:Open Sans Condensed;
+  text-transform: none;
+  font-size:18px;
+  line-height:18px;
+  padding:7px 14px;
+  background-color:#2a2a2a;
+  color:white
+}
+.btn-friendly-site > img {
+  height:30px;
+  margin-right:4px
+}
+.btn-friendly-site.alt {
+  background-color:#4bbefb;
+}
 @media (max-width: 991px) {
   .blog .page-header.header-small .container {
     padding-top: 80px;
-  padding-bottom: 50px;
+    padding-bottom: 50px;
   }
 }
 @media (max-width: 768px) {
+  .btn-just-icon {
+    display: none;
+  }
   .blog .page-header.header-small .container {
     padding-top: 80px;
-  padding-bottom: 50px;
+    padding-bottom: 50px;
   }
 }
 .narrow-main {
