@@ -105,13 +105,13 @@
   
   <url>
     <loc>https://marczak.io/tags/app-service/</loc>
-    <lastmod>2019-07-29T14:00:23+02:00</lastmod>
+    <lastmod>2019-07-19T16:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marczak.io/tags/azure/</loc>
-    <lastmod>2019-07-29T14:00:23+02:00</lastmod>
+    <lastmod>2019-07-19T16:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -135,7 +135,7 @@
   
   <url>
     <loc>https://marczak.io/tags/data-factory/</loc>
-    <lastmod>2019-07-22T01:11:23+02:00</lastmod>
+    <lastmod>2019-06-28T17:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -236,12 +236,6 @@
   <url>
     <loc>https://marczak.io/tags/webpack/</loc>
     <lastmod>2018-02-04T22:37:23+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://marczak.io/tags/youtube/</loc>
-    <lastmod>2019-07-29T14:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
