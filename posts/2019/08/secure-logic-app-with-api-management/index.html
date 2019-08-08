@@ -294,6 +294,18 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 
 <p>Now that this is done, Logic App is secured and will only be called from API management service.</p>
 
+<h4 id="virtual-private-ip-important-note">Virtual Private IP - important note!</h4>
+
+<p>It is highly important to note that APIM VIP is not static forever. It is static for lifetime of tenant but with exception of three scenarios</p>
+
+<ul>
+<li>Service is redeployed</li>
+<li>Azure Subscription is suspended/warned</li>
+<li>VNet integration is added or removed</li>
+</ul>
+
+<p><a href="https://docs.microsoft.com/en-us/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules">See documentation FAQ for API management for details.</a></p>
+
 <h3 id="api-management-configuration">API management configuration</h3>
 
 <ol>
@@ -337,9 +349,9 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 </div>  </li>
 <li>Configure it as follows using <strong>Full</strong> edit mode
 
-<div class="lazy" style="max-height: 658px">
-    <div style="padding-bottom:98.06259314456035%"></div>
-    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000163.png" src=""/> 
+<div class="lazy" style="max-height: 749px">
+    <div style="padding-bottom:125.67114093959732%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000193.png" src=""/> 
 </div>  
 
 <ul>
@@ -348,7 +360,7 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 <li><strong>Failed validation HTTP code</strong> - what HTTP error code to return when validation fails.</li>
 <li><strong>Failed validation error message</strong> - error messages which will be returned with code upon failure.</li>
 <li><strong>Required signed tokens?</strong> - All Azure tokens are digitally signed so for extra security this can be set to <strong>Yes</strong>.</li>
-<li><strong>Audiences</strong> - for enterprise security you should set this field, but in this example for simplification leave this empty. Audiences are another great way of securing APIs even better.</li>
+<li><strong>Audiences</strong> - for enterprise security you should set this field. This will be API url which will be created during next steps. For us this is <strong>api://apim-logic-app-demo</strong></li>
 <li><strong>Require scheme</strong> - API should only accept tokens from with <strong>Bearer</strong> scheme.</li>
 <li><strong>Open ID URLs</strong> - In case of Azure this is one of the two URLs from below.
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://login.windows.net/&lt;tenant_name&gt;.onmicrosoft.com/.well-known/openid-configuration</code></pre></div>
@@ -402,6 +414,9 @@ When not sure about the URL, hovering over user name gives this details. Both te
       <span class="nt">&lt;openid-config</span> 
         <span class="na">url=</span><span class="s">&#34;https://login.windows.net/azure4everyone.onmicrosoft.com/.well-known/openid-configuration&#34;</span>
       <span class="nt">/&gt;</span>
+      <span class="nt">&lt;audiences&gt;</span>
+       <span class="nt">&lt;audience&gt;</span>api://apim-logic-app-demo<span class="nt">&lt;/audience&gt;</span>
+      <span class="nt">&lt;/audiences&gt;</span>
     <span class="nt">&lt;/validate-jwt&gt;</span>
     <span class="nt">&lt;set-header</span> <span class="na">name=</span><span class="s">&#34;Authorization&#34;</span> <span class="na">exists-action=</span><span class="s">&#34;delete&#34;</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/inbound&gt;</span>
@@ -419,6 +434,60 @@ When not sure about the URL, hovering over user name gives this details. Both te
   <span class="nt">&lt;/on-error&gt;</span>
 
 <span class="nt">&lt;/policies&gt;</span></code></pre></div></li>
+</ol>
+
+<h3 id="set-up-the-application-api">Set up the Application API</h3>
+
+<p>Audience should <strong>always, always, always be validated</strong>. This means custom app needs to be created.</p>
+
+<ol>
+<li>Go to Azure AD
+
+<div class="lazy" style="max-height: 92px">
+    <div style="padding-bottom:49.19786096256684%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000186.png" src=""/> 
+</div>  </li>
+<li>Open App registration panel
+
+<div class="lazy" style="max-height: 195px">
+    <div style="padding-bottom:54.166666666666664%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000187.png" src=""/> 
+</div>  </li>
+<li>Click on <strong>+ New registration</strong> button and fill in the form just by giving it any name
+
+<div class="lazy" style="max-height: 790px">
+    <div style="padding-bottom:105.1930758988016%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000188.png" src=""/> 
+</div>  </li>
+<li>In the app panel go to <strong>Expose an API</strong> blade
+
+<div class="lazy" style="max-height: 641px">
+    <div style="padding-bottom:69.37229437229438%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000189.png" src=""/> 
+</div>  
+
+<ol>
+<li><strong>Set</strong> Application ID URI, this will be audience that will be validated. In this example use <strong>api://apim-logic-app-demo</strong> value.
+
+<div class="lazy" style="max-height: 118px">
+    <div style="padding-bottom:19.376026272577995%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000190.png" src=""/> 
+</div>  </li>
+<li>Click <strong>Add a scope</strong>. At this time since only one API can be exposed it doesn&rsquo;t matter, but scopes are important topic for larger applications.
+
+<div class="lazy" style="max-height: 351px">
+    <div style="padding-bottom:62.67857142857143%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000191.png" src=""/> 
+</div>  </li>
+<li>Click on <strong>Add a client application</strong> and add Microsoft Azure CLI client ID so it can request tokens. In future remove it and only leave valid applications. This is OK for development only.
+
+<div class="lazy" style="max-height: 144px">
+    <div style="padding-bottom:23.801652892561982%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000192.png" src=""/> 
+</div>  </li>
+</ol></li>
+<li>Test the access token with audience by running following CLI command. It might need a minute to propagate so be patient.
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">az account get-access-token --resource <span class="s2">&#34;api://apim-logic-app-demo&#34;</span>. </code></pre></div></li>
 </ol>
 
 <h2 id="test-the-access">Test the access</h2>
@@ -462,16 +531,16 @@ High level the command looks like this.
 <ul>
 <li>Note that <strong>resource_uri</strong> does not matter because <strong>Validate JWT</strong> policy did not have set any audience validation. As such any token audience will be accepted as long as it&rsquo;s valid service in the tenant. In this example <strong><a href="https://management.azure.com">https://management.azure.com</a></strong> service token will be used.</li>
 <li>In this example call should look as below
-<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">az rest --uri <span class="s2">&#34;https://marczakioapim.azure-api.net/manual/paths/invoke&#34;</span> --method GET --headers <span class="s2">&#34;Ocp-Apim-Subscription-Key=f7af8e40ea164be587ef6611553b94d6&#34;</span> --resource <span class="s2">&#34;https://management.azure.com&#34;</span></code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">az rest --uri <span class="s2">&#34;https://marczakioapim.azure-api.net/manual/paths/invoke&#34;</span> --method GET --headers <span class="s2">&#34;Ocp-Apim-Subscription-Key=2be35ef775ad4b338e0248f12b98c9f3&#34;</span> --resource <span class="s2">&#34;api://apim-logic-app-demo&#34;</span></code></pre></div></li>
 <li>With response
 
-<div class="lazy" style="max-height: 121px">
-    <div style="padding-bottom:17.741935483870968%"></div>
-    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000172.png" src=""/> 
+<div class="lazy" style="max-height: 125px">
+    <div style="padding-bottom:18.27485380116959%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000194.png" src=""/> 
 </div>  </li>
 <li>For older versions of Azure CLI on windows a bit more cumbersome but viable way is to do CURL
-<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch"><span class="k">for</span> <span class="k">/f</span> <span class="nv">%i in (&#39;az account get-access-token --resource &#34;https://management.azure.com&#34; --query &#34;accessToken&#34;&#39;) do set VAR=%</span>i
-curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR%</span><span class="s2">&#34;</span> -H <span class="s2">&#34;Ocp-Apim-Subscription-Key:820bdeeb6ee24d20bec8ded4518cb984&#34;</span> <span class="s2">&#34;https://marczakioapim.azure-api.net/manual/paths/invoke&#34;</span></code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch"><span class="k">for</span> <span class="k">/f</span> <span class="nv">%i in (&#39;az account get-access-token --resource &#34;api://apim-logic-app-demo&#34; --query &#34;accessToken&#34;&#39;) do set VAR=%</span>i
+curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR%</span><span class="s2">&#34;</span> -H <span class="s2">&#34;Ocp-Apim-Subscription-Key:2be35ef775ad4b338e0248f12b98c9f3&#34;</span> <span class="s2">&#34;https://marczakioapim.azure-api.net/manual/paths/invoke&#34;</span></code></pre></div></li>
 </ul></li>
 </ol>
 
@@ -538,6 +607,9 @@ curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR
       <span class="nt">&lt;openid-config</span> 
         <span class="na">url=</span><span class="s">&#34;https://login.windows.net/azure4everyone.onmicrosoft.com/.well-known/openid-configuration&#34;</span> 
       <span class="nt">/&gt;</span>
+      <span class="nt">&lt;audiences&gt;</span>
+       <span class="nt">&lt;audience&gt;</span>api://apim-logic-app-demo<span class="nt">&lt;/audience&gt;</span>
+      <span class="nt">&lt;/audiences&gt;</span>
     <span class="nt">&lt;/validate-jwt&gt;</span>
     <span class="nt">&lt;set-variable</span> 
       <span class="na">name=</span><span class="s">&#34;jwt-token&#34;</span> 
