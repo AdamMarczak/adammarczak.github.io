@@ -486,6 +486,8 @@ curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR
 
 <h2 id="user-application-claims-from-token">User/Application claims from Token</h2>
 
+<p>If there is a need to pass some user or application claims from the token into the logic app, then this information can be obtained from context headers. In most simple way this can be achieved using below code.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">context</span>
   <span class="p">.</span><span class="n">Request</span>
   <span class="p">.</span><span class="n">Headers</span><span class="na">[&#34;Authorization&#34;]</span>
