@@ -157,7 +157,7 @@
 <li><strong>Location</strong> - region of API Management; it&rsquo;s best to place it in the same region as Logic App later created during later steps.</li>
 <li><strong>Organization Name</strong> - for the purpose of the demo this isn&rsquo;t relevant but it&rsquo;s public name of organization when this API is published to developers. So, make it meaningful.</li>
 <li><strong>Administrator email</strong> - administrators email. All communication regarding API management will go here.</li>
-<li><strong>Pricing tier</strong> - select <strong>Developer (No SLA)</strong> or <strong>Consumption</strong>. In case this is small application consider using <strong>Consumption</strong> plan as it&rsquo;s very cheap. First 1,000,000 calls per Azure subscription are free and then the charge is very small. Note that changes between consumption and dedicated plans (dev, basic, standard, premium) are currently not supported.</li>
+<li><strong>Pricing tier</strong> - select <strong>Developer (No SLA)</strong> tier. In case this is small application consider using <strong>Consumption</strong> plan as it&rsquo;s very cheap. First 1,000,000 calls per Azure subscription are free and then the charge is very small. Note that changes between consumption and dedicated plans (dev, basic, standard, premium) are currently not supported. Also note that <strong>Consumption</strong> plan does not have static IP and as such IP restrictions are can&rsquo;t be done.</li>
 </ul></li>
 </ol>
 
@@ -254,6 +254,8 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 
 <p>First of all, API management does not block access to the Logic App. It only provides secure way to connect to it. This means access restriction to Logic App must be done from the Logic App service. To do this, IP restriction can be used so that only traffic from API management will be accepted. This is possible because API management service has static VIP (virtual IP).</p>
 
+<p>Note that API Management in <strong>Consumption</strong> tier does <strong>not</strong> have static IP and as such, this IP restriction steps can&rsquo;t be applied.</p>
+
 <p>This diagram presents the traffic flow that needs to be blocked. So that users can&rsquo;t bypass API management via direct calls to Logic Apps.
 
 <div class="lazy" style="max-height: 341px">
@@ -346,6 +348,7 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 <li><strong>Failed validation HTTP code</strong> - what HTTP error code to return when validation fails.</li>
 <li><strong>Failed validation error message</strong> - error messages which will be returned with code upon failure.</li>
 <li><strong>Required signed tokens?</strong> - All Azure tokens are digitally signed so for extra security this can be set to <strong>Yes</strong>.</li>
+<li><strong>Audiences</strong> - for enterprise security you should set this field, but in this example for simplification leave this empty. Audiences are another great way of securing APIs even better.</li>
 <li><strong>Require scheme</strong> - API should only accept tokens from with <strong>Bearer</strong> scheme.</li>
 <li><strong>Open ID URLs</strong> - In case of Azure this is one of the two URLs from below.
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://login.windows.net/&lt;tenant_name&gt;.onmicrosoft.com/.well-known/openid-configuration</code></pre></div>
