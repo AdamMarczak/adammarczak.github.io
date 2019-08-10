@@ -123,8 +123,8 @@
 <p>All that can be fixed with simple implementation of Azure API management solution which will proxy requests to logic apps and validate Azure AD JWT tokens on the way. This provides complete security of the solution.</p>
 
 
-<div class="lazy" style="max-height: 280px">
-    <div style="padding-bottom:61.94690265486726%"></div>
+<div class="lazy" style="max-height: 278px">
+    <div style="padding-bottom:62.05357142857143%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000176.png" src=""/> 
 </div>  
 
@@ -258,8 +258,8 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 
 <p>This diagram presents the traffic flow that needs to be blocked. So that users can&rsquo;t bypass API management via direct calls to Logic Apps.
 
-<div class="lazy" style="max-height: 341px">
-    <div style="padding-bottom:75.60975609756098%"></div>
+<div class="lazy" style="max-height: 330px">
+    <div style="padding-bottom:73.33333333333333%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000177.png" src=""/> 
 </div>  </p>
 
@@ -529,7 +529,7 @@ High level the command looks like this.
   --resource <span class="s2">&#34;&lt;resource_uri&gt;&#34;</span></code></pre></div>
 
 <ul>
-<li>Note that <strong>resource_uri</strong> does not matter because <strong>Validate JWT</strong> policy did not have set any audience validation. As such any token audience will be accepted as long as it&rsquo;s valid service in the tenant. In this example <strong><a href="https://management.azure.com">https://management.azure.com</a></strong> service token will be used.</li>
+<li><strong>resource_uri</strong> is the audience for the token which is used in <strong>Validate JWT</strong> policy. This should be set to <strong>api://apim-logic-app-demo</strong></li>
 <li>In this example call should look as below
 <div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">az rest --uri <span class="s2">&#34;https://marczakioapim.azure-api.net/manual/paths/invoke&#34;</span> --method GET --headers <span class="s2">&#34;Ocp-Apim-Subscription-Key=2be35ef775ad4b338e0248f12b98c9f3&#34;</span> --resource <span class="s2">&#34;api://apim-logic-app-demo&#34;</span></code></pre></div></li>
 <li>With response
