@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://marczak.io/youtube/2019/08/function-apps-intro/</loc>
+    <lastmod>2019-08-12T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/posts/2019/08/secure-logic-app-with-api-management/</loc>
     <lastmod>2019-08-08T10:00:00+02:00</lastmod>
   </url>
@@ -192,7 +197,7 @@
   
   <url>
     <loc>https://marczak.io/</loc>
-    <lastmod>2019-08-08T10:00:00+02:00</lastmod>
+    <lastmod>2019-08-12T12:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -257,7 +262,7 @@
   
   <url>
     <loc>https://marczak.io/youtube/</loc>
-    <lastmod>2019-08-05T12:00:23+02:00</lastmod>
+    <lastmod>2019-08-12T12:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
