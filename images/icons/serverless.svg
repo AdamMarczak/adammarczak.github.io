@@ -16,7 +16,7 @@
    id="svg8"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="serverless.svg"
-   inkscape:export-filename="C:\Users\user\OneDrive\Personal\01. MarczakIO\images\icons\serverless.png"
+   inkscape:export-filename="C:\Users\adam.marczak\OneDrive\Personal\01. MarczakIO\images\icons\serverless.png"
    inkscape:export-xdpi="313.73373"
    inkscape:export-ydpi="313.73373">
   <defs
@@ -28,16 +28,21 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="400"
-     inkscape:cy="560"
+     inkscape:zoom="3.959798"
+     inkscape:cx="44.310647"
+     inkscape:cy="108.46573"
      inkscape:document-units="mm"
      inkscape:current-layer="g1376"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     inkscape:window-width="2736"
+     inkscape:window-height="1719"
+     inkscape:window-x="-13"
+     inkscape:window-y="2147"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -46,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -722,7 +727,7 @@
         </g>
       </g>
       <path
-         style="opacity:1;fill:#aa0000;fill-opacity:1;stroke:none;stroke-width:3.67259407;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+         style="opacity:1;fill:#212138;fill-opacity:1;stroke:none;stroke-width:3.67259407;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 285.60358,112.65059 a 24.288119,24.288119 0 0 0 -24.25822,24.31755 24.288119,24.288119 0 0 0 24.31756,24.25864 24.288119,24.288119 0 0 0 24.25864,-24.31799 24.288119,24.288119 0 0 0 -24.31798,-24.2582 z m 0.005,4.05769 a 20.230438,20.230438 0 0 1 15.88736,7.67859 l -34.19776,21.04401 a 20.230438,20.230438 0 0 1 -1.89507,-8.4677 20.230438,20.230438 0 0 1 20.20547,-20.2549 z m 18.36028,11.73821 a 20.230438,20.230438 0 0 1 1.89506,8.46727 20.230438,20.230438 0 0 1 -20.2059,20.25533 20.230438,20.230438 0 0 1 -15.8869,-7.67859 z"
          id="path901"
          inkscape:connector-curvature="0" />

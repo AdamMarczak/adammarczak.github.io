@@ -479,7 +479,9 @@ When not sure about the URL, hovering over user name gives this details. Both te
     <div style="padding-bottom:62.67857142857143%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000191.png" src=""/> 
 </div>  </li>
-<li>Click on <strong>Add a client application</strong> and add Microsoft Azure CLI client ID so it can request tokens. In future remove it and only leave valid applications. This is OK for development only.
+<li>Click on <strong>Add a client application</strong> and add Microsoft Azure CLI client ID so it can request tokens. In future remove it and only leave valid applications. This is OK for development only. Azure CLI client ID is always the same so simply add this value.
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">04b07795-8ddb-461a-bbee-02f9e1bf7b46</code></pre></div>
+If in rare scenario this would change in future, simply run az account get-access-token command and parse it in <a href="https://jwt.io">JWT.io</a> or any other website to get appid property.
 
 <div class="lazy" style="max-height: 144px">
     <div style="padding-bottom:23.801652892561982%"></div>
