@@ -654,6 +654,10 @@ curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000182.png" src=""/> 
 </div>  
 
+<p>In case grabbing specific header is required then simply use Logic App expression.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">triggerOutputs()</span><span class="p">[</span><span class="err">&#39;headers&#39;</span><span class="p">][</span><span class="err">&#39;X-UPN&#39;</span><span class="p">]</span></code></pre></div>
+
 <h3 id="tokens">Tokens</h3>
 
 <p>When it comes to Token and what information does it hold feel free to check <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/id-tokens">ID tokens documentation</a> for complete list of fields for Azure Active Directory tokens.</p>
