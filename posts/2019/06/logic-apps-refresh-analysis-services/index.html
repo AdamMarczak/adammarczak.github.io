@@ -165,7 +165,7 @@
 <h3 id="refreshing-model-with-post-refreshes">Refreshing model with POST /refreshes</h3>
 
 <p>In order to refresh model on analysis services a REST call must be performed on
-https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt;serverName&gt;</strong>/models/<strong>&lt;resource&gt;</strong>/refresh</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refresh</code></pre></div></p>
 
 <p>As per diagram
  
@@ -210,12 +210,12 @@ https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt
 
 <h4 id="response-202-accepted">Response (202 Accepted)</h4>
 
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">Empty</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">Empty</code></pre></div>
 
 <p>But there is very important header in the response. This header can be used to check status in following requests.
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;Location&#34;</span><span class="p">:</span> <span class="s2">&#34;https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refreshId&gt;&#34;</span>
-<span class="p">}</span></code></pre></div></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">{
+  &#34;Location&#34;: &#34;https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refreshId&gt;&#34;
+}</code></pre></div></p>
 
 <h4 id="response-409-conflict">Response (409 Conflict)</h4>
 
@@ -241,8 +241,8 @@ https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt
 <h3 id="checking-refresh-status-with-get-refreshes-refresh-id">Checking refresh status with GET /refreshes&lt;refresh_id&gt;</h3>
 
 <p>To get status of refresh a REST call must be performed on
-https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt;serverName&gt;</strong>/models/<strong>&lt;resource&gt;</strong>/refreshes/<strong>&lt;refreshId&gt;</strong>
- 
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refreshId&gt;</code></pre></div>
+
 <div class="lazy" style="max-height: 155px">
     <div style="padding-bottom:17.51412429378531%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/aas-async-refresh-flow-get.png" src=""/> 
@@ -497,7 +497,8 @@ In this example this would mean value
 
 <ul>
 <li><strong>Method</strong> - submitting new refresh schedules are always done with <strong>POST</strong> calls</li>
-<li><strong>URI</strong> is built as https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt;serverName&gt;</strong>/models/<strong>&lt;resource&gt;</strong>/refresh
+<li><strong>URI</strong> is built as
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">  https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refresh</code></pre></div>
 
 <div class="lazy" style="max-height: 155px">
     <div style="padding-bottom:17.51412429378531%"></div>
@@ -622,7 +623,8 @@ It is also possible to refresh model partially. In this case in the <strong>Obje
 
 <ul>
 <li><strong>Method</strong> - getting status of refresh is done using <strong>GET</strong> method</li>
-<li><strong>URI</strong> is build as https://<strong>&lt;rollout&gt;</strong>.asazure.windows.net/servers/<strong>&lt;serverName&gt;</strong>/models/<strong>&lt;resource&gt;</strong>/refreshes/<strong>&lt;refresh_id&gt;</strong>
+<li><strong>URI</strong> is build as
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refresh_id&gt;</code></pre></div>
 
 <div class="lazy" style="max-height: 155px">
     <div style="padding-bottom:17.51412429378531%"></div>
