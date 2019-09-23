@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://marczak.io/youtube/2019/09/appservice-deployment-center/</loc>
+    <lastmod>2019-09-23T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/youtube/2019/09/aci-intro/</loc>
     <lastmod>2019-09-16T11:00:23+02:00</lastmod>
   </url>
@@ -227,7 +232,7 @@
   
   <url>
     <loc>https://marczak.io/</loc>
-    <lastmod>2019-09-16T11:00:23+02:00</lastmod>
+    <lastmod>2019-09-23T12:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -292,7 +297,7 @@
   
   <url>
     <loc>https://marczak.io/youtube/</loc>
-    <lastmod>2019-09-16T11:00:23+02:00</lastmod>
+    <lastmod>2019-09-23T12:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
