@@ -6,10 +6,22 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Aug 2019 12:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Oct 2019 12:00:00 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/tags/logic-apps/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Automating Enterprise Azure billing using Logic Apps for 0.03$/month</title>
+      <link>https://marczak.io/posts/2019/10/ea-consumption-automation-with-logic-apps/</link>
+      <pubDate>Sat, 19 Oct 2019 12:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2019/10/ea-consumption-automation-with-logic-apps/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2019-09-ea-billing-automation-with-logic-apps/splash.png&quot;&gt;
+        &lt;p&gt;Started up as Manual extraction, evolved into PowerShell scripts, serverless Functions and ended up as Logic Apps. Check how how this great service solved our business challenge for 3 cents a month.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>Enhancing Logic Apps security with obfuscation</title>

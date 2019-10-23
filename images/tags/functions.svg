@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,22 +7,31 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="FxSymbol0-0dd"
+   class=""
+   data-islogo="true"
+   data-type="337"
+   focusable="false"
+   role="presentation"
    version="1.1"
-   id="Layer_1"
-   x="0px"
-   y="0px"
-   viewBox="0 0 64 64"
-   enable-background="new 0 0 64 64"
-   xml:space="preserve"
+   viewBox="0 0 18 18"
    sodipodi:docname="functions.svg"
    inkscape:export-filename="C:\Users\user\OneDrive\Personal\01. MarczakIO\images\tags\functions.png"
-   inkscape:export-xdpi="1800"
-   inkscape:export-ydpi="1800"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"><metadata
-     id="metadata17"><rdf:RDF><cc:Work
-         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
-     id="defs15" /><sodipodi:namedview
+   inkscape:export-xdpi="5333.3301"
+   inkscape:export-ydpi="5333.3301"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata28">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1"
@@ -35,21 +42,59 @@
      inkscape:pageshadow="2"
      inkscape:window-width="640"
      inkscape:window-height="480"
-     id="namedview13"
+     id="namedview26"
      showgrid="false"
-     inkscape:current-layer="Layer_1" /><g
-     id="g10"><path
-       fill="#3999C6"
-       d="M63.6,32.4c0.6-0.6,0.5-1.7,0-2.3L60.5,27L46.7,13.6c-0.6-0.6-1.5-0.6-2.2,0l0,0c-0.6,0.6-0.8,1.7,0,2.3   L59,30.1c0.6,0.6,0.6,1.7,0,2.3L44.2,47.1c-0.6,0.6-0.6,1.7,0,2.3l0,0c0.6,0.6,1.7,0.5,2.2,0l13.7-13.6c0,0,0,0,0.1-0.1L63.6,32.4z   "
-       id="path2" /><path
-       fill="#3999C6"
-       d="M0.4,32.4c-0.6-0.6-0.5-1.7,0-2.3L3.5,27l13.8-13.4c0.6-0.6,1.5-0.6,2.2,0l0,0c0.6,0.6,0.8,1.7,0,2.3   L5.3,30.1c-0.6,0.6-0.6,1.7,0,2.3l14.5,14.7c0.6,0.6,0.6,1.7,0,2.3l0,0c-0.6,0.6-1.7,0.5-2.2,0L3.6,36c0,0,0,0-0.1-0.1L0.4,32.4z"
-       id="path4" /><polygon
-       fill="#FCD116"
-       points="47.6,2.5 28.1,2.5 17.6,32.1 30.4,32.2 20.4,61.5 48,22.4 34.6,22.4  "
-       id="polygon6" /><polygon
-       opacity="0.3"
-       fill="#FF8C00"
-       enable-background="new    "
-       points="34.6,22.4 47.6,2.5 37.4,2.5 26.6,27.1 39.4,27.2    20.4,61.5 48,22.4  "
-       id="polygon8" /></g></svg>
+     inkscape:current-layer="FxSymbol0-0dd" />
+  <defs
+     id="defs13">
+    <linearGradient
+       id="716486ba-07a5-4178-9c6a-cec856341a7a"
+       x1="-26.319"
+       x2="-26.319"
+       y1="-296.2"
+       y2="-311.7"
+       gradientTransform="matrix(1.156 0 0 1.029 39.425 321.61)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#fea11b"
+         offset="0"
+         id="stop2" />
+      <stop
+         stop-color="#fea51a"
+         offset=".284"
+         id="stop4" />
+      <stop
+         stop-color="#feb018"
+         offset=".547"
+         id="stop6" />
+      <stop
+         stop-color="#ffc314"
+         offset=".8"
+         id="stop8" />
+      <stop
+         stop-color="#ffd70f"
+         offset="1"
+         id="stop10" />
+    </linearGradient>
+  </defs>
+  <path
+     d="M5.5 13.1l-.6.6a.3.3 0 0 1-.4 0L.2 9.4a.608.608 0 0 1 0-.8L.7 8l4.8 4.8a.188.188 0 0 1 0 .3z"
+     fill="#50e6ff"
+     id="path15" />
+  <path
+     d="M4.8 4.3l.6.6a.3.3 0 0 1 0 .4L.8 9.9l-.6-.6a.6.6 0 0 1 0-.8l4.3-4.3a.367.367 0 0 1 .3.1z"
+     fill="#1490df"
+     id="path17" />
+  <path
+     d="M17.3 8l.6.6a.608.608 0 0 1 0 .8l-4.4 4.4a.3.3 0 0 1-.4 0l-.6-.6a.3.3 0 0 1 0-.4L17.3 8z"
+     fill="#50e6ff"
+     id="path19" />
+  <path
+     d="M17.8 9.3l-.6.6-4.7-4.7a.3.3 0 0 1 0-.4l.6-.6a.3.3 0 0 1 .4 0l4.3 4.3a.6.6 0 0 1 0 .8z"
+     fill="#1490df"
+     id="path21" />
+  <path
+     d="M8.3 9.9H4.7a.215.215 0 0 1-.2-.2v-.1l4.3-8.5c.1 0 .1-.1.2-.1h4.2a.215.215 0 0 1 .2.2v.1L8.4 8h4.9a.215.215 0 0 1 .2.2.1.1 0 0 1-.1.1l-8.2 8.5c-.1 0-.6.5-.4-.2z"
+     fill="url(#716486ba-07a5-4178-9c6a-cec856341a7a)"
+     id="path23" />
+</svg>

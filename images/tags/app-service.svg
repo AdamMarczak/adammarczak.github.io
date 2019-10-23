@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generator: Adobe Illustrator 17.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,24 +7,31 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="FxSymbol0-0de"
+   class=""
+   data-islogo="true"
+   data-type="72"
+   focusable="false"
+   role="presentation"
    version="1.1"
-   id="Layer_1"
-   x="0px"
-   y="0px"
-   width="50px"
-   height="50px"
-   viewBox="0 0 50 50"
-   enable-background="new 0 0 50 50"
-   xml:space="preserve"
+   viewBox="0 0 18 18"
    sodipodi:docname="app-service.svg"
    inkscape:export-filename="C:\Users\user\OneDrive\Personal\01. MarczakIO\images\tags\app-service.png"
-   inkscape:export-xdpi="2304"
-   inkscape:export-ydpi="2304"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"><metadata
-     id="metadata11"><rdf:RDF><cc:Work
-         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
-     id="defs9" /><sodipodi:namedview
+   inkscape:export-xdpi="8449.1602"
+   inkscape:export-ydpi="8449.1602"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata44">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1"
@@ -37,12 +42,110 @@
      inkscape:pageshadow="2"
      inkscape:window-width="640"
      inkscape:window-height="480"
-     id="namedview7"
+     id="namedview42"
      showgrid="false"
-     inkscape:current-layer="Layer_1" /><path
-     fill="#59B4D9"
-     d="M40.193,44.839c-4.53,3.464-9.867,5.151-15.167,5.151c-7.52,0-14.956-3.376-19.87-9.803  C-3.24,29.225-1.168,13.548,9.814,5.148C14.343,1.663,19.686,0,24.979,0c7.52,0,14.958,3.376,19.87,9.809  C53.247,20.768,51.154,36.448,40.193,44.839"
-     id="path2" /><path
-     fill="#FFFFFF"
-     d="M35.6,29.378c1.816,2.368,5.186,2.796,7.541,1.004c0.123-0.094,0.218-0.208,0.33-0.309  c2.409,1.697,4.082,2.817,5.025,3.459c0.279-0.723,0.472-1.417,0.67-2.142c-0.996-0.741-2.343-1.778-4.29-3.356  c0.639-1.68,0.437-3.64-0.73-5.171c-1.669-2.16-4.626-2.709-6.936-1.377c-2.546-2.284-5.343-4.902-8.293-7.833  c9.165-4.929,15.676-4.207,15.676-4.207c-1.087-1.386-2.305-2.6-3.606-3.697c-3.865-0.597-9.869-0.53-16.729,3.119l-0.002-0.003  l-0.001,0c-2.286-2.393-4.613-4.958-6.983-7.712c-1.134,0.363-2.242,0.812-3.312,1.347c1.749,2.862,4.102,5.749,6.754,8.565h0  c0.005,0.006,0.011,0.011,0.017,0.017c-2.211,1.546-4.673,3.613-6.944,6.015c-0.29,0.309-0.569,0.62-0.842,0.931  c-1.357-0.284-2.784-0.201-4.117,0.282C6.564,13.425,6.746,9.501,7.104,7.478c-0.983,1.03-1.901,2.113-2.692,3.267  C3.821,13.16,3.653,16.643,5.397,20.84c-2.019,2.642-2.114,6.389-0.005,9.153c0.176,0.229,0.364,0.442,0.559,0.645  c-0.921,3.137-1.333,6.163-1.46,8.761c0.237,0.322,0.237,0.582,0.472,0.896c1.199,1.538,2.705,2.834,4.16,4.008  c-0.18-2.75,0.014-6.806,1.714-11.372c1.173,0.089,2.366-0.096,3.483-0.566c0.64,0.563,1.31,1.132,2.025,1.711  c2.453,1.942,4.9,3.453,7.285,4.643c-0.124,1.213,0.18,2.474,0.968,3.518c1.685,2.176,4.805,2.582,6.983,0.919  c0.453-0.347,0.811-0.766,1.108-1.216c3.889,0.866,7.287,1.019,9.806,1.019c0.386,0,2.177-2.436,3.203-3.946  c-1.534,0.321-6.083,0.946-12.3-0.84c-0.15-0.698-0.437-1.376-0.898-1.98c-1.579-2.07-4.466-2.518-6.618-1.133  c-2.161-1.172-4.424-2.641-6.758-4.49c-0.471-0.373-0.923-0.745-1.359-1.118c1.426-2.247,1.578-5.127,0.318-7.55  c0.286-0.286,0.567-0.573,0.871-0.857c2.311-2.159,4.485-3.887,6.519-5.274c-0.082-0.076-0.156-0.156-0.236-0.233  c0.081,0.075,0.157,0.152,0.239,0.227c-0.001,0-0.001,0.001-0.002,0.001c3.121,2.886,6.43,5.621,9.564,8.065  C34.209,25.589,34.339,27.73,35.6,29.378z"
-     id="path4" /></svg>
+     inkscape:current-layer="FxSymbol0-0de" />
+  <defs
+     id="defs19">
+    <linearGradient
+       id="21835eba-54d1-4895-bec7-c7debbea7644"
+       x1="10.135"
+       x2="10.135"
+       y1="15.445"
+       y2="11.895" />
+    <linearGradient
+       id="cc4eaa77-f606-4858-82be-b6f017f8e0e6"
+       x1="4.399"
+       x2="4.368"
+       y1="11.484"
+       y2="7.525"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#ccc"
+         offset="0"
+         id="stop3" />
+      <stop
+         stop-color="#d7d7d7"
+         offset=".123"
+         id="stop5" />
+      <stop
+         stop-color="#ebebeb"
+         offset=".421"
+         id="stop7" />
+      <stop
+         stop-color="#f8f8f8"
+         offset=".716"
+         id="stop9" />
+      <stop
+         stop-color="#fcfcfc"
+         offset="1"
+         id="stop11" />
+    </linearGradient>
+    <radialGradient
+       id="84d4b995-4159-4d4d-aee0-170d911ffad6"
+       cx="13429"
+       cy="3518.9"
+       r="56.667"
+       gradientTransform="matrix(.15 0 0 .15 -2005.3 -518.83)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#5ea0ef"
+         offset=".183"
+         id="stop14" />
+      <stop
+         stop-color="#0078d4"
+         offset="1"
+         id="stop16" />
+    </radialGradient>
+  </defs>
+  <path
+     d="M14.209 15.717A8.5 8.5 0 0 1 3.791 2.283l.086-.065a8.5 8.5 0 0 1 10.332 13.5"
+     fill="url(#84d4b995-4159-4d4d-aee0-170d911ffad6)"
+     id="path21" />
+  <path
+     d="M2.481 10.645a18.877 18.877 0 0 0-.836 2.624 9.46 9.46 0 0 0 .622.922 8.126 8.126 0 0 0 .555.647 17.828 17.828 0 0 1 1.083-3.468 2.72 2.72 0 0 1-1.424-.725zM3.46 6.11a11.947 11.947 0 0 1-.689-2.945 8.4 8.4 0 0 0-1.1 1.458 13.23 13.23 0 0 0 .568 2.362A2.731 2.731 0 0 1 3.46 6.11z"
+     fill="#83b9f9"
+     id="path23" />
+  <circle
+     cx="4.377"
+     cy="8.681"
+     r="2.732"
+     fill="url(#cc4eaa77-f606-4858-82be-b6f017f8e0e6)"
+     id="circle25" />
+  <path
+     d="M8.36 13.67a1.764 1.764 0 0 1 .54-1.27 11.978 11.978 0 0 1-2.525-1.857 2.716 2.716 0 0 1-1.492.821 11.821 11.821 0 0 0 1.447 1.287A12.384 12.384 0 0 0 8.376 13.9a1.9 1.9 0 0 1-.016-.23zm6.298.212a11.928 11.928 0 0 1-2.754-.321c0 .036.006.072.006.109a1.767 1.767 0 0 1-.506 1.24 13.883 13.883 0 0 0 3.412.243 8.479 8.479 0 0 0 1.151-1.343 12.188 12.188 0 0 1-1.309.072z"
+     fill="#83b9f9"
+     id="path27" />
+  <circle
+     cx="10.135"
+     cy="13.67"
+     r="1.775"
+     fill="url(#21835eba-54d1-4895-bec7-c7debbea7644)"
+     id="circle29" />
+  <path
+     d="M9.653 5.1A13.556 13.556 0 0 1 15.6 3.65a8.4 8.4 0 0 0-1.486-1.445A14.443 14.443 0 0 0 9.42 3.313c-.328.14-.646.3-.959.467A16.964 16.964 0 0 1 6.484.868a8.645 8.645 0 0 0-1.084.419A17.744 17.744 0 0 0 7.457 4.38a12.382 12.382 0 0 0-2.114 1.748 2.731 2.731 0 0 1 1.346 1.1 11.932 11.932 0 0 1 1.926-1.536 27.632 27.632 0 0 0 3.7 3.235 1.844 1.844 0 0 1 .612-.988A26.781 26.781 0 0 1 9.653 5.1z"
+     fill="#83b9f9"
+     id="path31" />
+  <circle
+     cx="14.18"
+     cy="9.268"
+     r="1.885"
+     fill="#f2f2f2"
+     id="circle33" />
+  <path
+     d="M17.347 10.539a19.22 19.22 0 0 1-.321-.169L17 10.354l-.3-.16-.055-.03-.267-.149-.066-.036L16 9.8a1.8 1.8 0 0 1-.637.925l.374.214.084.047c.115.065.231.129.348.193l.034.019q.42.23.862.456a8.493 8.493 0 0 0 .283-1.114z"
+     fill="#83b9f9"
+     id="path35" />
+  <circle
+     cx="4.377"
+     cy="8.681"
+     r="2.732"
+     fill="#f2f2f2"
+     id="circle37" />
+  <circle
+     cx="10.135"
+     cy="13.67"
+     r="1.775"
+     fill="#f2f2f2"
+     id="circle39" />
+</svg>
