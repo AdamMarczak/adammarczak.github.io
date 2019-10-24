@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/10/botservice-intro/</loc>
+    <lastmod>2019-10-22T16:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/2019/10/ea-consumption-automation-with-logic-apps/</loc>
+    <lastmod>2019-10-19T12:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/10/keyvault-intro/</loc>
+    <lastmod>2019-10-16T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/10/adf-triggers/</loc>
+    <lastmod>2019-10-07T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/09/event-grid-intro/</loc>
+    <lastmod>2019-09-30T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/09/appservice-deployment-center/</loc>
+    <lastmod>2019-09-23T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/09/aci-intro/</loc>
+    <lastmod>2019-09-16T11:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/09/logicapps-controlactions/</loc>
+    <lastmod>2019-09-09T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/09/cosmos-intro/</loc>
+    <lastmod>2019-09-02T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/08/datafactory-params/</loc>
+    <lastmod>2019-08-26T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/2019/08/logic-apps-obfuscation/</loc>
+    <lastmod>2019-08-16T12:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/08/databricks-intro/</loc>
+    <lastmod>2019-08-12T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/08/function-apps-intro/</loc>
+    <lastmod>2019-08-12T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/2019/08/secure-logic-app-with-api-management/</loc>
+    <lastmod>2019-08-08T10:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/08/app-service-intro/</loc>
+    <lastmod>2019-08-05T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/07/app-service-intro/</loc>
+    <lastmod>2019-07-29T14:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/07/data-factory-intro/</loc>
+    <lastmod>2019-07-22T01:11:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/2019/07/securing-websites-with-msi/</loc>
+    <lastmod>2019-07-19T16:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/2019/07/logic-apps-intro/</loc>
+    <lastmod>2019-07-14T14:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/2019/07/azure-jumpstart/</loc>
+    <lastmod>2019-07-08T14:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/</loc>
+    <lastmod>2019-06-28T17:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/</loc>
+    <lastmod>2019-06-15T11:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/analysis-services-onprem-integration/</loc>
+    <lastmod>2018-06-26T18:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/azure-loading-csv-to-sql/</loc>
+    <lastmod>2018-06-03T11:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/botseries-dev-done-easy/</loc>
+    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/netcore-vuejs-crud/</loc>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/netcore-vuejs/</loc>
+    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/cognitive-text-analytics/</loc>
+    <lastmod>2017-12-10T22:34:37+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/botseries-rich-cards/</loc>
+    <lastmod>2017-11-18T22:00:37+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/botseries-smarter-bots-with-nlp/</loc>
+    <lastmod>2017-11-06T08:37:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/botseries-introductiontobots/</loc>
+    <lastmod>2017-10-22T22:34:37+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/precompiled-bots-for-bot-service/</loc>
+    <lastmod>2017-09-30T16:20:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/active-directory/</loc>
+    <lastmod>2019-08-08T10:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/analysis-services/</loc>
+    <lastmod>2019-06-28T17:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/api-management/</loc>
+    <lastmod>2019-08-08T10:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/app-service/</loc>
+    <lastmod>2019-07-19T16:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/azure/</loc>
+    <lastmod>2019-10-19T12:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/bot-service/</loc>
+    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/cognitive-services/</loc>
+    <lastmod>2017-12-10T22:34:37+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/cosmos-db/</loc>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/data-factory/</loc>
+    <lastmod>2019-06-28T17:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/data-gateway/</loc>
+    <lastmod>2018-06-26T18:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/dotnet-core/</loc>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/flow/</loc>
+    <lastmod>2017-12-10T22:34:37+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/functions/</loc>
+    <lastmod>2019-07-19T16:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/key-vault/</loc>
+    <lastmod>2019-10-19T12:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/logic-apps/</loc>
+    <lastmod>2019-10-19T12:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/luis/</loc>
+    <lastmod>2017-11-06T08:37:23+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/</loc>
+    <lastmod>2019-10-22T16:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/posts/</loc>
+    <lastmod>2019-10-19T12:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/security/</loc>
+    <lastmod>2019-08-16T12:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/sql/</loc>
+    <lastmod>2018-06-26T18:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/</loc>
+    <lastmod>2019-08-08T10:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/teams/</loc>
+    <lastmod>2018-03-12T21:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/text-analytics/</loc>
+    <lastmod>2017-12-10T22:34:37+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/visual-studio/</loc>
+    <lastmod>2018-06-26T18:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/visual-studio-code/</loc>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/vue.js/</loc>
+    <lastmod>2018-02-17T19:27:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/tags/webpack/</loc>
+    <lastmod>2018-02-04T22:37:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/youtube/</loc>
+    <lastmod>2019-10-22T16:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
