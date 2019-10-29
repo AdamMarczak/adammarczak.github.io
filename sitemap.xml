@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://marczak.io/youtube/2019/10/sqldatabase-intro/</loc>
+    <lastmod>2019-10-29T12:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/posts/2019/10/ea-consumption-automation-with-logic-apps/</loc>
     <lastmod>2019-10-25T11:00:00+02:00</lastmod>
   </url>
@@ -263,7 +268,7 @@
   
   <url>
     <loc>https://marczak.io/</loc>
-    <lastmod>2019-10-25T11:00:00+02:00</lastmod>
+    <lastmod>2019-10-29T12:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -328,7 +333,7 @@
   
   <url>
     <loc>https://marczak.io/youtube/</loc>
-    <lastmod>2019-10-22T16:00:23+02:00</lastmod>
+    <lastmod>2019-10-29T12:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
