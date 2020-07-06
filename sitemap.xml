@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>https://marczak.io/az-900/</loc>
+    <lastmod>2020-01-02T16:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/posts/2019/10/ea-consumption-automation-with-logic-apps/</loc>
     <lastmod>2019-10-25T11:00:00+02:00</lastmod>
   </url>
@@ -107,6 +112,42 @@
   </url>
   
   <url>
+    <loc>https://marczak.io/az-900/episode-01/answers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/az-900/episode-01/cheat-sheet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/az-900/episode-01/practice-test/</loc>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/az-900/episode-02/answers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/az-900/episode-02/cheat-sheet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/az-900/episode-02/practice-test/</loc>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/az-900/episode-03/answers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/az-900/episode-03/cheat-sheet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/az-900/episode-03/practice-test/</loc>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/tags/active-directory/</loc>
     <lastmod>2019-08-08T10:00:00+02:00</lastmod>
     <priority>0</priority>
@@ -127,6 +168,12 @@
   <url>
     <loc>https://marczak.io/tags/app-service/</loc>
     <lastmod>2019-07-19T16:00:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/az-900/</loc>
+    <lastmod>2020-01-02T16:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   

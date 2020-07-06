@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Az-900s on Marczak.IO</title>
+    <link>https://marczak.io/az-900/</link>
+    <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Jan 2020 16:00:23 +0200</lastBuildDate>
+    
+        <atom:link href="https://marczak.io/az-900/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
