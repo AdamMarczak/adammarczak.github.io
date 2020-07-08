@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://marczak.io/youtube/1/</loc>
+    <lastmod>2020-07-07T16:00:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marczak.io/az-900/</loc>
     <lastmod>2020-07-07T16:00:23+02:00</lastmod>
   </url>
@@ -13,18 +18,13 @@
   </url>
   
   <url>
-    <loc>https://marczak.io/youtube/3/</loc>
-    <lastmod>2020-01-02T16:00:23+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://marczak.io/youtube/2/</loc>
-    <lastmod>2020-01-02T16:00:23+02:00</lastmod>
+    <lastmod>2020-06-29T16:00:23+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://marczak.io/youtube/1/</loc>
-    <lastmod>2020-01-02T16:00:23+02:00</lastmod>
+    <loc>https://marczak.io/youtube/3/</loc>
+    <lastmod>2020-06-28T16:00:23+02:00</lastmod>
   </url>
   
   <url>
@@ -326,7 +326,7 @@
   
   <url>
     <loc>https://marczak.io/youtube/</loc>
-    <lastmod>2020-01-02T16:00:23+02:00</lastmod>
+    <lastmod>2020-07-07T16:00:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
