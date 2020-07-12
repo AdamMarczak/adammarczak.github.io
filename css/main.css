@@ -377,3 +377,24 @@ article svg {
   float:left;
   margin:0px 10px 0 10px !important;
 }
+
+.check-answer > .answer > input:checked + label {
+  color: #00d000;
+}
+.check-answer > .answer > input:not(:checked) + label {
+  color: #00d000;
+}
+.check-answer > :not(.answer) > input:checked + label {
+  color: red;
+  text-decoration: line-through;
+}
+div.perfect-score-message {
+  display: none;
+}
+form.perfect-score > div.perfect-score-message {
+  color: #00d000;
+  font-size: 30px;
+  line-height: 30px;
+  margin: 20px 0;
+  display: block;
+}
