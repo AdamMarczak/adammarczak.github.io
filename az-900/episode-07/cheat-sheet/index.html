@@ -15,9 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.23' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.25' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Navigation  Episode List Episode Summary Practice Test!  Skills Learned  Describe Regions Describe Availability Zones  Cloud Deployment Model Cloud Deployment Model is simple a separation which describes where are the company resources deployed. Whenever this is in public cloud provider environment or private datacenter.
-Below table presents high level deployment model separation
-   Layer Cloud Provider Own Datacenter     Public ✅ ✖   Hybrid ✅ ✅   Private ✖ ✅    Public Cloud    Cloud Provider Own Datacenter     ✅ ✖    Key Characteristics">
+<meta name="description" content="Navigation  Episode List Episode Summary Practice Test!  Skills Learned  Describe Data Cenetrs Describe Regions and Region Pairs Describe Geographies Describe Availability Zones Describe the benefits and usage of core Azure architectural components (Regions &amp; Availability Zones)  Data Center  Physical facility Hosting for group of networked servers Own power, cooling &amp; networking infrastructure  Region  Geographical area on the planet One but usually more datacenters connected with low-latency network (&lt;2 milliseconds) Location for your services Some services are available only in certain regions Some services are global services, as such are not assigned/deployed in specific region Globally available with **50&#43; regions ** Special government regions (US DoD Central, US Gov Virginia, etc.">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Marczak.IO | Adam Marczak">
@@ -25,9 +23,7 @@ Below table presents high level deployment model separation
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="">
-<meta property="og:description" content="Navigation  Episode List Episode Summary Practice Test!  Skills Learned  Describe Regions Describe Availability Zones  Cloud Deployment Model Cloud Deployment Model is simple a separation which describes where are the company resources deployed. Whenever this is in public cloud provider environment or private datacenter.
-Below table presents high level deployment model separation
-   Layer Cloud Provider Own Datacenter     Public ✅ ✖   Hybrid ✅ ✅   Private ✖ ✅    Public Cloud    Cloud Provider Own Datacenter     ✅ ✖    Key Characteristics">
+<meta property="og:description" content="Navigation  Episode List Episode Summary Practice Test!  Skills Learned  Describe Data Cenetrs Describe Regions and Region Pairs Describe Geographies Describe Availability Zones Describe the benefits and usage of core Azure architectural components (Regions &amp; Availability Zones)  Data Center  Physical facility Hosting for group of networked servers Own power, cooling &amp; networking infrastructure  Region  Geographical area on the planet One but usually more datacenters connected with low-latency network (&lt;2 milliseconds) Location for your services Some services are available only in certain regions Some services are global services, as such are not assigned/deployed in specific region Globally available with **50&#43; regions ** Special government regions (US DoD Central, US Gov Virginia, etc.">
 <meta property="og:url" content="https://marczak.io/az-900/episode-07/cheat-sheet/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/background.jpg">
@@ -35,9 +31,7 @@ Below table presents high level deployment model separation
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="">
-<meta name="twitter:description" content="Navigation  Episode List Episode Summary Practice Test!  Skills Learned  Describe Regions Describe Availability Zones  Cloud Deployment Model Cloud Deployment Model is simple a separation which describes where are the company resources deployed. Whenever this is in public cloud provider environment or private datacenter.
-Below table presents high level deployment model separation
-   Layer Cloud Provider Own Datacenter     Public ✅ ✖   Hybrid ✅ ✅   Private ✖ ✅    Public Cloud    Cloud Provider Own Datacenter     ✅ ✖    Key Characteristics">
+<meta name="twitter:description" content="Navigation  Episode List Episode Summary Practice Test!  Skills Learned  Describe Data Cenetrs Describe Regions and Region Pairs Describe Geographies Describe Availability Zones Describe the benefits and usage of core Azure architectural components (Regions &amp; Availability Zones)  Data Center  Physical facility Hosting for group of networked servers Own power, cooling &amp; networking infrastructure  Region  Geographical area on the planet One but usually more datacenters connected with low-latency network (&lt;2 milliseconds) Location for your services Some services are available only in certain regions Some services are global services, as such are not assigned/deployed in specific region Globally available with **50&#43; regions ** Special government regions (US DoD Central, US Gov Virginia, etc.">
 <meta name="twitter:url" content="https://marczak.io/az-900/episode-07/cheat-sheet/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -124,181 +118,115 @@ Below table presents high level deployment model separation
 <h1 id="skills-learned">Skills Learned</h1>
 
 <ul>
-<li>Describe <strong>Regions</strong></li>
+<li>Describe <strong>Data Cenetrs</strong></li>
+<li>Describe <strong>Regions</strong> and <strong>Region Pairs</strong></li>
+<li>Describe <strong>Geographies</strong></li>
 <li>Describe <strong>Availability Zones</strong></li>
+<li>Describe the <strong>benefits and usage of core Azure architectural components</strong> (Regions &amp; Availability Zones)</li>
 </ul>
 
-<h2 id="cloud-deployment-model">Cloud Deployment Model</h2>
+<h2 id="data-center">Data Center</h2>
 
-<p><strong>Cloud Deployment Model</strong> is simple a separation which describes where are the company resources deployed. Whenever this is in public cloud provider environment or private datacenter.</p>
+<ul>
+<li><strong>Physical facility</strong></li>
+<li><strong>Hosting for</strong> group of networked <strong>servers</strong></li>
+<li>Own <strong>power</strong>, <strong>cooling</strong> &amp; <strong>networking</strong> infrastructure</li>
+</ul>
 
-<p>Below table presents high level deployment model separation</p>
+<h2 id="region">Region</h2>
+
+<ul>
+<li><strong>Geographical area</strong> on the planet</li>
+<li><strong>One but usually more datacenters</strong> connected with <strong>low-latency network</strong> (&lt;2 milliseconds)</li>
+<li><strong>Location</strong> for your services</li>
+<li>Some services are <strong>available only in certain regions</strong></li>
+<li>Some services are <strong>global services</strong>, as such are not assigned/deployed in specific region</li>
+<li>Globally available with **50+ regions **</li>
+<li>Special <strong>government regions</strong> (US DoD Central, US Gov Virginia, etc.)</li>
+<li>Special <strong>partnered regions</strong> (China East, China North)</li>
+</ul>
+
+<h2 id="availability-zone">Availability Zone</h2>
+
+<ul>
+<li><strong>Regional feature</strong></li>
+<li>Grouping of <strong>physically separate</strong> facilities</li>
+<li>Designed to <strong>protect from data center failures</strong></li>
+<li>If zone goes down <strong>others continue working</strong></li>
+<li>Two service <strong>categories</strong>
+
+<ul>
+<li><strong>Zonal</strong> services (Virtual Machines, Disks, etc.)</li>
+<li><strong>Zone-redundant</strong> services (SQL, Storage, etc.)</li>
+</ul></li>
+<li><strong>Not</strong> <strong>all</strong> regions are <strong>supported</strong></li>
+<li><strong>Supported</strong> region has **three or more zones **</li>
+<li>A <strong>zone</strong> is <strong>one or more data centers</strong></li>
+</ul>
+
+<h2 id="region-pair">Region Pair</h2>
+
+<ul>
+<li><strong>Each region</strong> is <strong>paired</strong> with another region making it a region pair</li>
+<li>Region <strong>pairs are static</strong> and cannot be chosen</li>
+<li>Each pair resides within the <strong>same geography</strong>*
+
+<ul>
+<li>Exception is Brazil South</li>
+</ul></li>
+<li><strong>Physical isolation</strong> with at least 300 miles distance (when possible)</li>
+<li>Some services have <strong>platform-provided replication</strong></li>
+<li><strong>Planned updates</strong> across the pairs</li>
+<li><strong>Data residency</strong> maintained for disaster recovery</li>
+</ul>
 
 <table>
 <thead>
 <tr>
-<th>Layer</th>
-<th>Cloud Provider</th>
-<th>Own Datacenter</th>
+<th>Region   Pair A</th>
+<th>Region   Pair B</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><strong>Public</strong></td>
-<td>✅</td>
-<td>✖</td>
+<td>East US</td>
+<td>West US</td>
 </tr>
 
 <tr>
-<td><strong>Hybrid</strong></td>
-<td>✅</td>
-<td>✅</td>
+<td>UK West</td>
+<td>UK South</td>
 </tr>
 
 <tr>
-<td><strong>Private</strong></td>
-<td>✖</td>
-<td>✅</td>
+<td>North Europe (Ireland)</td>
+<td>West Europe (Netherlands)</td>
+</tr>
+
+<tr>
+<td>East Asia (Hong   Kong)</td>
+<td>Southeast Asia   (Singapore)</td>
 </tr>
 </tbody>
 </table>
 
-<h2 id="public-cloud">Public Cloud</h2>
-
-<table>
-<thead>
-<tr>
-<th>Cloud Provider</th>
-<th>Own Datacenter</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>✅</td>
-<td>✖</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>Key Characteristics</strong></p>
+<h2 id="geographies">Geographies</h2>
 
 <ul>
-<li>Everything runs on cloud provider hardware</li>
-<li>No local hardware</li>
-<li>Some services share hardware with other customers</li>
-</ul>
-
-<p><strong>Advantages</strong></p>
-
-<ul>
-<li>No CapEx (No initial investment)</li>
-<li>High Availability</li>
-<li>Agility</li>
-<li>Pay as you Go (PAYG) pricing</li>
-<li>No hardware maintenance</li>
-<li>No deep technical skills required</li>
-</ul>
-
-<p><strong>Disadvantages</strong></p>
+<li><strong>Discrete market</strong></li>
+<li>Typically <strong>contains two or more regions</strong></li>
+<li>Ensures <strong>data residency</strong>, <strong>sovereignty</strong>, <strong>resiliency</strong>, and <strong>compliance</strong> requirements are met</li>
+<li><strong>Fault tolerant</strong> to protect from region wide failures</li>
+<li>Broken up into areas
 
 <ul>
-<li>Not all security and compliance policies can be met</li>
-<li>No ownership over the physical infrastructure</li>
-<li>Rare specific scenarios can&rsquo;t be done</li>
-</ul>
-
-<h2 id="private-cloud">Private Cloud</h2>
-
-<table>
-<thead>
-<tr>
-<th>Cloud Provider</th>
-<th>Own Datacenter</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>✖</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>Key Characteristics</strong></p>
-
-<ul>
-<li>Everything runs on your own datacenter</li>
-<li>Self-service should be provided</li>
-<li>You maintain the hardware</li>
-</ul>
-
-<p><strong>Advantages</strong></p>
-
-<ul>
-<li>Can support any scenario</li>
-<li>Total control over security and infrastructure</li>
-<li>Can meet any security and compliance policy</li>
-</ul>
-
-<p><strong>Disadvantages</strong></p>
-
-<ul>
-<li>Initial investment is required (CapEx)</li>
-<li>Limited agility constrained by server capacity and team skills</li>
-<li>Very dependent on IT skills &amp; expertise</li>
-</ul>
-
-<h2 id="hybrid-cloud">Hybrid Cloud</h2>
-
-<table>
-<thead>
-<tr>
-<th>Cloud Provider</th>
-<th>Own Datacenter</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>✅</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>Key Characteristics</strong></p>
-
-<ul>
-<li>Combines both Public &amp; Private cloud</li>
-</ul>
-
-<p><strong>Advantages</strong></p>
-
-<ul>
-<li>Great flexibility</li>
-<li>You can run any legacy apps in private cloud</li>
-<li>Can utilize existing infrastructure</li>
-<li>Meet any security&amp; compliance requirements</li>
-<li>Can take advantage of all public cloud benefits</li>
-</ul>
-
-<p><strong>Disadvantages</strong></p>
-
-<ul>
-<li>Can be more expensive</li>
-<li>Complicated to manage due to larger landscape</li>
-<li>Most dependent on IT skills &amp; expertise from all three models</li>
-</ul>
-
-<h1 id="navigation-1">Navigation</h1>
-
-<ul>
-<li><a href="/az-900#navigation">Episode List</a></li>
-<li><a href="/az-900#ep06">Episode Summary</a></li>
-<li><a href="../practice-test">Practice Test!</a></li>
+<li><strong>Americas</strong>,</li>
+<li><strong>Europe</strong>,</li>
+<li><strong>Asia Pacific</strong>,</li>
+<li><strong>Middle</strong> <strong>East</strong> and <strong>Africa</strong></li>
+</ul></li>
+<li>Each <strong>region belongs only to one Geography</strong></li>
 </ul>
 
     </article>
