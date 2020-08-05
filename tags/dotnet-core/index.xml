@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dotnet Core on Marczak.IO</title>
+    <link>https://marczak.io/tags/dotnet-core/</link>
+    <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Feb 2018 19:27:23 +0200</lastBuildDate>
+    
+        <atom:link href="https://marczak.io/tags/dotnet-core/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB</title>
+      <link>https://marczak.io/posts/netcore-vuejs-crud/</link>
+      <pubDate>Sat, 17 Feb 2018 19:27:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/netcore-vuejs-crud/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/netcore-vuejs-crud/splash.png&quot;&gt;
+        &lt;p&gt;Storing data is key aspect of every application out there. Learn how to use Azure Cosmos DB with .NET Core to deliver CRUD operation capabilities to application of any kind, and how to handle those operations in real time on front-end using Vue.js.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Building .NET Core 2.0 web apps with Vue.js single file components using VS Code</title>
+      <link>https://marczak.io/posts/netcore-vuejs/</link>
+      <pubDate>Sun, 04 Feb 2018 22:37:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/netcore-vuejs/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/netcore-vuejs/splash.png&quot;&gt;
+        &lt;p&gt;Single Page Applications are one of the best experiences that a web developer can deliver to their customers. See how to build SPA using Vue.js with .NET Core 2.0 backend.&lt;/p&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

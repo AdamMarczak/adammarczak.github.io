@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Securing Azure Services with Managed Identities | Marczak.IO | Adam Marczak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-16x16.png" sizes="16x16" />
+<link rel="apple-touch-icon-precomposed" href="https://marczak.io/images/iphone-icon.png"/>
+<link rel="stylesheet" id="hestia_fonts-css" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700%7CRoboto+Slab%3A400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+<link href='https://marczak.io/css/hestia.min.css?ver=1.23' rel="stylesheet" type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.27' rel='stylesheet' type="text/css" />
+
+<meta name="description" content="Managing application account credentials is just another thing to worry for application developers; especially in public cloud. Learn what is Managed Identity for Azure Services and how does it solve this problem.">
+<meta name="author" content="Adam Marczak">
+<meta name="copyright" content="Adam Marczak">
+<meta name="title" content="Securing Azure Services with Managed Identities | Marczak.IO | Adam Marczak">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.facebook.com/MarczakIO/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Securing Azure Services with Managed Identities">
+<meta property="og:description" content="Managing application account credentials is just another thing to worry for application developers; especially in public cloud. Learn what is Managed Identity for Azure Services and how does it solve this problem.">
+<meta property="og:url" content="https://marczak.io/posts/2019/07/securing-websites-with-msi/">
+<meta property="og:site_name" content="Marczak.IO">
+<meta property="og:image" content="https://marczak.io/images/2019-07-securing-websites-with-managed-identity/splash.png">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@MarczakIO">
+<meta name="twitter:title" content="Securing Azure Services with Managed Identities">
+<meta name="twitter:description" content="Managing application account credentials is just another thing to worry for application developers; especially in public cloud. Learn what is Managed Identity for Azure Services and how does it solve this problem.">
+<meta name="twitter:url" content="https://marczak.io/posts/2019/07/securing-websites-with-msi/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', 'UA-106560028-1');
+</script>
+</head>
+<body class="home blog">
+  <div class="wrapper"><header class="header">
+  <nav class="navbar navbar-default hestia_left">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="title-logo-wrapper">
+          <a class="navbar-brand" href="/" title="Marczak.IO">
+            <p>Marczak.IO</p>
+          </a>
+        </div>
+      </div>
+      <div id="main-navigation" class="navbar-custom">
+        <div class="entry-social">
+  <a target="_top" class="btn btn-just-icon btn-social btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_top" class="btn btn-friendly-site " 
+      style=""
+      href="https://azure4everyone.com">
+      <img src="https://marczak.io/images/azure4everyone.svg">
+      <span>Azure 4 Everyone</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </nav>
+  <div id="primary" class="boxed-layout-header page-header header-small" data-parallax="active" style="margin-top: -20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+          <h1 class="hestia-title">Securing Azure Services with Managed Identities</h1>
+          
+            <h4 class="author">
+              Published by<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2019-07-19 16:00:23 &#43;0200 CEST">Jul 19 2019</time>
+            </h4>
+           
+        </div>
+      </div>
+    </div>
+    <div class="header-filter" style="background-image: url('/images/background.jpg');background-color: #283743;"></div>
+  </div>
+</header>
+    <div class="main main-raised">
+      <div class="hestia-blogs">
+        <div class="container">
+          <div class="row">
+<div class="col-md-9 single-posts-wrap">
+    <article id="/posts/2019/07/securing-websites-with-msi/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 1080px">
+    <div style="padding-bottom:56.36743215031315%"></div>
+    <img data-src="/images/2019-07-securing-websites-with-managed-identity/splash.png" src=""/> 
+</div> <h2>Highlight</h2>
+        <p>Managing application account credentials is just another thing to worry for application developers; especially in public cloud. Learn what is Managed Identity for Azure Services and how does it solve this problem.</p>
+
+<h2 id="intro">Intro</h2>
+
+<p>Cloud is all about decomposition of application architecture. Usually more components mean more resilient, more scalable and more cost-effective solution. But this also poses new challenges that previously developers and architects didn&rsquo;t even need to worry about.</p>
+
+<h3 id="cross-service-authentication-in-azure">Cross-Service Authentication in Azure</h3>
+
+<p>Most cross-service integrations in Azure, are done either via <strong>secret keys</strong> or <strong>token exchange</strong>. Token exchange is much better approach because it is done using Azure AD. Thanks to this developers have much better control over security, lifecycle and permissions of their applications. Azure AD allows creation of something called <strong>service principal</strong>, which in layman terms is simply application user.</p>
+
+<p>Any kind of user in Azure, regardless of its type is called <strong>identity</strong>. It&rsquo;s important to remember this, because identity is word very often mentioned in the documentation and in Azure Portal. Typical user consists of Client ID (consider this as username) and Client Secret or Certificate (consider this a password). Any service presenting a set of those credentials can retrieve a token from Azure Active Directory which can be used to communicate with other services in Azure.</p>
+
+<h3 id="terminology">Terminology</h3>
+
+<p>When it comes to entire topic of Identity and security in Azure there are few terms and a lot of aliases. There is no other way than just simply learning them.</p>
+
+<p>So, in short.</p>
+
+<ul>
+<li><strong>Service Principal</strong> - application account (technical user).</li>
+<li><strong>Identity</strong> - a service or user in Azure AD. Often used as synonym for service principal.</li>
+<li><strong>Client ID</strong> - a globally unique identifier generated for each application and service principal during creation.</li>
+<li><strong>Application ID</strong> - synonym for Client ID.</li>
+<li><strong>Managed Service Identity (MSI)</strong> - this is old name for what is called right now <strong>Managed Identities</strong>. Large amount of documentation still is referring to this name.</li>
+</ul>
+
+<p>The simplest design of an application using token authentication looks like this.</p>
+
+
+<div class="lazy" style="max-height: 442px">
+    <div style="padding-bottom:68.84735202492212%"></div>
+    <img data-src="/images/2019-07-securing-websites-with-managed-identity/000100.png" src=""/> 
+</div>  
+
+<p>To explain the process here</p>
+
+<ol>
+<li><strong>Service A</strong> send the request to <strong>Azure AD</strong> with <strong>Application Credentials</strong> to get the token to call <strong>Service B</strong></li>
+<li><strong>Azure AD</strong> validates the <strong>Application Credentials</strong> and returns <strong>Token</strong> on successful authentication</li>
+<li><strong>Service A</strong> send the request to <strong>Service B</strong> with <strong>Token</strong> in authorization headers</li>
+<li><strong>Service B</strong> send the request to <strong>Azure AD</strong> with <strong>Token</strong> verify the token</li>
+<li><strong>Azure AD</strong> validates the <strong>Token</strong> and returns validation response</li>
+<li><strong>Service B</strong> responds to <strong>Service A</strong></li>
+</ol>
+
+<p>This is good. This is how it should work in well-designed authentication in Azure. But there is a catch in here.</p>
+
+<h4 id="how-does-service-a-store-application-credentials">How does Service A store Application Credentials?</h4>
+
+<p>There is couple of ways Service A can storage credentials. Most common practice to this date is, storing credentials in configuration file, database or environment variables. As anyone can imagine, this isn&rsquo;t very the best practice because anyone who has access to environment also has access to credentials.</p>
+
+<p>
+<div style="height: 30px;" class="lazyblock-margin">
+    <div class="lazy lazyblock" style="height: 30px;width:30px">
+        <img data-src="/images/tags/key-vault.svg" src=""/> 
+    </div><h4>What about KeyVault?</h4>
+</div>
+
+KeyVault is great when there is more than one service that you connect to from your application like a database, web application, external service. It is also great when more than one service principal is used within application or simply when application wants to store a certificate or a secret/key. But application will need to connect to KeyVault first, which will require storing at least single pair of credentials anyway. While KeyVault surely improves credential management in application, it doesn&rsquo;t solve this basic issue.</p>
+
+<h2 id="managed-identity">Managed Identity</h2>
+
+<p>Here comes managed identity to save the day. Managed Identities is a feature of Azure AD which automatically creates service principal that is tied with the Azure service itself. This identity is automatically also managed by Azure AD and once service is removed the principal will be too. Great part about this isn&rsquo;t really the management of that identity but that applications hosted on those services can generate tokens using this identity without a need to provide any credentials.</p>
+
+<h4 id="how-is-this-secure">How is this secure?</h4>
+
+<p>It is secure because only application hosted on that service which has managed identity enabled will be able to generate tokens.</p>
+
+<h3 id="how-managed-identity-works-in-detail">How Managed Identity works in detail</h3>
+
+<p>In classic approach getting token required applications to send request to login.onmicrosoft.com OAuth endpoint. When doing so application has to supply identity credentials and URL of the service that the token will be used for. With managed identity this is much simpler.</p>
+
+<p>Managed Identity principle is always the same, but the usage and implementation is different across different Azure services. Take app service for example.</p>
+
+<p>
+<div style="height: 30px;" class="lazyblock-margin">
+    <div class="lazy lazyblock" style="height: 30px;width:30px">
+        <img data-src="/images/tags/app-service.svg" src=""/> 
+    </div><h4>App Service</h4>
+</div>
+
+When it comes to App Service below diagram presents high level principle how Managed Identity service works internally.
+
+<div class="lazy" style="max-height: 464px">
+    <div style="padding-bottom:49.62566844919786%"></div>
+    <img data-src="/images/2019-07-securing-websites-with-managed-identity/000105.png" src=""/> 
+</div>  </p>
+
+<p>When Managed identity is registered on App Service few things happen.</p>
+
+<ol>
+<li>First of all, a local REST endpoint is registered which is used to retrieve tokens. This endpoint can be only called locally and required secret key from environment variables.
+
+<ol>
+<li>Endpoint is located as environment variable called <strong>MSI_ENDPOINT</strong>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> http://127.0.0.1:41922/MSI/token/</code></pre></div></li>
+<li>And secret for this endpoint is environment variable called <strong>MSI_SECRET</strong>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> BDCF130B80894D398D9716C10C7C419E</code></pre></div></li>
+</ol></li>
+<li>Azure Identity (Service Principal) is created in Azure AD which is tied to this service. This identity is automatically managed by Azure AD.</li>
+</ol>
+
+<h3 id="requesting-token">Requesting Token</h3>
+
+<p>When MSI is set up requesting token is very simple. Depending on language you use below samples can be used.</p>
+
+<p><strong>C# Example</strong>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">Microsoft.Azure.Services.AppAuthentication</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Azure.KeyVault</span><span class="p">;</span>
+<span class="c1">// ...
+</span><span class="c1"></span><span class="kt">var</span> <span class="n">azureServiceTokenProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AzureServiceTokenProvider</span><span class="p">();</span>
+<span class="kt">string</span> <span class="n">accessToken</span> <span class="p">=</span> <span class="k">await</span> <span class="n">azureServiceTokenProvider</span><span class="p">.</span><span class="n">GetAccessTokenAsync</span><span class="p">(</span><span class="s">&#34;https://vault.azure.net&#34;</span><span class="p">);</span>
+
+<span class="c1">// OR
+</span><span class="c1"></span>
+<span class="kt">var</span> <span class="n">kv</span> <span class="p">=</span> <span class="k">new</span> <span class="n">KeyVaultClient</span><span class="p">(</span>
+    <span class="k">new</span> <span class="n">KeyVaultClient</span><span class="p">.</span><span class="n">AuthenticationCallback</span><span class="p">(</span><span class="n">azureServiceTokenProvider</span><span class="p">.</span><span class="n">KeyVaultTokenCallback</span><span class="p">)</span>
+<span class="p">);</span></code></pre></div></p>
+
+<p><strong>PowerShell Example</strong>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$apiVersion</span> <span class="p">=</span> <span class="s2">&#34;2017-09-01&#34;</span>
+<span class="nv">$resourceURI</span> <span class="p">=</span> <span class="s2">&#34;https://vault.azure.net&#34;</span>
+<span class="nv">$tokenAuthURI</span> <span class="p">=</span> <span class="nv">$env:MSI_ENDPOINT</span> <span class="p">+</span> <span class="s2">&#34;?resource=$resourceURI&amp;api-version=$apiVersion&#34;</span>
+<span class="nv">$tokenResponse</span> <span class="p">=</span> <span class="nb">Invoke-RestMethod</span> <span class="p">`</span>
+  <span class="n">-Method</span> <span class="n">Get</span> <span class="p">`</span>
+  <span class="n">-Headers</span> <span class="p">@{</span><span class="s2">&#34;Secret&#34;</span><span class="p">=</span><span class="s2">&#34;$env:MSI_SECRET&#34;</span><span class="p">;</span> <span class="s2">&#34;Content-Type&#34;</span><span class="p">=</span><span class="s2">&#34;application/json&#34;</span><span class="p">}</span> <span class="p">`</span>
+  <span class="n">-Uri</span> <span class="nv">$tokenAuthURI</span> <span class="p">`</span>
+  <span class="n">-UseBasicParsing</span>
+<span class="nv">$accessToken</span> <span class="p">=</span> <span class="nv">$tokenResponse</span><span class="p">.</span><span class="n">access_token</span></code></pre></div></p>
+
+<p><strong>NodeJS Example</strong>
+<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http">const rp = require(&#39;request-promise&#39;);
+const getToken = function(resource, apiver, cb) {
+    let options = {
+        uri: `${process.env[&#34;MSI_ENDPOINT&#34;]}/?resource=${resource}&amp;api-version=${apiver}`,
+        headers: {
+            &#39;Secret&#39;: process.env[&#34;MSI_SECRET&#34;]
+        }
+    };
+    rp(options)
+        .then(cb);
+}</code></pre></div></p>
+
+<p><strong>REST Call Example</strong>
+<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http">GET /MSI/token?resource=https://vault.azure.net&amp;api-version=2017-09-01 HTTP/1.1
+Host: localhost:4141
+Secret: BDCF130B80894D398D9716C10C7C419E</code></pre></div></p>
+
+<h3 id="setting-up-example-for-app-service">Setting up example for App Service</h3>
+
+<p>To create MSI in app Service use either of following methods.</p>
+
+<p><strong>Portal</strong></p>
+
+<ol>
+<li>Go to Web App (App Service)</li>
+<li>Search for <strong>Identity</strong> in the search window on blade list panel
+
+<div class="lazy" style="max-height: 162px">
+    <div style="padding-bottom:61.83206106870229%"></div>
+    <img data-src="/images/2019-07-securing-websites-with-managed-identity/000115.png" src=""/> 
+</div>  </li>
+<li>Select <strong>On</strong> option on the blade window
+
+<div class="lazy" style="max-height: 221px">
+    <div style="padding-bottom:65.97014925373135%"></div>
+    <img data-src="/images/2019-07-securing-websites-with-managed-identity/000112.png" src=""/> 
+</div>  </li>
+<li>Click <strong>Save</strong> to make the change
+
+<div class="lazy" style="max-height: 220px">
+    <div style="padding-bottom:66.26506024096386%"></div>
+    <img data-src="/images/2019-07-securing-websites-with-managed-identity/000113.png" src=""/> 
+</div>  </li>
+<li>Once service principal is created following screen should be shown
+
+<div class="lazy" style="max-height: 280px">
+    <div style="padding-bottom:62.08425720620843%"></div>
+    <img data-src="/images/2019-07-securing-websites-with-managed-identity/000114.png" src=""/> 
+</div>  </li>
+</ol>
+
+<p><strong>Azure CLI</strong>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">az webapp identity assign --name myApp --resource-group myResourceGroup</code></pre></div></p>
+
+<p>With output
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;identityIds&#34;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&#34;principalId&#34;</span><span class="p">:</span> <span class="s2">&#34;6009de17-ca37-44d6-b522-5f4de3d2ebdd&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;tenantId&#34;</span><span class="p">:</span> <span class="s2">&#34;1f0fb2d0-9423-4dce-ac05-7f195c4ee405&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;SystemAssigned&#34;</span>
+<span class="p">}</span></code></pre></div></p>
+
+<p><strong>Azure PowerShell</strong>
+<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="nb">Set-AzWebApp</span> <span class="n">-AssignIdentity</span> <span class="nv">$true</span> <span class="n">-Name</span> <span class="nv">$webappname</span> <span class="n">-ResourceGroupName</span> <span class="n">myResourceGroup</span></code></pre></div></p>
+
+<p>With output
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">...
+Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity
+...</code></pre></div></p>
+
+<p><strong>Azure Resource Manager template</strong>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;identity&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;SystemAssigned&#34;</span>
+  <span class="p">}</span>   
+<span class="p">}</span></code></pre></div></p>
+
+<h3 id="managed-identity-types">Managed Identity types</h3>
+
+<p>There are currently two types on managed identities</p>
+
+<ul>
+<li><strong>System Assigned</strong> means that lifecycle of managed identity is automatically and managed by Azure AD.</li>
+<li><strong>User Assigned</strong> allows user to first create Azure AD application/service principal and assign this as managed identity and use it in the same manner. This has few advantages in terms of reuse of applications and their permissions if many services in Azure should share the account and its permissions.</li>
+</ul>
+
+<h3 id="adding-access-to-managed-identity">Adding Access to Managed Identity</h3>
+
+<p>When managed identity is provisioned it can be found in Azure Portal for many services. This allows for RBAC assignments of Roles.</p>
+
+<ol>
+<li>Go to resource</li>
+<li>Open <strong>Access control (IAM)</strong> blade</li>
+<li>Click on <strong>Add Role</strong> and select role
+
+<div class="lazy" style="max-height: 357px">
+    <div style="padding-bottom:85.8173076923077%"></div>
+    <img data-src="/images/2019-07-securing-websites-with-managed-identity/000124.png" src=""/> 
+</div>  </li>
+<li>Select <strong>App Service</strong> from managed identities section
+
+<div class="lazy" style="max-height: 287px">
+    <div style="padding-bottom:70.17114914425427%"></div>
+    <img data-src="/images/2019-07-securing-websites-with-managed-identity/000125.png" src=""/> 
+</div>  </li>
+<li>Select identity and click <strong>Save</strong></li>
+</ol>
+
+<p>List of services that allow for assignment of RBAC/roles for Managed Identity</p>
+
+<ul>
+<li><strong>Resource Manage</strong>r - manage Azure resources</li>
+<li><strong>Key Vault</strong> - keys, secrets, certificates</li>
+<li><strong>Data Lake</strong> - data in data lake</li>
+<li><strong>SQL</strong> - data in sql</li>
+<li><strong>Event Hubs</strong> - queue data</li>
+<li><strong>Service Bus</strong> - queue data</li>
+<li><strong>Storage blobs and queues</strong> - storage and queue data</li>
+<li><strong>Analysis Services</strong> - manage AAS data or server properties</li>
+</ul>
+
+<h3 id="local-development">Local development</h3>
+
+<p>When it comes to local development with managed identity at first it is very confusing. This is one of very good cases for user assigned managed identity.</p>
+
+<p>How in short how it works is.
+
+<div class="lazy" style="max-height: 472px">
+    <div style="padding-bottom:50.807319698600644%"></div>
+    <img data-src="/images/2019-07-securing-websites-with-managed-identity/000127.png" src=""/> 
+</div>  </p>
+
+<p>Because as of Today there is no MSI emulator users need to use Azure CLI. Azure CLI allows to log in as user but also as Azure Service Principal. This is a good use case for User Assigned Managed Identity. When user created its own principal, he/she can log as that principal locally and request tokens using CLI</p>
+
+<p><strong>KeyVault example</strong>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">az account get-access-token --resource <span class="s1">&#39;https://vault.azure.net&#39;</span></code></pre></div></p>
+
+<p>Why calling local command line isn&rsquo;t necessarily the most beautiful approach it surely works. But what is great here is that Microsoft SDKs for identity will recognize local development and lack of Managed Identity endpoint and try to call CLI in the background without any code changes. This is huge benefit of using SDKs.</p>
+
+<h2 id="supported-services">Supported Services</h2>
+
+<p>This list is compilation of services which support or partially support managed identities.</p>
+
+<h3 id="azure-global">Azure Global</h3>
+
+<p>Global Azure region means all regions with exception of Azure Germany, Government and China.</p>
+
+<table>
+<tbody>
+<tr>
+  <th>Service<br/>(link to Managed Identity docs)</th><th>System assigned</th><th>User assigned</th>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/vm.svg" src=""/> 
+    </div><a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm">Virtual Machines</a>
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/vmss.svg" src=""/> 
+    </div><a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vmss">Virtual Machine Scale Sets</a>
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/app-service.svg" src=""/> 
+    </div><a href="https://docs.microsoft.com/en-us/azure/app-service/overview-managed-identity">App Service</a>
+</div>
+</a></td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/blueprints.svg" src=""/> 
+    </div><a href="https://docs.microsoft.com/en-us/azure/governance/blueprints/overview">Blueprints</a>
+</div>
+</td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/functions.svg" src=""/> 
+    </div><a href="https://docs.microsoft.com/en-us/azure/app-service/overview-managed-identity">Functions</a>
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/logic-apps.svg" src=""/> 
+    </div><a href="https://docs.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity">Logic Apps</a>
+</div>
+</td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/data-factory.svg" src=""/> 
+    </div><a href="https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity">Data Factory V2</a>
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/api-management.svg" src=""/> 
+    </div><a href="https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-managed-service-identity">API Management</a>
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/container-instances.svg" src=""/> 
+    </div><a href="https://docs.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity">Container Instances Linux</a>
+</div>
+</td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/container-instances.svg" src=""/> 
+    </div><a href="https://docs.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity">Container Instances Windows</a>
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/container-registry.svg" src=""/> 
+    </div><a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-tasks-authentication-managed-identity">Container Registry Tasks</a>
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="azure-government">Azure Government</h3>
+
+<table>
+<tbody>
+<tr>
+  <th>Service</th><th>System assigned</th><th>User assigned</th>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/vm.svg" src=""/> 
+    </div>Virtual Machines
+</div>
+</td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/vmss.svg" src=""/> 
+    </div>Virtual Machine Scale Sets
+</div>
+</td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/app-service.svg" src=""/> 
+    </div>App Service
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/blueprints.svg" src=""/> 
+    </div>Blueprints
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/functions.svg" src=""/> 
+    </div>Functions
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/logic-apps.svg" src=""/> 
+    </div>Logic Apps
+</div>
+</td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/data-factory.svg" src=""/> 
+    </div>Data Factory V2
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/api-management.svg" src=""/> 
+    </div>API Management
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/container-instances.svg" src=""/> 
+    </div>Container Instances
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/container-registry.svg" src=""/> 
+    </div>Container Registry Tasks
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="azure-germany">Azure Germany</h3>
+
+<table>
+<tbody>
+<tr>
+  <th>Service</th><th>System assigned</th><th>User assigned</th>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/vm.svg" src=""/> 
+    </div>Virtual Machines
+</div>
+</td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/vmss.svg" src=""/> 
+    </div>Virtual Machine Scale Sets
+</div>
+</td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/app-service.svg" src=""/> 
+    </div>App Service
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/blueprints.svg" src=""/> 
+    </div>Blueprints
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/functions.svg" src=""/> 
+    </div>Functions
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/logic-apps.svg" src=""/> 
+    </div>Logic Apps
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/data-factory.svg" src=""/> 
+    </div>Data Factory V2
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/api-management.svg" src=""/> 
+    </div>API Management
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/container-instances.svg" src=""/> 
+    </div>Container Instances
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/container-registry.svg" src=""/> 
+    </div>Container Registry Tasks
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="azure-china">Azure China</h3>
+
+<p>China region available via 21Vianet</p>
+
+<table>
+<tbody>
+<tr>
+  <th>Service</th><th>System assigned</th><th>User assigned</th>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/vm.svg" src=""/> 
+    </div>Virtual Machines
+</div>
+</td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/vmss.svg" src=""/> 
+    </div>Virtual Machine Scale Sets
+</div>
+</td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/app-service.svg" src=""/> 
+    </div>App Service
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/blueprints.svg" src=""/> 
+    </div>Blueprints
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/functions.svg" src=""/> 
+    </div>Functions
+</div>
+</td><td><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i> Available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/logic-apps.svg" src=""/> 
+    </div>Logic Apps
+</div>
+</td><td><span class="flask"><i class="fa fa-2 fa-flask" aria-hidden="true"></i> Preview</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/data-factory.svg" src=""/> 
+    </div>Data Factory V2
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/api-management.svg" src=""/> 
+    </div>API Management
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/container-instances.svg" src=""/> 
+    </div>Container Instances
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+<tr>
+  <td>
+<div style="height: 21px;" class="">
+    <div class="lazy lazyblock" style="height: 21px;width:21px">
+        <img data-src="/images/tags/container-registry.svg" src=""/> 
+    </div>Container Registry Tasks
+</div>
+</td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td><td><span class="cross"><i class="fa fa-times" aria-hidden="true"></i> Not available</span></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>How it all it takes is just review services and start implementing this fantastic feature.</p>
+
+<p>Read more on Identities on <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview">Azure documentation for Managed Identity</a>.</p>
+    </article>
+    <div class="section-blog-info">
+        <div class="row">
+            <div class="col-md-12">
+<div class="authorblock">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="avatar"></div>
+        </div>
+        <div class="col-sm-9">
+            <h4><b>Adam Marczak</b></h4>
+            <p>Programmer, architect, trainer, blogger, evangelist are just a few of many titles. What I really am, is a passionate technology enthusiast. I take great pleasure in learning new technologies and finding ways in which it can aid people every day. My latest passion is running an <a href='https://www.youtube.com/azure4everyone'>Azure 4 Everyone</a> YouTube channel, where I show that Azure really is for everyone!</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="text-center">Did you enjoy the article?</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <h4 class="">Share it!</h4><a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Facebook" 
+   class="btn btn-just-icon btn-share btn-facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmarczak.io%2fposts%2f2019%2f07%2fsecuring-websites-with-msi%2f">
+    <i class="fa fa-facebook"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Twitter" 
+   class="btn btn-just-icon btn-share btn-twitter" 
+   href="https://twitter.com/home?status=Securing%20Azure%20Services%20with%20Managed%20Identities - https%3a%2f%2fmarczak.io%2fposts%2f2019%2f07%2fsecuring-websites-with-msi%2f">
+   <i class="fa fa-twitter"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Google+" 
+   class="btn btn-just-icon btn-share btn-google" 
+   href="https://plus.google.com/share?url=https%3a%2f%2fmarczak.io%2fposts%2f2019%2f07%2fsecuring-websites-with-msi%2f"><i 
+   class="fa fa-google"></i>
+</a>
+            
+            </div>
+            <div class="col-md-6 text-center large">
+                <h4 class="">More tagged posts</h4>
+  <div class="tag-list">
+    <a href="https://marczak.io/tags/active-directory" title="View all posts in Active Directory">
+      <img src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/>
+    </a>
+    <a href="https://marczak.io/tags/app-service" title="View all posts in App Service">
+      <img src="https://marczak.io/images/tags/app-service.svg" alt="App Service"/>
+    </a>
+    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
+      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
+    </a>
+    <a href="https://marczak.io/tags/functions" title="View all posts in Functions">
+      <img src="https://marczak.io/images/tags/functions.svg" alt="Functions"/>
+    </a>
+    <a href="https://marczak.io/tags/logic-apps" title="View all posts in Logic Apps">
+      <img src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/>
+    </a>
+    <a href="https://marczak.io/tags/security" title="View all posts in Security">
+      <img src="https://marczak.io/images/tags/security.svg" alt="Security"/>
+    </a>
+  </div>
+            </div>
+        </div>
+        <div class="row comments">
+            <div class="col-md-12"><div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "https:\/\/marczak.io\/posts\/2019\/07\/securing-websites-with-msi\/"; 
+this.page.identifier = "\/posts\/2019\/07\/securing-websites-with-msi\/";
+};
+
+(function() {
+if (window.location.hostname == "localhost")return;
+var d = document, s = d.createElement('script');
+s.src = 'https://marczak-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+            </div>
+        </div> 
+    </div>
+</div>
+            <div class="col-md-3 blog-sidebar-wrapper">
+              <aside id="secondary" class="blog-sidebar" role="complementary"><div id="mvp" class="banner-mvp">
+<img src="/images/mvp.svg" />
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Courses</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px">
+    <a href="https://marczak.io/az-900" >
+        <img src="/images/az-900/cert.svg" style="width:60px;margin-right:10px;;float:left;"></img> AZ-900 <br/>Microsoft Azure Fundamentlas
+    </a>
+</div>
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Featured Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Process Excel files in Azure</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/pc8Kv-lRD8k" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/49-AzureExcelFileProcessing-ADFandDatabricks-Tutorial-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">AZ-900 Full Course</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/NPEsD6n9A_I" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/az-900/az-900-ep-00-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Azure Active Directory Tutorial</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/Ma7VAQE7ga4" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/48-AzureActiveDirectory-Intro-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;max-width:180px;margin-right:30px;">
+<h5>Recent Posts</h5>
+<ul>
+        <li><b class="list-header">2020 July</b></li>
+        <li class="indented">
+            <a href="/posts/2020/07/az-900-full-course/" title="AZ-900 Microsoft Azure Fundamentals full course" rel="bookmark">
+                <b>7th </b>AZ-900 Microsoft Azure Fundamentals full course
+            </a>
+        </li>
+        <li><b class="list-header">2019 October</b></li>
+        <li class="indented">
+            <a href="/posts/2019/10/ea-consumption-automation-with-logic-apps/" title="Automating Enterprise Azure billing using Logic Apps for 0.03$/month" rel="bookmark">
+                <b>25th </b>Automating Enterprise Azure billing using Logic Apps for 0.03$/month
+            </a>
+        </li>
+        <li><b class="list-header">2019 August</b></li>
+        <li class="indented">
+            <a href="/posts/2019/08/logic-apps-obfuscation/" title="Enhancing Logic Apps security with obfuscation" rel="bookmark">
+                <b>16th </b>Enhancing Logic Apps security with obfuscation
+            </a>
+        </li>
+        <li class="indented">
+            <a href="/posts/2019/08/secure-logic-app-with-api-management/" title="Securing Logic App with Azure AD authentication using API Management" rel="bookmark">
+                <b>8th </b>Securing Logic App with Azure AD authentication using API Management
+            </a>
+        </li>
+        <li><b class="list-header">2019 July</b></li>
+        <li class="indented">
+            <a href="/posts/2019/07/securing-websites-with-msi/" title="Securing Azure Services with Managed Identities" rel="bookmark">
+                <b>19th </b>Securing Azure Services with Managed Identities
+            </a>
+        </li>
+</ul>
+</div><div id="categories-3" class="widget widget_categories" style="float: left;">
+  <h5>Tags</h5>
+  <ul class="tag-list">
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/active-directory">Active Directory (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+        </div> 
+        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-service.svg" alt="App Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-service">App Service (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (17)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/bot-service.svg" alt="Bot Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/bot-service">Bot Service (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-factory.svg" alt="Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-factory">Data Factory (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+        </div> 
+        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/flow.svg" alt="Flow"/> 
+        </div> 
+        <a href="https://marczak.io/tags/flow">Flow (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/functions.svg" alt="Functions"/> 
+        </div> 
+        <a href="https://marczak.io/tags/functions">Functions (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/key-vault.svg" alt="Key Vault"/> 
+        </div> 
+        <a href="https://marczak.io/tags/key-vault">Key Vault (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (7)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/security.svg" alt="Security"/> 
+        </div> 
+        <a href="https://marczak.io/tags/security">Security (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+        </div> 
+        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/teams.svg" alt="Teams"/> 
+        </div> 
+        <a href="https://marczak.io/tags/teams">Teams (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vue.js.svg" alt="Vue.js"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/webpack.svg" alt="Webpack"/> 
+        </div> 
+        <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+        </div> 
+        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+      </li>
+  </ul>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Sites</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px;">
+    <a href="https://sqlplayer.net" > 
+<div class="lazy" style="max-height: 270px">
+    <div style="padding-bottom:28.481012658227847%"></div>
+    <img data-src="/images//sites/sql-player.png" src=""/> 
+</div> 
+    </a>
+</div>
+</div>
+</div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+<footer class="footer footer-black footer-big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="connected-title">Stay Connected</h5>
+                <div class="">
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-about"
+     href="/about">
+    <i class="fa fa-user"></i>
+  </a>
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-github"
+     href="https://github.com/MarczakIO">
+    <i class="fa fa-github"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
+     href="https://marczak.io/index.xml">
+    <i class="fa fa-rss"></i>
+  </a>
+</div>
+            </div>
+            &copy;<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> <a href="https://themeisle.com/themes/hestia/" target="_blank" rel="nofollow">Hestia Theme</a>
+        </div>
+    </div>
+</footer>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
+  
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="https:\/\/marczak.io\/js\/bootstrap.min.js"><\/script>')}</script>
+  
+  <div id="bootstrapCssTest" class="hidden"></div>
+  <script>
+    $(function() {
+      if ($('#bootstrapCssTest').is(':visible')) {
+        $("head").prepend('<link rel="stylesheet" href="https:\/\/marczak.io\/css\/bootstrap.min.css">');
+      }
+    });
+  </script>
+  <script type="text/javascript" src="https://marczak.io/js/main.min.js?ver=1.16"></script>
+</body>
+</html>

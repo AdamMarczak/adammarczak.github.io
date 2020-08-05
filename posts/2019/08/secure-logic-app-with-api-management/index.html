@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Securing Logic App with Azure AD authentication using API Management | Marczak.IO | Adam Marczak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-16x16.png" sizes="16x16" />
+<link rel="apple-touch-icon-precomposed" href="https://marczak.io/images/iphone-icon.png"/>
+<link rel="stylesheet" id="hestia_fonts-css" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700%7CRoboto+Slab%3A400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+<link href='https://marczak.io/css/hestia.min.css?ver=1.23' rel="stylesheet" type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.27' rel='stylesheet' type="text/css" />
+
+<meta name="description" content="Logic Apps are great but exposing them as publicly available HTTP service is clearly far from perfect. This article shows how to solve this challenge by using API Management service which be used to secure Logic Apps HTTP endpoint with Azure AD token authentication.">
+<meta name="author" content="Adam Marczak">
+<meta name="copyright" content="Adam Marczak">
+<meta name="title" content="Securing Logic App with Azure AD authentication using API Management | Marczak.IO | Adam Marczak">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.facebook.com/MarczakIO/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Securing Logic App with Azure AD authentication using API Management">
+<meta property="og:description" content="Logic Apps are great but exposing them as publicly available HTTP service is clearly far from perfect. This article shows how to solve this challenge by using API Management service which be used to secure Logic Apps HTTP endpoint with Azure AD token authentication.">
+<meta property="og:url" content="https://marczak.io/posts/2019/08/secure-logic-app-with-api-management/">
+<meta property="og:site_name" content="Marczak.IO">
+<meta property="og:image" content="https://marczak.io/images/2019-08-secure-logic-app-with-api-management/splash.png">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@MarczakIO">
+<meta name="twitter:title" content="Securing Logic App with Azure AD authentication using API Management">
+<meta name="twitter:description" content="Logic Apps are great but exposing them as publicly available HTTP service is clearly far from perfect. This article shows how to solve this challenge by using API Management service which be used to secure Logic Apps HTTP endpoint with Azure AD token authentication.">
+<meta name="twitter:url" content="https://marczak.io/posts/2019/08/secure-logic-app-with-api-management/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', 'UA-106560028-1');
+</script>
+</head>
+<body class="home blog">
+  <div class="wrapper"><header class="header">
+  <nav class="navbar navbar-default hestia_left">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="title-logo-wrapper">
+          <a class="navbar-brand" href="/" title="Marczak.IO">
+            <p>Marczak.IO</p>
+          </a>
+        </div>
+      </div>
+      <div id="main-navigation" class="navbar-custom">
+        <div class="entry-social">
+  <a target="_top" class="btn btn-just-icon btn-social btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_top" class="btn btn-friendly-site " 
+      style=""
+      href="https://azure4everyone.com">
+      <img src="https://marczak.io/images/azure4everyone.svg">
+      <span>Azure 4 Everyone</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </nav>
+  <div id="primary" class="boxed-layout-header page-header header-small" data-parallax="active" style="margin-top: -20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+          <h1 class="hestia-title">Securing Logic App with Azure AD authentication using API Management</h1>
+          
+            <h4 class="author">
+              Published by<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2019-08-08 10:00:00 &#43;0200 CEST">Aug 8 2019</time>
+            </h4>
+           
+        </div>
+      </div>
+    </div>
+    <div class="header-filter" style="background-image: url('/images/background.jpg');background-color: #283743;"></div>
+  </div>
+</header>
+    <div class="main main-raised">
+      <div class="hestia-blogs">
+        <div class="container">
+          <div class="row">
+<div class="col-md-9 single-posts-wrap">
+    <article id="/posts/2019/08/secure-logic-app-with-api-management/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 1080px">
+    <div style="padding-bottom:56.36743215031315%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/splash.png" src=""/> 
+</div> <h2>Highlight</h2>
+        <p>Logic Apps are great but exposing them as publicly available HTTP service is clearly far from perfect. This article shows how to solve this challenge by using API Management service which be used to secure Logic Apps HTTP endpoint with Azure AD token authentication.</p>
+
+<h2 id="intro">Intro</h2>
+
+<p>Logic Apps can be integrated with external services in multiple ways. One of the most popular is, integration through HTTP trigger. This way external services can call logic apps and get response in easy and flexible way.</p>
+
+<p>There is one big issue with this approach. Currently, Logic Apps do not support authentication via anything else than URL code. This means, that anyone who has access to the URL can in fact call the API at any time. There is of ‘course  setting for IP restriction but again, not every service has static IP that can be added to the list.</p>
+
+<p>All that can be fixed with simple implementation of Azure API management solution which will proxy requests to logic apps and validate Azure AD JWT tokens on the way. This provides complete security of the solution.</p>
+
+
+<div class="lazy" style="max-height: 278px">
+    <div style="padding-bottom:62.05357142857143%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000176.png" src=""/> 
+</div>  
+
+<h2 id="provisioning-of-resources">Provisioning of Resources</h2>
+
+<h3 id="api-management">API Management</h3>
+
+<ol>
+<li>Go to <a href="https://portal.azure.com">Portal</a> and hit create resource.
+
+<div class="lazy" style="max-height: 122px">
+    <div style="padding-bottom:36.858006042296076%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000129.png" src=""/> 
+</div>  </li>
+<li>Search for &ldquo;API Management&rdquo; and once found, click on it and hit <strong>Create</strong> button.
+
+<div class="lazy" style="max-height: 175px">
+    <div style="padding-bottom:49.71590909090909%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000130.png" src=""/> 
+</div>  </li>
+<li>Fill in the fields
+
+<div class="lazy" style="max-height: 614px">
+    <div style="padding-bottom:106.96864111498257%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000131.png" src=""/> 
+</div>  
+
+<ul>
+<li><strong>Name</strong> - this is the same of API Management but also public DNS which will be registered during creation.</li>
+<li><strong>Location</strong> - region of API Management; it&rsquo;s best to place it in the same region as Logic App later created during later steps.</li>
+<li><strong>Organization Name</strong> - for the purpose of the demo this isn&rsquo;t relevant but it&rsquo;s public name of organization when this API is published to developers. So, make it meaningful.</li>
+<li><strong>Administrator email</strong> - administrators email. All communication regarding API management will go here.</li>
+<li><strong>Pricing tier</strong> - select <strong>Developer (No SLA)</strong> tier. In case this is small application consider using <strong>Consumption</strong> plan as it&rsquo;s very cheap. First 1,000,000 calls per Azure subscription are free and then the charge is very small. Note that changes between consumption and dedicated plans (dev, basic, standard, premium) are currently not supported. Also note that <strong>Consumption</strong> plan does not have static IP and as such IP restrictions are can&rsquo;t be done.</li>
+</ul></li>
+</ol>
+
+<h3 id="logic-app">Logic App</h3>
+
+<ol>
+<li>Go to <a href="https://portal.azure.com">Portal</a> and hit create resource.</li>
+<li>Search for &ldquo;Logic App&rdquo; and once found, click on it and hit <strong>Create</strong> button.
+
+<div class="lazy" style="max-height: 124px">
+    <div style="padding-bottom:47.69230769230769%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000132.png" src=""/> 
+</div>  </li>
+<li>Fill in the fields
+
+<div class="lazy" style="max-height: 455px">
+    <div style="padding-bottom:154.23728813559322%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000133.png" src=""/> 
+</div>  
+
+<ul>
+<li><strong>Name</strong> - this is the same of logic app resource.</li>
+<li><strong>Location</strong> - region of logic app; it&rsquo;s best to place it in the same region as API management.</li>
+<li><strong>Log Analytics</strong> - this this example set this as Off but in case of production solution, should be set to On so that all the logs are transferred to Log Analytics resource.</li>
+</ul></li>
+</ol>
+
+<h2 id="simple-restful-service-with-logic-app">Simple RESTful service with Logic App</h2>
+
+<ol>
+<li>Open Logic App</li>
+<li>Go to Logic App Designer and click on <strong>Blank Logic App</strong>
+
+<div class="lazy" style="max-height: 272px">
+    <div style="padding-bottom:100.3690036900369%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000138.png" src=""/> 
+</div>  </li>
+<li>Search for <strong>request</strong> action group, and select it
+
+<div class="lazy" style="max-height: 117px">
+    <div style="padding-bottom:65.36312849162012%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000139.png" src=""/> 
+</div>  </li>
+<li>Choose <strong>When a HTTP request is received</strong> trigger
+
+<div class="lazy" style="max-height: 92px">
+    <div style="padding-bottom:34.84848484848485%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000140.png" src=""/> 
+</div>  </li>
+<li>In new block hit <strong>Add new parameter</strong> and select <strong>Method</strong>
+
+<div class="lazy" style="max-height: 501px">
+    <div style="padding-bottom:80.03194888178913%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000141.png" src=""/> 
+</div>  </li>
+<li>In method parameter select <strong>GET</strong> method.
+
+<div class="lazy" style="max-height: 60px">
+    <div style="padding-bottom:10.238907849829351%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000142.png" src=""/> 
+</div>  
+Note that this isn&rsquo;t required. GET is just simpler to test and present the results than POST request which is default.</li>
+<li>Add new action</li>
+<li>Search for <strong>response</strong> and click on it
+
+<div class="lazy" style="max-height: 373px">
+    <div style="padding-bottom:61.96013289036545%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000143.png" src=""/> 
+</div>  </li>
+<li>Add <strong>Hello world!</strong> to response body
+
+<div class="lazy" style="max-height: 208px">
+    <div style="padding-bottom:34.437086092715234%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000144.png" src=""/> 
+</div>  </li>
+<li>Hit <strong>Save</strong></li>
+<li>Copy URL from first step
+
+<div class="lazy" style="max-height: 391px">
+    <div style="padding-bottom:64.73509933774834%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000145.png" src=""/> 
+</div>  </li>
+<li>Open the URL in new window tab. A <strong>Hello world!</strong> response should be returned.
+
+<div class="lazy" style="max-height: 72px">
+    <div style="padding-bottom:12.631578947368421%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000146.png" src=""/> 
+</div>  </li>
+</ol>
+
+<h2 id="securing-app-with-api-management">Securing App with API Management</h2>
+
+<h3 id="ip-restriction">IP Restriction</h3>
+
+<p>First of all, API management does not block access to the Logic App. It only provides secure way to connect to it. This means access restriction to Logic App must be done from the Logic App service. To do this, IP restriction can be used so that only traffic from API management will be accepted. This is possible because API management service has static VIP (virtual IP).</p>
+
+<p>Note that API Management in <strong>Consumption</strong> tier does <strong>not</strong> have static IP and as such, this IP restriction steps can&rsquo;t be applied.</p>
+
+<p>This diagram presents the traffic flow that needs to be blocked. So that users can&rsquo;t bypass API management via direct calls to Logic Apps.
+
+<div class="lazy" style="max-height: 330px">
+    <div style="padding-bottom:73.33333333333333%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000177.png" src=""/> 
+</div>  </p>
+
+<ol>
+<li>Open <strong>API Management</strong> resource</li>
+<li>In the <strong>Overview</strong> blade find <strong>Virtual IP (VIP) address</strong> and copy it
+
+<div class="lazy" style="max-height: 217px">
+    <div style="padding-bottom:35.86776859504132%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000147.png" src=""/> 
+</div>  </li>
+<li>Open <strong>Logic App</strong> resource</li>
+<li>Open <strong>Workflow Settings</strong> blade
+
+<div class="lazy" style="max-height: 165px">
+    <div style="padding-bottom:62.73764258555133%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000148.png" src=""/> 
+</div>  </li>
+<li>Change dropdown in <strong>Access control configuration</strong> section to <strong>Specific IP ranges</strong> and add new rule which is VIP of API management from previous step. Use CIDR or range format and hit <strong>Save</strong>.
+
+<div class="lazy" style="max-height: 365px">
+    <div style="padding-bottom:58.77616747181965%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000149.png" src=""/> 
+</div>  </li>
+<li>Test the URL in browser. Expected response is authorization failed error.
+
+<div class="lazy" style="max-height: 60px">
+    <div style="padding-bottom:21.73913043478261%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000150.png" src=""/> 
+</div>  </li>
+</ol>
+
+<p>Now that this is done, Logic App is secured and will only be called from API management service.</p>
+
+<h4 id="virtual-private-ip-important-note">Virtual Private IP - important note!</h4>
+
+<p>It is highly important to note that APIM VIP is not static forever. It is static for lifetime of tenant but with exception of three scenarios</p>
+
+<ul>
+<li>Service is redeployed</li>
+<li>Azure Subscription is suspended/warned</li>
+<li>VNet integration is added or removed</li>
+</ul>
+
+<p><a href="https://docs.microsoft.com/en-us/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules">See documentation FAQ for API management for details.</a></p>
+
+<h3 id="api-management-configuration">API management configuration</h3>
+
+<ol>
+<li>Open <strong>API Management</strong> resource</li>
+<li>Go to the <strong>APIs</strong> blade
+
+<div class="lazy" style="max-height: 175px">
+    <div style="padding-bottom:66.53992395437263%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000151.png" src=""/> 
+</div>  </li>
+<li>Click on <strong>Add API</strong> and select <strong>Logic App</strong>
+
+<div class="lazy" style="max-height: 520px">
+    <div style="padding-bottom:107.43801652892562%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000152.png" src=""/> 
+</div>  </li>
+<li>Click on <strong>Browse</strong> button</li>
+<li>From the selection blade find logic app service that was previously created and click on it
+
+<div class="lazy" style="max-height: 283px">
+    <div style="padding-bottom:65.81395348837209%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000153.png" src=""/> 
+</div>  </li>
+<li>Review imported Logic App and hit <strong>Create</strong>
+
+<div class="lazy" style="max-height: 646px">
+    <div style="padding-bottom:115.15151515151516%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000154.png" src=""/> 
+</div>  </li>
+<li>When importing finishes go to Logic App API and click on <strong>Add Policy</strong>
+
+<div class="lazy" style="max-height: 780px">
+    <div style="padding-bottom:58.383233532934135%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000178.png" src=""/> 
+</div>  </li>
+<li>Find and click on <strong>Validate JWT</strong> policy
+
+<div class="lazy" style="max-height: 200px">
+    <div style="padding-bottom:100%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000161.png" src=""/> 
+</div>  </li>
+<li>Configure it as follows using <strong>Full</strong> edit mode
+
+<div class="lazy" style="max-height: 749px">
+    <div style="padding-bottom:125.67114093959732%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000193.png" src=""/> 
+</div>  
+
+<ul>
+<li><strong>Validate by</strong> - and set this to <strong>header</strong> validation.</li>
+<li><strong>Header name</strong> - which header is going to be validated. In this case <strong>Authorization</strong> header.</li>
+<li><strong>Failed validation HTTP code</strong> - what HTTP error code to return when validation fails.</li>
+<li><strong>Failed validation error message</strong> - error messages which will be returned with code upon failure.</li>
+<li><strong>Required signed tokens?</strong> - All Azure tokens are digitally signed so for extra security this can be set to <strong>Yes</strong>.</li>
+<li><strong>Audiences</strong> - for enterprise security you should set this field. This will be API url which will be created during next steps. For us this is <strong>api://apim-logic-app-demo</strong></li>
+<li><strong>Require scheme</strong> - API should only accept tokens from with <strong>Bearer</strong> scheme.</li>
+<li><strong>Open ID URLs</strong> - In case of Azure this is one of the two URLs from below.
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://login.windows.net/&lt;tenant_name&gt;.onmicrosoft.com/.well-known/openid-configuration</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://login.windows.net/&lt;tenant_id&gt;/.well-known/openid-configuration</code></pre></div>
+When not sure about the URL, hovering over user name gives this details. Both tenant name and ID.
+
+<div class="lazy" style="max-height: 106px">
+    <div style="padding-bottom:22.5531914893617%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000158.png" src=""/> 
+</div>  </li>
+</ul></li>
+<li>Next click on <strong>Add Policy</strong> to one more policy which removes Authorization header from the request. This is because Logic Apps do not accept Authorization headers. If this step is omitted, following error will be returned.
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;error&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;code&#34;</span><span class="p">:</span><span class="s2">&#34;DirectApiAuthorizationRequired&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;message&#34;</span><span class="p">:</span><span class="s2">&#34;The request must be authenticated only by Shared Access scheme.&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div></li>
+<li>Find <strong>Set header</strong> policy and click on it
+
+<div class="lazy" style="max-height: 200px">
+    <div style="padding-bottom:100%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000164.png" src=""/> 
+</div>  </li>
+<li>Set <strong>Name</strong> to <strong>Authorization</strong> and <strong>Action</strong> to <strong>delete</strong>
+
+<div class="lazy" style="max-height: 208px">
+    <div style="padding-bottom:30.144927536231883%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000165.png" src=""/> 
+</div>  </li>
+<li>Policies should look like this.
+
+<div class="lazy" style="max-height: 437px">
+    <div style="padding-bottom:172.72727272727272%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000166.png" src=""/> 
+</div>  </li>
+<li>Policy in <strong>policy code editor</strong> should look like this
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;policies&gt;</span>
+
+  <span class="nt">&lt;inbound&gt;</span>
+    <span class="nt">&lt;base</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;set-backend-service</span> 
+      <span class="na">id=</span><span class="s">&#34;apim-generated-policy&#34;</span>
+      <span class="na">backend-id=</span><span class="s">&#34;LogicApp_marczakioapimlogicapp_azure4everyone-logic-apps-with-apim&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;validate-jwt</span> 
+      <span class="na">header-name=</span><span class="s">&#34;Authorization&#34;</span> 
+      <span class="na">failed-validation-httpcode=</span><span class="s">&#34;401&#34;</span> 
+      <span class="na">failed-validation-error-message=</span><span class="s">&#34;Unauthorized. Access token is missing or invalid.&#34;</span> 
+      <span class="na">require-expiration-time=</span><span class="s">&#34;false&#34;</span> 
+      <span class="na">require-signed-tokens=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;openid-config</span> 
+        <span class="na">url=</span><span class="s">&#34;https://login.windows.net/azure4everyone.onmicrosoft.com/.well-known/openid-configuration&#34;</span>
+      <span class="nt">/&gt;</span>
+      <span class="nt">&lt;audiences&gt;</span>
+       <span class="nt">&lt;audience&gt;</span>api://apim-logic-app-demo<span class="nt">&lt;/audience&gt;</span>
+      <span class="nt">&lt;/audiences&gt;</span>
+    <span class="nt">&lt;/validate-jwt&gt;</span>
+    <span class="nt">&lt;set-header</span> <span class="na">name=</span><span class="s">&#34;Authorization&#34;</span> <span class="na">exists-action=</span><span class="s">&#34;delete&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/inbound&gt;</span>
+
+  <span class="nt">&lt;backend&gt;</span>
+    <span class="nt">&lt;base</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/backend&gt;</span>
+
+  <span class="nt">&lt;outbound&gt;</span>
+    <span class="nt">&lt;base</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/outbound&gt;</span>
+
+  <span class="nt">&lt;on-error&gt;</span>
+    <span class="nt">&lt;base</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/on-error&gt;</span>
+
+<span class="nt">&lt;/policies&gt;</span></code></pre></div></li>
+</ol>
+
+<h3 id="set-up-the-application-api">Set up the Application API</h3>
+
+<p>Audience should <strong>always, always, always be validated</strong>. This means custom app needs to be created.</p>
+
+<ol>
+<li>Go to Azure AD
+
+<div class="lazy" style="max-height: 92px">
+    <div style="padding-bottom:49.19786096256684%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000186.png" src=""/> 
+</div>  </li>
+<li>Open App registration panel
+
+<div class="lazy" style="max-height: 195px">
+    <div style="padding-bottom:54.166666666666664%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000187.png" src=""/> 
+</div>  </li>
+<li>Click on <strong>+ New registration</strong> button and fill in the form just by giving it any name
+
+<div class="lazy" style="max-height: 790px">
+    <div style="padding-bottom:105.1930758988016%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000188.png" src=""/> 
+</div>  </li>
+<li>In the app panel go to <strong>Expose an API</strong> blade
+
+<div class="lazy" style="max-height: 641px">
+    <div style="padding-bottom:69.37229437229438%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000189.png" src=""/> 
+</div>  
+
+<ol>
+<li><strong>Set</strong> Application ID URI, this will be audience that will be validated. In this example use <strong>api://apim-logic-app-demo</strong> value.
+
+<div class="lazy" style="max-height: 118px">
+    <div style="padding-bottom:19.376026272577995%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000190.png" src=""/> 
+</div>  </li>
+<li>Click <strong>Add a scope</strong>. At this time since only one API can be exposed it doesn&rsquo;t matter, but scopes are important topic for larger applications.
+
+<div class="lazy" style="max-height: 351px">
+    <div style="padding-bottom:62.67857142857143%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000191.png" src=""/> 
+</div>  </li>
+<li>Click on <strong>Add a client application</strong> and add Microsoft Azure CLI client ID so it can request tokens. In future remove it and only leave valid applications. This is OK for development only. Azure CLI client ID is always the same so simply add this value.
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">04b07795-8ddb-461a-bbee-02f9e1bf7b46</code></pre></div>
+If in rare scenario this would change in future, simply run az account get-access-token command and parse it in <a href="https://jwt.io">JWT.io</a> or any other website to get appid property.
+
+<div class="lazy" style="max-height: 144px">
+    <div style="padding-bottom:23.801652892561982%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000192.png" src=""/> 
+</div>  </li>
+</ol></li>
+<li>Test the access token with audience by running following CLI command. It might need a minute to propagate so be patient.
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">az account get-access-token --resource <span class="s2">&#34;api://apim-logic-app-demo&#34;</span>. </code></pre></div></li>
+</ol>
+
+<h2 id="test-the-access">Test the access</h2>
+
+<p>Now that the setup is completed, testing can begin. There are several ways to test this, but the easiest that I found is using new Azure CLI. To make REST call both Azure AD token and API subscription key will be required.</p>
+
+<ol>
+<li>Go to <strong>API Management</strong> resource</li>
+<li>Find <strong>Subscriptions</strong> blade and open it
+
+<div class="lazy" style="max-height: 165px">
+    <div style="padding-bottom:63.46153846153846%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000179.png" src=""/> 
+</div>  </li>
+<li>Click on <strong>&hellip;</strong> (three dots) next to built-in all-access subscription and select <strong>Show/hide keys</strong>.
+
+<div class="lazy" style="max-height: 498px">
+    <div style="padding-bottom:52.698412698412696%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000170.png" src=""/> 
+</div>  </li>
+<li>Copy the key
+
+<div class="lazy" style="max-height: 156px">
+    <div style="padding-bottom:39.097744360902254%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000171.png" src=""/> 
+</div>  </li>
+<li>Go to <strong>APIs</strong> blade and click on logic app API, select <strong>Test</strong> tab, then select created operation and find <strong>Request URL</strong>
+
+<div class="lazy" style="max-height: 692px">
+    <div style="padding-bottom:58.15126050420168%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000181.png" src=""/> 
+</div>  </li>
+<li>Using new <strong>az rest</strong> command from Azure CLI (2.0.67 version and up) it&rsquo;s possible to make HTTP call to any service with automatically generated Azure AD token. It also allows to specify token audience with <strong>&ndash;resource</strong> parameter.
+High level the command looks like this.
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">az rest 
+  --uri <span class="s2">&#34;&lt;request_url&gt;&#34;</span>
+  --method GET 
+  --headers <span class="s2">&#34;Ocp-Apim-Subscription-Key=&lt;key&gt;&#34;</span> 
+  --resource <span class="s2">&#34;&lt;resource_uri&gt;&#34;</span></code></pre></div>
+
+<ul>
+<li><strong>resource_uri</strong> is the audience for the token which is used in <strong>Validate JWT</strong> policy. This should be set to <strong>api://apim-logic-app-demo</strong></li>
+<li>In this example call should look as below
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">az rest --uri <span class="s2">&#34;https://marczakioapim.azure-api.net/manual/paths/invoke&#34;</span> --method GET --headers <span class="s2">&#34;Ocp-Apim-Subscription-Key=2be35ef775ad4b338e0248f12b98c9f3&#34;</span> --resource <span class="s2">&#34;api://apim-logic-app-demo&#34;</span></code></pre></div></li>
+<li>With response
+
+<div class="lazy" style="max-height: 125px">
+    <div style="padding-bottom:18.27485380116959%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000195.png" src=""/> 
+</div>  </li>
+<li>For older versions of Azure CLI on windows a bit more cumbersome but viable way is to do CURL
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch"><span class="k">for</span> <span class="k">/f</span> <span class="nv">%i in (&#39;az account get-access-token --resource &#34;api://apim-logic-app-demo&#34; --query &#34;accessToken&#34;&#39;) do set VAR=%</span>i
+curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR%</span><span class="s2">&#34;</span> -H <span class="s2">&#34;Ocp-Apim-Subscription-Key:2be35ef775ad4b338e0248f12b98c9f3&#34;</span> <span class="s2">&#34;https://marczakioapim.azure-api.net/manual/paths/invoke&#34;</span></code></pre></div></li>
+</ul></li>
+</ol>
+
+<h3 id="subscription-key">Subscription key</h3>
+
+<p>In case subscription key is not required, it can be disabled in <strong>Settings</strong> tab of API.
+
+<div class="lazy" style="max-height: 192px">
+    <div style="padding-bottom:24.615384615384617%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000167.png" src=""/> 
+</div>  </p>
+
+<h2 id="user-application-claims-from-token">User/Application claims from Token</h2>
+
+<p>If there is a need to pass some user or application claims from the token into the logic app, then this information can be obtained from context headers. In most simple way this can be achieved using below code.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">context</span>
+  <span class="p">.</span><span class="n">Request</span>
+  <span class="p">.</span><span class="n">Headers</span><span class="na">[&#34;Authorization&#34;]</span>
+  <span class="p">.</span><span class="n">First</span><span class="p">()</span>
+  <span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39; &#39;</span><span class="p">)</span><span class="na">[1]</span>
+  <span class="p">.</span><span class="n">AsJwt</span><span class="p">()?</span>
+  <span class="p">.</span><span class="n">Claims</span><span class="na">[&#34;unique_name&#34;]</span>
+  <span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">();</span></code></pre></div>
+
+<p>Important note here. When adding below sections, make sure they are <strong>BEFORE section which deletes the header</strong>.</p>
+
+<p>A quick &lsquo;one-liner&rsquo; to achieve this would be just setting header variable with above inline code.
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;set-header</span> <span class="na">name=</span><span class="s">&#34;X-UPN&#34;</span> <span class="na">exists-action=</span><span class="s">&#34;override&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;value&gt;</span>
+    @(context.Request.Headers[&#34;Authorization&#34;].First().Split(&#39; &#39;)[1].AsJwt()?.Claims[&#34;unique_name&#34;].FirstOrDefault())
+  <span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/set-header&gt;</span></code></pre></div></p>
+
+<p>And if more than one header will be extracted then it&rsquo;s worth to save extracted JWT header as variable to use in further steps.
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;set-variable</span> 
+  <span class="na">name=</span><span class="s">&#34;jwt-token&#34;</span> 
+  <span class="na">value=</span><span class="s">&#34;@(context.Request.Headers[&#34;</span><span class="err">Authorization&#34;].First().Split(&#39;</span> <span class="err">&#39;)[1].AsJwt())&#34;</span> 
+<span class="nt">/&gt;</span>
+<span class="nt">&lt;set-header</span> <span class="na">name=</span><span class="s">&#34;X-UPN&#34;</span> <span class="na">exists-action=</span><span class="s">&#34;override&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;value&gt;</span>
+    @(((Jwt)context.Variables[&#34;jwt-token&#34;])?.Claims[&#34;unique_name&#34;].FirstOrDefault())
+  <span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/set-header&gt;</span></code></pre></div></p>
+
+<p>Note that in those cases where the token isn&rsquo;t correctly formatted those one-liners will fail. Because if there is no claim &lsquo;unique-name&rsquo; present in the token the code will fail with result of 500 error on the client side. It&rsquo;s OK to use those when application is using Azure AD because those fields will always be present but in case of custom JWT token generation, it would be advised to prepare custom code which handles incorrect token headers.</p>
+
+<p>In this case full example would look as follows.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;policies&gt;</span>
+  <span class="nt">&lt;inbound&gt;</span>
+    <span class="nt">&lt;base</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;set-backend-service</span> 
+      <span class="na">id=</span><span class="s">&#34;apim-generated-policy&#34;</span>   
+      <span class="na">backend-id=</span><span class="s">&#34;LogicApp_marczakioapimlogicapp_azure4everyone-logic-apps-with-apim&#34;</span>
+    <span class="nt">/&gt;</span>
+    <span class="nt">&lt;validate-jwt</span> 
+      <span class="na">header-name=</span><span class="s">&#34;Authorization&#34;</span> 
+      <span class="na">failed-validation-httpcode=</span><span class="s">&#34;401&#34;</span> 
+      <span class="na">failed-validation-error-message=</span><span class="s">&#34;Unauthorized. Access token is missing or invalid.&#34;</span> 
+      <span class="na">require-expiration-time=</span><span class="s">&#34;false&#34;</span> 
+      <span class="na">require-scheme=</span><span class="s">&#34;Bearer&#34;</span> 
+      <span class="na">require-signed-tokens=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;openid-config</span> 
+        <span class="na">url=</span><span class="s">&#34;https://login.windows.net/azure4everyone.onmicrosoft.com/.well-known/openid-configuration&#34;</span> 
+      <span class="nt">/&gt;</span>
+      <span class="nt">&lt;audiences&gt;</span>
+       <span class="nt">&lt;audience&gt;</span>api://apim-logic-app-demo<span class="nt">&lt;/audience&gt;</span>
+      <span class="nt">&lt;/audiences&gt;</span>
+    <span class="nt">&lt;/validate-jwt&gt;</span>
+    <span class="nt">&lt;set-variable</span> 
+      <span class="na">name=</span><span class="s">&#34;jwt-token&#34;</span> 
+      <span class="na">value=</span><span class="s">&#34;@(context.Request.Headers[&#34;</span><span class="err">Authorization&#34;].First().Split(&#39;</span> <span class="err">&#39;)[1].AsJwt())&#34;</span> 
+    <span class="nt">/&gt;</span>
+    <span class="nt">&lt;set-header</span> <span class="na">name=</span><span class="s">&#34;X-UPN&#34;</span> <span class="na">exists-action=</span><span class="s">&#34;override&#34;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;value&gt;</span>
+        @(((Jwt)context.Variables[&#34;jwt-token&#34;])?.Claims[&#34;unique_name&#34;].FirstOrDefault())
+      <span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/set-header&gt;</span>
+    <span class="nt">&lt;set-header</span> <span class="na">name=</span><span class="s">&#34;Authorization&#34;</span> <span class="na">exists-action=</span><span class="s">&#34;delete&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/inbound&gt;</span>
+
+  <span class="nt">&lt;backend&gt;</span>
+    <span class="nt">&lt;base</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/backend&gt;</span>
+
+  <span class="nt">&lt;outbound&gt;</span>
+    <span class="nt">&lt;base</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/outbound&gt;</span>
+  
+  <span class="nt">&lt;on-error&gt;</span>
+    <span class="nt">&lt;base</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/on-error&gt;</span>
+<span class="nt">&lt;/policies&gt;</span></code></pre></div>
+
+<p>At this point user principal name will be passed to Logic App as additional header. This can be easily tested by initializing variable in Logic App like below.</p>
+
+
+<div class="lazy" style="max-height: 354px">
+    <div style="padding-bottom:53.79939209726444%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000184.png" src=""/> 
+</div>  
+
+<p>Which will show that user principal name is available.</p>
+
+
+<div class="lazy" style="max-height: 623px">
+    <div style="padding-bottom:95.1145038167939%"></div>
+    <img data-src="/images/2019-08-secure-logic-app-with-api-management/000182.png" src=""/> 
+</div>  
+
+<p>In case grabbing specific header is required then simply use Logic App expression.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">triggerOutputs()</span><span class="p">[</span><span class="err">&#39;headers&#39;</span><span class="p">][</span><span class="err">&#39;X-UPN&#39;</span><span class="p">]</span></code></pre></div>
+
+<h3 id="tokens">Tokens</h3>
+
+<p>When it comes to Token and what information does it hold feel free to check <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/id-tokens">ID tokens documentation</a> for complete list of fields for Azure Active Directory tokens.</p>
+
+<p>When using other token providers or validating token values, I highly recommend <a href="https://jwt.io">jwt.io</a> which parses JWT tokens and shows values.</p>
+
+<p>Example for Azure AD
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;aud&#34;</span><span class="p">:</span> <span class="s2">&#34;https://management.azure.com&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;iss&#34;</span><span class="p">:</span> <span class="s2">&#34;https://sts.windows.net/1f0fb2d0-9423-4dce-ac05-7f195c4ee405/&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;appid&#34;</span><span class="p">:</span> <span class="s2">&#34;04b07795-8ddb-461a-bbee-02f9e1bf7b46&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;appidacr&#34;</span><span class="p">:</span> <span class="s2">&#34;0&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="s2">&#34;adam@marczak.io&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;groups&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&#34;317bace5-7e56-468e-826c-dc65cdfd2665&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;317bace5-7e56-468e-826c-dc65cdfd2661&#34;</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;idp&#34;</span><span class="p">:</span> <span class="s2">&#34;https://sts.windows.net/dda56080-c956-45a2-9fd5-a88f5833ea9a/&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;ipaddr&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;ip_address&gt;&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Adam Marczak&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;oid&#34;</span><span class="p">:</span> <span class="s2">&#34;3eb1f86e-bfe8-4909-adb9-f55fd14af378&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;unique_name&#34;</span><span class="p">:</span> <span class="s2">&#34;adam@marczak.io&#34;</span><span class="p">,</span>
+  <span class="err">...</span> <span class="err">other</span> <span class="err">fields</span> <span class="err">...</span>
+<span class="p">}</span></code></pre></div></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Being able to use flexibility of Logic Apps without sacrificing security is the best of two worlds. With recent introduction of consumption plans for azure API Management service even small applications can leverage this powerful service without huge investments.</p>
+
+<h3 id="what-s-next">What&rsquo;s next?</h3>
+
+<p>All that is left is to simply go and start implementing solutions.</p>
+
+<ol>
+<li>Read <a href="https://docs.microsoft.com/en-us/azure/api-management/">API Management documentation</a></li>
+<li>Watch <a href="https://www.youtube.com/watch?v=ZvsOzji_8ow">Logic Apps introduction video</a></li>
+<li>Read <a href="https://docs.microsoft.com/en-us/azure/logic-apps/">Logic Apps documentation</a></li>
+</ol>
+    </article>
+    <div class="section-blog-info">
+        <div class="row">
+            <div class="col-md-12">
+<div class="authorblock">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="avatar"></div>
+        </div>
+        <div class="col-sm-9">
+            <h4><b>Adam Marczak</b></h4>
+            <p>Programmer, architect, trainer, blogger, evangelist are just a few of many titles. What I really am, is a passionate technology enthusiast. I take great pleasure in learning new technologies and finding ways in which it can aid people every day. My latest passion is running an <a href='https://www.youtube.com/azure4everyone'>Azure 4 Everyone</a> YouTube channel, where I show that Azure really is for everyone!</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="text-center">Did you enjoy the article?</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <h4 class="">Share it!</h4><a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Facebook" 
+   class="btn btn-just-icon btn-share btn-facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmarczak.io%2fposts%2f2019%2f08%2fsecure-logic-app-with-api-management%2f">
+    <i class="fa fa-facebook"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Twitter" 
+   class="btn btn-just-icon btn-share btn-twitter" 
+   href="https://twitter.com/home?status=Securing%20Logic%20App%20with%20Azure%20AD%20authentication%20using%20API%20Management - https%3a%2f%2fmarczak.io%2fposts%2f2019%2f08%2fsecure-logic-app-with-api-management%2f">
+   <i class="fa fa-twitter"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Google+" 
+   class="btn btn-just-icon btn-share btn-google" 
+   href="https://plus.google.com/share?url=https%3a%2f%2fmarczak.io%2fposts%2f2019%2f08%2fsecure-logic-app-with-api-management%2f"><i 
+   class="fa fa-google"></i>
+</a>
+            
+            </div>
+            <div class="col-md-6 text-center large">
+                <h4 class="">More tagged posts</h4>
+  <div class="tag-list">
+    <a href="https://marczak.io/tags/api-management" title="View all posts in API Management">
+      <img src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/>
+    </a>
+    <a href="https://marczak.io/tags/active-directory" title="View all posts in Active Directory">
+      <img src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/>
+    </a>
+    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
+      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
+    </a>
+    <a href="https://marczak.io/tags/logic-apps" title="View all posts in Logic Apps">
+      <img src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/>
+    </a>
+    <a href="https://marczak.io/tags/security" title="View all posts in Security">
+      <img src="https://marczak.io/images/tags/security.svg" alt="Security"/>
+    </a>
+  </div>
+            </div>
+        </div>
+        <div class="row comments">
+            <div class="col-md-12"><div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "https:\/\/marczak.io\/posts\/2019\/08\/secure-logic-app-with-api-management\/"; 
+this.page.identifier = "\/posts\/2019\/08\/secure-logic-app-with-api-management\/";
+};
+
+(function() {
+if (window.location.hostname == "localhost")return;
+var d = document, s = d.createElement('script');
+s.src = 'https://marczak-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+            </div>
+        </div> 
+    </div>
+</div>
+            <div class="col-md-3 blog-sidebar-wrapper">
+              <aside id="secondary" class="blog-sidebar" role="complementary"><div id="mvp" class="banner-mvp">
+<img src="/images/mvp.svg" />
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Courses</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px">
+    <a href="https://marczak.io/az-900" >
+        <img src="/images/az-900/cert.svg" style="width:60px;margin-right:10px;;float:left;"></img> AZ-900 <br/>Microsoft Azure Fundamentlas
+    </a>
+</div>
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Featured Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Process Excel files in Azure</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/pc8Kv-lRD8k" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/49-AzureExcelFileProcessing-ADFandDatabricks-Tutorial-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">AZ-900 Full Course</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/NPEsD6n9A_I" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/az-900/az-900-ep-00-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Azure Active Directory Tutorial</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/Ma7VAQE7ga4" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/48-AzureActiveDirectory-Intro-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;max-width:180px;margin-right:30px;">
+<h5>Recent Posts</h5>
+<ul>
+        <li><b class="list-header">2020 July</b></li>
+        <li class="indented">
+            <a href="/posts/2020/07/az-900-full-course/" title="AZ-900 Microsoft Azure Fundamentals full course" rel="bookmark">
+                <b>7th </b>AZ-900 Microsoft Azure Fundamentals full course
+            </a>
+        </li>
+        <li><b class="list-header">2019 October</b></li>
+        <li class="indented">
+            <a href="/posts/2019/10/ea-consumption-automation-with-logic-apps/" title="Automating Enterprise Azure billing using Logic Apps for 0.03$/month" rel="bookmark">
+                <b>25th </b>Automating Enterprise Azure billing using Logic Apps for 0.03$/month
+            </a>
+        </li>
+        <li><b class="list-header">2019 August</b></li>
+        <li class="indented">
+            <a href="/posts/2019/08/logic-apps-obfuscation/" title="Enhancing Logic Apps security with obfuscation" rel="bookmark">
+                <b>16th </b>Enhancing Logic Apps security with obfuscation
+            </a>
+        </li>
+        <li class="indented">
+            <a href="/posts/2019/08/secure-logic-app-with-api-management/" title="Securing Logic App with Azure AD authentication using API Management" rel="bookmark">
+                <b>8th </b>Securing Logic App with Azure AD authentication using API Management
+            </a>
+        </li>
+        <li><b class="list-header">2019 July</b></li>
+        <li class="indented">
+            <a href="/posts/2019/07/securing-websites-with-msi/" title="Securing Azure Services with Managed Identities" rel="bookmark">
+                <b>19th </b>Securing Azure Services with Managed Identities
+            </a>
+        </li>
+</ul>
+</div><div id="categories-3" class="widget widget_categories" style="float: left;">
+  <h5>Tags</h5>
+  <ul class="tag-list">
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/active-directory">Active Directory (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+        </div> 
+        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-service.svg" alt="App Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-service">App Service (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (17)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/bot-service.svg" alt="Bot Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/bot-service">Bot Service (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-factory.svg" alt="Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-factory">Data Factory (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+        </div> 
+        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/flow.svg" alt="Flow"/> 
+        </div> 
+        <a href="https://marczak.io/tags/flow">Flow (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/functions.svg" alt="Functions"/> 
+        </div> 
+        <a href="https://marczak.io/tags/functions">Functions (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/key-vault.svg" alt="Key Vault"/> 
+        </div> 
+        <a href="https://marczak.io/tags/key-vault">Key Vault (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (7)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/security.svg" alt="Security"/> 
+        </div> 
+        <a href="https://marczak.io/tags/security">Security (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+        </div> 
+        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/teams.svg" alt="Teams"/> 
+        </div> 
+        <a href="https://marczak.io/tags/teams">Teams (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vue.js.svg" alt="Vue.js"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/webpack.svg" alt="Webpack"/> 
+        </div> 
+        <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+        </div> 
+        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+      </li>
+  </ul>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Sites</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px;">
+    <a href="https://sqlplayer.net" > 
+<div class="lazy" style="max-height: 270px">
+    <div style="padding-bottom:28.481012658227847%"></div>
+    <img data-src="/images//sites/sql-player.png" src=""/> 
+</div> 
+    </a>
+</div>
+</div>
+</div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+<footer class="footer footer-black footer-big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="connected-title">Stay Connected</h5>
+                <div class="">
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-about"
+     href="/about">
+    <i class="fa fa-user"></i>
+  </a>
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-github"
+     href="https://github.com/MarczakIO">
+    <i class="fa fa-github"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
+     href="https://marczak.io/index.xml">
+    <i class="fa fa-rss"></i>
+  </a>
+</div>
+            </div>
+            &copy;<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> <a href="https://themeisle.com/themes/hestia/" target="_blank" rel="nofollow">Hestia Theme</a>
+        </div>
+    </div>
+</footer>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
+  
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="https:\/\/marczak.io\/js\/bootstrap.min.js"><\/script>')}</script>
+  
+  <div id="bootstrapCssTest" class="hidden"></div>
+  <script>
+    $(function() {
+      if ($('#bootstrapCssTest').is(':visible')) {
+        $("head").prepend('<link rel="stylesheet" href="https:\/\/marczak.io\/css\/bootstrap.min.css">');
+      }
+    });
+  </script>
+  <script type="text/javascript" src="https://marczak.io/js/main.min.js?ver=1.16"></script>
+</body>
+</html>

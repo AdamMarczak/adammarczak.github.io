@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Visual Studio on Marczak.IO</title>
+    <link>https://marczak.io/tags/visual-studio/</link>
+    <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 Jun 2018 18:00:23 +0200</lastBuildDate>
+    
+        <atom:link href="https://marczak.io/tags/visual-studio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Azure Analysis Services hybrid enrivonment with on-premises databases</title>
+      <link>https://marczak.io/posts/analysis-services-onprem-integration/</link>
+      <pubDate>Tue, 26 Jun 2018 18:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/analysis-services-onprem-integration/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/analysis-services-onprem-integration/splash.png&quot;&gt;
+        &lt;p&gt;Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway. &lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Effective chatbot development with ngrok</title>
+      <link>https://marczak.io/posts/botseries-dev-done-easy/</link>
+      <pubDate>Mon, 12 Mar 2018 21:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/botseries-dev-done-easy/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/botseries-dev-done-easy/splash.png&quot;&gt;
+        &lt;p&gt;Proper set up of environment is one of most important things during development. Leverage ngrok tunneling service to speed up development process.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Precompiled Bots with VS 2017 tooling</title>
+      <link>https://marczak.io/posts/precompiled-bots-for-bot-service/</link>
+      <pubDate>Sat, 30 Sep 2017 16:20:25 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/precompiled-bots-for-bot-service/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/compilable-bots/splash.png&quot;&gt;
+        &lt;p&gt;With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.&lt;/p&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

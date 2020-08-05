@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB | Marczak.IO | Adam Marczak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-16x16.png" sizes="16x16" />
+<link rel="apple-touch-icon-precomposed" href="https://marczak.io/images/iphone-icon.png"/>
+<link rel="stylesheet" id="hestia_fonts-css" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700%7CRoboto+Slab%3A400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+<link href='https://marczak.io/css/hestia.min.css?ver=1.23' rel="stylesheet" type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.27' rel='stylesheet' type="text/css" />
+
+<meta name="description" content="Storing data is key aspect of every application out there. Learn how to use Azure Cosmos DB with .NET Core to deliver CRUD operation capabilities to application of any kind, and how to handle those operations in real time on front-end using Vue.js.">
+<meta name="author" content="Adam Marczak">
+<meta name="copyright" content="Adam Marczak">
+<meta name="title" content="Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB | Marczak.IO | Adam Marczak">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.facebook.com/MarczakIO/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB">
+<meta property="og:description" content="Storing data is key aspect of every application out there. Learn how to use Azure Cosmos DB with .NET Core to deliver CRUD operation capabilities to application of any kind, and how to handle those operations in real time on front-end using Vue.js.">
+<meta property="og:url" content="https://marczak.io/posts/netcore-vuejs-crud/">
+<meta property="og:site_name" content="Marczak.IO">
+<meta property="og:image" content="https://marczak.io/images/netcore-vuejs-crud/splash.png">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@MarczakIO">
+<meta name="twitter:title" content="Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB">
+<meta name="twitter:description" content="Storing data is key aspect of every application out there. Learn how to use Azure Cosmos DB with .NET Core to deliver CRUD operation capabilities to application of any kind, and how to handle those operations in real time on front-end using Vue.js.">
+<meta name="twitter:url" content="https://marczak.io/posts/netcore-vuejs-crud/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', 'UA-106560028-1');
+</script>
+</head>
+<body class="home blog">
+  <div class="wrapper"><header class="header">
+  <nav class="navbar navbar-default hestia_left">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="title-logo-wrapper">
+          <a class="navbar-brand" href="/" title="Marczak.IO">
+            <p>Marczak.IO</p>
+          </a>
+        </div>
+      </div>
+      <div id="main-navigation" class="navbar-custom">
+        <div class="entry-social">
+  <a target="_top" class="btn btn-just-icon btn-social btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_top" class="btn btn-friendly-site " 
+      style=""
+      href="https://azure4everyone.com">
+      <img src="https://marczak.io/images/azure4everyone.svg">
+      <span>Azure 4 Everyone</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </nav>
+  <div id="primary" class="boxed-layout-header page-header header-small" data-parallax="active" style="margin-top: -20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+          <h1 class="hestia-title">Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB</h1>
+          
+            <h4 class="author">
+              Published by<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2018-02-17 19:27:23 &#43;0200 &#43;0200">Feb 17 2018</time>
+            </h4>
+           
+        </div>
+      </div>
+    </div>
+    <div class="header-filter" style="background-image: url('/images/background.jpg');background-color: #283743;"></div>
+  </div>
+</header>
+    <div class="main main-raised">
+      <div class="hestia-blogs">
+        <div class="container">
+          <div class="row">
+<div class="col-md-9 single-posts-wrap">
+    <article id="/posts/netcore-vuejs-crud/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 1075px">
+    <div style="padding-bottom:56.341719077568136%"></div>
+    <img data-src="/images/netcore-vuejs-crud/splash.png" src=""/> 
+</div> <a target="_blank" 
+   rel="tooltip" 
+   class="btn btn-github"
+   href="https://github.com/MarczakIO/netcore-vuejs-cosmosdb-crud">
+    <i class="fa fa-github"></i>
+    Source Code
+</a><h2>Highlight</h2>
+        <p>Storing data is key aspect of every application out there. Learn how to use Azure Cosmos DB with .NET Core to deliver CRUD operation capabilities to application of any kind, and how to handle those operations in real time on front-end using Vue.js.</p>
+
+<h3 id="what-is-cosmos-db-and-why-should-anyone-use-it">What is Cosmos DB and why should anyone use it?</h3>
+
+<p><a href="https://azure.microsoft.com/en-us/services/cosmos-db/">Cosmos DB</a> is one of available Azure PaaS (Platform as a Service) databases. It delivers low latency and high scalability data storage anywhere in the world. Cosmos DB is simply said a document database which stores its data in JSON format. It also has several APIs allowing for easy integration with many languages and frameworks. Those APIs include</p>
+
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-sql-query">SQL</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/graph-introduction">Graph</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction">MongoDB</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-introduction">Cassandra</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/table-introduction">Table</a></li>
+</ul>
+
+<p>Biggest advantage of using databases like Cosmos DB is that they will scale better than databases but also offer great &lsquo;pay as you go&rsquo; model which means for small applications the cost is much lower than the one of full-fledged database. Of&rsquo;course this doesn&rsquo;t mean classic relational database should not be used, on the contrary, in some cases they are very much recommended.</p>
+
+<h2 id="creating-cosmos-db">Creating Cosmos DB</h2>
+
+<p>Creation of Cosmos DB is very easy. Few clicks in Azure Portal and developer is good to go. It is recommended that for production usage environment setup should be automated using either <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest">Azure CLI</a> or <a href="https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.2.0">PowerShell</a> with use of <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview">ARM templates</a>.</p>
+
+<ol>
+<li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
+<li>Click on <strong>plus</strong> sign on the left-hand side corner, type in <strong>cosmos</strong> is search box and then press <strong>enter</strong>
+
+<div class="lazy" style="max-height: 237px">
+    <div style="padding-bottom:36.74418604651163%"></div>
+    <img data-src="/images/netcore-vuejs-crud/1.png" src=""/> 
+</div>  </li>
+<li>From available list of services click on <strong>Azure Cosmos DB</strong> and press <strong>Create</strong> button
+
+<div class="lazy" style="max-height: 275px">
+    <div style="padding-bottom:32.31492361927145%"></div>
+    <img data-src="/images/netcore-vuejs-crud/2.png" src=""/> 
+</div>  </li>
+<li>Fill in the service details
+
+<div class="lazy" style="max-height: 399px">
+    <div style="padding-bottom:128.29581993569133%"></div>
+    <img data-src="/images/netcore-vuejs-crud/3.png" src=""/> 
+</div>  
+
+<ul>
+<li><strong>ID</strong> - name of the service, it will be available as public DNS and therefore must be globally unique</li>
+<li><strong>API</strong> - a type of connectivity for Cosmos DB, currently only one API can be enabled at the time</li>
+<li><strong>Resource Group</strong> - logical container name where the resource will be created</li>
+<li><strong>Location</strong> - datacenter region location</li>
+<li><strong>Enable Geo Redundancy</strong> - setting which will replicate database across multiple datacenter regions</li>
+</ul></li>
+<li>Create new collection by navigating to <strong>Data Explorer</strong> and clicking on <strong>New Collection</strong> button
+
+<div class="lazy" style="max-height: 355px">
+    <div style="padding-bottom:69.74459724950884%"></div>
+    <img data-src="/images/netcore-vuejs-crud/4.png" src=""/> 
+</div>  </li>
+<li>Provide collection details and hit <strong>OK</strong>
+
+<div class="lazy" style="max-height: 462px">
+    <div style="padding-bottom:107.44186046511628%"></div>
+    <img data-src="/images/netcore-vuejs-crud/5.png" src=""/> 
+</div>  
+
+<ul>
+<li><strong>Database Id</strong> - logical container name for collections</li>
+<li><strong>Collection Id</strong> - name for the container</li>
+<li><strong>Storage Capacity</strong> - how much data can the collection hold, leave it at 10GB</li>
+<li><strong>Throughput</strong> - How many <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/request-units">Request Units</a> can collection process per second</li>
+<li><strong>Unique Keys</strong> - similarly to relational database this is &lsquo;unique&rsquo; key on the column (value). It can be also put on nested values like /Address/Id. Note that it not required to add unique key on &lsquo;id&rsquo; column as this is enabled by default.</li>
+</ul></li>
+</ol>
+
+<h3 id="summarizing">Summarizing</h3>
+
+<p>In this section</p>
+
+<ul>
+<li>A new Azure Cosmos DB called <strong>marczakio-vuejs-crud</strong> was created</li>
+<li>A new database with Id <strong>Demo</strong> was created</li>
+<li>A new collection with Id <strong>Todo</strong> was created</li>
+</ul>
+
+<h2 id="building-a-web-application">Building a Web Application</h2>
+
+<p>Next step is to create a web app backbone that will allow for creation of new to-do items and a web api that will handle the request.</p>
+
+
+<div class="lazy" style="max-height: 199px">
+    <div style="padding-bottom:76.24521072796935%"></div>
+    <img data-src="/images/netcore-vuejs-crud/6.png" src=""/> 
+</div>  
+
+<p>This section will cover all 4 (four) basic actions for to-do&rsquo;s which are create, read, update and delete.</p>
+
+<h3 id="start-with-the-web-app-template">Start with the web app template</h3>
+
+<p>This post is a follow-up to previous post <a href="/posts/netcore-vuejs/">Building .NET Core 2.0 web apps with Vue.js single file components using VS Code</a>. A following template uses techniques explained in that article.</p>
+
+<ol>
+<li>Clone simple vuejs template by opening Command Line and executing following commands from working directory
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/MarczakIO/netcore-vuejs-template.git
+<span class="nb">cd</span> netcore-vuejs-template
+dotnet restore
+npm install
+code .</code></pre></div></li>
+<li>Open <strong>.gitignore</strong> file and add following line
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">appsettings.local.json</code></pre></div></li>
+<li>Now add <strong>appsettings.local.json</strong> file inside of root directory for the project. This file will contain connection string and credentials to the database. In previous step it was added to gitignore so that it won&rsquo;t be committed to the repo.
+<div class="highlight"><pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
+    <span class="nt">&#34;DatabaseSettings&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;DatabaseId&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;created_database_id&gt;&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;Endpoint&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;cosmos_db_endpoint&gt;&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;AuthKey&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;cosmos_db_auth_key&gt;&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+In order to get those properties for created database
+
+<ol>
+<li>Navigate to <strong>Keys</strong> blade on azure portal
+
+<div class="lazy" style="max-height: 183px">
+    <div style="padding-bottom:88.83495145631068%"></div>
+    <img data-src="/images/netcore-vuejs-crud/8.png" src=""/> 
+</div>  </li>
+<li>Copy value of <strong>URI</strong> and paste it into <strong>Endpoint</strong> value and <strong>Primary Key</strong> into <strong>AuthKey</strong> inside of <strong>appsettings.local.json</strong> file
+
+<div class="lazy" style="max-height: 311px">
+    <div style="padding-bottom:114.33823529411765%"></div>
+    <img data-src="/images/netcore-vuejs-crud/9.png" src=""/> 
+</div>  </li>
+<li>DatabaseId is the name of the database created earlier. In case of this article the name was &ldquo;Demo&rdquo;</li>
+</ol></li>
+<li>Create folder called <strong>Models</strong> in root directory</li>
+<li>Add model class <strong>DatabaseSettings.cs</strong> inside of <strong>Models</strong> folder which will hold specified configuration values
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MarczakIO.VueSPA.Web.Models</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">DatabaseSettings</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">DatabaseId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Endpoint</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">AuthKey</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div></li>
+<li>Now modify <strong>Startup.cs</strong> class so that it loads the options from appsettings.local.json file into a service whenever called for using dependency injection.
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Builder</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Hosting</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.Configuration</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.SpaServices.Webpack</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Http</span><span class="p">;</span>
+<span class="hl"><span class="k">using</span> <span class="nn">MarczakIO.VueSPA.Web.Models</span><span class="p">;</span>
+</span>
+<span class="k">namespace</span> <span class="nn">MarczakIO.VueSPA.Web</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+    <span class="p">{</span>
+<span class="hl">        <span class="k">public</span> <span class="n">Startup</span><span class="p">(</span><span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">)</span>
+</span><span class="hl">        <span class="p">{</span>
+</span><span class="hl">            <span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConfigurationBuilder</span><span class="p">()</span>
+</span><span class="hl">                <span class="p">.</span><span class="n">SetBasePath</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">ContentRootPath</span><span class="p">)</span>
+</span><span class="hl">                <span class="p">.</span><span class="n">AddJsonFile</span><span class="p">(</span><span class="s">&#34;appsettings.json&#34;</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">)</span>
+</span><span class="hl">                <span class="p">.</span><span class="n">AddJsonFile</span><span class="p">(</span><span class="s">&#34;appsettings.local.json&#34;</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">)</span>
+</span><span class="hl">                <span class="p">.</span><span class="n">AddEnvironmentVariables</span><span class="p">();</span>
+</span><span class="hl">            
+</span><span class="hl">            <span class="n">Configuration</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="n">Build</span><span class="p">();</span>
+</span><span class="hl">        <span class="p">}</span>
+</span>
+        <span class="k">public</span> <span class="n">IConfiguration</span> <span class="n">Configuration</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="n">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+        <span class="p">{</span>
+<span class="hl">            <span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">DatabaseSettings</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span> 
+</span><span class="hl">                <span class="n">Configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&#34;DatabaseSettings&#34;</span><span class="p">).</span><span class="n">Bind</span><span class="p">(</span><span class="n">options</span><span class="p">));</span>
+</span>            <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="n">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">IsDevelopment</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="n">app</span><span class="p">.</span><span class="n">UseDeveloperExceptionPage</span><span class="p">();</span>
+                <span class="n">app</span><span class="p">.</span><span class="n">UseWebpackDevMiddleware</span><span class="p">(</span><span class="k">new</span> <span class="n">WebpackDevMiddlewareOptions</span>
+                <span class="p">{</span>
+                    <span class="n">HotModuleReplacement</span> <span class="p">=</span> <span class="k">true</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+
+            <span class="n">app</span><span class="p">.</span><span class="n">UseDefaultFiles</span><span class="p">();</span>
+            <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">();</span>
+
+            <span class="n">app</span><span class="p">.</span><span class="n">UseMvc</span><span class="p">(</span><span class="n">routes</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+                    <span class="n">name</span><span class="p">:</span> <span class="s">&#34;default&#34;</span><span class="p">,</span>
+                    <span class="n">template</span><span class="p">:</span> <span class="s">&#34;{controller}/{action}/{id?}&#34;</span><span class="p">);</span>
+            <span class="p">});</span>
+
+            <span class="n">app</span><span class="p">.</span><span class="n">Run</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="p">=</span> <span class="s">&#34;text/html&#34;</span><span class="p">;</span>
+                <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">SendFileAsync</span><span class="p">(</span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">WebRootPath</span><span class="p">,</span><span class="s">&#34;index.html&#34;</span><span class="p">));</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+By configuring <strong>DatabaseOptions</strong> with <strong>Configure</strong> method every time <strong>IOptions<DatabaseSettings></strong> is called in any constructor in the application a dependency injection container will make sure to initialize that property. Additionally because a configuration object has been given <strong>appsetings.local.json</strong> as additional config file then each time dependency injection initializes object all properties will be automatically populated with values from json file</li>
+</ol>
+
+<h3 id="reading-documents">Reading documents</h3>
+
+<p>Order of which actions developer builds first is not of high importance although usually it&rsquo;s best to start with create or read actions. In this article read action will be built first as it&rsquo;s possible to create document objects in azure portal. It will also make it much easier to work with other methods when it&rsquo;s possible to see results immediately.</p>
+
+
+<div class="lazy" style="max-height: 109px">
+    <div style="padding-bottom:61.93181818181818%"></div>
+    <img data-src="/images/netcore-vuejs-crud/10.png" src=""/> 
+</div>  
+
+<h4 id="build-a-web-api-for-document-reading">Build a Web API for document reading</h4>
+
+<ol>
+<li>Add nuget package for CosmosDB by using following command from command line
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dotnet add package Microsoft.Azure.DocumentDB.Core
+dotnet restore</code></pre></div>
+<strong>Note</strong>: Sometimes it is required to restart Visual Studio Code to pick up new packages or it will report namespacing issues.</li>
+<li>Create folder called <strong>Azure</strong> in root directory</li>
+<li>Add new class file called <strong>DocumentDBRepository.cs</strong>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">MarczakIO.VueSPA.Web.Models</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.Options</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Azure.Documents</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Azure.Documents.Client</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Azure.Documents.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq.Expressions</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MarczakIO.VueSPA.Web.Azure</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">DocumentDBRepository</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="k">class</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">DatabaseSettings</span> <span class="n">dbOptions</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">DocumentClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="n">DocumentDBRepository</span><span class="p">(</span><span class="n">IOptions</span><span class="p">&lt;</span><span class="n">DatabaseSettings</span><span class="p">&gt;</span> <span class="n">_dbOptions</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">dbOptions</span> <span class="p">=</span> <span class="n">_dbOptions</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DocumentClient</span><span class="p">(</span><span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="n">dbOptions</span><span class="p">.</span><span class="n">Endpoint</span><span class="p">),</span> <span class="n">dbOptions</span><span class="p">.</span><span class="n">AuthKey</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;</span> <span class="n">GetItemsAsync</span><span class="p">(</span>
+            <span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="n">Expression</span><span class="p">&lt;</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="kt">bool</span><span class="p">&gt;&gt;</span> <span class="n">predicate</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">IDocumentQuery</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">query</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">CreateDocumentQuery</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span>
+                <span class="n">UriFactory</span><span class="p">.</span><span class="n">CreateDocumentCollectionUri</span><span class="p">(</span><span class="n">dbOptions</span><span class="p">.</span><span class="n">DatabaseId</span><span class="p">,</span> <span class="n">CollectionId</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">FeedOptions</span> <span class="p">{</span> <span class="n">MaxItemCount</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">,</span> <span class="n">EnableCrossPartitionQuery</span> <span class="p">=</span> <span class="k">true</span><span class="p">})</span>
+                <span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">predicate</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">AsDocumentQuery</span><span class="p">();</span>
+
+            <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">results</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">query</span><span class="p">.</span><span class="n">HasMoreResults</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">results</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">await</span> <span class="n">query</span><span class="p">.</span><span class="n">ExecuteNextAsync</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;());</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="n">results</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div></li>
+<li>Initialize depdendency injection for DocumentDBRepository inside of <strong>Startup.cs</strong> class file in <strong>ConfigureServices</strong> method
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="n">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">DatabaseSettings</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span> 
+        <span class="n">Configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&#34;DatabaseSettings&#34;</span><span class="p">).</span><span class="n">Bind</span><span class="p">(</span><span class="n">options</span><span class="p">));</span>
+<span class="hl">    <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">DocumentDBRepository</span><span class="p">&lt;&gt;),</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DocumentDBRepository</span><span class="p">&lt;&gt;));</span>
+</span>    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
+Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
+<li>Create folder called <strong>Controllers</strong> in root directory</li>
+<li>Now it&rsquo;s just a controller for Web API that is missing, so add it inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">MarczakIO.VueSPA.Web.Azure</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Azure.Documents</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Newtonsoft.Json</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MarczakIO.VueSPA.Web.Controllers</span>
+<span class="p">{</span><span class="na">
+</span><span class="na">    [Route(&#34;api/[controller]</span><span class="s">&#34;)]
+</span><span class="s"></span>    <span class="k">public</span> <span class="k">class</span> <span class="nc">TodoController</span> <span class="p">:</span> <span class="n">Controller</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">DocumentDBRepository</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">todoRepo</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">string</span> <span class="n">CollectionId</span> <span class="p">=</span> <span class="s">&#34;Todo&#34;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="n">TodoController</span><span class="p">(</span><span class="n">DocumentDBRepository</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">_todoRepo</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">todoRepo</span> <span class="p">=</span> <span class="n">_todoRepo</span><span class="p">;</span>
+        <span class="p">}</span><span class="na">
+</span><span class="na">
+</span><span class="na">        [HttpPost(&#34;[action]</span><span class="s">&#34;)]
+</span><span class="s"></span>        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">GetAll</span><span class="p">(</span><span class="na">[FromBody]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="n">todoRepo</span><span class="p">.</span><span class="n">CreateItemAsync</span><span class="p">(</span><span class="n">CollectionId</span><span class="p">,</span> <span class="n">todo</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">class</span> <span class="nc">Todo</span>
+        <span class="p">{</span><span class="na">
+</span><span class="na">            [JsonProperty(&#34;id&#34;)]</span>
+            <span class="k">public</span> <span class="kt">string</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span><span class="na">
+</span><span class="na">            [JsonProperty(&#34;name&#34;)]</span>
+            <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div></li>
+</ol>
+
+<h4 id="build-front-end-for-document-creation">Build front-end for document creation</h4>
+
+<ol>
+<li>Create new folder called <strong>Services</strong> inside of App folder</li>
+<li>Add new file called <strong>TodoService.js</strong> inside of <strong>Services</strong> folder
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="nx">getAll</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/Todo/GetAll&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;get&#39;</span><span class="p">,</span>
+            <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+        <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+        <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div></li>
+<li>Modify <strong>TodoList.vue</strong> file inside of <strong>App/Components/Todo</strong> folder
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
+<span class="hl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui animated relaxed list&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;todos.length&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">                <span class="p">&lt;</span><span class="nt">TodoListItem</span> 
+</span><span class="hl">                    <span class="na">class</span><span class="o">=</span><span class="s">&#34;item&#34;</span>
+</span><span class="hl">                    <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;todo in todos&#34;</span>
+</span><span class="hl">                    <span class="na">:key</span><span class="o">=</span><span class="s">&#34;todo.id&#34;</span>
+</span><span class="hl">                    <span class="na">:todo</span><span class="o">=</span><span class="s">&#34;todo&#34;</span>
+</span><span class="hl">                    <span class="err">@</span><span class="na">remove</span><span class="o">=</span><span class="s">&#34;removeTodo&#34;</span>
+</span><span class="hl">                <span class="p">/</span><span class="p">&gt;</span>
+</span><span class="hl">            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui message info&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">                <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui icon info&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+</span><span class="hl">                There are no todo items. Add a new todo in the input above.
+</span><span class="hl">            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui clean segment empty-loader&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui active inverted dimmer&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
+<span class="k">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
+<span class="k">import</span> <span class="nx">TodoListItem</span> <span class="nx">from</span> <span class="s1">&#39;./TodoListItem.vue&#39;</span>
+<span class="hl"><span class="k">import</span> <span class="nx">TodoService</span> <span class="nx">from</span> <span class="s1">&#39;../../Services/TodoService.js&#39;</span>
+</span>
+<span class="kd">let</span> <span class="nx">nextTodoId</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">BaseInputText</span><span class="p">,</span> <span class="nx">TodoListItem</span>
+    <span class="p">},</span>
+    <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">newTodoText</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="hl">            <span class="nx">todos</span><span class="o">:</span> <span class="p">[],</span>
+</span><span class="hl">            <span class="nx">isFetching</span><span class="o">:</span> <span class="kc">true</span>
+</span>        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">addTodo</span> <span class="p">()</span> <span class="p">{</span>
+            
+        <span class="p">},</span>
+        <span class="nx">removeTodo</span> <span class="p">(</span><span class="nx">todoToRemove</span><span class="p">)</span> <span class="p">{</span>
+            
+        <span class="p">},</span>
+<span class="hl">        <span class="nx">getTodos</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="hl">            <span class="k">this</span><span class="p">.</span><span class="nx">isFetching</span> <span class="o">=</span> <span class="kc">true</span>
+</span><span class="hl">            <span class="nx">TodoService</span>
+</span><span class="hl">                <span class="p">.</span><span class="nx">getAll</span><span class="p">()</span>
+</span><span class="hl">                <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span><span class="hl">                    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+</span><span class="hl">                    <span class="k">this</span><span class="p">.</span><span class="nx">isFetching</span> <span class="o">=</span> <span class="kc">false</span>
+</span><span class="hl">                <span class="p">});</span>
+</span><span class="hl">        <span class="p">}</span>
+</span><span class="hl">    <span class="p">},</span>
+</span><span class="hl">    <span class="nx">created</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class="hl">        <span class="k">this</span><span class="p">.</span><span class="nx">getTodos</span><span class="p">();</span>
+</span><span class="hl">    <span class="p">}</span>
+</span><span class="p">}</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;scss&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<span class="hl"><span class="p">.</span><span class="nc">clean</span><span class="p">.</span><span class="nc">segment</span> <span class="p">{</span>
+</span><span class="hl">    <span class="k">border</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+</span><span class="hl">    <span class="k">box-shadow</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+</span><span class="hl"><span class="p">}</span>
+</span><span class="hl"><span class="p">.</span><span class="nc">empty-loader</span> <span class="p">{</span>
+</span><span class="hl">    <span class="k">min-height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+</span><span class="hl"><span class="p">}</span>
+</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
+<li>Modify <strong>TodoListItem.vue</strong> file inside of <strong>App/Components/Todo</strong> folder. This will format list nicely as it is mostly UI change with only logic change being <strong>emit</strong> function which now returns entire object to delete instead of just id.
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
+<span class="hl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item ui clean segment&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui inverted dimmer&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ active: todo.isUpdating }&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;right floated content&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;</span><span class="nt">button</span> 
+</span><span class="hl">        <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui button mini&#34;</span>
+</span><span class="hl">        <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;$emit(&#39;remove&#39;, todo)&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;remove icon&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+</span><span class="hl">        Delete
+</span><span class="hl">      <span class="p">&lt;</span><span class="p">/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;large tasks middle aligned icon&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;content&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;</span><span class="nt">h3</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;header&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ todo.name }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">  <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">todo</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
+      <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div></li>
+<li>Modify <strong>index.html</strong> inside of <strong>wwwroot</strong> folder. This will add some CSS for nicer looks. Using Semantic UI is personal choice, bootstrap or any other CSS library is also good.
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p"></span><span class="p">&gt;</span>My App<span class="p">&lt;</span><span class="p">/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">base</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
+<span class="hl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/dist/site.css&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
+</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#39;app&#39;</span><span class="p"></span><span class="p">&gt;</span>Loading...<span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="hl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://code.jquery.com/jquery-3.1.1.min.js&#34;</span> 
+</span><span class="hl">        <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=&#34;</span> 
+</span><span class="hl">        <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.js&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/dist/main.js&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div></li>
+<li>Run the project. This is what should be displayed on the screen.
+<div>
+<div class="lazy" style="max-height: 202px">
+    <div style="padding-bottom:37.827715355805246%"></div>
+    <img data-src="/images/netcore-vuejs-crud/1.gif" src=""/> 
+</div>  </li>
+<li>Add static items to the application to verify application works. Open azure portal and click on *8Todo** collection and then <strong>Documents</strong> and click on <strong>New Document</strong> button
+<div>
+<div class="lazy" style="max-height: 302px">
+    <div style="padding-bottom:58.188824662813104%"></div>
+    <img data-src="/images/netcore-vuejs-crud/11.png" src=""/> 
+</div>  </li>
+<li>Add few test items
+<div>
+<div class="lazy" style="max-height: 253px">
+    <div style="padding-bottom:51.422764227642276%"></div>
+    <img data-src="/images/netcore-vuejs-crud/12.png" src=""/> 
+</div>  </li>
+<li>Refresh the page.
+<div>
+<div class="lazy" style="max-height: 220px">
+    <div style="padding-bottom:42.30769230769231%"></div>
+    <img data-src="/images/netcore-vuejs-crud/2.gif" src=""/> 
+</div>  </li>
+</ol>
+
+<h3 id="creating-documents">Creating documents</h3>
+
+<p>Now that the reading and displaing data is done. Creation of new documents can be quickly added.</p>
+
+
+<div class="lazy" style="max-height: 109px">
+    <div style="padding-bottom:61.93181818181818%"></div>
+    <img data-src="/images/netcore-vuejs-crud/7.png" src=""/> 
+</div>  
+
+<h4 id="build-a-web-api-for-document-creation">Build a Web API for document creation</h4>
+
+<ol>
+<li>Add new method <strong>CreateItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">CreateItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="n">T</span> <span class="n">item</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Document</span> <span class="n">document</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="n">CreateDocumentAsync</span><span class="p">(</span>
+        <span class="n">UriFactory</span><span class="p">.</span><span class="n">CreateDocumentCollectionUri</span><span class="p">(</span><span class="n">dbOptions</span><span class="p">.</span><span class="n">DatabaseId</span><span class="p">,</span> <span class="n">CollectionId</span><span class="p">),</span> 
+        <span class="n">item</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)(</span><span class="kt">dynamic</span><span class="p">)</span><span class="n">document</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div></li>
+<li>Add new method <strong>Create</strong> inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
+</span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">Create</span><span class="p">(</span><span class="na">[FromBody]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">todoRepo</span><span class="p">.</span><span class="n">CreateItemAsync</span><span class="p">(</span><span class="n">CollectionId</span><span class="p">,</span> <span class="n">todo</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div></li>
+</ol>
+
+<h4 id="build-front-end-for-document-creation-1">Build front-end for document creation</h4>
+
+<ol>
+<li>Modify <strong>BaseInputText.vue</strong> inside of <strong>App/Components/Todo</strong> folder
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
+<span class="hl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">h2</span><span class="p"></span><span class="p">&gt;</span>Create new todo item<span class="p">&lt;</span><span class="p">/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui vertical segment&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui inverted dimmer&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ active: isCreating }&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span>      <span class="p">&lt;</span><span class="nt">input</span>
+        <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span>
+        <span class="na">class</span><span class="o">=</span><span class="s">&#34;input&#34;</span>
+        <span class="na">:value</span><span class="o">=</span><span class="s">&#34;value&#34;</span>
+        <span class="na">v-on</span><span class="o">=</span><span class="s">&#34;listeners&#34;</span><span class="p">/</span><span class="p">&gt;</span>
+<span class="hl">    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">  <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">value</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+      <span class="k">default</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="hl">    <span class="nx">isCreating</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hl">      <span class="nx">type</span><span class="o">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+</span><span class="hl">      <span class="k">default</span><span class="o">:</span> <span class="kc">false</span>
+</span><span class="hl">    <span class="p">}</span>
+</span>  <span class="p">},</span>
+  <span class="nx">computed</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">listeners</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">$listeners</span><span class="p">,</span>
+        <span class="nx">input</span><span class="o">:</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+
+<span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;scss&#34;</span> <span class="na">scoped</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">@</span><span class="k">import</span> <span class="s1">&#39;./App/variables.scss&#39;</span><span class="p">;</span>
+
+<span class="p">.</span><span class="nc">input</span> <span class="p">{</span>
+  <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+  <span class="k">padding</span><span class="p">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="err">$</span><span class="n">vue-blue</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
+<li>Modify <strong>TodoList.vue</strong> inside of <strong>App/Components/Todo</strong> folder
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p"></span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<span class="hl">            <span class="p">&lt;</span><span class="nt">BaseInputText</span> 
+</span><span class="hl">                <span class="na">v-model</span><span class="o">=</span><span class="s">&#34;newTodoText&#34;</span>
+</span><span class="hl">                <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;New todo item&#34;</span>
+</span><span class="hl">                <span class="err">@</span><span class="na">keydown</span><span class="err">.</span><span class="na">enter</span><span class="o">=</span><span class="s">&#34;addTodo&#34;</span>
+</span><span class="hl">                <span class="na">:isCreating</span><span class="o">=</span><span class="s">&#34;isCreating&#34;</span>
+</span><span class="hl">            <span class="p">/</span><span class="p">&gt;</span>
+</span>            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui animated relaxed list&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;todos.length&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">TodoListItem</span> 
+                    <span class="na">class</span><span class="o">=</span><span class="s">&#34;item&#34;</span>
+                    <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;todo in todos&#34;</span>
+                    <span class="na">:key</span><span class="o">=</span><span class="s">&#34;todo.id&#34;</span>
+                    <span class="na">:todo</span><span class="o">=</span><span class="s">&#34;todo&#34;</span>
+                    <span class="err">@</span><span class="na">remove</span><span class="o">=</span><span class="s">&#34;removeTodo&#34;</span>
+                <span class="p">/</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui message info&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui icon info&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+                There are no todo items. Add a new todo in the input above.
+            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui clean segment empty-loader&#34;</span><span class="p"></span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui active inverted dimmer&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
+<span class="k">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
+<span class="k">import</span> <span class="nx">TodoListItem</span> <span class="nx">from</span> <span class="s1">&#39;./TodoListItem.vue&#39;</span>
+<span class="k">import</span> <span class="nx">TodoService</span> <span class="nx">from</span> <span class="s1">&#39;../../Services/TodoService.js&#39;</span>
+
+<span class="kd">let</span> <span class="nx">nextTodoId</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">BaseInputText</span><span class="p">,</span> <span class="nx">TodoListItem</span>
+    <span class="p">},</span>
+    <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">newTodoText</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="nx">todos</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="nx">isFetching</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="hl">            <span class="nx">isCreating</span><span class="o">:</span> <span class="kc">false</span>
+</span>        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">addTodo</span> <span class="p">()</span> <span class="p">{</span>
+<span class="hl">            <span class="k">this</span><span class="p">.</span><span class="nx">isCreating</span> <span class="o">=</span> <span class="kc">true</span>
+</span><span class="hl">            <span class="kd">var</span> <span class="nx">todoname</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">newTodoText</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+</span><span class="hl">            <span class="k">if</span> <span class="p">(</span><span class="nx">todoname</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hl">                <span class="kd">var</span> <span class="nx">todo</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="nx">todoname</span><span class="p">}</span>
+</span><span class="hl">                <span class="nx">TodoService</span>
+</span><span class="hl">                    <span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">todo</span><span class="p">)</span>
+</span><span class="hl">                    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span><span class="hl">                        <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span class="hl">                        <span class="k">this</span><span class="p">.</span><span class="nx">isCreating</span> <span class="o">=</span> <span class="kc">false</span>
+</span><span class="hl">                        <span class="k">this</span><span class="p">.</span><span class="nx">newTodoText</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class="hl">                    <span class="p">});</span>
+</span><span class="hl">            <span class="p">}</span> <span class="k">else</span> 
+</span><span class="hl">                <span class="k">this</span><span class="p">.</span><span class="nx">isCreating</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span>        <span class="p">},</span>
+        <span class="nx">removeTodo</span> <span class="p">(</span><span class="nx">todoToRemove</span><span class="p">)</span> <span class="p">{</span>
+            
+        <span class="p">},</span>
+        <span class="nx">getTodos</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">isFetching</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="nx">TodoService</span>
+                <span class="p">.</span><span class="nx">getAll</span><span class="p">()</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">isFetching</span> <span class="o">=</span> <span class="kc">false</span>
+                <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">created</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">getTodos</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div></li>
+<li>Modify <strong>TodoService.js</strong> inside of <strong>App/Services</strong> folder by adding new <strong>create</strong> function
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">create</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/Todo/Create&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;post&#39;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">},</span>
+        <span class="nx">body</span><span class="o">:</span> <span class="nx">data</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span></code></pre></div></li>
+<li>Test the application
+<div>
+<div class="lazy" style="max-height: 481px">
+    <div style="padding-bottom:92.5%"></div>
+    <img data-src="/images/netcore-vuejs-crud/3.gif" src=""/> 
+</div>  
+New items can be also seen in the Cosmos DB
+
+<div class="lazy" style="max-height: 332px">
+    <div style="padding-bottom:42.72844272844273%"></div>
+    <img data-src="/images/netcore-vuejs-crud/13.png" src=""/> 
+</div>  </li>
+</ol>
+
+<h3 id="deleting-documents">Deleting documents</h3>
+
+<p>To get application fully functional a deletion operation must be created next.</p>
+
+
+<div class="lazy" style="max-height: 109px">
+    <div style="padding-bottom:61.93181818181818%"></div>
+    <img data-src="/images/netcore-vuejs-crud/14.png" src=""/> 
+</div>  
+
+<h4 id="build-a-web-api-for-document-deletion">Build a Web API for document deletion</h4>
+
+<ol>
+<li>Add new method <strong>DeleteItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">DeleteItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="n">DeleteDocumentAsync</span><span class="p">(</span>
+        <span class="n">UriFactory</span><span class="p">.</span><span class="n">CreateDocumentUri</span><span class="p">(</span><span class="n">dbOptions</span><span class="p">.</span><span class="n">DatabaseId</span><span class="p">,</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="n">id</span><span class="p">));</span>
+<span class="p">}</span></code></pre></div></li>
+<li>Add new method <strong>Delete</strong> inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
+</span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">Delete</span><span class="p">(</span><span class="na">[FromBody]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">await</span> <span class="n">todoRepo</span><span class="p">.</span><span class="n">DeleteItemAsync</span><span class="p">(</span><span class="n">CollectionId</span><span class="p">,</span> <span class="n">todo</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div></li>
+</ol>
+
+<h4 id="build-front-end-for-document-creation-2">Build front-end for document creation</h4>
+
+<ol>
+<li>Modify <strong>removeTodo</strong> function inside of <strong>TodoList.vue</strong> inside of <strong>App/Components/Todo</strong> folder
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">removeTodo</span> <span class="p">(</span><span class="nx">todoToRemove</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$set</span><span class="p">(</span><span class="nx">todoToRemove</span><span class="p">,</span> <span class="s1">&#39;isUpdating&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nx">TodoService</span>
+        <span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">todoToRemove</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">todo</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">id</span> <span class="o">!==</span> <span class="nx">todoToRemove</span><span class="p">.</span><span class="nx">id</span>
+            <span class="p">})</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">$set</span><span class="p">(</span><span class="nx">todoToRemove</span><span class="p">,</span> <span class="s1">&#39;isUpdating&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+        <span class="p">});</span>
+<span class="p">},</span></code></pre></div></li>
+<li>Modify <strong>TodoService.js</strong> inside of <strong>App/Services</strong> folder and add new <strong>delete</strong> function
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">delete</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/Todo/Delete&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;post&#39;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">},</span>
+        <span class="nx">body</span><span class="o">:</span> <span class="nx">data</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span></code></pre></div></li>
+<li>Test the application
+<div>
+<div class="lazy" style="max-height: 336px">
+    <div style="padding-bottom:65.625%"></div>
+    <img data-src="/images/netcore-vuejs-crud/4.gif" src=""/> 
+</div>  </li>
+</ol>
+
+<h3 id="modifying-documents">Modifying documents</h3>
+
+<p>Last operation is item modification. This example will show inline editing but for larger apps it is advised to create dedicated screen or popup.</p>
+
+
+<div class="lazy" style="max-height: 109px">
+    <div style="padding-bottom:61.93181818181818%"></div>
+    <img data-src="/images/netcore-vuejs-crud/15.png" src=""/> 
+</div>  
+
+<h4 id="build-a-web-api-for-document-deletion-1">Build a Web API for document deletion</h4>
+
+<ol>
+<li>Add new method <strong>UpdateItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">UpdateItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">id</span><span class="p">,</span> <span class="n">T</span> <span class="n">item</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Document</span> <span class="n">document</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="n">ReplaceDocumentAsync</span><span class="p">(</span>
+        <span class="n">UriFactory</span><span class="p">.</span><span class="n">CreateDocumentUri</span><span class="p">(</span><span class="n">dbOptions</span><span class="p">.</span><span class="n">DatabaseId</span><span class="p">,</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="n">id</span><span class="p">),</span> <span class="n">item</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)(</span><span class="kt">dynamic</span><span class="p">)</span><span class="n">document</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<strong>Note</strong>: It is possible to simplify this function by creating base type for type T which contains property Id and specify this in class declaration as a constraint. This way id parameter does not have to be passed explicitly but could be used from type T.</li>
+<li>Add new method <strong>Update</strong> inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
+</span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">Update</span><span class="p">(</span><span class="na">[FromBody]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">todoRepo</span><span class="p">.</span><span class="n">UpdateItemAsync</span><span class="p">(</span><span class="n">CollectionId</span><span class="p">,</span> <span class="n">todo</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span> <span class="n">todo</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div></li>
+</ol>
+
+<h4 id="build-front-end-for-document-creation-3">Build front-end for document creation</h4>
+
+<ol>
+<li>Modify file <strong>TodoList.vue</strong> inside of <strong>App/Components/Todo</strong> folder
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p"></span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p"></span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">BaseInputText</span> 
+                <span class="na">v-model</span><span class="o">=</span><span class="s">&#34;newTodoText&#34;</span>
+                <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;New todo item&#34;</span>
+                <span class="err">@</span><span class="na">keydown</span><span class="err">.</span><span class="na">enter</span><span class="o">=</span><span class="s">&#34;addTodo&#34;</span>
+                <span class="na">:isCreating</span><span class="o">=</span><span class="s">&#34;isCreating&#34;</span>
+            <span class="p">/</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui animated relaxed list&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;todos.length&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">TodoListItem</span> 
+                    <span class="na">class</span><span class="o">=</span><span class="s">&#34;item&#34;</span>
+                    <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;todo in todos&#34;</span>
+                    <span class="na">:key</span><span class="o">=</span><span class="s">&#34;todo.id&#34;</span>
+                    <span class="na">:todo</span><span class="o">=</span><span class="s">&#34;todo&#34;</span>
+                    <span class="err">@</span><span class="na">remove</span><span class="o">=</span><span class="s">&#34;removeTodo&#34;</span>
+<span class="hl">                    <span class="err">@</span><span class="na">modify</span><span class="o">=</span><span class="s">&#34;modifyTodo&#34;</span>
+</span>                <span class="p">/</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui message info&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui icon info&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+                There are no todo items. Add a new todo in the input above.
+            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui clean segment empty-loader&#34;</span><span class="p"></span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui active inverted dimmer&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
+<span class="k">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
+<span class="k">import</span> <span class="nx">TodoListItem</span> <span class="nx">from</span> <span class="s1">&#39;./TodoListItem.vue&#39;</span>
+<span class="k">import</span> <span class="nx">TodoService</span> <span class="nx">from</span> <span class="s1">&#39;../../Services/TodoService.js&#39;</span>
+
+<span class="kd">let</span> <span class="nx">nextTodoId</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">BaseInputText</span><span class="p">,</span> <span class="nx">TodoListItem</span>
+    <span class="p">},</span>
+    <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">newTodoText</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="nx">todos</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="nx">isFetching</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">isCreating</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">addTodo</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">isCreating</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="kd">var</span> <span class="nx">todoname</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">newTodoText</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">todoname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">todo</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="nx">todoname</span><span class="p">}</span>
+                <span class="nx">TodoService</span>
+                    <span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">todo</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                        <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                        <span class="k">this</span><span class="p">.</span><span class="nx">isCreating</span> <span class="o">=</span> <span class="kc">false</span>
+                        <span class="k">this</span><span class="p">.</span><span class="nx">newTodoText</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+                    <span class="p">});</span>
+            <span class="p">}</span> <span class="k">else</span> 
+                <span class="k">this</span><span class="p">.</span><span class="nx">isCreating</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">},</span>
+<span class="hl">        <span class="nx">modifyTodo</span> <span class="p">(</span><span class="nx">todo</span><span class="p">,</span> <span class="nx">todoText</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hl">            <span class="k">this</span><span class="p">.</span><span class="nx">$set</span><span class="p">(</span><span class="nx">todo</span><span class="p">,</span> <span class="s1">&#39;isUpdating&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</span><span class="hl">            <span class="nx">TodoService</span>
+</span><span class="hl">                <span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">todo</span><span class="p">,</span> <span class="nx">todoText</span><span class="p">)</span>
+</span><span class="hl">                <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span><span class="hl">                    <span class="k">this</span><span class="p">.</span><span class="nx">$set</span><span class="p">(</span><span class="nx">todo</span><span class="p">,</span> <span class="s1">&#39;isUpdating&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+</span><span class="hl">                    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">findIndex</span><span class="p">(</span><span class="nx">todo</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span><span class="hl">                        <span class="k">return</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">data</span><span class="p">.</span><span class="nx">id</span>
+</span><span class="hl">                    <span class="p">});</span>
+</span><span class="hl">                    <span class="k">this</span><span class="p">.</span><span class="nx">$set</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+</span><span class="hl">                <span class="p">});</span>
+</span><span class="hl">        <span class="p">},</span>
+</span>        <span class="nx">removeTodo</span> <span class="p">(</span><span class="nx">todoToRemove</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">$set</span><span class="p">(</span><span class="nx">todoToRemove</span><span class="p">,</span> <span class="s1">&#39;isUpdating&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+            <span class="nx">TodoService</span>
+                <span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">todoToRemove</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">todo</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">id</span> <span class="o">!==</span> <span class="nx">todoToRemove</span><span class="p">.</span><span class="nx">id</span>
+                    <span class="p">})</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">$set</span><span class="p">(</span><span class="nx">todoToRemove</span><span class="p">,</span> <span class="s1">&#39;isUpdating&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+                <span class="p">});</span>
+        <span class="p">},</span>
+        <span class="nx">getTodos</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">isFetching</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="nx">TodoService</span>
+                <span class="p">.</span><span class="nx">getAll</span><span class="p">()</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">isFetching</span> <span class="o">=</span> <span class="kc">false</span>
+                <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">created</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">getTodos</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;scss&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">.</span><span class="nc">clean</span><span class="p">.</span><span class="nc">segment</span> <span class="p">{</span>
+  <span class="k">border</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">box-shadow</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">empty-loader</span> <span class="p">{</span>
+    <span class="k">min-height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
+<li>Modify <strong>TodoListItem.vue</strong> inside of <strong>App/Components/Todo</strong> folder
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item ui clean segment&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui inverted dimmer&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ active: todo.isUpdating }&#34;</span><span class="p"></span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;right floated content&#34;</span><span class="p"></span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> 
+<span class="hl">        <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui button mini&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ blue: !isEditing }&#34;</span>
+</span><span class="hl">        <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;isEditing = !isEditing&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;edit icon&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isEditing&#34;</span><span class="p"></span><span class="p">&gt;</span>Edit<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">v-else</span><span class="p"></span><span class="p">&gt;</span>Stop editing<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;</span><span class="p">/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;</span><span class="nt">button</span> 
+</span><span class="hl">        <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui button mini red&#34;</span>
+</span>        <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;$emit(&#39;remove&#39;, todo)&#34;</span><span class="p"></span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;remove icon&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+        Delete
+      <span class="p">&lt;</span><span class="p">/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;large tasks middle aligned icon&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;content&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<span class="hl">      <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;header&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ todo.name }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span>    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui input&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;isEditing&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;</span><span class="nt">input</span>
+</span><span class="hl">        <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span>
+</span><span class="hl">        <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui input&#34;</span>
+</span><span class="hl">        <span class="na">v-model</span><span class="o">=</span><span class="s">&#34;newTodoText&#34;</span>
+</span><span class="hl">        <span class="err">@</span><span class="na">keydown</span><span class="err">.</span><span class="na">enter</span><span class="o">=</span><span class="s">&#34;modifyTodo&#34;</span><span class="p">/</span><span class="p">&gt;</span>
+</span>    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+    
+  <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
+<span class="hl"><span class="k">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
+</span><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="hl">  <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hl">    <span class="nx">BaseInputText</span>
+</span><span class="hl">  <span class="p">},</span>
+</span>  <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">todo</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
+      <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+<span class="hl">  <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class="hl">    <span class="k">return</span> <span class="p">{</span>
+</span><span class="hl">      <span class="nx">newTodoText</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span><span class="hl">      <span class="nx">isEditing</span><span class="o">:</span> <span class="kc">false</span>
+</span><span class="hl">    <span class="p">}</span>
+</span><span class="hl">  <span class="p">},</span>
+</span><span class="hl">  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hl">    <span class="nx">modifyTodo</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class="hl">      <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s1">&#39;modify&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">todo</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">newTodoText</span><span class="p">);</span>
+</span><span class="hl">      <span class="k">this</span><span class="p">.</span><span class="nx">newTodoText</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class="hl">    <span class="p">}</span>
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="hl"><span class="p">&lt;</span><span class="nt">style</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl"><span class="p">.</span><span class="nc">input</span> <span class="p">{</span>
+</span><span class="hl">  <span class="k">margin-top</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span><span class="hl">  <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+</span><span class="hl"><span class="p">}</span>
+</span><span class="hl"><span class="p">&lt;</span><span class="p">/</span><span class="nt">style</span><span class="p">&gt;</span></span></code></pre></div></li>
+<li>Modify <strong>TodoService.js</strong> inside of <strong>App/Services</strong> folder and add new <strong>update</strong> function
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">update</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">newValue</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">updateItem</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">item</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">newValue</span> <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">updateItem</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/Todo/Update&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;post&#39;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">},</span>
+        <span class="nx">body</span><span class="o">:</span> <span class="nx">data</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span></code></pre></div></li>
+<li>Test the application
+<div>
+<div class="lazy" style="max-height: 476px">
+    <div style="padding-bottom:92.96875%"></div>
+    <img data-src="/images/netcore-vuejs-crud/5.gif" src=""/> 
+</div>  </li>
+</ol><a target="_blank" 
+   rel="tooltip" 
+   class="btn btn-github"
+   href="https://github.com/MarczakIO/netcore-vuejs-cosmosdb-crud">
+    <i class="fa fa-github"></i>
+    Source Code
+</a>
+    </article>
+    <div class="section-blog-info">
+        <div class="row">
+            <div class="col-md-12">
+<div class="authorblock">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="avatar"></div>
+        </div>
+        <div class="col-sm-9">
+            <h4><b>Adam Marczak</b></h4>
+            <p>Programmer, architect, trainer, blogger, evangelist are just a few of many titles. What I really am, is a passionate technology enthusiast. I take great pleasure in learning new technologies and finding ways in which it can aid people every day. My latest passion is running an <a href='https://www.youtube.com/azure4everyone'>Azure 4 Everyone</a> YouTube channel, where I show that Azure really is for everyone!</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="text-center">Did you enjoy the article?</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <h4 class="">Share it!</h4><a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Facebook" 
+   class="btn btn-just-icon btn-share btn-facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmarczak.io%2fposts%2fnetcore-vuejs-crud%2f">
+    <i class="fa fa-facebook"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Twitter" 
+   class="btn btn-just-icon btn-share btn-twitter" 
+   href="https://twitter.com/home?status=Build%20CRUD%20operations%20in%20SPA%20using%20Vue.js%2c%20.NET%20Core%202.0%20and%20Azure%20Cosmos%20DB - https%3a%2f%2fmarczak.io%2fposts%2fnetcore-vuejs-crud%2f">
+   <i class="fa fa-twitter"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Google+" 
+   class="btn btn-just-icon btn-share btn-google" 
+   href="https://plus.google.com/share?url=https%3a%2f%2fmarczak.io%2fposts%2fnetcore-vuejs-crud%2f"><i 
+   class="fa fa-google"></i>
+</a>
+            
+            </div>
+            <div class="col-md-6 text-center large">
+                <h4 class="">More tagged posts</h4>
+  <div class="tag-list">
+    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
+      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
+    </a>
+    <a href="https://marczak.io/tags/cosmos-db" title="View all posts in Cosmos DB">
+      <img src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/>
+    </a>
+    <a href="https://marczak.io/tags/visual-studio-code" title="View all posts in Visual Studio Code">
+      <img src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/>
+    </a>
+    <a href="https://marczak.io/tags/vue.js" title="View all posts in Vue.js">
+      <img src="https://marczak.io/images/tags/vue.js.svg" alt="Vue.js"/>
+    </a>
+    <a href="https://marczak.io/tags/dotnet-core" title="View all posts in dotNET Core">
+      <img src="https://marczak.io/images/tags/dotnet-core.svg" alt="dotNET Core"/>
+    </a>
+  </div>
+            </div>
+        </div>
+        <div class="row comments">
+            <div class="col-md-12"><div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "https:\/\/marczak.io\/posts\/netcore-vuejs-crud\/"; 
+this.page.identifier = "\/posts\/netcore-vuejs-crud\/";
+};
+
+(function() {
+if (window.location.hostname == "localhost")return;
+var d = document, s = d.createElement('script');
+s.src = 'https://marczak-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+            </div>
+        </div> 
+    </div>
+</div>
+            <div class="col-md-3 blog-sidebar-wrapper">
+              <aside id="secondary" class="blog-sidebar" role="complementary"><div id="mvp" class="banner-mvp">
+<img src="/images/mvp.svg" />
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Courses</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px">
+    <a href="https://marczak.io/az-900" >
+        <img src="/images/az-900/cert.svg" style="width:60px;margin-right:10px;;float:left;"></img> AZ-900 <br/>Microsoft Azure Fundamentlas
+    </a>
+</div>
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Featured Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Process Excel files in Azure</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/pc8Kv-lRD8k" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/49-AzureExcelFileProcessing-ADFandDatabricks-Tutorial-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">AZ-900 Full Course</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/NPEsD6n9A_I" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/az-900/az-900-ep-00-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Azure Active Directory Tutorial</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/Ma7VAQE7ga4" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/48-AzureActiveDirectory-Intro-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;max-width:180px;margin-right:30px;">
+<h5>Recent Posts</h5>
+<ul>
+        <li><b class="list-header">2020 July</b></li>
+        <li class="indented">
+            <a href="/posts/2020/07/az-900-full-course/" title="AZ-900 Microsoft Azure Fundamentals full course" rel="bookmark">
+                <b>7th </b>AZ-900 Microsoft Azure Fundamentals full course
+            </a>
+        </li>
+        <li><b class="list-header">2019 October</b></li>
+        <li class="indented">
+            <a href="/posts/2019/10/ea-consumption-automation-with-logic-apps/" title="Automating Enterprise Azure billing using Logic Apps for 0.03$/month" rel="bookmark">
+                <b>25th </b>Automating Enterprise Azure billing using Logic Apps for 0.03$/month
+            </a>
+        </li>
+        <li><b class="list-header">2019 August</b></li>
+        <li class="indented">
+            <a href="/posts/2019/08/logic-apps-obfuscation/" title="Enhancing Logic Apps security with obfuscation" rel="bookmark">
+                <b>16th </b>Enhancing Logic Apps security with obfuscation
+            </a>
+        </li>
+        <li class="indented">
+            <a href="/posts/2019/08/secure-logic-app-with-api-management/" title="Securing Logic App with Azure AD authentication using API Management" rel="bookmark">
+                <b>8th </b>Securing Logic App with Azure AD authentication using API Management
+            </a>
+        </li>
+        <li><b class="list-header">2019 July</b></li>
+        <li class="indented">
+            <a href="/posts/2019/07/securing-websites-with-msi/" title="Securing Azure Services with Managed Identities" rel="bookmark">
+                <b>19th </b>Securing Azure Services with Managed Identities
+            </a>
+        </li>
+</ul>
+</div><div id="categories-3" class="widget widget_categories" style="float: left;">
+  <h5>Tags</h5>
+  <ul class="tag-list">
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/active-directory">Active Directory (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+        </div> 
+        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-service.svg" alt="App Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-service">App Service (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (17)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/bot-service.svg" alt="Bot Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/bot-service">Bot Service (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-factory.svg" alt="Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-factory">Data Factory (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+        </div> 
+        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/flow.svg" alt="Flow"/> 
+        </div> 
+        <a href="https://marczak.io/tags/flow">Flow (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/functions.svg" alt="Functions"/> 
+        </div> 
+        <a href="https://marczak.io/tags/functions">Functions (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/key-vault.svg" alt="Key Vault"/> 
+        </div> 
+        <a href="https://marczak.io/tags/key-vault">Key Vault (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (7)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/security.svg" alt="Security"/> 
+        </div> 
+        <a href="https://marczak.io/tags/security">Security (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+        </div> 
+        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/teams.svg" alt="Teams"/> 
+        </div> 
+        <a href="https://marczak.io/tags/teams">Teams (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vue.js.svg" alt="Vue.js"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/webpack.svg" alt="Webpack"/> 
+        </div> 
+        <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+        </div> 
+        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+      </li>
+  </ul>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Sites</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px;">
+    <a href="https://sqlplayer.net" > 
+<div class="lazy" style="max-height: 270px">
+    <div style="padding-bottom:28.481012658227847%"></div>
+    <img data-src="/images//sites/sql-player.png" src=""/> 
+</div> 
+    </a>
+</div>
+</div>
+</div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+<footer class="footer footer-black footer-big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="connected-title">Stay Connected</h5>
+                <div class="">
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-about"
+     href="/about">
+    <i class="fa fa-user"></i>
+  </a>
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-github"
+     href="https://github.com/MarczakIO">
+    <i class="fa fa-github"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
+     href="https://marczak.io/index.xml">
+    <i class="fa fa-rss"></i>
+  </a>
+</div>
+            </div>
+            &copy;<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> <a href="https://themeisle.com/themes/hestia/" target="_blank" rel="nofollow">Hestia Theme</a>
+        </div>
+    </div>
+</footer>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
+  
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="https:\/\/marczak.io\/js\/bootstrap.min.js"><\/script>')}</script>
+  
+  <div id="bootstrapCssTest" class="hidden"></div>
+  <script>
+    $(function() {
+      if ($('#bootstrapCssTest').is(':visible')) {
+        $("head").prepend('<link rel="stylesheet" href="https:\/\/marczak.io\/css\/bootstrap.min.css">');
+      }
+    });
+  </script>
+  <script type="text/javascript" src="https://marczak.io/js/main.min.js?ver=1.16"></script>
+</body>
+</html>

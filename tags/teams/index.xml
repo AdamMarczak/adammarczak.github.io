@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teams on Marczak.IO</title>
+    <link>https://marczak.io/tags/teams/</link>
+    <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 12 Mar 2018 21:00:23 +0200</lastBuildDate>
+    
+        <atom:link href="https://marczak.io/tags/teams/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Effective chatbot development with ngrok</title>
+      <link>https://marczak.io/posts/botseries-dev-done-easy/</link>
+      <pubDate>Mon, 12 Mar 2018 21:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/botseries-dev-done-easy/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/botseries-dev-done-easy/splash.png&quot;&gt;
+        &lt;p&gt;Proper set up of environment is one of most important things during development. Leverage ngrok tunneling service to speed up development process.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Analyze user&#39;s feedback with sentiment analysis</title>
+      <link>https://marczak.io/posts/cognitive-text-analytics/</link>
+      <pubDate>Sun, 10 Dec 2017 22:34:37 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/cognitive-text-analytics/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/cognitive-text-analytics/splash.png&quot;&gt;
+        &lt;p&gt;Building brand visibility requires a lot of effort. Analysis of social media reactions is key aspect of this process. With Azure Cognitive Services Text Analytics API companies can start analyzing feedback right away with ease.&lt;/p&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Azure Data Factory versus Logic Apps for Analysis Services Refresh | Marczak.IO | Adam Marczak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-16x16.png" sizes="16x16" />
+<link rel="apple-touch-icon-precomposed" href="https://marczak.io/images/iphone-icon.png"/>
+<link rel="stylesheet" id="hestia_fonts-css" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700%7CRoboto+Slab%3A400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+<link href='https://marczak.io/css/hestia.min.css?ver=1.23' rel="stylesheet" type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.27' rel='stylesheet' type="text/css" />
+
+<meta name="description" content="Data factory is currently go-to service for data load and transformation processes in Azure. In this article a common scenario of refreshing models in Azure Analysis Services will be implemented using ADF components including a  comparison with the same process using Azure Logic Apps.">
+<meta name="author" content="Adam Marczak">
+<meta name="copyright" content="Adam Marczak">
+<meta name="title" content="Azure Data Factory versus Logic Apps for Analysis Services Refresh | Marczak.IO | Adam Marczak">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.facebook.com/MarczakIO/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure Data Factory versus Logic Apps for Analysis Services Refresh">
+<meta property="og:description" content="Data factory is currently go-to service for data load and transformation processes in Azure. In this article a common scenario of refreshing models in Azure Analysis Services will be implemented using ADF components including a  comparison with the same process using Azure Logic Apps.">
+<meta property="og:url" content="https://marczak.io/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/">
+<meta property="og:site_name" content="Marczak.IO">
+<meta property="og:image" content="https://marczak.io/images/logic-app-vs-data-factory-for-aas-refresh/splash.png">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@MarczakIO">
+<meta name="twitter:title" content="Azure Data Factory versus Logic Apps for Analysis Services Refresh">
+<meta name="twitter:description" content="Data factory is currently go-to service for data load and transformation processes in Azure. In this article a common scenario of refreshing models in Azure Analysis Services will be implemented using ADF components including a  comparison with the same process using Azure Logic Apps.">
+<meta name="twitter:url" content="https://marczak.io/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', 'UA-106560028-1');
+</script>
+</head>
+<body class="home blog">
+  <div class="wrapper"><header class="header">
+  <nav class="navbar navbar-default hestia_left">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="title-logo-wrapper">
+          <a class="navbar-brand" href="/" title="Marczak.IO">
+            <p>Marczak.IO</p>
+          </a>
+        </div>
+      </div>
+      <div id="main-navigation" class="navbar-custom">
+        <div class="entry-social">
+  <a target="_top" class="btn btn-just-icon btn-social btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_top" class="btn btn-friendly-site " 
+      style=""
+      href="https://azure4everyone.com">
+      <img src="https://marczak.io/images/azure4everyone.svg">
+      <span>Azure 4 Everyone</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </nav>
+  <div id="primary" class="boxed-layout-header page-header header-small" data-parallax="active" style="margin-top: -20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+          <h1 class="hestia-title">Azure Data Factory versus Logic Apps for Analysis Services Refresh</h1>
+          
+            <h4 class="author">
+              Published by<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2019-06-28 17:00:23 &#43;0200 CEST">Jun 28 2019</time>
+            </h4>
+           
+        </div>
+      </div>
+    </div>
+    <div class="header-filter" style="background-image: url('/images/background.jpg');background-color: #283743;"></div>
+  </div>
+</header>
+    <div class="main main-raised">
+      <div class="hestia-blogs">
+        <div class="container">
+          <div class="row">
+<div class="col-md-9 single-posts-wrap">
+    <article id="/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 1080px">
+    <div style="padding-bottom:56.36743215031315%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/splash.png" src=""/> 
+</div> <h2>Highlight</h2>
+        <p>Data factory is currently go-to service for data load and transformation processes in Azure. In this article a common scenario of refreshing models in Azure Analysis Services will be implemented using ADF components including a  comparison with the same process using Azure Logic Apps.</p>
+
+<h2 id="intro">Intro</h2>
+
+<p>Immediately after posting my previous post about refreshing analysis services a colleague of mine asked me a very good question. Is it better to use logic apps or data factory for this process? This is a great question, so this article will focus on implementing exactly same scenario using Data Factory and finding out which of the two services could be called recommended.</p>
+
+<p><a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/"></p>
+
+
+<div class="lazy" style="max-height: 266px">
+    <div style="padding-bottom:30.09049773755656%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000070.png" src=""/> 
+</div>  
+
+<p></a></p>
+
+<h2 id="design">Design</h2>
+
+<p>The design is fairly simple. Using Data Factory pipeline an Analysis Services API will be called to submit the refresh. Unfortunately, a logic app must be added to avoid few limitations of Data Factory. Read further to find out why.
+
+<div class="lazy" style="max-height: 955px">
+    <div style="padding-bottom:110.02304147465438%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000077.png" src=""/> 
+</div>  </p>
+
+<h2 id="provisioning">Provisioning</h2>
+
+<p>Log into <a href="https://portal.azure.com">Azure Portal</a> and start creating resources.</p>
+
+<h3 id="resources">Resources</h3>
+
+<h4 id="data-factory">Data Factory</h4>
+
+<ol>
+<li>Click on &ldquo;+&rdquo; sign to create new resource
+
+<div class="lazy" style="max-height: 112px">
+    <div style="padding-bottom:39.02439024390244%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000003.png" src=""/> 
+</div>  </li>
+<li>Type in <strong>data factory</strong> in Search window and press enter
+
+<div class="lazy" style="max-height: 260px">
+    <div style="padding-bottom:39.03903903903904%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000004.png" src=""/> 
+</div>  </li>
+<li>Click Create button
+
+<div class="lazy" style="max-height: 221px">
+    <div style="padding-bottom:69.0625%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000006.png" src=""/> 
+</div>  </li>
+<li>Fill in basic info, name and location and lave V2 as version. V1 is very outdated and is completely different product. Disable GIT integration.
+
+<div class="lazy" style="max-height: 545px">
+    <div style="padding-bottom:86.78343949044586%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000007.png" src=""/> 
+</div>  </li>
+</ol>
+
+<h4 id="logic-app">Logic App</h4>
+
+<ol>
+<li>Click on &ldquo;+&rdquo; sign to create new resource</li>
+<li>Type in <strong>logic app</strong> in Search window and press enter</li>
+<li>Click Create button
+
+<div class="lazy" style="max-height: 192px">
+    <div style="padding-bottom:45.497630331753555%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000025.png" src=""/> 
+</div>  </li>
+<li>Fill in basic info, name and location.
+
+<div class="lazy" style="max-height: 506px">
+    <div style="padding-bottom:155.69230769230768%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000026.png" src=""/> 
+</div>  </li>
+<li>After provisioning finished go to new logic app and search for Identity panel
+
+<div class="lazy" style="max-height: 208px">
+    <div style="padding-bottom:72.47386759581882%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000032.png" src=""/> 
+</div>  </li>
+<li>Enable managed identity by clicking on <strong>On</strong> and selecting <strong>Save</strong> button. This sets up an application account for logic app which can be used in future steps to authenticate to Analysis Services.
+
+<div class="lazy" style="max-height: 262px">
+    <div style="padding-bottom:80.3680981595092%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000033.png" src=""/> 
+</div>  </li>
+<li>Copy <strong>Object ID</strong> from screen after creation.
+
+<div class="lazy" style="max-height: 324px">
+    <div style="padding-bottom:66.80412371134021%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000034.png" src=""/> 
+</div>  </li>
+</ol>
+
+<h2 id="privilege-setup">Privilege setup</h2>
+
+<p>When data factory creation is finished, Azure also sets up something called managed service identity (MSI). This identity can be used to authenticate to resources. Managed identity is a great way to secure connection with various resources in azure without a need to create <strong>KeyVault</strong> or manage passwords. For Logic App this had to be manually enabled.</p>
+
+<p>Next step is to find logic app and data factory application IDs which are required to add their account to analysis services as admins. This is because currently administrative privileges are required to perform refreshes.</p>
+
+<h3 id="finding-managed-identities-application-ids">Finding Managed Identities Application IDs</h3>
+
+<ol>
+<li>Open PowerShell window.</li>
+<li>Find managed identity. This can&rsquo;t be done via portal because managed identities don&rsquo;t have app registration attached to them. Therefore, a PowerShell or CLI must be used. In PowerShell this can this can be done using many cmdlets but two recommended are searching by either Object ID or by name
+
+<ol>
+<li>To search by <strong>Object ID</strong> a following command must be executed
+<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-ObjectID</span> <span class="s2">&#34;&lt;object id&gt;&#34;</span></code></pre></div></li>
+<li>To search by <strong>Name</strong> a following command must be executed. Note that name of managed identity is always the same as the resource. Since some resources do not require unique names it is possible to have multiple managed identities with the same name, so this is not recommended way for production scripts.
+<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of azure resource&gt;&#34;</span></code></pre></div></li>
+</ol></li>
+<li>Run following script
+<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Connect-AzAccount</span>
+ <span class="nb">Get-AzSubscription</span>
+ <span class="nb">Select-AzSubscription</span> <span class="s2">&#34;&lt;name of subscription you are working on&gt;&#34;</span>
+ <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-ObjectID</span> <span class="s2">&#34;&lt;object id of logic app&gt;&#34;</span></code></pre></div>
+
+<div class="lazy" style="max-height: 489px">
+    <div style="padding-bottom:58.422939068100355%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000036.png" src=""/> 
+</div>  
+Alternatively, you can search by logic app name
+
+<div class="lazy" style="max-height: 146px">
+    <div style="padding-bottom:21.251819505094613%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000058.png" src=""/> 
+</div>  
+From the output of this script two things should be saved
+
+<ol>
+<li><strong>TenantId</strong> - this is Directory ID of Azure Active Directory where the managed identity is located</li>
+<li><strong>ApplicationId</strong> - application ID of managed identity</li>
+</ol></li>
+<li>Since Data Factory doesn&rsquo;t give out right Object ID of its identity the simplest way is to find it by azure resource name. In the same PowerShell window run command to find application ID of data factory identity.
+<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of data factory&gt;&#34;</span></code></pre></div>
+
+<div class="lazy" style="max-height: 145px">
+    <div style="padding-bottom:21.323529411764707%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000057.png" src=""/> 
+</div>  </li>
+</ol>
+
+<h3 id="adding-administrative-privileges">Adding Administrative Privileges</h3>
+
+<ol>
+<li>Open SQL Server Management Studio</li>
+<li>Connect to Analysis Services
+
+<div class="lazy" style="max-height: 315px">
+    <div style="padding-bottom:66.0377358490566%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000074.png" src=""/> 
+</div>  </li>
+<li>Right-click on server and select <strong>Properties</strong>
+
+<div class="lazy" style="max-height: 359px">
+    <div style="padding-bottom:99.17127071823204%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000037.png" src=""/> 
+</div>  </li>
+<li>Go to <strong>Security</strong> page and click <strong>Add</strong> button
+
+<div class="lazy" style="max-height: 625px">
+    <div style="padding-bottom:90.57971014492753%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000038.png" src=""/> 
+</div>  </li>
+<li>Search for app by name given in previous step or add manual entry in following convention
+
+<div class="lazy" style="max-height: 492px">
+    <div style="padding-bottom:128.125%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000039.png" src=""/> 
+</div>  
+Convention IS
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:&lt;application_id&gt;@&lt;tenant_id&gt;</code></pre></div>
+For example
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:df1b8569-352d-4be0-acf3-847a2e72aee0@564006af-8627-42d3-b8a6-30a1f1e69fab</code></pre></div></li>
+<li>Click <strong>Add</strong>
+
+<div class="lazy" style="max-height: 197px">
+    <div style="padding-bottom:28.55072463768116%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000075.png" src=""/> 
+</div>  </li>
+<li>Ensure to add <strong>both</strong> logic app and data factory application ids</li>
+</ol>
+
+<h2 id="creating-adf-flow">Creating ADF flow</h2>
+
+<ol>
+<li>Navigate to <strong>Data Factory</strong> and click on <strong>Author and Monitor</strong>
+
+<div class="lazy" style="max-height: 400px">
+    <div style="padding-bottom:36.496350364963504%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000009.png" src=""/> 
+</div>  </li>
+<li>In Data Factory web editor and click on <strong>Author</strong> button
+
+<div class="lazy" style="max-height: 178px">
+    <div style="padding-bottom:35.6%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000010.png" src=""/> 
+</div>  </li>
+<li>Click <em>&hellip;</em> in <strong>Pipelines</strong> section and select <strong>Add pipeline</strong> from the dropdown menu
+
+<div class="lazy" style="max-height: 149px">
+    <div style="padding-bottom:59.36254980079681%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000050.png" src=""/> 
+</div>  </li>
+<li>Expand <strong>General</strong> section from the <strong>Activities</strong> panel and find <strong>Web</strong> activity
+
+<div class="lazy" style="max-height: 687px">
+    <div style="padding-bottom:346.969696969697%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000051.png" src=""/> 
+</div>  </li>
+<li>Drag and drop <strong>Web</strong> activity into drawing pane and name it Refresh AAS
+
+<div class="lazy" style="max-height: 370px">
+    <div style="padding-bottom:80.96280087527353%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000052.png" src=""/> 
+</div>  </li>
+</ol>
+
+<h3 id="this-is-important">This is important</h3>
+
+<p>Because of how Web activity in ADF works, it impossible to make proper call to Analysis Services refresh API.</p>
+
+<ul>
+<li>First of all, Analysis Services refresh API will return 202 (Accepted) response when submitting request. Web activity is built in a way that upon receiving 202 response it will keep sending requests to the same endpoint until final (200, 400, etc.) response is received. This means when 202 is received, ADF will make another call and next call will return 200 (OK) response with body claiming that refresh status is in progress. This is a BIG deal because <strong>only first response (202) returns refresh ID</strong> in the headers. This means, this information is lost.</li>
+<li>Secondly, currently neither Web Activity output not object itself contain Headers information for the response. Even in case of synchronous request it would be impossible to get refresh ID since it is located in response header called <strong>Location</strong>.</li>
+</ul>
+
+<p>Because of those two imperfections it is required to use either Azure Function or Azure Logic App to make the first call and return header in the object. The fastest is to make Logic App so, next step is to use logic app.</p>
+
+<h2 id="creating-logic-app-helper-function">Creating Logic App helper function</h2>
+
+<ol>
+<li>Navigate to <strong>Logic App</strong> and click on <strong>Designer</strong>
+
+<div class="lazy" style="max-height: 420px">
+    <div style="padding-bottom:87.86610878661088%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000027.png" src=""/> 
+</div>  </li>
+<li>Start from blank application and search for <strong>request</strong> action group
+
+<div class="lazy" style="max-height: 299px">
+    <div style="padding-bottom:45.303030303030305%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000028.png" src=""/> 
+</div>  </li>
+<li>Select <strong>When a HTTP request is received</strong> action
+
+<div class="lazy" style="max-height: 268px">
+    <div style="padding-bottom:40.60606060606061%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000029.png" src=""/> 
+</div>  </li>
+<li>Configure Action
+
+<div class="lazy" style="max-height: 472px">
+    <div style="padding-bottom:71.08433734939759%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000030.png" src=""/> 
+</div>  
+
+<ol>
+<li>Change Schema - <strong>aasRefreshBody</strong> will be exact request body passed to Analysis Services and <strong>aasUrl</strong> will be URL of Analysis Services refresh API
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;aasRefreshBody&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;CommitMode&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;MaxParallelism&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;Objects&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;array&#34;</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;RetryCount&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;Type&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;aasUrl&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span>
+<span class="p">}</span></code></pre></div></li>
+<li>Change method to <strong>POST</strong></li>
+</ol></li>
+<li>Add new action</li>
+<li>Search for <strong>HTTP</strong> call and configure it as follows
+
+<div class="lazy" style="max-height: 386px">
+    <div style="padding-bottom:58.13253012048193%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000041.png" src=""/> 
+</div>  
+
+<ol>
+<li>URI <strong>aasUrl</strong> - output from request trigger</li>
+<li>Headers <strong>Content-Type: application/json</strong></li>
+<li>Body <strong>aasRefreshBody</strong> - output from request trigger</li>
+<li>Authentication <strong>Managed Identity</strong> - this is the identity which was set up for logic app during provisioning steps</li>
+<li>Audience <strong>https://*.asazure.windows.net</strong> - this is token audience which is required by AAS for request to be authorized</li>
+</ol></li>
+<li>Change settings for <strong>HTTP</strong> action
+
+<div class="lazy" style="max-height: 383px">
+    <div style="padding-bottom:44.3287037037037%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000042.png" src=""/> 
+</div>  </li>
+<li>Un-select <strong>Asynchronous Pattern</strong> setting
+
+<div class="lazy" style="max-height: 107px">
+    <div style="padding-bottom:17.065390749601274%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000043.png" src=""/> 
+</div>  </li>
+<li>Add new action</li>
+<li>Search for <strong>Response</strong> action and configure it as follows
+
+<div class="lazy" style="max-height: 310px">
+    <div style="padding-bottom:52.013422818791945%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000046.png" src=""/> 
+</div>  
+
+<ol>
+<li>Status Code <strong>200</strong> - for ADF to accept this as success</li>
+<li>Body <strong>aasRefreshBody</strong> - output from request trigger, Status Code from AAS refresh call should not be passed here</li>
+<li>Headers <strong>Content-Type: application/json</strong></li>
+<li>Body <strong>status</strong> - Status Code from AAS refresh call in case needed in future for error handling, <strong>headers</strong> for location header which is refresh id, <strong>body</strong> response info from refresh call
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;body&#34;</span><span class="p">:</span> <span class="err">@</span><span class="p">{</span><span class="err">body(&#39;HTTP&#39;)</span><span class="p">},</span>
+  <span class="nt">&#34;headers&#34;</span><span class="p">:</span> <span class="err">@</span><span class="p">{</span><span class="err">outputs(&#39;HTTP&#39;)[&#39;headers&#39;]</span><span class="p">},</span>
+  <span class="nt">&#34;status&#34;</span><span class="p">:</span> <span class="err">@</span><span class="p">{</span><span class="err">outputs(&#39;HTTP&#39;)[&#39;statusCode&#39;]</span><span class="p">}</span>
+<span class="p">}</span></code></pre></div></li>
+</ol></li>
+</ol>
+
+<h3 id="continue-building-adf-flow">Continue building ADF flow</h3>
+
+<p>Now that helper function is done ADF can call it to refresh AAS.</p>
+
+<ol>
+<li>Configure Web activity
+
+<div class="lazy" style="max-height: 934px">
+    <div style="padding-bottom:130.08356545961%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000053.png" src=""/> 
+</div>  
+
+<ol>
+<li>URL - copy this from Logic App <strong>HTTP POST URL</strong> field after saving Logic App
+
+<div class="lazy" style="max-height: 243px">
+    <div style="padding-bottom:36.596385542168676%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000030-2.png" src=""/> 
+</div>  </li>
+<li>Method - <strong>POST</strong></li>
+<li>Headers - <strong>Content-Type application/json</strong></li>
+<li>Body
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;aasUrl&#34;</span><span class="p">:</span><span class="s2">&#34;https://&lt;rollout_region&gt;.asazure.windows.net/servers/&lt;analysis_services_name&gt;/models/&lt;analysis_services_model_name&gt;/refreshes&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;aasRefreshBody&#34;</span><span class="p">:{</span>
+        <span class="nt">&#34;CommitMode&#34;</span><span class="p">:</span><span class="s2">&#34;transactional&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;MaxParallelism&#34;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&#34;Objects&#34;</span><span class="p">:[],</span>
+        <span class="nt">&#34;RetryCount&#34;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&#34;Type&#34;</span><span class="p">:</span><span class="s2">&#34;Full&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+For more details on the properties check <a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services//#design">my previous article</a>.</li>
+<li>Everything else is default.</li>
+</ol></li>
+<li>Create two pipeline variables called <strong>RefreshIDURL</strong> and <strong>RefreshStatus</strong>
+
+<div class="lazy" style="max-height: 168px">
+    <div style="padding-bottom:25.225225225225227%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000056.png" src=""/> 
+</div>  </li>
+<li>Add new action <strong>Until</strong>
+
+<div class="lazy" style="max-height: 369px">
+    <div style="padding-bottom:74.09638554216868%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000085-1.png" src=""/> 
+</div>  
+And configure exit loop condition as follows
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@or(equals(variables(&#39;RefreshStatus&#39;),&#39;succeeded&#39;),equals(variables(&#39;RefreshStatus&#39;),&#39;failed&#39;))</span></code></pre></div></li>
+<li>Double click on Until loop action and add <strong>Wait</strong>, <strong>Web</strong> and <strong>Set Variable Actions</strong> action and link the together
+
+<div class="lazy" style="max-height: 142px">
+    <div style="padding-bottom:19.478737997256516%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000062.png" src=""/> 
+</div>  </li>
+<li>Configure <strong>Wait</strong> Action to wait 30 seconds between tries
+
+<div class="lazy" style="max-height: 286px">
+    <div style="padding-bottom:60.72186836518047%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000064.png" src=""/> 
+</div>  </li>
+<li>Configure <strong>Web</strong> Action to wait 30 seconds between tries
+
+<div class="lazy" style="max-height: 684px">
+    <div style="padding-bottom:117.12328767123287%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000066.png" src=""/> 
+</div>  
+Configure <strong>URL</strong> as per sample blow, resource as <strong>https://*.asazure.windows.net</strong>, Authentication as MSI. Thanks to previous setup ADF can authenticate and authorize connection to AAS as admin.
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Refresh</span> <span class="err">AAS&#39;).output.headers</span><span class="p">[</span><span class="err">&#39;location&#39;</span><span class="p">]</span></code></pre></div></li>
+<li>Configure <strong>Wait</strong> Action to wait 30 seconds between tries
+
+<div class="lazy" style="max-height: 343px">
+    <div style="padding-bottom:72.82377919320595%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000067.png" src=""/> 
+</div>  
+And configure <strong>Value</strong> it as follows
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Get</span> <span class="err">AAS</span> <span class="err">Refresh</span> <span class="err">Status&#39;).output.status</span></code></pre></div></li>
+<li>Hit Debug and watch for execution steps
+
+<div class="lazy" style="max-height: 485px">
+    <div style="padding-bottom:48.64593781344032%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000072.png" src=""/> 
+</div>  </li>
+</ol>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>Implementing Analysis Services refresh scenario using both Logic Apps and Data Factory was a fun challenge. It definitely was a good learning opportunity and in general allowed me to better understand their strength.</p>
+
+<p>In short summary what I learned was.</p>
+
+<h3 id="ease-of-implementation">Ease of implementation</h3>
+
+<p>Logic apps are much more flexible than data factory. It was possible to implement entire solution without any workarounds. In case of data factory there was no way to avoid using Logic Apps or Functions as workaround. Logic apps are clear winner here.</p>
+
+<h4 id="hahahugoshortcode-56hbhb-are-better-than-hahahugoshortcode-57hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are better than <span class="cross"><i class="fa fa-times" aria-hidden="true"></i>  Data Factory </span></h4>
+
+<h3 id="cost-effectiveness">Cost Effectiveness</h3>
+
+<p>Because Data Factory lends integration runtime for execution time a wait actions extends the hold of this resource. Because of lack of this release implementations that wait for events are much more expensive using Data Factory.</p>
+
+<p>Below diagram shows 1 week costs of running both solutions on schedule to refresh AAS every hour. Refresh took about 2 minutes.
+ 
+<div class="lazy" style="max-height: 315px">
+    <div style="padding-bottom:41.777188328912466%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000076.png" src=""/> 
+</div>  
+ 
+<div class="lazy" style="max-height: 304px">
+    <div style="padding-bottom:64.81876332622602%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000080.png" src=""/> 
+</div>  </p>
+
+<p>For larger solutions logic apps is clear winner.</p>
+
+<h4 id="hahahugoshortcode-60hbhb-are-better-than-hahahugoshortcode-61hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are better than <span class="cross"><i class="fa fa-times" aria-hidden="true"></i>  Data Factory </span></h4>
+
+<h3 id="extensibility">Extensibility</h3>
+
+<p>This is a tie. Both Logic Apps and Data Factory allow for remote executions and mixing with other processes. This means they can be integrated with pretty much any solution out there.</p>
+
+<h4 id="hahahugoshortcode-62hbhb-are-as-good-as-hahahugoshortcode-63hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are as good as <span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Data Factory </span></h4>
+
+<p>Which means my end result</p>
+
+<h3 id="hahahugoshortcode-64hbhb-are-superior-choice-for-this-scenario"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Azure Logic Apps </span> are superior choice for this scenario</h3>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>If you enjoyed this article you might want to check <a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/">how to implement this scenario using Azure Logic Apps</a>.</p>
+
+<p><a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/"></p>
+
+
+<div class="lazy" style="max-height: 266px">
+    <div style="padding-bottom:30.09049773755656%"></div>
+    <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000070.png" src=""/> 
+</div>  
+
+<p></a></p>
+    </article>
+    <div class="section-blog-info">
+        <div class="row">
+            <div class="col-md-12">
+<div class="authorblock">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="avatar"></div>
+        </div>
+        <div class="col-sm-9">
+            <h4><b>Adam Marczak</b></h4>
+            <p>Programmer, architect, trainer, blogger, evangelist are just a few of many titles. What I really am, is a passionate technology enthusiast. I take great pleasure in learning new technologies and finding ways in which it can aid people every day. My latest passion is running an <a href='https://www.youtube.com/azure4everyone'>Azure 4 Everyone</a> YouTube channel, where I show that Azure really is for everyone!</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="text-center">Did you enjoy the article?</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <h4 class="">Share it!</h4><a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Facebook" 
+   class="btn btn-just-icon btn-share btn-facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmarczak.io%2fposts%2f2019%2f06%2flogic-app-vs-data-factory-for-aas-refresh%2f">
+    <i class="fa fa-facebook"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Twitter" 
+   class="btn btn-just-icon btn-share btn-twitter" 
+   href="https://twitter.com/home?status=Azure%20Data%20Factory%20versus%20Logic%20Apps%20for%20Analysis%20Services%20Refresh - https%3a%2f%2fmarczak.io%2fposts%2f2019%2f06%2flogic-app-vs-data-factory-for-aas-refresh%2f">
+   <i class="fa fa-twitter"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Google+" 
+   class="btn btn-just-icon btn-share btn-google" 
+   href="https://plus.google.com/share?url=https%3a%2f%2fmarczak.io%2fposts%2f2019%2f06%2flogic-app-vs-data-factory-for-aas-refresh%2f"><i 
+   class="fa fa-google"></i>
+</a>
+            
+            </div>
+            <div class="col-md-6 text-center large">
+                <h4 class="">More tagged posts</h4>
+  <div class="tag-list">
+    <a href="https://marczak.io/tags/analysis-services" title="View all posts in Analysis Services">
+      <img src="https://marczak.io/images/tags/analysis-services.svg" alt="Analysis Services"/>
+    </a>
+    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
+      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
+    </a>
+    <a href="https://marczak.io/tags/data-factory" title="View all posts in Data Factory">
+      <img src="https://marczak.io/images/tags/data-factory.svg" alt="Data Factory"/>
+    </a>
+    <a href="https://marczak.io/tags/logic-apps" title="View all posts in Logic Apps">
+      <img src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/>
+    </a>
+  </div>
+            </div>
+        </div>
+        <div class="row comments">
+            <div class="col-md-12"><div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "https:\/\/marczak.io\/posts\/2019\/06\/logic-app-vs-data-factory-for-aas-refresh\/"; 
+this.page.identifier = "\/posts\/2019\/06\/logic-app-vs-data-factory-for-aas-refresh\/";
+};
+
+(function() {
+if (window.location.hostname == "localhost")return;
+var d = document, s = d.createElement('script');
+s.src = 'https://marczak-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+            </div>
+        </div> 
+    </div>
+</div>
+            <div class="col-md-3 blog-sidebar-wrapper">
+              <aside id="secondary" class="blog-sidebar" role="complementary"><div id="mvp" class="banner-mvp">
+<img src="/images/mvp.svg" />
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Courses</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px">
+    <a href="https://marczak.io/az-900" >
+        <img src="/images/az-900/cert.svg" style="width:60px;margin-right:10px;;float:left;"></img> AZ-900 <br/>Microsoft Azure Fundamentlas
+    </a>
+</div>
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Featured Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Process Excel files in Azure</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/pc8Kv-lRD8k" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/49-AzureExcelFileProcessing-ADFandDatabricks-Tutorial-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">AZ-900 Full Course</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/NPEsD6n9A_I" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/az-900/az-900-ep-00-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Azure Active Directory Tutorial</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/Ma7VAQE7ga4" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/48-AzureActiveDirectory-Intro-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;max-width:180px;margin-right:30px;">
+<h5>Recent Posts</h5>
+<ul>
+        <li><b class="list-header">2020 July</b></li>
+        <li class="indented">
+            <a href="/posts/2020/07/az-900-full-course/" title="AZ-900 Microsoft Azure Fundamentals full course" rel="bookmark">
+                <b>7th </b>AZ-900 Microsoft Azure Fundamentals full course
+            </a>
+        </li>
+        <li><b class="list-header">2019 October</b></li>
+        <li class="indented">
+            <a href="/posts/2019/10/ea-consumption-automation-with-logic-apps/" title="Automating Enterprise Azure billing using Logic Apps for 0.03$/month" rel="bookmark">
+                <b>25th </b>Automating Enterprise Azure billing using Logic Apps for 0.03$/month
+            </a>
+        </li>
+        <li><b class="list-header">2019 August</b></li>
+        <li class="indented">
+            <a href="/posts/2019/08/logic-apps-obfuscation/" title="Enhancing Logic Apps security with obfuscation" rel="bookmark">
+                <b>16th </b>Enhancing Logic Apps security with obfuscation
+            </a>
+        </li>
+        <li class="indented">
+            <a href="/posts/2019/08/secure-logic-app-with-api-management/" title="Securing Logic App with Azure AD authentication using API Management" rel="bookmark">
+                <b>8th </b>Securing Logic App with Azure AD authentication using API Management
+            </a>
+        </li>
+        <li><b class="list-header">2019 July</b></li>
+        <li class="indented">
+            <a href="/posts/2019/07/securing-websites-with-msi/" title="Securing Azure Services with Managed Identities" rel="bookmark">
+                <b>19th </b>Securing Azure Services with Managed Identities
+            </a>
+        </li>
+</ul>
+</div><div id="categories-3" class="widget widget_categories" style="float: left;">
+  <h5>Tags</h5>
+  <ul class="tag-list">
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/active-directory">Active Directory (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+        </div> 
+        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-service.svg" alt="App Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-service">App Service (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (17)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/bot-service.svg" alt="Bot Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/bot-service">Bot Service (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-factory.svg" alt="Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-factory">Data Factory (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+        </div> 
+        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/flow.svg" alt="Flow"/> 
+        </div> 
+        <a href="https://marczak.io/tags/flow">Flow (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/functions.svg" alt="Functions"/> 
+        </div> 
+        <a href="https://marczak.io/tags/functions">Functions (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/key-vault.svg" alt="Key Vault"/> 
+        </div> 
+        <a href="https://marczak.io/tags/key-vault">Key Vault (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (7)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/security.svg" alt="Security"/> 
+        </div> 
+        <a href="https://marczak.io/tags/security">Security (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+        </div> 
+        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/teams.svg" alt="Teams"/> 
+        </div> 
+        <a href="https://marczak.io/tags/teams">Teams (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vue.js.svg" alt="Vue.js"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/webpack.svg" alt="Webpack"/> 
+        </div> 
+        <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+        </div> 
+        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+      </li>
+  </ul>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Sites</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px;">
+    <a href="https://sqlplayer.net" > 
+<div class="lazy" style="max-height: 270px">
+    <div style="padding-bottom:28.481012658227847%"></div>
+    <img data-src="/images//sites/sql-player.png" src=""/> 
+</div> 
+    </a>
+</div>
+</div>
+</div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+<footer class="footer footer-black footer-big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="connected-title">Stay Connected</h5>
+                <div class="">
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-about"
+     href="/about">
+    <i class="fa fa-user"></i>
+  </a>
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-github"
+     href="https://github.com/MarczakIO">
+    <i class="fa fa-github"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
+     href="https://marczak.io/index.xml">
+    <i class="fa fa-rss"></i>
+  </a>
+</div>
+            </div>
+            &copy;<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> <a href="https://themeisle.com/themes/hestia/" target="_blank" rel="nofollow">Hestia Theme</a>
+        </div>
+    </div>
+</footer>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
+  
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="https:\/\/marczak.io\/js\/bootstrap.min.js"><\/script>')}</script>
+  
+  <div id="bootstrapCssTest" class="hidden"></div>
+  <script>
+    $(function() {
+      if ($('#bootstrapCssTest').is(':visible')) {
+        $("head").prepend('<link rel="stylesheet" href="https:\/\/marczak.io\/css\/bootstrap.min.css">');
+      }
+    });
+  </script>
+  <script type="text/javascript" src="https://marczak.io/js/main.min.js?ver=1.16"></script>
+</body>
+</html>

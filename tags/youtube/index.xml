@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Youtube on Marczak.IO</title>
+    <link>https://marczak.io/tags/youtube/</link>
+    <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Jul 2020 11:00:00 +0200</lastBuildDate>
+    
+        <atom:link href="https://marczak.io/tags/youtube/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AZ-900 Microsoft Azure Fundamentals full course</title>
+      <link>https://marczak.io/posts/2020/07/az-900-full-course/</link>
+      <pubDate>Tue, 07 Jul 2020 11:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2020/07/az-900-full-course/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/az-900/az-900-ep-00-740.jpg&quot;&gt;
+        &lt;p&gt;AZ-900 Microsoft Azure Fundamentals certification is the first and the most important certification for anyone who is just starting with Azure. It&amp;rsquo;s very exciting for me to release this course to everyone!&lt;/p&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>
