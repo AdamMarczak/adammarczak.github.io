@@ -392,7 +392,8 @@ article svg {
   text-decoration: line-through;
 }
 div.wrong-score-message,
-div.perfect-score-message {
+div.perfect-score-message,
+div.answer-explanation {
   display: none;
 }
 form.perfect-score > div.perfect-score-message {
@@ -407,6 +408,9 @@ form.check-answer:not(.perfect-score) > div.wrong-score-message {
   font-size: 24px;
   line-height: 24px;
   margin: 20px 0;
+  display: block;
+}
+form.check-answer:not(.perfect-score) > div.answer-explanation {
   display: block;
 }
 
