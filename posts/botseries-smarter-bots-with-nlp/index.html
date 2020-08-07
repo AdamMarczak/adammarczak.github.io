@@ -117,63 +117,45 @@
     Source Code
 </a><h2>Highlight</h2>
         <p>The closer bot interaction gets to the one of a human the better the end user experience will be. See how to leverage Microsoft Cognitive Services LUIS for natural language processing so that users can type naturally while allowing bots to understand and act.</p>
-
 <h2 id="what-is-luis">What is LUIS?</h2>
-
 <p>LUIS is shorthand name for Language Understanding Intelligent Service. It is one of Microsoft services available in Cognitive Services package in Azure. LUIS is very well described by a quote from Microsoft Azure website.</p>
-
 <p><em>One of the key problems in human-computer interactions is the ability of the computers to understand what a person wants, and to find the pieces of information that are relevant to his/her intention. Our Language Understanding intelligent service, LUIS, provides simple tools that enable you to build your own language models (intents/entities) which allow any application/bot to understand your commands and act accordingly</em></p>
-
 <p>Source: <a href="https://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/">Language Understanding Intelligent Service | Microsoft Azure</a></p>
-
 <h3 id="understanding-language-models">Understanding Language Models</h3>
-
 <p><strong>Language model</strong> is a statistical model used in natural language processing. Using probability distribution over sequence of words a well-trained model can estimate the relative likelihood of different phrases. Language models are not only for text recognition but also can be used for speed recognition, machine translation, handwritten recognition and many other.
 In LUIS building language models is very simple. At the very least a single intent must be defined and trained for already meaningful results. Intents are as the word describes is a general users’ intentions; actions if you will. Training models is done via utterances which any specific details required for LUIS to base its recognition on. If details of an actions are required then entities come into play.</p>
-
 <p>To summarize most important LUIS concepts</p>
-
 <ul>
-<li><p><strong>Intent</strong> representation of user action. For example, user asking “book me a flight” would result in intent about flight booking like BookFlight.</p></li>
-
-<li><p><strong>Utterance</strong> textual input from the users that application needs to recognize. For example, user asking to book a hotel.</p></li>
-
-<li><p><strong>Entity</strong> detail of an action. For example, asking for to meet Tom at noon would have two entities which is name of the attendee (Tom) and time which is (noon).</p></li>
+<li>
+<p><strong>Intent</strong> representation of user action. For example, user asking “book me a flight” would result in intent about flight booking like BookFlight.</p>
+</li>
+<li>
+<p><strong>Utterance</strong> textual input from the users that application needs to recognize. For example, user asking to book a hotel.</p>
+</li>
+<li>
+<p><strong>Entity</strong> detail of an action. For example, asking for to meet Tom at noon would have two entities which is name of the attendee (Tom) and time which is (noon).</p>
+</li>
 </ul>
-
 <p>Examples of intents and entities
-<img src="/images/botseries-luis/1.png" alt="Screenshot" /></p>
-
+<img src="/images/botseries-luis/1.png" alt="Screenshot"></p>
 <p>Although it is worth remembering that the more generic the application would be the more intents could slide towards being entities. Imagine the case where application allows users to add or remove files from the server. Of course, those could be trained as separate intents called FileAdd and FileRemove but if the list of actions would be dynamic training the bot to have intent call FileAction with entities Add, Remove etc. could have more sense. It is worth remembering that the more specific the bot the better the outcome.</p>
-
 <p>Exemplary utterance predictions
-<img src="/images/botseries-luis/2.png" alt="Screenshot" /></p>
-
+<img src="/images/botseries-luis/2.png" alt="Screenshot"></p>
 <h3 id="luis-with-azure-bot-service">LUIS with Azure Bot Service</h3>
-
 <p>Azure Bot Service has built in integration with LUIS service. When selecting appropriate template bot service initializes everything including creation of new application in LUIS. Bot service also inputs LUIS app credentials into application settings.</p>
-
-<p><img src="/images/botseries-luis/5.png" alt="Screenshot" /></p>
-
+<p><img src="/images/botseries-luis/5.png" alt="Screenshot"></p>
 <p>Everything works together nicely thanks to Bot Framework using</p>
-
 <p><a href="https://dev.botframework.com/"><img class="icon" src="/images/tags/botframework.png"/>Microsoft Bot Framework</a></p>
-
 <p><a href="https://azure.microsoft.com/en-us/services/bot-service/"><img class="icon" src="/images/tags/bot-service.svg"/>Azure Bot Service</a></p>
-
 <p><a href="https://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/"><img class="icon" src="/images/tags/luis.svg"/>LUIS</a></p>
-
 <p>Connected into final design
 
 <div class="lazy" style="max-height: 539px">
     <div style="padding-bottom:38.5%"></div>
     <img data-src="/images/botseries-luis/3.png" src=""/> 
 </div>  </p>
-
 <h3 id="luis-portal">LUIS portal</h3>
-
 <p>LUIS comes with self-service portal available at <a href="https://www.luis.ai/home">luis.ai</a>. Portal delivers set of capabilities including</p>
-
 <ol>
 <li>Application management – list of applications with ability to create, delete, export and import.</li>
 <li>Intent management and training – managing intents and inputting utterances for model to learn on</li>
@@ -183,22 +165,16 @@ In LUIS building language models is very simple. At the very least a single inte
 <li>Train &amp; test – panel for testing and training models</li>
 <li>Publishing – panel for publishing application with ability to move to staging environment as needed</li>
 </ol>
-
 <h2 id="creation-of-a-luis-chatbot">Creation of a LUIS chatbot</h2>
-
 <p>In this article a basic form bot will be built which will serve users with a basic information about bot series on this blog and serve public links to social media.</p>
-
 <p>Instead of reading you can watch!</p>
-
 
 <div class="interactive-frame inactive" src="https://www.youtube.com/embed/f0J9BUJ6DZU">
     <button class="btn iframe-button btn-youtube">Watch on youtube</button>
     <iframe class="youtube" frameborder="0" allowfullscreen></iframe>
 </div>
 
-
 <p>Or just follow the steps</p>
-
 <ol>
 <li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
 <li>Find Azure Bot Service in Marketplace
@@ -213,8 +189,8 @@ In LUIS building language models is very simple. At the very least a single inte
     <div style="padding-bottom:51.603053435114504%"></div>
     <img data-src="/images/botseries-luis/7.png" src=""/> 
 </div>  </li>
-<li>Fill in the data.
-
+<li>Fill in the data.</li>
+</ol>
 <ul>
 <li><strong>Consumption Plan</strong> will <a href="https://azure.microsoft.com/en-us/pricing/details/functions/">Functions pricing</a> model (pay per execution). Preferred for most bots.</li>
 <li><strong>App Service Plan</strong> will use <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/">App Service</a> (pay for reserved capacity). Preferred if using Free Tier for learning purposes.
@@ -224,14 +200,15 @@ In LUIS building language models is very simple. At the very least a single inte
     <img data-src="/images/botseries-luis/8.png" src=""/> 
 </div>  
 Portal should automatically open bot editor after deployment is successful. If not open bot can be opened via either Portal &gt; App Services, Notifications or Dashboard if &lsquo;Pin to Dashboard&rsquo; option was selected.</li>
-</ul></li>
+</ul>
+<ol start="5">
 <li>Click create button redirects to bot wizard where C# should be set language and <strong>Language Understanding</strong> as a bot template.
 
 <div class="lazy" style="max-height: 642px">
     <div style="padding-bottom:47.661469933184854%"></div>
     <img data-src="/images/botseries-luis/9.png" src=""/> 
 </div>  </li>
-<li>Microsoft App Registration page where application must be first registered.<br />
+<li>Microsoft App Registration page where application must be first registered.<br>
 
 <div class="lazy" style="max-height: 292px">
     <div style="padding-bottom:43.067846607669615%"></div>
@@ -246,32 +223,20 @@ Portal should automatically open bot editor after deployment is successful. If n
     <img data-src="/images/botseries-luis/11.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="model-learning">Model Learning</h2>
-
 <p>Now that the bot already exists and everything works means a framework to build intelligent bot was already established. Moving into LUIS.AI portal is the next step where the model training beings. At this point developer should already have precise and meaningful business case with a general idea of how would intent and entity modeling look like.</p>
-
 <p>Before beginning figure out what naming convention to use. For purpose of this demo intents will be Camel Cased with dot between the sub categories. For instance, flight booking would have intent named Flight.Book.</p>
-
 <h3 id="business-case">Business Case</h3>
-
 <p>Deliver a bot which understands user and provides information about Marczak.IO Bot Services, their author and upon request gives social media links.</p>
-
 <p>The plan</p>
-
 <ol>
-<li>Identified three user intents.
-
-<ol>
+<li>Identified three user intents.</li>
 <li><strong>Series.Info</strong> for users seeking information about bot series.</li>
 <li><strong>Series.Author</strong> for users seeking information about author.</li>
 <li><strong>Social.Location</strong> for those seeking social media links.</li>
-</ol></li>
 <li>Identified Social media entity <strong>SocialName</strong> which would be social media website name.</li>
 </ol>
-
 <p>No that the plan for building model is done let’s create it.</p>
-
 <ol>
 <li>Log into <a href="https://luis.ai">LUIS.AI</a> portal</li>
 <li>Select application from the list
@@ -298,25 +263,27 @@ Portal should automatically open bot editor after deployment is successful. If n
     <div style="padding-bottom:54.30327868852459%"></div>
     <img data-src="/images/botseries-luis/15.png" src=""/> 
 </div>  
-Sentences used for this demo are
-
+Sentences used for this demo are</li>
+</ol>
 <ul>
 <li>i need some information about the series</li>
 <li>name of series</li>
 <li>please let me know about those series</li>
 <li>what series are those ?</li>
 <li>what are those series about ?</li>
-</ul></li>
+</ul>
+<ol start="6">
 <li>Hit save</li>
-<li>Follow the same process for Series.Author
-
+<li>Follow the same process for Series.Author</li>
+</ol>
 <ul>
 <li>who made you ?</li>
 <li>whos the author</li>
 <li>who&rsquo;s the author of the series ?</li>
-</ul></li>
-<li>Follow the same process for None intent. It&rsquo;s important to teach none intent so that random phrases like hello won&rsquo;t get misinterpreted.
-
+</ul>
+<ol start="7">
+<li>Follow the same process for None intent. It&rsquo;s important to teach none intent so that random phrases like hello won&rsquo;t get misinterpreted.</li>
+</ol>
 <ul>
 <li>help?</li>
 <li>whats up</li>
@@ -325,7 +292,8 @@ Sentences used for this demo are
 <li>test</li>
 <li>hi</li>
 <li>hello</li>
-</ul></li>
+</ul>
+<ol start="8">
 <li>Social.Location intent will be skipped for now to keep it simple</li>
 <li>Go to Train and Test section and select Train Application button
 
@@ -334,7 +302,7 @@ Sentences used for this demo are
     <img data-src="/images/botseries-luis/16.png" src=""/> 
 </div>  </li>
 <li>At this point to avoid mistakes and pointless debugging sessions a testing panel should be used to check trained model
-<img src="/images/botseries-luis/17.png" alt="Screenshot" />
+<img src="/images/botseries-luis/17.png" alt="Screenshot">
 Intents are scored from 0 to 1 which means from 0% to 100%. If bot is not responding as intended it might be that it wasn&rsquo;t learned properly. Usually it means that sentences were either too similar or too generic.</li>
 <li>Navigate to Publish App section and select Publish to production slot. Sometimes, I&rsquo;m not sure why, portal fails to publish the app so in case this happens just republish the app.
 
@@ -350,8 +318,8 @@ End State of the class should be looking like this with highlighted the key part
 <span class="k">using</span> <span class="nn">Microsoft.Bot.Builder.Azure</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Microsoft.Bot.Builder.Dialogs</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Microsoft.Bot.Builder.Luis</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.Bot.Builder.Luis.Models</span><span class="p">;</span><span class="na">
-</span><span class="na">
+<span class="k">using</span> <span class="nn">Microsoft.Bot.Builder.Luis.Models</span><span class="p">;</span>
+<span class="na">
 </span><span class="na">[Serializable]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">BasicLuisDialog</span> <span class="p">:</span> <span class="n">LuisDialog</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span>
 <span class="p">{</span>
@@ -359,49 +327,43 @@ End State of the class should be looking like this with highlighted the key part
         <span class="k">new</span> <span class="n">LuisModelAttribute</span><span class="p">(</span>
             <span class="n">Utils</span><span class="p">.</span><span class="n">GetAppSetting</span><span class="p">(</span><span class="s">&#34;LuisAppId&#34;</span><span class="p">),</span> 
             <span class="n">Utils</span><span class="p">.</span><span class="n">GetAppSetting</span><span class="p">(</span><span class="s">&#34;LuisAPIKey&#34;</span><span class="p">))))</span>
-    <span class="p">{</span> <span class="p">}</span><span class="na">
-</span><span class="na">
+    <span class="p">{</span> <span class="p">}</span>
+<span class="na">
 </span><span class="na">    [LuisIntent(&#34;None&#34;)]</span>
     <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">NoneIntent</span><span class="p">(</span><span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">LuisResult</span> <span class="n">result</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">PostAsync</span><span class="p">(</span><span class="s">$&#34;None intent. You said: {result.Query}&#34;</span><span class="p">);</span>
         <span class="n">context</span><span class="p">.</span><span class="n">Wait</span><span class="p">(</span><span class="n">MessageReceived</span><span class="p">);</span>
-    <span class="p">}</span><span class="na">
-</span><span class="na">
+    <span class="p">}</span>
+<span class="na">
 </span><span class="hl"><span class="na">    [LuisIntent(&#34;Series.Info&#34;)]</span>
 </span><span class="hl">    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">SeriesInfoIntent</span><span class="p">(</span><span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">LuisResult</span> <span class="n">result</span><span class="p">)</span>
 </span>    <span class="p">{</span>
 <span class="hl">        <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">PostAsync</span><span class="p">(</span><span class="s">$&#34;This Azure Bot Series - Smarter Bots.&#34;</span><span class="p">);</span>
 </span>        <span class="n">context</span><span class="p">.</span><span class="n">Wait</span><span class="p">(</span><span class="n">MessageReceived</span><span class="p">);</span>
-    <span class="p">}</span><span class="na">
-</span><span class="na">    
+    <span class="p">}</span>
+<span class="na">    
 </span><span class="hl"><span class="na">    [LuisIntent(&#34;Series.Author&#34;)]</span>
 </span><span class="hl">    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">SeriesAuthorIntent</span><span class="p">(</span><span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">LuisResult</span> <span class="n">result</span><span class="p">)</span>
 </span>    <span class="p">{</span>
 <span class="hl">        <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">PostAsync</span><span class="p">(</span><span class="s">$&#34;Azure Bot Series are made by Adam Marczak. Visit Marczak.IO for more information.&#34;</span><span class="p">);</span>
 </span>        <span class="n">context</span><span class="p">.</span><span class="n">Wait</span><span class="p">(</span><span class="n">MessageReceived</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Save and test the application. Notice how sentences do not have to be the same as provided in the learning model. This is exactly the power of machine learning.
 
 <div class="lazy" style="max-height: 414px">
     <div style="padding-bottom:97.41176470588235%"></div>
     <img data-src="/images/botseries-luis/19.png" src=""/> 
 </div>  
-In case a bot would return None intent multiple of times try
-
-<ol>
+In case a bot would return None intent multiple of times try</li>
 <li>Republishing the application</li>
 <li>Restarting the conversation</li>
-</ol></li>
 </ol>
-
 <h3 id="half-way-there">Half way there</h3>
-
 <p>Now that the application works there is still one business scenario that was not touched. This is the social media links scenario.</p>
-
 <p>It was already planned to deliver one intent and one entity for this purpose. Starting from adding entities is the best approach.</p>
-
 <ol>
 <li>Go back to LUIS.AI portal and navigate to entities section</li>
 <li>Create new entity of by pressing Add Custom Entity button
@@ -411,8 +373,8 @@ In case a bot would return None intent multiple of times try
     <img data-src="/images/botseries-luis/20.png" src=""/> 
 </div>  
 Give it a name SocialName and a type of <strong>List</strong>. Reason for this is that list entities are best for predefined set of items like list of available social media. To learn more about entity types visit <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-concept-entity-types">LUIS documenation</a></li>
-<li>When created list entity must be provided with canonical form of names and optionally any synonyms or aliases. For this demo following list was used.
-
+<li>When created list entity must be provided with canonical form of names and optionally any synonyms or aliases. For this demo following list was used.</li>
+</ol>
 <ul>
 <li>youtube with alias yt</li>
 <li>google</li>
@@ -425,11 +387,12 @@ Give it a name SocialName and a type of <strong>List</strong>. Reason for this i
     <div style="padding-bottom:127.15053763440861%"></div>
     <img data-src="/images/botseries-luis/21.png" src=""/> 
 </div>  </li>
-</ul></li>
+</ul>
+<ol start="4">
 <li>Go to Intents and select Add Intent button to provide first intent name Social.Location</li>
 <li>And enter few utterances into the field and press enter
-Sentences used for this demo are
-
+Sentences used for this demo are</li>
+</ol>
 <ul>
 <li>give me facebook link</li>
 <li>what is the email address</li>
@@ -445,7 +408,8 @@ Sentences used for this demo are
     <img data-src="/images/botseries-luis/22.png" src=""/> 
 </div>  
 Of&rsquo;course link, address and url could be optimized with LUIS phrases but this isn&rsquo;t part of this tutorial.</li>
-</ul></li>
+</ul>
+<ol start="6">
 <li>Retrain and test the bot
 
 <div class="lazy" style="max-height: 181px">
@@ -453,13 +417,10 @@ Of&rsquo;course link, address and url could be optimized with LUIS phrases but t
     <img data-src="/images/botseries-luis/23.png" src=""/> 
 </div>  </li>
 <li>Publish the app</li>
-<li>Go back to Azure Portal to the BasicLuisDialog.csx, there is couple of things that has to be done
-
-<ol>
+<li>Go back to Azure Portal to the BasicLuisDialog.csx, there is couple of things that has to be done</li>
 <li>Add new intent handler called <strong>SocialLocationIntent</strong> with attribute <strong>[LuisIntent(&ldquo;Social.Location&rdquo;)]</strong></li>
 <li>Parameter of created intent handler <strong>LuisResult result</strong> has available method for extracting entities called <strong>TryFindEntity</strong> which returns true if entity was present in the request. It can be used to search for &ldquo;SocialName&rdquo; entity.</li>
 <li>If entity is present handle all possible scenarios of found values based on canonical name provided when training LUIS. Found value is available under property of the same name.</li>
-</ol></li>
 <li>New Method should look like below.
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[LuisIntent(&#34;Social.Location&#34;)]</span>
 <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">SocialLocationIntent</span><span class="p">(</span><span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">LuisResult</span> <span class="n">result</span><span class="p">)</span>
@@ -488,7 +449,8 @@ Of&rsquo;course link, address and url could be optimized with LUIS phrases but t
     <span class="p">}</span>
     
     <span class="n">context</span><span class="p">.</span><span class="n">Wait</span><span class="p">(</span><span class="n">MessageReceived</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Test the bot
 
 <div class="lazy" style="max-height: 813px">
@@ -496,9 +458,7 @@ Of&rsquo;course link, address and url could be optimized with LUIS phrases but t
     <img data-src="/images/botseries-luis/24.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h3 id="play-around-with-it">Play around with it!</h3>
-
 <p>Now just go and start building chatbots.</p><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
@@ -693,9 +653,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -723,21 +683,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -753,9 +713,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -789,9 +749,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -825,9 +785,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

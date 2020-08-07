@@ -117,35 +117,22 @@
     Source Code
 </a><h2>Highlight</h2>
         <p>Single Page Applications are one of the best experiences that a web developer can deliver to their customers. See how to build SPA using Vue.js with .NET Core 2.0 backend.</p>
-
 <h2 id="what-is-spa">What is SPA?</h2>
-
 <p>Web applications built using classical approach use post/get and redirect to navigate through application. This can be decent experience for the users but it is not always enjoyable as it depends on the use case of the application. With this approach every button click, every change in data, every action causes entire page to be refreshed and rendered to user. Now imagine using a web mailbox application where email list doesn’t refresh until you refresh the page, or new emails make your page refresh every time. That’s not the best experience user can get.</p>
-
 <p>A SPA stands for Single Page Application which by being simplistic means that a web page only refreshes partially. Single page applications solve all mentioned issues and deliver unmatched experience to their users. Presented case of web mailbox is one of the best examples of modern SPA approach. Whenever a new email comes only the list of emails refreshes which doesn’t disturb the user current actions.</p>
-
-<h3 id="what-is-vue-js">What is Vue.js?</h3>
-
+<h3 id="what-is-vuejs">What is Vue.js?</h3>
 <p><a href="https://vuejs.org/">Vue.js</a> is one of many libraries on the market created for building single page applications using JavaScript. A big advantage of it is that it was built with being lightweight in mind. This library also does not require much time investment to learn. Developer can create first applications in just minutes.</p>
-
 <h3 id="prerequisites">Prerequisites</h3>
-
 <ol>
 <li><a href="https://www.microsoft.com/net/learn/get-started/windows">.NET Core 2.0 SDK</a></li>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a>
-
-<ol>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
 <li>C# Extension</li>
 <li>Vetur Extension</li>
 <li>VSCode Icons Extension - Not required but makes everything look nice</li>
-</ol></li>
 <li><a href="https://nodejs.org/en/">NodeJS version 8.9.4</a></li>
 </ol>
-
 <h2 id="building-the-template">Building the template</h2>
-
 <p>Now that prerequisites are met a project can be initialized.</p>
-
 <ol>
 <li>Open terminal and initialize the project. For this demo MVC .NET Core template will be used. Remember to replace <strong>MarczakIO.VueSPA.Web</strong> with name of for the project.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> E:<span class="se">\
@@ -215,16 +202,14 @@ This should bring up Visual Studio Code with initialized template
 </span>            <span class="p">});</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-
-<ol>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>This makes so that WebPack will replace files automatically when editing them in the editor using Hot Module Replacement and,</li>
 <li>Whenever no controller path is met a route will be redirected back to Home/Index so that application can use native URLs <strong><a href="https://myserver.com/MyApp/MyView/MyAction">https://myserver.com/MyApp/MyView/MyAction</a></strong> instead of hashbang navigation <strong><a href="https://myserver.com/#!/MyApp/MyView/MyAction">https://myserver.com/#!/MyApp/MyView/MyAction</a></strong>. It is still required to disable hashbang navigation which is enabled by default, check next point for that.</li>
-</ol></li>
 <li>Add webpack configuration file to root catalog called <strong>webpack.config.js</strong>. This file is responsible for configuring how will webpack compile javascript, vue, scss, css and other files into project bundle. Once created paste in the contents.
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
 <span class="kd">var</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webpack&#39;</span><span class="p">)</span>
-<span class="hl"><span class="k">const</span> <span class="nx">bundleOutputDir</span> <span class="o">=</span> <span class="s1">&#39;./wwwroot/dist&#39;</span><span class="p">;</span>
+<span class="hl"><span class="kr">const</span> <span class="nx">bundleOutputDir</span> <span class="o">=</span> <span class="s1">&#39;./wwwroot/dist&#39;</span><span class="p">;</span>
 </span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
  <span class="nx">context</span><span class="o">:</span> <span class="nx">__dirname</span><span class="p">,</span>
@@ -309,23 +294,24 @@ This should bring up Visual Studio Code with initialized template
       <span class="nx">minimize</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">})</span>
   <span class="p">])</span>
-<span class="p">}</span></code></pre></div>
-
-<ol>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Line 3 defines where all the bunding output should be. In case of ASP.NET it should always go to wwwroot but the rest is optional.
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"> <span class="k">const</span> <span class="nx">bundleOutputDir</span> <span class="o">=</span> <span class="s1">&#39;./wwwroot/dist&#39;</span><span class="p">;</span>
- </code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"> <span class="kr">const</span> <span class="nx">bundleOutputDir</span> <span class="o">=</span> <span class="s1">&#39;./wwwroot/dist&#39;</span><span class="p">;</span>
+ 
+</code></pre></div></li>
 <li>Line 7 defines where to look for the root of the application. Note that this is project path inside of workspace directory.
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"> <span class="nx">entry</span><span class="o">:</span> <span class="p">{</span> <span class="nx">main</span><span class="o">:</span> <span class="s1">&#39;./App/index.js&#39;</span> <span class="p">},</span>
- </code></pre></div></li>
-</ol></li>
+ 
+</code></pre></div></li>
 <li>Add <strong>.babelrc</strong> in the root directory to configure babel engine for JavaScript
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
     <span class="s2">&#34;presets&#34;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">[</span><span class="s2">&#34;env&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&#34;modules&#34;</span><span class="o">:</span> <span class="kc">false</span> <span class="p">}],</span>
         <span class="s2">&#34;stage-3&#34;</span>
     <span class="p">]</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Add <strong>package.json</strong> in the root directory to configure NPM node packages
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
   <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;lingaro.office.planner&#34;</span><span class="p">,</span>
@@ -364,15 +350,14 @@ This should bring up Visual Studio Code with initialized template
     <span class="s2">&#34;last 2 versions&#34;</span><span class="p">,</span>
     <span class="s2">&#34;not ie &lt;= 8&#34;</span>
   <span class="p">]</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Open Terminal by clicking <strong>View &gt; Integrated Terminal</strong> or hitting <strong>Ctrl+`</strong>
 
 <div class="lazy" style="max-height: 320px">
     <div style="padding-bottom:75.47169811320755%"></div>
     <img data-src="/images/netcore-vuejs/2.png" src=""/> 
-</div>  
-
-<ol>
+</div>  </li>
 <li>Execute <strong>dotnet restore</strong> command in the terminal to restore missing .NET packages
 
 <div class="lazy" style="max-height: 104px">
@@ -385,52 +370,49 @@ This should bring up Visual Studio Code with initialized template
     <div style="padding-bottom:61.8421052631579%"></div>
     <img data-src="/images/netcore-vuejs/5.png" src=""/> 
 </div>  </li>
-</ol></li>
 <li>Modify the <strong>_Layout.cshtml</strong> view in <strong>Views/Shared</strong> catalog
 <div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p"></span><span class="p">&gt;</span>@ViewData[&#34;Title&#34;] - Lingaro.OfficePlanner.Web<span class="p">&lt;</span><span class="p">/</span><span class="nt">title</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">base</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;~/&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>@ViewData[&#34;Title&#34;] - Lingaro.OfficePlanner.Web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">base</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;~/&#34;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
     @RenderBody()
 
     @RenderSection(&#34;scripts&#34;, required: false)
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div></li>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Modify the <strong>Index.cshtml</strong> view in <strong>Views/Home</strong> catalog
 <div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 @{
     ViewData[&#34;Title&#34;] = &#34;Home Page&#34;;
 }
 
-<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#39;app&#39;</span><span class="p"></span><span class="p">&gt;</span>Loading...<span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#39;app&#39;</span><span class="p">&gt;</span>Loading...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
 @section scripts {
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;~/dist/main.js&#34;</span> <span class="na">asp-append-version</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;~/dist/main.js&#34;</span> <span class="na">asp-append-version</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 }</code></pre></div></li>
-<li>Add <strong>App</strong> folder in root directory and create following files
-
-<ol>
+<li>Add <strong>App</strong> folder in root directory and create following files</li>
 <li>Create <strong>index.js</strong>, this is the main root file for SPA application which webpack will build on. It is worth noting that the parameter mod on VueRouter is setting it to history which means it disables hashbang navigation.
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
-<span class="k">import</span> <span class="nx">VueRouter</span> <span class="nx">from</span> <span class="s1">&#39;vue-router&#39;</span>
-<span class="k">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">&#39;./App.vue&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+<span class="kr">import</span> <span class="nx">VueRouter</span> <span class="nx">from</span> <span class="s1">&#39;vue-router&#39;</span>
+<span class="kr">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">&#39;./App.vue&#39;</span>
 
 <span class="nx">Vue</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">productionTip</span> <span class="o">=</span> <span class="kc">false</span>
 <span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">VueRouter</span><span class="p">)</span>
 
-<span class="k">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">[</span>
+<span class="kr">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">{</span> 
     <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> 
     <span class="nx">component</span><span class="o">:</span> <span class="nx">App</span>
   <span class="p">}</span>
 <span class="p">]</span>
 
-<span class="k">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+<span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
   <span class="nx">routes</span><span class="p">,</span>
   <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;history&#39;</span>
 <span class="p">})</span>
@@ -439,7 +421,8 @@ This should bring up Visual Studio Code with initialized template
   <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#app&#39;</span><span class="p">,</span>
   <span class="nx">template</span><span class="o">:</span> <span class="s2">&#34;&lt;div&gt;&lt;router-view&gt;&lt;/router-view&gt;&lt;/div&gt;&#34;</span><span class="p">,</span>
   <span class="nx">router</span>
-<span class="p">})</span></code></pre></div></li>
+<span class="p">})</span>
+</code></pre></div></li>
 <li>Create <strong>App.vue</strong>. With vetur extension all code will be properly highlighted for those files.
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&#34;home&#34;</span><span class="o">&gt;</span>
@@ -448,14 +431,15 @@ This should bring up Visual Studio Code with initialized template
 <span class="o">&lt;</span><span class="err">/template&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span> <span class="p">}</span>
 <span class="o">&lt;</span><span class="err">/script&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">style</span> <span class="nx">lang</span><span class="o">=</span><span class="s2">&#34;scss&#34;</span><span class="o">&gt;</span>
 
-<span class="o">&lt;</span><span class="err">/style&gt;</span></code></pre></div></li>
-</ol></li>
-<li>Press F5 and see first SPA app template working. On the first execution VS Code will ask what environment to start the app in, in which case choose .NET Core.
+<span class="o">&lt;</span><span class="err">/style&gt;</span>
+</code></pre></div></li>
+<li>Press F5 and see first SPA app template working. On the first execution VS Code will ask what environment to start the app in, in which case choose .NET Core.</li>
+</ol>
 <div>
 <div class="lazy" style="max-height: 106px">
     <div style="padding-bottom:37.72241992882562%"></div>
@@ -465,26 +449,18 @@ This should bring up Visual Studio Code with initialized template
 <div class="lazy" style="max-height: 80px">
     <div style="padding-bottom:32.6530612244898%"></div>
     <img data-src="/images/netcore-vuejs/7.png" src=""/> 
-</div>  </div></li>
-</ol>
-
+</div>  </div>
 <h4 id="to-summarize-what-has-been-done">To summarize what has been done</h4>
-
 <ul>
 <li>A standard MVC .NET core application was created using MVC template to initialize the project</li>
 <li>WebPack has been initialized so that it compiles and reloads .vue, .js, .css files for SPA application</li>
 <li>Babel was initialized to that newest ES2015 standards can be used within javascript</li>
 <li>.NET routes were defined so that SPA can use native URL navigation instead of hashbang (index.js enabled this setting)</li>
 </ul>
-
 <h2 id="building-the-app">Building the App</h2>
-
 <p>Now that the backbone is hooked up a real application can be coded. Even if application returns &ldquo;Hello World&rdquo;, there are already few things in place like routing using vue-router, components, scss loaders etc. that allows quick development.</p>
-
 <h3 id="working-with-styles-using-scss-and-variables">Working with styles using SCSS and variables</h3>
-
 <p>Very often developers want to bundle CSS together inside of some main file like main.css which of course had its advantages like allowing external files to be moved to CDN but for small applications this is often not required. Below section presents how to add CSS quickly to components and allow webpack handle the rest.</p>
-
 <ol>
 <li>Create <strong>variables.scss</strong> file inside of App folder
 <div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="o">$</span><span class="nt">vue-blue</span><span class="o">:</span> <span class="p">#</span><span class="nn">32485F</span><span class="o">;</span>
@@ -497,11 +473,11 @@ This should bring up Visual Studio Code with initialized template
 <span class="o">&lt;</span><span class="err">/template&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span> <span class="p">}</span>
 <span class="o">&lt;</span><span class="err">/script&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">style</span> <span class="nx">lang</span><span class="o">=</span><span class="s2">&#34;scss&#34;</span><span class="o">&gt;</span>
-<span class="hl"><span class="err">@</span><span class="k">import</span> <span class="s1">&#39;./variables.scss&#39;</span><span class="p">;</span>
+<span class="hl"><span class="err">@</span><span class="kr">import</span> <span class="s1">&#39;./variables.scss&#39;</span><span class="p">;</span>
 </span><span class="hl">
 </span><span class="hl"><span class="err">#</span><span class="nx">home</span> <span class="p">{</span>
 </span><span class="hl">    <span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="o">:</span> <span class="mi">400</span><span class="nx">px</span><span class="p">;</span>
@@ -516,7 +492,8 @@ This should bring up Visual Studio Code with initialized template
 </span><span class="hl"><span class="nx">h1</span> <span class="p">{</span>
 </span><span class="hl">    <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="o">:</span> <span class="nx">center</span><span class="p">;</span>
 </span><span class="hl"><span class="p">}</span>
-</span><span class="o">&lt;</span><span class="err">/style&gt;</span></code></pre></div>
+</span><span class="o">&lt;</span><span class="err">/style&gt;</span>
+</code></pre></div>
 And the result is presented below
 
 <div class="lazy" style="max-height: 87px">
@@ -524,11 +501,8 @@ And the result is presented below
     <img data-src="/images/netcore-vuejs/8.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h3 id="adding-components-and-routes">Adding components and routes</h3>
-
 <p>Creating components is the main reason why this tutorial exists. Javascript SPA applications can grow in size very quickly so it&rsquo;s very important to keep good separation of responsibility. Below a simple &lsquo;To do list&rsquo; app component will be created.</p>
-
 <ol>
 <li>Add <strong>Components</strong> folder inside of <strong>App</strong> folder</li>
 <li>Add <strong>Todo</strong> folder inside of <strong>Components</strong> folder</li>
@@ -539,14 +513,14 @@ And the result is presented below
             <span class="nx">v</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="s2">&#34;newTodoText&#34;</span>
             <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&#34;New todo item&#34;</span>
             <span class="err">@</span><span class="nx">keydown</span><span class="p">.</span><span class="nx">enter</span><span class="o">=</span><span class="s2">&#34;addTodo&#34;</span>
-        <span class="err">/&gt;</span>
+        <span class="o">/&gt;</span>
         <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&#34;todos.length&#34;</span><span class="o">&gt;</span>
             <span class="o">&lt;</span><span class="nx">TodoListItem</span>
                 <span class="nx">v</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&#34;todo in todos&#34;</span>
                 <span class="o">:</span><span class="nx">key</span><span class="o">=</span><span class="s2">&#34;todo.id&#34;</span>
                 <span class="o">:</span><span class="nx">todo</span><span class="o">=</span><span class="s2">&#34;todo&#34;</span>
                 <span class="err">@</span><span class="nx">remove</span><span class="o">=</span><span class="s2">&#34;removeTodo&#34;</span>
-            <span class="err">/&gt;</span>
+            <span class="o">/&gt;</span>
         <span class="o">&lt;</span><span class="err">/ul&gt;</span>
         <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">v</span><span class="o">-</span><span class="k">else</span><span class="o">&gt;</span>
             <span class="nx">Nothing</span> <span class="nx">left</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">list</span><span class="p">.</span> <span class="nx">Add</span> <span class="nx">a</span> <span class="k">new</span> <span class="nx">todo</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">input</span> <span class="nx">above</span><span class="p">.</span>
@@ -555,12 +529,12 @@ And the result is presented below
 <span class="o">&lt;</span><span class="err">/template&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-<span class="k">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
-<span class="k">import</span> <span class="nx">TodoListItem</span> <span class="nx">from</span> <span class="s1">&#39;./TodoListItem.vue&#39;</span>
+<span class="kr">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
+<span class="kr">import</span> <span class="nx">TodoListItem</span> <span class="nx">from</span> <span class="s1">&#39;./TodoListItem.vue&#39;</span>
 
 <span class="kd">let</span> <span class="nx">nextTodoId</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
     <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">BaseInputText</span><span class="p">,</span> <span class="nx">TodoListItem</span>
     <span class="p">},</span>
@@ -585,7 +559,7 @@ And the result is presented below
     <span class="p">},</span>
     <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">addTodo</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="k">const</span> <span class="nx">trimmedText</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">newTodoText</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+            <span class="kr">const</span> <span class="nx">trimmedText</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">newTodoText</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">trimmedText</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
                     <span class="nx">id</span><span class="o">:</span> <span class="nx">nextTodoId</span><span class="o">++</span><span class="p">,</span>
@@ -601,7 +575,8 @@ And the result is presented below
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="o">&lt;</span><span class="err">/script&gt;</span></code></pre></div></li>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div></li>
 <li>Add <strong>TodoListItem.vue</strong> file inside of <strong>Todo</strong> folder.
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
@@ -613,7 +588,7 @@ And the result is presented below
 <span class="o">&lt;</span><span class="err">/template&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">todo</span><span class="o">:</span> <span class="p">{</span>
       <span class="nx">type</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
@@ -621,19 +596,20 @@ And the result is presented below
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-<span class="o">&lt;</span><span class="err">/script&gt;</span></code></pre></div></li>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div></li>
 <li>Add <strong>BaseInputText.vue</strong> file inside of <strong>Todo</strong> folder. This will handle users input and emit it to component above.
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="nx">input</span>
     <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text&#34;</span>
-    <span class="k">class</span><span class="o">=</span><span class="s2">&#34;input&#34;</span>
+    <span class="kr">class</span><span class="o">=</span><span class="s2">&#34;input&#34;</span>
     <span class="o">:</span><span class="nx">value</span><span class="o">=</span><span class="s2">&#34;value&#34;</span>
     <span class="nx">v</span><span class="o">-</span><span class="nx">on</span><span class="o">=</span><span class="s2">&#34;listeners&#34;</span>
   <span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="err">/template&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">value</span><span class="o">:</span> <span class="p">{</span>
       <span class="nx">type</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
@@ -653,24 +629,25 @@ And the result is presented below
 
 
 <span class="o">&lt;</span><span class="nx">style</span> <span class="nx">lang</span><span class="o">=</span><span class="s2">&#34;scss&#34;</span> <span class="nx">scoped</span><span class="o">&gt;</span>
-<span class="err">@</span><span class="k">import</span> <span class="s1">&#39;./App/variables.scss&#39;</span><span class="p">;</span>
+<span class="err">@</span><span class="kr">import</span> <span class="s1">&#39;./App/variables.scss&#39;</span><span class="p">;</span>
 
 <span class="p">.</span><span class="nx">input</span> <span class="p">{</span>
   <span class="nx">width</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
   <span class="nx">padding</span><span class="o">:</span> <span class="mi">8</span><span class="nx">px</span> <span class="mi">10</span><span class="nx">px</span><span class="p">;</span>
   <span class="nx">border</span><span class="o">:</span> <span class="mi">1</span><span class="nx">px</span> <span class="nx">solid</span> <span class="nx">$vue</span><span class="o">-</span><span class="nx">blue</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="o">&lt;</span><span class="err">/style&gt;</span></code></pre></div></li>
+<span class="o">&lt;</span><span class="err">/style&gt;</span>
+</code></pre></div></li>
 <li>Modify <strong>index.js</strong> inside of <strong>App</strong> folder to add new route to component
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
-<span class="k">import</span> <span class="nx">VueRouter</span> <span class="nx">from</span> <span class="s1">&#39;vue-router&#39;</span>
-<span class="k">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">&#39;./App.vue&#39;</span>
-<span class="hl"><span class="k">import</span> <span class="nx">TodoList</span> <span class="nx">from</span> <span class="s1">&#39;./components/Todo/TodoList.vue&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+<span class="kr">import</span> <span class="nx">VueRouter</span> <span class="nx">from</span> <span class="s1">&#39;vue-router&#39;</span>
+<span class="kr">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">&#39;./App.vue&#39;</span>
+<span class="hl"><span class="kr">import</span> <span class="nx">TodoList</span> <span class="nx">from</span> <span class="s1">&#39;./components/Todo/TodoList.vue&#39;</span>
 </span>
 <span class="nx">Vue</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">productionTip</span> <span class="o">=</span> <span class="kc">false</span>
 <span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">VueRouter</span><span class="p">)</span>
 
-<span class="k">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">[</span>
+<span class="kr">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">{</span> 
     <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> 
     <span class="nx">component</span><span class="o">:</span> <span class="nx">App</span><span class="p">,</span>
@@ -683,7 +660,7 @@ And the result is presented below
   <span class="p">}</span>
 <span class="p">]</span>
 
-<span class="k">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+<span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
   <span class="nx">routes</span><span class="p">,</span>
   <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;history&#39;</span>
 <span class="p">})</span>
@@ -692,7 +669,8 @@ And the result is presented below
   <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#app&#39;</span><span class="p">,</span>
   <span class="nx">template</span><span class="o">:</span> <span class="s2">&#34;&lt;div&gt;&lt;router-view&gt;&lt;/router-view&gt;&lt;/div&gt;&#34;</span><span class="p">,</span>
   <span class="nx">router</span>
-<span class="p">})</span></code></pre></div></li>
+<span class="p">})</span>
+</code></pre></div></li>
 <li>Modify <strong>App.vue</strong> inside of <strong>App</strong> folder so that a button which directs to new component appears and specific place for rendeing sub components exists.
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&#34;home&#34;</span><span class="o">&gt;</span>
@@ -703,11 +681,11 @@ And the result is presented below
 <span class="o">&lt;</span><span class="err">/template&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span> <span class="p">}</span>
 <span class="o">&lt;</span><span class="err">/script&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">style</span> <span class="nx">lang</span><span class="o">=</span><span class="s2">&#34;scss&#34;</span><span class="o">&gt;</span>
-<span class="err">@</span><span class="k">import</span> <span class="s1">&#39;./variables.scss&#39;</span><span class="p">;</span>
+<span class="err">@</span><span class="kr">import</span> <span class="s1">&#39;./variables.scss&#39;</span><span class="p">;</span>
 
 <span class="err">#</span><span class="nx">home</span> <span class="p">{</span>
     <span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="o">:</span> <span class="mi">400</span><span class="nx">px</span><span class="p">;</span>
@@ -722,35 +700,30 @@ And the result is presented below
 <span class="nx">h1</span> <span class="p">{</span>
     <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="o">:</span> <span class="nx">center</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="o">&lt;</span><span class="err">/style&gt;</span></code></pre></div></li>
+<span class="o">&lt;</span><span class="err">/style&gt;</span>
+</code></pre></div></li>
 </ol>
-
 <p>Now when page is refreshed user should see.</p>
-
 
 <div class="lazy" style="max-height: 97px">
     <div style="padding-bottom:24.31077694235589%"></div>
     <img data-src="/images/netcore-vuejs/9.png" src=""/> 
 </div>  
-
 <p>After clicking <strong>Todo list</strong> hyperlink user will be moved to <strong>/todo</strong> route
 
 <div class="lazy" style="max-height: 201px">
     <div style="padding-bottom:51.93798449612403%"></div>
     <img data-src="/images/netcore-vuejs/10.png" src=""/> 
 </div>  </p>
-
 <h4 id="to-summarize-what-has-been-done-1">To summarize what has been done</h4>
-
 <ul>
 <li>A scss was added to components and bundled with application using webpack</li>
 <li>New components were added and established pattern for adding new components to application</li>
 </ul>
-
 <h2 id="consuming-web-api-from-net">Consuming Web Api from .NET</h2>
-
 <ol>
-<li>Create new Web API file <strong>SampleDataController.cs</strong> inside of <strong>Controllers</strong> folder
+<li>
+<p>Create new Web API file <strong>SampleDataController.cs</strong> inside of <strong>Controllers</strong> folder
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
@@ -758,15 +731,15 @@ And the result is presented below
 <span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
 
 <span class="k">namespace</span> <span class="nn">MarczakIO.VueSPA.Web.Controllers</span>
-<span class="p">{</span><span class="na">
-</span><span class="na">    [Route(&#34;api/[controller]</span><span class="s">&#34;)]
+<span class="p">{</span>
+<span class="na">    [Route(&#34;api/[controller]</span><span class="s">&#34;)]
 </span><span class="s"></span>    <span class="k">public</span> <span class="k">class</span> <span class="nc">SampleDataController</span> <span class="p">:</span> <span class="n">Controller</span>
     <span class="p">{</span>
-        <span class="k">private</span> <span class="k">static</span> <span class="kt">string</span><span class="na">[]</span> <span class="n">Summaries</span> <span class="p">=</span> <span class="k">new</span><span class="na">[]</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="kt">string</span><span class="p">[]</span> <span class="n">Summaries</span> <span class="p">=</span> <span class="k">new</span><span class="p">[]</span>
         <span class="p">{</span>
             <span class="s">&#34;Freezing&#34;</span><span class="p">,</span> <span class="s">&#34;Bracing&#34;</span><span class="p">,</span> <span class="s">&#34;Chilly&#34;</span><span class="p">,</span> <span class="s">&#34;Cool&#34;</span><span class="p">,</span> <span class="s">&#34;Mild&#34;</span><span class="p">,</span> <span class="s">&#34;Warm&#34;</span><span class="p">,</span> <span class="s">&#34;Balmy&#34;</span><span class="p">,</span> <span class="s">&#34;Hot&#34;</span>
-        <span class="p">};</span><span class="na">
-</span><span class="na">
+        <span class="p">};</span>
+<span class="na">
 </span><span class="na">        [HttpGet(&#34;[action]</span><span class="s">&#34;)]
 </span><span class="s"></span>        <span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">WeatherForecast</span><span class="p">&gt;</span> <span class="n">WeatherForecasts</span><span class="p">()</span>
         <span class="p">{</span>
@@ -777,7 +750,7 @@ And the result is presented below
                 <span class="n">Id</span> <span class="p">=</span> <span class="n">i</span><span class="p">++,</span>
                 <span class="n">DateFormatted</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(</span><span class="n">index</span><span class="p">).</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;d&#34;</span><span class="p">),</span>
                 <span class="n">TemperatureC</span> <span class="p">=</span> <span class="n">rng</span><span class="p">.</span><span class="n">Next</span><span class="p">(-</span><span class="m">20</span><span class="p">,</span> <span class="m">55</span><span class="p">),</span><span class="n">W</span>
-                <span class="n">Summary</span> <span class="p">=</span> <span class="n">Summaries</span><span class="na">[rng.Next(Summaries.Length)]</span>
+                <span class="n">Summary</span> <span class="p">=</span> <span class="n">Summaries</span><span class="p">[</span><span class="n">rng</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="n">Summaries</span><span class="p">.</span><span class="n">Length</span><span class="p">)]</span>
             <span class="p">});</span>
         <span class="p">}</span>
 
@@ -797,13 +770,16 @@ And the result is presented below
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
-<li>Add new folder called <strong>Api</strong> inside of <strong>App</strong> folder
-
-<ol>
-<li>Add new file <strong>SampleDataAPI.js</strong> inside of <strong>Api</strong> folder
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Add new folder called <strong>Api</strong> inside of <strong>App</strong> folder</p>
+</li>
+<li>
+<p>Add new file <strong>SampleDataAPI.js</strong> inside of <strong>Api</strong> folder
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"> 
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
     <span class="nx">getData</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/SampleData/WeatherForecasts&#39;</span><span class="p">,</span> <span class="p">{</span>
             <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;get&#39;</span>
@@ -813,10 +789,14 @@ And the result is presented below
             <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
         <span class="p">});</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
-</ol></li>
-<li>Add <strong>ForecastList</strong> folder inside of <strong>Components</strong> folder</li>
-<li>Add <strong>ForecastList.vue</strong> file inside of <strong>ForecastList</strong> folder
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Add <strong>ForecastList</strong> folder inside of <strong>Components</strong> folder</p>
+</li>
+<li>
+<p>Add <strong>ForecastList.vue</strong> file inside of <strong>ForecastList</strong> folder
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"> 
 <span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&#34;app&#34;</span><span class="o">&gt;</span>
@@ -832,10 +812,10 @@ And the result is presented below
 <span class="o">&lt;</span><span class="err">/template&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-<span class="k">import</span> <span class="nx">SampleDataAPI</span> <span class="nx">from</span> <span class="s1">&#39;../../Api/SampleDataAPI.js&#39;</span>
-<span class="k">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span>
+<span class="kr">import</span> <span class="nx">SampleDataAPI</span> <span class="nx">from</span> <span class="s1">&#39;../../Api/SampleDataAPI.js&#39;</span>
+<span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
     <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="nx">forecasts</span><span class="o">:</span> <span class="p">[],</span>
@@ -859,18 +839,21 @@ And the result is presented below
 
 <span class="o">&lt;</span><span class="nx">style</span> <span class="nx">lang</span><span class="o">=</span><span class="s2">&#34;scss&#34;</span><span class="o">&gt;</span>
 
-<span class="o">&lt;</span><span class="err">/style&gt;</span></code></pre></div></li>
-<li>Modify <strong>index.js</strong> inside of <strong>App</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
-<span class="k">import</span> <span class="nx">VueRouter</span> <span class="nx">from</span> <span class="s1">&#39;vue-router&#39;</span>
-<span class="k">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">&#39;./App.vue&#39;</span>
-<span class="k">import</span> <span class="nx">TodoList</span> <span class="nx">from</span> <span class="s1">&#39;./components/Todo/TodoList.vue&#39;</span>
-<span class="hl"><span class="k">import</span> <span class="nx">ForecastList</span> <span class="nx">from</span> <span class="s1">&#39;./components/ForecastList/ForecastList.vue&#39;</span>
+<span class="o">&lt;</span><span class="err">/style&gt;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Modify <strong>index.js</strong> inside of <strong>App</strong> folder
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+<span class="kr">import</span> <span class="nx">VueRouter</span> <span class="nx">from</span> <span class="s1">&#39;vue-router&#39;</span>
+<span class="kr">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">&#39;./App.vue&#39;</span>
+<span class="kr">import</span> <span class="nx">TodoList</span> <span class="nx">from</span> <span class="s1">&#39;./components/Todo/TodoList.vue&#39;</span>
+<span class="hl"><span class="kr">import</span> <span class="nx">ForecastList</span> <span class="nx">from</span> <span class="s1">&#39;./components/ForecastList/ForecastList.vue&#39;</span>
 </span>
 <span class="nx">Vue</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">productionTip</span> <span class="o">=</span> <span class="kc">false</span>
 <span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">VueRouter</span><span class="p">)</span>
 
-<span class="k">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">[</span>
+<span class="kr">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">{</span> 
     <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> 
     <span class="nx">component</span><span class="o">:</span> <span class="nx">App</span><span class="p">,</span>
@@ -887,7 +870,7 @@ And the result is presented below
   <span class="p">}</span>
 <span class="p">]</span>
 
-<span class="k">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+<span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
   <span class="nx">routes</span><span class="p">,</span>
   <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;history&#39;</span>
 <span class="p">})</span>
@@ -896,9 +879,11 @@ And the result is presented below
   <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#app&#39;</span><span class="p">,</span>
   <span class="nx">template</span><span class="o">:</span> <span class="s2">&#34;&lt;div&gt;&lt;router-view&gt;&lt;/router-view&gt;&lt;/div&gt;&#34;</span><span class="p">,</span>
   <span class="nx">router</span>
-<span class="p">})</span></code></pre></div></li>
-
-<li><p>Modify <strong>App.vue</strong> inside of <strong>App</strong> folder
+<span class="p">})</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Modify <strong>App.vue</strong> inside of <strong>App</strong> folder
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&#34;home&#34;</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="o">!&lt;</span><span class="err">/h1&gt;</span>
@@ -909,11 +894,11 @@ And the result is presented below
 <span class="o">&lt;</span><span class="err">/template&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span> <span class="p">}</span>
 <span class="o">&lt;</span><span class="err">/script&gt;</span>
 
 <span class="o">&lt;</span><span class="nx">style</span> <span class="nx">lang</span><span class="o">=</span><span class="s2">&#34;scss&#34;</span><span class="o">&gt;</span>
-<span class="err">@</span><span class="k">import</span> <span class="s1">&#39;./variables.scss&#39;</span><span class="p">;</span>
+<span class="err">@</span><span class="kr">import</span> <span class="s1">&#39;./variables.scss&#39;</span><span class="p">;</span>
 
 <span class="err">#</span><span class="nx">home</span> <span class="p">{</span>
     <span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="o">:</span> <span class="mi">400</span><span class="nx">px</span><span class="p">;</span>
@@ -928,18 +913,19 @@ And the result is presented below
 <span class="nx">h1</span> <span class="p">{</span>
     <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="o">:</span> <span class="nx">center</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="o">&lt;</span><span class="err">/style&gt;</span></code></pre></div></p></li>
-
-<li><p>Test the app
+<span class="o">&lt;</span><span class="err">/style&gt;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Test the app</p>
+</li>
+</ol>
 <div>
 <div class="lazy" style="max-height: 339px">
     <div style="padding-bottom:87.8238341968912%"></div>
     <img data-src="/images/netcore-vuejs/11.png" src=""/> 
-</div>  </div></p></li>
-</ol>
-
+</div>  </div>
 <h4 id="to-summarize-what-has-been-done-2">To summarize what has been done</h4>
-
 <ul>
 <li>Created simple Web API in .NET core which returns random forecasts</li>
 <li>Created simple Service API in javascript to consume this API</li>
@@ -1000,6 +986,9 @@ And the result is presented below
             <div class="col-md-6 text-center large">
                 <h4 class="">More tagged posts</h4>
   <div class="tag-list">
+    <a href="https://marczak.io/tags/dotnet-core" title="View all posts in dotNET Core">
+      <img src="https://marczak.io/images/tags/dotnet-core.svg" alt="dotNET Core"/>
+    </a>
     <a href="https://marczak.io/tags/visual-studio-code" title="View all posts in Visual Studio Code">
       <img src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/>
     </a>
@@ -1008,9 +997,6 @@ And the result is presented below
     </a>
     <a href="https://marczak.io/tags/webpack" title="View all posts in Webpack">
       <img src="https://marczak.io/images/tags/webpack.svg" alt="Webpack"/>
-    </a>
-    <a href="https://marczak.io/tags/dotnet-core" title="View all posts in dotNET Core">
-      <img src="https://marczak.io/images/tags/dotnet-core.svg" alt="dotNET Core"/>
     </a>
   </div>
             </div>
@@ -1139,9 +1125,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1169,21 +1155,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1199,9 +1185,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1235,9 +1221,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1271,9 +1257,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

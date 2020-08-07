@@ -111,23 +111,14 @@
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/splash.png" src=""/> 
 </div> <h2>Highlight</h2>
         <p>Managing application account credentials is just another thing to worry for application developers; especially in public cloud. Learn what is Managed Identity for Azure Services and how does it solve this problem.</p>
-
 <h2 id="intro">Intro</h2>
-
 <p>Cloud is all about decomposition of application architecture. Usually more components mean more resilient, more scalable and more cost-effective solution. But this also poses new challenges that previously developers and architects didn&rsquo;t even need to worry about.</p>
-
 <h3 id="cross-service-authentication-in-azure">Cross-Service Authentication in Azure</h3>
-
 <p>Most cross-service integrations in Azure, are done either via <strong>secret keys</strong> or <strong>token exchange</strong>. Token exchange is much better approach because it is done using Azure AD. Thanks to this developers have much better control over security, lifecycle and permissions of their applications. Azure AD allows creation of something called <strong>service principal</strong>, which in layman terms is simply application user.</p>
-
 <p>Any kind of user in Azure, regardless of its type is called <strong>identity</strong>. It&rsquo;s important to remember this, because identity is word very often mentioned in the documentation and in Azure Portal. Typical user consists of Client ID (consider this as username) and Client Secret or Certificate (consider this a password). Any service presenting a set of those credentials can retrieve a token from Azure Active Directory which can be used to communicate with other services in Azure.</p>
-
 <h3 id="terminology">Terminology</h3>
-
 <p>When it comes to entire topic of Identity and security in Azure there are few terms and a lot of aliases. There is no other way than just simply learning them.</p>
-
 <p>So, in short.</p>
-
 <ul>
 <li><strong>Service Principal</strong> - application account (technical user).</li>
 <li><strong>Identity</strong> - a service or user in Azure AD. Often used as synonym for service principal.</li>
@@ -135,17 +126,13 @@
 <li><strong>Application ID</strong> - synonym for Client ID.</li>
 <li><strong>Managed Service Identity (MSI)</strong> - this is old name for what is called right now <strong>Managed Identities</strong>. Large amount of documentation still is referring to this name.</li>
 </ul>
-
 <p>The simplest design of an application using token authentication looks like this.</p>
-
 
 <div class="lazy" style="max-height: 442px">
     <div style="padding-bottom:68.84735202492212%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000100.png" src=""/> 
 </div>  
-
 <p>To explain the process here</p>
-
 <ol>
 <li><strong>Service A</strong> send the request to <strong>Azure AD</strong> with <strong>Application Credentials</strong> to get the token to call <strong>Service B</strong></li>
 <li><strong>Azure AD</strong> validates the <strong>Application Credentials</strong> and returns <strong>Token</strong> on successful authentication</li>
@@ -154,13 +141,9 @@
 <li><strong>Azure AD</strong> validates the <strong>Token</strong> and returns validation response</li>
 <li><strong>Service B</strong> responds to <strong>Service A</strong></li>
 </ol>
-
 <p>This is good. This is how it should work in well-designed authentication in Azure. But there is a catch in here.</p>
-
 <h4 id="how-does-service-a-store-application-credentials">How does Service A store Application Credentials?</h4>
-
 <p>There is couple of ways Service A can storage credentials. Most common practice to this date is, storing credentials in configuration file, database or environment variables. As anyone can imagine, this isn&rsquo;t very the best practice because anyone who has access to environment also has access to credentials.</p>
-
 <p>
 <div style="height: 30px;" class="lazyblock-margin">
     <div class="lazy lazyblock" style="height: 30px;width:30px">
@@ -169,21 +152,13 @@
 </div>
 
 KeyVault is great when there is more than one service that you connect to from your application like a database, web application, external service. It is also great when more than one service principal is used within application or simply when application wants to store a certificate or a secret/key. But application will need to connect to KeyVault first, which will require storing at least single pair of credentials anyway. While KeyVault surely improves credential management in application, it doesn&rsquo;t solve this basic issue.</p>
-
 <h2 id="managed-identity">Managed Identity</h2>
-
 <p>Here comes managed identity to save the day. Managed Identities is a feature of Azure AD which automatically creates service principal that is tied with the Azure service itself. This identity is automatically also managed by Azure AD and once service is removed the principal will be too. Great part about this isn&rsquo;t really the management of that identity but that applications hosted on those services can generate tokens using this identity without a need to provide any credentials.</p>
-
 <h4 id="how-is-this-secure">How is this secure?</h4>
-
 <p>It is secure because only application hosted on that service which has managed identity enabled will be able to generate tokens.</p>
-
 <h3 id="how-managed-identity-works-in-detail">How Managed Identity works in detail</h3>
-
 <p>In classic approach getting token required applications to send request to login.onmicrosoft.com OAuth endpoint. When doing so application has to supply identity credentials and URL of the service that the token will be used for. With managed identity this is much simpler.</p>
-
 <p>Managed Identity principle is always the same, but the usage and implementation is different across different Azure services. Take app service for example.</p>
-
 <p>
 <div style="height: 30px;" class="lazyblock-margin">
     <div class="lazy lazyblock" style="height: 30px;width:30px">
@@ -197,25 +172,17 @@ When it comes to App Service below diagram presents high level principle how Man
     <div style="padding-bottom:49.62566844919786%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000105.png" src=""/> 
 </div>  </p>
-
 <p>When Managed identity is registered on App Service few things happen.</p>
-
 <ol>
-<li>First of all, a local REST endpoint is registered which is used to retrieve tokens. This endpoint can be only called locally and required secret key from environment variables.
-
-<ol>
-<li>Endpoint is located as environment variable called <strong>MSI_ENDPOINT</strong>
+<li>First of all, a local REST endpoint is registered which is used to retrieve tokens. This endpoint can be only called locally and required secret key from environment variables.</li>
+<li>Endpoint is located as environment variable called <strong>MSI_ENDPOINT</strong> 
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> http://127.0.0.1:41922/MSI/token/</code></pre></div></li>
 <li>And secret for this endpoint is environment variable called <strong>MSI_SECRET</strong>
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> BDCF130B80894D398D9716C10C7C419E</code></pre></div></li>
-</ol></li>
 <li>Azure Identity (Service Principal) is created in Azure AD which is tied to this service. This identity is automatically managed by Azure AD.</li>
 </ol>
-
 <h3 id="requesting-token">Requesting Token</h3>
-
 <p>When MSI is set up requesting token is very simple. Depending on language you use below samples can be used.</p>
-
 <p><strong>C# Example</strong>
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">Microsoft.Azure.Services.AppAuthentication</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Microsoft.Azure.KeyVault</span><span class="p">;</span>
@@ -227,8 +194,8 @@ When it comes to App Service below diagram presents high level principle how Man
 </span><span class="c1"></span>
 <span class="kt">var</span> <span class="n">kv</span> <span class="p">=</span> <span class="k">new</span> <span class="n">KeyVaultClient</span><span class="p">(</span>
     <span class="k">new</span> <span class="n">KeyVaultClient</span><span class="p">.</span><span class="n">AuthenticationCallback</span><span class="p">(</span><span class="n">azureServiceTokenProvider</span><span class="p">.</span><span class="n">KeyVaultTokenCallback</span><span class="p">)</span>
-<span class="p">);</span></code></pre></div></p>
-
+<span class="p">);</span>
+</code></pre></div></p>
 <p><strong>PowerShell Example</strong>
 <div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$apiVersion</span> <span class="p">=</span> <span class="s2">&#34;2017-09-01&#34;</span>
 <span class="nv">$resourceURI</span> <span class="p">=</span> <span class="s2">&#34;https://vault.azure.net&#34;</span>
@@ -239,31 +206,25 @@ When it comes to App Service below diagram presents high level principle how Man
   <span class="n">-Uri</span> <span class="nv">$tokenAuthURI</span> <span class="p">`</span>
   <span class="n">-UseBasicParsing</span>
 <span class="nv">$accessToken</span> <span class="p">=</span> <span class="nv">$tokenResponse</span><span class="p">.</span><span class="n">access_token</span></code></pre></div></p>
-
 <p><strong>NodeJS Example</strong>
-<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http">const rp = require(&#39;request-promise&#39;);
-const getToken = function(resource, apiver, cb) {
-    let options = {
-        uri: `${process.env[&#34;MSI_ENDPOINT&#34;]}/?resource=${resource}&amp;api-version=${apiver}`,
-        headers: {
-            &#39;Secret&#39;: process.env[&#34;MSI_SECRET&#34;]
-        }
-    };
-    rp(options)
-        .then(cb);
-}</code></pre></div></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http"><span class="err">const rp = require(&#39;request-promise&#39;);
+</span><span class="err">const getToken = function(resource, apiver, cb) {
+</span><span class="err">    let options = {
+</span><span class="err">        uri: `${process.env[&#34;MSI_ENDPOINT&#34;]}/?resource=${resource}&amp;api-version=${apiver}`,
+</span><span class="err">        headers: {
+</span><span class="err">            &#39;Secret&#39;: process.env[&#34;MSI_SECRET&#34;]
+</span><span class="err">        }
+</span><span class="err">    };
+</span><span class="err">    rp(options)
+</span><span class="err">        .then(cb);
+</span><span class="err">}</span></code></pre></div></p>
 <p><strong>REST Call Example</strong>
-<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http">GET /MSI/token?resource=https://vault.azure.net&amp;api-version=2017-09-01 HTTP/1.1
-Host: localhost:4141
-Secret: BDCF130B80894D398D9716C10C7C419E</code></pre></div></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/MSI/token?resource=https://vault.azure.net&amp;api-version=2017-09-01</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="n">Host</span><span class="o">:</span> <span class="l">localhost:4141</span>
+<span class="n">Secret</span><span class="o">:</span> <span class="l">BDCF130B80894D398D9716C10C7C419E</span></code></pre></div></p>
 <h3 id="setting-up-example-for-app-service">Setting up example for App Service</h3>
-
 <p>To create MSI in app Service use either of following methods.</p>
-
 <p><strong>Portal</strong></p>
-
 <ol>
 <li>Go to Web App (App Service)</li>
 <li>Search for <strong>Identity</strong> in the search window on blade list panel
@@ -291,50 +252,39 @@ Secret: BDCF130B80894D398D9716C10C7C419E</code></pre></div></p>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000114.png" src=""/> 
 </div>  </li>
 </ol>
-
 <p><strong>Azure CLI</strong>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">az webapp identity assign --name myApp --resource-group myResourceGroup</code></pre></div></p>
-
-<p>With output
+<p>With output 
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;identityIds&#34;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
   <span class="nt">&#34;principalId&#34;</span><span class="p">:</span> <span class="s2">&#34;6009de17-ca37-44d6-b522-5f4de3d2ebdd&#34;</span><span class="p">,</span>
   <span class="nt">&#34;tenantId&#34;</span><span class="p">:</span> <span class="s2">&#34;1f0fb2d0-9423-4dce-ac05-7f195c4ee405&#34;</span><span class="p">,</span>
   <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;SystemAssigned&#34;</span>
 <span class="p">}</span></code></pre></div></p>
-
 <p><strong>Azure PowerShell</strong>
 <div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="nb">Set-AzWebApp</span> <span class="n">-AssignIdentity</span> <span class="nv">$true</span> <span class="n">-Name</span> <span class="nv">$webappname</span> <span class="n">-ResourceGroupName</span> <span class="n">myResourceGroup</span></code></pre></div></p>
-
 <p>With output
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">...
 Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity
 ...</code></pre></div></p>
-
 <p><strong>Azure Resource Manager template</strong>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;identity&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;SystemAssigned&#34;</span>
   <span class="p">}</span>   
 <span class="p">}</span></code></pre></div></p>
-
 <h3 id="managed-identity-types">Managed Identity types</h3>
-
 <p>There are currently two types on managed identities</p>
-
 <ul>
 <li><strong>System Assigned</strong> means that lifecycle of managed identity is automatically and managed by Azure AD.</li>
 <li><strong>User Assigned</strong> allows user to first create Azure AD application/service principal and assign this as managed identity and use it in the same manner. This has few advantages in terms of reuse of applications and their permissions if many services in Azure should share the account and its permissions.</li>
 </ul>
-
 <h3 id="adding-access-to-managed-identity">Adding Access to Managed Identity</h3>
-
 <p>When managed identity is provisioned it can be found in Azure Portal for many services. This allows for RBAC assignments of Roles.</p>
-
 <ol>
 <li>Go to resource</li>
 <li>Open <strong>Access control (IAM)</strong> blade</li>
-<li>Click on <strong>Add Role</strong> and select role
+<li>Click on <strong>Add Role</strong> and select role 
 
 <div class="lazy" style="max-height: 357px">
     <div style="padding-bottom:85.8173076923077%"></div>
@@ -348,9 +298,7 @@ Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdenti
 </div>  </li>
 <li>Select identity and click <strong>Save</strong></li>
 </ol>
-
 <p>List of services that allow for assignment of RBAC/roles for Managed Identity</p>
-
 <ul>
 <li><strong>Resource Manage</strong>r - manage Azure resources</li>
 <li><strong>Key Vault</strong> - keys, secrets, certificates</li>
@@ -361,33 +309,22 @@ Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdenti
 <li><strong>Storage blobs and queues</strong> - storage and queue data</li>
 <li><strong>Analysis Services</strong> - manage AAS data or server properties</li>
 </ul>
-
 <h3 id="local-development">Local development</h3>
-
 <p>When it comes to local development with managed identity at first it is very confusing. This is one of very good cases for user assigned managed identity.</p>
-
 <p>How in short how it works is.
 
 <div class="lazy" style="max-height: 472px">
     <div style="padding-bottom:50.807319698600644%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000127.png" src=""/> 
 </div>  </p>
-
 <p>Because as of Today there is no MSI emulator users need to use Azure CLI. Azure CLI allows to log in as user but also as Azure Service Principal. This is a good use case for User Assigned Managed Identity. When user created its own principal, he/she can log as that principal locally and request tokens using CLI</p>
-
 <p><strong>KeyVault example</strong>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">az account get-access-token --resource <span class="s1">&#39;https://vault.azure.net&#39;</span></code></pre></div></p>
-
 <p>Why calling local command line isn&rsquo;t necessarily the most beautiful approach it surely works. But what is great here is that Microsoft SDKs for identity will recognize local development and lack of Managed Identity endpoint and try to call CLI in the background without any code changes. This is huge benefit of using SDKs.</p>
-
 <h2 id="supported-services">Supported Services</h2>
-
 <p>This list is compilation of services which support or partially support managed identities.</p>
-
 <h3 id="azure-global">Azure Global</h3>
-
 <p>Global Azure region means all regions with exception of Azure Germany, Government and China.</p>
-
 <table>
 <tbody>
 <tr>
@@ -494,9 +431,7 @@ Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdenti
 </tr>
 </tbody>
 </table>
-
 <h3 id="azure-government">Azure Government</h3>
-
 <table>
 <tbody>
 <tr>
@@ -594,9 +529,7 @@ Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdenti
 </tr>
 </tbody>
 </table>
-
 <h3 id="azure-germany">Azure Germany</h3>
-
 <table>
 <tbody>
 <tr>
@@ -694,11 +627,8 @@ Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdenti
 </tr>
 </tbody>
 </table>
-
 <h3 id="azure-china">Azure China</h3>
-
 <p>China region available via 21Vianet</p>
-
 <table>
 <tbody>
 <tr>
@@ -796,11 +726,8 @@ Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdenti
 </tr>
 </tbody>
 </table>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>How it all it takes is just review services and start implementing this fantastic feature.</p>
-
 <p>Read more on Identities on <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview">Azure documentation for Managed Identity</a>.</p>
     </article>
     <div class="section-blog-info">
@@ -995,9 +922,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1025,21 +952,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1055,9 +982,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1091,9 +1018,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1127,9 +1054,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

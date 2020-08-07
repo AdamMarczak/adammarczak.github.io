@@ -117,11 +117,8 @@
     Source Code
 </a><h2>Highlight</h2>
         <p>Storing data is key aspect of every application out there. Learn how to use Azure Cosmos DB with .NET Core to deliver CRUD operation capabilities to application of any kind, and how to handle those operations in real time on front-end using Vue.js.</p>
-
 <h3 id="what-is-cosmos-db-and-why-should-anyone-use-it">What is Cosmos DB and why should anyone use it?</h3>
-
 <p><a href="https://azure.microsoft.com/en-us/services/cosmos-db/">Cosmos DB</a> is one of available Azure PaaS (Platform as a Service) databases. It delivers low latency and high scalability data storage anywhere in the world. Cosmos DB is simply said a document database which stores its data in JSON format. It also has several APIs allowing for easy integration with many languages and frameworks. Those APIs include</p>
-
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-sql-query">SQL</a></li>
 <li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/graph-introduction">Graph</a></li>
@@ -129,13 +126,9 @@
 <li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-introduction">Cassandra</a></li>
 <li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/table-introduction">Table</a></li>
 </ul>
-
 <p>Biggest advantage of using databases like Cosmos DB is that they will scale better than databases but also offer great &lsquo;pay as you go&rsquo; model which means for small applications the cost is much lower than the one of full-fledged database. Of&rsquo;course this doesn&rsquo;t mean classic relational database should not be used, on the contrary, in some cases they are very much recommended.</p>
-
 <h2 id="creating-cosmos-db">Creating Cosmos DB</h2>
-
 <p>Creation of Cosmos DB is very easy. Few clicks in Azure Portal and developer is good to go. It is recommended that for production usage environment setup should be automated using either <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest">Azure CLI</a> or <a href="https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.2.0">PowerShell</a> with use of <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview">ARM templates</a>.</p>
-
 <ol>
 <li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
 <li>Click on <strong>plus</strong> sign on the left-hand side corner, type in <strong>cosmos</strong> is search box and then press <strong>enter</strong>
@@ -155,15 +148,16 @@
 <div class="lazy" style="max-height: 399px">
     <div style="padding-bottom:128.29581993569133%"></div>
     <img data-src="/images/netcore-vuejs-crud/3.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>ID</strong> - name of the service, it will be available as public DNS and therefore must be globally unique</li>
 <li><strong>API</strong> - a type of connectivity for Cosmos DB, currently only one API can be enabled at the time</li>
 <li><strong>Resource Group</strong> - logical container name where the resource will be created</li>
 <li><strong>Location</strong> - datacenter region location</li>
 <li><strong>Enable Geo Redundancy</strong> - setting which will replicate database across multiple datacenter regions</li>
-</ul></li>
+</ul>
+<ol start="5">
 <li>Create new collection by navigating to <strong>Data Explorer</strong> and clicking on <strong>New Collection</strong> button
 
 <div class="lazy" style="max-height: 355px">
@@ -175,43 +169,32 @@
 <div class="lazy" style="max-height: 462px">
     <div style="padding-bottom:107.44186046511628%"></div>
     <img data-src="/images/netcore-vuejs-crud/5.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Database Id</strong> - logical container name for collections</li>
 <li><strong>Collection Id</strong> - name for the container</li>
 <li><strong>Storage Capacity</strong> - how much data can the collection hold, leave it at 10GB</li>
 <li><strong>Throughput</strong> - How many <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/request-units">Request Units</a> can collection process per second</li>
 <li><strong>Unique Keys</strong> - similarly to relational database this is &lsquo;unique&rsquo; key on the column (value). It can be also put on nested values like /Address/Id. Note that it not required to add unique key on &lsquo;id&rsquo; column as this is enabled by default.</li>
-</ul></li>
-</ol>
-
+</ul>
 <h3 id="summarizing">Summarizing</h3>
-
 <p>In this section</p>
-
 <ul>
 <li>A new Azure Cosmos DB called <strong>marczakio-vuejs-crud</strong> was created</li>
 <li>A new database with Id <strong>Demo</strong> was created</li>
 <li>A new collection with Id <strong>Todo</strong> was created</li>
 </ul>
-
 <h2 id="building-a-web-application">Building a Web Application</h2>
-
 <p>Next step is to create a web app backbone that will allow for creation of new to-do items and a web api that will handle the request.</p>
-
 
 <div class="lazy" style="max-height: 199px">
     <div style="padding-bottom:76.24521072796935%"></div>
     <img data-src="/images/netcore-vuejs-crud/6.png" src=""/> 
 </div>  
-
 <p>This section will cover all 4 (four) basic actions for to-do&rsquo;s which are create, read, update and delete.</p>
-
 <h3 id="start-with-the-web-app-template">Start with the web app template</h3>
-
 <p>This post is a follow-up to previous post <a href="/posts/netcore-vuejs/">Building .NET Core 2.0 web apps with Vue.js single file components using VS Code</a>. A following template uses techniques explained in that article.</p>
-
 <ol>
 <li>Clone simple vuejs template by opening Command Line and executing following commands from working directory
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/MarczakIO/netcore-vuejs-template.git
@@ -221,7 +204,7 @@ npm install
 code .</code></pre></div></li>
 <li>Open <strong>.gitignore</strong> file and add following line
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">appsettings.local.json</code></pre></div></li>
-<li>Now add <strong>appsettings.local.json</strong> file inside of root directory for the project. This file will contain connection string and credentials to the database. In previous step it was added to gitignore so that it won&rsquo;t be committed to the repo.
+<li>Now add <strong>appsettings.local.json</strong> file inside of root directory for the project. This file will contain connection string and credentials to the database. In previous step it was added to gitignore so that it won&rsquo;t be committed to the repo. 
 <div class="highlight"><pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
     <span class="nt">&#34;DatabaseSettings&#34;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&#34;DatabaseId&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;created_database_id&gt;&#34;</span><span class="p">,</span>
@@ -229,9 +212,7 @@ code .</code></pre></div></li>
         <span class="nt">&#34;AuthKey&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;cosmos_db_auth_key&gt;&#34;</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
-In order to get those properties for created database
-
-<ol>
+In order to get those properties for created database</li>
 <li>Navigate to <strong>Keys</strong> blade on azure portal
 
 <div class="lazy" style="max-height: 183px">
@@ -245,7 +226,6 @@ In order to get those properties for created database
     <img data-src="/images/netcore-vuejs-crud/9.png" src=""/> 
 </div>  </li>
 <li>DatabaseId is the name of the database created earlier. In case of this article the name was &ldquo;Demo&rdquo;</li>
-</ol></li>
 <li>Create folder called <strong>Models</strong> in root directory</li>
 <li>Add model class <strong>DatabaseSettings.cs</strong> inside of <strong>Models</strong> folder which will hold specified configuration values
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
@@ -258,8 +238,9 @@ In order to get those properties for created database
         <span class="k">public</span> <span class="kt">string</span> <span class="n">Endpoint</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
         <span class="k">public</span> <span class="kt">string</span> <span class="n">AuthKey</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
-<li>Now modify <strong>Startup.cs</strong> class so that it loads the options from appsettings.local.json file into a service whenever called for using dependency injection.
+<span class="p">}</span>
+</code></pre></div></li>
+<li>Now modify <strong>Startup.cs</strong> class so that it loads the options from appsettings.local.json file into a service whenever called for using dependency injection. 
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
@@ -325,29 +306,25 @@ In order to get those properties for created database
             <span class="p">});</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 By configuring <strong>DatabaseOptions</strong> with <strong>Configure</strong> method every time <strong>IOptions<DatabaseSettings></strong> is called in any constructor in the application a dependency injection container will make sure to initialize that property. Additionally because a configuration object has been given <strong>appsetings.local.json</strong> as additional config file then each time dependency injection initializes object all properties will be automatically populated with values from json file</li>
 </ol>
-
 <h3 id="reading-documents">Reading documents</h3>
-
 <p>Order of which actions developer builds first is not of high importance although usually it&rsquo;s best to start with create or read actions. In this article read action will be built first as it&rsquo;s possible to create document objects in azure portal. It will also make it much easier to work with other methods when it&rsquo;s possible to see results immediately.</p>
-
 
 <div class="lazy" style="max-height: 109px">
     <div style="padding-bottom:61.93181818181818%"></div>
     <img data-src="/images/netcore-vuejs-crud/10.png" src=""/> 
 </div>  
-
 <h4 id="build-a-web-api-for-document-reading">Build a Web API for document reading</h4>
-
 <ol>
 <li>Add nuget package for CosmosDB by using following command from command line
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dotnet add package Microsoft.Azure.DocumentDB.Core
 dotnet restore</code></pre></div>
 <strong>Note</strong>: Sometimes it is required to restart Visual Studio Code to pick up new packages or it will report namespacing issues.</li>
 <li>Create folder called <strong>Azure</strong> in root directory</li>
-<li>Add new class file called <strong>DocumentDBRepository.cs</strong>
+<li>Add new class file called <strong>DocumentDBRepository.cs</strong> 
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">MarczakIO.VueSPA.Web.Models</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Microsoft.Extensions.Options</span><span class="p">;</span>
@@ -390,7 +367,8 @@ dotnet restore</code></pre></div>
             <span class="k">return</span> <span class="n">results</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Initialize depdendency injection for DocumentDBRepository inside of <strong>Startup.cs</strong> class file in <strong>ConfigureServices</strong> method
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="n">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
 <span class="p">{</span>
@@ -398,7 +376,8 @@ dotnet restore</code></pre></div>
         <span class="n">Configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&#34;DatabaseSettings&#34;</span><span class="p">).</span><span class="n">Bind</span><span class="p">(</span><span class="n">options</span><span class="p">));</span>
 <span class="hl">    <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">DocumentDBRepository</span><span class="p">&lt;&gt;),</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DocumentDBRepository</span><span class="p">&lt;&gt;));</span>
 </span>    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 <li>Create folder called <strong>Controllers</strong> in root directory</li>
 <li>Now it&rsquo;s just a controller for Web API that is missing, so add it inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
@@ -412,8 +391,8 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 <span class="k">using</span> <span class="nn">Newtonsoft.Json</span><span class="p">;</span>
 
 <span class="k">namespace</span> <span class="nn">MarczakIO.VueSPA.Web.Controllers</span>
-<span class="p">{</span><span class="na">
-</span><span class="na">    [Route(&#34;api/[controller]</span><span class="s">&#34;)]
+<span class="p">{</span>
+<span class="na">    [Route(&#34;api/[controller]</span><span class="s">&#34;)]
 </span><span class="s"></span>    <span class="k">public</span> <span class="k">class</span> <span class="nc">TodoController</span> <span class="p">:</span> <span class="n">Controller</span>
     <span class="p">{</span>
         <span class="k">private</span> <span class="n">DocumentDBRepository</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">todoRepo</span><span class="p">;</span>
@@ -421,31 +400,30 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
         <span class="k">public</span> <span class="n">TodoController</span><span class="p">(</span><span class="n">DocumentDBRepository</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">_todoRepo</span><span class="p">)</span>
         <span class="p">{</span>
             <span class="n">todoRepo</span> <span class="p">=</span> <span class="n">_todoRepo</span><span class="p">;</span>
-        <span class="p">}</span><span class="na">
-</span><span class="na">
+        <span class="p">}</span>
+<span class="na">
 </span><span class="na">        [HttpPost(&#34;[action]</span><span class="s">&#34;)]
-</span><span class="s"></span>        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">GetAll</span><span class="p">(</span><span class="na">[FromBody]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
+</span><span class="s"></span>        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">GetAll</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
         <span class="p">{</span>
             <span class="k">return</span> <span class="k">await</span> <span class="n">todoRepo</span><span class="p">.</span><span class="n">CreateItemAsync</span><span class="p">(</span><span class="n">CollectionId</span><span class="p">,</span> <span class="n">todo</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="k">public</span> <span class="k">class</span> <span class="nc">Todo</span>
-        <span class="p">{</span><span class="na">
-</span><span class="na">            [JsonProperty(&#34;id&#34;)]</span>
-            <span class="k">public</span> <span class="kt">string</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span><span class="na">
-</span><span class="na">            [JsonProperty(&#34;name&#34;)]</span>
+        <span class="p">{</span>
+<span class="na">            [JsonProperty(&#34;id&#34;)]</span>
+            <span class="k">public</span> <span class="kt">string</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="na">            [JsonProperty(&#34;name&#34;)]</span>
             <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 </ol>
-
 <h4 id="build-front-end-for-document-creation">Build front-end for document creation</h4>
-
 <ol>
 <li>Create new folder called <strong>Services</strong> inside of App folder</li>
 <li>Add new file called <strong>TodoService.js</strong> inside of <strong>Services</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
     <span class="nx">getAll</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/Todo/GetAll&#39;</span><span class="p">,</span> <span class="p">{</span>
             <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;get&#39;</span><span class="p">,</span>
@@ -456,41 +434,42 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
             <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
         <span class="p">});</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Modify <strong>TodoList.vue</strong> file inside of <strong>App/Components/Todo</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
-<span class="hl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui animated relaxed list&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;todos.length&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="hl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui animated relaxed list&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;todos.length&#34;</span><span class="p">&gt;</span>
 </span><span class="hl">                <span class="p">&lt;</span><span class="nt">TodoListItem</span> 
 </span><span class="hl">                    <span class="na">class</span><span class="o">=</span><span class="s">&#34;item&#34;</span>
 </span><span class="hl">                    <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;todo in todos&#34;</span>
 </span><span class="hl">                    <span class="na">:key</span><span class="o">=</span><span class="s">&#34;todo.id&#34;</span>
 </span><span class="hl">                    <span class="na">:todo</span><span class="o">=</span><span class="s">&#34;todo&#34;</span>
 </span><span class="hl">                    <span class="err">@</span><span class="na">remove</span><span class="o">=</span><span class="s">&#34;removeTodo&#34;</span>
-</span><span class="hl">                <span class="p">/</span><span class="p">&gt;</span>
-</span><span class="hl">            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui message info&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">                <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui icon info&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+</span><span class="hl">                <span class="p">/&gt;</span>
+</span><span class="hl">            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui message info&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">                <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui icon info&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
 </span><span class="hl">                There are no todo items. Add a new todo in the input above.
-</span><span class="hl">            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui clean segment empty-loader&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui active inverted dimmer&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span><span class="hl">            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui clean segment empty-loader&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui active inverted dimmer&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
-<span class="k">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
-<span class="k">import</span> <span class="nx">TodoListItem</span> <span class="nx">from</span> <span class="s1">&#39;./TodoListItem.vue&#39;</span>
-<span class="hl"><span class="k">import</span> <span class="nx">TodoService</span> <span class="nx">from</span> <span class="s1">&#39;../../Services/TodoService.js&#39;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kr">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
+<span class="kr">import</span> <span class="nx">TodoListItem</span> <span class="nx">from</span> <span class="s1">&#39;./TodoListItem.vue&#39;</span>
+<span class="hl"><span class="kr">import</span> <span class="nx">TodoService</span> <span class="nx">from</span> <span class="s1">&#39;../../Services/TodoService.js&#39;</span>
 </span>
 <span class="kd">let</span> <span class="nx">nextTodoId</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
     <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">BaseInputText</span><span class="p">,</span> <span class="nx">TodoListItem</span>
     <span class="p">},</span>
@@ -522,9 +501,9 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 </span><span class="hl">        <span class="k">this</span><span class="p">.</span><span class="nx">getTodos</span><span class="p">();</span>
 </span><span class="hl">    <span class="p">}</span>
 </span><span class="p">}</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;scss&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;scss&#34;</span><span class="p">&gt;</span>
 <span class="hl"><span class="p">.</span><span class="nc">clean</span><span class="p">.</span><span class="nc">segment</span> <span class="p">{</span>
 </span><span class="hl">    <span class="k">border</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
 </span><span class="hl">    <span class="k">box-shadow</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
@@ -532,30 +511,30 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 </span><span class="hl"><span class="p">.</span><span class="nc">empty-loader</span> <span class="p">{</span>
 </span><span class="hl">    <span class="k">min-height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
 </span><span class="hl"><span class="p">}</span>
-</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
+</span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Modify <strong>TodoListItem.vue</strong> file inside of <strong>App/Components/Todo</strong> folder. This will format list nicely as it is mostly UI change with only logic change being <strong>emit</strong> function which now returns entire object to delete instead of just id.
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
-<span class="hl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item ui clean segment&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui inverted dimmer&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ active: todo.isUpdating }&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;right floated content&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="hl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item ui clean segment&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui inverted dimmer&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ active: todo.isUpdating }&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;right floated content&#34;</span><span class="p">&gt;</span>
 </span><span class="hl">      <span class="p">&lt;</span><span class="nt">button</span> 
 </span><span class="hl">        <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui button mini&#34;</span>
-</span><span class="hl">        <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;$emit(&#39;remove&#39;, todo)&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;remove icon&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;$emit(&#39;remove&#39;, todo)&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;remove icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
 </span><span class="hl">        Delete
-</span><span class="hl">      <span class="p">&lt;</span><span class="p">/</span><span class="nt">button</span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;large tasks middle aligned icon&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;content&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">      <span class="p">&lt;</span><span class="nt">h3</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;header&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ todo.name }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h3</span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">  <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;large tasks middle aligned icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;content&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;</span><span class="nt">h3</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;header&#34;</span><span class="p">&gt;</span>{{ todo.name }}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">todo</span><span class="o">:</span> <span class="p">{</span>
       <span class="nx">type</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span>
@@ -563,66 +542,61 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div></li>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Modify <strong>index.html</strong> inside of <strong>wwwroot</strong> folder. This will add some CSS for nicer looks. Using Semantic UI is personal choice, bootstrap or any other CSS library is also good.
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p"></span><span class="p">&gt;</span>My App<span class="p">&lt;</span><span class="p">/</span><span class="nt">title</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">base</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
-<span class="hl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/dist/site.css&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
-</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#39;app&#39;</span><span class="p"></span><span class="p">&gt;</span>Loading...<span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">base</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/&#34;</span> <span class="p">/&gt;</span>
+<span class="hl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css&#34;</span> <span class="p">/&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/dist/site.css&#34;</span> <span class="p">/&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#39;app&#39;</span><span class="p">&gt;</span>Loading...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="hl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://code.jquery.com/jquery-3.1.1.min.js&#34;</span> 
 </span><span class="hl">        <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=&#34;</span> 
-</span><span class="hl">        <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.js&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/dist/main.js&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div></li>
-<li>Run the project. This is what should be displayed on the screen.
+</span><span class="hl">        <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/dist/main.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div></li>
+<li>Run the project. This is what should be displayed on the screen.</li>
+</ol>
 <div>
 <div class="lazy" style="max-height: 202px">
     <div style="padding-bottom:37.827715355805246%"></div>
     <img data-src="/images/netcore-vuejs-crud/1.gif" src=""/> 
-</div>  </li>
-<li>Add static items to the application to verify application works. Open azure portal and click on *8Todo** collection and then <strong>Documents</strong> and click on <strong>New Document</strong> button
+</div>  
+6. Add static items to the application to verify application works. Open azure portal and click on *8Todo** collection and then **Documents** and click on **New Document** button
 <div>
 <div class="lazy" style="max-height: 302px">
     <div style="padding-bottom:58.188824662813104%"></div>
     <img data-src="/images/netcore-vuejs-crud/11.png" src=""/> 
-</div>  </li>
-<li>Add few test items
+</div>  
+7. Add few test items
 <div>
 <div class="lazy" style="max-height: 253px">
     <div style="padding-bottom:51.422764227642276%"></div>
     <img data-src="/images/netcore-vuejs-crud/12.png" src=""/> 
-</div>  </li>
-<li>Refresh the page.
+</div>  
+8. Refresh the page.
 <div>
 <div class="lazy" style="max-height: 220px">
     <div style="padding-bottom:42.30769230769231%"></div>
     <img data-src="/images/netcore-vuejs-crud/2.gif" src=""/> 
-</div>  </li>
-</ol>
-
+</div>  
 <h3 id="creating-documents">Creating documents</h3>
-
 <p>Now that the reading and displaing data is done. Creation of new documents can be quickly added.</p>
-
 
 <div class="lazy" style="max-height: 109px">
     <div style="padding-bottom:61.93181818181818%"></div>
     <img data-src="/images/netcore-vuejs-crud/7.png" src=""/> 
 </div>  
-
 <h4 id="build-a-web-api-for-document-creation">Build a Web API for document creation</h4>
-
 <ol>
-<li>Add new method <strong>CreateItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong>
+<li>Add new method <strong>CreateItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong> 
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">CreateItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="n">T</span> <span class="n">item</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">Document</span> <span class="n">document</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="n">CreateDocumentAsync</span><span class="p">(</span>
@@ -630,37 +604,37 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
         <span class="n">item</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)(</span><span class="kt">dynamic</span><span class="p">)</span><span class="n">document</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Add new method <strong>Create</strong> inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
-</span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">Create</span><span class="p">(</span><span class="na">[FromBody]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
+</span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">Create</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="k">await</span> <span class="n">todoRepo</span><span class="p">.</span><span class="n">CreateItemAsync</span><span class="p">(</span><span class="n">CollectionId</span><span class="p">,</span> <span class="n">todo</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 </ol>
-
 <h4 id="build-front-end-for-document-creation-1">Build front-end for document creation</h4>
-
 <ol>
 <li>Modify <strong>BaseInputText.vue</strong> inside of <strong>App/Components/Todo</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
-<span class="hl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="nt">h2</span><span class="p"></span><span class="p">&gt;</span>Create new todo item<span class="p">&lt;</span><span class="p">/</span><span class="nt">h2</span><span class="p">&gt;</span>
-</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui vertical segment&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui inverted dimmer&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ active: isCreating }&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">      <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="hl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Create new todo item<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui vertical segment&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui inverted dimmer&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ active: isCreating }&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span>      <span class="p">&lt;</span><span class="nt">input</span>
         <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span>
         <span class="na">class</span><span class="o">=</span><span class="s">&#34;input&#34;</span>
         <span class="na">:value</span><span class="o">=</span><span class="s">&#34;value&#34;</span>
-        <span class="na">v-on</span><span class="o">=</span><span class="s">&#34;listeners&#34;</span><span class="p">/</span><span class="p">&gt;</span>
-<span class="hl">    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="hl">  <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+        <span class="na">v-on</span><span class="o">=</span><span class="s">&#34;listeners&#34;</span><span class="p">/&gt;</span>
+<span class="hl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">value</span><span class="o">:</span> <span class="p">{</span>
       <span class="nx">type</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
@@ -680,10 +654,10 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
 
-<span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;scss&#34;</span> <span class="na">scoped</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;scss&#34;</span> <span class="na">scoped</span><span class="p">&gt;</span>
 <span class="p">@</span><span class="k">import</span> <span class="s1">&#39;./App/variables.scss&#39;</span><span class="p">;</span>
 
 <span class="p">.</span><span class="nc">input</span> <span class="p">{</span>
@@ -691,47 +665,47 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
   <span class="k">padding</span><span class="p">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
   <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="err">$</span><span class="n">vue-blue</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Modify <strong>TodoList.vue</strong> inside of <strong>App/Components/Todo</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span><span class="p"></span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p">&gt;</span>
 <span class="hl">            <span class="p">&lt;</span><span class="nt">BaseInputText</span> 
 </span><span class="hl">                <span class="na">v-model</span><span class="o">=</span><span class="s">&#34;newTodoText&#34;</span>
 </span><span class="hl">                <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;New todo item&#34;</span>
 </span><span class="hl">                <span class="err">@</span><span class="na">keydown</span><span class="err">.</span><span class="na">enter</span><span class="o">=</span><span class="s">&#34;addTodo&#34;</span>
 </span><span class="hl">                <span class="na">:isCreating</span><span class="o">=</span><span class="s">&#34;isCreating&#34;</span>
-</span><span class="hl">            <span class="p">/</span><span class="p">&gt;</span>
-</span>            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui animated relaxed list&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;todos.length&#34;</span><span class="p"></span><span class="p">&gt;</span>
+</span><span class="hl">            <span class="p">/&gt;</span>
+</span>            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui animated relaxed list&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;todos.length&#34;</span><span class="p">&gt;</span>
                 <span class="p">&lt;</span><span class="nt">TodoListItem</span> 
                     <span class="na">class</span><span class="o">=</span><span class="s">&#34;item&#34;</span>
                     <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;todo in todos&#34;</span>
                     <span class="na">:key</span><span class="o">=</span><span class="s">&#34;todo.id&#34;</span>
                     <span class="na">:todo</span><span class="o">=</span><span class="s">&#34;todo&#34;</span>
                     <span class="err">@</span><span class="na">remove</span><span class="o">=</span><span class="s">&#34;removeTodo&#34;</span>
-                <span class="p">/</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui message info&#34;</span><span class="p"></span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui icon info&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+                <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui message info&#34;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui icon info&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
                 There are no todo items. Add a new todo in the input above.
-            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui clean segment empty-loader&#34;</span><span class="p"></span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui active inverted dimmer&#34;</span><span class="p"></span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui clean segment empty-loader&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui active inverted dimmer&#34;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
-<span class="k">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
-<span class="k">import</span> <span class="nx">TodoListItem</span> <span class="nx">from</span> <span class="s1">&#39;./TodoListItem.vue&#39;</span>
-<span class="k">import</span> <span class="nx">TodoService</span> <span class="nx">from</span> <span class="s1">&#39;../../Services/TodoService.js&#39;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kr">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
+<span class="kr">import</span> <span class="nx">TodoListItem</span> <span class="nx">from</span> <span class="s1">&#39;./TodoListItem.vue&#39;</span>
+<span class="kr">import</span> <span class="nx">TodoService</span> <span class="nx">from</span> <span class="s1">&#39;../../Services/TodoService.js&#39;</span>
 
 <span class="kd">let</span> <span class="nx">nextTodoId</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
     <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">BaseInputText</span><span class="p">,</span> <span class="nx">TodoListItem</span>
     <span class="p">},</span>
@@ -776,7 +750,7 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
         <span class="k">this</span><span class="p">.</span><span class="nx">getTodos</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div></li>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Modify <strong>TodoService.js</strong> inside of <strong>App/Services</strong> folder by adding new <strong>create</strong> function
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">create</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
@@ -789,8 +763,10 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
     <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
     <span class="p">});</span>
-<span class="p">}</span></code></pre></div></li>
-<li>Test the application
+<span class="p">}</span>
+</code></pre></div></li>
+<li>Test the application</li>
+</ol>
 <div>
 <div class="lazy" style="max-height: 481px">
     <div style="padding-bottom:92.5%"></div>
@@ -801,38 +777,32 @@ New items can be also seen in the Cosmos DB
 <div class="lazy" style="max-height: 332px">
     <div style="padding-bottom:42.72844272844273%"></div>
     <img data-src="/images/netcore-vuejs-crud/13.png" src=""/> 
-</div>  </li>
-</ol>
-
+</div>  
 <h3 id="deleting-documents">Deleting documents</h3>
-
 <p>To get application fully functional a deletion operation must be created next.</p>
-
 
 <div class="lazy" style="max-height: 109px">
     <div style="padding-bottom:61.93181818181818%"></div>
     <img data-src="/images/netcore-vuejs-crud/14.png" src=""/> 
 </div>  
-
 <h4 id="build-a-web-api-for-document-deletion">Build a Web API for document deletion</h4>
-
 <ol>
-<li>Add new method <strong>DeleteItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong>
+<li>Add new method <strong>DeleteItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong> 
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">DeleteItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">id</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="n">DeleteDocumentAsync</span><span class="p">(</span>
         <span class="n">UriFactory</span><span class="p">.</span><span class="n">CreateDocumentUri</span><span class="p">(</span><span class="n">dbOptions</span><span class="p">.</span><span class="n">DatabaseId</span><span class="p">,</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="n">id</span><span class="p">));</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Add new method <strong>Delete</strong> inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
-</span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">Delete</span><span class="p">(</span><span class="na">[FromBody]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
+</span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">Delete</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">await</span> <span class="n">todoRepo</span><span class="p">.</span><span class="n">DeleteItemAsync</span><span class="p">(</span><span class="n">CollectionId</span><span class="p">,</span> <span class="n">todo</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 </ol>
-
 <h4 id="build-front-end-for-document-creation-2">Build front-end for document creation</h4>
-
 <ol>
 <li>Modify <strong>removeTodo</strong> function inside of <strong>TodoList.vue</strong> inside of <strong>App/Components/Todo</strong> folder
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">removeTodo</span> <span class="p">(</span><span class="nx">todoToRemove</span><span class="p">)</span> <span class="p">{</span>
@@ -845,7 +815,8 @@ New items can be also seen in the Cosmos DB
             <span class="p">})</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">$set</span><span class="p">(</span><span class="nx">todoToRemove</span><span class="p">,</span> <span class="s1">&#39;isUpdating&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
         <span class="p">});</span>
-<span class="p">},</span></code></pre></div></li>
+<span class="p">},</span>
+</code></pre></div></li>
 <li>Modify <strong>TodoService.js</strong> inside of <strong>App/Services</strong> folder and add new <strong>delete</strong> function
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">delete</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
@@ -856,59 +827,55 @@ New items can be also seen in the Cosmos DB
     <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
     <span class="p">});</span>
-<span class="p">}</span></code></pre></div></li>
-<li>Test the application
+<span class="p">}</span>
+</code></pre></div></li>
+<li>Test the application</li>
+</ol>
 <div>
 <div class="lazy" style="max-height: 336px">
     <div style="padding-bottom:65.625%"></div>
     <img data-src="/images/netcore-vuejs-crud/4.gif" src=""/> 
-</div>  </li>
-</ol>
-
+</div>  
 <h3 id="modifying-documents">Modifying documents</h3>
-
 <p>Last operation is item modification. This example will show inline editing but for larger apps it is advised to create dedicated screen or popup.</p>
-
 
 <div class="lazy" style="max-height: 109px">
     <div style="padding-bottom:61.93181818181818%"></div>
     <img data-src="/images/netcore-vuejs-crud/15.png" src=""/> 
 </div>  
-
 <h4 id="build-a-web-api-for-document-deletion-1">Build a Web API for document deletion</h4>
-
 <ol>
-<li>Add new method <strong>UpdateItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong>
+<li>Add new method <strong>UpdateItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong> 
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">UpdateItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">id</span><span class="p">,</span> <span class="n">T</span> <span class="n">item</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">Document</span> <span class="n">document</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="n">ReplaceDocumentAsync</span><span class="p">(</span>
         <span class="n">UriFactory</span><span class="p">.</span><span class="n">CreateDocumentUri</span><span class="p">(</span><span class="n">dbOptions</span><span class="p">.</span><span class="n">DatabaseId</span><span class="p">,</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="n">id</span><span class="p">),</span> <span class="n">item</span><span class="p">);</span>
     
     <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)(</span><span class="kt">dynamic</span><span class="p">)</span><span class="n">document</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <strong>Note</strong>: It is possible to simplify this function by creating base type for type T which contains property Id and specify this in class declaration as a constraint. This way id parameter does not have to be passed explicitly but could be used from type T.</li>
 <li>Add new method <strong>Update</strong> inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
-</span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">Update</span><span class="p">(</span><span class="na">[FromBody]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
+</span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">Update</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="k">await</span> <span class="n">todoRepo</span><span class="p">.</span><span class="n">UpdateItemAsync</span><span class="p">(</span><span class="n">CollectionId</span><span class="p">,</span> <span class="n">todo</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span> <span class="n">todo</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 </ol>
-
 <h4 id="build-front-end-for-document-creation-3">Build front-end for document creation</h4>
-
 <ol>
 <li>Modify file <strong>TodoList.vue</strong> inside of <strong>App/Components/Todo</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span><span class="p"></span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">BaseInputText</span> 
                 <span class="na">v-model</span><span class="o">=</span><span class="s">&#34;newTodoText&#34;</span>
                 <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;New todo item&#34;</span>
                 <span class="err">@</span><span class="na">keydown</span><span class="err">.</span><span class="na">enter</span><span class="o">=</span><span class="s">&#34;addTodo&#34;</span>
                 <span class="na">:isCreating</span><span class="o">=</span><span class="s">&#34;isCreating&#34;</span>
-            <span class="p">/</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui animated relaxed list&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;todos.length&#34;</span><span class="p"></span><span class="p">&gt;</span>
+            <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui animated relaxed list&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;todos.length&#34;</span><span class="p">&gt;</span>
                 <span class="p">&lt;</span><span class="nt">TodoListItem</span> 
                     <span class="na">class</span><span class="o">=</span><span class="s">&#34;item&#34;</span>
                     <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;todo in todos&#34;</span>
@@ -916,29 +883,29 @@ New items can be also seen in the Cosmos DB
                     <span class="na">:todo</span><span class="o">=</span><span class="s">&#34;todo&#34;</span>
                     <span class="err">@</span><span class="na">remove</span><span class="o">=</span><span class="s">&#34;removeTodo&#34;</span>
 <span class="hl">                    <span class="err">@</span><span class="na">modify</span><span class="o">=</span><span class="s">&#34;modifyTodo&#34;</span>
-</span>                <span class="p">/</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui message info&#34;</span><span class="p"></span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui icon info&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+</span>                <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui message info&#34;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui icon info&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
                 There are no todo items. Add a new todo in the input above.
-            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui clean segment empty-loader&#34;</span><span class="p"></span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui active inverted dimmer&#34;</span><span class="p"></span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-else</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui clean segment empty-loader&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui active inverted dimmer&#34;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
-<span class="k">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
-<span class="k">import</span> <span class="nx">TodoListItem</span> <span class="nx">from</span> <span class="s1">&#39;./TodoListItem.vue&#39;</span>
-<span class="k">import</span> <span class="nx">TodoService</span> <span class="nx">from</span> <span class="s1">&#39;../../Services/TodoService.js&#39;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kr">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
+<span class="kr">import</span> <span class="nx">TodoListItem</span> <span class="nx">from</span> <span class="s1">&#39;./TodoListItem.vue&#39;</span>
+<span class="kr">import</span> <span class="nx">TodoService</span> <span class="nx">from</span> <span class="s1">&#39;../../Services/TodoService.js&#39;</span>
 
 <span class="kd">let</span> <span class="nx">nextTodoId</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
     <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">BaseInputText</span><span class="p">,</span> <span class="nx">TodoListItem</span>
     <span class="p">},</span>
@@ -1003,9 +970,9 @@ New items can be also seen in the Cosmos DB
         <span class="k">this</span><span class="p">.</span><span class="nx">getTodos</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;scss&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">style</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;scss&#34;</span><span class="p">&gt;</span>
 <span class="p">.</span><span class="nc">clean</span><span class="p">.</span><span class="nc">segment</span> <span class="p">{</span>
   <span class="k">border</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
   <span class="k">box-shadow</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
@@ -1013,46 +980,46 @@ New items can be also seen in the Cosmos DB
 <span class="p">.</span><span class="nc">empty-loader</span> <span class="p">{</span>
     <span class="k">min-height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Modify <strong>TodoListItem.vue</strong> inside of <strong>App/Components/Todo</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item ui clean segment&#34;</span><span class="p"></span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui inverted dimmer&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ active: todo.isUpdating }&#34;</span><span class="p"></span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;right floated content&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item ui clean segment&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui inverted dimmer&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ active: todo.isUpdating }&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;right floated content&#34;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">button</span> 
 <span class="hl">        <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui button mini&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ blue: !isEditing }&#34;</span>
-</span><span class="hl">        <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;isEditing = !isEditing&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</span><span class="hl">        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;edit icon&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
-</span><span class="hl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isEditing&#34;</span><span class="p"></span><span class="p">&gt;</span>Edit<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
-</span><span class="hl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">v-else</span><span class="p"></span><span class="p">&gt;</span>Stop editing<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
-</span><span class="hl">      <span class="p">&lt;</span><span class="p">/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;isEditing = !isEditing&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;edit icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isEditing&#34;</span><span class="p">&gt;</span>Edit<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">v-else</span><span class="p">&gt;</span>Stop editing<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span class="hl">      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span><span class="hl">      <span class="p">&lt;</span><span class="nt">button</span> 
 </span><span class="hl">        <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui button mini red&#34;</span>
-</span>        <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;$emit(&#39;remove&#39;, todo)&#34;</span><span class="p"></span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;remove icon&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
+</span>        <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;$emit(&#39;remove&#39;, todo)&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;remove icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
         Delete
-      <span class="p">&lt;</span><span class="p">/</span><span class="nt">button</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;large tasks middle aligned icon&#34;</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">i</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;content&#34;</span><span class="p"></span><span class="p">&gt;</span>
-<span class="hl">      <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;header&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ todo.name }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span>    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui input&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;isEditing&#34;</span><span class="p"></span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;large tasks middle aligned icon&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;content&#34;</span><span class="p">&gt;</span>
+<span class="hl">      <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;header&#34;</span><span class="p">&gt;</span>{{ todo.name }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui input&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;isEditing&#34;</span><span class="p">&gt;</span>
 </span><span class="hl">      <span class="p">&lt;</span><span class="nt">input</span>
 </span><span class="hl">        <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span>
 </span><span class="hl">        <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui input&#34;</span>
 </span><span class="hl">        <span class="na">v-model</span><span class="o">=</span><span class="s">&#34;newTodoText&#34;</span>
-</span><span class="hl">        <span class="err">@</span><span class="na">keydown</span><span class="err">.</span><span class="na">enter</span><span class="o">=</span><span class="s">&#34;modifyTodo&#34;</span><span class="p">/</span><span class="p">&gt;</span>
-</span>    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="hl">        <span class="err">@</span><span class="na">keydown</span><span class="err">.</span><span class="na">enter</span><span class="o">=</span><span class="s">&#34;modifyTodo&#34;</span><span class="p">/&gt;</span>
+</span>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     
-  <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
-<span class="hl"><span class="k">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
-</span><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="hl"><span class="kr">import</span> <span class="nx">BaseInputText</span> <span class="nx">from</span> <span class="s1">&#39;./BaseInputText.vue&#39;</span>
+</span><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
 <span class="hl">  <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
 </span><span class="hl">    <span class="nx">BaseInputText</span>
 </span><span class="hl">  <span class="p">},</span>
@@ -1075,14 +1042,14 @@ New items can be also seen in the Cosmos DB
 </span><span class="hl">    <span class="p">}</span>
 </span>  <span class="p">}</span>
 <span class="p">}</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-<span class="hl"><span class="p">&lt;</span><span class="nt">style</span><span class="p"></span><span class="p">&gt;</span>
+<span class="hl"><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
 </span><span class="hl"><span class="p">.</span><span class="nc">input</span> <span class="p">{</span>
 </span><span class="hl">  <span class="k">margin-top</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
 </span><span class="hl">  <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
 </span><span class="hl"><span class="p">}</span>
-</span><span class="hl"><span class="p">&lt;</span><span class="p">/</span><span class="nt">style</span><span class="p">&gt;</span></span></code></pre></div></li>
+</span><span class="hl"><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span></span></code></pre></div></li>
 <li>Modify <strong>TodoService.js</strong> inside of <strong>App/Services</strong> folder and add new <strong>update</strong> function
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">update</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">newValue</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">updateItem</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">item</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">newValue</span> <span class="p">}</span>
@@ -1096,14 +1063,15 @@ New items can be also seen in the Cosmos DB
     <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
     <span class="p">});</span>
-<span class="p">}</span></code></pre></div></li>
-<li>Test the application
+<span class="p">}</span>
+</code></pre></div></li>
+<li>Test the application</li>
+</ol>
 <div>
 <div class="lazy" style="max-height: 476px">
     <div style="padding-bottom:92.96875%"></div>
     <img data-src="/images/netcore-vuejs-crud/5.gif" src=""/> 
-</div>  </li>
-</ol><a target="_blank" 
+</div><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
    href="https://github.com/MarczakIO/netcore-vuejs-cosmosdb-crud">
@@ -1164,14 +1132,14 @@ New items can be also seen in the Cosmos DB
     <a href="https://marczak.io/tags/cosmos-db" title="View all posts in Cosmos DB">
       <img src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/>
     </a>
+    <a href="https://marczak.io/tags/dotnet-core" title="View all posts in dotNET Core">
+      <img src="https://marczak.io/images/tags/dotnet-core.svg" alt="dotNET Core"/>
+    </a>
     <a href="https://marczak.io/tags/visual-studio-code" title="View all posts in Visual Studio Code">
       <img src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/>
     </a>
     <a href="https://marczak.io/tags/vue.js" title="View all posts in Vue.js">
       <img src="https://marczak.io/images/tags/vue.js.svg" alt="Vue.js"/>
-    </a>
-    <a href="https://marczak.io/tags/dotnet-core" title="View all posts in dotNET Core">
-      <img src="https://marczak.io/images/tags/dotnet-core.svg" alt="dotNET Core"/>
     </a>
   </div>
             </div>
@@ -1300,9 +1268,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1330,21 +1298,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1360,9 +1328,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1396,9 +1364,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1432,9 +1400,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

@@ -111,13 +111,9 @@
     <img data-src="/images/2019-08-logic-apps-obfuscation/splash.png" src=""/> 
 </div> <h2>Highlight</h2>
         <p>Introduction of obfuscation feature in Azure Logic Apps for input and output blocks allows for better secret management and enhanced security. This article will focus on presenting capabilities of this feature.</p>
-
 <h2 id="intro">Intro</h2>
-
 <p>Introduction of Azure Logic Apps obfuscation for Input and Output blocks finally allows for proper security and integration between services without worrying about exposing critical information of the system in the logs and/or to unauthorized personnel.</p>
-
 <p>Obfuscation of input or output blocks makes that</p>
-
 <ul>
 <li>Data in the block is <strong>transferred normally</strong> to other actions</li>
 <li>Data in the block is <strong>not visible in the Logic App logs</strong></li>
@@ -125,15 +121,12 @@
 <li>There are some <strong>rules of chaining</strong> secured block data and developers should be aware of those, a bit more on this is described in the section below</li>
 <li>There is currently <strong>no way to select specific variables to be obfuscated</strong>, only entire blocks. This means all variables in the block are hidden</li>
 </ul>
-
 <p>The simplest one screen explanation of the feature can be captured as such</p>
-
 
 <div class="lazy" style="max-height: 1345px">
     <div style="padding-bottom:181.75675675675674%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/W000127.png" src=""/> 
 </div>  
-
 <p>In JSON code view obfuscation can be configured as follows
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;&lt;trigger-or-action-name&gt;&#34;</span><span class="err">:</span> <span class="p">{</span>
    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;trigger-or-action-type&gt;&#34;</span><span class="p">,</span>
@@ -150,41 +143,29 @@
    <span class="p">},</span>
    <span class="err">&lt;other-attributes&gt;</span>
 <span class="p">}</span></code></pre></div></p>
-
 <p>But it is <strong>important</strong> to note that not every action supports obfuscation.</p>
-
 <h3 id="chaining-of-obfuscated-blocks">Chaining of obfuscated blocks</h3>
-
 <p>Using secure input and output feature has some important considerations to know. This is something I like to call action chaining. This means that securing output or input block of an action has impact on how inputs and outputs of all those following (downstream) actions will be seen.</p>
-
 <h3 id="secure-outputs">Secure Outputs</h3>
-
 <p>If <strong>any output (hidden)</strong> are <strong>explicitly</strong> passed from an action which has enabled <strong>obfuscated output (hidden)</strong> to the next (downstream) action, then <strong>input block of next action will be obfuscated as well</strong>. Even if it doesn&rsquo;t have secure input enabled.</p>
-
 
 <div class="lazy" style="max-height: 340px">
     <div style="padding-bottom:58.8235294117647%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/W000124.png" src=""/> 
 </div>  
-
 <p>Interestingly, some actions like <strong>Parse JSON</strong> only have <strong>Secure Inputs</strong> setting. Because of that enabling secure input automatically secures the output as well. In case secured input setting was not enabled but action received secured output from previous action then this action will be obfuscated but all downstream actions won&rsquo;t. If downstream actions should be secured make sure secure inputs are enabled on this action as well.</p>
-
 
 <div class="lazy" style="max-height: 519px">
     <div style="padding-bottom:90.10416666666667%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/W000125.png" src=""/> 
 </div>  
-
 <h3 id="secure-inputs">Secure Inputs</h3>
-
 <p>If <strong>any output (visible)</strong> are <strong>explicitly</strong> passed from an action which has enabled <strong>obfuscated input (hidden)</strong> to the next (downstream) action, then <strong>input block of next action will be obfuscated as well</strong>. Even if it doesn&rsquo;t have secure input enabled.</p>
-
 
 <div class="lazy" style="max-height: 337px">
     <div style="padding-bottom:58.50694444444444%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/W000126.png" src=""/> 
 </div>  
-
 <p>Simple example of this would be passing output statusCode parameter from HTTP action into the next action. This only happens if you use any outputs of previous action.
 
 <div class="lazy" style="max-height: 684px">
@@ -198,13 +179,9 @@ And the logs confirm this.
     <img data-src="/images/2019-08-logic-apps-obfuscation/W000133.png" src=""/> 
 </div>  
 This is a bit complicated at start, but it is critical to be clearly understood because it will impact logging for logic apps.</p>
-
 <h2 id="provisioning-of-resources">Provisioning of Resources</h2>
-
 <p>This article only needs Logic App resource</p>
-
 <h3 id="logic-app">Logic App</h3>
-
 <ol>
 <li>Go to <a href="https://portal.azure.com">Portal</a> and hit create resource.
 
@@ -223,20 +200,18 @@ This is a bit complicated at start, but it is critical to be clearly understood 
 <div class="lazy" style="max-height: 399px">
     <div style="padding-bottom:137.58620689655172%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000198.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Name</strong> - this is the same of logic app resource.</li>
 <li><strong>Location</strong> - region of logic app; it&rsquo;s best to place it in the same region as API management.</li>
 <li><strong>Log Analytics</strong> - this this example set this as Off but in case of production solution, should be set to On so that all the logs are transferred to Log Analytics resource.</li>
-</ul></li>
+</ul>
+<ol start="4">
 <li>Hit <strong>Create</strong></li>
 </ol>
-
 <h2 id="demo-logic-app">Demo Logic App</h2>
-
 <p>Now that resources are created let&rsquo;s create demo logic app which will be used to present the issue and the solution.</p>
-
 <ol>
 <li>Open Logic App</li>
 <li>Go to Logic App Designer and click on <strong>Blank Logic App</strong>
@@ -284,11 +259,8 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 </div>  </li>
 <li>Hit <strong>Save</strong></li>
 </ol>
-
 <h2 id="the-issue">The issue</h2>
-
 <p>So, what is wrong with this design?</p>
-
 <ol>
 <li>Grab the URL from the Logic App (it&rsquo;s important to do this after saving)
 
@@ -316,11 +288,8 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
     <img data-src="/images/2019-08-logic-apps-obfuscation/000208.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="obfuscation-of-action-input-and-output">Obfuscation of Action Input and Output</h2>
-
 <p>It&rsquo;s finally time to implement obfuscation.</p>
-
 <ol>
 <li>Click on <strong>three dots (&hellip;)</strong> and select <strong>Settings</strong> in the popup menu
 
@@ -347,17 +316,11 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
     <img data-src="/images/2019-08-logic-apps-obfuscation/000216.png" src=""/> 
 </div>  </li>
 </ol>
-
 <p>And that&rsquo;s it. Implementation itself is very easy, understanding the impact a bit more complex but it is a great feature and should be used in any solution working with highly sensitive data and credentials.</p>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>While this feature is still in preview it&rsquo;s already providing a lot of value. Of one critical things that this enables is Key Vault integration. A long overdue, but it&rsquo;s finally here, and I&rsquo;m very happy about it.</p>
-
-<h3 id="what-s-next">What&rsquo;s next?</h3>
-
+<h3 id="whats-next">What&rsquo;s next?</h3>
 <p>All that is left is to simply go and start securing your logic app solutions.</p>
-
 <ol>
 <li>Read more on <a href="https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app">Logic Apps Security</a></li>
 <li>Check out <a href="https://docs.microsoft.com/en-us/connectors/keyvault/">Key Vault connector</a></li>
@@ -546,9 +509,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -576,21 +539,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -606,9 +569,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -642,9 +605,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -678,9 +641,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

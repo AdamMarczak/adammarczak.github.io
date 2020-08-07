@@ -117,69 +117,51 @@
     Source Code
 </a>
         <p>In 2017 asynchronous refresh API was released for Azure Analysis Services which allows users to refresh their models with simple REST calls. This allows for easy integration with their orchestration solutions. Learn how to build very simple logic apps and manage Azure Analysis Services refresh schedule.</p>
-
 <h2 id="intro">Intro</h2>
-
 <p>Azure Analysis Services is a great in-memory analytical engine which allows enterprises to build very scalable and fast reporting solutions. In recent years Microsoft decided to provide this solution as Platform as a Service, bringing Azure Analysis Services. One of the key challenges in the cloud was refreshing analytical models which in the past was achieved using PowerShell scripts.</p>
-
 <p>With release of refresh and sync API&rsquo;s this process can be automated with variety of tools and services. In this article, a very simple Logic App will be created which will schedule model refresh and wait for its ending. This will present a classic principle of orchestration which then can be further integrated with other services.</p>
-
 <h3 id="prerequisites">Prerequisites</h3>
-
 <p>In order to execute this scenario a developer must have following tools</p>
-
 <ol>
 <li>Azure Subscription</li>
 <li>Azure Analysis Services with any model deployed</li>
 <li><a href="https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017">SQL Server Management Studio 2017+</a></li>
 </ol>
-
 <h2 id="design">Design</h2>
-
 <p>In this article Azure Analysis Services REST API will be used. This second covers high level principles on how this process should be done.</p>
-
 <p>High level architecture of this refresh will look like this.
- 
+
 <div class="lazy" style="max-height: 864px">
     <div style="padding-bottom:100.81680280046675%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/000078.png" src=""/> 
 </div>  </p>
-
 <p>With few principles in mind</p>
-
 <ul>
 <li>Analysis Services Refresh API is asynchronous so after first call logic app will only receive accepted (202) response containing refresh ID.</li>
 <li>Logic app will asking for refresh status until failed or succeeded status is received</li>
 <li>Logic app will wait 30 seconds between retries to give analysis services refresh time to refresh the model</li>
 </ul>
-
 <p>In high level Azure Analysis Services API looks as follows
- 
+
 <div class="lazy" style="max-height: 155px">
     <div style="padding-bottom:17.51412429378531%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/aas-async-refresh-flow.png" src=""/> 
 </div>  </p>
-
 <h3 id="refreshing-model-with-post-refreshes">Refreshing model with POST /refreshes</h3>
-
 <p>In order to refresh model on analysis services a REST call must be performed on
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes</code></pre></div></p>
-
 <p>As per diagram
- 
+
 <div class="lazy" style="max-height: 155px">
     <div style="padding-bottom:17.51412429378531%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/aas-async-refresh-flow-post.png" src=""/> 
 </div>  </p>
-
 <ul>
 <li><strong>&lt;rollout&gt;</strong> region name where analysis services is deployed. This can be retrieved from analysis services URL.</li>
 <li><strong>&lt;serverName&gt;</strong> name of azure resource, this is also unique public DNS name for analysis services.</li>
 <li><strong>&lt;resource&gt;</strong> name of analysis services model deployed on the server.</li>
 </ul>
-
 <h4 id="request">Request</h4>
-
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;Type&#34;</span><span class="p">:</span> <span class="s2">&#34;Full&#34;</span><span class="p">,</span>
   <span class="nt">&#34;CommitMode&#34;</span><span class="p">:</span> <span class="s2">&#34;transactional&#34;</span><span class="p">,</span>
@@ -195,7 +177,6 @@
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span></code></pre></div>
-
 <ul>
 <li><strong>Type</strong> a <a href="https://docs.microsoft.com/en-us/bi-reference/tmsl/refresh-command-tmsl">TMSL refresh type</a>. Accepted options are: full, clearValues, calculate, dataOnly, automatic, add, defragment.</li>
 <li><strong>CommitMode</strong> is defining if objects during refresh will be committed in batches or only when completed. Currently only three options are valid: default, transactional, partialBatch.</li>
@@ -203,20 +184,14 @@
 <li><strong>RetryCount</strong> how many times server retries operation before failing.</li>
 <li><strong>Objects</strong> array of objects to refresh. Tables or partitions are accepted. No objects on the list means entire model.</li>
 </ul>
-
 <p>For more info check the documentation <a href="https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-async-refresh">HERE</a>.</p>
-
 <h4 id="response-202-accepted">Response (202 Accepted)</h4>
-
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">Empty</code></pre></div>
-
 <p>But there is very important header in the response. This header can be used to check status in following requests.
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">{
   &#34;Location&#34;: &#34;https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refreshId&gt;&#34;
 }</code></pre></div></p>
-
 <h4 id="response-409-conflict">Response (409 Conflict)</h4>
-
 <p>If there is already model refresh currently running request response with 409 code will be returned. This means in production environment a model refresh submission should be wrapped in the loop trying to submit refresh until no 409 is returned.
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="s2">&#34;Conflict&#34;</span><span class="p">,</span>
@@ -235,9 +210,7 @@
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span></code></pre></div></p>
-
-<h3 id="checking-refresh-status-with-get-refreshes-refresh-id">Checking refresh status with GET /refreshes&lt;refresh_id&gt;</h3>
-
+<h3 id="checking-refresh-status-with-get-refreshesrefresh_id">Checking refresh status with GET /refreshes&lt;refresh_id&gt;</h3>
 <p>To get status of refresh a REST call must be performed on
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refreshId&gt;</code></pre></div>
 
@@ -245,20 +218,15 @@
     <div style="padding-bottom:17.51412429378531%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/aas-async-refresh-flow-get.png" src=""/> 
 </div>  </p>
-
 <ul>
 <li><strong>&lt;rollout&gt;</strong> region name where analysis services is deployed. This can be retrieved from analysis services URL.</li>
 <li><strong>&lt;serverName&gt;</strong> name of azure resource, this is also unique public DNS name for analysis services.</li>
 <li><strong>&lt;resource&gt;</strong> name of analysis services model deployed on the server.</li>
 <li><strong>&lt;refreshId&gt;</strong> name of analysis services model deployed on the server.</li>
 </ul>
-
 <h4 id="request-1">Request</h4>
-
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">Empty</span> <span class="err">because</span> <span class="err">it&#39;s</span> <span class="err">GET</span></code></pre></div>
-
 <h4 id="response-200-ok">Response (200 OK)</h4>
-
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;startTime&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-06-16T22:24:06.9112816Z&#34;</span><span class="p">,</span>
   <span class="nt">&#34;endTime&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-06-16T22:24:08.2919036Z&#34;</span><span class="p">,</span>
@@ -273,46 +241,30 @@
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span></code></pre></div>
-
 <p>Available statuses are</p>
-
 <ul>
 <li>notStarted</li>
 <li>inProgress</li>
 <li>failed</li>
 <li>succeeded</li>
 </ul>
-
 <p>Which means process should check for either <strong>failed</strong> or <strong>succeeded</strong>. All responses are returned with 200 http status call.</p>
-
 <h3 id="authentication">Authentication</h3>
-
 <p>All calls must be authenticated with a valid Azure Active Directory (OAuth 2) token in the Authorization header and must meet the following requirements:</p>
-
 <ul>
 <li>Only user or service principal tokens are accepted. If you want to use MSI (Managed Service Identity), then you must enable identity on logic app and use CLI or PowerShell to get application ID of new service principal. Which then must be added as admin to analysis Services.</li>
 <li>Audience of the token must be set to https://*.asazure.windows.net.</li>
 <li>User or service principal must have AAS administrator privileges.</li>
 </ul>
-
 <h2 id="provisioning">Provisioning</h2>
-
 <p>Log into <a href="https://portal.azure.com">Azure Portal</a> and start creating resources.</p>
-
-<hr />
-
-<h3 id="span-style-color-1c87d6-hint-span"><span style="color:#1c87d6">Hint</span></h3>
-
+<hr>
+<h3 id="span-stylecolor1c87d6hintspan"><span style="color:#1c87d6">Hint</span></h3>
 <p>This can be automated quickly using ARM template that I created for this. Template can be found below.</p>
-
 <p><a href="https://github.com/MarczakIO/aas-refresh-logic-apps/blob/master/logic-app.json">logic-apps-arm.json</a></p>
-
-<hr />
-
+<hr>
 <p>Check Application Account and Privilege setup sections to find out proper values for this template.</p>
-
 <h3 id="resources">Resources</h3>
-
 <ol>
 <li>Click on &ldquo;+&rdquo; sign to create new resource
 
@@ -339,11 +291,8 @@
     <img data-src="/images/logic-apps-refresh-analysis-services/3.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="application-account">Application Account</h2>
-
 <p>Log into <a href="https://portal.azure.com">Azure Portal</a> and start creating resources.</p>
-
 <ol>
 <li>Go to <strong>Azure Active Directory</strong> into <strong>App registrations</strong>
 
@@ -401,17 +350,13 @@
     <img data-src="/images/logic-apps-refresh-analysis-services/31.png" src=""/> 
 </div>  </li>
 </ol>
-
 <p>For further steps three properties are required</p>
-
 <ul>
 <li>Directory ID</li>
 <li>Application (Client) ID</li>
 <li>Key (Secret)</li>
 </ul>
-
 <h2 id="privilege-setup">Privilege setup</h2>
-
 <ol>
 <li>Open SQL Server Management Studio</li>
 <li>Connect to Analysis Services
@@ -451,9 +396,7 @@ In this example this would mean value
     <img data-src="/images/logic-apps-refresh-analysis-services/38.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="build-logic-app">Build Logic App</h2>
-
 <ol>
 <li>Open Logic App and navigate to <strong>Designer</strong></li>
 <li>Click on <strong>Blank Logic App</strong> block in the designer window
@@ -474,7 +417,7 @@ In this example this would mean value
     <div style="padding-bottom:22.92609351432881%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/5.png" src=""/> 
 </div>  </li>
-<li>Add new step
+<li>Add new step 
 
 <div class="lazy" style="max-height: 39px">
     <div style="padding-bottom:29.545454545454547%"></div>
@@ -491,11 +434,11 @@ In this example this would mean value
 <div class="lazy" style="max-height: 702px">
     <div style="padding-bottom:105.72289156626506%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/11.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Method</strong> - submitting new refresh schedules are always done with <strong>POST</strong> calls</li>
-<li><strong>URI</strong> is built as
+<li><strong>URI</strong> is built as 
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">  https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes</code></pre></div>
 
 <div class="lazy" style="max-height: 155px">
@@ -509,7 +452,7 @@ In this example the URL would be, <strong>rollout</strong> - region name, <stron
     <img data-src="/images/logic-apps-refresh-analysis-services/28.png" src=""/> 
 </div>  </li>
 <li><strong>Headers</strong> - only header required is <strong>Content-Type</strong> with <strong>application/json</strong> value since a JSON configuration will be sent over</li>
-<li><strong>Body</strong> - Send over request details. For full refresh send below request.
+<li><strong>Body</strong> - Send over request details. For full refresh send below request. 
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"> <span class="p">{</span>
   <span class="nt">&#34;CommitMode&#34;</span><span class="p">:</span> <span class="s2">&#34;transactional&#34;</span><span class="p">,</span>
   <span class="nt">&#34;MaxParallelism&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -519,7 +462,8 @@ In this example the URL would be, <strong>rollout</strong> - region name, <stron
 <span class="p">}</span></code></pre></div>
 It is also possible to refresh model partially. In this case in the <strong>Objects</strong> property send list of tables or partitions to refresh.</li>
 <li><strong>Authentication</strong> - Authenticate to Analysis Services using previously created application. Pass previously saved values and add <strong>https://*.asazure.windows.net</strong> URL as <strong>Audience</strong>.</li>
-</ul></li>
+</ul>
+<ol start="2">
 <li>Click on three dots on current HTTP call step and select <strong>Settings</strong>
 
 <div class="lazy" style="max-height: 251px">
@@ -538,7 +482,7 @@ It is also possible to refresh model partially. In this case in the <strong>Obje
     <div style="padding-bottom:16.85214626391097%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/12.png" src=""/> 
 </div>  </li>
-<li>Add new step
+<li>Add new step 
 
 <div class="lazy" style="max-height: 39px">
     <div style="padding-bottom:29.545454545454547%"></div>
@@ -549,14 +493,15 @@ It is also possible to refresh model partially. In this case in the <strong>Obje
 <div class="lazy" style="max-height: 271px">
     <div style="padding-bottom:40.93655589123867%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/16.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Name</strong> - call it <strong>refreshStatus</strong></li>
 <li><strong>Type</strong> - make it <strong>string</strong></li>
 <li><strong>value</strong> - leave this empty</li>
-</ul></li>
-<li>Add new step
+</ul>
+<ol start="2">
+<li>Add new step 
 
 <div class="lazy" style="max-height: 39px">
     <div style="padding-bottom:29.545454545454547%"></div>
@@ -588,7 +533,7 @@ It is also possible to refresh model partially. In this case in the <strong>Obje
 </div>  
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"> <span class="err">@or(equals(variables(&#39;refreshStatus&#39;),</span> <span class="err">&#39;succeeded&#39;),</span> <span class="err">equals(variables(&#39;refreshStatus&#39;),</span> <span class="err">&#39;failed&#39;))</span>
  </code></pre></div></li>
-<li>Add new step
+<li>Add new step 
 
 <div class="lazy" style="max-height: 39px">
     <div style="padding-bottom:29.545454545454547%"></div>
@@ -617,11 +562,11 @@ It is also possible to refresh model partially. In this case in the <strong>Obje
 <div class="lazy" style="max-height: 570px">
     <div style="padding-bottom:51.2589928057554%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/21.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Method</strong> - getting status of refresh is done using <strong>GET</strong> method</li>
-<li><strong>URI</strong> is build as
+<li><strong>URI</strong> is build as 
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refresh_id&gt;</code></pre></div>
 
 <div class="lazy" style="max-height: 155px">
@@ -631,8 +576,9 @@ It is also possible to refresh model partially. In this case in the <strong>Obje
 HTTP call which submits refresh to analysis services return &ldquo;Location&rdquo; header. This header contains full URL with refresh ID which then can be used to check refresh status. This can be obtained using following logic app expression.
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">outputs(&#39;HTTP&#39;)</span><span class="p">[</span><span class="err">&#39;headers&#39;</span><span class="p">][</span><span class="err">&#39;location&#39;</span><span class="p">]</span></code></pre></div></li>
 <li><strong>Authentication</strong> - Authenticate to Analysis Services using previously created application. This should be configured exactly the same as in the first call.</li>
-</ul></li>
-<li>Add new step
+</ul>
+<ol start="2">
+<li>Add new step 
 
 <div class="lazy" style="max-height: 39px">
     <div style="padding-bottom:29.545454545454547%"></div>
@@ -665,33 +611,24 @@ HTTP call which submits refresh to analysis services return &ldquo;Location&rdqu
     <img data-src="/images/logic-apps-refresh-analysis-services/43.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h3 id="final-thoughts">Final thoughts</h3>
-
 <p>When going to production it would be advised to add <strong>until</strong> loop which will try to submit process refresh until available slot comes appears. This of course depends on the refresh type and if process is not very complex or there are no multiple separate orchestration flows, then this might simply not be required.</p>
-
 <h2 id="summary">Summary</h2>
-
 <p>A careful reader should by now understand and be able to execute following activities</p>
-
 <ul>
 <li>Understand basics of Azure Analysis Services refresh API</li>
 <li>Set up an application account (service principal) and assigning administrative privileges to this account on Azure Analysis Services</li>
 <li>Submit REST calls to Azure Management API and controlling Azure Analysis Services Refreshes</li>
 <li>Orchestrate workflows using Logic Apps</li>
 </ul>
-
 <p>If you enjoyed this article you might want to check <a href="https://marczak.io/posts/analysis-services-onprem-integration/">how to set up Analysis Services with On-premises gateway</a>.</p>
-
-<p><a href="https://marczak.io/posts/analysis-services-onprem-integration/"></p>
-
+<a href="https://marczak.io/posts/analysis-services-onprem-integration/">
 
 <div class="lazy" style="max-height: 282px">
     <div style="padding-bottom:31.614349775784753%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/000073.png" src=""/> 
 </div>  
-
-<p></a></p><a target="_blank" 
+</a><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
    href="https://github.com/MarczakIO/aas-refresh-logic-apps">
@@ -882,9 +819,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -912,21 +849,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -942,9 +879,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -978,9 +915,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1014,9 +951,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

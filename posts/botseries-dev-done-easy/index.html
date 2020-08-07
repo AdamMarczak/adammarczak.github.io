@@ -117,32 +117,20 @@
     Source Code
 </a><h2>Highlight</h2>
         <p>Proper set up of environment is one of most important things during development. Leverage ngrok tunneling service to speed up development process.</p>
-
 <h2 id="intro">Intro</h2>
-
 <p>When developing bots for public chatting platforms like Microsoft Teams, Facebook, Slack etc. it is very that often not all features are available and therefore can&rsquo;t be tested using Microsoft Bot Framework Emulator. Public chatting platforms need public endpoints which removes ability for developers to debug applications which extends development process greatly. A solution to this problem is a Software as a Service solution called ngrok.</p>
-
 <h3 id="what-is-ngrok">What is ngrok?</h3>
-
 <p>Ngrok is secure introspectable tunnel service to localhost webhook development tool and debugging tool. Service provides public DNS for applications to use and tunnels all the messages to the developer local machine. This way developer can still use public platforms to develop and test and still retain ability to debug entire solution live.</p>
-
 <h2 id="setting-up-environment">Setting up environment</h2>
-
 <p>In order to develop effectively a developer should be able to create bots locally and publish them easily to the web.</p>
-
 <p>Best way to achieve this is by creating two bots</p>
-
 <ol>
 <li><strong>Localhost bot</strong> which points to ngrok tunneling endpoint</li>
 <li><strong>Public Azure bot</strong> which points to Azure Bot Service</li>
 </ol>
-
 <p>In this article a Microsoft Teams bot example will be presented. Microsoft Teams is a great example of bot channel which does allow for development of extra features and as such making bot framework emulator useless in terms of proper development.</p>
-
 <h3 id="prerequisites">Prerequisites</h3>
-
 <p>Starting this article requires</p>
-
 <ol>
 <li><a href="https://teams.microsoft.com/downloads">Microsoft Teams (electron app) Client for Windows</a></li>
 <li>Visual Studio (Visual Studio Code can also be used as only publishing to Azure is different)</li>
@@ -150,9 +138,7 @@
 <li>Azure subscription</li>
 <li><a href="https://ngrok.com/download">ngrok</a></li>
 </ol>
-
 <h2 id="register-localhost-bot-in-teams">Register Localhost bot in Teams</h2>
-
 <ol>
 <li>Run ngrok using command line. Use the proper port number that will be set up on your local machine.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ngrok http <span class="m">3333</span> -host-header<span class="o">=</span>localhost:3333</code></pre></div>
@@ -161,22 +147,23 @@ Which should output something similar to
 
 Session Status                online
 Session Expires               <span class="m">7</span> hours, <span class="m">55</span> minutes
-Version                       <span class="m">2</span>.2.8
+Version                       2.2.8
 Region                        United States <span class="o">(</span>us<span class="o">)</span>
 Web Interface                 http://127.0.0.1:4040
 Forwarding                    http://89a332c9.ngrok.io -&gt; localhost:3333
 Forwarding                    https://89a332c9.ngrok.io -&gt; localhost:3333
 
 Connections                   ttl     opn     rt1     rt5     p50     p90
-                              <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>.00    <span class="m">0</span>.00    <span class="m">0</span>.00    <span class="m">0</span>.00</code></pre></div>
-This basically means that bot app will be available under <strong><a href="https://89a332c9.ngrok.io">https://89a332c9.ngrok.io</a></strong> endpoint.
-
+                              <span class="m">0</span>       <span class="m">0</span>       0.00    0.00    0.00    0.00</code></pre></div>
+This basically means that bot app will be available under <strong><a href="https://89a332c9.ngrok.io">https://89a332c9.ngrok.io</a></strong> endpoint.</li>
+</ol>
 <ul>
 <li>With free pricing tier developers get random subdomain on ngrok service every time they run the application. This is very troublesome for longer development because during bot registration developer must supply publicly visible endpoint. This means every time developer restarts ngrok they will need to edit bot endpoint on bot framework portal. For commercial uses it is very recommended to purchase license so that developer can register custom domains using command below which will allow for static bot routing under <a href="https://marczakio-dev-local.ngrok.io">https://marczakio-dev-local.ngrok.io</a> endpoint.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ngrok http <span class="m">3333</span> -subdomain<span class="o">=</span>marczakio-dev-local -host-header<span class="o">=</span>localhost:3333</code></pre></div></li>
-</ul></li>
-<li>Register a bot by using this <a href="https://dev.botframework.com/bots/new">https://dev.botframework.com/bots/new</a>. Note this is crucial to use this link as the button on the site no Longer points to form creation. Instead it redirects user to Azure Bot Service creation form.
-
+</ul>
+<ol start="2">
+<li>Register a bot by using this <a href="https://dev.botframework.com/bots/new">https://dev.botframework.com/bots/new</a>. Note this is crucial to use this link as the button on the site no Longer points to form creation. Instead it redirects user to Azure Bot Service creation form.</li>
+</ol>
 <ul>
 <li>Bot Profile
 
@@ -215,7 +202,8 @@ And by clicking Generate password new password will be generated. Copy password 
 <li>Application insights section. Leave this empty for localhost development. In case of bot service Azure fill this for developer during bot creation process.</li>
 <li>Admin Section</li>
 <li><strong>Owners</strong> list of accounts which have administrative access to the bot.</li>
-</ul></li>
+</ul>
+<ol start="3">
 <li>Click Create button</li>
 <li>Go to bot settings tab
 
@@ -239,7 +227,7 @@ Agree to TOS (terms of use)
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/MarczakIO/msteams-samples-hello-world-csharp.git
 <span class="nb">cd</span> msteams-samples-hello-world-csharp
 Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
-<li>Restore packages by right clicking the solution and clicking
+<li>Restore packages by right clicking the solution and clicking 
 
 <div class="lazy" style="max-height: 263px">
     <div style="padding-bottom:56.437768240343345%"></div>
@@ -259,8 +247,8 @@ Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
 <div class="lazy" style="max-height: 76px">
     <div style="padding-bottom:35.348837209302324%"></div>
     <img data-src="/images/botseries-dev-done-easy/13.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li>Replace <strong>id</strong> and <strong>botId</strong> fields with Microsoft App ID</li>
 <li>Give unique package ID for **</li>
@@ -323,12 +311,11 @@ Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
   <span class="nt">&#34;permissions&#34;</span><span class="p">:</span> <span class="p">[],</span>
   <span class="nt">&#34;validDomains&#34;</span><span class="p">:</span> <span class="p">[]</span>
 <span class="p">}</span></code></pre></div></li>
-</ul></li>
+</ul>
+<ol start="12">
 <li>Zip the manifest file with the icons</li>
 </ol>
-
 <h2 id="upload-bot-and-test-it-in-teams">Upload bot and test it in Teams</h2>
-
 <ol>
 <li>Open Teams app and create new team
 
@@ -342,9 +329,7 @@ Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
     <div style="padding-bottom:86.08562691131499%"></div>
     <img data-src="/images/botseries-dev-done-easy/15.png" src=""/> 
 </div>  </li>
-<li>Add bot to the team
-
-<ol>
+<li>Add bot to the team</li>
 <li>Go to manage Team option
 
 <div class="lazy" style="max-height: 152px">
@@ -363,7 +348,6 @@ Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
     <div style="padding-bottom:11.208406304728546%"></div>
     <img data-src="/images/botseries-dev-done-easy/18.png" src=""/> 
 </div>  </li>
-</ol></li>
 <li>Talk to bot by mentioning it by typing @Local and pressing tab
 
 <div class="lazy" style="max-height: 239px">
@@ -386,14 +370,14 @@ Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ngrok by @inconshreveable   
 Session Status                online
 Session Expires               <span class="m">7</span> hours, <span class="m">22</span> minutes
-Version                       <span class="m">2</span>.2.8
+Version                       2.2.8
 Region                        United States <span class="o">(</span>us<span class="o">)</span>
 Web Interface                 http://127.0.0.1:4040
 Forwarding                    http://89a332c9.ngrok.io -&gt; localhost:3333
 Forwarding                    https://89a332c9.ngrok.io -&gt; localhost:3333
 
 Connections                   ttl     opn     rt1     rt5     p50     p90
-                              <span class="m">35</span>      <span class="m">0</span>       <span class="m">0</span>.02    <span class="m">0</span>.01    <span class="m">1</span>.30    <span class="m">102</span>.18
+                              <span class="m">35</span>      <span class="m">0</span>       0.02    0.01    1.30    102.18
 
 HTTP Requests
 -------------
@@ -401,9 +385,7 @@ HTTP Requests
 <span class="hl">POST /api/messages             <span class="m">202</span> Accepted
 </span><span class="hl">POST /api/messages             <span class="m">202</span> Accepted</span></code></pre></div></li>
 </ol>
-
-<h3 id="what-s-next">What&rsquo;s next?</h3>
-
+<h3 id="whats-next">What&rsquo;s next?</h3>
 <p>Follow the same process and publish bot to Azure. While the Azure UI changed a bit, it is still very easy to follow <a href="/posts/botseries-introductiontobots/">Introduction to chatbots</a> post. With that setup everyone can deliver DevOps for bots effectively.</p><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
@@ -598,9 +580,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -628,21 +610,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -658,9 +640,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -694,9 +676,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -730,9 +712,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

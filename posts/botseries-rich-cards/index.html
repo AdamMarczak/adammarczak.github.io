@@ -117,48 +117,38 @@
     Source Code
 </a><h2>Highlight</h2>
         <p>Driving user conversations is key for any successful bot. By leveraging bot framework&rsquo;s rich cards in conversations developers can enrich user experience by allowing them to interact with bots without need of a typing.</p>
-
 <h3 id="why-rich-cards">Why rich cards</h3>
-
 <p>A healthy debate can be found on the web around topics how chatbots should act, how should they interact and if it is better to let users speak freely or drive them with buttons and options. When user is typing (or using speech) it is often required that bot must be very well trained. It also must be very detailed in its purpose and the broader range of functionalities the harder it is to learn such a bot. Sometimes a simplicity is all there&rsquo;s to it.</p>
-
 <p>Building a bot which automates simple business process like shopping, checking request status, ordering new hardware from your IT department, doesn&rsquo;t need to involve natural language processing. Instead in most cases it&rsquo;s better to present users with predefined options in form of a buttons. This form is simple and straightforward and most importantly, doesn&rsquo;t require user to type in anything at all!</p>
-
 <p>Let&rsquo;s see how is bot framework prepared for such scenarios but creating a bot which presents users with options and displays detailed information using rich cards.</p>
-
 <h3 id="create-a-chatbot-with-rich-cards">Create a chatbot with rich cards</h3>
-
 <p>This post is more technical in nature as I&rsquo;m not going into business justification of creating chatbots which use rich cards. Purpose of this post is to show how using bot service in Azure to deliver this functionality.</p>
-
 <p>Create simple form flow bot from the default Azure template. Follow below steps to do so it read about it in more detail on <a href="/posts/botseries-introductiontobots/#creation-of-a-chat-bot">Creation of a chat bot</a> section in my previous post.</p>
-
 <p>Instead of reading you can watch!</p>
-
 
 <div class="interactive-frame inactive" src="https://www.youtube.com/embed/ozfVSWO2EEo">
     <button class="btn iframe-button btn-youtube">Watch on youtube</button>
     <iframe class="youtube" frameborder="0" allowfullscreen></iframe>
 </div>
 
-
 <ol>
 <li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
 <li>Find Azure Bot Service in Marketplace</li>
 <li>Create Bot Service</li>
-<li>Fill in the data.
-
+<li>Fill in the data.</li>
+</ol>
 <ul>
 <li><strong>Consumption Plan</strong> will <a href="https://azure.microsoft.com/en-us/pricing/details/functions/">Functions pricing</a> model (pay per execution). Preferred for most bots.</li>
 <li><strong>App Service Plan</strong> will use <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/">App Service</a> (pay for reserved capacity). Preferred if using Free Tier for learning purposes.
 Portal should automatically open bot editor after deployment is successful. If not, open bot can be opened via either Portal &gt; App Services, Notifications or Dashboard if &lsquo;Pin to Dashboard&rsquo; option was selected.</li>
-</ul></li>
+</ul>
+<ol start="5">
 <li>Click create button redirects to bot wizard where C# should be set language and Form as a bot template.</li>
 <li>Microsoft App Registration page where application must be first registered.
 <strong>Note</strong>: Forgetting to save app password might be troublesome in some scenarios but this isn&rsquo;t the case. App password will be available in bot app settings</li>
 <li>Once bot is created, developer is transferred back to Azure Development portal. Hitting Create button begins the resource provisioning process. Provisioning takes between 2 and 5 minutes and during that time template sets up Bot Framework application, storage account for the code and logic, bot service application and application insights.</li>
 <li>Test the bot with IDE chat control</li>
 </ol>
-
 <p>Now that the bot is provisioned and it works simply replace <strong>MainDialog</strong> class with following code.
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
@@ -166,8 +156,8 @@ Portal should automatically open bot editor after deployment is successful. If n
 <span class="k">using</span> <span class="nn">System.Web</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Microsoft.Bot.Builder.Dialogs</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.Bot.Connector</span><span class="p">;</span><span class="na">
-</span><span class="na">
+<span class="k">using</span> <span class="nn">Microsoft.Bot.Connector</span><span class="p">;</span>
+<span class="na">
 </span><span class="na">[Serializable]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">MainDialog</span> <span class="p">:</span> <span class="n">IDialog</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span>
 <span class="p">{</span>
@@ -218,30 +208,23 @@ Portal should automatically open bot editor after deployment is successful. If n
                 <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;();</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></p>
-
+<span class="p">}</span>
+</code></pre></div></p>
 <p>Small rundown of the methods in the class.</p>
-
 <ul>
 <li><strong>DisplaySelectedCard</strong> method is a handler which will be executed after user selects any choice</li>
-<li><strong>ShowPrompt</strong> display prompts with options of rich cards which will be shown; above code does not show anything yet
-
-<ul>
+<li><strong>ShowPrompt</strong> display prompts with options of rich cards which will be shown; above code does not show anything yet</li>
 <li><em>context</em> - current conversation context</li>
 <li><em>this.DisplaySelectedCard</em> - function to execute after choice is made</li>
 <li><em>this.options</em> - the possible options all of which must be convertible to a string</li>
-<li><em>&ldquo;What card would like to test?&rdquo;</em> - the prompt to show to the user</li>
+<li><em>&ldquo;What card would like to test?&quot;</em> - the prompt to show to the user</li>
 <li><em>&ldquo;Ooops, what you wrote is not a valid option, please try again&rdquo;</em> - what to show on retry</li>
 <li><em>3</em> - the number of times to retry</li>
 <li><em>PromptStyle.PerLine</em> - Style of the prompt, PerLine returns text message with listed options</li>
-</ul></li>
 <li><strong>GetSelectedCard</strong> returns card based on user selection</li>
 </ul>
-
 <h2 id="hero-cards">Hero Cards</h2>
-
 <p>Hero cards work best when presenting content where image is one of the, if the most important information. Best examples of hero card usage are online shops where item picture is often deciding factor for the purchase.</p>
-
 <ol>
 <li>Add new method in <strong>MainDialog</strong> class
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">Attachment</span> <span class="n">GetHeroCard</span><span class="p">()</span>
@@ -264,7 +247,8 @@ Portal should automatically open bot editor after deployment is successful. If n
     <span class="p">};</span>
 
     <span class="k">return</span> <span class="n">heroCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 which outputs 
 <div class="lazy" style="max-height: 412px">
     <div style="padding-bottom:113.8121546961326%"></div>
@@ -281,9 +265,11 @@ which outputs
         <span class="k">default</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;();</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Add new private property to the <strong>CardsDialog</strong> class
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">HeroCard</span> <span class="p">=</span> <span class="s">&#34;Hero card&#34;</span><span class="p">;</span></code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">HeroCard</span> <span class="p">=</span> <span class="s">&#34;Hero card&#34;</span><span class="p">;</span>
+</code></pre></div></li>
 <li>Modify initialization in contructor
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="k">virtual</span> <span class="n">Task</span> <span class="n">MessageReceivedAsync</span><span class="p">(</span>
     <span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">IAwaitable</span><span class="p">&lt;</span><span class="n">IMessageActivity</span><span class="p">&gt;</span> <span class="n">result</span><span class="p">)</span>
@@ -293,16 +279,13 @@ which outputs
 <span class="hl">    <span class="n">options</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span> <span class="n">HeroCard</span> <span class="p">};</span>
 </span>
     <span class="n">ShowPrompt</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Test the bot</li>
 </ol>
-
 <h2 id="suggestions">Suggestions</h2>
-
 <p>Users interaction is important and by asking them to type in their option selection can be in fact very tedious task. By default, showing options in prompt return a list of available options and user must type in their selection.</p>
-
 <p>With a one option this behavior can be changed to show options as clickable list called suggestions. To do that go to ShowPrompt method and change PromptStyle from PerLine to Keyboard which will activate suggestions.</p>
-
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="n">ShowPrompt</span><span class="p">(</span><span class="n">IDialogContext</span> <span class="n">context</span><span class="p">)</span> 
 <span class="p">{</span>
     <span class="n">PromptDialog</span><span class="p">.</span><span class="n">Choice</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span>
@@ -313,11 +296,10 @@ which outputs
         <span class="s">&#34;Ooops, what you wrote is not a valid option, please try again&#34;</span><span class="p">,</span>
         <span class="m">3</span><span class="p">,</span>
 <span class="hl">        <span class="n">PromptStyle</span><span class="p">.</span><span class="n">Keyboard</span><span class="p">);</span>
-</span><span class="p">}</span></code></pre></div>
-
+</span><span class="p">}</span>
+</code></pre></div>
 <p>Which results in following change</p>
-
-<p><div class="row">
+<div class="row">
     <div class="col-sm-6">
         <h5><b>PromptStyle.PerLine</b></h5>
         
@@ -335,14 +317,10 @@ which outputs
 </div>  
     </div>
 </div>
-<br/></p>
-
+<br/>
 <p>Now instead of typing in their selection user can simply click on the option and it will automatically be retyped back to the chat window.</p>
-
 <h2 id="thumbnail-cards">Thumbnail Cards</h2>
-
 <p>Thumbnail cards are very similar to hero cards. They present the same content, only the layout is different. Thumbnail cards are best used when content of the card is of the most importance and image is just addition. For instance, a company logo. Their code initialization looks exactly the same as it was for hero cards.</p>
-
 <ol>
 <li>Add new method in <strong>MainDialog</strong> class
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">Attachment</span> <span class="n">GetThumbnailCard</span><span class="p">()</span>
@@ -365,7 +343,8 @@ which outputs
     <span class="p">};</span>
 
     <span class="k">return</span> <span class="n">heroCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 which outputs 
 <div class="lazy" style="max-height: 243px">
     <div style="padding-bottom:67.68802228412257%"></div>
@@ -384,9 +363,11 @@ which outputs
         <span class="k">default</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;();</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Add new private property to the <strong>CardsDialog</strong> class
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">ThumbnailCard</span> <span class="p">=</span> <span class="s">&#34;Thumbnail card&#34;</span><span class="p">;</span></code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">ThumbnailCard</span> <span class="p">=</span> <span class="s">&#34;Thumbnail card&#34;</span><span class="p">;</span>
+</code></pre></div></li>
 <li>Modify initialization in contructor
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="k">virtual</span> <span class="n">Task</span> <span class="n">MessageReceivedAsync</span><span class="p">(</span>
     <span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">IAwaitable</span><span class="p">&lt;</span><span class="n">IMessageActivity</span><span class="p">&gt;</span> <span class="n">result</span><span class="p">)</span>
@@ -396,12 +377,11 @@ which outputs
 <span class="hl">    <span class="n">options</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span> <span class="n">HeroCard</span><span class="p">,</span> <span class="n">ThumbnailCard</span> <span class="p">};</span>
 </span>
     <span class="n">ShowPrompt</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Test the bot</li>
 </ol>
-
 <h2 id="receipt-cards">Receipt Cards</h2>
-
 <ol>
 <li>Add new method in <strong>MainDialog</strong> class
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">Attachment</span> <span class="n">GetReceiptCard</span><span class="p">()</span>
@@ -438,7 +418,8 @@ which outputs
     <span class="p">};</span>
 
     <span class="k">return</span> <span class="n">receiptCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 which outputs 
 <div class="lazy" style="max-height: 317px">
     <div style="padding-bottom:88.79551820728291%"></div>
@@ -459,9 +440,11 @@ which outputs
         <span class="k">default</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;();</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Add new private property to the <strong>CardsDialog</strong> class
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">ReceiptCard</span> <span class="p">=</span> <span class="s">&#34;Receipt card&#34;</span><span class="p">;</span></code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">ReceiptCard</span> <span class="p">=</span> <span class="s">&#34;Receipt card&#34;</span><span class="p">;</span>
+</code></pre></div></li>
 <li>Modify initialization in contructor
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="k">virtual</span> <span class="n">Task</span> <span class="n">MessageReceivedAsync</span><span class="p">(</span>
     <span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">IAwaitable</span><span class="p">&lt;</span><span class="n">IMessageActivity</span><span class="p">&gt;</span> <span class="n">result</span><span class="p">)</span>
@@ -471,12 +454,11 @@ which outputs
 <span class="hl">    <span class="n">options</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span> <span class="n">HeroCard</span><span class="p">,</span> <span class="n">ThumbnailCard</span><span class="p">,</span> <span class="n">ReceiptCard</span> <span class="p">};</span>
 </span>
     <span class="n">ShowPrompt</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Test the bot</li>
 </ol>
-
 <h2 id="video-cards">Video Cards</h2>
-
 <ol>
 <li>Add new method in <strong>MainDialog</strong> class
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">Attachment</span> <span class="n">GetVideoCard</span><span class="p">()</span>
@@ -509,7 +491,8 @@ which outputs
     <span class="p">};</span>
 
     <span class="k">return</span> <span class="n">videoCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 which outputs 
 <div class="lazy" style="max-height: 427px">
     <div style="padding-bottom:119.6078431372549%"></div>
@@ -532,9 +515,11 @@ which outputs
         <span class="k">default</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;();</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Add new private property to the <strong>CardsDialog</strong> class
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">VideoCard</span> <span class="p">=</span> <span class="s">&#34;Video card&#34;</span><span class="p">;</span></code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">VideoCard</span> <span class="p">=</span> <span class="s">&#34;Video card&#34;</span><span class="p">;</span>
+</code></pre></div></li>
 <li>Modify initialization in contructor
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="k">virtual</span> <span class="n">Task</span> <span class="n">MessageReceivedAsync</span><span class="p">(</span>
     <span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">IAwaitable</span><span class="p">&lt;</span><span class="n">IMessageActivity</span><span class="p">&gt;</span> <span class="n">result</span><span class="p">)</span>
@@ -544,12 +529,11 @@ which outputs
 <span class="hl">    <span class="n">options</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span> <span class="n">HeroCard</span><span class="p">,</span> <span class="n">ThumbnailCard</span><span class="p">,</span> <span class="n">ReceiptCard</span><span class="p">,</span> <span class="n">VideoCard</span> <span class="p">};</span>
 </span>
     <span class="n">ShowPrompt</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Test the bot</li>
 </ol>
-
 <h2 id="audio-cards">Audio Cards</h2>
-
 <ol>
 <li>Add new method in <strong>MainDialog</strong> class
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">Attachment</span> <span class="n">GetAudioCard</span><span class="p">()</span>
@@ -582,7 +566,8 @@ which outputs
     <span class="p">};</span>
 
     <span class="k">return</span> <span class="n">audioCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 which outputs 
 <div class="lazy" style="max-height: 256px">
     <div style="padding-bottom:71.91011235955057%"></div>
@@ -607,9 +592,11 @@ which outputs
         <span class="k">default</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;();</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Add new private property to the <strong>CardsDialog</strong> class
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">AudioCard</span> <span class="p">=</span> <span class="s">&#34;Audio card&#34;</span><span class="p">;</span></code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">AudioCard</span> <span class="p">=</span> <span class="s">&#34;Audio card&#34;</span><span class="p">;</span>
+</code></pre></div></li>
 <li>Modify initialization in contructor
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="k">virtual</span> <span class="n">Task</span> <span class="n">MessageReceivedAsync</span><span class="p">(</span>
     <span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">IAwaitable</span><span class="p">&lt;</span><span class="n">IMessageActivity</span><span class="p">&gt;</span> <span class="n">result</span><span class="p">)</span>
@@ -619,12 +606,11 @@ which outputs
 <span class="hl">    <span class="n">options</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span> <span class="n">HeroCard</span><span class="p">,</span> <span class="n">ThumbnailCard</span><span class="p">,</span> <span class="n">ReceiptCard</span><span class="p">,</span> <span class="n">VideoCard</span><span class="p">,</span> <span class="n">AudioCard</span> <span class="p">};</span>
 </span>
     <span class="n">ShowPrompt</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Test the bot</li>
 </ol>
-
 <h2 id="sign-in-cards">Sign-in Cards</h2>
-
 <ol>
 <li>Add new method in <strong>MainDialog</strong> class
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">Attachment</span> <span class="n">GetSigninCard</span><span class="p">()</span>
@@ -641,7 +627,8 @@ which outputs
     <span class="p">};</span>
 
     <span class="k">return</span> <span class="n">signinCard</span><span class="p">.</span><span class="n">ToAttachment</span><span class="p">();</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 which outputs 
 <div class="lazy" style="max-height: 99px">
     <div style="padding-bottom:28.045325779036826%"></div>
@@ -668,9 +655,11 @@ which outputs
         <span class="k">default</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;();</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Add new private property to the <strong>CardsDialog</strong> class
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">SigninCard</span> <span class="p">=</span> <span class="s">&#34;Sign-in card&#34;</span><span class="p">;</span></code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">SigninCard</span> <span class="p">=</span> <span class="s">&#34;Sign-in card&#34;</span><span class="p">;</span>
+</code></pre></div></li>
 <li>Modify initialization in contructor
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="k">virtual</span> <span class="n">Task</span> <span class="n">MessageReceivedAsync</span><span class="p">(</span>
     <span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">IAwaitable</span><span class="p">&lt;</span><span class="n">IMessageActivity</span><span class="p">&gt;</span> <span class="n">result</span><span class="p">)</span>
@@ -682,12 +671,11 @@ which outputs
 </span><span class="hl">    <span class="p">};</span>
 </span>
     <span class="n">ShowPrompt</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Test the bot</li>
 </ol>
-
 <h2 id="carousel">Carousel</h2>
-
 <ol>
 <li>Add new method in <strong>MainDialog</strong> class
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;</span> <span class="n">GetCarouselCard</span><span class="p">()</span>
@@ -699,7 +687,8 @@ which outputs
         <span class="n">GetAudioCard</span><span class="p">(),</span> 
         <span class="n">GetVideoCard</span><span class="p">()</span>
     <span class="p">};</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 which outputs 
 <div class="lazy" style="max-height: 428px">
     <div style="padding-bottom:59.52712100139082%"></div>
@@ -728,9 +717,11 @@ which outputs
         <span class="k">default</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Attachment</span><span class="p">&gt;();</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Add new private property to the <strong>CardsDialog</strong> class
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">CarouselCard</span> <span class="p">=</span> <span class="s">&#34;Carousel card&#34;</span><span class="p">;</span></code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">CarouselCard</span> <span class="p">=</span> <span class="s">&#34;Carousel card&#34;</span><span class="p">;</span>
+</code></pre></div></li>
 <li>Modify initialization in contructor
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="k">virtual</span> <span class="n">Task</span> <span class="n">MessageReceivedAsync</span><span class="p">(</span>
     <span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">IAwaitable</span><span class="p">&lt;</span><span class="n">IMessageActivity</span><span class="p">&gt;</span> <span class="n">result</span><span class="p">)</span>
@@ -742,21 +733,17 @@ which outputs
 </span><span class="hl">    <span class="p">};</span>
 </span>
     <span class="n">ShowPrompt</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>Test the bot</li>
 </ol>
-
-<h2 id="what-s-next">What&rsquo;s next?</h2>
-
+<h2 id="whats-next">What&rsquo;s next?</h2>
 <p>That of ‘course isn’t all to it</p>
-
 <ul>
 <li>There are more cards in bot framework library than those show in this post. Head to their <a href="https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-add-rich-card-attachments">MSDN page</a> to see more in action.</li>
 <li>See which cards are supported by which channel using <a href="https://docs.botframework.com/en-us/channel-inspector/channels/Slack/">channel inspector</a></li>
 </ul>
-
 <h3 id="play-around-with-it">Play around with it!</h3>
-
 <p>Now just go and start building chatbots.</p><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
@@ -945,9 +932,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -975,21 +962,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1005,9 +992,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1041,9 +1028,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1077,9 +1064,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

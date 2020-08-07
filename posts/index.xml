@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Marczak.IO</title>
@@ -115,7 +114,7 @@
       <guid>https://marczak.io/posts/analysis-services-onprem-integration/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/analysis-services-onprem-integration/splash.png&quot;&gt;
-        &lt;p&gt;Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway. &lt;/p&gt;
+        &lt;p&gt;Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway.&lt;/p&gt;
       </description>
     </item>
     

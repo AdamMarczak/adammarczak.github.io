@@ -117,35 +117,24 @@
     Source Code
 </a><h2>Highlight</h2>
         <p>With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.</p>
-
 <p>Building chat bots for Azure Bot Service is very simple and takes little to no effort this days. In minutes fully functional bots can be presented to a client. Although the development doesn&rsquo;t end there.</p>
-
 <h3 id="why-would-anyone-pre-compile-bots">Why would anyone pre-compile bots?</h3>
-
 <p>Working in browser development environment has its perks. Developers and architects can quickly develop, prototype, test, present and then delete everything and start over with no almost cost or time investment. As good as it sounds it&rsquo;s only good for proof of concept and demo projects. For long term projects developer needs versioning, code repository, continues integration/deployment, team collaboration space and last but not least strongly typed language. Strong typing is crucial in day to day programming and C# Scripting (CSX) does not deliver this. To create bots with classic C# a conversion of standard CSX template must be done.</p>
-
 <h3 id="prerequisites">Prerequisites</h3>
-
 <ol>
 <li>Visual Studio 2017 15.3</li>
 <li>Azure Subscription</li>
 </ol>
-
 <h3 id="instead-of-reading-you-can-watch">Instead of reading you can watch!</h3>
-
 <p>Different people prefer different medium and with this in mind this video was created. It contains no sound just presents the tutorial.</p>
-
 
 <div class="interactive-frame inactive" src="https://www.youtube.com/embed/XExRoqocHDA">
     <button class="btn iframe-button btn-youtube">Watch on youtube</button>
     <iframe class="youtube" frameborder="0" allowfullscreen></iframe>
 </div>
 
-
 <h2 id="creating-a-bot-in-azure-portal">Creating a Bot in Azure Portal</h2>
-
 <p>For the purpose of this article a simple <a href="https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow">Form Flow</a> bot will be created. All bots templates always have the same root function that executes entire logic and for that reason the same steps can be applied in case of every bot.</p>
-
 <ol>
 <li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
 <li>Find Azure Bot Service in Marketplace
@@ -160,8 +149,8 @@
     <div style="padding-bottom:65.29492455418381%"></div>
     <img data-src="/images/compilable-bots/2.jpg" src=""/> 
 </div>  </li>
-<li>Fill in the data.
-
+<li>Fill in the data.</li>
+</ol>
 <ul>
 <li><strong>Consumption Plan</strong> will <a href="https://azure.microsoft.com/en-us/pricing/details/functions/">Functions pricing</a> model (pay per execution). Preferred for most bots.</li>
 <li><strong>App Service Plan</strong> will use <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/">App Service</a> (pay for reserved capacity). Preferred if using Free Tier for learning purposes.
@@ -171,7 +160,8 @@
     <img data-src="/images/compilable-bots/3.jpg" src=""/> 
 </div>  
 Portal should automatically open bot editor after deployment is successful. If not open bot can be opened via either Portal &gt; App Services, Notifications or Dashboard if &lsquo;Pin to Dashboard&rsquo; option was selected.</li>
-</ul></li>
+</ul>
+<ol start="5">
 <li>Click create button redirects to Microsoft App Registration page where application must be first registered.
 
 <div class="lazy" style="max-height: 390px">
@@ -191,11 +181,8 @@ Portal should automatically open bot editor after deployment is successful. If n
     <img data-src="/images/compilable-bots/6.jpg" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="converting-template">Converting template</h2>
-
 <p>There are many ways to approach conversion of template from interpreted C# scripting (CSX) to compiled files (CS). Completely new template in Visual Studio with simple copy-paste seems to be most straight forward one.</p>
-
 <ol>
 <li>Create new Functions Project in Visual Studio by selecting Azure Functions project
 
@@ -203,8 +190,8 @@ Portal should automatically open bot editor after deployment is successful. If n
     <div style="padding-bottom:61.66982922201139%"></div>
     <img data-src="/images/compilable-bots/8.jpg" src=""/> 
 </div>  
-In order for Azure Functions to appear on the list following items must be met
-
+In order for Azure Functions to appear on the list following items must be met</li>
+</ol>
 <ul>
 <li>Visual Studio is in version 15.3 and above</li>
 <li>Visual Studio Azure development tools are installed</li>
@@ -215,17 +202,17 @@ In order for Azure Functions to appear on the list following items must be met
     <img data-src="/images/compilable-bots/7.jpg" src=""/> 
 </div>  </li>
 <li>More into at <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs">MSDN article</a></li>
-</ul></li>
-<li>Right-click on project references and select Manage Nuget Packages
-
+</ul>
+<ol start="2">
+<li>Right-click on project references and select Manage Nuget Packages</li>
+</ol>
 <ul>
 <li>Install Microsoft.Bot.Builder 3.9.0</li>
 <li>Install Microsoft.Bot.Builder.Azure 3.2.3</li>
-</ul></li>
+</ul>
+<ol start="3">
 <li>Copy the contents of Azure Functions from Azure Web Project to Visual Studio project.
-There are three files that needs to be moved <strong>Messages.csx</strong> to <strong>Messages.cs</strong>, <strong>MainDialog.csx</strong> to <strong>MainDialog.cs</strong> and <strong>BasicForm.csx</strong> to <strong>BasicForm.cs</strong>
-
-<ol>
+There are three files that needs to be moved <strong>Messages.csx</strong> to <strong>Messages.cs</strong>, <strong>MainDialog.csx</strong> to <strong>MainDialog.cs</strong> and <strong>BasicForm.csx</strong> to <strong>BasicForm.cs</strong></li>
 <li>Right-click the project and Select Add New Item
 
 <div class="lazy" style="max-height: 289px">
@@ -242,10 +229,7 @@ There are three files that needs to be moved <strong>Messages.csx</strong> to <s
 Note: Only body of the function should be copied, function definition should be left as it was generated by VS.</li>
 <li>Right-click the project and Select Add New Item and add two new classes MainDialog.cs and BasicForm.cs</li>
 <li>Copy paste entire classes from web browser to VS project and again fix the namespaces.</li>
-</ol></li>
-<li>Download the publish profile from the web for the bot
-
-<ol>
+<li>Download the publish profile from the web for the bot</li>
 <li>Go to portal and in your bot editing window select Settings tab and in Advanced Settings section click Open button
 
 <div class="lazy" style="max-height: 545px">
@@ -258,7 +242,6 @@ Note: Only body of the function should be copied, function definition should be 
     <div style="padding-bottom:22.264631043256998%"></div>
     <img data-src="/images/compilable-bots/12.jpg" src=""/> 
 </div>  </li>
-</ol></li>
 <li>Right-click on the Visual Studio project and select Publish. From the given options click on <strong>Import Profile</strong> and hit Publish.
 
 <div class="lazy" style="max-height: 315px">
@@ -272,22 +255,16 @@ Note: Only body of the function should be copied, function definition should be 
     <img data-src="/images/compilable-bots/14.jpg" src=""/> 
 </div>  </li>
 </ol>
-
 <p>After successful publishing give platform a moment to rebuild the bot and start testing it right away. Testing in browser works fine although developers no longer will be able to see or modify the code there.</p>
-
 <h3 id="but-hey-something-is-wrong">But HEY! Something is wrong!</h3>
-
 <p>It takes less than a minute to notice that something is wrong. When talking to bot every conversation resets to the beginning. The root cause of this issue is that in current version of bot framework and azure functions there is a deserialization issue which results in bot losing it state and therefore starting every conversation from the beginning.
 
 <div class="lazy" style="max-height: 872px">
     <div style="padding-bottom:148.5519591141397%"></div>
     <img data-src="/images/compilable-bots/15.jpg" src=""/> 
 </div>  </p>
-
 <p>Happily for everyone Github user <a href="https://github.com/berhir">berhir</a> found a decent workaround which he posted <a href="https://github.com/Microsoft/BotBuilder/issues/2407">here</a>.</p>
-
 <p>Basically in order for state to work follow below steps.</p>
-
 <ol>
 <li>Add new class to project called AzureFunctionsResolveAssembly.cs</li>
 <li>Copy paste following class <a href="https://github.com/MarczakIO/precompiled-bots/blob/master/PrecompiledBot/AzureFunctionsResolveAssembly.cs">source code here</a>
@@ -336,12 +313,14 @@ Note: Only body of the function should be copied, function definition should be 
 
         <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>And modify the Messages.cs class by adding AzureFunctionsResolveAssembly initialization just before BotService initialization
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="ln">22</span>    <span class="n">log</span><span class="p">.</span><span class="n">Info</span><span class="p">(</span><span class="s">$&#34;Webhook was triggered!&#34;</span><span class="p">);</span>
 <span class="ln">23</span>
 <span class="hl"><span class="ln">24</span>    <span class="k">using</span> <span class="p">(</span><span class="k">new</span> <span class="n">AzureFunctionsResolveAssembly</span><span class="p">())</span>
-</span><span class="ln">25</span>    <span class="k">using</span> <span class="p">(</span><span class="n">BotService</span><span class="p">.</span><span class="n">Initialize</span><span class="p">())</span></code></pre></div></li>
+</span><span class="ln">25</span>    <span class="k">using</span> <span class="p">(</span><span class="n">BotService</span><span class="p">.</span><span class="n">Initialize</span><span class="p">())</span>
+</code></pre></div></li>
 <li>republish the bot</li>
 <li>Test it
 
@@ -350,11 +329,8 @@ Note: Only body of the function should be copied, function definition should be 
     <img data-src="/images/compilable-bots/16.jpg" src=""/> 
 </div>  </li>
 </ol>
-
 <p>That&rsquo;s it. In just about 10 minutes of work precompiled bot is fully functional and now proper CI/CD and unit testing can be done.</p>
-
 <h3 id="play-around-with-it">Play around with it!</h3>
-
 <p>Now just go and start building chatbots.</p><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
@@ -549,9 +525,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -579,21 +555,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -609,9 +585,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -645,9 +621,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -681,9 +657,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

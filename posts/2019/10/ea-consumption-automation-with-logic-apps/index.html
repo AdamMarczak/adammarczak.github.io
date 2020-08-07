@@ -117,25 +117,15 @@
     Source Code
 </a><h2>Highlight</h2>
         <p>Started up as manual extraction, evolved into PowerShell scripts, serverless Functions and ended up as Logic Apps. Read how this great service solved our business need for just 3 cents a month.</p>
-
 <h2 id="introduction">Introduction</h2>
-
 <p>When building cloud solutions, it is very important to manage ongoing costs. As such almost any company in the world which has Azure as their cloud provider has some sort of billing reporting solution. Our company is no exception here. This is a small story of how our solution for automated billing evolved over last few years.</p>
-
 <h3 id="evolving-over-time">Evolving over time</h3>
-
 <p>About three years ago our company moved from Pay as you Go to Enterprise Agreement for Azure. Initially we were exporting reports once a month manually via ea.azure.com but we quickly moved to Power BI Enterprise Azure connector to get all billing data. Later due to unknown reasons Microsoft removed connector from Power BI platform and as such we decided to develop complicated Power Query formula which was downloading all billing data using Enterprise Azure API. This was working fine for almost two years until Microsoft rolled out new API known as Azure Consumption API. For some time our old API was working but this year it stopped working.</p>
-
 <p>This meant, we again had to rewrite the Power Query to use new API. While we could still do this using Power Query, we decided to try moving this to something more operationally sustainable. We initially decided on PowerShell hosted on Azure Automation. About 100 lines of code and running on Azure Automation every day downloading the data to Blob Storage which is used as source in Power BI. And this worked fine and still does but I personally felt this could be easier, so I wanted to try out different approaches. In just two days I had recreated entire flow as Azure functions.</p>
-
 <p>Developing in Azure Functions is always fun for me, I&rsquo;ve been coding most of my life. But even then, I felt like some simple tasks required multiple lines of code where it shouldn&rsquo;t. An example of simple task like this was conversion of JSON array to CSV, while simple task and many libraries do it, it still can&rsquo;t be achieved natively in C#, or that you needed either durable functions or multiple functions with queues for parallelization, etc. 200 lines, 2 queues, nice asynchronous patterns, fan-out logic, key vault integration and all felt amazing.</p>
-
 <p>At some point I thought&hellip; <strong>I wonder if Logic Apps could do it</strong>&hellip; and so it began&hellip;</p>
-
 <h3 id="benefits">Benefits</h3>
-
 <p>I wanted to try Logic Apps because</p>
-
 <ol>
 <li>Logic apps do iterate in parallel by default; no need to do fan-out with queues or durable functions</li>
 <li>Logic apps support asynchronous (202) patterns and pooling scenarios extremely well out of the box</li>
@@ -145,116 +135,93 @@
 <li>There is no code with logic apps that we will need to maintain</li>
 <li>Logic apps logging and debugging is extremely easy</li>
 </ol>
-
 <p>Therefore, I began working. To my surprise&hellip; <strong>I did entire thing in about an hour!</strong></p>
-
 <h2 id="design">Design</h2>
-
 <p>Design consists of multiple components to ensure that while this application is small and simple, it must also be secure and reliable.
 
 <div class="lazy" style="max-height: 534px">
     <div style="padding-bottom:105.74257425742574%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000222.png" src=""/> 
 </div>  </p>
-
 <p>With following components</p>
-
 <ul>
 <li><strong>Logic App</strong> - main function logic for pulling data</li>
 <li><strong>Storage Account (Blob Storage)</strong> - storage of CSV data (CSV because it contains more data per MB than JSON)</li>
 <li><strong>Key Vault</strong> - storing EA keys for API, authentication is done via MSI for Logic Apps</li>
 </ul>
-
 <p>For the consumption API following endpoints were used</p>
-
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/rest/api/billing/enterprise/billing-enterprise-api-billing-periods">Billing Periods</a></li>
 <li><a href="https://docs.microsoft.com/en-us/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based">Usage Detail pooling based asynchronous approach with CSV output</a></li>
 <li><a href="https://docs.microsoft.com/en-us/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge">Marketplace Charges with JSON output</a></li>
 </ul>
-
 <h3 id="flow">Flow</h3>
-
-<p>Below flow uses Logic App which is executed every day after midnight at 3:00 in the morning and downloads all the billing data.
+<p>Below flow uses Logic App which is executed every day after midnight at 3:00 in the morning and downloads all the billing data. 
 
 <div class="lazy" style="max-height: 1720px">
     <div style="padding-bottom:162.57088846880907%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000221.png" src=""/> 
 </div>  </p>
-
 <p>And this is how &ldquo;big&rdquo; it is&hellip; or is it?</p>
-
 <p>Only <strong>14 actions</strong> were required to complete this task.</p>
-
 
 <div class="lazy" style="max-height: 1093px">
     <div style="padding-bottom:142.13263979193758%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000234.png" src=""/> 
 </div>  
-
 <h2 id="provisioning">Provisioning</h2>
-
 <p>You can quickly deploy entire application using ARM or by yourself using Azure portal.</p>
-
 <h3 id="one-click-deployment">One Click deployment</h3>
-
 <p>If you want to deploy everything with a push of a button simply use deploy button below.</p>
-
 <ol>
-<li>Click on the Deploy Button
+<li>Click on the Deploy Button</li>
+</ol>
 <div style="margin:10px;"><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMarczakIO%2Fazure-enterprise-consumption-api%2Fmaster%2Flogic-app-refresh.json" target="_blank">
-<img style="height:68px;width:232px" src="http://azuredeploy.net/deploybutton.svg"/>
-</a></div></li>
-<li>Fill in the form
+    <img style="height:68px;width:232px" src="http://azuredeploy.net/deploybutton.svg"/>
+</a></div>
+2. Fill in the form
 
 <div class="lazy" style="max-height: 950px">
     <div style="padding-bottom:127.00534759358288%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000224.png" src=""/> 
 </div>  
-
-<ul>
-<li><strong>Resource group</strong> - Resource Group to deploy solution to</li>
-<li><strong>Location</strong> - Region where your solution will be deployed to. If you plan to use this for Power BI reporting then deploy to closest data center of your Office region.</li>
-<li><strong>Key Vault Name</strong> - Name of Key Vault resource. Can be left as default.</li>
-<li><strong>Storage Account Name</strong> - Name of Storage Account resource. Can be left as default.</li>
-<li><strong>Enterprise Azure Id</strong> - Enterprise agreement ID from <a href="https://ea.azure.com">https://ea.azure.com</a> portal</li>
-<li><strong>Enterprise Azure Key</strong> - Enterprise agreement Reporting Key from <a href="https://ea.azure.com">https://ea.azure.com</a> portal &gt; Reports &gt; Download Usage &gt; API Access Key &gt; Expand Key &gt; Copy
-
+ - **Resource group** - Resource Group to deploy solution to
+ - **Location** - Region where your solution will be deployed to. If you plan to use this for Power BI reporting then deploy to closest data center of your Office region. 
+ - **Key Vault Name** - Name of Key Vault resource. Can be left as default.
+ - **Storage Account Name** - Name of Storage Account resource. Can be left as default.
+ - **Enterprise Azure Id** - Enterprise agreement ID from https://ea.azure.com portal
+ - **Enterprise Azure Key** - Enterprise agreement Reporting Key from https://ea.azure.com portal > Reports > Download Usage > API Access Key > Expand Key > Copy
+ 
 <div class="lazy" style="max-height: 619px">
     <div style="padding-bottom:58.840304182509506%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000225.png" src=""/> 
-</div>  </li>
-</ul></li>
-<li>When deployment finishes go to the resource group to check resources
-
+</div>  
+3. When deployment finishes go to the resource group to check resources
+ 
 <div class="lazy" style="max-height: 396px">
     <div style="padding-bottom:88.19599109131403%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000227.png" src=""/> 
-</div>  </li>
-<li>Go to the <strong>Logic App</strong> and hit <strong>Enable</strong>
-
+</div>  
+4. Go to the **Logic App** and hit **Enable**
+ 
 <div class="lazy" style="max-height: 79px">
     <div style="padding-bottom:11.738484398216938%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000228.png" src=""/> 
-</div>  </li>
-<li>Confirm the app ran successfully
-
+</div>  
+5. Confirm the app ran successfully
+ 
 <div class="lazy" style="max-height: 151px">
     <div style="padding-bottom:41.256830601092894%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000231.png" src=""/> 
-</div>  </li>
-<li>Verify the data is on the BLOB
-
+</div>  
+6. Verify the data is on the BLOB
+ 
 <div class="lazy" style="max-height: 307px">
     <div style="padding-bottom:45.82089552238806%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000232.png" src=""/> 
-</div>  </li>
-</ol>
-
+</div>  
 <h4 id="but-logic-app-refreshed-only-last-2-months">But Logic App refreshed only last 2 months?!</h4>
-
 <p>Logic App only refreshes last two month since older months do not need to be refreshed as the billing will never change. In case your company has EA already for longer than two month, then</p>
-
 <ol>
 <li>Go to Logic App editor.
 
@@ -262,7 +229,7 @@
     <div style="padding-bottom:14.495412844036696%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000230.png" src=""/> 
 </div>  </li>
-<li>Find the value <strong>2</strong>, which can be found in in the <strong>For each billing period</strong> action as expression <strong>take(&hellip;)</strong> and simply change it to bigger number, and run it once.
+<li>Find the value <strong>2</strong>, which can be found in in the <strong>For each billing period</strong> action as expression <strong>take(&hellip;)</strong> and simply change it to bigger number, and run it once. 
 
 <div class="lazy" style="max-height: 449px">
     <div style="padding-bottom:43.507751937984494%"></div>
@@ -270,18 +237,14 @@
 </div>  </li>
 <li>Remember to change it back to 2 afterwards.</li>
 </ol>
-
-<h3 id="and-that-s-it">And that&rsquo;s it!</h3>
-
+<h3 id="and-thats-it">And that&rsquo;s it!</h3>
 <p><strong>Last 30 days</strong> show consumption of <strong>0.03 EUR per month</strong>.
 
 <div class="lazy" style="max-height: 866px">
     <div style="padding-bottom:56.5643370346179%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000233.png" src=""/> 
 </div>  </p>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>Logic Apps are not the cheapest service out there, but when used correctly they solve business challenges in no time and at &lsquo;no cost&rsquo;. Used as the right tool for the right challenge they fit perfectly here. I&rsquo;m glad I did try them out because this is the perfect solution for our company.</p><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
@@ -473,9 +436,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -503,21 +466,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -533,9 +496,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -569,9 +532,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -605,9 +568,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

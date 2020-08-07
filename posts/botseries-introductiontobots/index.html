@@ -117,15 +117,10 @@
     Source Code
 </a><h2>Highlight</h2>
         <p>Microsoft Bot Framework with conjunction with Azure Bot Service provides the platform for quick bot development. Learn what are chat bots for and how to leverage those tools to deliver basic bots in just minutes.</p>
-
 <p>In recent years increased availability of internet across the world and evolution of mobile devices popularized messaging applications which became most common way to communicate in private life as well as everyday business. It is no surprise that leveraging those communication channels has huge potential in any business.</p>
-
 <h3 id="what-are-chat-bots">What are chat bots?</h3>
-
 <p>Chat bots are applications whose main role is extension of usually already existing applications and therefore it is often said that they are <strong>application interfaces</strong>. While a developer can build full-fledged application purely within chat bot app it is not what chat bots are for.</p>
-
 <p>Bots can handle multitude of business scenarios, few examples are</p>
-
 <ol>
 <li>Level 0/1 support roles responding to basic user queries.</li>
 <li>Granting access to resources and websites.</li>
@@ -134,34 +129,22 @@
 <li>Allowing control over systems. Fantastic example is <a href="https://bots.botframework.com/bot?id=azurebot">Azure Bot</a> in bot directory.</li>
 <li>Knowledge base for wiki or FAQ</li>
 </ol>
-
 <p>Often people wonder if chat bots are win it all application. They are not. But they have fantastic set of uses and they are best for enhancing service quality not completly removing human interaction from them. Best scenario for bots is to handle 50-80% of common cases and redirect users to human for cases that bot is not suited to do. While it&rsquo;s possible to code those cases too it&rsquo;s often not worth the cost.</p>
-
 <h3 id="how-are-chat-bots-built">How are chat bots built?</h3>
-
 <p>Building bots with use of Microsoft stack usually consists of two main components</p>
-
 <p><a href="https://dev.botframework.com/"><img class="icon" src="/images/tags/botframework.png"/>Microsoft Bot Framework</a></p>
-
 <p><a href="https://azure.microsoft.com/en-us/services/bot-service/"><img class="icon" src="/images/tags/bot-service.svg"/>Azure Bot Service</a></p>
-
 <p>Those are connected as follows
 
 <div class="lazy" style="max-height: 861px">
     <div style="padding-bottom:38.21571238348868%"></div>
     <img data-src="/images/botseries-intro/arch1.png" src=""/> 
 </div>  </p>
-
 <h2 id="microsoft-bot-framework">Microsoft Bot Framework</h2>
-
 <p>Open source SDK and platform delivered by Microsoft for rapid bot development.</p>
-
 <p>Platform consists of several components</p>
-
 <ol>
-<li>Bot Builder SDK
-
-<ol>
+<li>Bot Builder SDK</li>
 <li>Open Source library written with <strong>.NET</strong> and <strong>Node.js</strong> available at <a href="https://github.com/Microsoft/BotBuilder">github</a> for anyone to explore and contribute.</li>
 <li><a href="https://docs.microsoft.com/en-us/bot-framework/rest-api/bot-framework-rest-overview">REST API</a> for those who want to integrate it from different languages and platforms.</li>
 <li><a href="https://docs.microsoft.com/en-us/bot-framework/debug-bots-emulator">Bot Emulator</a> for testing bots locally and remotely without a need for any channel. It works great with <a href="https://ngrok.com/">Ngrok tunneling tool</a> for remote connectivity
@@ -170,10 +153,7 @@
     <div style="padding-bottom:65.90636254501801%"></div>
     <img data-src="/images/botseries-intro/0.png" src=""/> 
 </div>  </li>
-</ol></li>
-<li>Bot Connectors (channels) which are API proxies delivered and maintained by Microsoft which connect to existing services and proxy/format messages between the messaging platform (client origin) and bot service.
-
-<ol>
+<li>Bot Connectors (channels) which are API proxies delivered and maintained by Microsoft which connect to existing services and proxy/format messages between the messaging platform (client origin) and bot service.</li>
 <li>Two enabled by default which are SKype and Web Chat
 
 <div class="lazy" style="max-height: 155px">
@@ -186,7 +166,6 @@
     <div style="padding-bottom:34.25034387895461%"></div>
     <img data-src="/images/botseries-intro/2.png" src=""/> 
 </div>  </li>
-</ol></li>
 <li>Registration and management portal (fully integrated with Azure Bot Service) for maintaining directory of bot applications.
 
 <div class="lazy" style="max-height: 470px">
@@ -200,11 +179,8 @@
     <img data-src="/images/botseries-intro/4.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="azure-bot-service">Azure Bot Service</h2>
-
 <p>Bot Service is specialized version of Azure App Service with full web IDE (just like Azure Functions) as well as basic tooling for bot development and management. Key features of this service are</p>
-
 <ol>
 <li>IDE for bot development
 
@@ -231,22 +207,16 @@
     <img data-src="/images/botseries-intro/7.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="creation-of-a-chat-bot">Creation of a chat bot</h2>
-
 <p>In this article a basic form bot will be built which will serve users with a questionnaire about their favorite mobile device and color. Nothing complicated but it gives a decent idea of how bots operate and how developer can create simple bot in just minutes.</p>
-
 <p>Instead of reading you can watch!</p>
-
 
 <div class="interactive-frame inactive" src="https://www.youtube.com/embed/npbMDq9mYYo">
     <button class="btn iframe-button btn-youtube">Watch on youtube</button>
     <iframe class="youtube" frameborder="0" allowfullscreen></iframe>
 </div>
 
-
 <p>Or just follow the steps</p>
-
 <ol>
 <li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
 <li>Find Azure Bot Service in Marketplace
@@ -261,8 +231,8 @@
     <div style="padding-bottom:65.29492455418381%"></div>
     <img data-src="/images/botseries-intro/10.jpg" src=""/> 
 </div>  </li>
-<li>Fill in the data.
-
+<li>Fill in the data.</li>
+</ol>
 <ul>
 <li><strong>Consumption Plan</strong> will <a href="https://azure.microsoft.com/en-us/pricing/details/functions/">Functions pricing</a> model (pay per execution). Preferred for most bots.</li>
 <li><strong>App Service Plan</strong> will use <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/">App Service</a> (pay for reserved capacity). Preferred if using Free Tier for learning purposes.
@@ -272,7 +242,8 @@
     <img data-src="/images/botseries-intro/11.png" src=""/> 
 </div>  
 Portal should automatically open bot editor after deployment is successful. If not open bot can be opened via either Portal &gt; App Services, Notifications or Dashboard if &lsquo;Pin to Dashboard&rsquo; option was selected.</li>
-</ul></li>
+</ul>
+<ol start="5">
 <li>Click create button redirects to bot wizard where C# should be set language and Form as a bot template.
 
 <div class="lazy" style="max-height: 875px">
@@ -294,9 +265,7 @@ Portal should automatically open bot editor after deployment is successful. If n
     <img data-src="/images/botseries-intro/14.png" src=""/> 
 </div>  </li>
 </ol>
-
 <p>Additionally, developer can set up <a href="https://docs.microsoft.com/en-us/bot-framework/debug-bots-emulator">Bot Emulator</a> for testing which takes just minutes.</p>
-
 <ol>
 <li>Download Emulator from Bot Framework website</li>
 <li>Download <a href="https://ngrok.com/">Ngrok tunneling tool</a> for remote connectivity and extract it at convenient location</li>
@@ -313,9 +282,7 @@ Portal should automatically open bot editor after deployment is successful. If n
     <div style="padding-bottom:94.29280397022333%"></div>
     <img data-src="/images/botseries-intro/16.png" src=""/> 
 </div>  </li>
-<li>Click on the &lsquo;Enter your endpoint URL&rsquo; text bot in emulator and provide bot details
-
-<ol>
+<li>Click on the &lsquo;Enter your endpoint URL&rsquo; text bot in emulator and provide bot details</li>
 <li>Get messaging endpoint to chatbot by going to Azure Portal IDE and selecting Settings Tab. Scroll down to Configuration section and copy paste the link into emulator
 
 <div class="lazy" style="max-height: 123px">
@@ -339,7 +306,6 @@ Portal should automatically open bot editor after deployment is successful. If n
     <div style="padding-bottom:90.14373716632444%"></div>
     <img data-src="/images/botseries-intro/20.png" src=""/> 
 </div>  </li>
-</ol></li>
 <li>Click Connect
 
 <div class="lazy" style="max-height: 204px">
@@ -353,28 +319,26 @@ Portal should automatically open bot editor after deployment is successful. If n
     <img data-src="/images/botseries-intro/22.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h4 id="editing-the-business-logic">Editing the business logic</h4>
-
 <p>Now that the bot is set up and running editing the default logic to mobile device questionnaire is pretty straightforward.</p>
-
 <ol>
-<li><p>Open BasicForm.csx file in the browser IDE and paste in the code
+<li>
+<p>Open BasicForm.csx file in the browser IDE and paste in the code
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Microsoft.Bot.Builder.FormFlow</span><span class="p">;</span>
 
 <span class="hl"><span class="k">public</span> <span class="k">enum</span> <span class="n">MobileOptions</span> <span class="p">{</span> <span class="n">Laptop</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">Smartphone</span><span class="p">,</span> <span class="n">Tablet</span> <span class="p">};</span>
-</span><span class="hl"><span class="k">public</span> <span class="k">enum</span> <span class="n">ColorOptions</span> <span class="p">{</span> <span class="n">Black</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">Silver</span><span class="p">,</span> <span class="n">Gold</span><span class="p">,</span> <span class="n">White</span><span class="p">,</span> <span class="n">Red</span><span class="p">,</span> <span class="n">Blue</span><span class="p">,</span> <span class="n">Green</span> <span class="p">};</span><span class="na">
-</span></span><span class="na">
+</span><span class="hl"><span class="k">public</span> <span class="k">enum</span> <span class="n">ColorOptions</span> <span class="p">{</span> <span class="n">Black</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">Silver</span><span class="p">,</span> <span class="n">Gold</span><span class="p">,</span> <span class="n">White</span><span class="p">,</span> <span class="n">Red</span><span class="p">,</span> <span class="n">Blue</span><span class="p">,</span> <span class="n">Green</span> <span class="p">};</span>
+</span><span class="na">
 </span><span class="na">[Serializable]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">BasicForm</span>
-<span class="p">{</span><span class="na">
-</span><span class="na">    [Prompt(&#34;Hello! What is your {&amp;}?&#34;)]</span>
-<span class="hl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">FullName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span><span class="na">
-</span></span><span class="na">
+<span class="p">{</span>
+<span class="na">    [Prompt(&#34;Hello! What is your {&amp;}?&#34;)]</span>
+<span class="hl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">FullName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="na">
 </span><span class="hl"><span class="na">    [Prompt(&#34;Please select your favorite mobile device type {||}&#34;)]</span>
-</span><span class="hl">    <span class="k">public</span> <span class="n">MobileOptions</span> <span class="n">MobileDevice</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span><span class="na">
-</span></span><span class="na">
+</span><span class="hl">    <span class="k">public</span> <span class="n">MobileOptions</span> <span class="n">MobileDevice</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="na">
 </span><span class="na">    [Prompt(&#34;Please select your favorite {&amp;} {||}&#34;)]</span>
 <span class="hl">    <span class="k">public</span> <span class="n">ColorOptions</span> <span class="n">Color</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 </span>
@@ -387,23 +351,26 @@ Portal should automatically open bot editor after deployment is successful. If n
     <span class="p">{</span>
         <span class="k">return</span> <span class="n">FormDialog</span><span class="p">.</span><span class="n">FromForm</span><span class="p">(</span><span class="n">BuildForm</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 Highlighted lines are the ones that has been changed for purpose of this scenario. So in details</p>
-
-<ol>
-<li>All <strong>string</strong> types are translated to simple user prompts for text. This is good when users can&rsquo;t be provided with options.</li>
-<li>All <strong>enum</strong> types are translated to single selection card prompts. This is good when there is set amount of options to choose from.</li>
-<li>All <strong>List&lt;enum&gt;</strong> types are translated to multiple selection card prompts. This is good when there is set amount of options to choose from but users should be able to select multiple options.
-More info about form flows at <a href="https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow">Bot Framwork Form Flow</a> tutorial</li>
-</ol></li>
-
-<li><p>Click Save and Test the bot!</p></li>
+</li>
+<li>
+<p>All <strong>string</strong> types are translated to simple user prompts for text. This is good when users can&rsquo;t be provided with options.</p>
+</li>
+<li>
+<p>All <strong>enum</strong> types are translated to single selection card prompts. This is good when there is set amount of options to choose from.</p>
+</li>
+<li>
+<p>All <strong>List&lt;enum&gt;</strong> types are translated to multiple selection card prompts. This is good when there is set amount of options to choose from but users should be able to select multiple options.
+More info about form flows at <a href="https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow">Bot Framwork Form Flow</a> tutorial</p>
+</li>
+<li>
+<p>Click Save and Test the bot!</p>
+</li>
 </ol>
-
 <p>That&rsquo;s it. In just about 10 minutes of work questionnaire bot is done and ready to be deployed to users.</p>
-
 <h3 id="play-around-with-it">Play around with it!</h3>
-
 <p>Now just go and start building chatbots.</p><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"
@@ -592,9 +559,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -622,21 +589,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -652,9 +619,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -688,9 +655,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -724,9 +691,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

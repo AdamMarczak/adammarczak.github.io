@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vue.js on Marczak.IO</title>
@@ -10,6 +9,138 @@
     
         <atom:link href="https://marczak.io/tags/vue.js/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AZ-900 Microsoft Azure Fundamentals full course</title>
+      <link>https://marczak.io/posts/2020/07/az-900-full-course/</link>
+      <pubDate>Tue, 07 Jul 2020 11:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2020/07/az-900-full-course/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/az-900/az-900-ep-00-740.jpg&quot;&gt;
+        &lt;p&gt;AZ-900 Microsoft Azure Fundamentals certification is the first and the most important certification for anyone who is just starting with Azure. It&amp;rsquo;s very exciting for me to release this course to everyone!&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Automating Enterprise Azure billing using Logic Apps for 0.03$/month</title>
+      <link>https://marczak.io/posts/2019/10/ea-consumption-automation-with-logic-apps/</link>
+      <pubDate>Fri, 25 Oct 2019 11:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2019/10/ea-consumption-automation-with-logic-apps/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2019-09-ea-billing-automation-with-logic-apps/splash.png&quot;&gt;
+        &lt;p&gt;Started up as manual extraction, evolved into PowerShell scripts, serverless Functions and ended up as Logic Apps. Read how this great service solved our business need for just 3 cents a month.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Enhancing Logic Apps security with obfuscation</title>
+      <link>https://marczak.io/posts/2019/08/logic-apps-obfuscation/</link>
+      <pubDate>Fri, 16 Aug 2019 12:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2019/08/logic-apps-obfuscation/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2019-08-logic-apps-obfuscation/splash.png&quot;&gt;
+        &lt;p&gt;Introduction of obfuscation feature in Azure Logic Apps for input and output blocks allows for better secret management and enhanced security. This article will focus on presenting capabilities of this feature.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Securing Logic App with Azure AD authentication using API Management</title>
+      <link>https://marczak.io/posts/2019/08/secure-logic-app-with-api-management/</link>
+      <pubDate>Thu, 08 Aug 2019 10:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2019/08/secure-logic-app-with-api-management/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2019-08-secure-logic-app-with-api-management/splash.png&quot;&gt;
+        &lt;p&gt;Logic Apps are great but exposing them as publicly available HTTP service is clearly far from perfect. This article shows how to solve this challenge by using API Management service which be used to secure Logic Apps HTTP endpoint with Azure AD token authentication.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Securing Azure Services with Managed Identities</title>
+      <link>https://marczak.io/posts/2019/07/securing-websites-with-msi/</link>
+      <pubDate>Fri, 19 Jul 2019 16:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2019/07/securing-websites-with-msi/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2019-07-securing-websites-with-managed-identity/splash.png&quot;&gt;
+        &lt;p&gt;Managing application account credentials is just another thing to worry for application developers; especially in public cloud. Learn what is Managed Identity for Azure Services and how does it solve this problem.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Azure Jumpstart - how to learn, practice and certify in Azure</title>
+      <link>https://marczak.io/posts/2019/07/azure-jumpstart/</link>
+      <pubDate>Mon, 08 Jul 2019 14:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2019/07/azure-jumpstart/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2019-07-azure-jumpstart/splash.png&quot;&gt;
+        &lt;p&gt;How to start with Azure at no cost? Where to learn and practice Azure? Which subscription is the best for me? Are there any services for free to use? I&amp;rsquo;m preparing for certification, are there any labs I can practice on? Those are typical questions asked by a lot of IT specialists every day. This article puts anyone on the right track.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Azure Data Factory versus Logic Apps for Analysis Services Refresh</title>
+      <link>https://marczak.io/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/</link>
+      <pubDate>Fri, 28 Jun 2019 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/logic-app-vs-data-factory-for-aas-refresh/splash.png&quot;&gt;
+        &lt;p&gt;Data factory is currently go-to service for data load and transformation processes in Azure. In this article a common scenario of refreshing models in Azure Analysis Services will be implemented using ADF components including a  comparison with the same process using Azure Logic Apps.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Refreshing Azure Analysis Services models using Logic Apps</title>
+      <link>https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/</link>
+      <pubDate>Sat, 15 Jun 2019 11:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/logic-apps-refresh-analysis-services/splash.png&quot;&gt;
+        &lt;p&gt;In 2017 asynchronous refresh API was released for Azure Analysis Services which allows users to refresh their models with simple REST calls. This allows for easy integration with their orchestration solutions. Learn how to build very simple logic apps and manage Azure Analysis Services refresh schedule.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Azure Analysis Services hybrid enrivonment with on-premises databases</title>
+      <link>https://marczak.io/posts/analysis-services-onprem-integration/</link>
+      <pubDate>Tue, 26 Jun 2018 18:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/analysis-services-onprem-integration/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/analysis-services-onprem-integration/splash.png&quot;&gt;
+        &lt;p&gt;Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Quick, easy and cheap way to automate data loading from CSV file into Azure SQL</title>
+      <link>https://marczak.io/posts/azure-loading-csv-to-sql/</link>
+      <pubDate>Sun, 03 Jun 2018 11:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/azure-loading-csv-to-sql/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/azure-loading-csv-to-sql/splash.png&quot;&gt;
+        &lt;p&gt;Check out how to leverage Azure Blob Storage and Logic Apps for simple scenario of data loading from CSV into Azure SQL in less than 30 minutes and with almost no coding.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Effective chatbot development with ngrok</title>
+      <link>https://marczak.io/posts/botseries-dev-done-easy/</link>
+      <pubDate>Mon, 12 Mar 2018 21:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/botseries-dev-done-easy/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/botseries-dev-done-easy/splash.png&quot;&gt;
+        &lt;p&gt;Proper set up of environment is one of most important things during development. Leverage ngrok tunneling service to speed up development process.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB</title>
@@ -32,6 +163,66 @@
       <description>
         &lt;img src=&quot;https://marczak.io/images/netcore-vuejs/splash.png&quot;&gt;
         &lt;p&gt;Single Page Applications are one of the best experiences that a web developer can deliver to their customers. See how to build SPA using Vue.js with .NET Core 2.0 backend.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Analyze user&#39;s feedback with sentiment analysis</title>
+      <link>https://marczak.io/posts/cognitive-text-analytics/</link>
+      <pubDate>Sun, 10 Dec 2017 22:34:37 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/cognitive-text-analytics/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/cognitive-text-analytics/splash.png&quot;&gt;
+        &lt;p&gt;Building brand visibility requires a lot of effort. Analysis of social media reactions is key aspect of this process. With Azure Cognitive Services Text Analytics API companies can start analyzing feedback right away with ease.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Better chatbot interactions with Rich Cards</title>
+      <link>https://marczak.io/posts/botseries-rich-cards/</link>
+      <pubDate>Sat, 18 Nov 2017 22:00:37 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/botseries-rich-cards/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/botseries-rich-cards/splash.png&quot;&gt;
+        &lt;p&gt;Driving user conversations is key for any successful bot. By leveraging bot framework&amp;rsquo;s rich cards in conversations developers can enrich user experience by allowing them to interact with bots without need of a typing.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Smarter bots with natural language processing</title>
+      <link>https://marczak.io/posts/botseries-smarter-bots-with-nlp/</link>
+      <pubDate>Mon, 06 Nov 2017 08:37:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/botseries-smarter-bots-with-nlp/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/botseries-luis/splash.png&quot;&gt;
+        &lt;p&gt;The closer bot interaction gets to the one of a human the better the end user experience will be. See how to leverage Microsoft Cognitive Services LUIS for natural language processing so that users can type naturally while allowing bots to understand and act.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Introduction to chatbots</title>
+      <link>https://marczak.io/posts/botseries-introductiontobots/</link>
+      <pubDate>Sun, 22 Oct 2017 22:34:37 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/botseries-introductiontobots/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/botseries-intro/splash.png&quot;&gt;
+        &lt;p&gt;Microsoft Bot Framework with conjunction with Azure Bot Service provides the platform for quick bot development. Learn what are chat bots for and how to leverage those tools to deliver basic bots in just minutes.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Precompiled Bots with VS 2017 tooling</title>
+      <link>https://marczak.io/posts/precompiled-bots-for-bot-service/</link>
+      <pubDate>Sat, 30 Sep 2017 16:20:25 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/precompiled-bots-for-bot-service/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/compilable-bots/splash.png&quot;&gt;
+        &lt;p&gt;With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.&lt;/p&gt;
       </description>
     </item>
     

@@ -111,25 +111,17 @@
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/splash.png" src=""/> 
 </div> <h2>Highlight</h2>
         <p>Logic Apps are great but exposing them as publicly available HTTP service is clearly far from perfect. This article shows how to solve this challenge by using API Management service which be used to secure Logic Apps HTTP endpoint with Azure AD token authentication.</p>
-
 <h2 id="intro">Intro</h2>
-
 <p>Logic Apps can be integrated with external services in multiple ways. One of the most popular is, integration through HTTP trigger. This way external services can call logic apps and get response in easy and flexible way.</p>
-
 <p>There is one big issue with this approach. Currently, Logic Apps do not support authentication via anything else than URL code. This means, that anyone who has access to the URL can in fact call the API at any time. There is of ‘course  setting for IP restriction but again, not every service has static IP that can be added to the list.</p>
-
 <p>All that can be fixed with simple implementation of Azure API management solution which will proxy requests to logic apps and validate Azure AD JWT tokens on the way. This provides complete security of the solution.</p>
-
 
 <div class="lazy" style="max-height: 278px">
     <div style="padding-bottom:62.05357142857143%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000176.png" src=""/> 
 </div>  
-
 <h2 id="provisioning-of-resources">Provisioning of Resources</h2>
-
 <h3 id="api-management">API Management</h3>
-
 <ol>
 <li>Go to <a href="https://portal.azure.com">Portal</a> and hit create resource.
 
@@ -148,19 +140,16 @@
 <div class="lazy" style="max-height: 614px">
     <div style="padding-bottom:106.96864111498257%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000131.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Name</strong> - this is the same of API Management but also public DNS which will be registered during creation.</li>
 <li><strong>Location</strong> - region of API Management; it&rsquo;s best to place it in the same region as Logic App later created during later steps.</li>
 <li><strong>Organization Name</strong> - for the purpose of the demo this isn&rsquo;t relevant but it&rsquo;s public name of organization when this API is published to developers. So, make it meaningful.</li>
 <li><strong>Administrator email</strong> - administrators email. All communication regarding API management will go here.</li>
 <li><strong>Pricing tier</strong> - select <strong>Developer (No SLA)</strong> tier. In case this is small application consider using <strong>Consumption</strong> plan as it&rsquo;s very cheap. First 1,000,000 calls per Azure subscription are free and then the charge is very small. Note that changes between consumption and dedicated plans (dev, basic, standard, premium) are currently not supported. Also note that <strong>Consumption</strong> plan does not have static IP and as such IP restrictions are can&rsquo;t be done.</li>
-</ul></li>
-</ol>
-
+</ul>
 <h3 id="logic-app">Logic App</h3>
-
 <ol>
 <li>Go to <a href="https://portal.azure.com">Portal</a> and hit create resource.</li>
 <li>Search for &ldquo;Logic App&rdquo; and once found, click on it and hit <strong>Create</strong> button.
@@ -174,17 +163,14 @@
 <div class="lazy" style="max-height: 455px">
     <div style="padding-bottom:154.23728813559322%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000133.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Name</strong> - this is the same of logic app resource.</li>
 <li><strong>Location</strong> - region of logic app; it&rsquo;s best to place it in the same region as API management.</li>
 <li><strong>Log Analytics</strong> - this this example set this as Off but in case of production solution, should be set to On so that all the logs are transferred to Log Analytics resource.</li>
-</ul></li>
-</ol>
-
+</ul>
 <h2 id="simple-restful-service-with-logic-app">Simple RESTful service with Logic App</h2>
-
 <ol>
 <li>Open Logic App</li>
 <li>Go to Logic App Designer and click on <strong>Blank Logic App</strong>
@@ -245,22 +231,16 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000146.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="securing-app-with-api-management">Securing App with API Management</h2>
-
 <h3 id="ip-restriction">IP Restriction</h3>
-
 <p>First of all, API management does not block access to the Logic App. It only provides secure way to connect to it. This means access restriction to Logic App must be done from the Logic App service. To do this, IP restriction can be used so that only traffic from API management will be accepted. This is possible because API management service has static VIP (virtual IP).</p>
-
 <p>Note that API Management in <strong>Consumption</strong> tier does <strong>not</strong> have static IP and as such, this IP restriction steps can&rsquo;t be applied.</p>
-
 <p>This diagram presents the traffic flow that needs to be blocked. So that users can&rsquo;t bypass API management via direct calls to Logic Apps.
 
 <div class="lazy" style="max-height: 330px">
     <div style="padding-bottom:73.33333333333333%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000177.png" src=""/> 
 </div>  </p>
-
 <ol>
 <li>Open <strong>API Management</strong> resource</li>
 <li>In the <strong>Overview</strong> blade find <strong>Virtual IP (VIP) address</strong> and copy it
@@ -270,7 +250,7 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000147.png" src=""/> 
 </div>  </li>
 <li>Open <strong>Logic App</strong> resource</li>
-<li>Open <strong>Workflow Settings</strong> blade
+<li>Open <strong>Workflow Settings</strong> blade 
 
 <div class="lazy" style="max-height: 165px">
     <div style="padding-bottom:62.73764258555133%"></div>
@@ -289,26 +269,19 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000150.png" src=""/> 
 </div>  </li>
 </ol>
-
 <p>Now that this is done, Logic App is secured and will only be called from API management service.</p>
-
-<h4 id="virtual-private-ip-important-note">Virtual Private IP - important note!</h4>
-
+<h4 id="virtual-private-ip---important-note">Virtual Private IP - important note!</h4>
 <p>It is highly important to note that APIM VIP is not static forever. It is static for lifetime of tenant but with exception of three scenarios</p>
-
 <ul>
 <li>Service is redeployed</li>
 <li>Azure Subscription is suspended/warned</li>
 <li>VNet integration is added or removed</li>
 </ul>
-
 <p><a href="https://docs.microsoft.com/en-us/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules">See documentation FAQ for API management for details.</a></p>
-
 <h3 id="api-management-configuration">API management configuration</h3>
-
 <ol>
 <li>Open <strong>API Management</strong> resource</li>
-<li>Go to the <strong>APIs</strong> blade
+<li>Go to the <strong>APIs</strong> blade 
 
 <div class="lazy" style="max-height: 175px">
     <div style="padding-bottom:66.53992395437263%"></div>
@@ -350,8 +323,8 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 <div class="lazy" style="max-height: 749px">
     <div style="padding-bottom:125.67114093959732%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000193.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Validate by</strong> - and set this to <strong>header</strong> validation.</li>
 <li><strong>Header name</strong> - which header is going to be validated. In this case <strong>Authorization</strong> header.</li>
@@ -369,7 +342,8 @@ When not sure about the URL, hovering over user name gives this details. Both te
     <div style="padding-bottom:22.5531914893617%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000158.png" src=""/> 
 </div>  </li>
-</ul></li>
+</ul>
+<ol start="10">
 <li>Next click on <strong>Add Policy</strong> to one more policy which removes Authorization header from the request. This is because Logic Apps do not accept Authorization headers. If this step is omitted, following error will be returned.
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;error&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -433,11 +407,8 @@ When not sure about the URL, hovering over user name gives this details. Both te
 
 <span class="nt">&lt;/policies&gt;</span></code></pre></div></li>
 </ol>
-
 <h3 id="set-up-the-application-api">Set up the Application API</h3>
-
 <p>Audience should <strong>always, always, always be validated</strong>. This means custom app needs to be created.</p>
-
 <ol>
 <li>Go to Azure AD
 
@@ -462,9 +433,7 @@ When not sure about the URL, hovering over user name gives this details. Both te
 <div class="lazy" style="max-height: 641px">
     <div style="padding-bottom:69.37229437229438%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000189.png" src=""/> 
-</div>  
-
-<ol>
+</div>  </li>
 <li><strong>Set</strong> Application ID URI, this will be audience that will be validated. In this example use <strong>api://apim-logic-app-demo</strong> value.
 
 <div class="lazy" style="max-height: 118px">
@@ -485,15 +454,11 @@ If in rare scenario this would change in future, simply run az account get-acces
     <div style="padding-bottom:23.801652892561982%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000192.png" src=""/> 
 </div>  </li>
-</ol></li>
 <li>Test the access token with audience by running following CLI command. It might need a minute to propagate so be patient.
 <div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">az account get-access-token --resource <span class="s2">&#34;api://apim-logic-app-demo&#34;</span>. </code></pre></div></li>
 </ol>
-
 <h2 id="test-the-access">Test the access</h2>
-
 <p>Now that the setup is completed, testing can begin. There are several ways to test this, but the easiest that I found is using new Azure CLI. To make REST call both Azure AD token and API subscription key will be required.</p>
-
 <ol>
 <li>Go to <strong>API Management</strong> resource</li>
 <li>Find <strong>Subscriptions</strong> blade and open it
@@ -502,7 +467,7 @@ If in rare scenario this would change in future, simply run az account get-acces
     <div style="padding-bottom:63.46153846153846%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000179.png" src=""/> 
 </div>  </li>
-<li>Click on <strong>&hellip;</strong> (three dots) next to built-in all-access subscription and select <strong>Show/hide keys</strong>.
+<li>Click on <strong>&hellip;</strong> (three dots) next to built-in all-access subscription and select <strong>Show/hide keys</strong>. 
 
 <div class="lazy" style="max-height: 498px">
     <div style="padding-bottom:52.698412698412696%"></div>
@@ -526,8 +491,8 @@ High level the command looks like this.
   --uri <span class="s2">&#34;&lt;request_url&gt;&#34;</span>
   --method GET 
   --headers <span class="s2">&#34;Ocp-Apim-Subscription-Key=&lt;key&gt;&#34;</span> 
-  --resource <span class="s2">&#34;&lt;resource_uri&gt;&#34;</span></code></pre></div>
-
+  --resource <span class="s2">&#34;&lt;resource_uri&gt;&#34;</span></code></pre></div></li>
+</ol>
 <ul>
 <li><strong>resource_uri</strong> is the audience for the token which is used in <strong>Validate JWT</strong> policy. This should be set to <strong>api://apim-logic-app-demo</strong></li>
 <li>In this example call should look as below
@@ -541,40 +506,32 @@ High level the command looks like this.
 <li>For older versions of Azure CLI on windows a bit more cumbersome but viable way is to do CURL
 <div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch"><span class="k">for</span> <span class="k">/f</span> <span class="nv">%i in (&#39;az account get-access-token --resource &#34;api://apim-logic-app-demo&#34; --query &#34;accessToken&#34;&#39;) do set VAR=%</span>i
 curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR%</span><span class="s2">&#34;</span> -H <span class="s2">&#34;Ocp-Apim-Subscription-Key:2be35ef775ad4b338e0248f12b98c9f3&#34;</span> <span class="s2">&#34;https://marczakioapim.azure-api.net/manual/paths/invoke&#34;</span></code></pre></div></li>
-</ul></li>
-</ol>
-
+</ul>
 <h3 id="subscription-key">Subscription key</h3>
-
 <p>In case subscription key is not required, it can be disabled in <strong>Settings</strong> tab of API.
 
 <div class="lazy" style="max-height: 192px">
     <div style="padding-bottom:24.615384615384617%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000167.png" src=""/> 
 </div>  </p>
-
-<h2 id="user-application-claims-from-token">User/Application claims from Token</h2>
-
+<h2 id="userapplication-claims-from-token">User/Application claims from Token</h2>
 <p>If there is a need to pass some user or application claims from the token into the logic app, then this information can be obtained from context headers. In most simple way this can be achieved using below code.</p>
-
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">context</span>
   <span class="p">.</span><span class="n">Request</span>
-  <span class="p">.</span><span class="n">Headers</span><span class="na">[&#34;Authorization&#34;]</span>
+  <span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">&#34;Authorization&#34;</span><span class="p">]</span>
   <span class="p">.</span><span class="n">First</span><span class="p">()</span>
-  <span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39; &#39;</span><span class="p">)</span><span class="na">[1]</span>
+  <span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39; &#39;</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span>
   <span class="p">.</span><span class="n">AsJwt</span><span class="p">()?</span>
-  <span class="p">.</span><span class="n">Claims</span><span class="na">[&#34;unique_name&#34;]</span>
-  <span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">();</span></code></pre></div>
-
+  <span class="p">.</span><span class="n">Claims</span><span class="p">[</span><span class="s">&#34;unique_name&#34;</span><span class="p">]</span>
+  <span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">();</span>
+</code></pre></div>
 <p>Important note here. When adding below sections, make sure they are <strong>BEFORE section which deletes the header</strong>.</p>
-
 <p>A quick &lsquo;one-liner&rsquo; to achieve this would be just setting header variable with above inline code.
 <div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;set-header</span> <span class="na">name=</span><span class="s">&#34;X-UPN&#34;</span> <span class="na">exists-action=</span><span class="s">&#34;override&#34;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;value&gt;</span>
     @(context.Request.Headers[&#34;Authorization&#34;].First().Split(&#39; &#39;)[1].AsJwt()?.Claims[&#34;unique_name&#34;].FirstOrDefault())
   <span class="nt">&lt;/value&gt;</span>
 <span class="nt">&lt;/set-header&gt;</span></code></pre></div></p>
-
 <p>And if more than one header will be extracted then it&rsquo;s worth to save extracted JWT header as variable to use in further steps.
 <div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;set-variable</span> 
   <span class="na">name=</span><span class="s">&#34;jwt-token&#34;</span> 
@@ -585,11 +542,8 @@ curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR
     @(((Jwt)context.Variables[&#34;jwt-token&#34;])?.Claims[&#34;unique_name&#34;].FirstOrDefault())
   <span class="nt">&lt;/value&gt;</span>
 <span class="nt">&lt;/set-header&gt;</span></code></pre></div></p>
-
 <p>Note that in those cases where the token isn&rsquo;t correctly formatted those one-liners will fail. Because if there is no claim &lsquo;unique-name&rsquo; present in the token the code will fail with result of 500 error on the client side. It&rsquo;s OK to use those when application is using Azure AD because those fields will always be present but in case of custom JWT token generation, it would be advised to prepare custom code which handles incorrect token headers.</p>
-
 <p>In this case full example would look as follows.</p>
-
 <div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;policies&gt;</span>
   <span class="nt">&lt;inbound&gt;</span>
     <span class="nt">&lt;base</span> <span class="nt">/&gt;</span>
@@ -635,33 +589,23 @@ curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR
     <span class="nt">&lt;base</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/on-error&gt;</span>
 <span class="nt">&lt;/policies&gt;</span></code></pre></div>
-
 <p>At this point user principal name will be passed to Logic App as additional header. This can be easily tested by initializing variable in Logic App like below.</p>
-
 
 <div class="lazy" style="max-height: 354px">
     <div style="padding-bottom:53.79939209726444%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000184.png" src=""/> 
 </div>  
-
 <p>Which will show that user principal name is available.</p>
-
 
 <div class="lazy" style="max-height: 623px">
     <div style="padding-bottom:95.1145038167939%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000182.png" src=""/> 
 </div>  
-
 <p>In case grabbing specific header is required then simply use Logic App expression.</p>
-
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">triggerOutputs()</span><span class="p">[</span><span class="err">&#39;headers&#39;</span><span class="p">][</span><span class="err">&#39;X-UPN&#39;</span><span class="p">]</span></code></pre></div>
-
 <h3 id="tokens">Tokens</h3>
-
 <p>When it comes to Token and what information does it hold feel free to check <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/id-tokens">ID tokens documentation</a> for complete list of fields for Azure Active Directory tokens.</p>
-
 <p>When using other token providers or validating token values, I highly recommend <a href="https://jwt.io">jwt.io</a> which parses JWT tokens and shows values.</p>
-
 <p>Example for Azure AD
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;aud&#34;</span><span class="p">:</span> <span class="s2">&#34;https://management.azure.com&#34;</span><span class="p">,</span>
@@ -680,15 +624,10 @@ curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR
   <span class="nt">&#34;unique_name&#34;</span><span class="p">:</span> <span class="s2">&#34;adam@marczak.io&#34;</span><span class="p">,</span>
   <span class="err">...</span> <span class="err">other</span> <span class="err">fields</span> <span class="err">...</span>
 <span class="p">}</span></code></pre></div></p>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>Being able to use flexibility of Logic Apps without sacrificing security is the best of two worlds. With recent introduction of consumption plans for azure API Management service even small applications can leverage this powerful service without huge investments.</p>
-
-<h3 id="what-s-next">What&rsquo;s next?</h3>
-
+<h3 id="whats-next">What&rsquo;s next?</h3>
 <p>All that is left is to simply go and start implementing solutions.</p>
-
 <ol>
 <li>Read <a href="https://docs.microsoft.com/en-us/azure/api-management/">API Management documentation</a></li>
 <li>Watch <a href="https://www.youtube.com/watch?v=ZvsOzji_8ow">Logic Apps introduction video</a></li>
@@ -742,11 +681,11 @@ curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR
             <div class="col-md-6 text-center large">
                 <h4 class="">More tagged posts</h4>
   <div class="tag-list">
-    <a href="https://marczak.io/tags/api-management" title="View all posts in API Management">
-      <img src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/>
-    </a>
     <a href="https://marczak.io/tags/active-directory" title="View all posts in Active Directory">
       <img src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/>
+    </a>
+    <a href="https://marczak.io/tags/api-management" title="View all posts in API Management">
+      <img src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/>
     </a>
     <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
       <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
@@ -884,9 +823,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -914,21 +853,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -944,9 +883,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -980,9 +919,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1016,9 +955,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

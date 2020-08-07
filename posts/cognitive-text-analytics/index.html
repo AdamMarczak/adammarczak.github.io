@@ -111,41 +111,30 @@
     <img data-src="/images/cognitive-text-analytics/splash.png" src=""/> 
 </div> <h2>Highlight</h2>
         <p>Building brand visibility requires a lot of effort. Analysis of social media reactions is key aspect of this process. With Azure Cognitive Services Text Analytics API companies can start analyzing feedback right away with ease.</p>
-
 <p>In this article learn how to leverage Text Analytics API to analyze sentiment of tweets with later notification to Microsoft Teams. All this in couple of minutes using Microsoft Azure and Flow.</p>
-
 <h3 id="prerequisites">Prerequisites</h3>
-
 <ol>
 <li>Microsoft Teams</li>
 <li>Microsoft Flow</li>
 <li>Microsoft Azure</li>
 <li>Twitter Account</li>
 </ol>
-
 <h3 id="instead-of-reading-you-can-watch">Instead of reading you can watch!</h3>
-
 <p>Different people prefer different medium so feel free to watch!</p>
-
 
 <div class="interactive-frame inactive" src="https://www.youtube.com/embed/C4cvd75nrE8">
     <button class="btn iframe-button btn-youtube">Watch on youtube</button>
     <iframe class="youtube" frameborder="0" allowfullscreen></iframe>
 </div>
 
-
 <h2 id="prepare-the-environment">Prepare the environment</h2>
-
 <p>For flow to work developers must have following setup done. If below is already set up then this section can be skipped.</p>
-
 <ol>
 <li>Team defined in MS Teams</li>
 <li>Azure Cognitive Services Text Analytics API keys</li>
 <li>Twitter account for testing</li>
 </ol>
-
 <h3 id="step-by-step">Step by step</h3>
-
 <ol>
 <li>Log in to Microsoft Teams at <a href="https://teams.microsoft.com">teams.microsoft.com</a></li>
 <li>Create Microsoft Team Account
@@ -192,9 +181,7 @@
     <img data-src="/images/cognitive-text-analytics/7.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="create-the-flow">Create the flow</h2>
-
 <ol>
 <li>Open Microsoft Flow Portal at <a href="https://flow.microsoft.com">flow.microsoft.com</a></li>
 <li>Open My Flows tab</li>
@@ -228,9 +215,7 @@ Optionally selecting from template also works. There are templates set up exactl
 <div class="lazy" style="max-height: 584px">
     <div style="padding-bottom:95.42483660130719%"></div>
     <img data-src="/images/cognitive-text-analytics/12.png" src=""/> 
-</div>  
-
-<ol>
+</div>  </li>
 <li>Define new Text Analytics API connection
 
 <div class="lazy" style="max-height: 323px">
@@ -248,19 +233,19 @@ Optionally selecting from template also works. There are templates set up exactl
     <div style="padding-bottom:38.921001926782274%"></div>
     <img data-src="/images/cognitive-text-analytics/15.png" src=""/> 
 </div>  </li>
-</ol></li>
 <li>Add new condition step with following parameters
 
 <div class="lazy" style="max-height: 160px">
     <div style="padding-bottom:26.229508196721312%"></div>
     <img data-src="/images/cognitive-text-analytics/16.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Left Value</strong>: Detect Sentiment -&gt; Score</li>
 <li><strong>Condition</strong>: Greater Than</li>
 <li><strong>Right Value</strong>: 0.5</li>
-</ul></li>
+</ul>
+<ol start="7">
 <li>In &lsquo;If yes&rsquo; condition add an Teams - Post Message action
 
 <div class="lazy" style="max-height: 772px">
@@ -272,13 +257,14 @@ Optionally selecting from template also works. There are templates set up exactl
 <div class="lazy" style="max-height: 240px">
     <div style="padding-bottom:39.21568627450981%"></div>
     <img data-src="/images/cognitive-text-analytics/18.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Team Id</strong>: Name of the MS team where sentiment analysis results will be posted.</li>
 <li><strong>Channel Id</strong>: Team Channel name to post message to. General is default channel created for every team.</li>
 <li><strong>Message</strong>: Message that will be posted. In case of this demo &lsquo;A positive sentiment for tweet [Tweet Text] sent by [Tweeted by] with score [Score]&rsquo;</li>
-</ul></li>
+</ul>
+<ol start="9">
 <li>In &lsquo;If yes&rsquo; condition add an Teams - Post Message action
 
 <div class="lazy" style="max-height: 768px">
@@ -290,18 +276,17 @@ Optionally selecting from template also works. There are templates set up exactl
 <div class="lazy" style="max-height: 240px">
     <div style="padding-bottom:39.151712887438826%"></div>
     <img data-src="/images/cognitive-text-analytics/20.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Team Id</strong>: Name of the MS team where sentiment analysis results will be posted.</li>
 <li><strong>Channel Id</strong>: Team Channel name to post message to. General is default channel created for every team.</li>
 <li><strong>Message</strong>: Message that will be posted. In case of this demo &lsquo;A negative sentiment for tweet [Tweet Text] sent by [Tweeted by] with score [Score]&rsquo;</li>
-</ul></li>
+</ul>
+<ol start="10">
 <li>Hit Create Flow button</li>
 </ol>
-
 <h2 id="test-the-flow">Test The flow</h2>
-
 <ol>
 <li>Open Twitter at <a href="https://twitter.com">twitter.com</a></li>
 <li>Post negative and positive tweets for testing. Remember to add hashtag
@@ -334,8 +319,7 @@ Optionally selecting from template also works. There are templates set up exactl
 </div>  
 Notice how sure bot is about the results. First tweet got result of 98% that it&rsquo;s positive and second one 99.99% that it&rsquo;s negative.</li>
 </ol>
-
-<h5 id="that-s-it-for-today-next-time-check-how-to-upload-tweet-results-to-power-bi-stay-tuned">That&rsquo;s it for Today. Next time check how to upload tweet results to Power BI. Stay tuned!</h5>
+<h5 id="thats-it-for-today-next-time-check-how-to-upload-tweet-results-to-power-bi-stay-tuned">That&rsquo;s it for Today. Next time check how to upload tweet results to Power BI. Stay tuned!</h5>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -526,9 +510,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -556,21 +540,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -586,9 +570,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -622,9 +606,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -658,9 +642,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

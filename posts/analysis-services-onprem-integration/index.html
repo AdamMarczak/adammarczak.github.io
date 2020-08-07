@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.23' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.27' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway. ">
+<meta name="description" content="Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway.">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Azure Analysis Services hybrid enrivonment with on-premises databases | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure Analysis Services hybrid enrivonment with on-premises databases">
-<meta property="og:description" content="Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway. ">
+<meta property="og:description" content="Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway.">
 <meta property="og:url" content="https://marczak.io/posts/analysis-services-onprem-integration/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/analysis-services-onprem-integration/splash.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Azure Analysis Services hybrid enrivonment with on-premises databases">
-<meta name="twitter:description" content="Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway. ">
+<meta name="twitter:description" content="Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway.">
 <meta name="twitter:url" content="https://marczak.io/posts/analysis-services-onprem-integration/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -116,67 +116,44 @@
     <i class="fa fa-github"></i>
     Source Code
 </a><h2>Highlight</h2>
-        <p>Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway. </p>
-
+        <p>Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway.</p>
 <h2 id="intro">Intro</h2>
-
 <p>Building Analysis Services model which uses on premises databases might be confusing in the beginning. In reality it takes less than one hour to create end to end setup using out of the box components available to developers.</p>
-
 <p>This article will cover</p>
-
 <ol>
 <li>Azure environment setup</li>
-<li>On premises data gateway setup<br /></li>
+<li>On premises data gateway setup</li>
 <li>Visual Studio model which connects live to on premises database</li>
 <li>Model deployment</li>
 </ol>
-
 <h3 id="prerequisites">Prerequisites</h3>
-
 <p>Following tools are required to execute this tutorial</p>
-
 <ol>
 <li>Azure Subscription</li>
 <li>Visual Studio 2017</li>
 <li>SQL Server Data Tools 2017</li>
 <li>On premises environment with SQL Server installed.</li>
 </ol>
-
 <p>Note: On premises environment can be simulated using Azure Dev Test lab VM. I strongly suggest installing fresh Windows 7 VM and follow steps in On Premises setup section.</p>
-
 <h2 id="design">Design</h2>
-
-<p>Presented design will be focus of this article. </p>
-
+<p>Presented design will be focus of this article. \</p>
 
 <div class="lazy" style="max-height: 158px">
     <div style="padding-bottom:19.29181929181929%"></div>
     <img data-src="/images/analysis-services-onprem-integration/1.png" src=""/> 
 </div>  
-
 <h4 id="components">Components</h4>
-
 <ol>
-<li>On-Premises
-
-<ol>
+<li>On-Premises</li>
 <li><strong>SQL Server database</strong> - source of data</li>
 <li><strong>On-Premises Data Gateway installation</strong> - windows service used for connectivity</li>
-</ol></li>
-<li>Azure
-
-<ol>
+<li>Azure</li>
 <li><strong>On-Premises Data Gateway resource</strong> - azure resource used for binding local gateway</li>
 <li><strong>Azure Analysis Services</strong> - consumer of live query data from sql server</li>
-</ol></li>
 </ol>
-
 <h2 id="on-premises-demo-setup-optional">On-Premises demo setup (optional)</h2>
-
 <p>Article uses SQL server as example of on premises database. This installation has been fully done on Azure DevTest Labs.</p>
-
 <p>If environment preparation is required, then follow below steps otherwise move to next section.</p>
-
 <ol>
 <li>Create DevTest Lab environment
 
@@ -184,12 +161,13 @@
     <div style="padding-bottom:33.56164383561644%"></div>
     <img data-src="/images/analysis-services-onprem-integration/2.png" src=""/> 
 </div>  </li>
-<li>For the parameters fill
-
+<li>For the parameters fill</li>
+</ol>
 <ul>
 <li><strong>Lab Name</strong>: Provide any</li>
 <li><strong>Location</strong>: North Europe (choose one region and stick with it for entire setup)</li>
-</ul></li>
+</ul>
+<ol start="3">
 <li>Once provisioned go to lab and click on Add new
 
 <div class="lazy" style="max-height: 102px">
@@ -202,8 +180,8 @@
 <div class="lazy" style="max-height: 619px">
     <div style="padding-bottom:187.57575757575756%"></div>
     <img data-src="/images/analysis-services-onprem-integration/4.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Virtual Machine Name</strong>: devtestlab001, name is important when connecting to SQL server later on. Any name works though.</li>
 <li><strong>User Name</strong>: Any will do, this will be used to log into machine.</li>
@@ -211,16 +189,15 @@
 <li><strong>Disk and size</strong>: SSD</li>
 <li><strong>VM Size</strong>: I choose D4s_v3 but any works fine. Small VMs just take much longer to run programs.</li>
 <li><strong>Artifacts</strong>: Chrome.</li>
-</ul></li>
+</ul>
+<ol start="6">
 <li>Connect to VM
 
 <div class="lazy" style="max-height: 128px">
     <div style="padding-bottom:27.467811158798284%"></div>
     <img data-src="/images/analysis-services-onprem-integration/5.png" src=""/> 
 </div>  </li>
-<li>Install following tools
-
-<ol>
+<li>Install following tools</li>
 <li><a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">SQL Server Developer Edition</a>
 
 <div class="lazy" style="max-height: 660px">
@@ -240,7 +217,6 @@ Make Sure to select Data and storage tools.
     <div style="padding-bottom:22.857142857142858%"></div>
     <img data-src="/images/analysis-services-onprem-integration/8.png" src=""/> 
 </div>  </li>
-</ol></li>
 <li>Open Visual Studio</li>
 <li>Open SQL Server Object Explorer. If it is not visible, it can be enabled in View options.</li>
 <li>Connect to local SQL database
@@ -308,16 +284,15 @@ Make Sure to select Data and storage tools.
 Output
 <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="p">(</span><span class="mi">26</span> <span class="k">row</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">affected</span><span class="p">)</span></code></pre></div></li>
 </ol>
-
 <h2 id="install-on-premises-gateway">Install On-Premises Gateway</h2>
-
 <ol>
 <li>Download &amp; Run <a href="https://aka.ms/azureasgateway">On-Premises Data Gateway</a></li>
-<li>When prompted log into Azure using the same account that will be setting up Azure Resources.
-
+<li>When prompted log into Azure using the same account that will be setting up Azure Resources.</li>
+</ol>
 <ul>
 <li><strong>Important</strong>: Personal account can&rsquo;t be used, this must be work account. In case of personal MSDN subscription go to Azure and create static user and grant him privileges go execute this scenario (resource group owner is enough).</li>
-</ul></li>
+</ul>
+<ol start="3">
 <li>Select register a new gateway option
 
 <div class="lazy" style="max-height: 245px">
@@ -337,43 +312,43 @@ Output
     <img data-src="/images/analysis-services-onprem-integration/14.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="provision-azure-resources">Provision Azure Resources</h2>
-
 <ol>
 <li>Create new Analysis Services resource
 
 <div class="lazy" style="max-height: 469px">
     <div style="padding-bottom:141.26506024096386%"></div>
     <img data-src="/images/analysis-services-onprem-integration/15.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Server Name</strong> unique name for Analysis Services instance</li>
 <li><strong>Resource Group</strong> select previously created resource group (new also works)</li>
 <li><strong>Pricing Tier</strong> choose capacity, in this example B2 was used for faster responses</li>
 <li><strong>Location</strong> North Europe (or the same as the lab for low latency)</li>
-</ul></li>
+</ul>
+<ol start="2">
 <li>Create new On-premises data gateway resource
 
 <div class="lazy" style="max-height: 199px">
     <div style="padding-bottom:67.45762711864407%"></div>
     <img data-src="/images/analysis-services-onprem-integration/16.png" src=""/> 
-</div>  
+</div>   
 
 <div class="lazy" style="max-height: 557px">
     <div style="padding-bottom:171.3846153846154%"></div>
     <img data-src="/images/analysis-services-onprem-integration/17.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Resource Name</strong> name for gateway resource</li>
 <li><strong>Resource Group</strong> select previously created resource group</li>
 <li><strong>Location</strong> same as analysis services. This is important!</li>
 <li><strong>Installation Name</strong> select from dropdown previously created and installed gateway</li>
-</ul></li>
+</ul>
+<ol start="3">
 <li>Open Analysis Services resource</li>
-<li>Open On-premises data gateway blade
+<li>Open On-premises data gateway blade 
 
 <div class="lazy" style="max-height: 152px">
     <div style="padding-bottom:69.0909090909091%"></div>
@@ -392,11 +367,8 @@ Output
     <img data-src="/images/analysis-services-onprem-integration/20.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="deploy-model">Deploy Model</h2>
-
 <p>Before deployment model connect again to the database and grant Power BI gateway service access to the database. This will be required when Analysis Services tries to connect using gateway.</p>
-
 <ol>
 <li>Open New Query with the database</li>
 <li>Execute below script
@@ -412,15 +384,12 @@ Output
 <span class="k">GO</span>
 
 <span class="k">EXEC</span> <span class="n">sp_addrolemember</span> <span class="n">db_datareader</span><span class="p">,</span> <span class="p">[</span><span class="n">NT</span> <span class="n">Service</span><span class="err">\</span><span class="n">PBIEgwService</span><span class="p">];</span>
-<span class="k">GO</span></code></pre></div>
-
+<span class="k">GO</span></code></pre></div></li>
+</ol>
 <ul>
 <li>Note: NT Service\PBIEgwService is the name of the local service under which by default gateway is running.</li>
-</ul></li>
-</ol>
-
+</ul>
 <p>Now follow the steps</p>
-
 <ol>
 <li>Open Visual Studio</li>
 <li>Create new Tabular project
@@ -428,13 +397,14 @@ Output
 <div class="lazy" style="max-height: 648px">
     <div style="padding-bottom:69.3048128342246%"></div>
     <img data-src="/images/analysis-services-onprem-integration/21.png" src=""/> 
-</div>  
-
+</div>  </li>
+</ol>
 <ul>
 <li><strong>Note</strong> If project template is missing verify if Sql Server data tools are correctly installed.</li>
 <li><strong>Instance</strong> select Integrated Workspace</li>
 <li><strong>Compatibility Level</strong> choose SQL Server 2017 / Azure Analysis Services (1400), this will allow you to use newest features including Query Editor like in Power BI and Excel Power Query.</li>
-</ul></li>
+</ul>
+<ol start="3">
 <li>In the Solution Explorer of project right-click on the Data Sources and select Import from data source option
 
 <div class="lazy" style="max-height: 211px">
@@ -478,7 +448,7 @@ Output
     <div style="padding-bottom:92.26361031518624%"></div>
     <img data-src="/images/analysis-services-onprem-integration/28.png" src=""/> 
 </div>  </li>
-<li>Navigate back to Azure Analysis Service and in the Overview blade copy Server name
+<li>Navigate back to Azure Analysis Service and in the Overview blade copy Server name 
 
 <div class="lazy" style="max-height: 87px">
     <div style="padding-bottom:20.422535211267604%"></div>
@@ -516,7 +486,7 @@ Output
     <img data-src="/images/analysis-services-onprem-integration/34.png" src=""/> 
 </div>  </li>
 <li>Select &lsquo;Show DAX&rsquo; and paste in the script
-<div class="highlight"><pre class="chroma"><code class="language-DAX" data-lang="DAX">EVALUATE (
+<pre><code class="language-DAX" data-lang="DAX">EVALUATE (
   TOPN (
     3000,
     SUMMARIZECOLUMNS (
@@ -527,20 +497,17 @@ Output
     &#39;MyData&#39;[Id],
     1
   )
-)</code></pre></div></li>
+)</code></pre></li>
 <li>Verify results
 
 <div class="lazy" style="max-height: 746px">
     <div style="padding-bottom:39.07805133577789%"></div>
     <img data-src="/images/analysis-services-onprem-integration/35.png" src=""/> 
-</div>  
+</div>   
 Change results in the database to demo out live connection</li>
 </ol>
-
 <h2 id="summary">Summary</h2>
-
 <p>A careful reader should by now understand and be able to execute following activities</p>
-
 <ul>
 <li>Settings up dev test lab to imitate on premises environment</li>
 <li>Grating permissions to services in SQL server</li>
@@ -746,9 +713,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -776,21 +743,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -806,9 +773,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -842,9 +809,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -878,9 +845,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

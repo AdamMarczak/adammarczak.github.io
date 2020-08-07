@@ -117,53 +117,34 @@
     Source Code
 </a><h2>Highlight</h2>
         <p>Check out how to leverage Azure Blob Storage and Logic Apps for simple scenario of data loading from CSV into Azure SQL in less than 30 minutes and with almost no coding.</p>
-
 <h2 id="intro">Intro</h2>
-
 <p>About any developer out there at some point or another had to automate ETL process for data loading. This article will present a fast and convinient way to create data loading workflow for CSVs using Azure SQL and blob storage.</p>
-
 <h3 id="data-factory-is-also-an-option">Data Factory is also an option</h3>
-
 <p>If you are interested in loading data, there is now alternative path available. On my channel I show introduction to Azure Data Factory in which I showcase the scenario of Blob Storage CSV to SQL loading. Everything just under 10 minutes. Feel free to check it out!</p>
-
 <iframe class="youtube" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/EpDkxTHAhOs"></iframe>
-
 <h3 id="prerequisites">Prerequisites</h3>
-
 <p>In order to execute this scenario a developer must have following tools</p>
-
 <ol>
 <li>Azure Subscription</li>
 </ol>
-
 <p><strong>That&rsquo;s it!</strong></p>
-
 <h2 id="design">Design</h2>
-
 <p>Preparation of design is a crucial setup in delivery of complete architecture. In this example, following design choices were made</p>
-
 <ol>
-<li><strong>Azure Blob Storage</strong> for purpose of uploading and storing input data files
-
-<ol>
+<li><strong>Azure Blob Storage</strong> for purpose of uploading and storing input data files</li>
 <li>Storage will have container called <strong>input</strong> which will store all unprocessed input files</li>
 <li>Storage will have container called <strong>output</strong> where all processed files will be moved and their name will be changed to match date of processing</li>
-</ol></li>
 <li><strong>Azure Logic App</strong> which will be triggered where new file appears in input container of blob storage</li>
 <li><strong>Azure SQL</strong> that will store data model, loading procedure and the data itself</li>
 </ol>
-
 <h3 id="process-flow">Process flow</h3>
-
 <p>It only takes three very small components for this scenario to be implemented. With that said let&rsquo;s now discuss how will the process look like. Diagram below presents overall architecture of the solution.
 
 <div class="lazy" style="max-height: 429px">
     <div style="padding-bottom:48.529411764705884%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/1.png" src=""/> 
 </div>  </p>
-
 <p>Diagram covers following high level steps</p>
-
 <ol>
 <li>Uploading CSV file to blob storage (be it via portal or automated way in future)</li>
 <li>Triggering logic app whenever there is a new file in the storage</li>
@@ -171,13 +152,9 @@
 <li>SQL database runs procedure which is using BULK INSERT command to connect to blob storage and load data</li>
 <li>Logic app moves processed file to outputs on successful load</li>
 </ol>
-
 <h2 id="provisioning">Provisioning</h2>
-
 <p>Log into <a href="https://portal.azure.com">Azure Portal</a> and start creating resources.</p>
-
 <h3 id="resource-group">Resource Group</h3>
-
 <ol>
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>Resource Group</strong> in Search window
 
@@ -193,9 +170,7 @@
     <img data-src="/images/azure-loading-csv-to-sql/3.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h3 id="blob-storage">Blob Storage</h3>
-
 <ol>
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>Storage account</strong> in Search window
 
@@ -229,9 +204,7 @@
     <img data-src="/images/azure-loading-csv-to-sql/8.png" src=""/> 
 </div>  </li>
 </ol>
-
-<h3 id="sql-server-database">SQL Server &amp; Database</h3>
-
+<h3 id="sql-server--database">SQL Server &amp; Database</h3>
 <ol>
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>SQL Database</strong> in Search window
 
@@ -245,12 +218,9 @@
 <div class="lazy" style="max-height: 635px">
     <div style="padding-bottom:173.97260273972603%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/10.png" src=""/> 
-</div>  
-
-<ol>
+</div>  </li>
 <li>Name for the database</li>
 <li>Select existing resource group from previous step</li>
-</ol></li>
 <li>Since there is no SQL Server yet to host our database it is also required to create on at this point. For this click on the server and then <strong>Create a new server</strong> button.</li>
 <li>Provide server name (this will be public DNS address of created server), admin login name and password
 
@@ -261,9 +231,7 @@
 <li>Hit Select button</li>
 <li>Hit Create (optionally select pin to dashboard before clicking)</li>
 </ol>
-
 <h3 id="logic-app">Logic App</h3>
-
 <ol>
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>Logic App</strong> in Search window
 
@@ -280,15 +248,10 @@
 </div>  </li>
 <li>Hit Create (optionally select pin to dashboard before clicking)</li>
 </ol>
-
 <h2 id="development">Development</h2>
-
 <p>I did mention previously that there will be almost no coding.</p>
-
 <p>Before settings up database and loading procedure, a special access token must be generated so that SQL database can connect to blob storage and read files from there. This token is called <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-dotnet-shared-access-signature-part-1">SAS (Shared Access Signature) token</a>.</p>
-
 <h3 id="blob-storage-1">Blob Storage</h3>
-
 <ol>
 <li>Navigate to previously created blob storage in Azure Portal</li>
 <li>Select Shared Access Signature blade
@@ -320,11 +283,8 @@ Ensure that the <strong>End Date</strong> is far enough in future and replace th
 </div>  </li>
 <li>Copy the URL value from the properties tab</li>
 </ol>
-
-<h3 id="sql-server-database-1">SQL Server &amp; Database</h3>
-
+<h3 id="sql-server--database-1">SQL Server &amp; Database</h3>
 <p>Now finally for the database</p>
-
 <ol>
 <li>Navigate to previously created SQL database in Azure Portal</li>
 <li>Click on Query Editor
@@ -359,7 +319,7 @@ Optionally and recommended way to do this is via SQL Server Management Studio bu
     <span class="n">VALUE</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
 <span class="p">)</span></code></pre></div>
 File will look like this and will be named <strong>input.csv</strong>
-<div class="highlight"><pre class="chroma"><code class="language-csv" data-lang="csv">ID,VALUE
+<pre><code class="language-csv" data-lang="csv">ID,VALUE
 1,Adam
 2,Tom
 3,Max
@@ -368,7 +328,7 @@ File will look like this and will be named <strong>input.csv</strong>
 6,Thomas
 7,Piotr
 8,Anna
-9,Jessabelle</code></pre></div></li>
+9,Jessabelle</code></pre></li>
 <li>Now the last step is to create a procedure which will load data from the input.csv file to MyData table.
 <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="n">LoadData</span>
 <span class="k">AS</span>
@@ -385,18 +345,12 @@ File will look like this and will be named <strong>input.csv</strong>
 <span class="p">);</span>
 
 <span class="k">END</span></code></pre></div>
-Few important things to note here
-
-<ol>
+Few important things to note here</li>
 <li>In proper scenario delete and insert should be encapsulated in a transaction which will roll back in case of errors during the load.</li>
 <li>File name should be taken as parameter instead of static value and executed as dynamic SQL.</li>
-</ol></li>
 </ol>
-
 <h3 id="logic-app-1">Logic App</h3>
-
 <p>The best for last. Since the setup is now complete, creation of logic app is very pleasant.</p>
-
 <ol>
 <li>Navigate to previously created blob storage in Azure Portal</li>
 <li>Select Edit button</li>
@@ -478,9 +432,7 @@ In the source URL select <strong>Path</strong> object from the trigger step.
 <strong>WARNING</strong> Make sure to select Path from the trigger. If Path from Copy Blob action will be selected a newly created file will be removed.</li>
 <li>Click save</li>
 </ol>
-
 <h2 id="test-it">Test it!</h2>
-
 <ol>
 <li>Navigate to blob storage input container</li>
 <li>Click on the upload button and upload input.csv file
@@ -508,11 +460,8 @@ In the source URL select <strong>Path</strong> object from the trigger step.
     <img data-src="/images/azure-loading-csv-to-sql/35.png" src=""/> 
 </div>  </li>
 </ol>
-
-<h2 id="what-s-next">What&rsquo;s next?</h2>
-
+<h2 id="whats-next">What&rsquo;s next?</h2>
 <p>There are of &lsquo;course some limitations and drawbacks to this design no doubt. With that said this is a good template to start from and expand.</p>
-
 <ol>
 <li>Read more about <a href="https://docs.microsoft.com/en-us/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-2017">BULK INSERT</a> and its bcp utility. For instance, to match columns and types using schema files.</li>
 <li>Consider using <a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-2017">OPENROWSET</a> when working with more complex data.</li>
@@ -708,9 +657,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -738,21 +687,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -768,9 +717,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -804,9 +753,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -840,9 +789,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

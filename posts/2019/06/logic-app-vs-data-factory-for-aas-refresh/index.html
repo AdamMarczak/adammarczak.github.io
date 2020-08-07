@@ -111,40 +111,28 @@
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/splash.png" src=""/> 
 </div> <h2>Highlight</h2>
         <p>Data factory is currently go-to service for data load and transformation processes in Azure. In this article a common scenario of refreshing models in Azure Analysis Services will be implemented using ADF components including a  comparison with the same process using Azure Logic Apps.</p>
-
 <h2 id="intro">Intro</h2>
-
 <p>Immediately after posting my previous post about refreshing analysis services a colleague of mine asked me a very good question. Is it better to use logic apps or data factory for this process? This is a great question, so this article will focus on implementing exactly same scenario using Data Factory and finding out which of the two services could be called recommended.</p>
-
-<p><a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/"></p>
-
+<a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/">
 
 <div class="lazy" style="max-height: 266px">
     <div style="padding-bottom:30.09049773755656%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000070.png" src=""/> 
 </div>  
-
-<p></a></p>
-
+</a>
 <h2 id="design">Design</h2>
-
 <p>The design is fairly simple. Using Data Factory pipeline an Analysis Services API will be called to submit the refresh. Unfortunately, a logic app must be added to avoid few limitations of Data Factory. Read further to find out why.
 
 <div class="lazy" style="max-height: 955px">
     <div style="padding-bottom:110.02304147465438%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000077.png" src=""/> 
 </div>  </p>
-
 <h2 id="provisioning">Provisioning</h2>
-
 <p>Log into <a href="https://portal.azure.com">Azure Portal</a> and start creating resources.</p>
-
 <h3 id="resources">Resources</h3>
-
 <h4 id="data-factory">Data Factory</h4>
-
 <ol>
-<li>Click on &ldquo;+&rdquo; sign to create new resource
+<li>Click on &ldquo;+&rdquo; sign to create new resource 
 
 <div class="lazy" style="max-height: 112px">
     <div style="padding-bottom:39.02439024390244%"></div>
@@ -169,9 +157,7 @@
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000007.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h4 id="logic-app">Logic App</h4>
-
 <ol>
 <li>Click on &ldquo;+&rdquo; sign to create new resource</li>
 <li>Type in <strong>logic app</strong> in Search window and press enter</li>
@@ -206,25 +192,17 @@
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000034.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="privilege-setup">Privilege setup</h2>
-
 <p>When data factory creation is finished, Azure also sets up something called managed service identity (MSI). This identity can be used to authenticate to resources. Managed identity is a great way to secure connection with various resources in azure without a need to create <strong>KeyVault</strong> or manage passwords. For Logic App this had to be manually enabled.</p>
-
 <p>Next step is to find logic app and data factory application IDs which are required to add their account to analysis services as admins. This is because currently administrative privileges are required to perform refreshes.</p>
-
 <h3 id="finding-managed-identities-application-ids">Finding Managed Identities Application IDs</h3>
-
 <ol>
 <li>Open PowerShell window.</li>
-<li>Find managed identity. This can&rsquo;t be done via portal because managed identities don&rsquo;t have app registration attached to them. Therefore, a PowerShell or CLI must be used. In PowerShell this can this can be done using many cmdlets but two recommended are searching by either Object ID or by name
-
-<ol>
+<li>Find managed identity. This can&rsquo;t be done via portal because managed identities don&rsquo;t have app registration attached to them. Therefore, a PowerShell or CLI must be used. In PowerShell this can this can be done using many cmdlets but two recommended are searching by either Object ID or by name</li>
 <li>To search by <strong>Object ID</strong> a following command must be executed
 <div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-ObjectID</span> <span class="s2">&#34;&lt;object id&gt;&#34;</span></code></pre></div></li>
 <li>To search by <strong>Name</strong> a following command must be executed. Note that name of managed identity is always the same as the resource. Since some resources do not require unique names it is possible to have multiple managed identities with the same name, so this is not recommended way for production scripts.
 <div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of azure resource&gt;&#34;</span></code></pre></div></li>
-</ol></li>
 <li>Run following script
 <div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Connect-AzAccount</span>
  <span class="nb">Get-AzSubscription</span>
@@ -241,13 +219,10 @@ Alternatively, you can search by logic app name
     <div style="padding-bottom:21.251819505094613%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000058.png" src=""/> 
 </div>  
-From the output of this script two things should be saved
-
-<ol>
+From the output of this script two things should be saved</li>
 <li><strong>TenantId</strong> - this is Directory ID of Azure Active Directory where the managed identity is located</li>
 <li><strong>ApplicationId</strong> - application ID of managed identity</li>
-</ol></li>
-<li>Since Data Factory doesn&rsquo;t give out right Object ID of its identity the simplest way is to find it by azure resource name. In the same PowerShell window run command to find application ID of data factory identity.
+<li>Since Data Factory doesn&rsquo;t give out right Object ID of its identity the simplest way is to find it by azure resource name. In the same PowerShell window run command to find application ID of data factory identity. 
 <div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of data factory&gt;&#34;</span></code></pre></div>
 
 <div class="lazy" style="max-height: 145px">
@@ -255,9 +230,7 @@ From the output of this script two things should be saved
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000057.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h3 id="adding-administrative-privileges">Adding Administrative Privileges</h3>
-
 <ol>
 <li>Open SQL Server Management Studio</li>
 <li>Connect to Analysis Services
@@ -296,9 +269,7 @@ For example
 </div>  </li>
 <li>Ensure to add <strong>both</strong> logic app and data factory application ids</li>
 </ol>
-
 <h2 id="creating-adf-flow">Creating ADF flow</h2>
-
 <ol>
 <li>Navigate to <strong>Data Factory</strong> and click on <strong>Author and Monitor</strong>
 
@@ -318,7 +289,7 @@ For example
     <div style="padding-bottom:59.36254980079681%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000050.png" src=""/> 
 </div>  </li>
-<li>Expand <strong>General</strong> section from the <strong>Activities</strong> panel and find <strong>Web</strong> activity
+<li>Expand <strong>General</strong> section from the <strong>Activities</strong> panel and find <strong>Web</strong> activity 
 
 <div class="lazy" style="max-height: 687px">
     <div style="padding-bottom:346.969696969697%"></div>
@@ -331,20 +302,14 @@ For example
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000052.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h3 id="this-is-important">This is important</h3>
-
 <p>Because of how Web activity in ADF works, it impossible to make proper call to Analysis Services refresh API.</p>
-
 <ul>
 <li>First of all, Analysis Services refresh API will return 202 (Accepted) response when submitting request. Web activity is built in a way that upon receiving 202 response it will keep sending requests to the same endpoint until final (200, 400, etc.) response is received. This means when 202 is received, ADF will make another call and next call will return 200 (OK) response with body claiming that refresh status is in progress. This is a BIG deal because <strong>only first response (202) returns refresh ID</strong> in the headers. This means, this information is lost.</li>
 <li>Secondly, currently neither Web Activity output not object itself contain Headers information for the response. Even in case of synchronous request it would be impossible to get refresh ID since it is located in response header called <strong>Location</strong>.</li>
 </ul>
-
 <p>Because of those two imperfections it is required to use either Azure Function or Azure Logic App to make the first call and return header in the object. The fastest is to make Logic App so, next step is to use logic app.</p>
-
 <h2 id="creating-logic-app-helper-function">Creating Logic App helper function</h2>
-
 <ol>
 <li>Navigate to <strong>Logic App</strong> and click on <strong>Designer</strong>
 
@@ -369,9 +334,7 @@ For example
 <div class="lazy" style="max-height: 472px">
     <div style="padding-bottom:71.08433734939759%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000030.png" src=""/> 
-</div>  
-
-<ol>
+</div>  </li>
 <li>Change Schema - <strong>aasRefreshBody</strong> will be exact request body passed to Analysis Services and <strong>aasUrl</strong> will be URL of Analysis Services refresh API
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -402,22 +365,18 @@ For example
     <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span>
 <span class="p">}</span></code></pre></div></li>
 <li>Change method to <strong>POST</strong></li>
-</ol></li>
 <li>Add new action</li>
 <li>Search for <strong>HTTP</strong> call and configure it as follows
 
 <div class="lazy" style="max-height: 386px">
     <div style="padding-bottom:58.13253012048193%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000041.png" src=""/> 
-</div>  
-
-<ol>
+</div>  </li>
 <li>URI <strong>aasUrl</strong> - output from request trigger</li>
 <li>Headers <strong>Content-Type: application/json</strong></li>
 <li>Body <strong>aasRefreshBody</strong> - output from request trigger</li>
 <li>Authentication <strong>Managed Identity</strong> - this is the identity which was set up for logic app during provisioning steps</li>
 <li>Audience <strong>https://*.asazure.windows.net</strong> - this is token audience which is required by AAS for request to be authorized</li>
-</ol></li>
 <li>Change settings for <strong>HTTP</strong> action
 
 <div class="lazy" style="max-height: 383px">
@@ -436,9 +395,7 @@ For example
 <div class="lazy" style="max-height: 310px">
     <div style="padding-bottom:52.013422818791945%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000046.png" src=""/> 
-</div>  
-
-<ol>
+</div>  </li>
 <li>Status Code <strong>200</strong> - for ADF to accept this as success</li>
 <li>Body <strong>aasRefreshBody</strong> - output from request trigger, Status Code from AAS refresh call should not be passed here</li>
 <li>Headers <strong>Content-Type: application/json</strong></li>
@@ -448,22 +405,16 @@ For example
   <span class="nt">&#34;headers&#34;</span><span class="p">:</span> <span class="err">@</span><span class="p">{</span><span class="err">outputs(&#39;HTTP&#39;)[&#39;headers&#39;]</span><span class="p">},</span>
   <span class="nt">&#34;status&#34;</span><span class="p">:</span> <span class="err">@</span><span class="p">{</span><span class="err">outputs(&#39;HTTP&#39;)[&#39;statusCode&#39;]</span><span class="p">}</span>
 <span class="p">}</span></code></pre></div></li>
-</ol></li>
 </ol>
-
 <h3 id="continue-building-adf-flow">Continue building ADF flow</h3>
-
 <p>Now that helper function is done ADF can call it to refresh AAS.</p>
-
 <ol>
-<li>Configure Web activity
+<li>Configure Web activity 
 
 <div class="lazy" style="max-height: 934px">
     <div style="padding-bottom:130.08356545961%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000053.png" src=""/> 
-</div>  
-
-<ol>
+</div>  </li>
 <li>URL - copy this from Logic App <strong>HTTP POST URL</strong> field after saving Logic App
 
 <div class="lazy" style="max-height: 243px">
@@ -485,14 +436,13 @@ For example
 <span class="p">}</span></code></pre></div>
 For more details on the properties check <a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services//#design">my previous article</a>.</li>
 <li>Everything else is default.</li>
-</ol></li>
 <li>Create two pipeline variables called <strong>RefreshIDURL</strong> and <strong>RefreshStatus</strong>
 
 <div class="lazy" style="max-height: 168px">
     <div style="padding-bottom:25.225225225225227%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000056.png" src=""/> 
 </div>  </li>
-<li>Add new action <strong>Until</strong>
+<li>Add new action <strong>Until</strong> 
 
 <div class="lazy" style="max-height: 369px">
     <div style="padding-bottom:74.09638554216868%"></div>
@@ -535,62 +485,41 @@ And configure <strong>Value</strong> it as follows
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000072.png" src=""/> 
 </div>  </li>
 </ol>
-
 <h2 id="conclusions">Conclusions</h2>
-
 <p>Implementing Analysis Services refresh scenario using both Logic Apps and Data Factory was a fun challenge. It definitely was a good learning opportunity and in general allowed me to better understand their strength.</p>
-
 <p>In short summary what I learned was.</p>
-
 <h3 id="ease-of-implementation">Ease of implementation</h3>
-
 <p>Logic apps are much more flexible than data factory. It was possible to implement entire solution without any workarounds. In case of data factory there was no way to avoid using Logic Apps or Functions as workaround. Logic apps are clear winner here.</p>
-
-<h4 id="hahahugoshortcode-56hbhb-are-better-than-hahahugoshortcode-57hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are better than <span class="cross"><i class="fa fa-times" aria-hidden="true"></i>  Data Factory </span></h4>
-
+<h4 id="hahahugoshortcode-s55-hbhb-are-better-than-hahahugoshortcode-s56-hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are better than <span class="cross"><i class="fa fa-times" aria-hidden="true"></i>  Data Factory </span></h4>
 <h3 id="cost-effectiveness">Cost Effectiveness</h3>
-
 <p>Because Data Factory lends integration runtime for execution time a wait actions extends the hold of this resource. Because of lack of this release implementations that wait for events are much more expensive using Data Factory.</p>
-
 <p>Below diagram shows 1 week costs of running both solutions on schedule to refresh AAS every hour. Refresh took about 2 minutes.
- 
+
 <div class="lazy" style="max-height: 315px">
     <div style="padding-bottom:41.777188328912466%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000076.png" src=""/> 
 </div>  
- 
+
 <div class="lazy" style="max-height: 304px">
     <div style="padding-bottom:64.81876332622602%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000080.png" src=""/> 
 </div>  </p>
-
 <p>For larger solutions logic apps is clear winner.</p>
-
-<h4 id="hahahugoshortcode-60hbhb-are-better-than-hahahugoshortcode-61hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are better than <span class="cross"><i class="fa fa-times" aria-hidden="true"></i>  Data Factory </span></h4>
-
+<h4 id="hahahugoshortcode-s59-hbhb-are-better-than-hahahugoshortcode-s60-hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are better than <span class="cross"><i class="fa fa-times" aria-hidden="true"></i>  Data Factory </span></h4>
 <h3 id="extensibility">Extensibility</h3>
-
 <p>This is a tie. Both Logic Apps and Data Factory allow for remote executions and mixing with other processes. This means they can be integrated with pretty much any solution out there.</p>
-
-<h4 id="hahahugoshortcode-62hbhb-are-as-good-as-hahahugoshortcode-63hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are as good as <span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Data Factory </span></h4>
-
+<h4 id="hahahugoshortcode-s61-hbhb-are-as-good-as-hahahugoshortcode-s62-hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are as good as <span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Data Factory </span></h4>
 <p>Which means my end result</p>
-
-<h3 id="hahahugoshortcode-64hbhb-are-superior-choice-for-this-scenario"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Azure Logic Apps </span> are superior choice for this scenario</h3>
-
+<h3 id="hahahugoshortcode-s63-hbhb-are-superior-choice-for-this-scenario"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Azure Logic Apps </span> are superior choice for this scenario</h3>
 <h2 id="next-steps">Next Steps</h2>
-
 <p>If you enjoyed this article you might want to check <a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/">how to implement this scenario using Azure Logic Apps</a>.</p>
-
-<p><a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/"></p>
-
+<a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/">
 
 <div class="lazy" style="max-height: 266px">
     <div style="padding-bottom:30.09049773755656%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000070.png" src=""/> 
 </div>  
-
-<p></a></p>
+</a>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -778,9 +707,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="Api Management"/> 
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
         </div> 
-        <a href="https://marczak.io/tags/api-management">Api Management (1)</a>
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -808,21 +737,21 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
-        </div> 
-        <a href="https://marczak.io/tags/luis">Luis (1)</a>
-      </li>
-      <li class="child"> 
-        <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
         </div> 
         <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
       </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos Db"/> 
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
         </div> 
-        <a href="https://marczak.io/tags/cosmos-db">Cosmos Db (1)</a>
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -838,9 +767,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="Dotnet Core"/> 
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
         </div> 
-        <a href="https://marczak.io/tags/dotnet-core">Dotnet Core (2)</a>
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -874,9 +803,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="Sql"/> 
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
         </div> 
-        <a href="https://marczak.io/tags/sql">Sql (2)</a>
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -910,9 +839,9 @@ s.setAttribute('data-timestamp', +new Date());
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
-          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="Youtube"/> 
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
         </div> 
-        <a href="https://marczak.io/tags/youtube">Youtube (1)</a>
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
       </li>
   </ul>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">

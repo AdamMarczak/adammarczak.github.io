@@ -235,6 +235,8 @@ div.avatar {
 .btn-social-rss:hover { background: #ffa500; }
 .btn-webchat:hover { background: #4367b1; }
 .btn-github { line-height: 20px; }
+.btn-basic { background-color: #67b2ec; color: black; }
+.btn-basic:hover { background-color: #24a0ff; color: white; }
 
 body,h1,h2,h3,h4,h5,h6{font-family:Helvetica,Arial,sans-serif;font-weight:300}
 
