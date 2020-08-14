@@ -412,7 +412,7 @@ form.check-answer:not(.perfect-score) > div.wrong-score-message {
   margin: 20px 0;
   display: block;
 }
-form.check-answer:not(.perfect-score) > div.answer-explanation {
+form.check-answer > div.answer-explanation {
   display: block;
 }
 
