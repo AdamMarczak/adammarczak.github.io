@@ -85,6 +85,11 @@ img {
 .navbar .container {
   min-height: 64px !important;
 }
+@media (min-width: 769px) {
+  .container>.navbar-header {
+      min-width: 150px !important;
+  }
+}
 
 .navbar-custom {
     display: table-cell!important;
@@ -94,7 +99,7 @@ img {
 }
 
 .navbar-brand {
-  margin-right: 30px;
+  margin-right: 10px;
   line-height: 20px !important;
 }
 .navbar .navbar-brand p {
@@ -140,6 +145,13 @@ aside .widget a {
 .page-header.header-small div.container {
   padding-top: 80px;
   padding-bottom: 50px;
+}
+.btn-img {
+  padding:9px 15px;
+  background-color:#fe424c;
+}
+.btn-img > img {
+  height:26px;
 }
 .btn-friendly-site {
   font-family: "Open Sans Condensed", "Sans Serif";
