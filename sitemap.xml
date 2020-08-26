@@ -322,15 +322,7 @@
   </url>
   
   <url>
-    <loc>https://marczak.io/az-900/episode-11/cheat-sheet/</loc>
-  </url>
-  
-  <url>
     <loc>https://marczak.io/az-900/episode-08/practice-test/</loc>
-  </url>
-  
-  <url>
-    <loc>https://marczak.io/az-900/episode-11/practice-test/</loc>
   </url>
   
   <url>
@@ -351,6 +343,14 @@
   
   <url>
     <loc>https://marczak.io/az-900/episode-10/practice-test/</loc>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/az-900/episode-11/cheat-sheet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://marczak.io/az-900/episode-11/practice-test/</loc>
   </url>
   
 </urlset>
