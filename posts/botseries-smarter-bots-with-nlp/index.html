@@ -124,7 +124,7 @@
 <h2 id="what-is-luis">What is LUIS?</h2>
 <p>LUIS is shorthand name for Language Understanding Intelligent Service. It is one of Microsoft services available in Cognitive Services package in Azure. LUIS is very well described by a quote from Microsoft Azure website.</p>
 <p><em>One of the key problems in human-computer interactions is the ability of the computers to understand what a person wants, and to find the pieces of information that are relevant to his/her intention. Our Language Understanding intelligent service, LUIS, provides simple tools that enable you to build your own language models (intents/entities) which allow any application/bot to understand your commands and act accordingly</em></p>
-<p>Source: <a href="https://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/">Language Understanding Intelligent Service | Microsoft Azure</a></p>
+<p>Source: <a href="https://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/?WT.mc_id=AZ-MVP-5003556">Language Understanding Intelligent Service | Microsoft Azure</a></p>
 <h3 id="understanding-language-models">Understanding Language Models</h3>
 <p><strong>Language model</strong> is a statistical model used in natural language processing. Using probability distribution over sequence of words a well-trained model can estimate the relative likelihood of different phrases. Language models are not only for text recognition but also can be used for speed recognition, machine translation, handwritten recognition and many other.
 In LUIS building language models is very simple. At the very least a single intent must be defined and trained for already meaningful results. Intents are as the word describes is a general users’ intentions; actions if you will. Training models is done via utterances which any specific details required for LUIS to base its recognition on. If details of an actions are required then entities come into play.</p>
@@ -150,8 +150,8 @@ In LUIS building language models is very simple. At the very least a single inte
 <p><img src="/images/botseries-luis/5.png" alt="Screenshot"></p>
 <p>Everything works together nicely thanks to Bot Framework using</p>
 <p><a href="https://dev.botframework.com/"><img class="icon" src="/images/tags/botframework.png"/>Microsoft Bot Framework</a></p>
-<p><a href="https://azure.microsoft.com/en-us/services/bot-service/"><img class="icon" src="/images/tags/bot-service.svg"/>Azure Bot Service</a></p>
-<p><a href="https://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/"><img class="icon" src="/images/tags/luis.svg"/>LUIS</a></p>
+<p><a href="https://azure.microsoft.com/en-us/services/bot-service/?WT.mc_id=AZ-MVP-5003556"><img class="icon" src="/images/tags/bot-service.svg"/>Azure Bot Service</a></p>
+<p><a href="https://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/?WT.mc_id=AZ-MVP-5003556"><img class="icon" src="/images/tags/luis.svg"/>LUIS</a></p>
 <p>Connected into final design
 
 <div class="lazy" style="max-height: 539px">
@@ -196,8 +196,8 @@ In LUIS building language models is very simple. At the very least a single inte
 <li>Fill in the data.</li>
 </ol>
 <ul>
-<li><strong>Consumption Plan</strong> will <a href="https://azure.microsoft.com/en-us/pricing/details/functions/">Functions pricing</a> model (pay per execution). Preferred for most bots.</li>
-<li><strong>App Service Plan</strong> will use <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/">App Service</a> (pay for reserved capacity). Preferred if using Free Tier for learning purposes.
+<li><strong>Consumption Plan</strong> will <a href="https://azure.microsoft.com/en-us/pricing/details/functions/?WT.mc_id=AZ-MVP-5003556">Functions pricing</a> model (pay per execution). Preferred for most bots.</li>
+<li><strong>App Service Plan</strong> will use <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/?WT.mc_id=AZ-MVP-5003556">App Service</a> (pay for reserved capacity). Preferred if using Free Tier for learning purposes.
 
 <div class="lazy" style="max-height: 443px">
     <div style="padding-bottom:128.77906976744185%"></div>
@@ -376,7 +376,7 @@ In case a bot would return None intent multiple of times try</li>
     <div style="padding-bottom:71.6374269005848%"></div>
     <img data-src="/images/botseries-luis/20.png" src=""/> 
 </div>  
-Give it a name SocialName and a type of <strong>List</strong>. Reason for this is that list entities are best for predefined set of items like list of available social media. To learn more about entity types visit <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-concept-entity-types">LUIS documenation</a></li>
+Give it a name SocialName and a type of <strong>List</strong>. Reason for this is that list entities are best for predefined set of items like list of available social media. To learn more about entity types visit <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-concept-entity-typeshttps://docs.botframework.com/en-us/channel-inspector/channels/Slack/?WT.mc_id=AZ-MVP-5003556">LUIS documenation</a></li>
 <li>When created list entity must be provided with canonical form of names and optionally any synonyms or aliases. For this demo following list was used.</li>
 </ol>
 <ul>

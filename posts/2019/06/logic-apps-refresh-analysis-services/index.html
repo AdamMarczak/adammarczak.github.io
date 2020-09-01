@@ -129,7 +129,7 @@
 <ol>
 <li>Azure Subscription</li>
 <li>Azure Analysis Services with any model deployed</li>
-<li><a href="https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017">SQL Server Management Studio 2017+</a></li>
+<li><a href="https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017?WT.mc_id=AZ-MVP-5003556">SQL Server Management Studio 2017+</a></li>
 </ol>
 <h2 id="design">Design</h2>
 <p>In this article Azure Analysis Services REST API will be used. This second covers high level principles on how this process should be done.</p>
@@ -182,13 +182,13 @@
   <span class="p">]</span>
 <span class="p">}</span></code></pre></div>
 <ul>
-<li><strong>Type</strong> a <a href="https://docs.microsoft.com/en-us/bi-reference/tmsl/refresh-command-tmsl">TMSL refresh type</a>. Accepted options are: full, clearValues, calculate, dataOnly, automatic, add, defragment.</li>
+<li><strong>Type</strong> a <a href="https://docs.microsoft.com/en-us/bi-reference/tmsl/refresh-command-tmsl?WT.mc_id=AZ-MVP-5003556">TMSL refresh type</a>. Accepted options are: full, clearValues, calculate, dataOnly, automatic, add, defragment.</li>
 <li><strong>CommitMode</strong> is defining if objects during refresh will be committed in batches or only when completed. Currently only three options are valid: default, transactional, partialBatch.</li>
 <li><strong>MaxParallelism</strong> how many parallel threads are processing the model. Must be within MaxParallelism setting of the server.</li>
 <li><strong>RetryCount</strong> how many times server retries operation before failing.</li>
 <li><strong>Objects</strong> array of objects to refresh. Tables or partitions are accepted. No objects on the list means entire model.</li>
 </ul>
-<p>For more info check the documentation <a href="https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-async-refresh">HERE</a>.</p>
+<p>For more info check the documentation <a href="https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-async-refresh?WT.mc_id=AZ-MVP-5003556">HERE</a>.</p>
 <h4 id="response-202-accepted">Response (202 Accepted)</h4>
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">Empty</code></pre></div>
 <p>But there is very important header in the response. This header can be used to check status in following requests.

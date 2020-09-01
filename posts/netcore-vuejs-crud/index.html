@@ -124,15 +124,15 @@
 <h3 id="what-is-cosmos-db-and-why-should-anyone-use-it">What is Cosmos DB and why should anyone use it?</h3>
 <p><a href="https://azure.microsoft.com/en-us/services/cosmos-db/">Cosmos DB</a> is one of available Azure PaaS (Platform as a Service) databases. It delivers low latency and high scalability data storage anywhere in the world. Cosmos DB is simply said a document database which stores its data in JSON format. It also has several APIs allowing for easy integration with many languages and frameworks. Those APIs include</p>
 <ul>
-<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-sql-query">SQL</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/graph-introduction">Graph</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction">MongoDB</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-introduction">Cassandra</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/table-introduction">Table</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-sql-query?WT.mc_id=AZ-MVP-5003556">SQL</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/graph-introduction?WT.mc_id=AZ-MVP-5003556">Graph</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction?WT.mc_id=AZ-MVP-5003556">MongoDB</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-introduction?WT.mc_id=AZ-MVP-5003556">Cassandra</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/table-introduction?WT.mc_id=AZ-MVP-5003556">Table</a></li>
 </ul>
 <p>Biggest advantage of using databases like Cosmos DB is that they will scale better than databases but also offer great &lsquo;pay as you go&rsquo; model which means for small applications the cost is much lower than the one of full-fledged database. Of&rsquo;course this doesn&rsquo;t mean classic relational database should not be used, on the contrary, in some cases they are very much recommended.</p>
 <h2 id="creating-cosmos-db">Creating Cosmos DB</h2>
-<p>Creation of Cosmos DB is very easy. Few clicks in Azure Portal and developer is good to go. It is recommended that for production usage environment setup should be automated using either <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest">Azure CLI</a> or <a href="https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.2.0">PowerShell</a> with use of <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview">ARM templates</a>.</p>
+<p>Creation of Cosmos DB is very easy. Few clicks in Azure Portal and developer is good to go. It is recommended that for production usage environment setup should be automated using either <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?WT.mc_id=AZ-MVP-5003556">Azure CLI</a> or <a href="https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?WT.mc_id=AZ-MVP-5003556">PowerShell</a> with use of <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview?WT.mc_id=AZ-MVP-5003556">ARM templates</a>.</p>
 <ol>
 <li>Log into <a href="https://portal.azure.com">Azure Portal</a></li>
 <li>Click on <strong>plus</strong> sign on the left-hand side corner, type in <strong>cosmos</strong> is search box and then press <strong>enter</strong>
@@ -179,7 +179,7 @@
 <li><strong>Database Id</strong> - logical container name for collections</li>
 <li><strong>Collection Id</strong> - name for the container</li>
 <li><strong>Storage Capacity</strong> - how much data can the collection hold, leave it at 10GB</li>
-<li><strong>Throughput</strong> - How many <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/request-units">Request Units</a> can collection process per second</li>
+<li><strong>Throughput</strong> - How many <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/request-units?WT.mc_id=AZ-MVP-5003556">Request Units</a> can collection process per second</li>
 <li><strong>Unique Keys</strong> - similarly to relational database this is &lsquo;unique&rsquo; key on the column (value). It can be also put on nested values like /Address/Id. Note that it not required to add unique key on &lsquo;id&rsquo; column as this is enabled by default.</li>
 </ul>
 <h3 id="summarizing">Summarizing</h3>

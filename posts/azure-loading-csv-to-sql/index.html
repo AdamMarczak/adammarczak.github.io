@@ -254,7 +254,7 @@
 </ol>
 <h2 id="development">Development</h2>
 <p>I did mention previously that there will be almost no coding.</p>
-<p>Before settings up database and loading procedure, a special access token must be generated so that SQL database can connect to blob storage and read files from there. This token is called <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-dotnet-shared-access-signature-part-1">SAS (Shared Access Signature) token</a>.</p>
+<p>Before settings up database and loading procedure, a special access token must be generated so that SQL database can connect to blob storage and read files from there. This token is called <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-dotnet-shared-access-signature-part-1?WT.mc_id=AZ-MVP-5003556">SAS (Shared Access Signature) token</a>.</p>
 <h3 id="blob-storage-1">Blob Storage</h3>
 <ol>
 <li>Navigate to previously created blob storage in Azure Portal</li>
@@ -467,8 +467,8 @@ In the source URL select <strong>Path</strong> object from the trigger step.
 <h2 id="whats-next">What&rsquo;s next?</h2>
 <p>There are of &lsquo;course some limitations and drawbacks to this design no doubt. With that said this is a good template to start from and expand.</p>
 <ol>
-<li>Read more about <a href="https://docs.microsoft.com/en-us/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-2017">BULK INSERT</a> and its bcp utility. For instance, to match columns and types using schema files.</li>
-<li>Consider using <a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-2017">OPENROWSET</a> when working with more complex data.</li>
+<li>Read more about <a href="https://docs.microsoft.com/en-us/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-2017?WT.mc_id=AZ-MVP-5003556">BULK INSERT</a> and its bcp utility. For instance, to match columns and types using schema files.</li>
+<li>Consider using <a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-2017?WT.mc_id=AZ-MVP-5003556">OPENROWSET</a> when working with more complex data.</li>
 <li>Change loading procedure to accept file name parameter so that input files on the blob do not have to follow naming convention, rather be in proper location. Logic apps allows for discovery of parameters so it is very easy to integrate.</li>
 </ol><a target="_blank" 
    rel="tooltip" 
