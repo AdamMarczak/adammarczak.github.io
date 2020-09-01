@@ -1,6 +1,6 @@
-<svg id="b" width="25" height="21" version="1.1" viewBox="0 0 25 21" xmlns="http://www.w3.org/2000/svg">
- <path id="e" d="m4 0h10v10h-10z" style="fill:#f35325"/>
- <path id="c" d="m15 0h10v10h-10z" style="fill:#81bc06"/>
- <path id="d" d="m4 11h10v10h-10z" style="fill:#05a6f0"/>
- <path id="a" d="m15 11h10v10h-10z" style="fill:#ffba08"/>
+<svg id="b" width="21" height="21" version="1.1" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+ <path id="e" d="m0 0h10v10h-10z" fill="#f35325"/>
+ <path id="c" d="m11 0h10v10h-10z" fill="#81bc06"/>
+ <path id="d" d="m0 11h10v10h-10z" fill="#05a6f0"/>
+ <path id="a" d="m11 11h10v10h-10z" fill="#ffba08"/>
 </svg>
