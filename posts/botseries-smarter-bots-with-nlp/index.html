@@ -155,9 +155,9 @@ In LUIS building language models is very simple. At the very least a single inte
 <p>Connected into final design
 
 <div class="lazy" style="max-height: 539px">
-    <div style="padding-bottom:38.5%"></div>
+    <div style="padding-bottom:38.500%"></div>
     <img data-src="/images/botseries-luis/3.png" src=""/> 
-</div>  </p>
+</div></p>
 <h3 id="luis-portal">LUIS portal</h3>
 <p>LUIS comes with self-service portal available at <a href="https://www.luis.ai/home">luis.ai</a>. Portal delivers set of capabilities including</p>
 <ol>
@@ -184,15 +184,15 @@ In LUIS building language models is very simple. At the very least a single inte
 <li>Find Azure Bot Service in Marketplace
 
 <div class="lazy" style="max-height: 258px">
-    <div style="padding-bottom:35.98326359832636%"></div>
+    <div style="padding-bottom:35.983%"></div>
     <img data-src="/images/botseries-luis/6.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Create Bot Service
 
 <div class="lazy" style="max-height: 338px">
-    <div style="padding-bottom:51.603053435114504%"></div>
+    <div style="padding-bottom:51.603%"></div>
     <img data-src="/images/botseries-luis/7.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Fill in the data.</li>
 </ol>
 <ul>
@@ -200,32 +200,32 @@ In LUIS building language models is very simple. At the very least a single inte
 <li><strong>App Service Plan</strong> will use <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/?WT.mc_id=AZ-MVP-5003556">App Service</a> (pay for reserved capacity). Preferred if using Free Tier for learning purposes.
 
 <div class="lazy" style="max-height: 443px">
-    <div style="padding-bottom:128.77906976744185%"></div>
+    <div style="padding-bottom:128.779%"></div>
     <img data-src="/images/botseries-luis/8.png" src=""/> 
-</div>  
+</div>
 Portal should automatically open bot editor after deployment is successful. If not open bot can be opened via either Portal &gt; App Services, Notifications or Dashboard if &lsquo;Pin to Dashboard&rsquo; option was selected.</li>
 </ul>
 <ol start="5">
 <li>Click create button redirects to bot wizard where C# should be set language and <strong>Language Understanding</strong> as a bot template.
 
 <div class="lazy" style="max-height: 642px">
-    <div style="padding-bottom:47.661469933184854%"></div>
+    <div style="padding-bottom:47.661%"></div>
     <img data-src="/images/botseries-luis/9.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Microsoft App Registration page where application must be first registered.<br>
 
 <div class="lazy" style="max-height: 292px">
-    <div style="padding-bottom:43.067846607669615%"></div>
+    <div style="padding-bottom:43.068%"></div>
     <img data-src="/images/botseries-luis/10.png" src=""/> 
-</div>  
+</div>
 <strong>Note</strong>: Forgetting to save app password might be troublesome in some scenarios but this isn&rsquo;t the case. App password will be available in bot app settings</li>
 <li>Once bot is created developer is transferred back to Azure Development portal and after hitting Create button the bot is provisioned. Provisioning takes between 2 and 5 minutes and during that time template sets up Bot Framework application, storage account for the code and logic, bot service application and application insights.</li>
 <li>Test the bot with IDE chat control
 
 <div class="lazy" style="max-height: 241px">
-    <div style="padding-bottom:56.973995271867615%"></div>
+    <div style="padding-bottom:56.974%"></div>
     <img data-src="/images/botseries-luis/11.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h2 id="model-learning">Model Learning</h2>
 <p>Now that the bot already exists and everything works means a framework to build intelligent bot was already established. Moving into LUIS.AI portal is the next step where the model training beings. At this point developer should already have precise and meaningful business case with a general idea of how would intent and entity modeling look like.</p>
@@ -246,27 +246,27 @@ Portal should automatically open bot editor after deployment is successful. If n
 <li>Select application from the list
 
 <div class="lazy" style="max-height: 355px">
-    <div style="padding-bottom:100.85227272727273%"></div>
+    <div style="padding-bottom:100.852%"></div>
     <img data-src="/images/botseries-luis/12.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>When presented with dashboard navigate to Intents section
 
 <div class="lazy" style="max-height: 705px">
-    <div style="padding-bottom:54.3562066306862%"></div>
+    <div style="padding-bottom:54.356%"></div>
     <img data-src="/images/botseries-luis/13.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Select Add Intent button to provide first intent name Series.Info
 
 <div class="lazy" style="max-height: 447px">
-    <div style="padding-bottom:63.7660485021398%"></div>
+    <div style="padding-bottom:63.766%"></div>
     <img data-src="/images/botseries-luis/14.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>And enter few utterances into the field and press enter
 
 <div class="lazy" style="max-height: 265px">
-    <div style="padding-bottom:54.30327868852459%"></div>
+    <div style="padding-bottom:54.303%"></div>
     <img data-src="/images/botseries-luis/15.png" src=""/> 
-</div>  
+</div>
 Sentences used for this demo are</li>
 </ol>
 <ul>
@@ -302,18 +302,18 @@ Sentences used for this demo are</li>
 <li>Go to Train and Test section and select Train Application button
 
 <div class="lazy" style="max-height: 134px">
-    <div style="padding-bottom:29.321663019693656%"></div>
+    <div style="padding-bottom:29.322%"></div>
     <img data-src="/images/botseries-luis/16.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>At this point to avoid mistakes and pointless debugging sessions a testing panel should be used to check trained model
 <img src="/images/botseries-luis/17.png" alt="Screenshot">
 Intents are scored from 0 to 1 which means from 0% to 100%. If bot is not responding as intended it might be that it wasn&rsquo;t learned properly. Usually it means that sentences were either too similar or too generic.</li>
 <li>Navigate to Publish App section and select Publish to production slot. Sometimes, I&rsquo;m not sure why, portal fails to publish the app so in case this happens just republish the app.
 
 <div class="lazy" style="max-height: 338px">
-    <div style="padding-bottom:57.28813559322034%"></div>
+    <div style="padding-bottom:57.288%"></div>
     <img data-src="/images/botseries-luis/18.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Now that the bot is published each of the intents must find its own action within BasicLuisDialog.csx class. Class method name does not matter but the attribute on the class does. Each method that should be mapped to luis intent must have <strong>LuisIntent</strong> attribute with parameter being exact intent name from LUIS service.
 End State of the class should be looking like this with highlighted the key parts that were changed.
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
@@ -358,9 +358,9 @@ End State of the class should be looking like this with highlighted the key part
 <li>Save and test the application. Notice how sentences do not have to be the same as provided in the learning model. This is exactly the power of machine learning.
 
 <div class="lazy" style="max-height: 414px">
-    <div style="padding-bottom:97.41176470588235%"></div>
+    <div style="padding-bottom:97.412%"></div>
     <img data-src="/images/botseries-luis/19.png" src=""/> 
-</div>  
+</div>
 In case a bot would return None intent multiple of times try</li>
 <li>Republishing the application</li>
 <li>Restarting the conversation</li>
@@ -373,9 +373,9 @@ In case a bot would return None intent multiple of times try</li>
 <li>Create new entity of by pressing Add Custom Entity button
 
 <div class="lazy" style="max-height: 490px">
-    <div style="padding-bottom:71.6374269005848%"></div>
+    <div style="padding-bottom:71.637%"></div>
     <img data-src="/images/botseries-luis/20.png" src=""/> 
-</div>  
+</div>
 Give it a name SocialName and a type of <strong>List</strong>. Reason for this is that list entities are best for predefined set of items like list of available social media. To learn more about entity types visit <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-concept-entity-typeshttps://docs.botframework.com/en-us/channel-inspector/channels/Slack/?WT.mc_id=AZ-MVP-5003556">LUIS documenation</a></li>
 <li>When created list entity must be provided with canonical form of names and optionally any synonyms or aliases. For this demo following list was used.</li>
 </ol>
@@ -388,9 +388,9 @@ Give it a name SocialName and a type of <strong>List</strong>. Reason for this i
 <li>linkedin with alias ln
 
 <div class="lazy" style="max-height: 473px">
-    <div style="padding-bottom:127.15053763440861%"></div>
+    <div style="padding-bottom:127.151%"></div>
     <img data-src="/images/botseries-luis/21.png" src=""/> 
-</div>  </li>
+</div></li>
 </ul>
 <ol start="4">
 <li>Go to Intents and select Add Intent button to provide first intent name Social.Location</li>
@@ -408,18 +408,18 @@ Sentences used for this demo are</li>
 <li>Correctly recognized entities should be marked as <strong>[$SocialName]</strong>
 
 <div class="lazy" style="max-height: 411px">
-    <div style="padding-bottom:95.13888888888889%"></div>
+    <div style="padding-bottom:95.139%"></div>
     <img data-src="/images/botseries-luis/22.png" src=""/> 
-</div>  
+</div>
 Of&rsquo;course link, address and url could be optimized with LUIS phrases but this isn&rsquo;t part of this tutorial.</li>
 </ul>
 <ol start="6">
 <li>Retrain and test the bot
 
 <div class="lazy" style="max-height: 181px">
-    <div style="padding-bottom:20.780711825487945%"></div>
+    <div style="padding-bottom:20.781%"></div>
     <img data-src="/images/botseries-luis/23.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Publish the app</li>
 <li>Go back to Azure Portal to the BasicLuisDialog.csx, there is couple of things that has to be done</li>
 <li>Add new intent handler called <strong>SocialLocationIntent</strong> with attribute <strong>[LuisIntent(&ldquo;Social.Location&rdquo;)]</strong></li>
@@ -458,9 +458,9 @@ Of&rsquo;course link, address and url could be optimized with LUIS phrases but t
 <li>Test the bot
 
 <div class="lazy" style="max-height: 813px">
-    <div style="padding-bottom:174.83870967741936%"></div>
+    <div style="padding-bottom:174.839%"></div>
     <img data-src="/images/botseries-luis/24.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h3 id="play-around-with-it">Play around with it!</h3>
 <p>Now just go and start building chatbots.</p><a target="_blank" 

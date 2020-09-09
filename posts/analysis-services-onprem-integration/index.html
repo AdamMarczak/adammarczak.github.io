@@ -143,9 +143,9 @@
 <p>Presented design will be focus of this article. \</p>
 
 <div class="lazy" style="max-height: 158px">
-    <div style="padding-bottom:19.29181929181929%"></div>
+    <div style="padding-bottom:19.292%"></div>
     <img data-src="/images/analysis-services-onprem-integration/1.png" src=""/> 
-</div>  
+</div>
 <h4 id="components">Components</h4>
 <ol>
 <li>On-Premises</li>
@@ -162,9 +162,9 @@
 <li>Create DevTest Lab environment
 
 <div class="lazy" style="max-height: 196px">
-    <div style="padding-bottom:33.56164383561644%"></div>
+    <div style="padding-bottom:33.562%"></div>
     <img data-src="/images/analysis-services-onprem-integration/2.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>For the parameters fill</li>
 </ol>
 <ul>
@@ -175,16 +175,16 @@
 <li>Once provisioned go to lab and click on Add new
 
 <div class="lazy" style="max-height: 102px">
-    <div style="padding-bottom:17.555938037865747%"></div>
+    <div style="padding-bottom:17.556%"></div>
     <img data-src="/images/analysis-services-onprem-integration/3.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Select Windows 10 Enterprise VM image</li>
 <li>Fill VM form fields
 
 <div class="lazy" style="max-height: 619px">
-    <div style="padding-bottom:187.57575757575756%"></div>
+    <div style="padding-bottom:187.576%"></div>
     <img data-src="/images/analysis-services-onprem-integration/4.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Virtual Machine Name</strong>: devtestlab001, name is important when connecting to SQL server later on. Any name works though.</li>
@@ -198,49 +198,49 @@
 <li>Connect to VM
 
 <div class="lazy" style="max-height: 128px">
-    <div style="padding-bottom:27.467811158798284%"></div>
+    <div style="padding-bottom:27.468%"></div>
     <img data-src="/images/analysis-services-onprem-integration/5.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Install following tools</li>
 <li><a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">SQL Server Developer Edition</a>
 
 <div class="lazy" style="max-height: 660px">
-    <div style="padding-bottom:79.23169267707082%"></div>
+    <div style="padding-bottom:79.232%"></div>
     <img data-src="/images/analysis-services-onprem-integration/6.png" src=""/> 
-</div>  </li>
+</div></li>
 <li><a href="https://docs.microsoft.com/en-us/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017?WT.mc_id=AZ-MVP-5003556">SQL Server Data Tools</a>
 
 <div class="lazy" style="max-height: 534px">
-    <div style="padding-bottom:69.26070038910505%"></div>
+    <div style="padding-bottom:69.261%"></div>
     <img data-src="/images/analysis-services-onprem-integration/7.png" src=""/> 
-</div>  </li>
+</div></li>
 <li><a href="https://visualstudio.microsoft.com/vs/community/">Visual Studio Community</a>
 Make Sure to select Data and storage tools.
 
 <div class="lazy" style="max-height: 96px">
-    <div style="padding-bottom:22.857142857142858%"></div>
+    <div style="padding-bottom:22.857%"></div>
     <img data-src="/images/analysis-services-onprem-integration/8.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Open Visual Studio</li>
 <li>Open SQL Server Object Explorer. If it is not visible, it can be enabled in View options.</li>
 <li>Connect to local SQL database
 
 <div class="lazy" style="max-height: 147px">
-    <div style="padding-bottom:47.88273615635179%"></div>
+    <div style="padding-bottom:47.883%"></div>
     <img data-src="/images/analysis-services-onprem-integration/9.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Select local instance (should have the same name as VM name)
 
 <div class="lazy" style="max-height: 588px">
-    <div style="padding-bottom:122.24532224532224%"></div>
+    <div style="padding-bottom:122.245%"></div>
     <img data-src="/images/analysis-services-onprem-integration/10.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Open new query
 
 <div class="lazy" style="max-height: 264px">
-    <div style="padding-bottom:83.28075709779179%"></div>
+    <div style="padding-bottom:83.281%"></div>
     <img data-src="/images/analysis-services-onprem-integration/11.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Run Query to Setup demo database
 <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">database</span> <span class="n">asdemodb</span><span class="p">;</span>
 <span class="k">GO</span>
@@ -300,30 +300,30 @@ Output
 <li>Select register a new gateway option
 
 <div class="lazy" style="max-height: 245px">
-    <div style="padding-bottom:45.370370370370374%"></div>
+    <div style="padding-bottom:45.370%"></div>
     <img data-src="/images/analysis-services-onprem-integration/12.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Give it a recognizable name and type in recovery key. Make sure to back up this key.
 
 <div class="lazy" style="max-height: 305px">
-    <div style="padding-bottom:50.91819699499165%"></div>
+    <div style="padding-bottom:50.918%"></div>
     <img data-src="/images/analysis-services-onprem-integration/13.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Finish installation and verify status. Properly working gateway should show <em>Ready</em> status
 
 <div class="lazy" style="max-height: 518px">
-    <div style="padding-bottom:82.74760383386581%"></div>
+    <div style="padding-bottom:82.748%"></div>
     <img data-src="/images/analysis-services-onprem-integration/14.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h2 id="provision-azure-resources">Provision Azure Resources</h2>
 <ol>
 <li>Create new Analysis Services resource
 
 <div class="lazy" style="max-height: 469px">
-    <div style="padding-bottom:141.26506024096386%"></div>
+    <div style="padding-bottom:141.265%"></div>
     <img data-src="/images/analysis-services-onprem-integration/15.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Server Name</strong> unique name for Analysis Services instance</li>
@@ -335,14 +335,14 @@ Output
 <li>Create new On-premises data gateway resource
 
 <div class="lazy" style="max-height: 199px">
-    <div style="padding-bottom:67.45762711864407%"></div>
+    <div style="padding-bottom:67.458%"></div>
     <img data-src="/images/analysis-services-onprem-integration/16.png" src=""/> 
-</div>   
+</div> 
 
 <div class="lazy" style="max-height: 557px">
-    <div style="padding-bottom:171.3846153846154%"></div>
+    <div style="padding-bottom:171.385%"></div>
     <img data-src="/images/analysis-services-onprem-integration/17.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Resource Name</strong> name for gateway resource</li>
@@ -355,21 +355,21 @@ Output
 <li>Open On-premises data gateway blade 
 
 <div class="lazy" style="max-height: 152px">
-    <div style="padding-bottom:69.0909090909091%"></div>
+    <div style="padding-bottom:69.091%"></div>
     <img data-src="/images/analysis-services-onprem-integration/18.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Connect gateway by providing previously created region and gateway resource
 
 <div class="lazy" style="max-height: 238px">
-    <div style="padding-bottom:72.5609756097561%"></div>
+    <div style="padding-bottom:72.561%"></div>
     <img data-src="/images/analysis-services-onprem-integration/19.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Successful connection will be indicated by checkmark
 
 <div class="lazy" style="max-height: 251px">
-    <div style="padding-bottom:81.22977346278317%"></div>
+    <div style="padding-bottom:81.230%"></div>
     <img data-src="/images/analysis-services-onprem-integration/20.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h2 id="deploy-model">Deploy Model</h2>
 <p>Before deployment model connect again to the database and grant Power BI gateway service access to the database. This will be required when Analysis Services tries to connect using gateway.</p>
@@ -399,9 +399,9 @@ Output
 <li>Create new Tabular project
 
 <div class="lazy" style="max-height: 648px">
-    <div style="padding-bottom:69.3048128342246%"></div>
+    <div style="padding-bottom:69.305%"></div>
     <img data-src="/images/analysis-services-onprem-integration/21.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Note</strong> If project template is missing verify if Sql Server data tools are correctly installed.</li>
@@ -412,83 +412,83 @@ Output
 <li>In the Solution Explorer of project right-click on the Data Sources and select Import from data source option
 
 <div class="lazy" style="max-height: 211px">
-    <div style="padding-bottom:47.20357941834452%"></div>
+    <div style="padding-bottom:47.204%"></div>
     <img data-src="/images/analysis-services-onprem-integration/22.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Select SQL server database as the data source
 
 <div class="lazy" style="max-height: 636px">
-    <div style="padding-bottom:109.46643717728055%"></div>
+    <div style="padding-bottom:109.466%"></div>
     <img data-src="/images/analysis-services-onprem-integration/23.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Type in database details from previous steps
 
 <div class="lazy" style="max-height: 253px">
-    <div style="padding-bottom:87.24137931034483%"></div>
+    <div style="padding-bottom:87.241%"></div>
     <img data-src="/images/analysis-services-onprem-integration/24.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Select connection credentials as Impersonate Service Account
 
 <div class="lazy" style="max-height: 145px">
-    <div style="padding-bottom:28.76984126984127%"></div>
+    <div style="padding-bottom:28.770%"></div>
     <img data-src="/images/analysis-services-onprem-integration/25.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Verify data and click Load
 
 <div class="lazy" style="max-height: 666px">
-    <div style="padding-bottom:78.07737397420867%"></div>
+    <div style="padding-bottom:78.077%"></div>
     <img data-src="/images/analysis-services-onprem-integration/26.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Successfully loaded model should appear in the designer
 
 <div class="lazy" style="max-height: 595px">
-    <div style="padding-bottom:174.4868035190616%"></div>
+    <div style="padding-bottom:174.487%"></div>
     <img data-src="/images/analysis-services-onprem-integration/27.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In the Tabular Model Explorer right-click on the Model.bim file and select properties</li>
 <li>Change parameter DirectQyert Mode from Off to On
 
 <div class="lazy" style="max-height: 322px">
-    <div style="padding-bottom:92.26361031518624%"></div>
+    <div style="padding-bottom:92.264%"></div>
     <img data-src="/images/analysis-services-onprem-integration/28.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Navigate back to Azure Analysis Service and in the Overview blade copy Server name 
 
 <div class="lazy" style="max-height: 87px">
-    <div style="padding-bottom:20.422535211267604%"></div>
+    <div style="padding-bottom:20.423%"></div>
     <img data-src="/images/analysis-services-onprem-integration/29.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In the Tabular Model Explorer right-click on the ModelProject project file and select Properties option</li>
 <li>Paste in copied AAS in the server address property field
 
 <div class="lazy" style="max-height: 250px">
-    <div style="padding-bottom:32.808398950131235%"></div>
+    <div style="padding-bottom:32.808%"></div>
     <img data-src="/images/analysis-services-onprem-integration/30.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Again right-click on the ModelProject project file and select Deploy option
 
 <div class="lazy" style="max-height: 98px">
-    <div style="padding-bottom:23.6144578313253%"></div>
+    <div style="padding-bottom:23.614%"></div>
     <img data-src="/images/analysis-services-onprem-integration/31.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Successful deployment should look like this
 
 <div class="lazy" style="max-height: 239px">
-    <div style="padding-bottom:42.30088495575221%"></div>
+    <div style="padding-bottom:42.301%"></div>
     <img data-src="/images/analysis-services-onprem-integration/32.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Navigate back to Azure Analysis Service and in the Overview blade click on the Web Designer Open button
 
 <div class="lazy" style="max-height: 40px">
-    <div style="padding-bottom:20.304568527918782%"></div>
+    <div style="padding-bottom:20.305%"></div>
     <img data-src="/images/analysis-services-onprem-integration/33.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on the &lsquo;eye&rsquo; icon in the Models panel
 
 <div class="lazy" style="max-height: 292px">
-    <div style="padding-bottom:41.77396280400572%"></div>
+    <div style="padding-bottom:41.774%"></div>
     <img data-src="/images/analysis-services-onprem-integration/34.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Select &lsquo;Show DAX&rsquo; and paste in the script
 <pre><code class="language-DAX" data-lang="DAX">EVALUATE (
   TOPN (
@@ -505,9 +505,9 @@ Output
 <li>Verify results
 
 <div class="lazy" style="max-height: 746px">
-    <div style="padding-bottom:39.07805133577789%"></div>
+    <div style="padding-bottom:39.078%"></div>
     <img data-src="/images/analysis-services-onprem-integration/35.png" src=""/> 
-</div>   
+</div> 
 Change results in the database to demo out live connection</li>
 </ol>
 <h2 id="summary">Summary</h2>

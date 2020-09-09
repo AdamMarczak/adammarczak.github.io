@@ -128,9 +128,9 @@
 <p>The simplest one screen explanation of the feature can be captured as such</p>
 
 <div class="lazy" style="max-height: 1345px">
-    <div style="padding-bottom:181.75675675675674%"></div>
+    <div style="padding-bottom:181.757%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/W000127.png" src=""/> 
-</div>  
+</div>
 <p>In JSON code view obfuscation can be configured as follows
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;&lt;trigger-or-action-name&gt;&#34;</span><span class="err">:</span> <span class="p">{</span>
    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;trigger-or-action-type&gt;&#34;</span><span class="p">,</span>
@@ -154,34 +154,34 @@
 <p>If <strong>any output (hidden)</strong> are <strong>explicitly</strong> passed from an action which has enabled <strong>obfuscated output (hidden)</strong> to the next (downstream) action, then <strong>input block of next action will be obfuscated as well</strong>. Even if it doesn&rsquo;t have secure input enabled.</p>
 
 <div class="lazy" style="max-height: 340px">
-    <div style="padding-bottom:58.8235294117647%"></div>
+    <div style="padding-bottom:58.824%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/W000124.png" src=""/> 
-</div>  
+</div>
 <p>Interestingly, some actions like <strong>Parse JSON</strong> only have <strong>Secure Inputs</strong> setting. Because of that enabling secure input automatically secures the output as well. In case secured input setting was not enabled but action received secured output from previous action then this action will be obfuscated but all downstream actions won&rsquo;t. If downstream actions should be secured make sure secure inputs are enabled on this action as well.</p>
 
 <div class="lazy" style="max-height: 519px">
-    <div style="padding-bottom:90.10416666666667%"></div>
+    <div style="padding-bottom:90.104%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/W000125.png" src=""/> 
-</div>  
+</div>
 <h3 id="secure-inputs">Secure Inputs</h3>
 <p>If <strong>any output (visible)</strong> are <strong>explicitly</strong> passed from an action which has enabled <strong>obfuscated input (hidden)</strong> to the next (downstream) action, then <strong>input block of next action will be obfuscated as well</strong>. Even if it doesn&rsquo;t have secure input enabled.</p>
 
 <div class="lazy" style="max-height: 337px">
-    <div style="padding-bottom:58.50694444444444%"></div>
+    <div style="padding-bottom:58.507%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/W000126.png" src=""/> 
-</div>  
+</div>
 <p>Simple example of this would be passing output statusCode parameter from HTTP action into the next action. This only happens if you use any outputs of previous action.
 
 <div class="lazy" style="max-height: 684px">
-    <div style="padding-bottom:78.44036697247707%"></div>
+    <div style="padding-bottom:78.440%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/W000132.png" src=""/> 
-</div>  
+</div>
 And the logs confirm this.
 
 <div class="lazy" style="max-height: 239px">
-    <div style="padding-bottom:38.67313915857605%"></div>
+    <div style="padding-bottom:38.673%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/W000133.png" src=""/> 
-</div>  
+</div>
 This is a bit complicated at start, but it is critical to be clearly understood because it will impact logging for logic apps.</p>
 <h2 id="provisioning-of-resources">Provisioning of Resources</h2>
 <p>This article only needs Logic App resource</p>
@@ -190,21 +190,21 @@ This is a bit complicated at start, but it is critical to be clearly understood 
 <li>Go to <a href="https://portal.azure.com">Portal</a> and hit create resource.
 
 <div class="lazy" style="max-height: 79px">
-    <div style="padding-bottom:42.473118279569896%"></div>
+    <div style="padding-bottom:42.473%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000196.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Search for <strong>Logic App</strong> and once found, click on it and hit <strong>Create</strong> button in the new blade window.
 
 <div class="lazy" style="max-height: 151px">
-    <div style="padding-bottom:66.2280701754386%"></div>
+    <div style="padding-bottom:66.228%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000197.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Fill in the fields
 
 <div class="lazy" style="max-height: 399px">
-    <div style="padding-bottom:137.58620689655172%"></div>
+    <div style="padding-bottom:137.586%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000198.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Name</strong> - this is the same of logic app resource.</li>
@@ -221,46 +221,46 @@ This is a bit complicated at start, but it is critical to be clearly understood 
 <li>Go to Logic App Designer and click on <strong>Blank Logic App</strong>
 
 <div class="lazy" style="max-height: 190px">
-    <div style="padding-bottom:100%"></div>
+    <div style="padding-bottom:100.000%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000138.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Search for <strong>request</strong> action group, and select it
 
 <div class="lazy" style="max-height: 117px">
-    <div style="padding-bottom:65.36312849162012%"></div>
+    <div style="padding-bottom:65.363%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000139.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Choose <strong>When a HTTP request is received</strong> trigger
 
 <div class="lazy" style="max-height: 92px">
-    <div style="padding-bottom:34.84848484848485%"></div>
+    <div style="padding-bottom:34.848%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000140.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In new block hit <strong>Add new parameter</strong> and select <strong>Method</strong>
 
 <div class="lazy" style="max-height: 501px">
-    <div style="padding-bottom:80.03194888178913%"></div>
+    <div style="padding-bottom:80.032%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000141.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In <strong>method</strong> parameter select <strong>GET</strong> method.
 
 <div class="lazy" style="max-height: 60px">
-    <div style="padding-bottom:10.238907849829351%"></div>
+    <div style="padding-bottom:10.239%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000142.png" src=""/> 
-</div>  
+</div>
 Note that this isn&rsquo;t required. GET is just simpler to test and present the results than POST request which is default.</li>
 <li>In new block hit <strong>Add new parameter</strong> and select <strong>Relative path</strong>
 
 <div class="lazy" style="max-height: 138px">
-    <div style="padding-bottom:24.041811846689896%"></div>
+    <div style="padding-bottom:24.042%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000209.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In <strong>Relative path</strong> parameter type in <strong>{secret}</strong>.
 
 <div class="lazy" style="max-height: 86px">
-    <div style="padding-bottom:11.96105702364395%"></div>
+    <div style="padding-bottom:11.961%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000205.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Hit <strong>Save</strong></li>
 </ol>
 <h2 id="the-issue">The issue</h2>
@@ -269,28 +269,28 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 <li>Grab the URL from the Logic App (it&rsquo;s important to do this after saving)
 
 <div class="lazy" style="max-height: 391px">
-    <div style="padding-bottom:64.73509933774834%"></div>
+    <div style="padding-bottom:64.735%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000145.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Paste it into the browser and notice part of URL containing <strong>/invoke/{secret}</strong>
 
 <div class="lazy" style="max-height: 103px">
-    <div style="padding-bottom:9.865900383141762%"></div>
+    <div style="padding-bottom:9.866%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000206.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Replace <strong>{secret}</strong> with any string like <strong>MyBigSecret</strong> and hit enter</li>
 <li>Open Logic App panel and find latest history run
 
 <div class="lazy" style="max-height: 212px">
-    <div style="padding-bottom:21.39253279515641%"></div>
+    <div style="padding-bottom:21.393%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000207.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on the run and open first block to see our secret in the output logs section
 
 <div class="lazy" style="max-height: 608px">
-    <div style="padding-bottom:114.93383742911153%"></div>
+    <div style="padding-bottom:114.934%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000208.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h2 id="obfuscation-of-action-input-and-output">Obfuscation of Action Input and Output</h2>
 <p>It&rsquo;s finally time to implement obfuscation.</p>
@@ -298,27 +298,27 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 <li>Click on <strong>three dots (&hellip;)</strong> and select <strong>Settings</strong> in the popup menu
 
 <div class="lazy" style="max-height: 510px">
-    <div style="padding-bottom:50.54509415262636%"></div>
+    <div style="padding-bottom:50.545%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000210.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In the settings window select both <strong>Secure Inputs (Preview)</strong> and <strong>Secure Outputs (Preview)</strong> options and press <strong>Done</strong>
 
 <div class="lazy" style="max-height: 714px">
-    <div style="padding-bottom:114.05750798722045%"></div>
+    <div style="padding-bottom:114.058%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000212.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Notice how action has now an indicator showing that it has enabled obfuscation feature
 
 <div class="lazy" style="max-height: 149px">
-    <div style="padding-bottom:21.944035346097202%"></div>
+    <div style="padding-bottom:21.944%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000213.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In the logs now the input and output sections are hidden
 
 <div class="lazy" style="max-height: 270px">
-    <div style="padding-bottom:44.70198675496689%"></div>
+    <div style="padding-bottom:44.702%"></div>
     <img data-src="/images/2019-08-logic-apps-obfuscation/000216.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <p>And that&rsquo;s it. Implementation itself is very easy, understanding the impact a bit more complex but it is a great feature and should be used in any solution working with highly sensitive data and credentials.</p>
 <h2 id="conclusion">Conclusion</h2>

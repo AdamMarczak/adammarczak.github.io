@@ -120,17 +120,17 @@
 <a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/">
 
 <div class="lazy" style="max-height: 266px">
-    <div style="padding-bottom:30.09049773755656%"></div>
+    <div style="padding-bottom:30.090%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000070.png" src=""/> 
-</div>  
+</div>
 </a>
 <h2 id="design">Design</h2>
 <p>The design is fairly simple. Using Data Factory pipeline an Analysis Services API will be called to submit the refresh. Unfortunately, a logic app must be added to avoid few limitations of Data Factory. Read further to find out why.
 
 <div class="lazy" style="max-height: 955px">
-    <div style="padding-bottom:110.02304147465438%"></div>
+    <div style="padding-bottom:110.023%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000077.png" src=""/> 
-</div>  </p>
+</div></p>
 <h2 id="provisioning">Provisioning</h2>
 <p>Log into <a href="https://portal.azure.com">Azure Portal</a> and start creating resources.</p>
 <h3 id="resources">Resources</h3>
@@ -139,27 +139,27 @@
 <li>Click on &ldquo;+&rdquo; sign to create new resource 
 
 <div class="lazy" style="max-height: 112px">
-    <div style="padding-bottom:39.02439024390244%"></div>
+    <div style="padding-bottom:39.024%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000003.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Type in <strong>data factory</strong> in Search window and press enter
 
 <div class="lazy" style="max-height: 260px">
-    <div style="padding-bottom:39.03903903903904%"></div>
+    <div style="padding-bottom:39.039%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000004.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click Create button
 
 <div class="lazy" style="max-height: 221px">
-    <div style="padding-bottom:69.0625%"></div>
+    <div style="padding-bottom:69.063%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000006.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Fill in basic info, name and location and lave V2 as version. V1 is very outdated and is completely different product. Disable GIT integration.
 
 <div class="lazy" style="max-height: 545px">
-    <div style="padding-bottom:86.78343949044586%"></div>
+    <div style="padding-bottom:86.783%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000007.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h4 id="logic-app">Logic App</h4>
 <ol>
@@ -168,33 +168,33 @@
 <li>Click Create button
 
 <div class="lazy" style="max-height: 192px">
-    <div style="padding-bottom:45.497630331753555%"></div>
+    <div style="padding-bottom:45.498%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000025.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Fill in basic info, name and location.
 
 <div class="lazy" style="max-height: 506px">
-    <div style="padding-bottom:155.69230769230768%"></div>
+    <div style="padding-bottom:155.692%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000026.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>After provisioning finished go to new logic app and search for Identity panel
 
 <div class="lazy" style="max-height: 208px">
-    <div style="padding-bottom:72.47386759581882%"></div>
+    <div style="padding-bottom:72.474%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000032.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Enable managed identity by clicking on <strong>On</strong> and selecting <strong>Save</strong> button. This sets up an application account for logic app which can be used in future steps to authenticate to Analysis Services.
 
 <div class="lazy" style="max-height: 262px">
-    <div style="padding-bottom:80.3680981595092%"></div>
+    <div style="padding-bottom:80.368%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000033.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Copy <strong>Object ID</strong> from screen after creation.
 
 <div class="lazy" style="max-height: 324px">
-    <div style="padding-bottom:66.80412371134021%"></div>
+    <div style="padding-bottom:66.804%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000034.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h2 id="privilege-setup">Privilege setup</h2>
 <p>When data factory creation is finished, Azure also sets up something called managed service identity (MSI). This identity can be used to authenticate to resources. Managed identity is a great way to secure connection with various resources in azure without a need to create <strong>KeyVault</strong> or manage passwords. For Logic App this had to be manually enabled.</p>
@@ -214,15 +214,15 @@
  <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-ObjectID</span> <span class="s2">&#34;&lt;object id of logic app&gt;&#34;</span></code></pre></div>
 
 <div class="lazy" style="max-height: 489px">
-    <div style="padding-bottom:58.422939068100355%"></div>
+    <div style="padding-bottom:58.423%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000036.png" src=""/> 
-</div>  
+</div>
 Alternatively, you can search by logic app name
 
 <div class="lazy" style="max-height: 146px">
-    <div style="padding-bottom:21.251819505094613%"></div>
+    <div style="padding-bottom:21.252%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000058.png" src=""/> 
-</div>  
+</div>
 From the output of this script two things should be saved</li>
 <li><strong>TenantId</strong> - this is Directory ID of Azure Active Directory where the managed identity is located</li>
 <li><strong>ApplicationId</strong> - application ID of managed identity</li>
@@ -230,9 +230,9 @@ From the output of this script two things should be saved</li>
 <div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of data factory&gt;&#34;</span></code></pre></div>
 
 <div class="lazy" style="max-height: 145px">
-    <div style="padding-bottom:21.323529411764707%"></div>
+    <div style="padding-bottom:21.324%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000057.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h3 id="adding-administrative-privileges">Adding Administrative Privileges</h3>
 <ol>
@@ -240,27 +240,27 @@ From the output of this script two things should be saved</li>
 <li>Connect to Analysis Services
 
 <div class="lazy" style="max-height: 315px">
-    <div style="padding-bottom:66.0377358490566%"></div>
+    <div style="padding-bottom:66.038%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000074.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Right-click on server and select <strong>Properties</strong>
 
 <div class="lazy" style="max-height: 359px">
-    <div style="padding-bottom:99.17127071823204%"></div>
+    <div style="padding-bottom:99.171%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000037.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Go to <strong>Security</strong> page and click <strong>Add</strong> button
 
 <div class="lazy" style="max-height: 625px">
-    <div style="padding-bottom:90.57971014492753%"></div>
+    <div style="padding-bottom:90.580%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000038.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Search for app by name given in previous step or add manual entry in following convention
 
 <div class="lazy" style="max-height: 492px">
     <div style="padding-bottom:128.125%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000039.png" src=""/> 
-</div>  
+</div>
 Convention IS
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:&lt;application_id&gt;@&lt;tenant_id&gt;</code></pre></div>
 For example
@@ -268,9 +268,9 @@ For example
 <li>Click <strong>Add</strong>
 
 <div class="lazy" style="max-height: 197px">
-    <div style="padding-bottom:28.55072463768116%"></div>
+    <div style="padding-bottom:28.551%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000075.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Ensure to add <strong>both</strong> logic app and data factory application ids</li>
 </ol>
 <h2 id="creating-adf-flow">Creating ADF flow</h2>
@@ -278,33 +278,33 @@ For example
 <li>Navigate to <strong>Data Factory</strong> and click on <strong>Author and Monitor</strong>
 
 <div class="lazy" style="max-height: 400px">
-    <div style="padding-bottom:36.496350364963504%"></div>
+    <div style="padding-bottom:36.496%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000009.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In Data Factory web editor and click on <strong>Author</strong> button
 
 <div class="lazy" style="max-height: 178px">
-    <div style="padding-bottom:35.6%"></div>
+    <div style="padding-bottom:35.600%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000010.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click <em>&hellip;</em> in <strong>Pipelines</strong> section and select <strong>Add pipeline</strong> from the dropdown menu
 
 <div class="lazy" style="max-height: 149px">
-    <div style="padding-bottom:59.36254980079681%"></div>
+    <div style="padding-bottom:59.363%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000050.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Expand <strong>General</strong> section from the <strong>Activities</strong> panel and find <strong>Web</strong> activity 
 
 <div class="lazy" style="max-height: 687px">
-    <div style="padding-bottom:346.969696969697%"></div>
+    <div style="padding-bottom:346.970%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000051.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Drag and drop <strong>Web</strong> activity into drawing pane and name it Refresh AAS
 
 <div class="lazy" style="max-height: 370px">
-    <div style="padding-bottom:80.96280087527353%"></div>
+    <div style="padding-bottom:80.963%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000052.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h3 id="this-is-important">This is important</h3>
 <p>Because of how Web activity in ADF works, it impossible to make proper call to Analysis Services refresh API.</p>
@@ -318,27 +318,27 @@ For example
 <li>Navigate to <strong>Logic App</strong> and click on <strong>Designer</strong>
 
 <div class="lazy" style="max-height: 420px">
-    <div style="padding-bottom:87.86610878661088%"></div>
+    <div style="padding-bottom:87.866%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000027.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Start from blank application and search for <strong>request</strong> action group
 
 <div class="lazy" style="max-height: 299px">
-    <div style="padding-bottom:45.303030303030305%"></div>
+    <div style="padding-bottom:45.303%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000028.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Select <strong>When a HTTP request is received</strong> action
 
 <div class="lazy" style="max-height: 268px">
-    <div style="padding-bottom:40.60606060606061%"></div>
+    <div style="padding-bottom:40.606%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000029.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Configure Action
 
 <div class="lazy" style="max-height: 472px">
-    <div style="padding-bottom:71.08433734939759%"></div>
+    <div style="padding-bottom:71.084%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000030.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Change Schema - <strong>aasRefreshBody</strong> will be exact request body passed to Analysis Services and <strong>aasUrl</strong> will be URL of Analysis Services refresh API
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -373,9 +373,9 @@ For example
 <li>Search for <strong>HTTP</strong> call and configure it as follows
 
 <div class="lazy" style="max-height: 386px">
-    <div style="padding-bottom:58.13253012048193%"></div>
+    <div style="padding-bottom:58.133%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000041.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>URI <strong>aasUrl</strong> - output from request trigger</li>
 <li>Headers <strong>Content-Type: application/json</strong></li>
 <li>Body <strong>aasRefreshBody</strong> - output from request trigger</li>
@@ -384,22 +384,22 @@ For example
 <li>Change settings for <strong>HTTP</strong> action
 
 <div class="lazy" style="max-height: 383px">
-    <div style="padding-bottom:44.3287037037037%"></div>
+    <div style="padding-bottom:44.329%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000042.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Un-select <strong>Asynchronous Pattern</strong> setting
 
 <div class="lazy" style="max-height: 107px">
-    <div style="padding-bottom:17.065390749601274%"></div>
+    <div style="padding-bottom:17.065%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000043.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Add new action</li>
 <li>Search for <strong>Response</strong> action and configure it as follows
 
 <div class="lazy" style="max-height: 310px">
-    <div style="padding-bottom:52.013422818791945%"></div>
+    <div style="padding-bottom:52.013%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000046.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Status Code <strong>200</strong> - for ADF to accept this as success</li>
 <li>Body <strong>aasRefreshBody</strong> - output from request trigger, Status Code from AAS refresh call should not be passed here</li>
 <li>Headers <strong>Content-Type: application/json</strong></li>
@@ -416,15 +416,15 @@ For example
 <li>Configure Web activity 
 
 <div class="lazy" style="max-height: 934px">
-    <div style="padding-bottom:130.08356545961%"></div>
+    <div style="padding-bottom:130.084%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000053.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>URL - copy this from Logic App <strong>HTTP POST URL</strong> field after saving Logic App
 
 <div class="lazy" style="max-height: 243px">
-    <div style="padding-bottom:36.596385542168676%"></div>
+    <div style="padding-bottom:36.596%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000030-2.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Method - <strong>POST</strong></li>
 <li>Headers - <strong>Content-Type application/json</strong></li>
 <li>Body
@@ -443,51 +443,51 @@ For more details on the properties check <a href="https://marczak.io/posts/2019/
 <li>Create two pipeline variables called <strong>RefreshIDURL</strong> and <strong>RefreshStatus</strong>
 
 <div class="lazy" style="max-height: 168px">
-    <div style="padding-bottom:25.225225225225227%"></div>
+    <div style="padding-bottom:25.225%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000056.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Add new action <strong>Until</strong> 
 
 <div class="lazy" style="max-height: 369px">
-    <div style="padding-bottom:74.09638554216868%"></div>
+    <div style="padding-bottom:74.096%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000085-1.png" src=""/> 
-</div>  
+</div>
 And configure exit loop condition as follows
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@or(equals(variables(&#39;RefreshStatus&#39;),&#39;succeeded&#39;),equals(variables(&#39;RefreshStatus&#39;),&#39;failed&#39;))</span></code></pre></div></li>
 <li>Double click on Until loop action and add <strong>Wait</strong>, <strong>Web</strong> and <strong>Set Variable Actions</strong> action and link the together
 
 <div class="lazy" style="max-height: 142px">
-    <div style="padding-bottom:19.478737997256516%"></div>
+    <div style="padding-bottom:19.479%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000062.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Configure <strong>Wait</strong> Action to wait 30 seconds between tries
 
 <div class="lazy" style="max-height: 286px">
-    <div style="padding-bottom:60.72186836518047%"></div>
+    <div style="padding-bottom:60.722%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000064.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Configure <strong>Web</strong> Action to wait 30 seconds between tries
 
 <div class="lazy" style="max-height: 684px">
-    <div style="padding-bottom:117.12328767123287%"></div>
+    <div style="padding-bottom:117.123%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000066.png" src=""/> 
-</div>  
+</div>
 Configure <strong>URL</strong> as per sample blow, resource as <strong>https://*.asazure.windows.net</strong>, Authentication as MSI. Thanks to previous setup ADF can authenticate and authorize connection to AAS as admin.
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Refresh</span> <span class="err">AAS&#39;).output.headers</span><span class="p">[</span><span class="err">&#39;location&#39;</span><span class="p">]</span></code></pre></div></li>
 <li>Configure <strong>Wait</strong> Action to wait 30 seconds between tries
 
 <div class="lazy" style="max-height: 343px">
-    <div style="padding-bottom:72.82377919320595%"></div>
+    <div style="padding-bottom:72.824%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000067.png" src=""/> 
-</div>  
+</div>
 And configure <strong>Value</strong> it as follows
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Get</span> <span class="err">AAS</span> <span class="err">Refresh</span> <span class="err">Status&#39;).output.status</span></code></pre></div></li>
 <li>Hit Debug and watch for execution steps
 
 <div class="lazy" style="max-height: 485px">
-    <div style="padding-bottom:48.64593781344032%"></div>
+    <div style="padding-bottom:48.646%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000072.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h2 id="conclusions">Conclusions</h2>
 <p>Implementing Analysis Services refresh scenario using both Logic Apps and Data Factory was a fun challenge. It definitely was a good learning opportunity and in general allowed me to better understand their strength.</p>
@@ -500,14 +500,14 @@ And configure <strong>Value</strong> it as follows
 <p>Below diagram shows 1 week costs of running both solutions on schedule to refresh AAS every hour. Refresh took about 2 minutes.
 
 <div class="lazy" style="max-height: 315px">
-    <div style="padding-bottom:41.777188328912466%"></div>
+    <div style="padding-bottom:41.777%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000076.png" src=""/> 
-</div>  
+</div>
 
 <div class="lazy" style="max-height: 304px">
-    <div style="padding-bottom:64.81876332622602%"></div>
+    <div style="padding-bottom:64.819%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000080.png" src=""/> 
-</div>  </p>
+</div></p>
 <p>For larger solutions logic apps is clear winner.</p>
 <h4 id="hahahugoshortcode-s59-hbhb-are-better-than-hahahugoshortcode-s60-hbhb"><span class="check"><i class="fa fa-2 fa-check" aria-hidden="true"></i>  Logic Apps </span> are better than <span class="cross"><i class="fa fa-times" aria-hidden="true"></i>  Data Factory </span></h4>
 <h3 id="extensibility">Extensibility</h3>
@@ -520,9 +520,9 @@ And configure <strong>Value</strong> it as follows
 <a href="https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/">
 
 <div class="lazy" style="max-height: 266px">
-    <div style="padding-bottom:30.09049773755656%"></div>
+    <div style="padding-bottom:30.090%"></div>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000070.png" src=""/> 
-</div>  
+</div>
 </a>
     </article>
     <div class="section-blog-info">

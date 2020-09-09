@@ -133,9 +133,9 @@
 <p>The simplest design of an application using token authentication looks like this.</p>
 
 <div class="lazy" style="max-height: 442px">
-    <div style="padding-bottom:68.84735202492212%"></div>
+    <div style="padding-bottom:68.847%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000100.png" src=""/> 
-</div>  
+</div>
 <p>To explain the process here</p>
 <ol>
 <li><strong>Service A</strong> send the request to <strong>Azure AD</strong> with <strong>Application Credentials</strong> to get the token to call <strong>Service B</strong></li>
@@ -173,9 +173,9 @@ KeyVault is great when there is more than one service that you connect to from y
 When it comes to App Service below diagram presents high level principle how Managed Identity service works internally.
 
 <div class="lazy" style="max-height: 464px">
-    <div style="padding-bottom:49.62566844919786%"></div>
+    <div style="padding-bottom:49.626%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000105.png" src=""/> 
-</div>  </p>
+</div></p>
 <p>When Managed identity is registered on App Service few things happen.</p>
 <ol>
 <li>First of all, a local REST endpoint is registered which is used to retrieve tokens. This endpoint can be only called locally and required secret key from environment variables.</li>
@@ -234,27 +234,27 @@ When it comes to App Service below diagram presents high level principle how Man
 <li>Search for <strong>Identity</strong> in the search window on blade list panel
 
 <div class="lazy" style="max-height: 162px">
-    <div style="padding-bottom:61.83206106870229%"></div>
+    <div style="padding-bottom:61.832%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000115.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Select <strong>On</strong> option on the blade window
 
 <div class="lazy" style="max-height: 221px">
-    <div style="padding-bottom:65.97014925373135%"></div>
+    <div style="padding-bottom:65.970%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000112.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click <strong>Save</strong> to make the change
 
 <div class="lazy" style="max-height: 220px">
-    <div style="padding-bottom:66.26506024096386%"></div>
+    <div style="padding-bottom:66.265%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000113.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Once service principal is created following screen should be shown
 
 <div class="lazy" style="max-height: 280px">
-    <div style="padding-bottom:62.08425720620843%"></div>
+    <div style="padding-bottom:62.084%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000114.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <p><strong>Azure CLI</strong>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">az webapp identity assign --name myApp --resource-group myResourceGroup</code></pre></div></p>
@@ -291,15 +291,15 @@ Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdenti
 <li>Click on <strong>Add Role</strong> and select role 
 
 <div class="lazy" style="max-height: 357px">
-    <div style="padding-bottom:85.8173076923077%"></div>
+    <div style="padding-bottom:85.817%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000124.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Select <strong>App Service</strong> from managed identities section
 
 <div class="lazy" style="max-height: 287px">
-    <div style="padding-bottom:70.17114914425427%"></div>
+    <div style="padding-bottom:70.171%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000125.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Select identity and click <strong>Save</strong></li>
 </ol>
 <p>List of services that allow for assignment of RBAC/roles for Managed Identity</p>
@@ -318,9 +318,9 @@ Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdenti
 <p>How in short how it works is.
 
 <div class="lazy" style="max-height: 472px">
-    <div style="padding-bottom:50.807319698600644%"></div>
+    <div style="padding-bottom:50.807%"></div>
     <img data-src="/images/2019-07-securing-websites-with-managed-identity/000127.png" src=""/> 
-</div>  </p>
+</div></p>
 <p>Because as of Today there is no MSI emulator users need to use Azure CLI. Azure CLI allows to log in as user but also as Azure Service Principal. This is a good use case for User Assigned Managed Identity. When user created its own principal, he/she can log as that principal locally and request tokens using CLI</p>
 <p><strong>KeyVault example</strong>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">az account get-access-token --resource <span class="s1">&#39;https://vault.azure.net&#39;</span></code></pre></div></p>

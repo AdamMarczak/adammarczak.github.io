@@ -145,9 +145,9 @@
 <p>It only takes three very small components for this scenario to be implemented. With that said let&rsquo;s now discuss how will the process look like. Diagram below presents overall architecture of the solution.
 
 <div class="lazy" style="max-height: 429px">
-    <div style="padding-bottom:48.529411764705884%"></div>
+    <div style="padding-bottom:48.529%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/1.png" src=""/> 
-</div>  </p>
+</div></p>
 <p>Diagram covers following high level steps</p>
 <ol>
 <li>Uploading CSV file to blob storage (be it via portal or automated way in future)</li>
@@ -163,75 +163,75 @@
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>Resource Group</strong> in Search window
 
 <div class="lazy" style="max-height: 304px">
-    <div style="padding-bottom:78.1491002570694%"></div>
+    <div style="padding-bottom:78.149%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/2.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on the result and click on <strong>Create</strong> button</li>
 <li>Give it a name and hit Create again
 
 <div class="lazy" style="max-height: 282px">
-    <div style="padding-bottom:76.01078167115902%"></div>
+    <div style="padding-bottom:76.011%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/3.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h3 id="blob-storage">Blob Storage</h3>
 <ol>
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>Storage account</strong> in Search window
 
 <div class="lazy" style="max-height: 103px">
-    <div style="padding-bottom:30.116959064327485%"></div>
+    <div style="padding-bottom:30.117%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/4.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on the result and click on <strong>Create</strong> button</li>
 <li>Give it any name and leave everything else default. For the resource group select <strong>Use existing</strong> and select resource group from previous step
 
 <div class="lazy" style="max-height: 87px">
-    <div style="padding-bottom:25.58823529411765%"></div>
+    <div style="padding-bottom:25.588%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/5.png" src=""/> 
-</div>  
+</div>
 
 <div class="lazy" style="max-height: 115px">
-    <div style="padding-bottom:34.32835820895522%"></div>
+    <div style="padding-bottom:34.328%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/6.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Hit Create (optionally select pin to dashboard before clicking)</li>
 <li>When the resource is created go to its options and click on <strong>Containers</strong> blade
 
 <div class="lazy" style="max-height: 206px">
-    <div style="padding-bottom:78.03030303030303%"></div>
+    <div style="padding-bottom:78.030%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/7.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Create two new private containers called <strong>input</strong> and <strong>output</strong>
 
 <div class="lazy" style="max-height: 346px">
-    <div style="padding-bottom:58.053691275167786%"></div>
+    <div style="padding-bottom:58.054%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/8.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h3 id="sql-server--database">SQL Server &amp; Database</h3>
 <ol>
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>SQL Database</strong> in Search window
 
 <div class="lazy" style="max-height: 108px">
-    <div style="padding-bottom:31.123919308357348%"></div>
+    <div style="padding-bottom:31.124%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/9.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on the result and click on <strong>Create</strong> button</li>
 <li>Provide following values to the prompt
 
 <div class="lazy" style="max-height: 635px">
-    <div style="padding-bottom:173.97260273972603%"></div>
+    <div style="padding-bottom:173.973%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/10.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Name for the database</li>
 <li>Select existing resource group from previous step</li>
 <li>Since there is no SQL Server yet to host our database it is also required to create on at this point. For this click on the server and then <strong>Create a new server</strong> button.</li>
 <li>Provide server name (this will be public DNS address of created server), admin login name and password
 
 <div class="lazy" style="max-height: 469px">
-    <div style="padding-bottom:126.75675675675676%"></div>
+    <div style="padding-bottom:126.757%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/11.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Hit Select button</li>
 <li>Hit Create (optionally select pin to dashboard before clicking)</li>
 </ol>
@@ -240,16 +240,16 @@
 <li>Click on &ldquo;+&rdquo; sign and type in <strong>Logic App</strong> in Search window
 
 <div class="lazy" style="max-height: 105px">
-    <div style="padding-bottom:32.608695652173914%"></div>
+    <div style="padding-bottom:32.609%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/12.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on the result and click on <strong>Create</strong> button</li>
 <li>Give it a any name, for the resource group select <strong>Use existing</strong> and select resource group from previous step
 
 <div class="lazy" style="max-height: 463px">
-    <div style="padding-bottom:124.46236559139786%"></div>
+    <div style="padding-bottom:124.462%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/13.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Hit Create (optionally select pin to dashboard before clicking)</li>
 </ol>
 <h2 id="development">Development</h2>
@@ -261,30 +261,30 @@
 <li>Select Shared Access Signature blade
 
 <div class="lazy" style="max-height: 165px">
-    <div style="padding-bottom:64.453125%"></div>
+    <div style="padding-bottom:64.453%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/16.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Create SAS token with following settings
 
 <div class="lazy" style="max-height: 632px">
-    <div style="padding-bottom:74.79289940828403%"></div>
+    <div style="padding-bottom:74.793%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/17.png" src=""/> 
-</div>  
+</div>
 Ensure that the <strong>End Date</strong> is far enough in future and replace this once it&rsquo;s expired. In production system an operations team can handle this or simply create a very small logic app that will generate new token and update the database credential.</li>
 <li>Click <strong>Generate SAS and connection string</strong> and copy value of generated SAS token for further use. When this screen is closed a new token will have to be created if lost.
 
 <div class="lazy" style="max-height: 219px">
-    <div style="padding-bottom:25.795053003533567%"></div>
+    <div style="padding-bottom:25.795%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/18.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Navigate to <strong>Containers</strong> blade</li>
 <li>Click on the input container</li>
 <li>Click on the properties blade
 
 <div class="lazy" style="max-height: 291px">
-    <div style="padding-bottom:127.07423580786026%"></div>
+    <div style="padding-bottom:127.074%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/19.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Copy the URL value from the properties tab</li>
 </ol>
 <h3 id="sql-server--database-1">SQL Server &amp; Database</h3>
@@ -294,18 +294,18 @@ Ensure that the <strong>End Date</strong> is far enough in future and replace th
 <li>Click on Query Editor
 
 <div class="lazy" style="max-height: 178px">
-    <div style="padding-bottom:65.2014652014652%"></div>
+    <div style="padding-bottom:65.201%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/14.png" src=""/> 
-</div>  
+</div>
 Optionally and recommended way to do this is via SQL Server Management Studio but for such simple scenario query editor is good enough.</li>
 <li>Click on the Login button and provide previously set password</li>
 <li>In the query window execute following SQL statement and replace unique string with secret key for the database. This creates master key which is used to encrypt all secrets in the database.
 <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="n">MASTER</span> <span class="k">KEY</span> <span class="n">ENCRYPTION</span> <span class="k">BY</span> <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;UNIQUE_STRING_HERE&#39;</span></code></pre></div>
 
 <div class="lazy" style="max-height: 314px">
-    <div style="padding-bottom:44.163150492264414%"></div>
+    <div style="padding-bottom:44.163%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/15.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Create new credential object that will be used by the database to connect to blob storage. Replace SAS token value with value from previous steps. Note that there is no question mark at the begining of the secret
 <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">SCOPED</span> <span class="n">CREDENTIAL</span> <span class="n">BlobCredential</span>
 <span class="k">WITH</span> <span class="k">IDENTITY</span> <span class="o">=</span> <span class="s1">&#39;SHARED ACCESS SIGNATURE&#39;</span><span class="p">,</span>
@@ -361,78 +361,78 @@ Few important things to note here</li>
 <li>Select Blank Logic App
 
 <div class="lazy" style="max-height: 351px">
-    <div style="padding-bottom:125.80645161290323%"></div>
+    <div style="padding-bottom:125.806%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/21.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Type in Blob in the search window and select Blob Storage trigger that appears
 
 <div class="lazy" style="max-height: 366px">
-    <div style="padding-bottom:59.41558441558441%"></div>
+    <div style="padding-bottom:59.416%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/22.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Define new blob connection and give it a name. Select storage account created earlier so that azure automatically saves connection info.
 
 <div class="lazy" style="max-height: 284px">
-    <div style="padding-bottom:46.17886178861789%"></div>
+    <div style="padding-bottom:46.179%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/23.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Select input container
 
 <div class="lazy" style="max-height: 229px">
-    <div style="padding-bottom:29.171974522292995%"></div>
+    <div style="padding-bottom:29.172%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/24.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Add new action
 
 <div class="lazy" style="max-height: 124px">
-    <div style="padding-bottom:40.1294498381877%"></div>
+    <div style="padding-bottom:40.129%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/25.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Find SQL server and select Execute Stored Procedure in Actions Tab
 
 <div class="lazy" style="max-height: 255px">
-    <div style="padding-bottom:45.535714285714285%"></div>
+    <div style="padding-bottom:45.536%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/26.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Define new connection to SQL server, select previously created database and provide credentials for connectivity
 
 <div class="lazy" style="max-height: 435px">
-    <div style="padding-bottom:76.44991212653778%"></div>
+    <div style="padding-bottom:76.450%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/27.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Once connected select previously created procedure
 
 <div class="lazy" style="max-height: 159px">
-    <div style="padding-bottom:28.392857142857142%"></div>
+    <div style="padding-bottom:28.393%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/28.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Add new action</li>
 <li>Select Blob Storage <strong>Copy Blob</strong> Action - because there is no &lsquo;move&rsquo; action it is required for blob to be copied to new location and then for the old one to be removed.
 In the source URL select <strong>Path</strong> object from the trigger step.
 
 <div class="lazy" style="max-height: 539px">
-    <div style="padding-bottom:58.842794759825324%"></div>
+    <div style="padding-bottom:58.843%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/29.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Define destination path as conjunction of static path <strong>/output/</strong> and dynamic name of file from the trigger step <strong>DisplayName</strong> and static underscore <strong>_</strong> and finishing it with expression <strong>utcNow()</strong> so that uploading new input files will create different output files with the date suffix.
 
 <div class="lazy" style="max-height: 294px">
-    <div style="padding-bottom:29.080118694362017%"></div>
+    <div style="padding-bottom:29.080%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/30.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Copy blob action should look like this.
 
 <div class="lazy" style="max-height: 225px">
-    <div style="padding-bottom:40.250447227191415%"></div>
+    <div style="padding-bottom:40.250%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/31.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Add new action</li>
 <li>Select blob <strong>delete blob</strong> action and add <strong>Path</strong> object from the trigger.
 
 <div class="lazy" style="max-height: 171px">
-    <div style="padding-bottom:30.922242314647377%"></div>
+    <div style="padding-bottom:30.922%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/32.png" src=""/> 
-</div>  
+</div>
 <strong>WARNING</strong> Make sure to select Path from the trigger. If Path from Copy Blob action will be selected a newly created file will be removed.</li>
 <li>Click save</li>
 </ol>
@@ -442,27 +442,27 @@ In the source URL select <strong>Path</strong> object from the trigger step.
 <li>Click on the upload button and upload input.csv file
 
 <div class="lazy" style="max-height: 349px">
-    <div style="padding-bottom:35.25252525252525%"></div>
+    <div style="padding-bottom:35.253%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/20.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Check if the logic app ran by going to logic app interface
 
 <div class="lazy" style="max-height: 170px">
-    <div style="padding-bottom:19.953051643192488%"></div>
+    <div style="padding-bottom:19.953%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/34.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Check out the output container
 
 <div class="lazy" style="max-height: 301px">
-    <div style="padding-bottom:43.43434343434343%"></div>
+    <div style="padding-bottom:43.434%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/33.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>And finally check the data in the database from the query editor
 
 <div class="lazy" style="max-height: 531px">
-    <div style="padding-bottom:94.99105545617174%"></div>
+    <div style="padding-bottom:94.991%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/35.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h2 id="whats-next">What&rsquo;s next?</h2>
 <p>There are of &lsquo;course some limitations and drawbacks to this design no doubt. With that said this is a good template to start from and expand.</p>

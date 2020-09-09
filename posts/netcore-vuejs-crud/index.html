@@ -138,21 +138,21 @@
 <li>Click on <strong>plus</strong> sign on the left-hand side corner, type in <strong>cosmos</strong> is search box and then press <strong>enter</strong>
 
 <div class="lazy" style="max-height: 237px">
-    <div style="padding-bottom:36.74418604651163%"></div>
+    <div style="padding-bottom:36.744%"></div>
     <img data-src="/images/netcore-vuejs-crud/1.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>From available list of services click on <strong>Azure Cosmos DB</strong> and press <strong>Create</strong> button
 
 <div class="lazy" style="max-height: 275px">
-    <div style="padding-bottom:32.31492361927145%"></div>
+    <div style="padding-bottom:32.315%"></div>
     <img data-src="/images/netcore-vuejs-crud/2.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Fill in the service details
 
 <div class="lazy" style="max-height: 399px">
-    <div style="padding-bottom:128.29581993569133%"></div>
+    <div style="padding-bottom:128.296%"></div>
     <img data-src="/images/netcore-vuejs-crud/3.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>ID</strong> - name of the service, it will be available as public DNS and therefore must be globally unique</li>
@@ -165,15 +165,15 @@
 <li>Create new collection by navigating to <strong>Data Explorer</strong> and clicking on <strong>New Collection</strong> button
 
 <div class="lazy" style="max-height: 355px">
-    <div style="padding-bottom:69.74459724950884%"></div>
+    <div style="padding-bottom:69.745%"></div>
     <img data-src="/images/netcore-vuejs-crud/4.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Provide collection details and hit <strong>OK</strong>
 
 <div class="lazy" style="max-height: 462px">
-    <div style="padding-bottom:107.44186046511628%"></div>
+    <div style="padding-bottom:107.442%"></div>
     <img data-src="/images/netcore-vuejs-crud/5.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Database Id</strong> - logical container name for collections</li>
@@ -193,9 +193,9 @@
 <p>Next step is to create a web app backbone that will allow for creation of new to-do items and a web api that will handle the request.</p>
 
 <div class="lazy" style="max-height: 199px">
-    <div style="padding-bottom:76.24521072796935%"></div>
+    <div style="padding-bottom:76.245%"></div>
     <img data-src="/images/netcore-vuejs-crud/6.png" src=""/> 
-</div>  
+</div>
 <p>This section will cover all 4 (four) basic actions for to-do&rsquo;s which are create, read, update and delete.</p>
 <h3 id="start-with-the-web-app-template">Start with the web app template</h3>
 <p>This post is a follow-up to previous post <a href="/posts/netcore-vuejs/">Building .NET Core 2.0 web apps with Vue.js single file components using VS Code</a>. A following template uses techniques explained in that article.</p>
@@ -220,15 +220,15 @@ In order to get those properties for created database</li>
 <li>Navigate to <strong>Keys</strong> blade on azure portal
 
 <div class="lazy" style="max-height: 183px">
-    <div style="padding-bottom:88.83495145631068%"></div>
+    <div style="padding-bottom:88.835%"></div>
     <img data-src="/images/netcore-vuejs-crud/8.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Copy value of <strong>URI</strong> and paste it into <strong>Endpoint</strong> value and <strong>Primary Key</strong> into <strong>AuthKey</strong> inside of <strong>appsettings.local.json</strong> file
 
 <div class="lazy" style="max-height: 311px">
-    <div style="padding-bottom:114.33823529411765%"></div>
+    <div style="padding-bottom:114.338%"></div>
     <img data-src="/images/netcore-vuejs-crud/9.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>DatabaseId is the name of the database created earlier. In case of this article the name was &ldquo;Demo&rdquo;</li>
 <li>Create folder called <strong>Models</strong> in root directory</li>
 <li>Add model class <strong>DatabaseSettings.cs</strong> inside of <strong>Models</strong> folder which will hold specified configuration values
@@ -318,9 +318,9 @@ By configuring <strong>DatabaseOptions</strong> with <strong>Configure</strong> 
 <p>Order of which actions developer builds first is not of high importance although usually it&rsquo;s best to start with create or read actions. In this article read action will be built first as it&rsquo;s possible to create document objects in azure portal. It will also make it much easier to work with other methods when it&rsquo;s possible to see results immediately.</p>
 
 <div class="lazy" style="max-height: 109px">
-    <div style="padding-bottom:61.93181818181818%"></div>
+    <div style="padding-bottom:61.932%"></div>
     <img data-src="/images/netcore-vuejs-crud/10.png" src=""/> 
-</div>  
+</div>
 <h4 id="build-a-web-api-for-document-reading">Build a Web API for document reading</h4>
 <ol>
 <li>Add nuget package for CosmosDB by using following command from command line
@@ -570,34 +570,34 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 </ol>
 <div>
 <div class="lazy" style="max-height: 202px">
-    <div style="padding-bottom:37.827715355805246%"></div>
+    <div style="padding-bottom:37.828%"></div>
     <img data-src="/images/netcore-vuejs-crud/1.gif" src=""/> 
-</div>  
+</div>
 6. Add static items to the application to verify application works. Open azure portal and click on *8Todo** collection and then **Documents** and click on **New Document** button
 <div>
 <div class="lazy" style="max-height: 302px">
-    <div style="padding-bottom:58.188824662813104%"></div>
+    <div style="padding-bottom:58.189%"></div>
     <img data-src="/images/netcore-vuejs-crud/11.png" src=""/> 
-</div>  
+</div>
 7. Add few test items
 <div>
 <div class="lazy" style="max-height: 253px">
-    <div style="padding-bottom:51.422764227642276%"></div>
+    <div style="padding-bottom:51.423%"></div>
     <img data-src="/images/netcore-vuejs-crud/12.png" src=""/> 
-</div>  
+</div>
 8. Refresh the page.
 <div>
 <div class="lazy" style="max-height: 220px">
-    <div style="padding-bottom:42.30769230769231%"></div>
+    <div style="padding-bottom:42.308%"></div>
     <img data-src="/images/netcore-vuejs-crud/2.gif" src=""/> 
-</div>  
+</div>
 <h3 id="creating-documents">Creating documents</h3>
 <p>Now that the reading and displaing data is done. Creation of new documents can be quickly added.</p>
 
 <div class="lazy" style="max-height: 109px">
-    <div style="padding-bottom:61.93181818181818%"></div>
+    <div style="padding-bottom:61.932%"></div>
     <img data-src="/images/netcore-vuejs-crud/7.png" src=""/> 
-</div>  
+</div>
 <h4 id="build-a-web-api-for-document-creation">Build a Web API for document creation</h4>
 <ol>
 <li>Add new method <strong>CreateItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong> 
@@ -773,22 +773,22 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 </ol>
 <div>
 <div class="lazy" style="max-height: 481px">
-    <div style="padding-bottom:92.5%"></div>
+    <div style="padding-bottom:92.500%"></div>
     <img data-src="/images/netcore-vuejs-crud/3.gif" src=""/> 
-</div>  
+</div>
 New items can be also seen in the Cosmos DB
 
 <div class="lazy" style="max-height: 332px">
-    <div style="padding-bottom:42.72844272844273%"></div>
+    <div style="padding-bottom:42.728%"></div>
     <img data-src="/images/netcore-vuejs-crud/13.png" src=""/> 
-</div>  
+</div>
 <h3 id="deleting-documents">Deleting documents</h3>
 <p>To get application fully functional a deletion operation must be created next.</p>
 
 <div class="lazy" style="max-height: 109px">
-    <div style="padding-bottom:61.93181818181818%"></div>
+    <div style="padding-bottom:61.932%"></div>
     <img data-src="/images/netcore-vuejs-crud/14.png" src=""/> 
-</div>  
+</div>
 <h4 id="build-a-web-api-for-document-deletion">Build a Web API for document deletion</h4>
 <ol>
 <li>Add new method <strong>DeleteItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong> 
@@ -839,14 +839,14 @@ New items can be also seen in the Cosmos DB
 <div class="lazy" style="max-height: 336px">
     <div style="padding-bottom:65.625%"></div>
     <img data-src="/images/netcore-vuejs-crud/4.gif" src=""/> 
-</div>  
+</div>
 <h3 id="modifying-documents">Modifying documents</h3>
 <p>Last operation is item modification. This example will show inline editing but for larger apps it is advised to create dedicated screen or popup.</p>
 
 <div class="lazy" style="max-height: 109px">
-    <div style="padding-bottom:61.93181818181818%"></div>
+    <div style="padding-bottom:61.932%"></div>
     <img data-src="/images/netcore-vuejs-crud/15.png" src=""/> 
-</div>  
+</div>
 <h4 id="build-a-web-api-for-document-deletion-1">Build a Web API for document deletion</h4>
 <ol>
 <li>Add new method <strong>UpdateItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong> 
@@ -1073,7 +1073,7 @@ New items can be also seen in the Cosmos DB
 </ol>
 <div>
 <div class="lazy" style="max-height: 476px">
-    <div style="padding-bottom:92.96875%"></div>
+    <div style="padding-bottom:92.969%"></div>
     <img data-src="/images/netcore-vuejs-crud/5.gif" src=""/> 
 </div><a target="_blank" 
    rel="tooltip" 

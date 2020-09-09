@@ -136,9 +136,9 @@
 <p>High level architecture of this refresh will look like this.
 
 <div class="lazy" style="max-height: 864px">
-    <div style="padding-bottom:100.81680280046675%"></div>
+    <div style="padding-bottom:100.817%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/000078.png" src=""/> 
-</div>  </p>
+</div></p>
 <p>With few principles in mind</p>
 <ul>
 <li>Analysis Services Refresh API is asynchronous so after first call logic app will only receive accepted (202) response containing refresh ID.</li>
@@ -148,18 +148,18 @@
 <p>In high level Azure Analysis Services API looks as follows
 
 <div class="lazy" style="max-height: 155px">
-    <div style="padding-bottom:17.51412429378531%"></div>
+    <div style="padding-bottom:17.514%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/aas-async-refresh-flow.png" src=""/> 
-</div>  </p>
+</div></p>
 <h3 id="refreshing-model-with-post-refreshes">Refreshing model with POST /refreshes</h3>
 <p>In order to refresh model on analysis services a REST call must be performed on
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes</code></pre></div></p>
 <p>As per diagram
 
 <div class="lazy" style="max-height: 155px">
-    <div style="padding-bottom:17.51412429378531%"></div>
+    <div style="padding-bottom:17.514%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/aas-async-refresh-flow-post.png" src=""/> 
-</div>  </p>
+</div></p>
 <ul>
 <li><strong>&lt;rollout&gt;</strong> region name where analysis services is deployed. This can be retrieved from analysis services URL.</li>
 <li><strong>&lt;serverName&gt;</strong> name of azure resource, this is also unique public DNS name for analysis services.</li>
@@ -219,9 +219,9 @@
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refreshId&gt;</code></pre></div>
 
 <div class="lazy" style="max-height: 155px">
-    <div style="padding-bottom:17.51412429378531%"></div>
+    <div style="padding-bottom:17.514%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/aas-async-refresh-flow-get.png" src=""/> 
-</div>  </p>
+</div></p>
 <ul>
 <li><strong>&lt;rollout&gt;</strong> region name where analysis services is deployed. This can be retrieved from analysis services URL.</li>
 <li><strong>&lt;serverName&gt;</strong> name of azure resource, this is also unique public DNS name for analysis services.</li>
@@ -273,27 +273,27 @@
 <li>Click on &ldquo;+&rdquo; sign to create new resource
 
 <div class="lazy" style="max-height: 98px">
-    <div style="padding-bottom:29.34131736526946%"></div>
+    <div style="padding-bottom:29.341%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/1.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Type in <strong>logic app</strong> in Search window and press enter
 
 <div class="lazy" style="max-height: 213px">
-    <div style="padding-bottom:43.46938775510204%"></div>
+    <div style="padding-bottom:43.469%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/2.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click Create button
 
 <div class="lazy" style="max-height: 178px">
-    <div style="padding-bottom:41.58878504672897%"></div>
+    <div style="padding-bottom:41.589%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/23.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Fill in basic info, name and location
 
 <div class="lazy" style="max-height: 510px">
-    <div style="padding-bottom:149.12280701754386%"></div>
+    <div style="padding-bottom:149.123%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/3.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h2 id="application-account">Application Account</h2>
 <p>Log into <a href="https://portal.azure.com">Azure Portal</a> and start creating resources.</p>
@@ -301,58 +301,58 @@
 <li>Go to <strong>Azure Active Directory</strong> into <strong>App registrations</strong>
 
 <div class="lazy" style="max-height: 546px">
-    <div style="padding-bottom:105.60928433268859%"></div>
+    <div style="padding-bottom:105.609%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/24.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on <strong>New registration</strong>
 
 <div class="lazy" style="max-height: 203px">
-    <div style="padding-bottom:22.04125950054289%"></div>
+    <div style="padding-bottom:22.041%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/37.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Name app, leave everything as default
 
 <div class="lazy" style="max-height: 775px">
-    <div style="padding-bottom:100.12919896640827%"></div>
+    <div style="padding-bottom:100.129%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/8.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Copy Application (Client) ID, this will be required for later steps
 
 <div class="lazy" style="max-height: 422px">
-    <div style="padding-bottom:38.71559633027523%"></div>
+    <div style="padding-bottom:38.716%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/29.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on <strong>Certificates &amp; secrets</strong>
 
 <div class="lazy" style="max-height: 359px">
-    <div style="padding-bottom:124.65277777777777%"></div>
+    <div style="padding-bottom:124.653%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/32.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on <strong>New Client secret</strong>
 
 <div class="lazy" style="max-height: 208px">
-    <div style="padding-bottom:33.17384370015949%"></div>
+    <div style="padding-bottom:33.174%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/33.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Give it a name and expiration date and then select <strong>add</strong>
 
 <div class="lazy" style="max-height: 295px">
-    <div style="padding-bottom:33.44671201814059%"></div>
+    <div style="padding-bottom:33.447%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/10.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Go to newly generated key and copy the value, this will be required for later steps
 
 <div class="lazy" style="max-height: 197px">
-    <div style="padding-bottom:20.435684647302903%"></div>
+    <div style="padding-bottom:20.436%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/34.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Go to <strong>Azure Active Directory</strong> into <strong>Properties</strong></li>
 <li>Copy <strong>Directory ID</strong>, this will be required for later steps
 
 <div class="lazy" style="max-height: 489px">
-    <div style="padding-bottom:50.62111801242236%"></div>
+    <div style="padding-bottom:50.621%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/31.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <p>For further steps three properties are required</p>
 <ul>
@@ -366,27 +366,27 @@
 <li>Connect to Analysis Services
 
 <div class="lazy" style="max-height: 315px">
-    <div style="padding-bottom:66.0377358490566%"></div>
+    <div style="padding-bottom:66.038%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/9.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Right-click on server and select <strong>Properties</strong>
 
 <div class="lazy" style="max-height: 371px">
-    <div style="padding-bottom:102.48618784530387%"></div>
+    <div style="padding-bottom:102.486%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/25.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Go to <strong>Security</strong> page and click <strong>Add</strong> button
 
 <div class="lazy" style="max-height: 625px">
-    <div style="padding-bottom:90.57971014492753%"></div>
+    <div style="padding-bottom:90.580%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/30.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Search for app by name given in previous step or add manual entry in following convention
 
 <div class="lazy" style="max-height: 491px">
-    <div style="padding-bottom:127.86458333333333%"></div>
+    <div style="padding-bottom:127.865%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/39.png" src=""/> 
-</div>  
+</div>
 Convention IS
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:&lt;application_id&gt;@&lt;tenant_id&gt;
  </code></pre></div>
@@ -396,9 +396,9 @@ In this example this would mean value
 <li>Click <strong>Add</strong>
 
 <div class="lazy" style="max-height: 179px">
-    <div style="padding-bottom:25.979680696661827%"></div>
+    <div style="padding-bottom:25.980%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/38.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h2 id="build-logic-app">Build Logic App</h2>
 <ol>
@@ -406,39 +406,39 @@ In this example this would mean value
 <li>Click on <strong>Blank Logic App</strong> block in the designer window
 
 <div class="lazy" style="max-height: 293px">
-    <div style="padding-bottom:100.34246575342466%"></div>
+    <div style="padding-bottom:100.342%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/4.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Search for <strong>schedule</strong> trigger
 
 <div class="lazy" style="max-height: 299px">
-    <div style="padding-bottom:45.303030303030305%"></div>
+    <div style="padding-bottom:45.303%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/26.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>And select for <strong>recurrence action</strong>
 
 <div class="lazy" style="max-height: 152px">
-    <div style="padding-bottom:22.92609351432881%"></div>
+    <div style="padding-bottom:22.926%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/5.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Add new step 
 
 <div class="lazy" style="max-height: 39px">
-    <div style="padding-bottom:29.545454545454547%"></div>
+    <div style="padding-bottom:29.545%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/6.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Search for <strong>HTTP</strong> action
 
 <div class="lazy" style="max-height: 290px">
-    <div style="padding-bottom:43.80664652567976%"></div>
+    <div style="padding-bottom:43.807%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/7.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Configure HTTP call as follows
 
 <div class="lazy" style="max-height: 702px">
-    <div style="padding-bottom:105.72289156626506%"></div>
+    <div style="padding-bottom:105.723%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/11.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Method</strong> - submitting new refresh schedules are always done with <strong>POST</strong> calls</li>
@@ -446,15 +446,15 @@ In this example this would mean value
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">  https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes</code></pre></div>
 
 <div class="lazy" style="max-height: 155px">
-    <div style="padding-bottom:17.51412429378531%"></div>
+    <div style="padding-bottom:17.514%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/aas-async-refresh-flow-post.png" src=""/> 
-</div>  
+</div>
 In this example the URL would be, <strong>rollout</strong> - region name, <strong>northeurope</strong>, <strong>servername</strong> - analysis services instance name, <strong>marczakioaas</strong>, <strong>resource</strong> - analysis services model name, <strong>aas-refresh-model</strong>
 
 <div class="lazy" style="max-height: 381px">
-    <div style="padding-bottom:36.49425287356322%"></div>
+    <div style="padding-bottom:36.494%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/28.png" src=""/> 
-</div>  </li>
+</div></li>
 <li><strong>Headers</strong> - only header required is <strong>Content-Type</strong> with <strong>application/json</strong> value since a JSON configuration will be sent over</li>
 <li><strong>Body</strong> - Send over request details. For full refresh send below request. 
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"> <span class="p">{</span>
@@ -471,33 +471,33 @@ It is also possible to refresh model partially. In this case in the <strong>Obje
 <li>Click on three dots on current HTTP call step and select <strong>Settings</strong>
 
 <div class="lazy" style="max-height: 251px">
-    <div style="padding-bottom:29.050925925925927%"></div>
+    <div style="padding-bottom:29.051%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/35.png" src=""/> 
-</div>  
+</div>
 2.Find <strong>Asynchronous Pattern</strong> option
 
 <div class="lazy" style="max-height: 389px">
-    <div style="padding-bottom:58.58433734939759%"></div>
+    <div style="padding-bottom:58.584%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/36.png" src=""/> 
-</div>  
+</div>
 2.Unselect <strong>Asynchronous Pattern</strong>
 
 <div class="lazy" style="max-height: 106px">
-    <div style="padding-bottom:16.85214626391097%"></div>
+    <div style="padding-bottom:16.852%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/12.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Add new step 
 
 <div class="lazy" style="max-height: 39px">
-    <div style="padding-bottom:29.545454545454547%"></div>
+    <div style="padding-bottom:29.545%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/6.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Search for <strong>Variables</strong> and add new <strong>Initialize Variable</strong> step. This variable will be used in loop iteration to check for refresh status.
 
 <div class="lazy" style="max-height: 271px">
-    <div style="padding-bottom:40.93655589123867%"></div>
+    <div style="padding-bottom:40.937%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/16.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Name</strong> - call it <strong>refreshStatus</strong></li>
@@ -508,65 +508,65 @@ It is also possible to refresh model partially. In this case in the <strong>Obje
 <li>Add new step 
 
 <div class="lazy" style="max-height: 39px">
-    <div style="padding-bottom:29.545454545454547%"></div>
+    <div style="padding-bottom:29.545%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/6.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Search for <strong>Control</strong>
 
 <div class="lazy" style="max-height: 272px">
-    <div style="padding-bottom:41.08761329305136%"></div>
+    <div style="padding-bottom:41.088%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/17.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Add <strong>Until</strong> action
 
 <div class="lazy" style="max-height: 49px">
-    <div style="padding-bottom:26.344086021505376%"></div>
+    <div style="padding-bottom:26.344%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/18.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Configure until loop condition to <strong>refreshStatus</strong> is not equal to <strong>succeeded</strong>
 
 <div class="lazy" style="max-height: 266px">
-    <div style="padding-bottom:39.407407407407405%"></div>
+    <div style="padding-bottom:39.407%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/19.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In order to handle <strong>failed</strong> status an advanced editor must be used with following formula.
 
 <div class="lazy" style="max-height: 170px">
-    <div style="padding-bottom:24.285714285714285%"></div>
+    <div style="padding-bottom:24.286%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/20.png" src=""/> 
-</div>  
+</div>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"> <span class="err">@or(equals(variables(&#39;refreshStatus&#39;),</span> <span class="err">&#39;succeeded&#39;),</span> <span class="err">equals(variables(&#39;refreshStatus&#39;),</span> <span class="err">&#39;failed&#39;))</span>
  </code></pre></div></li>
 <li>Add new step 
 
 <div class="lazy" style="max-height: 39px">
-    <div style="padding-bottom:29.545454545454547%"></div>
+    <div style="padding-bottom:29.545%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/6.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Search for <strong>Schedule</strong> action group and select <strong>Delay</strong> action
 
 <div class="lazy" style="max-height: 283px">
-    <div style="padding-bottom:46.39344262295082%"></div>
+    <div style="padding-bottom:46.393%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/42.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Set it to 30 seconds, fine tune this setting later on.
 
 <div class="lazy" style="max-height: 177px">
-    <div style="padding-bottom:28.229665071770334%"></div>
+    <div style="padding-bottom:28.230%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/40.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Optionally fine tune until loop limits.
 
 <div class="lazy" style="max-height: 300px">
-    <div style="padding-bottom:45.31722054380665%"></div>
+    <div style="padding-bottom:45.317%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/41.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on <strong>add an action</strong> button and add new HTTP step
 
 <div class="lazy" style="max-height: 570px">
-    <div style="padding-bottom:51.2589928057554%"></div>
+    <div style="padding-bottom:51.259%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/21.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Method</strong> - getting status of refresh is done using <strong>GET</strong> method</li>
@@ -574,9 +574,9 @@ It is also possible to refresh model partially. In this case in the <strong>Obje
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refresh_id&gt;</code></pre></div>
 
 <div class="lazy" style="max-height: 155px">
-    <div style="padding-bottom:17.51412429378531%"></div>
+    <div style="padding-bottom:17.514%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/aas-async-refresh-flow-get.png" src=""/> 
-</div>  
+</div>
 HTTP call which submits refresh to analysis services return &ldquo;Location&rdquo; header. This header contains full URL with refresh ID which then can be used to check refresh status. This can be obtained using following logic app expression.
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">outputs(&#39;HTTP&#39;)</span><span class="p">[</span><span class="err">&#39;headers&#39;</span><span class="p">][</span><span class="err">&#39;location&#39;</span><span class="p">]</span></code></pre></div></li>
 <li><strong>Authentication</strong> - Authenticate to Analysis Services using previously created application. This should be configured exactly the same as in the first call.</li>
@@ -585,35 +585,35 @@ HTTP call which submits refresh to analysis services return &ldquo;Location&rdqu
 <li>Add new step 
 
 <div class="lazy" style="max-height: 39px">
-    <div style="padding-bottom:29.545454545454547%"></div>
+    <div style="padding-bottom:29.545%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/6.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>From <strong>Variables</strong> action group use <strong>Set variable</strong> action
 
 <div class="lazy" style="max-height: 211px">
-    <div style="padding-bottom:18.97482014388489%"></div>
+    <div style="padding-bottom:18.975%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/22.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Configure with expression which replaces current value with retrieved status using following expression
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">body(&#39;HTTP_</span><span class="mi">2</span><span class="err">&#39;)</span><span class="p">[</span><span class="err">&#39;status&#39;</span><span class="p">]</span></code></pre></div></li>
 <li>Save Logic App and run it
 
 <div class="lazy" style="max-height: 266px">
-    <div style="padding-bottom:34.77124183006536%"></div>
+    <div style="padding-bottom:34.771%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/13.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Check the status
 
 <div class="lazy" style="max-height: 86px">
-    <div style="padding-bottom:7.818181818181818%"></div>
+    <div style="padding-bottom:7.818%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/14.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Review logic app run
 
 <div class="lazy" style="max-height: 612px">
-    <div style="padding-bottom:87.42857142857143%"></div>
+    <div style="padding-bottom:87.429%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/43.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h3 id="final-thoughts">Final thoughts</h3>
 <p>When going to production it would be advised to add <strong>until</strong> loop which will try to submit process refresh until available slot comes appears. This of course depends on the refresh type and if process is not very complex or there are no multiple separate orchestration flows, then this might simply not be required.</p>
@@ -629,9 +629,9 @@ HTTP call which submits refresh to analysis services return &ldquo;Location&rdqu
 <a href="https://marczak.io/posts/analysis-services-onprem-integration/">
 
 <div class="lazy" style="max-height: 282px">
-    <div style="padding-bottom:31.614349775784753%"></div>
+    <div style="padding-bottom:31.614%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/000073.png" src=""/> 
-</div>  
+</div>
 </a><a target="_blank" 
    rel="tooltip" 
    class="btn btn-github"

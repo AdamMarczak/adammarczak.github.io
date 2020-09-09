@@ -121,30 +121,30 @@
 <p>All that can be fixed with simple implementation of Azure API management solution which will proxy requests to logic apps and validate Azure AD JWT tokens on the way. This provides complete security of the solution.</p>
 
 <div class="lazy" style="max-height: 278px">
-    <div style="padding-bottom:62.05357142857143%"></div>
+    <div style="padding-bottom:62.054%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000176.png" src=""/> 
-</div>  
+</div>
 <h2 id="provisioning-of-resources">Provisioning of Resources</h2>
 <h3 id="api-management">API Management</h3>
 <ol>
 <li>Go to <a href="https://portal.azure.com">Portal</a> and hit create resource.
 
 <div class="lazy" style="max-height: 122px">
-    <div style="padding-bottom:36.858006042296076%"></div>
+    <div style="padding-bottom:36.858%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000129.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Search for &ldquo;API Management&rdquo; and once found, click on it and hit <strong>Create</strong> button.
 
 <div class="lazy" style="max-height: 175px">
-    <div style="padding-bottom:49.71590909090909%"></div>
+    <div style="padding-bottom:49.716%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000130.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Fill in the fields
 
 <div class="lazy" style="max-height: 614px">
-    <div style="padding-bottom:106.96864111498257%"></div>
+    <div style="padding-bottom:106.969%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000131.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Name</strong> - this is the same of API Management but also public DNS which will be registered during creation.</li>
@@ -159,15 +159,15 @@
 <li>Search for &ldquo;Logic App&rdquo; and once found, click on it and hit <strong>Create</strong> button.
 
 <div class="lazy" style="max-height: 124px">
-    <div style="padding-bottom:47.69230769230769%"></div>
+    <div style="padding-bottom:47.692%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000132.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Fill in the fields
 
 <div class="lazy" style="max-height: 455px">
-    <div style="padding-bottom:154.23728813559322%"></div>
+    <div style="padding-bottom:154.237%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000133.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Name</strong> - this is the same of logic app resource.</li>
@@ -180,60 +180,60 @@
 <li>Go to Logic App Designer and click on <strong>Blank Logic App</strong>
 
 <div class="lazy" style="max-height: 272px">
-    <div style="padding-bottom:100.3690036900369%"></div>
+    <div style="padding-bottom:100.369%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000138.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Search for <strong>request</strong> action group, and select it
 
 <div class="lazy" style="max-height: 117px">
-    <div style="padding-bottom:65.36312849162012%"></div>
+    <div style="padding-bottom:65.363%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000139.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Choose <strong>When a HTTP request is received</strong> trigger
 
 <div class="lazy" style="max-height: 92px">
-    <div style="padding-bottom:34.84848484848485%"></div>
+    <div style="padding-bottom:34.848%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000140.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In new block hit <strong>Add new parameter</strong> and select <strong>Method</strong>
 
 <div class="lazy" style="max-height: 501px">
-    <div style="padding-bottom:80.03194888178913%"></div>
+    <div style="padding-bottom:80.032%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000141.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In method parameter select <strong>GET</strong> method.
 
 <div class="lazy" style="max-height: 60px">
-    <div style="padding-bottom:10.238907849829351%"></div>
+    <div style="padding-bottom:10.239%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000142.png" src=""/> 
-</div>  
+</div>
 Note that this isn&rsquo;t required. GET is just simpler to test and present the results than POST request which is default.</li>
 <li>Add new action</li>
 <li>Search for <strong>response</strong> and click on it
 
 <div class="lazy" style="max-height: 373px">
-    <div style="padding-bottom:61.96013289036545%"></div>
+    <div style="padding-bottom:61.960%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000143.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Add <strong>Hello world!</strong> to response body
 
 <div class="lazy" style="max-height: 208px">
-    <div style="padding-bottom:34.437086092715234%"></div>
+    <div style="padding-bottom:34.437%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000144.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Hit <strong>Save</strong></li>
 <li>Copy URL from first step
 
 <div class="lazy" style="max-height: 391px">
-    <div style="padding-bottom:64.73509933774834%"></div>
+    <div style="padding-bottom:64.735%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000145.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Open the URL in new window tab. A <strong>Hello world!</strong> response should be returned.
 
 <div class="lazy" style="max-height: 72px">
-    <div style="padding-bottom:12.631578947368421%"></div>
+    <div style="padding-bottom:12.632%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000146.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <h2 id="securing-app-with-api-management">Securing App with API Management</h2>
 <h3 id="ip-restriction">IP Restriction</h3>
@@ -242,36 +242,36 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 <p>This diagram presents the traffic flow that needs to be blocked. So that users can&rsquo;t bypass API management via direct calls to Logic Apps.
 
 <div class="lazy" style="max-height: 330px">
-    <div style="padding-bottom:73.33333333333333%"></div>
+    <div style="padding-bottom:73.333%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000177.png" src=""/> 
-</div>  </p>
+</div></p>
 <ol>
 <li>Open <strong>API Management</strong> resource</li>
 <li>In the <strong>Overview</strong> blade find <strong>Virtual IP (VIP) address</strong> and copy it
 
 <div class="lazy" style="max-height: 217px">
-    <div style="padding-bottom:35.86776859504132%"></div>
+    <div style="padding-bottom:35.868%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000147.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Open <strong>Logic App</strong> resource</li>
 <li>Open <strong>Workflow Settings</strong> blade 
 
 <div class="lazy" style="max-height: 165px">
-    <div style="padding-bottom:62.73764258555133%"></div>
+    <div style="padding-bottom:62.738%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000148.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Change dropdown in <strong>Access control configuration</strong> section to <strong>Specific IP ranges</strong> and add new rule which is VIP of API management from previous step. Use CIDR or range format and hit <strong>Save</strong>.
 
 <div class="lazy" style="max-height: 365px">
-    <div style="padding-bottom:58.77616747181965%"></div>
+    <div style="padding-bottom:58.776%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000149.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Test the URL in browser. Expected response is authorization failed error.
 
 <div class="lazy" style="max-height: 60px">
-    <div style="padding-bottom:21.73913043478261%"></div>
+    <div style="padding-bottom:21.739%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000150.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <p>Now that this is done, Logic App is secured and will only be called from API management service.</p>
 <h4 id="virtual-private-ip---important-note">Virtual Private IP - important note!</h4>
@@ -288,46 +288,46 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 <li>Go to the <strong>APIs</strong> blade 
 
 <div class="lazy" style="max-height: 175px">
-    <div style="padding-bottom:66.53992395437263%"></div>
+    <div style="padding-bottom:66.540%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000151.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on <strong>Add API</strong> and select <strong>Logic App</strong>
 
 <div class="lazy" style="max-height: 520px">
-    <div style="padding-bottom:107.43801652892562%"></div>
+    <div style="padding-bottom:107.438%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000152.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on <strong>Browse</strong> button</li>
 <li>From the selection blade find logic app service that was previously created and click on it
 
 <div class="lazy" style="max-height: 283px">
-    <div style="padding-bottom:65.81395348837209%"></div>
+    <div style="padding-bottom:65.814%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000153.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Review imported Logic App and hit <strong>Create</strong>
 
 <div class="lazy" style="max-height: 646px">
-    <div style="padding-bottom:115.15151515151516%"></div>
+    <div style="padding-bottom:115.152%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000154.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>When importing finishes go to Logic App API and click on <strong>Add Policy</strong>
 
 <div class="lazy" style="max-height: 780px">
-    <div style="padding-bottom:58.383233532934135%"></div>
+    <div style="padding-bottom:58.383%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000178.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Find and click on <strong>Validate JWT</strong> policy
 
 <div class="lazy" style="max-height: 200px">
-    <div style="padding-bottom:100%"></div>
+    <div style="padding-bottom:100.000%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000161.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Configure it as follows using <strong>Full</strong> edit mode
 
 <div class="lazy" style="max-height: 749px">
-    <div style="padding-bottom:125.67114093959732%"></div>
+    <div style="padding-bottom:125.671%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000193.png" src=""/> 
-</div>  </li>
+</div></li>
 </ol>
 <ul>
 <li><strong>Validate by</strong> - and set this to <strong>header</strong> validation.</li>
@@ -343,9 +343,9 @@ Note that this isn&rsquo;t required. GET is just simpler to test and present the
 When not sure about the URL, hovering over user name gives this details. Both tenant name and ID.
 
 <div class="lazy" style="max-height: 106px">
-    <div style="padding-bottom:22.5531914893617%"></div>
+    <div style="padding-bottom:22.553%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000158.png" src=""/> 
-</div>  </li>
+</div></li>
 </ul>
 <ol start="10">
 <li>Next click on <strong>Add Policy</strong> to one more policy which removes Authorization header from the request. This is because Logic Apps do not accept Authorization headers. If this step is omitted, following error will be returned.
@@ -358,21 +358,21 @@ When not sure about the URL, hovering over user name gives this details. Both te
 <li>Find <strong>Set header</strong> policy and click on it
 
 <div class="lazy" style="max-height: 200px">
-    <div style="padding-bottom:100%"></div>
+    <div style="padding-bottom:100.000%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000164.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Set <strong>Name</strong> to <strong>Authorization</strong> and <strong>Action</strong> to <strong>delete</strong>
 
 <div class="lazy" style="max-height: 208px">
-    <div style="padding-bottom:30.144927536231883%"></div>
+    <div style="padding-bottom:30.145%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000165.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Policies should look like this.
 
 <div class="lazy" style="max-height: 437px">
-    <div style="padding-bottom:172.72727272727272%"></div>
+    <div style="padding-bottom:172.727%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000166.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Policy in <strong>policy code editor</strong> should look like this
 <div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;policies&gt;</span>
 
@@ -417,47 +417,47 @@ When not sure about the URL, hovering over user name gives this details. Both te
 <li>Go to Azure AD
 
 <div class="lazy" style="max-height: 92px">
-    <div style="padding-bottom:49.19786096256684%"></div>
+    <div style="padding-bottom:49.198%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000186.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Open App registration panel
 
 <div class="lazy" style="max-height: 195px">
-    <div style="padding-bottom:54.166666666666664%"></div>
+    <div style="padding-bottom:54.167%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000187.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on <strong>+ New registration</strong> button and fill in the form just by giving it any name
 
 <div class="lazy" style="max-height: 790px">
-    <div style="padding-bottom:105.1930758988016%"></div>
+    <div style="padding-bottom:105.193%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000188.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>In the app panel go to <strong>Expose an API</strong> blade
 
 <div class="lazy" style="max-height: 641px">
-    <div style="padding-bottom:69.37229437229438%"></div>
+    <div style="padding-bottom:69.372%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000189.png" src=""/> 
-</div>  </li>
+</div></li>
 <li><strong>Set</strong> Application ID URI, this will be audience that will be validated. In this example use <strong>api://apim-logic-app-demo</strong> value.
 
 <div class="lazy" style="max-height: 118px">
-    <div style="padding-bottom:19.376026272577995%"></div>
+    <div style="padding-bottom:19.376%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000190.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click <strong>Add a scope</strong>. At this time since only one API can be exposed it doesn&rsquo;t matter, but scopes are important topic for larger applications.
 
 <div class="lazy" style="max-height: 351px">
-    <div style="padding-bottom:62.67857142857143%"></div>
+    <div style="padding-bottom:62.679%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000191.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on <strong>Add a client application</strong> and add Microsoft Azure CLI client ID so it can request tokens. In future remove it and only leave valid applications. This is OK for development only. Azure CLI client ID is always the same so simply add this value.
 <div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">04b07795-8ddb-461a-bbee-02f9e1bf7b46</code></pre></div>
 If in rare scenario this would change in future, simply run az account get-access-token command and parse it in <a href="https://jwt.io">JWT.io</a> or any other website to get appid property.
 
 <div class="lazy" style="max-height: 144px">
-    <div style="padding-bottom:23.801652892561982%"></div>
+    <div style="padding-bottom:23.802%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000192.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Test the access token with audience by running following CLI command. It might need a minute to propagate so be patient.
 <div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">az account get-access-token --resource <span class="s2">&#34;api://apim-logic-app-demo&#34;</span>. </code></pre></div></li>
 </ol>
@@ -468,27 +468,27 @@ If in rare scenario this would change in future, simply run az account get-acces
 <li>Find <strong>Subscriptions</strong> blade and open it
 
 <div class="lazy" style="max-height: 165px">
-    <div style="padding-bottom:63.46153846153846%"></div>
+    <div style="padding-bottom:63.462%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000179.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Click on <strong>&hellip;</strong> (three dots) next to built-in all-access subscription and select <strong>Show/hide keys</strong>. 
 
 <div class="lazy" style="max-height: 498px">
-    <div style="padding-bottom:52.698412698412696%"></div>
+    <div style="padding-bottom:52.698%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000170.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Copy the key
 
 <div class="lazy" style="max-height: 156px">
-    <div style="padding-bottom:39.097744360902254%"></div>
+    <div style="padding-bottom:39.098%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000171.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Go to <strong>APIs</strong> blade and click on logic app API, select <strong>Test</strong> tab, then select created operation and find <strong>Request URL</strong>
 
 <div class="lazy" style="max-height: 692px">
-    <div style="padding-bottom:58.15126050420168%"></div>
+    <div style="padding-bottom:58.151%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000181.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Using new <strong>az rest</strong> command from Azure CLI (2.0.67 version and up) it&rsquo;s possible to make HTTP call to any service with automatically generated Azure AD token. It also allows to specify token audience with <strong>&ndash;resource</strong> parameter.
 High level the command looks like this.
 <div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">az rest 
@@ -504,9 +504,9 @@ High level the command looks like this.
 <li>With response
 
 <div class="lazy" style="max-height: 125px">
-    <div style="padding-bottom:18.27485380116959%"></div>
+    <div style="padding-bottom:18.275%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000195.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>For older versions of Azure CLI on windows a bit more cumbersome but viable way is to do CURL
 <div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch"><span class="k">for</span> <span class="k">/f</span> <span class="nv">%i in (&#39;az account get-access-token --resource &#34;api://apim-logic-app-demo&#34; --query &#34;accessToken&#34;&#39;) do set VAR=%</span>i
 curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR%</span><span class="s2">&#34;</span> -H <span class="s2">&#34;Ocp-Apim-Subscription-Key:2be35ef775ad4b338e0248f12b98c9f3&#34;</span> <span class="s2">&#34;https://marczakioapim.azure-api.net/manual/paths/invoke&#34;</span></code></pre></div></li>
@@ -515,9 +515,9 @@ curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR
 <p>In case subscription key is not required, it can be disabled in <strong>Settings</strong> tab of API.
 
 <div class="lazy" style="max-height: 192px">
-    <div style="padding-bottom:24.615384615384617%"></div>
+    <div style="padding-bottom:24.615%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000167.png" src=""/> 
-</div>  </p>
+</div></p>
 <h2 id="userapplication-claims-from-token">User/Application claims from Token</h2>
 <p>If there is a need to pass some user or application claims from the token into the logic app, then this information can be obtained from context headers. In most simple way this can be achieved using below code.</p>
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">context</span>
@@ -596,15 +596,15 @@ curl -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">%VAR
 <p>At this point user principal name will be passed to Logic App as additional header. This can be easily tested by initializing variable in Logic App like below.</p>
 
 <div class="lazy" style="max-height: 354px">
-    <div style="padding-bottom:53.79939209726444%"></div>
+    <div style="padding-bottom:53.799%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000184.png" src=""/> 
-</div>  
+</div>
 <p>Which will show that user principal name is available.</p>
 
 <div class="lazy" style="max-height: 623px">
-    <div style="padding-bottom:95.1145038167939%"></div>
+    <div style="padding-bottom:95.115%"></div>
     <img data-src="/images/2019-08-secure-logic-app-with-api-management/000182.png" src=""/> 
-</div>  
+</div>
 <p>In case grabbing specific header is required then simply use Logic App expression.</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">triggerOutputs()</span><span class="p">[</span><span class="err">&#39;headers&#39;</span><span class="p">][</span><span class="err">&#39;X-UPN&#39;</span><span class="p">]</span></code></pre></div>
 <h3 id="tokens">Tokens</h3>

@@ -144,9 +144,9 @@
 <p>Design consists of multiple components to ensure that while this application is small and simple, it must also be secure and reliable.
 
 <div class="lazy" style="max-height: 534px">
-    <div style="padding-bottom:105.74257425742574%"></div>
+    <div style="padding-bottom:105.743%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000222.png" src=""/> 
-</div>  </p>
+</div></p>
 <p>With following components</p>
 <ul>
 <li><strong>Logic App</strong> - main function logic for pulling data</li>
@@ -163,16 +163,16 @@
 <p>Below flow uses Logic App which is executed every day after midnight at 3:00 in the morning and downloads all the billing data. 
 
 <div class="lazy" style="max-height: 1720px">
-    <div style="padding-bottom:162.57088846880907%"></div>
+    <div style="padding-bottom:162.571%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000221.png" src=""/> 
-</div>  </p>
+</div></p>
 <p>And this is how &ldquo;big&rdquo; it is&hellip; or is it?</p>
 <p>Only <strong>14 actions</strong> were required to complete this task.</p>
 
 <div class="lazy" style="max-height: 1093px">
-    <div style="padding-bottom:142.13263979193758%"></div>
+    <div style="padding-bottom:142.133%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000234.png" src=""/> 
-</div>  
+</div>
 <h2 id="provisioning">Provisioning</h2>
 <p>You can quickly deploy entire application using ARM or by yourself using Azure portal.</p>
 <h3 id="one-click-deployment">One Click deployment</h3>
@@ -186,9 +186,9 @@
 2. Fill in the form
 
 <div class="lazy" style="max-height: 950px">
-    <div style="padding-bottom:127.00534759358288%"></div>
+    <div style="padding-bottom:127.005%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000224.png" src=""/> 
-</div>  
+</div>
  - **Resource group** - Resource Group to deploy solution to
  - **Location** - Region where your solution will be deployed to. If you plan to use this for Power BI reporting then deploy to closest data center of your Office region. 
  - **Key Vault Name** - Name of Key Vault resource. Can be left as default.
@@ -197,57 +197,57 @@
  - **Enterprise Azure Key** - Enterprise agreement Reporting Key from https://ea.azure.com portal > Reports > Download Usage > API Access Key > Expand Key > Copy
  
 <div class="lazy" style="max-height: 619px">
-    <div style="padding-bottom:58.840304182509506%"></div>
+    <div style="padding-bottom:58.840%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000225.png" src=""/> 
-</div>  
+</div>
 3. When deployment finishes go to the resource group to check resources
  
 <div class="lazy" style="max-height: 396px">
-    <div style="padding-bottom:88.19599109131403%"></div>
+    <div style="padding-bottom:88.196%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000227.png" src=""/> 
-</div>  
+</div>
 4. Go to the **Logic App** and hit **Enable**
  
 <div class="lazy" style="max-height: 79px">
-    <div style="padding-bottom:11.738484398216938%"></div>
+    <div style="padding-bottom:11.738%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000228.png" src=""/> 
-</div>  
+</div>
 5. Confirm the app ran successfully
  
 <div class="lazy" style="max-height: 151px">
-    <div style="padding-bottom:41.256830601092894%"></div>
+    <div style="padding-bottom:41.257%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000231.png" src=""/> 
-</div>  
+</div>
 6. Verify the data is on the BLOB
  
 <div class="lazy" style="max-height: 307px">
-    <div style="padding-bottom:45.82089552238806%"></div>
+    <div style="padding-bottom:45.821%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000232.png" src=""/> 
-</div>  
+</div>
 <h4 id="but-logic-app-refreshed-only-last-2-months">But Logic App refreshed only last 2 months?!</h4>
 <p>Logic App only refreshes last two month since older months do not need to be refreshed as the billing will never change. In case your company has EA already for longer than two month, then</p>
 <ol>
 <li>Go to Logic App editor.
 
 <div class="lazy" style="max-height: 79px">
-    <div style="padding-bottom:14.495412844036696%"></div>
+    <div style="padding-bottom:14.495%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000230.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Find the value <strong>2</strong>, which can be found in in the <strong>For each billing period</strong> action as expression <strong>take(&hellip;)</strong> and simply change it to bigger number, and run it once. 
 
 <div class="lazy" style="max-height: 449px">
-    <div style="padding-bottom:43.507751937984494%"></div>
+    <div style="padding-bottom:43.508%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000229.png" src=""/> 
-</div>  </li>
+</div></li>
 <li>Remember to change it back to 2 afterwards.</li>
 </ol>
 <h3 id="and-thats-it">And that&rsquo;s it!</h3>
 <p><strong>Last 30 days</strong> show consumption of <strong>0.03 EUR per month</strong>.
 
 <div class="lazy" style="max-height: 866px">
-    <div style="padding-bottom:56.5643370346179%"></div>
+    <div style="padding-bottom:56.564%"></div>
     <img data-src="/images/2019-09-ea-billing-automation-with-logic-apps/000233.png" src=""/> 
-</div>  </p>
+</div></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Logic Apps are not the cheapest service out there, but when used correctly they solve business challenges in no time and at &lsquo;no cost&rsquo;. Used as the right tool for the right challenge they fit perfectly here. I&rsquo;m glad I did try them out because this is the perfect solution for our company.</p><a target="_blank" 
    rel="tooltip" 
