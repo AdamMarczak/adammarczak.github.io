@@ -1,0 +1,126 @@
+
+<div style="display:none">
+{{< course/css >}}
+{{< course/episode 
+  "00"
+  "youtube/az-900-v2-ep-00-740.jpg"
+  "Course Overview | Introduction to the course" 
+>}}
+{{< course/module "01" "Describe cloud concepts (15-20%)" >}}
+{{< lazyimage src="/images/az-900/path-1.png" >}}
+{{< course/section "Describe the benefits and considerations of using cloud services" >}}
+{{< course/episode 
+  "01"
+  "youtube/az-900-v2-ep-01-740.jpg"
+  "Cloud Computing, High Availability, Scalability, Elasticity, Agility, Fault Tolerance, and Disaster Recovery" 
+>}}
+{{< course/episode 
+  "02"
+  "youtube/az-900-v2-ep-02-740.jpg"
+  "Principles of economies of scale" 
+>}}
+{{< course/episode 
+  "03"
+  "youtube/az-900-v2-ep-03-740.jpg"
+  "Capital Expenditure (CapEx) vs Operational Expenditure (OpEx) and their differences" 
+>}}
+{{< course/episode 
+  "04"
+  "youtube/az-900-v2-ep-04-740.jpg"
+  "Consumption-based model" 
+>}}
+{{< course/episode 
+  "05"
+  "youtube/az-900-v2-ep-05-740.jpg"
+  "IaaS, PaaS, SaaS and their differences" 
+>}}
+{{< course/episode 
+  "06"
+  "youtube/az-900-v2-ep-06-740.jpg"
+  "Public, Private, Hybrid cloud and their differences" 
+>}}
+{{< course/module "02" "Describe core Azure services (30-35%)" >}}
+{{< lazyimage src="/images/az-900/path-2.png" >}}
+{{< course/section "Describe the core Azure architectural components" >}}
+{{< course/episode 
+  "07"
+  "youtube/az-900-v2-ep-07-740.jpg"
+  "Azure Regions and Availability Zones" 
+>}}
+{{< course/episode 
+  "08"
+  "youtube/az-900-v2-ep-08-740.jpg"
+  "Azure Resource Groups and Resource Manager" 
+>}}
+{{< course/section "Describe some of the core products available in Azure" >}}
+{{< course/episode 
+  "09"
+  "youtube/az-900-v2-ep-09-740.jpg"
+  "Azure Compute Services | Virtual Machine, VM Scale Set, App Service, Functions, Container Instances, Kubernetes Service" 
+>}}
+{{< course/episode 
+  "10"
+  "youtube/az-900-v2-ep-10-740.jpg"
+  "Azure Networking Services | Virtual Network, Load Balancer, VPN Gateway, Application Gateway, CDN" 
+>}}
+{{< course/episode 
+  "11"
+  "youtube/az-900-v2-ep-11-740.jpg"
+  "Azure Storage Services | Blob, Disk, File and Archive" 
+>}}
+{{< course/episode 
+  "12"
+  "youtube/az-900-v2-ep-12-740.jpg"
+  "Database Services | Cosmos DB, SQL Database, SQL DB for MySQL and PostgreSQL, SQL Managed Instance" 
+>}}
+{{< course/episode 
+  "13"
+  "youtube/az-900-v2-ep-13-740.jpg"
+  "Azure Marketplace" 
+>}}
+{{< course/section "Describe some of the solutions available on Azure" >}}
+{{< course/episode 
+  "14"
+  "youtube/az-900-v2-ep-14-740.jpg"
+  "Azure IoT Services | IoT Hub, IoT Central, Azure Sphere" 
+>}}
+{{< course/episode 
+  "15"
+  "youtube/az-900-v2-ep-15-740.jpg"
+  "Azure Big Data and Analytics Services | Synapse Analytics (SQL Datawarehouse), HDInsight, Databricks" 
+>}}
+{{< course/episode 
+  "16"
+  "youtube/az-900-v2-ep-16-740.jpg"
+  "Azure Artificial Intelligence (AI) Services | Machine Learning Studio and Service" 
+>}}
+{{< course/episode 
+  "17"
+  "youtube/az-900-v2-ep-17-740.jpg"
+  "Azure Serverless Computing Services | Functions, Logic Apps, Event Grid" 
+>}}
+{{< course/episode 
+  "18"
+  "youtube/az-900-v2-ep-18-740.jpg"
+  "Azure DevOps Solutions | Azure DevOps, DevTest Labs" 
+>}}
+{{< course/section "Describe Azure management tools" >}}
+{{< course/episode 
+  "19"
+  "youtube/az-900-v2-ep-19-740.jpg"
+  "Azure Tools | Portal, PowerShell, CLI and CloudShell" 
+>}}
+{{< course/episode 
+  "20"
+  "youtube/az-900-v2-ep-20-740.jpg"
+  "Azure Advisor" 
+>}}
+{{< course/module "03" "Describe Security, Privacy, Compliance, and Trust (25-30%)" >}}
+{{< lazyimage src="/images/az-900/path-3.png" >}}
+{{< course/section "Describe securing network connectivity in Azure" >}}
+{{< course/episode 
+  "21"
+  "youtube/az-900-v2-ep-20-740.jpg"
+  "Security Groups | NSG and ASG | Network Security Groups and Application Security Groups" 
+>}}
+</div>
