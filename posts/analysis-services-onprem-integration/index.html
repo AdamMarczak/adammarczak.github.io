@@ -242,51 +242,51 @@ Make Sure to select Data and storage tools.
     <img data-src="/images/analysis-services-onprem-integration/11.png" src=""/> 
 </div></li>
 <li>Run Query to Setup demo database
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">database</span> <span class="n">asdemodb</span><span class="p">;</span>
-<span class="k">GO</span>
-
-<span class="n">use</span> <span class="n">asdemodb</span><span class="p">;</span>
-<span class="k">GO</span>
-
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">MyData</span> <span class="p">(</span>
-	<span class="n">Id</span> <span class="nb">int</span> <span class="k">identity</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
-	<span class="n">FirstName</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-	<span class="n">LastName</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span>
-<span class="p">)</span>
-<span class="k">GO</span>
-
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">MyData</span> <span class="p">(</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">LastName</span><span class="p">)</span>
-<span class="k">VALUES</span> 
-	<span class="p">(</span><span class="s1">&#39;Adam&#39;</span><span class="p">,</span><span class="s1">&#39;Doe&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Meghan&#39;</span><span class="p">,</span> <span class="s1">&#39;Green&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Jerry&#39;</span><span class="p">,</span> <span class="s1">&#39;Hansen&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Gerardo&#39;</span><span class="p">,</span> <span class="s1">&#39;Mcgee&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Dan&#39;</span><span class="p">,</span> <span class="s1">&#39;Burke&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Juan&#39;</span><span class="p">,</span> <span class="s1">&#39;Harmon&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Doris&#39;</span><span class="p">,</span> <span class="s1">&#39;Brady&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Marcos&#39;</span><span class="p">,</span> <span class="s1">&#39;Stanley&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Candace&#39;</span><span class="p">,</span> <span class="s1">&#39;Stevens&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Kelli&#39;</span><span class="p">,</span> <span class="s1">&#39;Watts&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Sherry&#39;</span><span class="p">,</span> <span class="s1">&#39;Gutierrez&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Jana&#39;</span><span class="p">,</span> <span class="s1">&#39;Osborne&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Sonja&#39;</span><span class="p">,</span> <span class="s1">&#39;Lucas&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Charlotte&#39;</span><span class="p">,</span> <span class="s1">&#39;Clarke&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Clifford&#39;</span><span class="p">,</span> <span class="s1">&#39;Webb&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Marguerite&#39;</span><span class="p">,</span> <span class="s1">&#39;Andrews&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Luther&#39;</span><span class="p">,</span> <span class="s1">&#39;Burgess&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Joey&#39;</span><span class="p">,</span> <span class="s1">&#39;Conner&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Tonya&#39;</span><span class="p">,</span> <span class="s1">&#39;Mullins&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Grant&#39;</span><span class="p">,</span> <span class="s1">&#39;Patton&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Elmer&#39;</span><span class="p">,</span> <span class="s1">&#39;Dean&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Alton&#39;</span><span class="p">,</span> <span class="s1">&#39;Gonzales&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Wesley&#39;</span><span class="p">,</span> <span class="s1">&#39;Daniel&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Salvador&#39;</span><span class="p">,</span> <span class="s1">&#39;May&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Lana&#39;</span><span class="p">,</span> <span class="s1">&#39;Newman&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="s1">&#39;Gabriel&#39;</span><span class="p">,</span> <span class="s1">&#39;Reeves&#39;</span><span class="p">)</span>
-<span class="p">;</span>
-<span class="k">GO</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">asdemodb</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">GO</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">use</span><span class="w"> </span><span class="n">asdemodb</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">GO</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">MyData</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">	</span><span class="n">Id</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">identity</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="w">
+</span><span class="w">	</span><span class="n">FirstName</span><span class="w"> </span><span class="n">nvarchar</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
+</span><span class="w">	</span><span class="n">LastName</span><span class="w"> </span><span class="n">nvarchar</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="k">GO</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">MyData</span><span class="w"> </span><span class="p">(</span><span class="n">FirstName</span><span class="p">,</span><span class="w"> </span><span class="n">LastName</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="k">VALUES</span><span class="w"> 
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Adam&#39;</span><span class="p">,</span><span class="s1">&#39;Doe&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Meghan&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Green&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Jerry&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Hansen&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Gerardo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Mcgee&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Dan&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Burke&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Juan&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Harmon&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Doris&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Brady&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Marcos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Stanley&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Candace&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Stevens&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Kelli&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Watts&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Sherry&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Gutierrez&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Jana&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Osborne&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Sonja&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Lucas&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Charlotte&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Clarke&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Clifford&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Webb&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Marguerite&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Andrews&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Luther&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Burgess&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Joey&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Conner&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Tonya&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Mullins&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Grant&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Patton&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Elmer&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Dean&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Alton&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Gonzales&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Wesley&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Daniel&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Salvador&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;May&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Lana&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Newman&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="s1">&#39;Gabriel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Reeves&#39;</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">GO</span></code></pre></div>
 Output
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="p">(</span><span class="mi">26</span> <span class="k">row</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">affected</span><span class="p">)</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="p">(</span><span class="mi">26</span><span class="w"> </span><span class="k">row</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="n">affected</span><span class="p">)</span></code></pre></div></li>
 </ol>
 <h2 id="install-on-premises-gateway">Install On-Premises Gateway</h2>
 <ol>
@@ -376,19 +376,19 @@ Output
 <ol>
 <li>Open New Query with the database</li>
 <li>Execute below script
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">use</span> <span class="n">master</span><span class="p">;</span>
-<span class="k">GO</span>
-
-<span class="k">CREATE</span> <span class="n">LOGIN</span> <span class="p">[</span><span class="n">NT</span> <span class="n">Service</span><span class="err">\</span><span class="n">PBIEgwService</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">WINDOWS</span><span class="p">;</span>  
-<span class="k">GO</span> 
-
-<span class="n">use</span> <span class="n">asdemodb</span><span class="p">;</span>
-
-<span class="k">CREATE</span> <span class="k">USER</span> <span class="p">[</span><span class="n">NT</span> <span class="n">Service</span><span class="err">\</span><span class="n">PBIEgwService</span><span class="p">]</span> <span class="k">for</span> <span class="n">login</span> <span class="p">[</span><span class="n">NT</span> <span class="n">Service</span><span class="err">\</span><span class="n">PBIEgwService</span><span class="p">]</span>
-<span class="k">GO</span>
-
-<span class="k">EXEC</span> <span class="n">sp_addrolemember</span> <span class="n">db_datareader</span><span class="p">,</span> <span class="p">[</span><span class="n">NT</span> <span class="n">Service</span><span class="err">\</span><span class="n">PBIEgwService</span><span class="p">];</span>
-<span class="k">GO</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="n">use</span><span class="w"> </span><span class="n">master</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">GO</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="n">LOGIN</span><span class="w"> </span><span class="p">[</span><span class="n">NT</span><span class="w"> </span><span class="n">Service</span><span class="err">\</span><span class="n">PBIEgwService</span><span class="p">]</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">WINDOWS</span><span class="p">;</span><span class="w">  
+</span><span class="w"></span><span class="k">GO</span><span class="w"> 
+</span><span class="w">
+</span><span class="w"></span><span class="n">use</span><span class="w"> </span><span class="n">asdemodb</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="p">[</span><span class="n">NT</span><span class="w"> </span><span class="n">Service</span><span class="err">\</span><span class="n">PBIEgwService</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="p">[</span><span class="n">NT</span><span class="w"> </span><span class="n">Service</span><span class="err">\</span><span class="n">PBIEgwService</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="k">GO</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">EXEC</span><span class="w"> </span><span class="n">sp_addrolemember</span><span class="w"> </span><span class="n">db_datareader</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">NT</span><span class="w"> </span><span class="n">Service</span><span class="err">\</span><span class="n">PBIEgwService</span><span class="p">];</span><span class="w">
+</span><span class="w"></span><span class="k">GO</span></code></pre></div></li>
 </ol>
 <ul>
 <li>Note: NT Service\PBIEgwService is the name of the local service under which by default gateway is running.</li>
@@ -490,7 +490,7 @@ Output
     <img data-src="/images/analysis-services-onprem-integration/34.png" src=""/> 
 </div></li>
 <li>Select &lsquo;Show DAX&rsquo; and paste in the script
-<pre><code class="language-DAX" data-lang="DAX">EVALUATE (
+<pre tabindex="0"><code class="language-DAX" data-lang="DAX">EVALUATE (
   TOPN (
     3000,
     SUMMARIZECOLUMNS (

@@ -300,30 +300,30 @@ Ensure that the <strong>End Date</strong> is far enough in future and replace th
 Optionally and recommended way to do this is via SQL Server Management Studio but for such simple scenario query editor is good enough.</li>
 <li>Click on the Login button and provide previously set password</li>
 <li>In the query window execute following SQL statement and replace unique string with secret key for the database. This creates master key which is used to encrypt all secrets in the database.
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="n">MASTER</span> <span class="k">KEY</span> <span class="n">ENCRYPTION</span> <span class="k">BY</span> <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;UNIQUE_STRING_HERE&#39;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="n">MASTER</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">ENCRYPTION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;UNIQUE_STRING_HERE&#39;</span></code></pre></div>
 
 <div class="lazy" style="max-height: 314px">
     <div style="padding-bottom:44.163%"></div>
     <img data-src="/images/azure-loading-csv-to-sql/15.png" src=""/> 
 </div></li>
 <li>Create new credential object that will be used by the database to connect to blob storage. Replace SAS token value with value from previous steps. Note that there is no question mark at the begining of the secret
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">SCOPED</span> <span class="n">CREDENTIAL</span> <span class="n">BlobCredential</span>
-<span class="k">WITH</span> <span class="k">IDENTITY</span> <span class="o">=</span> <span class="s1">&#39;SHARED ACCESS SIGNATURE&#39;</span><span class="p">,</span>
-<span class="n">SECRET</span> <span class="o">=</span> <span class="s1">&#39;sv=SAS_TOKEN_HERE&#39;</span><span class="p">;</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">SCOPED</span><span class="w"> </span><span class="n">CREDENTIAL</span><span class="w"> </span><span class="n">BlobCredential</span><span class="w">
+</span><span class="w"></span><span class="k">WITH</span><span class="w"> </span><span class="k">IDENTITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SHARED ACCESS SIGNATURE&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="n">SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sv=SAS_TOKEN_HERE&#39;</span><span class="p">;</span></code></pre></div></li>
 <li>Create new connection to blob with previous credentials
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">EXTERNAL</span> <span class="k">DATA</span> <span class="k">SOURCE</span> <span class="n">AzureBlob</span>
-<span class="k">WITH</span> <span class="p">(</span> 
-    <span class="k">TYPE</span>       <span class="o">=</span> <span class="n">BLOB_STORAGE</span><span class="p">,</span>
-    <span class="k">LOCATION</span>   <span class="o">=</span> <span class="s1">&#39;https://marczakiocsvstorage.blob.core.windows.net/input&#39;</span><span class="p">,</span>
-    <span class="n">CREDENTIAL</span> <span class="o">=</span> <span class="n">BlobCredential</span>
-<span class="p">);</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">EXTERNAL</span><span class="w"> </span><span class="k">DATA</span><span class="w"> </span><span class="k">SOURCE</span><span class="w"> </span><span class="n">AzureBlob</span><span class="w">
+</span><span class="w"></span><span class="k">WITH</span><span class="w"> </span><span class="p">(</span><span class="w"> 
+</span><span class="w">    </span><span class="k">TYPE</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">BLOB_STORAGE</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="k">LOCATION</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://marczakiocsvstorage.blob.core.windows.net/input&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">CREDENTIAL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BlobCredential</span><span class="w">
+</span><span class="w"></span><span class="p">);</span></code></pre></div></li>
 <li>In this example a CSV file with two columns ID and VALUE will be loaded for simplicity. So next step is to create table with those columns in the database using following SQL.
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">MyData</span> <span class="p">(</span>
-    <span class="n">ID</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="n">VALUE</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
-<span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">MyData</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">    </span><span class="n">ID</span><span class="w"> </span><span class="nb">int</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">VALUE</span><span class="w"> </span><span class="n">nvarchar</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">)</span></code></pre></div>
 File will look like this and will be named <strong>input.csv</strong>
-<pre><code class="language-csv" data-lang="csv">ID,VALUE
+<pre tabindex="0"><code class="language-csv" data-lang="csv">ID,VALUE
 1,Adam
 2,Tom
 3,Max
@@ -334,21 +334,21 @@ File will look like this and will be named <strong>input.csv</strong>
 8,Anna
 9,Jessabelle</code></pre></li>
 <li>Now the last step is to create a procedure which will load data from the input.csv file to MyData table.
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="n">LoadData</span>
-<span class="k">AS</span>
-<span class="k">BEGIN</span>
-
-<span class="k">DELETE</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">MyData</span><span class="p">];</span>
-
-<span class="n">BULK</span> <span class="k">INSERT</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">MyData</span><span class="p">]</span>
-<span class="k">FROM</span> <span class="s1">&#39;input.csv&#39;</span>
-<span class="k">WITH</span> <span class="p">(</span> 
-    <span class="n">DATA_SOURCE</span> <span class="o">=</span> <span class="s1">&#39;AzureBlob&#39;</span><span class="p">,</span>
-    <span class="n">FORMAT</span>      <span class="o">=</span> <span class="s1">&#39;CSV&#39;</span><span class="p">,</span>
-    <span class="n">FIRSTROW</span>    <span class="o">=</span> <span class="mi">2</span>
-<span class="p">);</span>
-
-<span class="k">END</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">LoadData</span><span class="w">
+</span><span class="w"></span><span class="k">AS</span><span class="w">
+</span><span class="w"></span><span class="k">BEGIN</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">MyData</span><span class="p">];</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">BULK</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">MyData</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;input.csv&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">WITH</span><span class="w"> </span><span class="p">(</span><span class="w"> 
+</span><span class="w">    </span><span class="n">DATA_SOURCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;AzureBlob&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">FORMAT</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CSV&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">FIRSTROW</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="w"></span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">END</span></code></pre></div>
 Few important things to note here</li>
 <li>In proper scenario delete and insert should be encapsulated in a transaction which will roll back in case of errors during the load.</li>
 <li>File name should be taken as parameter instead of static value and executed as dynamic SQL.</li>

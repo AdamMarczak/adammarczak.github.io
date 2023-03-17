@@ -316,7 +316,7 @@ Intents are scored from 0 to 1 which means from 0% to 100%. If bot is not respon
 </div></li>
 <li>Now that the bot is published each of the intents must find its own action within BasicLuisDialog.csx class. Class method name does not matter but the attribute on the class does. Each method that should be mapped to luis intent must have <strong>LuisIntent</strong> attribute with parameter being exact intent name from LUIS service.
 End State of the class should be looking like this with highlighted the key parts that were changed.
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
 
 <span class="k">using</span> <span class="nn">Microsoft.Bot.Builder.Azure</span><span class="p">;</span>
@@ -353,8 +353,7 @@ End State of the class should be looking like this with highlighted the key part
 <span class="hl">        <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">PostAsync</span><span class="p">(</span><span class="s">$&#34;Azure Bot Series are made by Adam Marczak. Visit Marczak.IO for more information.&#34;</span><span class="p">);</span>
 </span>        <span class="n">context</span><span class="p">.</span><span class="n">Wait</span><span class="p">(</span><span class="n">MessageReceived</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>Save and test the application. Notice how sentences do not have to be the same as provided in the learning model. This is exactly the power of machine learning.
 
 <div class="lazy" style="max-height: 414px">
@@ -426,7 +425,7 @@ Of&rsquo;course link, address and url could be optimized with LUIS phrases but t
 <li>Parameter of created intent handler <strong>LuisResult result</strong> has available method for extracting entities called <strong>TryFindEntity</strong> which returns true if entity was present in the request. It can be used to search for &ldquo;SocialName&rdquo; entity.</li>
 <li>If entity is present handle all possible scenarios of found values based on canonical name provided when training LUIS. Found value is available under property of the same name.</li>
 <li>New Method should look like below.
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[LuisIntent(&#34;Social.Location&#34;)]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[LuisIntent(&#34;Social.Location&#34;)]</span>
 <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">SocialLocationIntent</span><span class="p">(</span><span class="n">IDialogContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">LuisResult</span> <span class="n">result</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">PostAsync</span><span class="p">(</span><span class="s">$&#34;Hey social media is my thing!&#34;</span><span class="p">);</span>
@@ -453,8 +452,7 @@ Of&rsquo;course link, address and url could be optimized with LUIS phrases but t
     <span class="p">}</span>
     
     <span class="n">context</span><span class="p">.</span><span class="n">Wait</span><span class="p">(</span><span class="n">MessageReceived</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>Test the bot
 
 <div class="lazy" style="max-height: 813px">

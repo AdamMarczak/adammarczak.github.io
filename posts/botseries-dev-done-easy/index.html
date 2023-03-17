@@ -145,9 +145,9 @@
 <h2 id="register-localhost-bot-in-teams">Register Localhost bot in Teams</h2>
 <ol>
 <li>Run ngrok using command line. Use the proper port number that will be set up on your local machine.
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ngrok http <span class="m">3333</span> -host-header<span class="o">=</span>localhost:3333</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ngrok http <span class="m">3333</span> -host-header<span class="o">=</span>localhost:3333</code></pre></div>
 Which should output something similar to
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ngrok by @inconshreveable                      
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ngrok by @inconshreveable                      
 
 Session Status                online
 Session Expires               <span class="m">7</span> hours, <span class="m">55</span> minutes
@@ -163,7 +163,7 @@ This basically means that bot app will be available under <strong><a href="https
 </ol>
 <ul>
 <li>With free pricing tier developers get random subdomain on ngrok service every time they run the application. This is very troublesome for longer development because during bot registration developer must supply publicly visible endpoint. This means every time developer restarts ngrok they will need to edit bot endpoint on bot framework portal. For commercial uses it is very recommended to purchase license so that developer can register custom domains using command below which will allow for static bot routing under <a href="https://marczakio-dev-local.ngrok.io">https://marczakio-dev-local.ngrok.io</a> endpoint.
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ngrok http <span class="m">3333</span> -subdomain<span class="o">=</span>marczakio-dev-local -host-header<span class="o">=</span>localhost:3333</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ngrok http <span class="m">3333</span> -subdomain<span class="o">=</span>marczakio-dev-local -host-header<span class="o">=</span>localhost:3333</code></pre></div></li>
 </ul>
 <ol start="2">
 <li>Register a bot by using this <a href="https://dev.botframework.com/bots/new">https://dev.botframework.com/bots/new</a>. Note this is crucial to use this link as the button on the site no Longer points to form creation. Instead it redirects user to Azure Bot Service creation form.</li>
@@ -228,7 +228,7 @@ Agree to TOS (terms of use)
     <img data-src="/images/botseries-dev-done-easy/12.png" src=""/> 
 </div></li>
 <li>Run git clone to copy solution and start development
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/MarczakIO/msteams-samples-hello-world-csharp.git
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/MarczakIO/msteams-samples-hello-world-csharp.git
 <span class="nb">cd</span> msteams-samples-hello-world-csharp
 Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
 <li>Restore packages by right clicking the solution and clicking 
@@ -238,7 +238,7 @@ Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
     <img data-src="/images/botseries-dev-done-easy/8.png" src=""/> 
 </div></li>
 <li>Edit Web.config file and supply Microsoft App ID and password
-<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&#34;MicrosoftAppId&#34;</span> <span class="na">value=</span><span class="s">&#34;d008dfca-c5d7-4b1b-a074-ad76081d6e3b&#34;</span> <span class="nt">/&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&#34;MicrosoftAppId&#34;</span> <span class="na">value=</span><span class="s">&#34;d008dfca-c5d7-4b1b-a074-ad76081d6e3b&#34;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&#34;MicrosoftAppPassword&#34;</span> <span class="na">value=</span><span class="s">&#34;eymiSZXF86||%ktzWFP781!&#34;</span> <span class="nt">/&gt;</span></code></pre></div></li>
 <li>Start Solution (keep it running dont close it)
 
@@ -257,7 +257,7 @@ Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
 <li>Replace <strong>id</strong> and <strong>botId</strong> fields with Microsoft App ID</li>
 <li>Give unique package ID for **</li>
 <li>Final JSON should look like below
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json&#34;</span><span class="p">,</span>
   <span class="nt">&#34;manifestVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0&#34;</span><span class="p">,</span>
   <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
@@ -371,7 +371,7 @@ Microsoft.Teams.Samples.HelloWorld.sln</code></pre></div></li>
     <img data-src="/images/botseries-dev-done-easy/21.png" src=""/> 
 </div></li>
 <li>Check ngrok and check bot responses coming through
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ngrok by @inconshreveable   
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ngrok by @inconshreveable   
 Session Status                online
 Session Expires               <span class="m">7</span> hours, <span class="m">22</span> minutes
 Version                       2.2.8

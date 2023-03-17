@@ -328,7 +328,7 @@ Portal should automatically open bot editor after deployment is successful. If n
 <ol>
 <li>
 <p>Open BasicForm.csx file in the browser IDE and paste in the code
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Microsoft.Bot.Builder.FormFlow</span><span class="p">;</span>
 
 <span class="hl"><span class="k">public</span> <span class="k">enum</span> <span class="n">MobileOptions</span> <span class="p">{</span> <span class="n">Laptop</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">Smartphone</span><span class="p">,</span> <span class="n">Tablet</span> <span class="p">};</span>
@@ -355,8 +355,7 @@ Portal should automatically open bot editor after deployment is successful. If n
     <span class="p">{</span>
         <span class="k">return</span> <span class="n">FormDialog</span><span class="p">.</span><span class="n">FromForm</span><span class="p">(</span><span class="n">BuildForm</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 Highlighted lines are the ones that has been changed for purpose of this scenario. So in details</p>
 </li>
 <li>

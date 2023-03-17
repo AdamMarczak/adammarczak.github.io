@@ -180,15 +180,15 @@ When it comes to App Service below diagram presents high level principle how Man
 <ol>
 <li>First of all, a local REST endpoint is registered which is used to retrieve tokens. This endpoint can be only called locally and required secret key from environment variables.</li>
 <li>Endpoint is located as environment variable called <strong>MSI_ENDPOINT</strong> 
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> http://127.0.0.1:41922/MSI/token/</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"> http://127.0.0.1:41922/MSI/token/</code></pre></div></li>
 <li>And secret for this endpoint is environment variable called <strong>MSI_SECRET</strong>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> BDCF130B80894D398D9716C10C7C419E</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"> BDCF130B80894D398D9716C10C7C419E</code></pre></div></li>
 <li>Azure Identity (Service Principal) is created in Azure AD which is tied to this service. This identity is automatically managed by Azure AD.</li>
 </ol>
 <h3 id="requesting-token">Requesting Token</h3>
 <p>When MSI is set up requesting token is very simple. Depending on language you use below samples can be used.</p>
 <p><strong>C# Example</strong>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">Microsoft.Azure.Services.AppAuthentication</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">Microsoft.Azure.Services.AppAuthentication</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Microsoft.Azure.KeyVault</span><span class="p">;</span>
 <span class="c1">// ...
 </span><span class="c1"></span><span class="kt">var</span> <span class="n">azureServiceTokenProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AzureServiceTokenProvider</span><span class="p">();</span>
@@ -198,10 +198,9 @@ When it comes to App Service below diagram presents high level principle how Man
 </span><span class="c1"></span>
 <span class="kt">var</span> <span class="n">kv</span> <span class="p">=</span> <span class="k">new</span> <span class="n">KeyVaultClient</span><span class="p">(</span>
     <span class="k">new</span> <span class="n">KeyVaultClient</span><span class="p">.</span><span class="n">AuthenticationCallback</span><span class="p">(</span><span class="n">azureServiceTokenProvider</span><span class="p">.</span><span class="n">KeyVaultTokenCallback</span><span class="p">)</span>
-<span class="p">);</span>
-</code></pre></div></p>
+<span class="p">);</span></code></pre></div></p>
 <p><strong>PowerShell Example</strong>
-<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$apiVersion</span> <span class="p">=</span> <span class="s2">&#34;2017-09-01&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$apiVersion</span> <span class="p">=</span> <span class="s2">&#34;2017-09-01&#34;</span>
 <span class="nv">$resourceURI</span> <span class="p">=</span> <span class="s2">&#34;https://vault.azure.net&#34;</span>
 <span class="nv">$tokenAuthURI</span> <span class="p">=</span> <span class="nv">$env:MSI_ENDPOINT</span> <span class="p">+</span> <span class="s2">&#34;?resource=$resourceURI&amp;api-version=$apiVersion&#34;</span>
 <span class="nv">$tokenResponse</span> <span class="p">=</span> <span class="nb">Invoke-RestMethod</span> <span class="p">`</span>
@@ -211,7 +210,7 @@ When it comes to App Service below diagram presents high level principle how Man
   <span class="n">-UseBasicParsing</span>
 <span class="nv">$accessToken</span> <span class="p">=</span> <span class="nv">$tokenResponse</span><span class="p">.</span><span class="n">access_token</span></code></pre></div></p>
 <p><strong>NodeJS Example</strong>
-<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http"><span class="err">const rp = require(&#39;request-promise&#39;);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="err">const rp = require(&#39;request-promise&#39;);
 </span><span class="err">const getToken = function(resource, apiver, cb) {
 </span><span class="err">    let options = {
 </span><span class="err">        uri: `${process.env[&#34;MSI_ENDPOINT&#34;]}/?resource=${resource}&amp;api-version=${apiver}`,
@@ -223,7 +222,7 @@ When it comes to App Service below diagram presents high level principle how Man
 </span><span class="err">        .then(cb);
 </span><span class="err">}</span></code></pre></div></p>
 <p><strong>REST Call Example</strong>
-<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/MSI/token?resource=https://vault.azure.net&amp;api-version=2017-09-01</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/MSI/token?resource=https://vault.azure.net&amp;api-version=2017-09-01</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="n">Host</span><span class="o">:</span> <span class="l">localhost:4141</span>
 <span class="n">Secret</span><span class="o">:</span> <span class="l">BDCF130B80894D398D9716C10C7C419E</span></code></pre></div></p>
 <h3 id="setting-up-example-for-app-service">Setting up example for App Service</h3>
@@ -257,22 +256,22 @@ When it comes to App Service below diagram presents high level principle how Man
 </div></li>
 </ol>
 <p><strong>Azure CLI</strong>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">az webapp identity assign --name myApp --resource-group myResourceGroup</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">az webapp identity assign --name myApp --resource-group myResourceGroup</code></pre></div></p>
 <p>With output 
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;identityIds&#34;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
   <span class="nt">&#34;principalId&#34;</span><span class="p">:</span> <span class="s2">&#34;6009de17-ca37-44d6-b522-5f4de3d2ebdd&#34;</span><span class="p">,</span>
   <span class="nt">&#34;tenantId&#34;</span><span class="p">:</span> <span class="s2">&#34;1f0fb2d0-9423-4dce-ac05-7f195c4ee405&#34;</span><span class="p">,</span>
   <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;SystemAssigned&#34;</span>
 <span class="p">}</span></code></pre></div></p>
 <p><strong>Azure PowerShell</strong>
-<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="nb">Set-AzWebApp</span> <span class="n">-AssignIdentity</span> <span class="nv">$true</span> <span class="n">-Name</span> <span class="nv">$webappname</span> <span class="n">-ResourceGroupName</span> <span class="n">myResourceGroup</span></code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="nb">Set-AzWebApp</span> <span class="n">-AssignIdentity</span> <span class="nv">$true</span> <span class="n">-Name</span> <span class="nv">$webappname</span> <span class="n">-ResourceGroupName</span> <span class="n">myResourceGroup</span></code></pre></div></p>
 <p>With output
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">...
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">...
 Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity
 ...</code></pre></div></p>
 <p><strong>Azure Resource Manager template</strong>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;identity&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;SystemAssigned&#34;</span>
   <span class="p">}</span>   
@@ -323,7 +322,7 @@ Identity       : Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdenti
 </div></p>
 <p>Because as of Today there is no MSI emulator users need to use Azure CLI. Azure CLI allows to log in as user but also as Azure Service Principal. This is a good use case for User Assigned Managed Identity. When user created its own principal, he/she can log as that principal locally and request tokens using CLI</p>
 <p><strong>KeyVault example</strong>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">az account get-access-token --resource <span class="s1">&#39;https://vault.azure.net&#39;</span></code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">az account get-access-token --resource <span class="s1">&#39;https://vault.azure.net&#39;</span></code></pre></div></p>
 <p>Why calling local command line isn&rsquo;t necessarily the most beautiful approach it surely works. But what is great here is that Microsoft SDKs for identity will recognize local development and lack of Managed Identity endpoint and try to call CLI in the background without any code changes. This is huge benefit of using SDKs.</p>
 <h2 id="supported-services">Supported Services</h2>
 <p>This list is compilation of services which support or partially support managed identities.</p>

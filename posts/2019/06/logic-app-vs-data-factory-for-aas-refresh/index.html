@@ -204,11 +204,11 @@
 <li>Open PowerShell window.</li>
 <li>Find managed identity. This can&rsquo;t be done via portal because managed identities don&rsquo;t have app registration attached to them. Therefore, a PowerShell or CLI must be used. In PowerShell this can this can be done using many cmdlets but two recommended are searching by either Object ID or by name</li>
 <li>To search by <strong>Object ID</strong> a following command must be executed
-<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-ObjectID</span> <span class="s2">&#34;&lt;object id&gt;&#34;</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-ObjectID</span> <span class="s2">&#34;&lt;object id&gt;&#34;</span></code></pre></div></li>
 <li>To search by <strong>Name</strong> a following command must be executed. Note that name of managed identity is always the same as the resource. Since some resources do not require unique names it is possible to have multiple managed identities with the same name, so this is not recommended way for production scripts.
-<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of azure resource&gt;&#34;</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of azure resource&gt;&#34;</span></code></pre></div></li>
 <li>Run following script
-<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Connect-AzAccount</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Connect-AzAccount</span>
  <span class="nb">Get-AzSubscription</span>
  <span class="nb">Select-AzSubscription</span> <span class="s2">&#34;&lt;name of subscription you are working on&gt;&#34;</span>
  <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-ObjectID</span> <span class="s2">&#34;&lt;object id of logic app&gt;&#34;</span></code></pre></div>
@@ -227,7 +227,7 @@ From the output of this script two things should be saved</li>
 <li><strong>TenantId</strong> - this is Directory ID of Azure Active Directory where the managed identity is located</li>
 <li><strong>ApplicationId</strong> - application ID of managed identity</li>
 <li>Since Data Factory doesn&rsquo;t give out right Object ID of its identity the simplest way is to find it by azure resource name. In the same PowerShell window run command to find application ID of data factory identity. 
-<div class="highlight"><pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of data factory&gt;&#34;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of data factory&gt;&#34;</span></code></pre></div>
 
 <div class="lazy" style="max-height: 145px">
     <div style="padding-bottom:21.324%"></div>
@@ -262,9 +262,9 @@ From the output of this script two things should be saved</li>
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000039.png" src=""/> 
 </div>
 Convention IS
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:&lt;application_id&gt;@&lt;tenant_id&gt;</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"> app:&lt;application_id&gt;@&lt;tenant_id&gt;</code></pre></div>
 For example
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:df1b8569-352d-4be0-acf3-847a2e72aee0@564006af-8627-42d3-b8a6-30a1f1e69fab</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"> app:df1b8569-352d-4be0-acf3-847a2e72aee0@564006af-8627-42d3-b8a6-30a1f1e69fab</code></pre></div></li>
 <li>Click <strong>Add</strong>
 
 <div class="lazy" style="max-height: 197px">
@@ -340,7 +340,7 @@ For example
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000030.png" src=""/> 
 </div></li>
 <li>Change Schema - <strong>aasRefreshBody</strong> will be exact request body passed to Analysis Services and <strong>aasUrl</strong> will be URL of Analysis Services refresh API
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&#34;aasRefreshBody&#34;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -404,7 +404,7 @@ For example
 <li>Body <strong>aasRefreshBody</strong> - output from request trigger, Status Code from AAS refresh call should not be passed here</li>
 <li>Headers <strong>Content-Type: application/json</strong></li>
 <li>Body <strong>status</strong> - Status Code from AAS refresh call in case needed in future for error handling, <strong>headers</strong> for location header which is refresh id, <strong>body</strong> response info from refresh call
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;body&#34;</span><span class="p">:</span> <span class="err">@</span><span class="p">{</span><span class="err">body(&#39;HTTP&#39;)</span><span class="p">},</span>
   <span class="nt">&#34;headers&#34;</span><span class="p">:</span> <span class="err">@</span><span class="p">{</span><span class="err">outputs(&#39;HTTP&#39;)[&#39;headers&#39;]</span><span class="p">},</span>
   <span class="nt">&#34;status&#34;</span><span class="p">:</span> <span class="err">@</span><span class="p">{</span><span class="err">outputs(&#39;HTTP&#39;)[&#39;statusCode&#39;]</span><span class="p">}</span>
@@ -428,7 +428,7 @@ For example
 <li>Method - <strong>POST</strong></li>
 <li>Headers - <strong>Content-Type application/json</strong></li>
 <li>Body
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="nt">&#34;aasUrl&#34;</span><span class="p">:</span><span class="s2">&#34;https://&lt;rollout_region&gt;.asazure.windows.net/servers/&lt;analysis_services_name&gt;/models/&lt;analysis_services_model_name&gt;/refreshes&#34;</span><span class="p">,</span>
     <span class="nt">&#34;aasRefreshBody&#34;</span><span class="p">:{</span>
         <span class="nt">&#34;CommitMode&#34;</span><span class="p">:</span><span class="s2">&#34;transactional&#34;</span><span class="p">,</span>
@@ -453,7 +453,7 @@ For more details on the properties check <a href="https://marczak.io/posts/2019/
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000085-1.png" src=""/> 
 </div>
 And configure exit loop condition as follows
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@or(equals(variables(&#39;RefreshStatus&#39;),&#39;succeeded&#39;),equals(variables(&#39;RefreshStatus&#39;),&#39;failed&#39;))</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">@or(equals(variables(&#39;RefreshStatus&#39;),&#39;succeeded&#39;),equals(variables(&#39;RefreshStatus&#39;),&#39;failed&#39;))</span></code></pre></div></li>
 <li>Double click on Until loop action and add <strong>Wait</strong>, <strong>Web</strong> and <strong>Set Variable Actions</strong> action and link the together
 
 <div class="lazy" style="max-height: 142px">
@@ -473,7 +473,7 @@ And configure exit loop condition as follows
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000066.png" src=""/> 
 </div>
 Configure <strong>URL</strong> as per sample blow, resource as <strong>https://*.asazure.windows.net</strong>, Authentication as MSI. Thanks to previous setup ADF can authenticate and authorize connection to AAS as admin.
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Refresh</span> <span class="err">AAS&#39;).output.headers</span><span class="p">[</span><span class="err">&#39;location&#39;</span><span class="p">]</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Refresh</span> <span class="err">AAS&#39;).output.headers</span><span class="p">[</span><span class="err">&#39;location&#39;</span><span class="p">]</span></code></pre></div></li>
 <li>Configure <strong>Wait</strong> Action to wait 30 seconds between tries
 
 <div class="lazy" style="max-height: 343px">
@@ -481,7 +481,7 @@ Configure <strong>URL</strong> as per sample blow, resource as <strong>https://*
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000067.png" src=""/> 
 </div>
 And configure <strong>Value</strong> it as follows
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Get</span> <span class="err">AAS</span> <span class="err">Refresh</span> <span class="err">Status&#39;).output.status</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">@activity(&#39;Get</span> <span class="err">AAS</span> <span class="err">Refresh</span> <span class="err">Status&#39;).output.status</span></code></pre></div></li>
 <li>Hit Debug and watch for execution steps
 
 <div class="lazy" style="max-height: 485px">

@@ -153,7 +153,7 @@
 </div></p>
 <h3 id="refreshing-model-with-post-refreshes">Refreshing model with POST /refreshes</h3>
 <p>In order to refresh model on analysis services a REST call must be performed on
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes</code></pre></div></p>
 <p>As per diagram
 
 <div class="lazy" style="max-height: 155px">
@@ -166,7 +166,7 @@
 <li><strong>&lt;resource&gt;</strong> name of analysis services model deployed on the server.</li>
 </ul>
 <h4 id="request">Request</h4>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;Type&#34;</span><span class="p">:</span> <span class="s2">&#34;Full&#34;</span><span class="p">,</span>
   <span class="nt">&#34;CommitMode&#34;</span><span class="p">:</span> <span class="s2">&#34;transactional&#34;</span><span class="p">,</span>
   <span class="nt">&#34;MaxParallelism&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -190,14 +190,14 @@
 </ul>
 <p>For more info check the documentation <a href="https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-async-refresh?WT.mc_id=AZ-MVP-5003556">HERE</a>.</p>
 <h4 id="response-202-accepted">Response (202 Accepted)</h4>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">Empty</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">Empty</code></pre></div>
 <p>But there is very important header in the response. This header can be used to check status in following requests.
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">{
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">{
   &#34;Location&#34;: &#34;https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refreshId&gt;&#34;
 }</code></pre></div></p>
 <h4 id="response-409-conflict">Response (409 Conflict)</h4>
 <p>If there is already model refresh currently running request response with 409 code will be returned. This means in production environment a model refresh submission should be wrapped in the loop trying to submit refresh until no 409 is returned.
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="s2">&#34;Conflict&#34;</span><span class="p">,</span>
   <span class="nt">&#34;subCode&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
   <span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;Refresh job could not be created since there is already an active job running for model &#39;&lt;resource&gt;&#39;&#34;</span><span class="p">,</span>
@@ -216,7 +216,7 @@
 <span class="p">}</span></code></pre></div></p>
 <h3 id="checking-refresh-status-with-get-refreshesrefresh_id">Checking refresh status with GET /refreshes&lt;refresh_id&gt;</h3>
 <p>To get status of refresh a REST call must be performed on
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refreshId&gt;</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refreshId&gt;</code></pre></div>
 
 <div class="lazy" style="max-height: 155px">
     <div style="padding-bottom:17.514%"></div>
@@ -229,9 +229,9 @@
 <li><strong>&lt;refreshId&gt;</strong> name of analysis services model deployed on the server.</li>
 </ul>
 <h4 id="request-1">Request</h4>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">Empty</span> <span class="err">because</span> <span class="err">it&#39;s</span> <span class="err">GET</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">Empty</span> <span class="err">because</span> <span class="err">it&#39;s</span> <span class="err">GET</span></code></pre></div>
 <h4 id="response-200-ok">Response (200 OK)</h4>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;startTime&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-06-16T22:24:06.9112816Z&#34;</span><span class="p">,</span>
   <span class="nt">&#34;endTime&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-06-16T22:24:08.2919036Z&#34;</span><span class="p">,</span>
   <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;full&#34;</span><span class="p">,</span>
@@ -388,10 +388,10 @@
     <img data-src="/images/logic-apps-refresh-analysis-services/39.png" src=""/> 
 </div>
 Convention IS
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:&lt;application_id&gt;@&lt;tenant_id&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"> app:&lt;application_id&gt;@&lt;tenant_id&gt;
  </code></pre></div>
 In this example this would mean value
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> app:df1b8569-352d-4be0-acf3-847a2e72aee0@564006af-8627-42d3-b8a6-30a1f1e69fab
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"> app:df1b8569-352d-4be0-acf3-847a2e72aee0@564006af-8627-42d3-b8a6-30a1f1e69fab
  </code></pre></div></li>
 <li>Click <strong>Add</strong>
 
@@ -443,7 +443,7 @@ In this example this would mean value
 <ul>
 <li><strong>Method</strong> - submitting new refresh schedules are always done with <strong>POST</strong> calls</li>
 <li><strong>URI</strong> is built as 
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">  https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">  https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes</code></pre></div>
 
 <div class="lazy" style="max-height: 155px">
     <div style="padding-bottom:17.514%"></div>
@@ -457,7 +457,7 @@ In this example the URL would be, <strong>rollout</strong> - region name, <stron
 </div></li>
 <li><strong>Headers</strong> - only header required is <strong>Content-Type</strong> with <strong>application/json</strong> value since a JSON configuration will be sent over</li>
 <li><strong>Body</strong> - Send over request details. For full refresh send below request. 
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"> <span class="p">{</span>
   <span class="nt">&#34;CommitMode&#34;</span><span class="p">:</span> <span class="s2">&#34;transactional&#34;</span><span class="p">,</span>
   <span class="nt">&#34;MaxParallelism&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
   <span class="nt">&#34;Objects&#34;</span><span class="p">:</span> <span class="p">[],</span>
@@ -535,7 +535,7 @@ It is also possible to refresh model partially. In this case in the <strong>Obje
     <div style="padding-bottom:24.286%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/20.png" src=""/> 
 </div>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"> <span class="err">@or(equals(variables(&#39;refreshStatus&#39;),</span> <span class="err">&#39;succeeded&#39;),</span> <span class="err">equals(variables(&#39;refreshStatus&#39;),</span> <span class="err">&#39;failed&#39;))</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"> <span class="err">@or(equals(variables(&#39;refreshStatus&#39;),</span> <span class="err">&#39;succeeded&#39;),</span> <span class="err">equals(variables(&#39;refreshStatus&#39;),</span> <span class="err">&#39;failed&#39;))</span>
  </code></pre></div></li>
 <li>Add new step 
 
@@ -571,14 +571,14 @@ It is also possible to refresh model partially. In this case in the <strong>Obje
 <ul>
 <li><strong>Method</strong> - getting status of refresh is done using <strong>GET</strong> method</li>
 <li><strong>URI</strong> is build as 
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refresh_id&gt;</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">https://&lt;rollout&gt;.asazure.windows.net/servers/&lt;serverName&gt;/models/&lt;resource&gt;/refreshes/&lt;refresh_id&gt;</code></pre></div>
 
 <div class="lazy" style="max-height: 155px">
     <div style="padding-bottom:17.514%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/aas-async-refresh-flow-get.png" src=""/> 
 </div>
 HTTP call which submits refresh to analysis services return &ldquo;Location&rdquo; header. This header contains full URL with refresh ID which then can be used to check refresh status. This can be obtained using following logic app expression.
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">outputs(&#39;HTTP&#39;)</span><span class="p">[</span><span class="err">&#39;headers&#39;</span><span class="p">][</span><span class="err">&#39;location&#39;</span><span class="p">]</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">outputs(&#39;HTTP&#39;)</span><span class="p">[</span><span class="err">&#39;headers&#39;</span><span class="p">][</span><span class="err">&#39;location&#39;</span><span class="p">]</span></code></pre></div></li>
 <li><strong>Authentication</strong> - Authenticate to Analysis Services using previously created application. This should be configured exactly the same as in the first call.</li>
 </ul>
 <ol start="2">
@@ -595,7 +595,7 @@ HTTP call which submits refresh to analysis services return &ldquo;Location&rdqu
     <img data-src="/images/logic-apps-refresh-analysis-services/22.png" src=""/> 
 </div></li>
 <li>Configure with expression which replaces current value with retrieved status using following expression
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">body(&#39;HTTP_</span><span class="mi">2</span><span class="err">&#39;)</span><span class="p">[</span><span class="err">&#39;status&#39;</span><span class="p">]</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">body(&#39;HTTP_</span><span class="mi">2</span><span class="err">&#39;)</span><span class="p">[</span><span class="err">&#39;status&#39;</span><span class="p">]</span></code></pre></div></li>
 <li>Save Logic App and run it
 
 <div class="lazy" style="max-height: 266px">

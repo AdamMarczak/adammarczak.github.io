@@ -272,7 +272,7 @@ Note: Only body of the function should be copied, function definition should be 
 <ol>
 <li>Add new class to project called AzureFunctionsResolveAssembly.cs</li>
 <li>Copy paste following class <a href="https://github.com/MarczakIO/precompiled-bots/blob/master/PrecompiledBot/AzureFunctionsResolveAssembly.cs">source code here</a>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">AzureFunctionsResolveAssembly</span> <span class="p">:</span> <span class="n">IDisposable</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">AzureFunctionsResolveAssembly</span> <span class="p">:</span> <span class="n">IDisposable</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="n">AzureFunctionsResolveAssembly</span><span class="p">()</span>
     <span class="p">{</span>
@@ -317,14 +317,12 @@ Note: Only body of the function should be copied, function definition should be 
 
         <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>And modify the Messages.cs class by adding AzureFunctionsResolveAssembly initialization just before BotService initialization
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="ln">22</span>    <span class="n">log</span><span class="p">.</span><span class="n">Info</span><span class="p">(</span><span class="s">$&#34;Webhook was triggered!&#34;</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="ln">22</span>    <span class="n">log</span><span class="p">.</span><span class="n">Info</span><span class="p">(</span><span class="s">$&#34;Webhook was triggered!&#34;</span><span class="p">);</span>
 <span class="ln">23</span>
 <span class="hl"><span class="ln">24</span>    <span class="k">using</span> <span class="p">(</span><span class="k">new</span> <span class="n">AzureFunctionsResolveAssembly</span><span class="p">())</span>
-</span><span class="ln">25</span>    <span class="k">using</span> <span class="p">(</span><span class="n">BotService</span><span class="p">.</span><span class="n">Initialize</span><span class="p">())</span>
-</code></pre></div></li>
+</span><span class="ln">25</span>    <span class="k">using</span> <span class="p">(</span><span class="n">BotService</span><span class="p">.</span><span class="n">Initialize</span><span class="p">())</span></code></pre></div></li>
 <li>republish the bot</li>
 <li>Test it
 

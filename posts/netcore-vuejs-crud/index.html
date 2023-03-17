@@ -201,15 +201,15 @@
 <p>This post is a follow-up to previous post <a href="/posts/netcore-vuejs/">Building .NET Core 2.0 web apps with Vue.js single file components using VS Code</a>. A following template uses techniques explained in that article.</p>
 <ol>
 <li>Clone simple vuejs template by opening Command Line and executing following commands from working directory
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/MarczakIO/netcore-vuejs-template.git
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/MarczakIO/netcore-vuejs-template.git
 <span class="nb">cd</span> netcore-vuejs-template
 dotnet restore
 npm install
 code .</code></pre></div></li>
 <li>Open <strong>.gitignore</strong> file and add following line
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">appsettings.local.json</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">appsettings.local.json</code></pre></div></li>
 <li>Now add <strong>appsettings.local.json</strong> file inside of root directory for the project. This file will contain connection string and credentials to the database. In previous step it was added to gitignore so that it won&rsquo;t be committed to the repo. 
-<div class="highlight"><pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
     <span class="nt">&#34;DatabaseSettings&#34;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&#34;DatabaseId&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;created_database_id&gt;&#34;</span><span class="p">,</span>
         <span class="nt">&#34;Endpoint&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;cosmos_db_endpoint&gt;&#34;</span><span class="p">,</span>
@@ -232,7 +232,7 @@ In order to get those properties for created database</li>
 <li>DatabaseId is the name of the database created earlier. In case of this article the name was &ldquo;Demo&rdquo;</li>
 <li>Create folder called <strong>Models</strong> in root directory</li>
 <li>Add model class <strong>DatabaseSettings.cs</strong> inside of <strong>Models</strong> folder which will hold specified configuration values
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 
 <span class="k">namespace</span> <span class="nn">MarczakIO.VueSPA.Web.Models</span>
 <span class="p">{</span>
@@ -242,10 +242,9 @@ In order to get those properties for created database</li>
         <span class="k">public</span> <span class="kt">string</span> <span class="n">Endpoint</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
         <span class="k">public</span> <span class="kt">string</span> <span class="n">AuthKey</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>Now modify <strong>Startup.cs</strong> class so that it loads the options from appsettings.local.json file into a service whenever called for using dependency injection. 
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
@@ -310,8 +309,7 @@ In order to get those properties for created database</li>
             <span class="p">});</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 By configuring <strong>DatabaseOptions</strong> with <strong>Configure</strong> method every time <strong>IOptions<DatabaseSettings></strong> is called in any constructor in the application a dependency injection container will make sure to initialize that property. Additionally because a configuration object has been given <strong>appsetings.local.json</strong> as additional config file then each time dependency injection initializes object all properties will be automatically populated with values from json file</li>
 </ol>
 <h3 id="reading-documents">Reading documents</h3>
@@ -324,12 +322,12 @@ By configuring <strong>DatabaseOptions</strong> with <strong>Configure</strong> 
 <h4 id="build-a-web-api-for-document-reading">Build a Web API for document reading</h4>
 <ol>
 <li>Add nuget package for CosmosDB by using following command from command line
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dotnet add package Microsoft.Azure.DocumentDB.Core
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dotnet add package Microsoft.Azure.DocumentDB.Core
 dotnet restore</code></pre></div>
 <strong>Note</strong>: Sometimes it is required to restart Visual Studio Code to pick up new packages or it will report namespacing issues.</li>
 <li>Create folder called <strong>Azure</strong> in root directory</li>
 <li>Add new class file called <strong>DocumentDBRepository.cs</strong> 
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">MarczakIO.VueSPA.Web.Models</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Microsoft.Extensions.Options</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Microsoft.Azure.Documents</span><span class="p">;</span>
@@ -347,9 +345,9 @@ dotnet restore</code></pre></div>
         <span class="k">private</span> <span class="n">DatabaseSettings</span> <span class="n">dbOptions</span><span class="p">;</span>
         <span class="k">private</span> <span class="n">DocumentClient</span> <span class="n">client</span><span class="p">;</span>
 
-        <span class="k">public</span> <span class="n">DocumentDBRepository</span><span class="p">(</span><span class="n">IOptions</span><span class="p">&lt;</span><span class="n">DatabaseSettings</span><span class="p">&gt;</span> <span class="n">_dbOptions</span><span class="p">)</span>
+        <span class="k">public</span> <span class="n">DocumentDBRepository</span><span class="p">(</span><span class="n">IOptions</span><span class="p">&lt;</span><span class="n">DatabaseSettings</span><span class="p">&gt;</span> <span class="m">_d</span><span class="n">bOptions</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="n">dbOptions</span> <span class="p">=</span> <span class="n">_dbOptions</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+            <span class="n">dbOptions</span> <span class="p">=</span> <span class="m">_d</span><span class="n">bOptions</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
             <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DocumentClient</span><span class="p">(</span><span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="n">dbOptions</span><span class="p">.</span><span class="n">Endpoint</span><span class="p">),</span> <span class="n">dbOptions</span><span class="p">.</span><span class="n">AuthKey</span><span class="p">);</span>
         <span class="p">}</span>
 
@@ -371,21 +369,19 @@ dotnet restore</code></pre></div>
             <span class="k">return</span> <span class="n">results</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>Initialize depdendency injection for DocumentDBRepository inside of <strong>Startup.cs</strong> class file in <strong>ConfigureServices</strong> method
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="n">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="n">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">DatabaseSettings</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span> 
         <span class="n">Configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&#34;DatabaseSettings&#34;</span><span class="p">).</span><span class="n">Bind</span><span class="p">(</span><span class="n">options</span><span class="p">));</span>
 <span class="hl">    <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">DocumentDBRepository</span><span class="p">&lt;&gt;),</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DocumentDBRepository</span><span class="p">&lt;&gt;));</span>
 </span>    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 <li>Create folder called <strong>Controllers</strong> in root directory</li>
 <li>Now it&rsquo;s just a controller for Web API that is missing, so add it inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
@@ -401,9 +397,9 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
     <span class="p">{</span>
         <span class="k">private</span> <span class="n">DocumentDBRepository</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">todoRepo</span><span class="p">;</span>
         <span class="k">private</span> <span class="kt">string</span> <span class="n">CollectionId</span> <span class="p">=</span> <span class="s">&#34;Todo&#34;</span><span class="p">;</span>
-        <span class="k">public</span> <span class="n">TodoController</span><span class="p">(</span><span class="n">DocumentDBRepository</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">_todoRepo</span><span class="p">)</span>
+        <span class="k">public</span> <span class="n">TodoController</span><span class="p">(</span><span class="n">DocumentDBRepository</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="m">_</span><span class="n">todoRepo</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="n">todoRepo</span> <span class="p">=</span> <span class="n">_todoRepo</span><span class="p">;</span>
+            <span class="n">todoRepo</span> <span class="p">=</span> <span class="m">_</span><span class="n">todoRepo</span><span class="p">;</span>
         <span class="p">}</span>
 <span class="na">
 </span><span class="na">        [HttpPost(&#34;[action]</span><span class="s">&#34;)]
@@ -420,14 +416,13 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
             <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 </ol>
 <h4 id="build-front-end-for-document-creation">Build front-end for document creation</h4>
 <ol>
 <li>Create new folder called <strong>Services</strong> inside of App folder</li>
 <li>Add new file called <strong>TodoService.js</strong> inside of <strong>Services</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
     <span class="nx">getAll</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/Todo/GetAll&#39;</span><span class="p">,</span> <span class="p">{</span>
             <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;get&#39;</span><span class="p">,</span>
@@ -438,10 +433,9 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
             <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
         <span class="p">});</span>
     <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>Modify <strong>TodoList.vue</strong> file inside of <strong>App/Components/Todo</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
 <span class="hl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span class="hl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p">&gt;</span>
 </span><span class="hl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui animated relaxed list&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;todos.length&#34;</span><span class="p">&gt;</span>
@@ -517,7 +511,7 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 </span><span class="hl"><span class="p">}</span>
 </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Modify <strong>TodoListItem.vue</strong> file inside of <strong>App/Components/Todo</strong> folder. This will format list nicely as it is mostly UI change with only logic change being <strong>emit</strong> function which now returns entire object to delete instead of just id.
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
 <span class="hl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item ui clean segment&#34;</span><span class="p">&gt;</span>
 </span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui inverted dimmer&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ active: todo.isUpdating }&#34;</span><span class="p">&gt;</span>
 </span><span class="hl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -548,7 +542,7 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 <span class="p">}</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Modify <strong>index.html</strong> inside of <strong>wwwroot</strong> folder. This will add some CSS for nicer looks. Using Semantic UI is personal choice, bootstrap or any other CSS library is also good.
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/&gt;</span>
     <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span> <span class="p">/&gt;</span>
@@ -601,27 +595,25 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 <h4 id="build-a-web-api-for-document-creation">Build a Web API for document creation</h4>
 <ol>
 <li>Add new method <strong>CreateItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong> 
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">CreateItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="n">T</span> <span class="n">item</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">CreateItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="n">T</span> <span class="n">item</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">Document</span> <span class="n">document</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="n">CreateDocumentAsync</span><span class="p">(</span>
         <span class="n">UriFactory</span><span class="p">.</span><span class="n">CreateDocumentCollectionUri</span><span class="p">(</span><span class="n">dbOptions</span><span class="p">.</span><span class="n">DatabaseId</span><span class="p">,</span> <span class="n">CollectionId</span><span class="p">),</span> 
         <span class="n">item</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)(</span><span class="kt">dynamic</span><span class="p">)</span><span class="n">document</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>Add new method <strong>Create</strong> inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
 </span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">Create</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="k">await</span> <span class="n">todoRepo</span><span class="p">.</span><span class="n">CreateItemAsync</span><span class="p">(</span><span class="n">CollectionId</span><span class="p">,</span> <span class="n">todo</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 </ol>
 <h4 id="build-front-end-for-document-creation-1">Build front-end for document creation</h4>
 <ol>
 <li>Modify <strong>BaseInputText.vue</strong> inside of <strong>App/Components/Todo</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
 <span class="hl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span class="hl">    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Create new todo item<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
 </span><span class="hl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui vertical segment&#34;</span><span class="p">&gt;</span>
@@ -671,7 +663,7 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 <span class="p">}</span>
 <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Modify <strong>TodoList.vue</strong> inside of <strong>App/Components/Todo</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p">&gt;</span>
 <span class="hl">            <span class="p">&lt;</span><span class="nt">BaseInputText</span> 
@@ -756,7 +748,7 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
 <span class="p">}</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Modify <strong>TodoService.js</strong> inside of <strong>App/Services</strong> folder by adding new <strong>create</strong> function
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">create</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">create</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/Todo/Create&#39;</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;post&#39;</span><span class="p">,</span>
@@ -767,8 +759,7 @@ Note: Remember to add using MarczakIO.VueSPA.Web.Azure</li>
     <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
     <span class="p">});</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>Test the application</li>
 </ol>
 <div>
@@ -792,24 +783,22 @@ New items can be also seen in the Cosmos DB
 <h4 id="build-a-web-api-for-document-deletion">Build a Web API for document deletion</h4>
 <ol>
 <li>Add new method <strong>DeleteItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong> 
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">DeleteItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">id</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">DeleteItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">id</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="n">DeleteDocumentAsync</span><span class="p">(</span>
         <span class="n">UriFactory</span><span class="p">.</span><span class="n">CreateDocumentUri</span><span class="p">(</span><span class="n">dbOptions</span><span class="p">.</span><span class="n">DatabaseId</span><span class="p">,</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="n">id</span><span class="p">));</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>Add new method <strong>Delete</strong> inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
 </span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">Delete</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">await</span> <span class="n">todoRepo</span><span class="p">.</span><span class="n">DeleteItemAsync</span><span class="p">(</span><span class="n">CollectionId</span><span class="p">,</span> <span class="n">todo</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 </ol>
 <h4 id="build-front-end-for-document-creation-2">Build front-end for document creation</h4>
 <ol>
 <li>Modify <strong>removeTodo</strong> function inside of <strong>TodoList.vue</strong> inside of <strong>App/Components/Todo</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">removeTodo</span> <span class="p">(</span><span class="nx">todoToRemove</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">removeTodo</span> <span class="p">(</span><span class="nx">todoToRemove</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">$set</span><span class="p">(</span><span class="nx">todoToRemove</span><span class="p">,</span> <span class="s1">&#39;isUpdating&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
     <span class="nx">TodoService</span>
         <span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">todoToRemove</span><span class="p">)</span>
@@ -819,10 +808,9 @@ New items can be also seen in the Cosmos DB
             <span class="p">})</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">$set</span><span class="p">(</span><span class="nx">todoToRemove</span><span class="p">,</span> <span class="s1">&#39;isUpdating&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
         <span class="p">});</span>
-<span class="p">},</span>
-</code></pre></div></li>
+<span class="p">},</span></code></pre></div></li>
 <li>Modify <strong>TodoService.js</strong> inside of <strong>App/Services</strong> folder and add new <strong>delete</strong> function
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">delete</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="k">delete</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/Todo/Delete&#39;</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;post&#39;</span><span class="p">,</span>
@@ -831,8 +819,7 @@ New items can be also seen in the Cosmos DB
     <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
     <span class="p">});</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>Test the application</li>
 </ol>
 <div>
@@ -850,27 +837,25 @@ New items can be also seen in the Cosmos DB
 <h4 id="build-a-web-api-for-document-deletion-1">Build a Web API for document deletion</h4>
 <ol>
 <li>Add new method <strong>UpdateItemAsync</strong> to class file <strong>DocumentDBRepository.cs</strong> 
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">UpdateItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">id</span><span class="p">,</span> <span class="n">T</span> <span class="n">item</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">UpdateItemAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">id</span><span class="p">,</span> <span class="n">T</span> <span class="n">item</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">Document</span> <span class="n">document</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="n">ReplaceDocumentAsync</span><span class="p">(</span>
         <span class="n">UriFactory</span><span class="p">.</span><span class="n">CreateDocumentUri</span><span class="p">(</span><span class="n">dbOptions</span><span class="p">.</span><span class="n">DatabaseId</span><span class="p">,</span> <span class="n">CollectionId</span><span class="p">,</span> <span class="n">id</span><span class="p">),</span> <span class="n">item</span><span class="p">);</span>
     
     <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)(</span><span class="kt">dynamic</span><span class="p">)</span><span class="n">document</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 <strong>Note</strong>: It is possible to simplify this function by creating base type for type T which contains property Id and specify this in class declaration as a constraint. This way id parameter does not have to be passed explicitly but could be used from type T.</li>
 <li>Add new method <strong>Update</strong> inside of <strong>Controllers</strong> folder called <strong>TodoController.cs</strong>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[HttpPost(&#34;[action]</span><span class="s">&#34;)]
 </span><span class="s"></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Todo</span><span class="p">&gt;</span> <span class="n">Update</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">Todo</span> <span class="n">todo</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="k">await</span> <span class="n">todoRepo</span><span class="p">.</span><span class="n">UpdateItemAsync</span><span class="p">(</span><span class="n">CollectionId</span><span class="p">,</span> <span class="n">todo</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span> <span class="n">todo</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 </ol>
 <h4 id="build-front-end-for-document-creation-3">Build front-end for document creation</h4>
 <ol>
 <li>Modify file <strong>TodoList.vue</strong> inside of <strong>App/Components/Todo</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;!isFetching&#34;</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">BaseInputText</span> 
@@ -986,7 +971,7 @@ New items can be also seen in the Cosmos DB
 <span class="p">}</span>
 <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre></div></li>
 <li>Modify <strong>TodoListItem.vue</strong> inside of <strong>App/Components/Todo</strong> folder
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item ui clean segment&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui inverted dimmer&#34;</span> <span class="na">v-bind:class</span><span class="o">=</span><span class="s">&#34;{ active: todo.isUpdating }&#34;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ui loader&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -1055,7 +1040,7 @@ New items can be also seen in the Cosmos DB
 </span><span class="hl"><span class="p">}</span>
 </span><span class="hl"><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span></span></code></pre></div></li>
 <li>Modify <strong>TodoService.js</strong> inside of <strong>App/Services</strong> folder and add new <strong>update</strong> function
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">update</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">newValue</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">update</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">newValue</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">updateItem</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">item</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nx">newValue</span> <span class="p">}</span>
     <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">updateItem</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/Todo/Update&#39;</span><span class="p">,</span> <span class="p">{</span>
@@ -1067,8 +1052,7 @@ New items can be also seen in the Cosmos DB
     <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
     <span class="p">});</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<span class="p">}</span></code></pre></div></li>
 <li>Test the application</li>
 </ol>
 <div>
