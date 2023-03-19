@@ -5,10 +5,58 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Jul 2020 11:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 18 Mar 2023 17:00:23 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/tags/azure/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps</title>
+      <link>https://marczak.io/posts/2023/03/quick-cicd-for-databricks/</link>
+      <pubDate>Sat, 18 Mar 2023 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2023/03/quick-cicd-for-databricks/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2023/03/adb.jpg&quot;&gt;
+        &lt;p&gt;If your developers are building notebooks directly in Azure Databricks portal, then you can quickly enhance their productivity but adding a simple CI/CD pipelines with Azure DevOps. In this article I&amp;rsquo;ll show you how!&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>What&#39;s the difference between Application and Degelated flows for accessing OneDrive via Graph API</title>
+      <link>https://marczak.io/posts/2023/03/azure-ad-graph-application-vs-delegated-flow/</link>
+      <pubDate>Wed, 01 Mar 2023 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2023/03/azure-ad-graph-application-vs-delegated-flow/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2023/03/question.jpg&quot;&gt;
+        &lt;p&gt;How to access onedrive files using Graph API? Currently there are two ways, those are delegated and application flows, and in this article I&amp;rsquo;ll briefly explain both.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>How to implement a quick CI/CD for Azure Data Factory using Azure DevOps</title>
+      <link>https://marczak.io/posts/2023/02/quick-cicd-for-data-factory/</link>
+      <pubDate>Sun, 12 Feb 2023 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2023/02/quick-cicd-for-data-factory/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2023/02/adf.jpg&quot;&gt;
+        &lt;p&gt;If you need to set up CI/CD for your Data Factory, here is how to do it in less than 30 minutes!&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>How to query SharePoint with Graph API using Azure Service Principals and Managed Identities</title>
+      <link>https://marczak.io/posts/2023/01/sharepoint-graph-and-azure-sp/</link>
+      <pubDate>Sun, 29 Jan 2023 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2023/01/sharepoint-graph-and-azure-sp/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2023/01/sp-graph-query-1.png&quot;&gt;
+        &lt;p&gt;Do you want to query SharePoint and get the files or list information in a secure way using Azure&amp;rsquo;s Service Principals or Managed Identities? Here is a short guide on how to do it.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>AZ-900 Microsoft Azure Fundamentals full course</title>

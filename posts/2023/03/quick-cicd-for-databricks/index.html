@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps | Marczak.IO | Adam Marczak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-16x16.png" sizes="16x16" />
+<link rel="apple-touch-icon-precomposed" href="https://marczak.io/images/iphone-icon.png"/>
+<link rel="stylesheet" id="hestia_fonts-css" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700%7CRoboto+Slab%3A400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+<link href='https://marczak.io/css/hestia.min.css?ver=1.23' rel="stylesheet" type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.29' rel='stylesheet' type="text/css" />
+
+<meta name="description" content="If your developers are building notebooks directly in Azure Databricks portal, then you can quickly enhance their productivity but adding a simple CI/CD pipelines with Azure DevOps. In this article I&rsquo;ll show you how!">
+<meta name="author" content="Adam Marczak">
+<meta name="copyright" content="Adam Marczak">
+<meta name="title" content="How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps | Marczak.IO | Adam Marczak">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.facebook.com/MarczakIO/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps">
+<meta property="og:description" content="If your developers are building notebooks directly in Azure Databricks portal, then you can quickly enhance their productivity but adding a simple CI/CD pipelines with Azure DevOps. In this article I&rsquo;ll show you how!">
+<meta property="og:url" content="https://marczak.io/posts/2023/03/quick-cicd-for-databricks/">
+<meta property="og:site_name" content="Marczak.IO">
+<meta property="og:image" content="https://marczak.io/images/2023/03/adb.jpg">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@MarczakIO">
+<meta name="twitter:title" content="How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps">
+<meta name="twitter:description" content="If your developers are building notebooks directly in Azure Databricks portal, then you can quickly enhance their productivity but adding a simple CI/CD pipelines with Azure DevOps. In this article I&rsquo;ll show you how!">
+<meta name="twitter:url" content="https://marczak.io/posts/2023/03/quick-cicd-for-databricks/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', 'UA-106560028-1');
+</script>
+</head>
+<body class="home blog">
+  <div class="wrapper"><header class="header">
+  <nav class="navbar navbar-default hestia_left">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="title-logo-wrapper">
+          <a class="navbar-brand" href="/" title="Marczak.IO">
+            <p>Marczak.IO</p>
+          </a>
+        </div>
+      </div>
+      <div id="main-navigation" class="navbar-custom">
+        <div class="entry-social">
+  <a target="_top" class="btn btn-just-icon btn-social btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_top" class="btn btn-img" 
+      href="https://www.patreon.com/marczakio">
+      <img src="\images\patreon-black.svg">
+  </a>
+  <a target="_top" class="btn btn-friendly-site " 
+      style=""
+      href="https://azure4everyone.com">
+      <img src="https://marczak.io/images/azure4everyone.svg">
+      <span>Azure 4 Everyone</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </nav>
+  <div id="primary" class="boxed-layout-header page-header header-small" data-parallax="active" style="margin-top: -20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+          <h1 class="hestia-title">How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps</h1>
+          
+            <h4 class="author">
+              Published by<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2023-03-18 17:00:23 &#43;0200 &#43;0200">Mar 18 2023</time>
+            </h4>
+           
+        </div>
+      </div>
+    </div>
+    <div class="header-filter" style="background-image: url('/images/background.jpg');background-color: #283743;"></div>
+  </div>
+</header>
+    <div class="main main-raised">
+      <div class="hestia-blogs">
+        <div class="container">
+          <div class="row">
+<div class="col-md-9 single-posts-wrap">
+    <article id="/posts/2023/03/quick-cicd-for-databricks/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 1964px">
+    <div style="padding-bottom:64.94708994708995%"></div>
+    <img data-src="/images/2023/03/adb.jpg" src=""/> 
+</div> <h2>Highlight</h2>
+        <p>If your developers are building notebooks directly in Azure Databricks portal, then you can quickly enhance their productivity but adding a simple CI/CD pipelines with Azure DevOps. In this article I&rsquo;ll show you how!</p>
+<p>First of all I want to explain two different approaches to developing notebooks in Databricks portal. This article explains how to implement CI/CD for development in the portal. If you are developing locally with PySpark there are different approches. I call this one a simplistic approach that many projects can do without much change to their current ways of working.</p>
+<h3 id="the-basics">The basics</h3>
+<p>Let&rsquo;s start with how <strong>new</strong> git integration works. This new way is called &lsquo;Repos&rsquo;. It&rsquo;s also called &lsquo;new&rsquo; because there is a different and older feature that also was called git integration which integrated specific notebooks with git. But I never liked it.</p>
+<p>Documentation Reference: <a href="https://learn.microsoft.com/en-us/azure/databricks/repos/?WT.mc_id=AZ-MVP-5003556">https://learn.microsoft.com/en-us/azure/databricks/repos/</a></p>
+<p><strong>Databricks Git Integration</strong></p>
+<p>Azure Databricks has a following folder structure</p>
+<pre><code>Workspace
+├───Users
+│   ├── Adam
+│   └── Tom
+├───Shared
+│   ├── X
+│   └── Y
+└───Repos
+    ├── A
+    ├── B
+    ├── Adam
+    └── Tom
+</code></pre>
+<p>Even though in the Databricks portal Repos menu item is on the same level as the workspace, everything that you do in it is stored in a Workspace folder under Repos subfolder.</p>
+<p>That said, <strong>Repos</strong> is the &lsquo;new&rsquo; way of doing <strong>git integration</strong> in Azure Databricks. IMO, don&rsquo;t use the old &lsquo;per file versioning with git&rsquo;. The way I like to explain it, is that &lsquo;Repos&rsquo; is justa local development environment/machine hosted in the cloud (since you can&rsquo;t have databricks running locally). The only real way to develop locally is with PySpark with Hadoop and then just deploy to Databricks, but that&rsquo;s a story for another day.</p>
+<p>So let&rsquo;s look at the Repos for a second. Take below structure as an example of repos setup.</p>
+<pre><code>└───Repos
+    ├── A           - shared folder for purpose A
+    ├── B           - shared folder for purpose B
+    ├── Adam        - Adam's private virtual development environment/space
+    └── Tom         - Tom's private virtual development environment/space
+</code></pre>
+<p>In here we can either share shared folders which many people can contribute to concurrently or people can have their own folders. So&hellip; which one is preferred?</p>
+<p><strong>Two options of working on the code</strong></p>
+<p>There are two schools of how this is done right now (at least for what I have seen) when using repos</p>
+<ul>
+<li><strong>Option 1 - like in ADF</strong> - Create shared folders per branch and let multiple people work in there at the same time</li>
+<li><strong>Option 2 - like for a web-dev</strong> - This is closer to what you see in web development, where developers have their own machines with folders checked out to branches and pull/push every time they implement changes</li>
+</ul>
+<p>Both options have their merits but also small issues. Option 1 is simpler as it more &lsquo;feels&rsquo; like development in a Data Factory where multiple developers work on the same branch without needing to &lsquo;pull&rsquo; the code constantly. This folder structure would look like this</p>
+<pre><code>└───Repos                                           
+    ├── Feature/8236_dimCustomer       - shared folder for feature 8236
+    └── Feature/3232_factVolume        - shared folder for feature 3232
+</code></pre>
+<p>Developers collaborate in those folder and once everything works they only need push it to the Azure DevOps repo, pulling is easy, no merge conflicts ever</p>
+<p>Option 2 is more closer to web-dev so the structure would look like this (let&rsquo;s assume Adam &amp; Tom work on dimCutsomer feature)</p>
+<pre><code>└───Repos    
+    ├── Adam       
+    │   └── Feature/8236_dimCustomer        - Adam's folder for feature 8236
+    └── Tom 
+        └── Feature/8236_dimCustomer        - Tom's folder for feature 8236
+</code></pre>
+<p>So when they implement changes they need to constantly pull/push code not to make any conflicts. But it works like in a classic approach of web dev.</p>
+<p><strong>One issue</strong></p>
+<p>Now, there is one issue with Databricks repos in general, regardless of which option you will go with. There is no way to LOCK folder to a branch. By default it should look like this</p>
+<pre><code>└───Repos
+    ├── Main                            - Checked out to Main
+    └── Feature/8236_dimCustomer        - Checked out to Feature/8236_dimCustomer
+</code></pre>
+<p>But user can perform git checkout (using UI) at any time without any warning and change the current working branch, ending up with situation like this</p>
+<pre><code>└───Repos
+    ├── Main                            - Checked out to Feature/8236_dimCustomer
+    └── Feature/8236_dimCustomer        - Checked out to ABCD
+</code></pre>
+<p>Now from the perspective of the file system, folder is called <strong>Main</strong> but the files in it are really from the <strong>Feature/8236_dimCustomer</strong> branch. Not only developers can mess up the code, but they can look for issues before realizing they are using the wrong branch because folder is called Main.</p>
+<p>Unfortunately there is no solution to this, but one conclusion that comes to my mind. <strong>Repos should be considered only for &lsquo;development&rsquo; of the code, but not for the releases and ingratiation in external tools like data factory</strong>.</p>
+<p><strong>CI/CD process</strong></p>
+<p>Because of above, I&rsquo;ve decided to do a CI/CD process which for every branch and every push automatically create a current release folder in the workspace.</p>
+<p>Option 1</p>
+<pre><code>Workspace
+├───Releases
+│   ├── Main                              - current main
+│   └── Feature/8236_dimCustomer          - current Feature/8236 code
+└───Repos                                 
+    └── Feature/8236_dimCustomer          - shared folder for feature 8236
+</code></pre>
+<p>Option 2</p>
+<pre><code>Workspace
+├───Releases
+│   ├── Main                              - current main
+│   └── Feature/8236_dimCustomer          - current Feature/8236 code
+└───Repos                                 
+    ├── Adam                              
+    │   └── Feature/8236_dimCustomer      - Adam's folder for feature 8236
+    └── Tom                               
+        └── Feature/8236_dimCustomer      - Tom's folder for feature 8236
+</code></pre>
+<p>So my CI/CD process doesn&rsquo;t care if Adam pushed the code, or Tom did. It doesn&rsquo;t care if they shared a folder or they didn&rsquo;t. It only cares what is in Azure DevOps and releases that to the workspace folder.</p>
+<p><strong>CI/CD pipeline</strong></p>
+<p>And this is done via this YML pipeline</p>
+<p><strong>databricks-deploy-stage.yml</strong> generic reusable template for all environments (dev/test/prod)</p>
+<p>NOTE: Yes, I know there is Azure Databricks action in the marketplace, but I couldn&rsquo;t install it due to client policies, so I wrote bash script.</p>
+<pre><code>parameters:
+- name: stageName 
+  type: string 
+
+stages:
+- stage: ${{ parameters.stageName }}
+  variables:
+  - group: ${{ parameters.stageName }}
+  jobs:
+  - deployment: ${{ parameters.stageName }}
+    environment: '${{ parameters.stageName }}'
+    strategy:
+     runOnce:
+       deploy:
+         steps:
+         - script: pip install databricks-cli
+           displayName: &quot;install databricks-cli&quot;
+ 
+         - script: |
+             echo &quot;$(databricksHost)
+             $(databricksToken)&quot; | databricks configure --token
+           displayName: 'configure databricks-cli'
+ 
+         - task: DownloadPipelineArtifact@2
+           inputs:
+             source: current
+             artifact: 'Databricks'
+             downloadPath: $(System.ArtifactsDirectory)/databricks
+ 
+         - script: 'ls $(System.ArtifactsDirectory)/databricks'
+ 
+         - script: | 
+             BRANCH_NAME=$(echo &quot;$(BranchName)&quot; | awk -F/ '{print $NF}')
+             FOLDER=$(echo /$(Foldername)/$BRANCH_NAME)
+             echo $FOLDER
+             folder=$(databricks workspace ls --id $FOLDER)
+             if [[ &quot;$folder&quot; = Error* ]] ; then
+             echo &quot;Folder $FOLDER not found. Skipping...&quot;
+             else
+             echo &quot;Deleting $FOLDER&quot;
+             databricks workspace rm $FOLDER --recursive
+             fi
+           displayName: 'Delete old release'
+ 
+         - script: |
+             BRANCH_NAME=$(echo &quot;$(BranchName)&quot; | awk -F/ '{print $NF}')
+             FOLDER=$(echo /$(Foldername)/$BRANCH_NAME)
+             echo $FOLDER
+             databricks workspace import_dir $(System.ArtifactsDirectory)/databricks $FOLDER --exclude-hidden-files
+           displayName: 'New release'
+</code></pre>
+<p><strong>azure-pipelines-release-dev.yml</strong> - actual build &amp; release pipeline (all in one, your choice), triggers on every change</p>
+<pre><code>trigger:
+ branches:
+   include:
+     - '*'
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+- name: branchName
+  value: $(Build.SourceBranch)
+- name: folderName
+  value: release
+
+stages:
+- stage: BUILD
+  jobs:
+  - job: BUILD
+    steps:
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Build.Repository.LocalPath)/'
+        artifact: 'Databricks'
+        publishLocation: 'pipeline'
+
+- template: databricks-deploy-stage.yml
+  parameters: 
+      stageName: DEV
+</code></pre>
+<p>They key part here is triggering on every change</p>
+<pre><code>trigger:
+ branches:
+   include:
+     - '*'
+</code></pre>
+<p><strong>azure-pipelines-release-test-prod.yml</strong> - manually triggered deployment to TEST and PROD</p>
+<pre><code>trigger:
+- none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+- name: branchName
+  value: $(Build.SourceBranch)
+- name: folderName
+  value: release
+
+stages:
+- stage: BUILD
+  jobs:
+  - job: BUILD
+    steps:
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Build.Repository.LocalPath)/'
+        artifact: 'Databricks'
+        publishLocation: 'pipeline'
+
+- template: databricks-deploy-stage.yml
+  parameters: 
+      stageName: TEST
+
+- template: databricks-deploy-stage.yml
+  parameters: 
+      stageName: PROD
+</code></pre>
+<p><strong>Branching policies</strong></p>
+<p>Now I just ensure that people need to create feature branches, I let them decide however they want to use Repos, sharing folders or per user. From my perspective I only need code to be pushed to repo.</p>
+<p>Also, in data factory I only use Workspace/Release/&lt;branch_name&gt;/&lt;notebook_name&gt; in the pipelines. Branch name is a global ADF parameter in ADF which points to the current branch. I override it via DevOps pipelines.</p>
+<p>I only release &lsquo;main&rsquo; to other environments.</p>
+<h3 id="summary">Summary</h3>
+<p>I hope this highlight the new and quick way you can add CI/CD DevOps practices to your project team without huge change of their current ways of working. In future, I&rsquo;d still advise to learn and build solutions using PySpark for several extra dvantages, but for Today that&rsquo;s it. I hope it helps!</p>
+    </article>
+    <div class="section-blog-info">
+        <div class="row">
+            <div class="col-md-12">
+<div class="authorblock">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="avatar"></div>
+        </div>
+        <div class="col-sm-9">
+            <h4><b>Adam Marczak</b></h4>
+            <p>Programmer, architect, trainer, blogger, evangelist are just a few of my titles. What I really am, is a passionate technology enthusiast. I take great pleasure in learning new technologies and finding ways in which this can aid people every day. My latest passion is running an <a href='https://www.youtube.com/azure4everyone'>Azure 4 Everyone</a> YouTube channel, where I show that Azure really is for everyone!</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="text-center">Did you enjoy the article?</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <h4 class="">Share it!</h4><a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Facebook" 
+   class="btn btn-just-icon btn-share btn-facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmarczak.io%2fposts%2f2023%2f03%2fquick-cicd-for-databricks%2f">
+    <i class="fa fa-facebook"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Twitter" 
+   class="btn btn-just-icon btn-share btn-twitter" 
+   href="https://twitter.com/home?status=How%20to%20implement%20a%20quick%20CI%2fCD%20for%20Azure%20Databricks%20notebooks%20using%20Azure%20DevOps - https%3a%2f%2fmarczak.io%2fposts%2f2023%2f03%2fquick-cicd-for-databricks%2f">
+   <i class="fa fa-twitter"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Google+" 
+   class="btn btn-just-icon btn-share btn-google" 
+   href="https://plus.google.com/share?url=https%3a%2f%2fmarczak.io%2fposts%2f2023%2f03%2fquick-cicd-for-databricks%2f"><i 
+   class="fa fa-google"></i>
+</a>
+            
+            </div>
+            <div class="col-md-6 text-center large">
+                <h4 class="">More tagged posts</h4>
+  <div class="tag-list">
+    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
+      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
+    </a>
+    <a href="https://marczak.io/tags/databricks" title="View all posts in databricks">
+      <img src="https://marczak.io/images/tags/databricks.svg" alt="databricks"/>
+    </a>
+  </div>
+            </div>
+        </div>
+        <div class="row comments">
+            <div class="col-md-12"><div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "https:\/\/marczak.io\/posts\/2023\/03\/quick-cicd-for-databricks\/"; 
+this.page.identifier = "\/posts\/2023\/03\/quick-cicd-for-databricks\/";
+};
+
+(function() {
+if (window.location.hostname == "localhost")return;
+var d = document, s = d.createElement('script');
+s.src = 'https://marczak-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+            </div>
+        </div> 
+    </div>
+</div>
+            <div class="col-md-3 blog-sidebar-wrapper">
+              <aside id="secondary" class="blog-sidebar" role="complementary"><div id="mvp" class="banner-mvp">
+<img src="/images/mvp.svg" />
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Courses</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px">
+    <a href="https://marczak.io/az-900" >
+        <img src="/images/az-900/cert.svg" style="width:60px;margin-right:10px;;float:left;"></img> AZ-900 <br/>Microsoft Azure Fundamentlas
+    </a>
+</div>
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Featured Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Process Excel files in Azure</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/pc8Kv-lRD8k" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/49-AzureExcelFileProcessing-ADFandDatabricks-Tutorial-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">AZ-900 Full Course</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/NPEsD6n9A_I" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-00-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Azure Active Directory Tutorial</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/Ma7VAQE7ga4" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/48-AzureActiveDirectory-Intro-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;max-width:180px;margin-right:30px;">
+<h5>Recent Posts</h5>
+<ul>
+        <li><b class="list-header">2023 March</b></li>
+        <li class="indented">
+            <a href="/posts/2023/03/quick-cicd-for-databricks/" title="How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps" rel="bookmark">
+                <b>18th </b>How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps
+            </a>
+        </li>
+        <li class="indented">
+            <a href="/posts/2023/03/azure-ad-graph-application-vs-delegated-flow/" title="What&#39;s the difference between Application and Degelated flows for accessing OneDrive via Graph API" rel="bookmark">
+                <b>1st </b>What&#39;s the difference between Application and Degelated flows for accessing OneDrive via Graph API
+            </a>
+        </li>
+        <li><b class="list-header">2023 February</b></li>
+        <li class="indented">
+            <a href="/posts/2023/02/quick-cicd-for-data-factory/" title="How to implement a quick CI/CD for Azure Data Factory using Azure DevOps" rel="bookmark">
+                <b>12th </b>How to implement a quick CI/CD for Azure Data Factory using Azure DevOps
+            </a>
+        </li>
+        <li><b class="list-header">2023 January</b></li>
+        <li class="indented">
+            <a href="/posts/2023/01/sharepoint-graph-and-azure-sp/" title="How to query SharePoint with Graph API using Azure Service Principals and Managed Identities" rel="bookmark">
+                <b>29th </b>How to query SharePoint with Graph API using Azure Service Principals and Managed Identities
+            </a>
+        </li>
+        <li><b class="list-header">2020 July</b></li>
+        <li class="indented">
+            <a href="/posts/2020/07/az-900-full-course/" title="AZ-900 Microsoft Azure Fundamentals full course" rel="bookmark">
+                <b>7th </b>AZ-900 Microsoft Azure Fundamentals full course
+            </a>
+        </li>
+</ul>
+</div><div id="categories-3" class="widget widget_categories" style="float: left;">
+  <h5>Tags</h5>
+  <ul class="tag-list">
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/active-directory">Active Directory (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
+        </div> 
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-service.svg" alt="App Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-service">App Service (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (21)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/bot-service.svg" alt="Bot Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/bot-service">Bot Service (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-factory.svg" alt="Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-factory">Data Factory (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/databricks.svg" alt="Databricks"/> 
+        </div> 
+        <a href="https://marczak.io/tags/databricks">Databricks (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
+        </div> 
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/flow.svg" alt="Flow"/> 
+        </div> 
+        <a href="https://marczak.io/tags/flow">Flow (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/functions.svg" alt="Functions"/> 
+        </div> 
+        <a href="https://marczak.io/tags/functions">Functions (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/key-vault.svg" alt="Key Vault"/> 
+        </div> 
+        <a href="https://marczak.io/tags/key-vault">Key Vault (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (7)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/security.svg" alt="Security"/> 
+        </div> 
+        <a href="https://marczak.io/tags/security">Security (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
+        </div> 
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/teams.svg" alt="Teams"/> 
+        </div> 
+        <a href="https://marczak.io/tags/teams">Teams (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vue.js.svg" alt="Vue.js"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/webpack.svg" alt="Webpack"/> 
+        </div> 
+        <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
+        </div> 
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
+      </li>
+  </ul>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Sites</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px;">
+    <a href="https://sqlplayer.net" > 
+<div class="lazy" style="max-height: 270px">
+    <div style="padding-bottom:28.481012658227847%"></div>
+    <img data-src="/images//sites/sql-player.png" src=""/> 
+</div> 
+    </a>
+</div>
+</div>
+</div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+<footer class="footer footer-black footer-big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="connected-title">Stay Connected</h5>
+                <div class="">
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-about"
+     href="/about">
+    <i class="fa fa-user"></i>
+  </a>
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-github"
+     href="https://github.com/MarczakIO">
+    <i class="fa fa-github"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
+     href="https://marczak.io/index.xml">
+    <i class="fa fa-rss"></i>
+  </a>
+</div>
+            </div>
+            &copy;<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> <a href="https://themeisle.com/themes/hestia/" target="_blank" rel="nofollow">Hestia Theme</a>
+        </div>
+    </div>
+</footer>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
+  
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="https:\/\/marczak.io\/js\/bootstrap.min.js"><\/script>')}</script>
+  
+  <div id="bootstrapCssTest" class="hidden"></div>
+  <script>
+    $(function() {
+      if ($('#bootstrapCssTest').is(':visible')) {
+        $("head").prepend('<link rel="stylesheet" href="https:\/\/marczak.io\/css\/bootstrap.min.css">');
+      }
+    });
+  </script>
+  <script type="text/javascript" src="https://marczak.io/js/main.min.js?ver=1.16"></script>
+</body>
+</html>

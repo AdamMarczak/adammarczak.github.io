@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>How to query SharePoint with Graph API using Azure Service Principals and Managed Identities | Marczak.IO | Adam Marczak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://marczak.io/images/favicon-16x16.png" sizes="16x16" />
+<link rel="apple-touch-icon-precomposed" href="https://marczak.io/images/iphone-icon.png"/>
+<link rel="stylesheet" id="hestia_fonts-css" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700%7CRoboto+Slab%3A400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+<link href='https://marczak.io/css/hestia.min.css?ver=1.23' rel="stylesheet" type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.29' rel='stylesheet' type="text/css" />
+
+<meta name="description" content="Do you want to query SharePoint and get the files or list information in a secure way using Azure&rsquo;s Service Principals or Managed Identities? Here is a short guide on how to do it.">
+<meta name="author" content="Adam Marczak">
+<meta name="copyright" content="Adam Marczak">
+<meta name="title" content="How to query SharePoint with Graph API using Azure Service Principals and Managed Identities | Marczak.IO | Adam Marczak">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.facebook.com/MarczakIO/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to query SharePoint with Graph API using Azure Service Principals and Managed Identities">
+<meta property="og:description" content="Do you want to query SharePoint and get the files or list information in a secure way using Azure&rsquo;s Service Principals or Managed Identities? Here is a short guide on how to do it.">
+<meta property="og:url" content="https://marczak.io/posts/2023/01/sharepoint-graph-and-azure-sp/">
+<meta property="og:site_name" content="Marczak.IO">
+<meta property="og:image" content="https://marczak.io/images/2023/01/sp-graph-query-1.png">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@MarczakIO">
+<meta name="twitter:title" content="How to query SharePoint with Graph API using Azure Service Principals and Managed Identities">
+<meta name="twitter:description" content="Do you want to query SharePoint and get the files or list information in a secure way using Azure&rsquo;s Service Principals or Managed Identities? Here is a short guide on how to do it.">
+<meta name="twitter:url" content="https://marczak.io/posts/2023/01/sharepoint-graph-and-azure-sp/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', 'UA-106560028-1');
+</script>
+</head>
+<body class="home blog">
+  <div class="wrapper"><header class="header">
+  <nav class="navbar navbar-default hestia_left">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="title-logo-wrapper">
+          <a class="navbar-brand" href="/" title="Marczak.IO">
+            <p>Marczak.IO</p>
+          </a>
+        </div>
+      </div>
+      <div id="main-navigation" class="navbar-custom">
+        <div class="entry-social">
+  <a target="_top" class="btn btn-just-icon btn-social btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_top" class="btn btn-img" 
+      href="https://www.patreon.com/marczakio">
+      <img src="\images\patreon-black.svg">
+  </a>
+  <a target="_top" class="btn btn-friendly-site " 
+      style=""
+      href="https://azure4everyone.com">
+      <img src="https://marczak.io/images/azure4everyone.svg">
+      <span>Azure 4 Everyone</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </nav>
+  <div id="primary" class="boxed-layout-header page-header header-small" data-parallax="active" style="margin-top: -20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+          <h1 class="hestia-title">How to query SharePoint with Graph API using Azure Service Principals and Managed Identities</h1>
+          
+            <h4 class="author">
+              Published by<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2023-01-29 17:00:23 &#43;0200 &#43;0200">Jan 29 2023</time>
+            </h4>
+           
+        </div>
+      </div>
+    </div>
+    <div class="header-filter" style="background-image: url('/images/background.jpg');background-color: #283743;"></div>
+  </div>
+</header>
+    <div class="main main-raised">
+      <div class="hestia-blogs">
+        <div class="container">
+          <div class="row">
+<div class="col-md-9 single-posts-wrap">
+    <article id="/posts/2023/01/sharepoint-graph-and-azure-sp/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 834px">
+    <div style="padding-bottom:47.38636363636363%"></div>
+    <img data-src="/images/2023/01/sp-graph-query-1.png" src=""/> 
+</div> <h2>Highlight</h2>
+        <p>Do you want to query SharePoint and get the files or list information in a secure way using Azure&rsquo;s Service Principals or Managed Identities? Here is a short guide on how to do it.</p>
+<h2 id="why-using-graph-api-us-better-and-what-changed-from-2019">Why using Graph API us better and what changed from 2019?</h2>
+<p>In 2021 Microsoft published this blog entry (<a href="https://devblogs.microsoft.com/microsoft365dev/controlling-app-access-on-specific-sharepoint-site-collections/?WT.mc_id=AZ-MVP-5003556">https://devblogs.microsoft.com/microsoft365dev/controlling-app-access-on-specific-sharepoint-site-collections/</a>) where they show the newest way to connect to SharePoint sites in a secure way using Graph permissions. This was previously possible using Sites.*.All permissions, but the issue was that Sites.ReadWrite.All or Sites.FullControl.All was highly privileged permissions, meaning a service principal could literally read any site on your SharePoint. As we know there are many sites that should not be accessed by dev teams like accounting, financial controlling, HR, etc.</p>
+<p>Now graph allows new permission called <strong>Sites.Selected</strong> which means you can use graph endpoints, but access the sites that your service principal was excplicitly granted access to.</p>
+<p>This blog entry will describe how to assign these permissions using PowerShell so that you can automate this process.</p>
+<h2 id="permissions">Permissions</h2>
+<p>In order to use Graph API your service principal will need two permissions assigned</p>
+<ol>
+<li>On Microsoft Graph API (in Azure Active Directory)</li>
+<li>On SharePoint Site via
+<ol>
+<li>Graph call performed by Site admin</li>
+<li>Old interface to grant SharePoint app permissions</li>
+</ol>
+</li>
+</ol>
+<p>All ways are described in steps below.</p>
+<h3 id="step-1---assign-graph-api-sitesselected-permissios">Step 1 - assign graph API Sites.Selected permissios</h3>
+<h4 id="option-1---azure-portal-route">Option #1 - Azure Portal route</h4>
+<ol>
+<li>Navigate to Azure AD
+
+<div class="lazy" style="max-height: 311px">
+    <div style="padding-bottom:30.915%"></div>
+    <img data-src="/images/2023/01/sc1.png" src=""/> 
+</div></li>
+<li>Find your app registration
+
+<div class="lazy" style="max-height: 537px">
+    <div style="padding-bottom:93.391%"></div>
+    <img data-src="/images/2023/01/sc2.png" src=""/> 
+</div></li>
+<li>Add new Graph Permissions <strong>(Note: This can be done by App Owner)</strong>
+
+<div class="lazy" style="max-height: 527px">
+    <div style="padding-bottom:59.280%"></div>
+    <img data-src="/images/2023/01/sc3.png" src=""/> 
+</div></li>
+<li>Find Sites.Selected permission and click add
+
+<div class="lazy" style="max-height: 752px">
+    <div style="padding-bottom:90.060%"></div>
+    <img data-src="/images/2023/01/sc4.png" src=""/> 
+</div></li>
+<li>Notice that the permission was added but is NOT active because it requires admin consent. <strong>(Note: This step must be performed by Azure AD Global Administrator)</strong>
+
+<div class="lazy" style="max-height: 446px">
+    <div style="padding-bottom:46.702%"></div>
+    <img data-src="/images/2023/01/sc5.png" src=""/> 
+</div></li>
+<li>Verify that the permission was granted
+
+<div class="lazy" style="max-height: 165px">
+    <div style="padding-bottom:16.208%"></div>
+    <img data-src="/images/2023/01/sc6.png" src=""/> 
+</div></li>
+</ol>
+<h4 id="powershell-route">PowerShell route</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$principalNames</span> <span class="p">=</span> <span class="s2">&#34;sp-demo2&#34;</span>
+<span class="nv">$RequiredPermissions</span> <span class="p">=</span> <span class="s2">&#34;Sites.Selected&#34;</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$principalName</span> <span class="k">in</span> <span class="nv">$principalNames</span><span class="p">)</span> <span class="p">{</span>  
+  <span class="nb">Write-Host</span> <span class="s2">&#34;Assigning privileges for $principalName&#34;</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>   
+  <span class="nv">$sp</span> <span class="p">=</span> <span class="nb">Get-AzureADServicePrincipal</span> <span class="n">-SearchString</span> <span class="nv">$principalName</span>  
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$sp</span><span class="p">.</span><span class="n">AppId</span> <span class="o">-eq</span> <span class="nv">$null</span><span class="p">)</span> <span class="p">{</span>
+      
+      <span class="nv">$errorMessage</span> <span class="p">=</span> <span class="s2">&#34;Principal $principalName was not found. Please check principal name.&#34;</span>
+      <span class="nb">Write-Host</span> <span class="nv">$errorMessage</span> <span class="n">-ForegroundColor</span> <span class="n">Magenta</span>
+      <span class="nb">Write-Error</span> <span class="nv">$errorMessage</span>  
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    
+    <span class="nv">$PrincipalId</span> <span class="p">=</span> <span class="nv">$sp</span><span class="p">.</span><span class="n">AppId</span>  
+    <span class="nv">$Graph</span> <span class="p">=</span> <span class="nb">Get-AzureADServicePrincipal</span> <span class="n">-Filter</span> <span class="s2">&#34;AppId eq &#39;00000003-0000-0000-c000-000000000000&#39;&#34;</span>
+    <span class="nv">$Principal</span> <span class="p">=</span> <span class="nb">Get-AzureADServicePrincipal</span> <span class="n">-Filter</span> <span class="s2">&#34;AppId eq &#39;$PrincipalId&#39;&#34;</span>  
+    <span class="nv">$RequiredPermissions</span> <span class="p">|</span> <span class="p">%{</span>
+      <span class="nv">$permission</span> <span class="p">=</span> <span class="nv">$_</span>
+      <span class="nb">Write-Output</span> <span class="s2">&#34;Assigning permission $permission&#34;</span>
+      <span class="nv">$Role</span> <span class="p">=</span> <span class="nv">$Graph</span><span class="p">.</span><span class="n">AppRoles</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Value</span> <span class="o">-eq</span> <span class="nv">$permission</span> <span class="p">}</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="n">1</span>  
+      <span class="nb">New-AzureADServiceAppRoleAssignment</span> <span class="p">`</span>
+        <span class="n">-Id</span> <span class="nv">$Role</span><span class="p">.</span><span class="n">Id</span> <span class="p">`</span>
+        <span class="n">-PrincipalId</span> <span class="nv">$Principal</span><span class="p">.</span><span class="n">ObjectId</span> <span class="p">`</span>
+        <span class="n">-ResourceId</span> <span class="nv">$Graph</span><span class="p">.</span><span class="n">ObjectId</span> <span class="p">`</span>
+        <span class="n">-ObjectId</span> <span class="nv">$Principal</span><span class="p">.</span><span class="n">ObjectId</span>
+    <span class="p">}</span>
+  <span class="p">}</span>  
+<span class="p">}</span>
+</code></pre></div><h3 id="step-2---assign-sharepoint-site-permissions">Step 2 - Assign SharePoint Site Permissions</h3>
+<p>You need to assign following read or write permissions to service principal using Permissions API. There are two ways to do it.</p>
+<ol>
+<li>via Graph API /sites/{siteId}/permissionss endpoint</li>
+<li>via App Permission Panel (old way)</li>
+</ol>
+<h4 id="prerequisites">Prerequisites</h4>
+<ol>
+<li>Get SharePoint site ID by opening URL <code>https://&lt;domain&gt;.sharepoint.com/sites/&lt;site_name&gt;/_api/site/id</code> (replace domain and site_name with your site and domain)
+
+<div class="lazy" style="max-height: 268px">
+    <div style="padding-bottom:22.616%"></div>
+    <img data-src="/images/2023/01/sc7.png" src=""/> 
+</div></li>
+</ol>
+<h4 id="option-1---graph-endpoint-way">Option #1 - Graph Endpoint way</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="err">POST https://graph.microsoft.com/v1.0/sites/{siteId}/permissions
+</span><span class="err">
+</span><span class="err">Content-Type: application/json
+</span><span class="err">
+</span><span class="err">{
+</span><span class="err">  &#34;roles&#34;: [&#34;write&#34;],
+</span><span class="err">  &#34;grantedToIdentities&#34;: [{
+</span><span class="err">    &#34;application&#34;: {
+</span><span class="err">      &#34;id&#34;: &#34;89ea5c94-7736-4e25-95ad-3fa95f62b66e&#34;,
+</span><span class="err">      &#34;displayName&#34;: &#34;Foo App&#34;
+</span><span class="err">    }
+</span><span class="err">  }]
+</span><span class="err">}
+</span></code></pre></div><p>Documentation links</p>
+<ul>
+<li>Site Permissions endpoint 
+<a href="https://learn.microsoft.com/en-us/graph/api/resources/permission?WT.mc_id=AZ-MVP-5003556">https://learn.microsoft.com/en-us/graph/api/resources/permission</a></li>
+<li>Get site permission 
+<a href="https://learn.microsoft.com/en-us/graph/api/site-get-permission?WT.mc_id=AZ-MVP-5003556">https://learn.microsoft.com/en-us/graph/api/site-get-permission</a></li>
+<li>List site permissions 
+<a href="https://learn.microsoft.com/en-us/graph/api/site-list-permission?WT.mc_id=AZ-MVP-5003556">https://learn.microsoft.com/en-us/graph/api/site-list-permission</a></li>
+<li>Create site permissions 
+<a href="https://learn.microsoft.com/en-us/graph/api/site--permission?WT.mc_id=AZ-MVP-5003556">https://learn.microsoft.com/en-us/graph/api/site-update-permission</a></li>
+<li>Update site permissions 
+<a href="https://learn.microsoft.com/en-us/graph/api/site-post-permission?WT.mc_id=AZ-MVP-5003556">https://learn.microsoft.com/en-us/graph/api/site-post-permission</a></li>
+<li>Delete site permissions 
+<a href="https://learn.microsoft.com/en-us/graph/api/site-delete-permission?WT.mc_id=AZ-MVP-5003556">https://learn.microsoft.com/en-us/graph/api/site-delete-permission</a></li>
+</ul>
+<h4 id="powershell">PowerShell</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="c"># MS Graph PowerShell Modules Docs: https://docs.microsoft.com/en-us/powershell/microsoftgraph/overview</span>
+<span class="c"># Installation (Run those commands - one time setup)</span>
+<span class="c">#   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span>
+<span class="c">#   Install-Module Microsoft.Graph -Scope CurrentUser</span>
+<span class="c">#   Import-Module Microsoft.Graph</span>
+
+<span class="c"># INPUTS</span>
+<span class="nv">$siteId</span> <span class="p">=</span> <span class="s2">&#34;cfe98761-6d30-4fc9-ab6e-90e3eb304c03&#34;</span>
+<span class="nv">$appDisplayName</span> <span class="p">=</span> <span class="s2">&#34;sp-demo2&#34;</span>
+<span class="nv">$permission</span> <span class="p">=</span> <span class="s2">&#34;read&#34;</span>
+
+<span class="c"># CONNECT</span>
+<span class="nb">Connect-MgGraph</span> <span class="n">-Scopes</span> <span class="s2">&#34;Sites.Read.All&#34;</span><span class="p">,</span><span class="s2">&#34;Sites.FullControl.All&#34;</span>
+<span class="nb">Connect-AzureAD</span>
+
+<span class="nv">$sp</span> <span class="p">=</span> <span class="nb">Get-AzureADServicePrincipal</span> <span class="n">-SearchString</span> <span class="nv">$appDisplayName</span>  
+<span class="nv">$appId</span> <span class="p">=</span> <span class="nv">$sp</span><span class="p">.</span><span class="n">AppId</span>
+
+<span class="nv">$site</span> <span class="p">=</span> <span class="nb">Get-MGSite</span> <span class="n">-SiteId</span> <span class="nv">$siteId</span> 
+
+<span class="c"># TEST - Get Current Permissions </span>
+<span class="nb">Write-Host</span> <span class="s2">&#34;Before the update&#34;</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+<span class="nv">$permissions</span> <span class="p">=</span> <span class="nb">Get-MgSitePermission</span> <span class="n">-SiteId</span> <span class="nv">$siteId</span>
+<span class="nv">$permissions</span> <span class="p">|</span> <span class="nb">Select </span><span class="n">-ExpandProperty</span> <span class="n">GrantedToIdentities</span> <span class="p">|</span> <span class="nb">Select </span><span class="n">-ExpandProperty</span> <span class="n">Application</span>
+
+<span class="c"># ADD - new Service Principal</span>
+<span class="nv">$body</span> <span class="p">=</span> <span class="p">@{</span>
+  <span class="s1">&#39;roles&#39;</span> <span class="p">=</span> <span class="p">@(</span>
+      <span class="nv">$permission</span>
+   <span class="p">);</span>
+  <span class="s1">&#39;grantedToIdentities&#39;</span> <span class="p">=</span> <span class="p">@(</span>
+      <span class="p">@{</span>
+        <span class="s1">&#39;application&#39;</span> <span class="p">=</span> <span class="p">@{</span>
+          <span class="s1">&#39;id&#39;</span> <span class="p">=</span> <span class="nv">$appId</span>
+          <span class="s1">&#39;displayName&#39;</span> <span class="p">=</span> <span class="nv">$appDisplayName</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+   <span class="p">);</span>
+<span class="p">}</span>
+<span class="nv">$bodyJson</span> <span class="p">=</span> <span class="nv">$body</span> <span class="p">|</span> <span class="nb">ConvertTo-Json</span> <span class="n">-Depth</span> <span class="n">10</span> <span class="n">-Compress</span>
+<span class="nb">Invoke-MgGraphRequest</span> <span class="p">`</span>
+    <span class="n">-Method</span> <span class="n">POST</span> <span class="p">`</span>
+    <span class="n">-Uri</span> <span class="s2">&#34;v1.0/sites/$SiteId/permissions&#34;</span> <span class="p">`</span>
+    <span class="n">-Body</span> <span class="nv">$bodyJson</span>
+
+<span class="c"># TEST - Get Updated Permissions </span>
+<span class="nb">Write-Host</span> <span class="s2">&#34;After the update&#34;</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+<span class="nv">$permissions</span> <span class="p">=</span> <span class="nb">Get-MgSitePermission</span> <span class="n">-SiteId</span> <span class="nv">$siteId</span>
+<span class="nv">$permissions</span> <span class="p">|</span> <span class="nb">Select </span><span class="n">-ExpandProperty</span> <span class="n">GrantedToIdentities</span> <span class="p">|</span> <span class="nb">Select </span><span class="n">-ExpandProperty</span> <span class="n">Application</span>
+</code></pre></div><h4 id="option-2---using-app-consent-screen">Option #2 - Using App Consent Screen</h4>
+<p>White it&rsquo;s not a recommended way, it seems to be working too for Graph API access. App consent is defined here <a href="https://learn.microsoft.com/en-us/sharepoint/dev/solution-guidance/security-apponly-azureacs?WT.mc_id=AZ-MVP-5003556">https://learn.microsoft.com/en-us/sharepoint/dev/solution-guidance/security-apponly-azureacs</a></p>
+<ol>
+<li>Open Site app insite URL <code>https://&lt;domain&gt;.sharepoint.com/sites/&lt;site_name&gt;/_layouts/15/appinv.aspx</code></li>
+<li>Fill in the form
+
+<div class="lazy" style="max-height: 660px">
+    <div style="padding-bottom:63.707%"></div>
+    <img data-src="/images/2023/01/sc8.png" src=""/> 
+</div></li>
+<li>Use following payload (use proper permissions Reader/Contributor/FullControl)
+<pre tabindex="0"><code>&lt;AppPermissionRequests AllowAppOnlyPolicy=&quot;true&quot;&gt;
+  &lt;AppPermissionRequest Scope=&quot;http://sharepoint/content/sites/&lt;site_name&gt;&quot; Right=&quot;Reader&quot; /&gt;
+&lt;/AppPermissionRequests&gt;
+</code></pre><ul>
+<li>Reader</li>
+<li>Contributor</li>
+<li>FullControl</li>
+</ul>
+</li>
+<li>Trust the app
+
+<div class="lazy" style="max-height: 337px">
+    <div style="padding-bottom:49.197%"></div>
+    <img data-src="/images/2023/01/sc9.png" src=""/> 
+</div></li>
+</ol>
+<h3 id="done-time-for-testing">DONE! Time for testing</h3>
+<p>Now you can use two graph endpoints to get the data</p>
+<ol>
+<li>Sites <a href="https://learn.microsoft.com/en-us/graph/api/resources/site?WT.mc_id=AZ-MVP-5003556">https://learn.microsoft.com/en-us/graph/api/resources/site</a> - to query all website information based on assigned permissions</li>
+<li>Drive <a href="https://learn.microsoft.com/en-us/graph/api/resources/drive?WT.mc_id=AZ-MVP-5003556">https://learn.microsoft.com/en-us/graph/api/resources/drive</a> - to upload / download files on SharePoint sites</li>
+</ol>
+<h4 id="postman-call">POSTMAN call</h4>
+<h4 id="example-1-logic-apps-with-service-principal-hardcoded-for-demo">Example 1: Logic apps with Service Principal (hardcoded for demo)</h4>
+<ol>
+<li>Logic App design
+
+<div class="lazy" style="max-height: 537px">
+    <div style="padding-bottom:139.119%"></div>
+    <img data-src="/images/2023/01/sc11.png" src=""/> 
+</div></li>
+<li>Code the cope into code view
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
+    <span class="nt">&#34;definition&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;actions&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;For_each_Site_Drive&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;actions&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;Condition&#34;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&#34;actions&#34;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&#34;For_each_Drive_Item&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&#34;actions&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nt">&#34;Create_blob_(V2)&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nt">&#34;body&#34;</span><span class="p">:</span> <span class="s2">&#34;@binary(body(&#39;HTTP_-_SharePoint_Get_Drive_Item_Content&#39;))&#34;</span><span class="p">,</span>
+                                            <span class="nt">&#34;headers&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                                <span class="nt">&#34;Content-Type&#34;</span><span class="p">:</span> <span class="s2">&#34;@{body(&#39;HTTP_-_SharePoint_Get_Drive_Item_Content&#39;)?[&#39;$content-type&#39;]}&#34;</span><span class="p">,</span>
+                                                <span class="nt">&#34;ReadFileMetadataFromServer&#34;</span><span class="p">:</span> <span class="kc">true</span>
+                                            <span class="p">},</span>
+                                            <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                                <span class="nt">&#34;connection&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                                    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;@parameters(&#39;$connections&#39;)[&#39;azureblob&#39;][&#39;connectionId&#39;]&#34;</span>
+                                                <span class="p">}</span>
+                                            <span class="p">},</span>
+                                            <span class="nt">&#34;method&#34;</span><span class="p">:</span> <span class="s2">&#34;post&#34;</span><span class="p">,</span>
+                                            <span class="nt">&#34;path&#34;</span><span class="p">:</span> <span class="s2">&#34;/v2/datasets/@{encodeURIComponent(encodeURIComponent(&#39;azsharepoint&#39;))}/files&#34;</span><span class="p">,</span>
+                                            <span class="nt">&#34;queries&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                                <span class="nt">&#34;folderPath&#34;</span><span class="p">:</span> <span class="s2">&#34;hr-files/logic-app-sp&#34;</span><span class="p">,</span>
+                                                <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;@{body(&#39;HTTP_-_SharePoint_Get_Drive_Item_by_ID&#39;)?[&#39;name&#39;]}&#34;</span><span class="p">,</span>
+                                                <span class="nt">&#34;queryParametersSingleEncoded&#34;</span><span class="p">:</span> <span class="kc">true</span>
+                                            <span class="p">}</span>
+                                        <span class="p">},</span>
+                                        <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nt">&#34;HTTP_-_SharePoint_Get_Drive_Item_Content&#34;</span><span class="p">:</span> <span class="p">[</span>
+                                                <span class="s2">&#34;Succeeded&#34;</span>
+                                            <span class="p">]</span>
+                                        <span class="p">},</span>
+                                        <span class="nt">&#34;runtimeConfiguration&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nt">&#34;contentTransfer&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                                <span class="nt">&#34;transferMode&#34;</span><span class="p">:</span> <span class="s2">&#34;Chunked&#34;</span>
+                                            <span class="p">}</span>
+                                        <span class="p">},</span>
+                                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ApiConnection&#34;</span>
+                                    <span class="p">},</span>
+                                    <span class="nt">&#34;HTTP_-_SharePoint_Get_Drive_Item_Content&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nt">&#34;method&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+                                            <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;@{items(&#39;For_each_Drive_Item&#39;)?[&#39;@microsoft.graph.downloadUrl&#39;]}&#34;</span>
+                                        <span class="p">},</span>
+                                        <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nt">&#34;HTTP_-_SharePoint_Get_Drive_Item_by_ID&#34;</span><span class="p">:</span> <span class="p">[</span>
+                                                <span class="s2">&#34;Succeeded&#34;</span>
+                                            <span class="p">]</span>
+                                        <span class="p">},</span>
+                                        <span class="nt">&#34;runtimeConfiguration&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nt">&#34;contentTransfer&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                                <span class="nt">&#34;transferMode&#34;</span><span class="p">:</span> <span class="s2">&#34;Chunked&#34;</span>
+                                            <span class="p">}</span>
+                                        <span class="p">},</span>
+                                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Http&#34;</span>
+                                    <span class="p">},</span>
+                                    <span class="nt">&#34;HTTP_-_SharePoint_Get_Drive_Item_by_ID&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nt">&#34;authentication&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                                <span class="nt">&#34;audience&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com&#34;</span><span class="p">,</span>
+                                                <span class="nt">&#34;clientId&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientId&#39;]&#34;</span><span class="p">,</span>
+                                                <span class="nt">&#34;secret&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientSecret&#39;]&#34;</span><span class="p">,</span>
+                                                <span class="nt">&#34;tenant&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;TenantId&#39;]&#34;</span><span class="p">,</span>
+                                                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ActiveDirectoryOAuth&#34;</span>
+                                            <span class="p">},</span>
+                                            <span class="nt">&#34;method&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+                                            <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com/v1.0/sites/@{variables(&#39;SiteId&#39;)}/drives/@{items    (&#39;For_each_Site_Drive&#39;)?[&#39;id&#39;]}/items/@{items(&#39;For_each_Drive_Item&#39;)?[&#39;id&#39;]}&#34;</span>
+                                        <span class="p">},</span>
+                                        <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{},</span>
+                                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Http&#34;</span>
+                                    <span class="p">}</span>
+                                <span class="p">},</span>
+                                <span class="nt">&#34;foreach&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;HTTP_-_SharePoint_Get_Drive_Items&#39;)?[&#39;value&#39;]&#34;</span><span class="p">,</span>
+                                <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nt">&#34;HTTP_-_SharePoint_Get_Drive_Items&#34;</span><span class="p">:</span> <span class="p">[</span>
+                                        <span class="s2">&#34;Succeeded&#34;</span>
+                                    <span class="p">]</span>
+                                <span class="p">},</span>
+                                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Foreach&#34;</span>
+                            <span class="p">},</span>
+                            <span class="nt">&#34;HTTP_-_SharePoint_Get_Drive_Items&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nt">&#34;authentication&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="nt">&#34;audience&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com&#34;</span><span class="p">,</span>
+                                        <span class="nt">&#34;clientId&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientId&#39;]&#34;</span><span class="p">,</span>
+                                        <span class="nt">&#34;secret&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientSecret&#39;]&#34;</span><span class="p">,</span>
+                                        <span class="nt">&#34;tenant&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;TenantId&#39;]&#34;</span><span class="p">,</span>
+                                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ActiveDirectoryOAuth&#34;</span>
+                                    <span class="p">},</span>
+                                    <span class="nt">&#34;method&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com/v1.0/sites/@{variables(&#39;SiteId&#39;)}/drives/@{items    (&#39;For_each_Site_Drive&#39;)?[&#39;id&#39;]}/root/children&#34;</span>
+                                <span class="p">},</span>
+                                <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{},</span>
+                                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Http&#34;</span>
+                            <span class="p">}</span>
+                        <span class="p">},</span>
+                        <span class="nt">&#34;expression&#34;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&#34;and&#34;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="p">{</span>
+                                    <span class="nt">&#34;equals&#34;</span><span class="p">:</span> <span class="p">[</span>
+                                        <span class="s2">&#34;@items(&#39;For_each_Site_Drive&#39;)?[&#39;name&#39;]&#34;</span><span class="p">,</span>
+                                        <span class="s2">&#34;Documents&#34;</span>
+                                    <span class="p">]</span>
+                                <span class="p">}</span>
+                            <span class="p">]</span>
+                        <span class="p">},</span>
+                        <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{},</span>
+                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;If&#34;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;foreach&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;HTTP_-_SharePoint_Get_Drives&#39;)?[&#39;value&#39;]&#34;</span><span class="p">,</span>
+                <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;HTTP_-_SharePoint_Get_Drives&#34;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&#34;Succeeded&#34;</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Foreach&#34;</span>
+            <span class="p">},</span>
+            <span class="nt">&#34;For_each_Site_List&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;actions&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;HTTP_-_SharePoint_List_Files&#34;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&#34;authentication&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&#34;audience&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com&#34;</span><span class="p">,</span>
+                                <span class="nt">&#34;clientId&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientId&#39;]&#34;</span><span class="p">,</span>
+                                <span class="nt">&#34;secret&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientSecret&#39;]&#34;</span><span class="p">,</span>
+                                <span class="nt">&#34;tenant&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;TenantId&#39;]&#34;</span><span class="p">,</span>
+                                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ActiveDirectoryOAuth&#34;</span>
+                            <span class="p">},</span>
+                            <span class="nt">&#34;method&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+                            <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com/v1.0/sites/@{variables(&#39;SiteId&#39;)}/lists/@{items(&#39;For_each_Site_List&#39;)?    [&#39;id&#39;]}/items&#34;</span>
+                        <span class="p">},</span>
+                        <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{},</span>
+                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Http&#34;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;foreach&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;HTTP_-_SharePoint_Get_Lists&#39;)?[&#39;value&#39;]&#34;</span><span class="p">,</span>
+                <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;HTTP_-_SharePoint_Get_Lists&#34;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&#34;Succeeded&#34;</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Foreach&#34;</span>
+            <span class="p">},</span>
+            <span class="nt">&#34;HTTP_-_Get_Site_Id&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;authentication&#34;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&#34;audience&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;clientId&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientId&#39;]&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;secret&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientSecret&#39;]&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;tenant&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;TenantId&#39;]&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ActiveDirectoryOAuth&#34;</span>
+                    <span class="p">},</span>
+                    <span class="nt">&#34;method&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com/v1.0/sites/adammarczak.sharepoint.com:/sites/hr&#34;</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;Set_Client_Credentials&#34;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&#34;Succeeded&#34;</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Http&#34;</span>
+            <span class="p">},</span>
+            <span class="nt">&#34;HTTP_-_SharePoint_Get_Drives&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;authentication&#34;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&#34;audience&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;clientId&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientId&#39;]&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;secret&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientSecret&#39;]&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;tenant&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;TenantId&#39;]&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ActiveDirectoryOAuth&#34;</span>
+                    <span class="p">},</span>
+                    <span class="nt">&#34;method&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com/v1.0/sites/@{variables(&#39;SiteId&#39;)}/drives&#34;</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;For_each_Site_List&#34;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&#34;Succeeded&#34;</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Http&#34;</span>
+            <span class="p">},</span>
+            <span class="nt">&#34;HTTP_-_SharePoint_Get_Lists&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;authentication&#34;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&#34;audience&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;clientId&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientId&#39;]&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;secret&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;ClientSecret&#39;]&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;tenant&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Set_Client_Credentials&#39;)?[&#39;TenantId&#39;]&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ActiveDirectoryOAuth&#34;</span>
+                    <span class="p">},</span>
+                    <span class="nt">&#34;method&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com/v1.0/sites/@{variables(&#39;SiteId&#39;)}/lists&#34;</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;Initialize_variable_-_Site_Id&#34;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&#34;Succeeded&#34;</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Http&#34;</span>
+            <span class="p">},</span>
+            <span class="nt">&#34;Initialize_variable_-_Site_Id&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;SiteId&#34;</span><span class="p">,</span>
+                            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+                            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;@{split(body(&#39;HTTP_-_Get_Site_Id&#39;)?[&#39;id&#39;],&#39;,&#39;)[1]}&#34;</span>
+                        <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;HTTP_-_Get_Site_Id&#34;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&#34;Succeeded&#34;</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;InitializeVariable&#34;</span>
+            <span class="p">},</span>
+            <span class="nt">&#34;Set_Client_Credentials&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&#34;ClientId&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;id_here&gt;&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;ClientSecret&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;key_here_move_to_AKV_later&gt;&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;TenantId&#34;</span><span class="p">:</span> <span class="s2">&#34;marczak.io&#34;</span>
+                    <span class="p">},</span>
+                    <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&#34;ClientId&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+                            <span class="p">},</span>
+                            <span class="nt">&#34;ClientSecret&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+                            <span class="p">},</span>
+                            <span class="nt">&#34;TenantId&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+                            <span class="p">}</span>
+                        <span class="p">},</span>
+                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{},</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ParseJson&#34;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.0&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;outputs&#34;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;$connections&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="p">{},</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Object&#34;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;triggers&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;manual&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{},</span>
+                <span class="nt">&#34;kind&#34;</span><span class="p">:</span> <span class="s2">&#34;Http&#34;</span><span class="p">,</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Request&#34;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;$connections&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;azureblob&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;connectionId&#34;</span><span class="p">:</span> <span class="s2">&#34;/subscriptions/f73706f8-c55b-42b7-9d31-6fc8e0d24146/resourceGroups/az-sharepoint/providers/    Microsoft.Web/connections/azureblob&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;connectionName&#34;</span><span class="p">:</span> <span class="s2">&#34;azureblob&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;connectionProperties&#34;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&#34;authentication&#34;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ManagedServiceIdentity&#34;</span>
+                        <span class="p">}</span>
+                    <span class="p">},</span>
+                    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;/subscriptions/f73706f8-c55b-42b7-9d31-6fc8e0d24146/providers/Microsoft.Web/locations/westeurope/managedApis/    azureblob&#34;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li>Update values
+
+<div class="lazy" style="max-height: 592px">
+    <div style="padding-bottom:118.876%"></div>
+    <img data-src="/images/2023/01/sc12.png" src=""/> 
+</div></li>
+</ol>
+<h4 id="example-2-data-factory-with-managed-identity">Example 2: Data Factory with Managed Identity</h4>
+<ol>
+<li>Graphical design (iterate over files and copy them to Blob storage)
+
+<div class="lazy" style="max-height: 317px">
+    <div style="padding-bottom:42.493%"></div>
+    <img data-src="/images/2023/01/sc10.png" src=""/> 
+</div></li>
+<li>Code
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
+    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;PL_SHAREPOINT_SERVICE_PRINCIPAL_DEMO&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;activities&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;HTTP - SharePoint Get Drive Items&#34;</span><span class="p">,</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;WebActivity&#34;</span><span class="p">,</span>
+                <span class="nt">&#34;dependsOn&#34;</span><span class="p">:</span> <span class="p">[],</span>
+                <span class="nt">&#34;policy&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;timeout&#34;</span><span class="p">:</span> <span class="s2">&#34;7.00:00:00&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;retry&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="nt">&#34;retryIntervalInSeconds&#34;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                    <span class="nt">&#34;secureOutput&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="nt">&#34;secureInput&#34;</span><span class="p">:</span> <span class="kc">false</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;userProperties&#34;</span><span class="p">:</span> <span class="p">[],</span>
+                <span class="nt">&#34;typeProperties&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com/v1.0/sites/cfe98761-6d30-4fc9-ab6e-90e3eb304c03/drives/    b!YYfpzzBtyU-rbpDj6zBMAzynDGDfj_pLmKL5ZkL_4LBuUyOwmNYrRYKg9JqsFX19/root/children&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;method&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;authentication&#34;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ServicePrincipal&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;userTenant&#34;</span><span class="p">:</span> <span class="s2">&#34;3266fd7c-39d3-44b8-9551-b0ffbf68c764&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;username&#34;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;@variables(&#39;ClientId&#39;)&#34;</span><span class="p">,</span>
+                            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Expression&#34;</span>
+                        <span class="p">},</span>
+                        <span class="nt">&#34;resource&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;password&#34;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;AzureKeyVaultSecret&#34;</span><span class="p">,</span>
+                            <span class="nt">&#34;store&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&#34;referenceName&#34;</span><span class="p">:</span> <span class="s2">&#34;AKV_LS&#34;</span><span class="p">,</span>
+                                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;LinkedServiceReference&#34;</span>
+                            <span class="p">},</span>
+                            <span class="nt">&#34;secretName&#34;</span><span class="p">:</span> <span class="s2">&#34;ClientSecret&#34;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;For each Drive Item&#34;</span><span class="p">,</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ForEach&#34;</span><span class="p">,</span>
+                <span class="nt">&#34;dependsOn&#34;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="nt">&#34;activity&#34;</span><span class="p">:</span> <span class="s2">&#34;HTTP - SharePoint Get Drive Items&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;dependencyConditions&#34;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="s2">&#34;Succeeded&#34;</span>
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">],</span>
+                <span class="nt">&#34;userProperties&#34;</span><span class="p">:</span> <span class="p">[],</span>
+                <span class="nt">&#34;typeProperties&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;items&#34;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;@activity(&#39;HTTP - SharePoint Get Drive Items&#39;).output.value&#34;</span><span class="p">,</span>
+                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Expression&#34;</span>
+                    <span class="p">},</span>
+                    <span class="nt">&#34;isSequential&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="nt">&#34;activities&#34;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;HTTP - SharePoint Get Drive Item by ID&#34;</span><span class="p">,</span>
+                            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;WebActivity&#34;</span><span class="p">,</span>
+                            <span class="nt">&#34;dependsOn&#34;</span><span class="p">:</span> <span class="p">[],</span>
+                            <span class="nt">&#34;policy&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&#34;timeout&#34;</span><span class="p">:</span> <span class="s2">&#34;7.00:00:00&#34;</span><span class="p">,</span>
+                                <span class="nt">&#34;retry&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                                <span class="nt">&#34;retryIntervalInSeconds&#34;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                                <span class="nt">&#34;secureOutput&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                                <span class="nt">&#34;secureInput&#34;</span><span class="p">:</span> <span class="kc">false</span>
+                            <span class="p">},</span>
+                            <span class="nt">&#34;userProperties&#34;</span><span class="p">:</span> <span class="p">[],</span>
+                            <span class="nt">&#34;typeProperties&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com/v1.0/sites/cfe98761-6d30-4fc9-ab6e-90e3eb304c03/drives/    b!YYfpzzBtyU-rbpDj6zBMAzynDGDfj_pLmKL5ZkL_4LBuUyOwmNYrRYKg9JqsFX19/items/@{item().id}&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Expression&#34;</span>
+                                <span class="p">},</span>
+                                <span class="nt">&#34;method&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+                                <span class="nt">&#34;authentication&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;ServicePrincipal&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;userTenant&#34;</span><span class="p">:</span> <span class="s2">&#34;3266fd7c-39d3-44b8-9551-b0ffbf68c764&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;username&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;@variables(&#39;ClientId&#39;)&#34;</span><span class="p">,</span>
+                                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Expression&#34;</span>
+                                    <span class="p">},</span>
+                                    <span class="nt">&#34;resource&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;password&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;AzureKeyVaultSecret&#34;</span><span class="p">,</span>
+                                        <span class="nt">&#34;store&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nt">&#34;referenceName&#34;</span><span class="p">:</span> <span class="s2">&#34;AKV_LS&#34;</span><span class="p">,</span>
+                                            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;LinkedServiceReference&#34;</span>
+                                        <span class="p">},</span>
+                                        <span class="nt">&#34;secretName&#34;</span><span class="p">:</span> <span class="s2">&#34;ClientSecret&#34;</span>
+                                    <span class="p">}</span>
+                                <span class="p">}</span>
+                            <span class="p">}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Save File&#34;</span><span class="p">,</span>
+                            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Copy&#34;</span><span class="p">,</span>
+                            <span class="nt">&#34;dependsOn&#34;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="p">{</span>
+                                    <span class="nt">&#34;activity&#34;</span><span class="p">:</span> <span class="s2">&#34;HTTP - SharePoint Get Drive Item by ID&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;dependencyConditions&#34;</span><span class="p">:</span> <span class="p">[</span>
+                                        <span class="s2">&#34;Succeeded&#34;</span>
+                                    <span class="p">]</span>
+                                <span class="p">}</span>
+                            <span class="p">],</span>
+                            <span class="nt">&#34;policy&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&#34;timeout&#34;</span><span class="p">:</span> <span class="s2">&#34;7.00:00:00&#34;</span><span class="p">,</span>
+                                <span class="nt">&#34;retry&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                                <span class="nt">&#34;retryIntervalInSeconds&#34;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                                <span class="nt">&#34;secureOutput&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                                <span class="nt">&#34;secureInput&#34;</span><span class="p">:</span> <span class="kc">false</span>
+                            <span class="p">},</span>
+                            <span class="nt">&#34;userProperties&#34;</span><span class="p">:</span> <span class="p">[],</span>
+                            <span class="nt">&#34;typeProperties&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;BinarySource&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;storeSettings&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;HttpReadSettings&#34;</span><span class="p">,</span>
+                                        <span class="nt">&#34;requestMethod&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span>
+                                    <span class="p">},</span>
+                                    <span class="nt">&#34;formatSettings&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;BinaryReadSettings&#34;</span>
+                                    <span class="p">}</span>
+                                <span class="p">},</span>
+                                <span class="nt">&#34;sink&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;BinarySink&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;storeSettings&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;AzureBlobStorageWriteSettings&#34;</span>
+                                    <span class="p">}</span>
+                                <span class="p">},</span>
+                                <span class="nt">&#34;enableStaging&#34;</span><span class="p">:</span> <span class="kc">false</span>
+                            <span class="p">},</span>
+                            <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="p">{</span>
+                                    <span class="nt">&#34;referenceName&#34;</span><span class="p">:</span> <span class="s2">&#34;DS_HTTP_BINARY&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;DatasetReference&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="nt">&#34;URL&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;@activity(&#39;HTTP - SharePoint Get Drive Item by ID&#39;).output[&#39;@microsoft.graph.    downloadUrl&#39;]&#34;</span><span class="p">,</span>
+                                            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Expression&#34;</span>
+                                        <span class="p">}</span>
+                                    <span class="p">}</span>
+                                <span class="p">}</span>
+                            <span class="p">],</span>
+                            <span class="nt">&#34;outputs&#34;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="p">{</span>
+                                    <span class="nt">&#34;referenceName&#34;</span><span class="p">:</span> <span class="s2">&#34;DS_BLOB_BINARY&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;DatasetReference&#34;</span><span class="p">,</span>
+                                    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="nt">&#34;FileName&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;@activity(&#39;HTTP - SharePoint Get Drive Item by ID&#39;).output.name&#34;</span><span class="p">,</span>
+                                            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Expression&#34;</span>
+                                        <span class="p">}</span>
+                                    <span class="p">}</span>
+                                <span class="p">}</span>
+                            <span class="p">]</span>
+                        <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;ClientId&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;String&#34;</span><span class="p">,</span>
+                <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;e02f3944-2f40-436e-a261-38ed9bcabc80&#34;</span>
+            <span class="p">},</span>
+            <span class="nt">&#34;ClientSecret&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;String&#34;</span><span class="p">,</span>
+                <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;guo7Q~0ISDRVJDXYxtIihcgdNkj4ZtvxLkS2j&#34;</span>
+            <span class="p">},</span>
+            <span class="nt">&#34;TenantId&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;String&#34;</span><span class="p">,</span>
+                <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;marczak.io&#34;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;annotations&#34;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&#34;lastPublishTime&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-06-08T07:54:06Z&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.DataFactory/factories/pipelines&#34;</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ol>
+<p>This is currently the best way to query graph using application accounts (service principals and managed identities). Hope it will be useful for you!</p>
+    </article>
+    <div class="section-blog-info">
+        <div class="row">
+            <div class="col-md-12">
+<div class="authorblock">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="avatar"></div>
+        </div>
+        <div class="col-sm-9">
+            <h4><b>Adam Marczak</b></h4>
+            <p>Programmer, architect, trainer, blogger, evangelist are just a few of my titles. What I really am, is a passionate technology enthusiast. I take great pleasure in learning new technologies and finding ways in which this can aid people every day. My latest passion is running an <a href='https://www.youtube.com/azure4everyone'>Azure 4 Everyone</a> YouTube channel, where I show that Azure really is for everyone!</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="text-center">Did you enjoy the article?</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <h4 class="">Share it!</h4><a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Facebook" 
+   class="btn btn-just-icon btn-share btn-facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmarczak.io%2fposts%2f2023%2f01%2fsharepoint-graph-and-azure-sp%2f">
+    <i class="fa fa-facebook"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Twitter" 
+   class="btn btn-just-icon btn-share btn-twitter" 
+   href="https://twitter.com/home?status=How%20to%20query%20SharePoint%20with%20Graph%20API%20using%20Azure%20Service%20Principals%20and%20Managed%20Identities - https%3a%2f%2fmarczak.io%2fposts%2f2023%2f01%2fsharepoint-graph-and-azure-sp%2f">
+   <i class="fa fa-twitter"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Google+" 
+   class="btn btn-just-icon btn-share btn-google" 
+   href="https://plus.google.com/share?url=https%3a%2f%2fmarczak.io%2fposts%2f2023%2f01%2fsharepoint-graph-and-azure-sp%2f"><i 
+   class="fa fa-google"></i>
+</a>
+            
+            </div>
+            <div class="col-md-6 text-center large">
+                <h4 class="">More tagged posts</h4>
+  <div class="tag-list">
+    <a href="https://marczak.io/tags/active-directory" title="View all posts in active-directory">
+      <img src="https://marczak.io/images/tags/active-directory.svg" alt="active-directory"/>
+    </a>
+    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
+      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
+    </a>
+  </div>
+            </div>
+        </div>
+        <div class="row comments">
+            <div class="col-md-12"><div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "https:\/\/marczak.io\/posts\/2023\/01\/sharepoint-graph-and-azure-sp\/"; 
+this.page.identifier = "\/posts\/2023\/01\/sharepoint-graph-and-azure-sp\/";
+};
+
+(function() {
+if (window.location.hostname == "localhost")return;
+var d = document, s = d.createElement('script');
+s.src = 'https://marczak-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+            </div>
+        </div> 
+    </div>
+</div>
+            <div class="col-md-3 blog-sidebar-wrapper">
+              <aside id="secondary" class="blog-sidebar" role="complementary"><div id="mvp" class="banner-mvp">
+<img src="/images/mvp.svg" />
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Courses</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px">
+    <a href="https://marczak.io/az-900" >
+        <img src="/images/az-900/cert.svg" style="width:60px;margin-right:10px;;float:left;"></img> AZ-900 <br/>Microsoft Azure Fundamentlas
+    </a>
+</div>
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Featured Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Process Excel files in Azure</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/pc8Kv-lRD8k" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/49-AzureExcelFileProcessing-ADFandDatabricks-Tutorial-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">AZ-900 Full Course</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/NPEsD6n9A_I" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-00-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<p style="font-weight:normal">Azure Active Directory Tutorial</p>
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/Ma7VAQE7ga4" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/48-AzureActiveDirectory-Intro-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;max-width:180px;margin-right:30px;">
+<h5>Recent Posts</h5>
+<ul>
+        <li><b class="list-header">2023 March</b></li>
+        <li class="indented">
+            <a href="/posts/2023/03/quick-cicd-for-databricks/" title="How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps" rel="bookmark">
+                <b>18th </b>How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps
+            </a>
+        </li>
+        <li class="indented">
+            <a href="/posts/2023/03/azure-ad-graph-application-vs-delegated-flow/" title="What&#39;s the difference between Application and Degelated flows for accessing OneDrive via Graph API" rel="bookmark">
+                <b>1st </b>What&#39;s the difference between Application and Degelated flows for accessing OneDrive via Graph API
+            </a>
+        </li>
+        <li><b class="list-header">2023 February</b></li>
+        <li class="indented">
+            <a href="/posts/2023/02/quick-cicd-for-data-factory/" title="How to implement a quick CI/CD for Azure Data Factory using Azure DevOps" rel="bookmark">
+                <b>12th </b>How to implement a quick CI/CD for Azure Data Factory using Azure DevOps
+            </a>
+        </li>
+        <li><b class="list-header">2023 January</b></li>
+        <li class="indented">
+            <a href="/posts/2023/01/sharepoint-graph-and-azure-sp/" title="How to query SharePoint with Graph API using Azure Service Principals and Managed Identities" rel="bookmark">
+                <b>29th </b>How to query SharePoint with Graph API using Azure Service Principals and Managed Identities
+            </a>
+        </li>
+        <li><b class="list-header">2020 July</b></li>
+        <li class="indented">
+            <a href="/posts/2020/07/az-900-full-course/" title="AZ-900 Microsoft Azure Fundamentals full course" rel="bookmark">
+                <b>7th </b>AZ-900 Microsoft Azure Fundamentals full course
+            </a>
+        </li>
+</ul>
+</div><div id="categories-3" class="widget widget_categories" style="float: left;">
+  <h5>Tags</h5>
+  <ul class="tag-list">
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/active-directory">Active Directory (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
+        </div> 
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-service.svg" alt="App Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-service">App Service (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (21)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/bot-service.svg" alt="Bot Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/bot-service">Bot Service (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-factory.svg" alt="Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-factory">Data Factory (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/databricks.svg" alt="Databricks"/> 
+        </div> 
+        <a href="https://marczak.io/tags/databricks">Databricks (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
+        </div> 
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/flow.svg" alt="Flow"/> 
+        </div> 
+        <a href="https://marczak.io/tags/flow">Flow (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/functions.svg" alt="Functions"/> 
+        </div> 
+        <a href="https://marczak.io/tags/functions">Functions (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/key-vault.svg" alt="Key Vault"/> 
+        </div> 
+        <a href="https://marczak.io/tags/key-vault">Key Vault (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (7)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/security.svg" alt="Security"/> 
+        </div> 
+        <a href="https://marczak.io/tags/security">Security (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
+        </div> 
+        <a href="https://marczak.io/tags/sql">SQL (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/teams.svg" alt="Teams"/> 
+        </div> 
+        <a href="https://marczak.io/tags/teams">Teams (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vue.js.svg" alt="Vue.js"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/webpack.svg" alt="Webpack"/> 
+        </div> 
+        <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
+        </div> 
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
+      </li>
+  </ul>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Sites</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px;">
+    <a href="https://sqlplayer.net" > 
+<div class="lazy" style="max-height: 270px">
+    <div style="padding-bottom:28.481012658227847%"></div>
+    <img data-src="/images//sites/sql-player.png" src=""/> 
+</div> 
+    </a>
+</div>
+</div>
+</div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+<footer class="footer footer-black footer-big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="connected-title">Stay Connected</h5>
+                <div class="">
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-about"
+     href="/about">
+    <i class="fa fa-user"></i>
+  </a>
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-github"
+     href="https://github.com/MarczakIO">
+    <i class="fa fa-github"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
+     href="https://marczak.io/index.xml">
+    <i class="fa fa-rss"></i>
+  </a>
+</div>
+            </div>
+            &copy;<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> <a href="https://themeisle.com/themes/hestia/" target="_blank" rel="nofollow">Hestia Theme</a>
+        </div>
+    </div>
+</footer>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
+  
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="https:\/\/marczak.io\/js\/bootstrap.min.js"><\/script>')}</script>
+  
+  <div id="bootstrapCssTest" class="hidden"></div>
+  <script>
+    $(function() {
+      if ($('#bootstrapCssTest').is(':visible')) {
+        $("head").prepend('<link rel="stylesheet" href="https:\/\/marczak.io\/css\/bootstrap.min.css">');
+      }
+    });
+  </script>
+  <script type="text/javascript" src="https://marczak.io/js/main.min.js?ver=1.16"></script>
+</body>
+</html>
