@@ -5,10 +5,70 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Mar 2023 17:00:23 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 03 Mar 2024 17:00:23 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/tags/azure/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>What&#39;s the difference between Application and Degelated flows for accessing OneDrive via Graph API</title>
+      <link>https://marczak.io/posts/2024/03/graphapi-delegated-vs-app-flow/</link>
+      <pubDate>Sun, 03 Mar 2024 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2024/03/graphapi-delegated-vs-app-flow/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-03-adfcicd/adfcicd.jpg&quot;&gt;
+        &lt;p&gt;How to access onedrive files using Graph API? Currently there are two ways, those are delegated and application flows, and in this article I&amp;rsquo;ll briefly explain both.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Azure Bicep Update (merge) App Service Configuration</title>
+      <link>https://marczak.io/posts/2024/03/azure-bicep-update-app-config/</link>
+      <pubDate>Fri, 01 Mar 2024 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2024/03/azure-bicep-update-app-config/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024/03/bicep-app-service-update.jpg&quot;&gt;
+        &lt;p&gt;How to update (merge) your app setting without overriding them using Azure Bicep? Let me show you :)&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Git Integration for Azure Logic Apps (Standard) with Azure DevOps</title>
+      <link>https://marczak.io/posts/2024/02/azure-logic-apps-gitintegration/</link>
+      <pubDate>Sun, 04 Feb 2024 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2024/02/azure-logic-apps-gitintegration/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024/02/git.jpg&quot;&gt;
+        &lt;p&gt;Need to have Git Integration like functionality for Azure Logic Apps? Here&amp;rsquo;s how :)&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>CICD for Azure Logic Apps (Standard) with Azure DevOps</title>
+      <link>https://marczak.io/posts/2024/02/azure-logic-apps-cicd-2024/</link>
+      <pubDate>Thu, 01 Feb 2024 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2024/02/azure-logic-apps-cicd-2024/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-02-lacicd/lacicd.jpeg&quot;&gt;
+        &lt;p&gt;Here&amp;rsquo;s how you can deploy Azure Logic Apps standard in a quick and easy way with Azure DevOps.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Automated Data Factory diagrams with PlantUML / MermaidJS with Azure DevOps</title>
+      <link>https://marczak.io/posts/2023/09/adf-automated-plantuml-mermaid-diagrams/</link>
+      <pubDate>Mon, 18 Sep 2023 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2023/09/adf-automated-plantuml-mermaid-diagrams/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024/plantuml.jpg&quot;&gt;
+        &lt;p&gt;Need to build WIKI flows in automated way for Azure Data Factory? Here&amp;rsquo;s how!&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps</title>
@@ -19,18 +79,6 @@
       <description>
         &lt;img src=&quot;https://marczak.io/images/2023/03/adb.jpg&quot;&gt;
         &lt;p&gt;If your developers are building notebooks directly in Azure Databricks portal, then you can quickly enhance their productivity but adding a simple CI/CD pipelines with Azure DevOps. In this article I&amp;rsquo;ll show you how!&lt;/p&gt;
-      </description>
-    </item>
-    
-    <item>
-      <title>What&#39;s the difference between Application and Degelated flows for accessing OneDrive via Graph API</title>
-      <link>https://marczak.io/posts/2023/03/azure-ad-graph-application-vs-delegated-flow/</link>
-      <pubDate>Wed, 01 Mar 2023 17:00:23 +0200</pubDate>
-      
-      <guid>https://marczak.io/posts/2023/03/azure-ad-graph-application-vs-delegated-flow/</guid>
-      <description>
-        &lt;img src=&quot;https://marczak.io/images/2023/03/question.jpg&quot;&gt;
-        &lt;p&gt;How to access onedrive files using Graph API? Currently there are two ways, those are delegated and application flows, and in this article I&amp;rsquo;ll briefly explain both.&lt;/p&gt;
       </description>
     </item>
     

@@ -3,7 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://marczak.io/tags/azure/</loc>
-    <lastmod>2023-03-18T17:00:23+02:00</lastmod>
+    <lastmod>2024-03-03T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/data-factory/</loc>
+    <lastmod>2024-03-03T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/</loc>
+    <lastmod>2024-03-03T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/</loc>
+    <lastmod>2024-03-03T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/</loc>
+    <lastmod>2024-03-03T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2024/03/graphapi-delegated-vs-app-flow/</loc>
+    <lastmod>2024-03-03T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2024/03/azure-bicep-update-app-config/</loc>
+    <lastmod>2024-03-01T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2024/02/azure-logic-apps-gitintegration/</loc>
+    <lastmod>2024-02-04T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/logic-apps/</loc>
+    <lastmod>2024-02-04T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2024/02/azure-logic-apps-cicd-2024/</loc>
+    <lastmod>2024-02-01T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2023/09/adf-automated-plantuml-mermaid-diagrams/</loc>
+    <lastmod>2023-09-18T17:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/tags/databricks/</loc>
     <lastmod>2023-03-18T17:00:23+02:00</lastmod>
@@ -11,26 +41,11 @@
     <loc>https://marczak.io/posts/2023/03/quick-cicd-for-databricks/</loc>
     <lastmod>2023-03-18T17:00:23+02:00</lastmod>
   </url><url>
-    <loc>https://marczak.io/</loc>
-    <lastmod>2023-03-18T17:00:23+02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/posts/</loc>
-    <lastmod>2023-03-18T17:00:23+02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/</loc>
-    <lastmod>2023-03-18T17:00:23+02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/active-directory/</loc>
-    <lastmod>2023-03-01T17:00:23+02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/posts/2023/03/azure-ad-graph-application-vs-delegated-flow/</loc>
-    <lastmod>2023-03-01T17:00:23+02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/data-factory/</loc>
-    <lastmod>2023-02-12T17:00:23+02:00</lastmod>
-  </url><url>
     <loc>https://marczak.io/posts/2023/02/quick-cicd-for-data-factory/</loc>
     <lastmod>2023-02-12T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/active-directory/</loc>
+    <lastmod>2023-01-29T17:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2023/01/sharepoint-graph-and-azure-sp/</loc>
     <lastmod>2023-01-29T17:00:23+02:00</lastmod>
@@ -60,9 +75,6 @@
     <lastmod>2019-10-25T11:00:00+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/tags/key-vault/</loc>
-    <lastmod>2019-10-25T11:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/logic-apps/</loc>
     <lastmod>2019-10-25T11:00:00+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2019/08/logic-apps-obfuscation/</loc>
