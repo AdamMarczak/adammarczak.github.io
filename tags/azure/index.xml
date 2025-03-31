@@ -5,10 +5,310 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Mar 2024 17:00:23 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 30 Mar 2025 17:00:23 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/tags/azure/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Logic App Tips Tip &amp; Tricks Series</title>
+      <link>https://marczak.io/posts/2025/03/logic-app-tips-miniseries/</link>
+      <pubDate>Sun, 30 Mar 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/03/logic-app-tips-miniseries/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/la-series.png&quot;&gt;
+        &lt;p&gt;Here is long-overdue and my promised top 20 Azure Logic Apps tips &amp;amp; tricks&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Pooling costs</title>
+      <link>https://marczak.io/posts/2025/03/logic-app-tip-pooling-costs/</link>
+      <pubDate>Tue, 18 Mar 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/03/logic-app-tip-pooling-costs/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-22.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Retries cost</title>
+      <link>https://marczak.io/posts/2025/03/logic-app-tip-retries-cost/</link>
+      <pubDate>Fri, 14 Mar 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/03/logic-app-tip-retries-cost/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-21.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: TF AzureRM is not supported for Standard SKU</title>
+      <link>https://marczak.io/posts/2025/03/logic-app-tip-tf-not-supported/</link>
+      <pubDate>Tue, 11 Mar 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/03/logic-app-tip-tf-not-supported/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-20.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Hide secrets</title>
+      <link>https://marczak.io/posts/2025/03/logic-app-tip-hide-secrets/</link>
+      <pubDate>Sat, 08 Mar 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/03/logic-app-tip-hide-secrets/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-19.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Entra ID Authentication for HTTP connectors without API Management</title>
+      <link>https://marczak.io/posts/2025/03/logic-app-tip-entra-id-auth-for-http/</link>
+      <pubDate>Wed, 05 Mar 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/03/logic-app-tip-entra-id-auth-for-http/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-18.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips Notable news from 2024 &amp; early 2025</title>
+      <link>https://marczak.io/posts/2025/03/logic-app-news-2025/</link>
+      <pubDate>Sun, 02 Mar 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/03/logic-app-news-2025/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/news.png&quot;&gt;
+        &lt;p&gt;Here are my personal highlights for the best Azure Logic Apps news in the last 15 months&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Personal Account is an issue</title>
+      <link>https://marczak.io/posts/2025/02/logic-app-tip-avoid-personal-accounts/</link>
+      <pubDate>Wed, 19 Feb 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/02/logic-app-tip-avoid-personal-accounts/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-17.png&quot;&gt;
+        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Find Orphaned API connections</title>
+      <link>https://marczak.io/posts/2025/02/logic-app-tip-orphaned-api-connections/</link>
+      <pubDate>Sat, 15 Feb 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/02/logic-app-tip-orphaned-api-connections/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-16.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Replicate Try-Catch-Finally flow</title>
+      <link>https://marczak.io/posts/2025/02/logic-app-tip-try-catch-finally/</link>
+      <pubDate>Thu, 13 Feb 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/02/logic-app-tip-try-catch-finally/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-15.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Hide your storage! :)</title>
+      <link>https://marczak.io/posts/2025/02/logic-app-tip-hide-your-storage/</link>
+      <pubDate>Tue, 11 Feb 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/02/logic-app-tip-hide-your-storage/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-14.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Exporting Workflows</title>
+      <link>https://marczak.io/posts/2025/02/logic-app-tip-exporting-workflows/</link>
+      <pubDate>Sun, 09 Feb 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/02/logic-app-tip-exporting-workflows/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-13.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Parallelization &amp; retries</title>
+      <link>https://marczak.io/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/</link>
+      <pubDate>Fri, 07 Feb 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-12.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: HTTP connectors to the rescue</title>
+      <link>https://marczak.io/posts/2025/02/logic-app-tip-http-connectors-to-rescue/</link>
+      <pubDate>Wed, 05 Feb 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/02/logic-app-tip-http-connectors-to-rescue/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-11.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: SQL db can&#39;t be shared, but...</title>
+      <link>https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/</link>
+      <pubDate>Sun, 02 Feb 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-10.png&quot;&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Power BI: Query Azure REST API Management and page results</title>
+      <link>https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/</link>
+      <pubDate>Sun, 02 Feb 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2025-pbi/rest-api.png&quot;&gt;
+        &lt;p&gt;Did you try to query Azure Management REST API from Power Query? Did you notice paging doesn&amp;rsquo;t work&amp;hellip; yeah&amp;hellip;&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Storage Accounts can&#39;t be shared</title>
+      <link>https://marczak.io/posts/2025/01/logic-app-tip-storage-cant-be-shared/</link>
+      <pubDate>Mon, 27 Jan 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/01/logic-app-tip-storage-cant-be-shared/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-8.png&quot;&gt;
+        &lt;p&gt;Azure Logic Apps store their state on storage accounts, and they require dedicated account, or do they?&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Find underutilized Logic Apps</title>
+      <link>https://marczak.io/posts/2025/01/logic-app-tip-find-underutilized-apps/</link>
+      <pubDate>Thu, 23 Jan 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/01/logic-app-tip-find-underutilized-apps/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-7.png&quot;&gt;
+        &lt;p&gt;If you read my previous post on logic app costs and effect of scale, here is another tip for you&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Watch out for the &#39;effect of scale&#39;</title>
+      <link>https://marczak.io/posts/2025/01/logic-app-tip-effect-of-scale-cost/</link>
+      <pubDate>Mon, 20 Jan 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/01/logic-app-tip-effect-of-scale-cost/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-6.png&quot;&gt;
+        &lt;p&gt;When it comes to private networking there is a new element that must be considered when rolling out solutions at scale, and that is&amp;hellip;&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: In-App vs Azure Connector Networking</title>
+      <link>https://marczak.io/posts/2025/01/logic-app-tip-connector-network/</link>
+      <pubDate>Sun, 12 Jan 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/01/logic-app-tip-connector-network/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-5.png&quot;&gt;
+        &lt;p&gt;Did you know azure connectors are still paid in logic app standard?&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: In-App vs Azure connector costs</title>
+      <link>https://marczak.io/posts/2025/01/logic-app-tip-connector-costs/</link>
+      <pubDate>Tue, 07 Jan 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/01/logic-app-tip-connector-costs/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-4.png&quot;&gt;
+        &lt;p&gt;Did you know azure connectors are still paid in logic app standard?&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Triggers and Actions vary between SKUs</title>
+      <link>https://marczak.io/posts/2025/01/logic-app-tip-connector-differences/</link>
+      <pubDate>Sun, 05 Jan 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/01/logic-app-tip-connector-differences/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-3.png&quot;&gt;
+        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Disable Workflows when doing CICD</title>
+      <link>https://marczak.io/posts/2025/01/logic-app-tip-disable-workflows/</link>
+      <pubDate>Fri, 03 Jan 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/01/logic-app-tip-disable-workflows/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-2.png&quot;&gt;
+        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: Build a Git-integration like pipeline for standard SKU logic apps</title>
+      <link>https://marczak.io/posts/2024/12/logic-app-tip-git-integration-ci/</link>
+      <pubDate>Wed, 04 Dec 2024 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2024/12/logic-app-tip-git-integration-ci/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-1.png&quot;&gt;
+        &lt;p&gt;Logic Apps more and more move into classic development paradigm, for better or for worse, but not all clients need it. If you want more simplistic approach you can build a git-integration like feature yourself.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Report your logic app statuses based on app insights</title>
+      <link>https://marczak.io/posts/2024/09/logic-app-tip-connector-network/</link>
+      <pubDate>Wed, 11 Sep 2024 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2024/09/logic-app-tip-connector-network/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/la-monitoring.png&quot;&gt;
+        &lt;p&gt;If you need to report status of your logic apps, you can, and it&amp;rsquo;s easy with app insights. Let me show you how.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>What&#39;s the difference between Application and Degelated flows for accessing OneDrive via Graph API</title>
