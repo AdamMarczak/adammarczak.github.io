@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="description" content="Logic Apps more and more move into classic development paradigm, for better or for worse, but not all clients need it. If you want more simplistic approach you can build a git-integration like feature yourself.">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: Build a Git-integration like pipeline for standard SKU logic apps | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: Build a Git-integration like pipeline for standard SKU logic apps">
-<meta property="og:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta property="og:description" content="Logic Apps more and more move into classic development paradigm, for better or for worse, but not all clients need it. If you want more simplistic approach you can build a git-integration like feature yourself.">
 <meta property="og:url" content="https://marczak.io/posts/2024/12/logic-app-tip-git-integration-ci/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-1.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: Build a Git-integration like pipeline for standard SKU logic apps">
-<meta name="twitter:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="twitter:description" content="Logic Apps more and more move into classic development paradigm, for better or for worse, but not all clients need it. If you want more simplistic approach you can build a git-integration like feature yourself.">
 <meta name="twitter:url" content="https://marczak.io/posts/2024/12/logic-app-tip-git-integration-ci/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,50 +114,104 @@
     <div style="padding-bottom:62.692619626926195%"></div>
     <img data-src="/images/2024-la-images/tip-1.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <more>
+        <p>Logic Apps more and more move into classic development paradigm, for better or for worse, but not all clients need it. If you want more simplistic approach you can build a git-integration like feature yourself.</p>
+<more>
 <h3 id="intro">Intro</h3>
+<p>So what is this &ldquo;git integration&rdquo; like feature that I&rsquo;m talking about.</p>
+<p>If you ever used Azure Data Factory, a similar low-code data movement / data transformation tool, or a Microsoft Fabric, another low-code data &amp; analytics tool, you know that you can connect these tools to Azure DevOps repo or Github repo.</p>
+<p>That means every time you make a chance in these tools, these changes are commited back to your repository branch. New pipeline added will become new pipeline JSON file in your repo, new dataset = new json, new config = new json, etc etc.</p>
+<p>And this is great. This is great because you use low-code tool, but every change you make can be reviewed by your technical personel, given feedback on, and you retain full version history of your changes. Yes, logic apps have version history, but it&rsquo;s very poor. But having everything in the repo provides the biggest benefit of them all, which is giving you the ability to create CICD pipelines that will check your code for standard, run things like SonarQube for code quality, and deploy across dev, test, qa, prod environments. This is huge on so many levels.</p>
+<p>So, it feels very natural to me that similar low-code tool except in the service integration space should have something similar&hellip; and it doesn&rsquo;t&hellip; why? No idea&hellip; I think it&rsquo;s because Microsoft&rsquo;s direction is pushing Logic Apps into local development paradigm, rather than using Azure Portal. But personally I feel this is a bit flawed in nature. We are losing one of the biggest advantages of low-code for many organizations, which is low entry-point.</p>
+<p>Think of it like this. Not every project, or organization has skilled developers/vendors. Sometimes those are internal teams with Power Users, for them using logic apps in the portal is perfect, so setup required (which is problematic in some orgs), no git knowledge required, no overhead.</p>
+<p>Let me give you an example. A large data &amp; analytics organization that I work for has a real-estate of 500+ projects. Most projects are build by python engineers directly in Data Factory &amp; Databricks. They need to leverage azure logic apps for simple scenarios like</p>
+<ul>
+<li>Refreshing Power BI Datasets</li>
+<li>Sending notifications to an API after their jobs are done</li>
+<li>Sending Teams messages to users when their report refreshes</li>
+<li>Sending Email messages</li>
+<li>Picking up XLSX/CSV files from Email and processing it</li>
+<li>Grabbing data from SharePoint and putting it into data lake</li>
+<li>and many more&hellip;</li>
+</ul>
+<p>These are PREFECT, and I really mean perfect scenarios for them to leverage this service and an extension of their data solutions. Now in order to properly develop we will ask them to download Visual Studio Code, Install Logic App Extension, Export their Logic Apps into local repo, or download existing repo, and then develop. That wouldn&rsquo;t be so bad if it wasn&rsquo;t just a tip of the iceberg. Very fast these developers will realize that local connectors do not support managed identities&hellip; uff. In many organizations this will already be a showstopper because many connectors require high privileged account keys, or generation of service principals, which instead of sitting in the key vault will sit in local json files and developers will share them in teams chat. That&rsquo;s just a huge governance mess for something that should be a simple email workflow, don&rsquo;t you think?</p>
+<h3 id="history">History</h3>
+<p>When I first attended MVP Summit back in 2023, right after it was reinstated due to COVID travel ban, I&rsquo;ve asked Microsoft Product Team for Azure Logic Apps a simple question &ldquo;will we get a git integration for azure logic apps&rdquo;. Back then I was told &ldquo;yes&rdquo; but with a asterisk that it was not high on priority.</p>
+<p>I&rsquo;ve asked the same in March 2024, but no news were shared back then.</p>
+<p>EDIT (March 2025): Two years later, we have 2025 and the feature is still not here. So when I attended another MVP Summit in March 2025 I had to ask it. The official response was that it&rsquo;s currently not on roadmap because not many clients ask for it. I guess fair is fair. if you are Microsoft&rsquo;s client, please feedback them if you need this feature. I truly think it would be game-changer for many areas.</p>
+<p>So I&rsquo;ve implemented a similar feature myself with a simple ADO pipeline.</p>
 <h3 id="development-pattern-change">Development Pattern Change</h3>
+<p>So what exactly changed?</p>
 <h4 id="consumption-sku-logic-apps">Consumption SKU Logic Apps</h4>
+<p>As in my intro section, if you develop in logic app consumption, below diagram represents your workflow</p>
 
 <div class="lazy" style="max-height: 469px">
     <div style="padding-bottom:71.822%"></div>
     <img data-src="/images/2024-la-images/tip-1-4.png" src=""/> 
 </div>
+<p>This means that</p>
 <ul>
-<li>Development in Azure Portal</li>
-<li>No setup required</li>
-<li>One Logic App has one workflow</li>
+<li>Development is happening in Azure Portal</li>
+<li>No setup required from the users</li>
+<li>One Logic App has one workflow - which is a bit bad, but worth noting</li>
 </ul>
 <h4 id="standard-sku-logic-apps">Standard SKU Logic Apps</h4>
+<p>If you move into Logic App Standard workflows you will quickly realize by just reading all guides that while you can develop in Azure Portal, you are almost forced to move into local development with Visual Studio Code</p>
 
 <div class="lazy" style="max-height: 470px">
     <div style="padding-bottom:73.209%"></div>
     <img data-src="/images/2024-la-images/tip-1-3.png" src=""/> 
 </div>
+<p>So the main changes are</p>
 <ul>
-<li>Development in Visual Studio Code</li>
-<li>Setup required</li>
-<li>Not all connectors work the same ?!</li>
-<li>Works across clouds / on-prem</li>
-<li>Based on functions SDK</li>
-<li>One Logic App has many workflows</li>
+<li>Development happens in Visual Studio Code with Azure Account and Logic App Extensions</li>
+<li>Setup required (local tools + git)</li>
+<li>Not all connectors work the same - yea, this one is tricky, I have several blog posts about it, but logic app Consumption connectors are called &lsquo;Azure connectors&rsquo; and new Standard SKU connectors are called &lsquo;In-app connectors&rsquo;</li>
+<li>Works across clouds / on-prem - this is a good thing, because new logic apps are based on Functions SDK you can deploy them in any cloud, or even on-prem!</li>
+<li>Based on functions SDK - Again, because this is functions SDK, you can learn more and control more by reading Functions docs</li>
+<li>One Logic App has many workflows - this one is big, definitely for the better, one logic app holds now many workflows, which is great for deployments and management</li>
 </ul>
 <h3 id="solution">Solution</h3>
+<p>So what is the solution?</p>
+<p>Build a pipeline that downloads the current code directly from Logic App Standard and commits it back to your repo (marked red in the diagram). Everything else in the process stays the same, and you can develop in Azure Portal and retain all the benefits of code versioning.</p>
 
 <div class="lazy" style="max-height: 455px">
     <div style="padding-bottom:69.892%"></div>
     <img data-src="/images/2024-la-images/tip-1-1.png" src=""/> 
 </div>
+<h2 id="ci-workflow">CI Workflow</h2>
+<p>This pipeline is does the magic.</p>
 
 <div class="lazy" style="max-height: 224px">
     <div style="padding-bottom:100.448%"></div>
     <img data-src="/images/2024-la-images/tip-1-2.png" src=""/> 
 </div>
-<h2 id="ci-workflow">CI Workflow</h2>
+<p>In order to keep this post shorter I&rsquo;ve already posted a code for this in February 2024, but I use it to this day and update it frequently whenever I find any changes worth adding.</p>
 <p><a href="posts/2024/02/azure-logic-apps-gitintegration/">Git Integration for Azure Logic Apps (Standard) with Azure DevOps</a></p>
+<p>What  this pipeline does</p>
+<ol>
+<li>Is scheduled to run every day at midnight (can be changed to more frequent or triggered adhoc, more on that below)</li>
+<li>Opens your own repo on &ldquo;CI/dev&rdquo; branch</li>
+<li>Deletes the old code</li>
+<li>Downloads the current code using PowerShell script (added in the post)</li>
+<li>Commits the files into ci/dev branch</li>
+<li>Builds code as a pipeline artifact which can be used to deploy it later across enviromments</li>
+</ol>
+<p>What this pipeline doesn&rsquo;t do</p>
+<ul>
+<li>Doesn&rsquo;t download ARM templates for API connections, as this is usually managed separately by things like Azure Bicep or Terraform</li>
+</ul>
 <h3 id="triggering-the-workflow">Triggering the workflow</h3>
+<p>Technically you can leave this pipeline as is and sync your code one a day/hour, or just run it manually. But there is also a one convulated way to get this done within 5 mins of your code changes.</p>
 <h4 id="azure-monitor--logic-apps-to-trigger-logic-apps">Azure Monitor + Logic Apps to trigger logic apps</h4>
+<p>Did you know that when you edit logic app workflow, there is an event fired in Log Analytics which indicates that your workflow changes? Well, there is and you can.</p>
+<p>So what does this mean for us</p>
+<ol>
+<li>Create an alert for log analytics checking for logic app workflow changes row count &gt; 1 based on KQL query (fairly easy to make)</li>
+<li>Create alert that will call a logic app workflow (it&rsquo;s easier this way, just make sure it&rsquo;s a different one from the one you plan to deploy)</li>
+<li>In the workflow using managed identity use Azure DevOps connector or HTTP connector to start this CI pipeline (just remember to grant this MI permissions to execute workflows)</li>
+</ol>
 <h2 id="cd-workflow">CD Workflow</h2>
+<p>If you need CD workflows to deploy logic app artifacts here is my personal one. Feel free to use it. If you find any issues, feel free to collaborate to my repo with fixes!</p>
 <p><a href="/posts/2024/02/azure-logic-apps-cicd-2024/">CICD for Azure Logic Apps (Standard) with Azure DevOps</a></p>
 <h3 id="next-actions">Next Actions</h3>
 <p>Here are some recommendations from me on what you can check out next if you want to learn more</p>
@@ -303,8 +357,8 @@ s.setAttribute('data-timestamp', +new Date());
 <ul>
         <li><b class="list-header">2025 March</b></li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips: TF AzureRM is not supported for Standard SKU" rel="bookmark">
-                <b>30th </b>Logic App Tips: TF AzureRM is not supported for Standard SKU
+            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips Tip &amp; Tricks Series" rel="bookmark">
+                <b>30th </b>Logic App Tips Tip &amp; Tricks Series
             </a>
         </li>
         <li class="indented">

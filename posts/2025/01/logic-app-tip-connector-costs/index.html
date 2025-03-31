@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta name="description" content="Did you know azure connectors are still paid in logic app standard?">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: In-App vs Azure connector costs | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: In-App vs Azure connector costs">
-<meta property="og:description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta property="og:description" content="Did you know azure connectors are still paid in logic app standard?">
 <meta property="og:url" content="https://marczak.io/posts/2025/01/logic-app-tip-connector-costs/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-4.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: In-App vs Azure connector costs">
-<meta name="twitter:description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta name="twitter:description" content="Did you know azure connectors are still paid in logic app standard?">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/01/logic-app-tip-connector-costs/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,11 +114,35 @@
     <div style="padding-bottom:62.66233766233766%"></div>
     <img data-src="/images/2024-la-images/tip-4.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <p>Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;</p>
-<more>
+        <p>Did you know azure connectors are still paid in logic app standard?</p>
 <h3 id="intro">Intro</h3>
+<p>When people move to logic app standard sometimes they fall into a trap of simplification. This is a common issue that I see people make.</p>
+<p>When you read Azure Logic App standard documentation or blog posts, they often mention that the biggest benefit of logic app standard is that your code is executed on your azure app service and that the execution of the connectors is free, because you already pay for your logic app standard SKU.</p>
+<p>Which is of coruse true, but the simplification here is that this is only true if you use in-app connectors. Azure connectors are still paid, and follow the same pricing model as consumption logic apps. Many forget that when they export their consumption logic app into a import it into a standard one, their connectors don&rsquo;t automatically change to in-app ones. Hence they will get hit by double charge, 130+ EUR for app service plan and XX EUR of whatever their logic app cost Today.</p>
+<p>This is because logic apps standard work in a &lsquo;hybrid&rsquo; model. Not to mistake it in hybrid model with cloud and on-prem. In App connectors are executed on Logic App standard app service plan, and are free. Azure connectors still call Microsoft&rsquo;s infra and are paid and work exactly the same as consumption ones. Hence hybrid.</p>
+<p>Below diagram presents this a bit clearler than just text.</p>
+
+<div class="lazy" style="max-height: 445px">
+    <div style="padding-bottom:83.490%"></div>
+    <img data-src="/images/2024-la-images/tip-4-2.png" src=""/> 
+</div>
+<p>So Azure connectors still follow below pricing.</p>
+
+<div class="lazy" style="max-height: 141px">
+    <div style="padding-bottom:37.600%"></div>
+    <img data-src="/images/2024-la-images/tip-4-1.png" src=""/> 
+</div>
+<p>The main change is &lsquo;basic&rsquo; connectors. Basic connectors are automatically becoming in-app conenctors, hence will be free by default.</p>
+<h3 id="summary">Summary</h3>
+<p>That&rsquo;s it. Now you can make concious decisions and you won&rsquo;t get surprised by sudden charges.</p>
 <h3 id="next-actions">Next Actions</h3>
 <p>Here are some recommendations from me on what you can check out next if you want to learn more</p>
+<ul>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+</ul>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -255,8 +279,8 @@ s.setAttribute('data-timestamp', +new Date());
 <ul>
         <li><b class="list-header">2025 March</b></li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips: TF AzureRM is not supported for Standard SKU" rel="bookmark">
-                <b>30th </b>Logic App Tips: TF AzureRM is not supported for Standard SKU
+            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips Tip &amp; Tricks Series" rel="bookmark">
+                <b>30th </b>Logic App Tips Tip &amp; Tricks Series
             </a>
         </li>
         <li class="indented">

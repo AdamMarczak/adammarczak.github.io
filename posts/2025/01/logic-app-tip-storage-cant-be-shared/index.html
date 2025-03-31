@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta name="description" content="Azure Logic Apps store their state on storage accounts, and they require dedicated account, or do they?">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: Storage Accounts can&#39;t be shared | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: Storage Accounts can&#39;t be shared">
-<meta property="og:description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta property="og:description" content="Azure Logic Apps store their state on storage accounts, and they require dedicated account, or do they?">
 <meta property="og:url" content="https://marczak.io/posts/2025/01/logic-app-tip-storage-cant-be-shared/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-8.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: Storage Accounts can&#39;t be shared">
-<meta name="twitter:description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta name="twitter:description" content="Azure Logic Apps store their state on storage accounts, and they require dedicated account, or do they?">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/01/logic-app-tip-storage-cant-be-shared/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,11 +114,50 @@
     <div style="padding-bottom:62.41830065359477%"></div>
     <img data-src="/images/2024-la-images/tip-8.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <p>Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;</p>
-<more>
-<h3 id="intro">Intro</h3>
+        <p>Azure Logic Apps store their state on storage accounts, and they require dedicated account, or do they?</p>
+<p>Well&hellip; in general the docs don&rsquo;t explicitly say that logic apps require dedicated storage account. But when you read the requirements, and check how they work, then you will realize they do.</p>
+<h3 id="why">Why?</h3>
+<p>Why? Why would you even consider sharing storage accounts?</p>
+<p>I think it&rsquo;s a valid question so let&rsquo;s start there.</p>
+<p>if you read my previous post on <a href="/posts/2025/01/logic-app-tip-effect-of-scale-cost/">cost of logic apps with &lsquo;effect of scale&rsquo;</a>, then you might see that major cost driver for large scale platform can be private endppoints for storage accounts. Every logic app requires a storage account. Every storage account requires private endpoint. Every private endpoint costs. You get the point&hellip;</p>
+<p>So <strong>why?</strong> To potentially <strong>save a ton of money</strong> for your organization.</p>
+<h3 id="should-i-worry">Should I worry?</h3>
+<p>If you your organization doesn&rsquo;t use private endpoints, or does allow firewall exceptions then this issue doesn&rsquo;t affect you can you can disregard this post. But if effect of scale might be an issue for you it&rsquo;s worth noting.</p>
+<h4 id="how-logic-app-connects-to-storage">How Logic App connects to storage</h4>
+<p>Currently (as of January 2025) the way Logic Apps standard connect to Storage Account is either using</p>
+<ul>
+<li>Storage Account Keys or</li>
+<li>RBAC with Storage Contributor &amp; Data Contributor roles</li>
+</ul>
+<p>Both of which give logic app full ownership over data and storage account containers</p>
+
+<div class="lazy" style="max-height: 364px">
+    <div style="padding-bottom:68.421%"></div>
+    <img data-src="/images/2024-la-images/tip-8-1.png" src=""/> 
+</div>
+<p>Logic app requires these permissions because the way they are implemented, logic app will dynamically create containers/files based on which connectors you use.</p>
+<p>Below diagram illustrates the problem if you would want two logic apps to share a single storage.</p>
+
+<div class="lazy" style="max-height: 454px">
+    <div style="padding-bottom:88.499%"></div>
+    <img data-src="/images/2024-la-images/tip-9-1.png" src=""/> 
+</div>
+<p>In short? Since queues, tables and blob container names are mostly random, and some hardcoded. We will run into collisions, which might have bad effect for how your logic app runs, even resulting is loss of state.</p>
+<p>Is there a solution? Personally some time ago I would say no, so this tip was mostly advisory. But there might be soon with SQL DB state storage. I&rsquo;ve explained this here: <a href="/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/">SQL db can&rsquo;t be shared, but&hellip;</a>.</p>
+<h3 id="what-you-can-do">What you can do?</h3>
+<ol>
+<li>Ensure as few private endpoints are deployed to minimize the cost</li>
+<li>Consider moving to SQL DB for state once it leaves preview state</li>
+<li>Ask your org if firewall trusted services exceptions are allowed and remove private endpoints for state storages</li>
+</ol>
 <h3 id="next-actions">Next Actions</h3>
 <p>Here are some recommendations from me on what you can check out next if you want to learn more</p>
+<ul>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+</ul>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -255,8 +294,8 @@ s.setAttribute('data-timestamp', +new Date());
 <ul>
         <li><b class="list-header">2025 March</b></li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips: TF AzureRM is not supported for Standard SKU" rel="bookmark">
-                <b>30th </b>Logic App Tips: TF AzureRM is not supported for Standard SKU
+            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips Tip &amp; Tricks Series" rel="bookmark">
+                <b>30th </b>Logic App Tips Tip &amp; Tricks Series
             </a>
         </li>
         <li class="indented">

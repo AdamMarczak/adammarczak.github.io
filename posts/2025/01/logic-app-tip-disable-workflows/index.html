@@ -117,8 +117,49 @@
         <p>Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;</p>
 <more>
 <h3 id="intro">Intro</h3>
+<p>Let&rsquo;s picture this, you are deploying a large solution in your Azure environment. This solution has many components, logic app is one of them. In this logic app you have workflows which will check some third part service for events, it can be service bus, event grid, azure data lake event grid, etc, etc, a service that you don&rsquo;t control.</p>
+<p>If you deploy your Logic App the triggers will start executing immediately as soon as the service has been deployed. In this case if you logic app for exaple writes to a database, but your database has not yet been deployed you might start getting errors. In production nonetheless. I think we can agree that this is bad for many reasons, even false negatives will start creating operational headache.</p>
+<p>You could always deploy logic apps last, but managing dependencies in CICD is not always possible if two services rely on each other.</p>
+<h3 id="solution">Solution</h3>
+<p>The solution is to disable your logic app workflow before you even deploy them. And yes, you can do that with Logic Apps standard!</p>
+
+<div class="lazy" style="max-height: 165px">
+    <div style="padding-bottom:50.000%"></div>
+    <img data-src="/images/2024-la-images/tip-2-2.png" src=""/> 
+</div>
+<p>Did you know that a state of logic app (Disabled/Enabled) is being held as Azure app service app configuration? Mhmm, this was surprising to me too since consumption logic app require REST API calls and state is managed internally by Azure. But honestly, this makes sense. It&rsquo;s much better this way and it had to be done in order to allow for multi-cloud deployments.</p>
+<p>So if you want to disable your logic app workflow you need to find and update this App Service configuration parameter (it is an environment variable if you deploy to AWS/GCP/on-prem). This parameter is always following notation <code>Workflows</code>.<code>&lt;flow_name&gt;</code>.<code>FlowState</code>.</p>
+
+<div class="lazy" style="max-height: 382px">
+    <div style="padding-bottom:97.201%"></div>
+    <img data-src="/images/2024-la-images/tip-2-1.png" src=""/> 
+</div>
+<p>In appsettings.json it would be</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span> 
+    <span class="nt">&#34;Workflows&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;&lt;flow_name&gt;&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;FlowState&#34;</span><span class="p">:</span> <span class="s2">&#34;Disabled/Enabled&#34;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>That means you can easily disable this before deploying logic apps, and enable when necessary. You can even ask your Ops team to enable when needed.</p>
+<p>If you want example of disabling this via Azure DevOps CICD, here is my example</p>
+
+<div class="lazy" style="max-height: 216px">
+    <div style="padding-bottom:26.832%"></div>
+    <img data-src="/images/2024-la-images/tip-2-3.png" src=""/> 
+</div>
+<ul>
+<li>link: <a href="/posts/2024/02/azure-logic-apps-cicd-2024/">CICD for Azure Logic Apps (Standard) with Azure DevOps</a></li>
+</ul>
 <h3 id="next-actions">Next Actions</h3>
 <p>Here are some recommendations from me on what you can check out next if you want to learn more</p>
+<ul>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+</ul>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -255,8 +296,8 @@ s.setAttribute('data-timestamp', +new Date());
 <ul>
         <li><b class="list-header">2025 March</b></li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips: TF AzureRM is not supported for Standard SKU" rel="bookmark">
-                <b>30th </b>Logic App Tips: TF AzureRM is not supported for Standard SKU
+            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips Tip &amp; Tricks Series" rel="bookmark">
+                <b>30th </b>Logic App Tips Tip &amp; Tricks Series
             </a>
         </li>
         <li class="indented">

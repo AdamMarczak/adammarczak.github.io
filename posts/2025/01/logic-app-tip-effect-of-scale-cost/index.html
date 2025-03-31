@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta name="description" content="When it comes to private networking there is a new element that must be considered when rolling out solutions at scale, and that is&hellip;">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: Watch out for the &#39;effect of scale&#39; | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: Watch out for the &#39;effect of scale&#39;">
-<meta property="og:description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta property="og:description" content="When it comes to private networking there is a new element that must be considered when rolling out solutions at scale, and that is&hellip;">
 <meta property="og:url" content="https://marczak.io/posts/2025/01/logic-app-tip-effect-of-scale-cost/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-6.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: Watch out for the &#39;effect of scale&#39;">
-<meta name="twitter:description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta name="twitter:description" content="When it comes to private networking there is a new element that must be considered when rolling out solutions at scale, and that is&hellip;">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/01/logic-app-tip-effect-of-scale-cost/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,11 +114,69 @@
     <div style="padding-bottom:62.570735650767986%"></div>
     <img data-src="/images/2024-la-images/tip-6.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <p>Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;</p>
+        <p>When it comes to private networking there is a new element that must be considered when rolling out solutions at scale, and that is&hellip;</p>
 <more>
+networking... uh...
 <h3 id="intro">Intro</h3>
+<p>if you look at deployment architecture of a logic apps in standard sku, with laid out mandatory private networking components it will look something like this.</p>
+
+<div class="lazy" style="max-height: 457px">
+    <div style="padding-bottom:110.386%"></div>
+    <img data-src="/images/2024-la-images/tip-6-1.png" src=""/> 
+</div>
+<p>What should be noted here</p>
+<ol>
+<li><strong>6 Private Endpoints</strong>
+<ol>
+<li>One for <strong>Web App</strong></li>
+<li>Second for Azure <strong>Blob</strong> Storage</li>
+<li>Third for Azure <strong>Queue</strong> Storage</li>
+<li>Forth for Azure <strong>Table</strong> Storage</li>
+<li>Fifth for Azure <strong>File</strong> Storage</li>
+<li>Sixth for Azure <strong>Data Lake File Service</strong></li>
+</ol>
+</li>
+<li><strong>Two of them are not required</strong>, and yet many companies provion these as part of teir TF/bicep modules, and those are
+<ol>
+<li>Private Endpoint for <strong>File Storage</strong></li>
+<li>Private Endpoint for <strong>Data Lake File Service</strong></li>
+</ol>
+</li>
+<li>Storage is required always because logic app save their state their</li>
+<li><a href="/posts/2025/01/logic-app-tip-storage-cant-be-shared/">Storage Accounts can&rsquo;t be shared</a></li>
+</ol>
+<p>So at minimum Logic App Standard requires 4 private endpoints, but I&rsquo;ve seen many companies deploy all 6 because they do not understand logic app designarchitecture requirements, or 5 if they deploy blob instead of data lakes. Let&rsquo;s use 5 for further calculations.</p>
+<p>So how much a single logic app private endpoints will cost us in a month?</p>
+
+<div class="lazy" style="max-height: 188px">
+    <div style="padding-bottom:39.167%"></div>
+    <img data-src="/images/2024-la-images/tip-6-2.png" src=""/> 
+</div>
+<p>36 USD per month, for literally logic app just to exist. That might not blow our mind, but I was talking about the effect of scale.</p>
+<p>For example, I currently manage a large data platform for my client, where we have 500+ solutions and many new are coming every day. We also have 3 environments, but I&rsquo;ve seen some organizations with 6!</p>
+<p>Let&rsquo;s use smaller example with still large platform that has 160 solutions, each having logic app standard app and 3 environments?</p>
+
+<div class="lazy" style="max-height: 455px">
+    <div style="padding-bottom:51.529%"></div>
+    <img data-src="/images/2024-la-images/tip-6-3.png" src=""/> 
+</div>
+<p>Wooow&hellip; 207,000 USD yearly cost just to host these apps. This is a static cost, it will get higher if apps will start working. This is just cost of having logic apps on your platform.</p>
+<p>So make sure to fight this and consider following tips</p>
+<h3 id="tips-for-lowering-the-cost">Tips for lowering the cost</h3>
+<ul>
+<li>Check if your org can settle for service endpoints</li>
+<li><a href="/posts/2025/01/logic-app-tip-find-underutilized-apps/">Find underutilized Logic Apps</a></li>
+<li>Only provision blob, queue and table private endpoints (4 total instead of 5)</li>
+<li><a href="/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/">Consider moving to SQL DB to manage state - SQL db can&rsquo;t be shared, but&hellip;</a></li>
+</ul>
 <h3 id="next-actions">Next Actions</h3>
 <p>Here are some recommendations from me on what you can check out next if you want to learn more</p>
+<ul>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+</ul>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -255,8 +313,8 @@ s.setAttribute('data-timestamp', +new Date());
 <ul>
         <li><b class="list-header">2025 March</b></li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips: TF AzureRM is not supported for Standard SKU" rel="bookmark">
-                <b>30th </b>Logic App Tips: TF AzureRM is not supported for Standard SKU
+            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips Tip &amp; Tricks Series" rel="bookmark">
+                <b>30th </b>Logic App Tips Tip &amp; Tricks Series
             </a>
         </li>
         <li class="indented">

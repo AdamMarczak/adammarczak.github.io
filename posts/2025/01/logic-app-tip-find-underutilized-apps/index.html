@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta name="description" content="If you read my previous post on logic app costs and effect of scale, here is another tip for you">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: Find underutilized Logic Apps | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: Find underutilized Logic Apps">
-<meta property="og:description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta property="og:description" content="If you read my previous post on logic app costs and effect of scale, here is another tip for you">
 <meta property="og:url" content="https://marczak.io/posts/2025/01/logic-app-tip-find-underutilized-apps/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-7.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: Find underutilized Logic Apps">
-<meta name="twitter:description" content="Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;">
+<meta name="twitter:description" content="If you read my previous post on logic app costs and effect of scale, here is another tip for you">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/01/logic-app-tip-find-underutilized-apps/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -113,12 +113,41 @@
 <div class="lazy" style="max-height: 1546px">
     <div style="padding-bottom:62.6418152350081%"></div>
     <img data-src="/images/2024-la-images/tip-7.png" src=""/> 
-</div> <h2>Highlight</h2>
-        <p>Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;</p>
-<more>
+</div> <a target="_blank" 
+   rel="tooltip" 
+   class="btn btn-github"
+   href="https://github.com/MarczakIO/azure-enterprise-templates/blob/main/extras/find-empty-la.ps1">
+    <i class="fa fa-github"></i>
+    Source Code
+</a><h2>Highlight</h2>
+        <p>If you read my previous post on logic app costs and effect of scale, here is another tip for you</p>
+<p>Which is, how to find underutilized logic apps to save a lot of money for your org!</p>
 <h3 id="intro">Intro</h3>
+<p>Every single logic app that is not used in a private network environment will cos you around 25-32 USD per month, so the more you find the better.</p>
+<p>Why? I&rsquo;ve covered this here</p>
+<ul>
+<li><a href="/posts/2025/01/logic-app-tip-effect-of-scale-cost/">Watch out for the &lsquo;effect of scale&rsquo;</a></li>
+</ul>
+<p>Myself, I&rsquo;m a simple person, a simple problem must have a simple solution. So I&rsquo;ve wrote this script. It run for 30 minutes (API is slow for some reason), and I&rsquo;ve found <strong>50,000 USD yearly savings for my organization</strong>. Big win in 30 minutes, don&rsquo;t you think?</p>
+<p>It&rsquo;s open source so feel free to use it :)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"></code></pre></div><p>Just update this part with your management groups, or remove this where to search all azure subscriptions you have access to</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"></code></pre></div><ul>
+<li>CODE: <a href="https://github.com/MarczakIO/azure-enterprise-templates/blob/main/extras/find-empty-la.ps1">https://github.com/MarczakIO/azure-enterprise-templates/blob/main/extras/find-empty-la.ps1</a></li>
+</ul>
 <h3 id="next-actions">Next Actions</h3>
 <p>Here are some recommendations from me on what you can check out next if you want to learn more</p>
+<ul>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+</ul><a target="_blank" 
+   rel="tooltip" 
+   class="btn btn-github"
+   href="https://github.com/MarczakIO/azure-enterprise-templates/blob/main/extras/find-empty-la.ps1">
+    <i class="fa fa-github"></i>
+    Source Code
+</a>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -255,8 +284,8 @@ s.setAttribute('data-timestamp', +new Date());
 <ul>
         <li><b class="list-header">2025 March</b></li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips: TF AzureRM is not supported for Standard SKU" rel="bookmark">
-                <b>30th </b>Logic App Tips: TF AzureRM is not supported for Standard SKU
+            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips Tip &amp; Tricks Series" rel="bookmark">
+                <b>30th </b>Logic App Tips Tip &amp; Tricks Series
             </a>
         </li>
         <li class="indented">

@@ -117,8 +117,112 @@
         <p>Some scenarios might require you do disable workflows before you deploy your code. Here is why&hellip;</p>
 <more>
 <h3 id="intro">Intro</h3>
+<p>Are you planning on moving to Logic App Standard, or maybe you are just starting and you were wondering what are the differences between Logic Apps Connectors? Well, here is my quick summary of what you should be aware of.</p>
+<p>When you start building logic apps in Standard SKU you might find your favorite connectors duplicated like this. One will have this small buble with &ldquo;In-App&rdquo; message, and second won&rsquo;t.</p>
+
+<div class="lazy" style="max-height: 383px">
+    <div style="padding-bottom:72.814%"></div>
+    <img data-src="/images/2024-la-images/tip-3-1.png" src=""/> 
+</div>
+<p>What does this mean for us? Actually quite a lot&hellip;</p>
+<h3 id="connector-key-differences">Connector key differences</h3>
+<h4 id="difference-1---execution-host">Difference #1 - Execution Host</h4>
+<p>This one is big for everyone, whether you are a developer or an architect. You need to know that logic apps connectors execute in different places (hosts) based on your type.</p>
+<ul>
+<li><strong>Azure</strong> - connectors execute on <strong>Microsoft&rsquo;s</strong> subscription/tenant, hence outside of your Azure environment</li>
+<li><strong>In-App</strong> - connectors execute on <strong>your</strong> subscription/tenant, hence directly on your app service</li>
+</ul>
+<p>This has several implications regarding both cost and networking, and I&rsquo;ve covered this briefly in a two separate posts</p>
+<ul>
+<li><a href="/posts/2025/01/logic-app-tip-connector-costs/">Watch out for In-App vs Azure connector costs</a></li>
+<li><a href="/posts/2025/01/logic-app-tip-connector-network/">Watch out for In-App vs Azure connector networking</a></li>
+</ul>
+<h4 id="difference-2---actions">Difference #2 - Actions</h4>
+<p>You would expect that when moving from <strong>Azure</strong> connector to <strong>In-App</strong> connector for Azure Blog Storage should support the same actions, except it should execute on your app service instead of MS environment. In 75% of cases you will be right, but in 25% not so much. So before chaging your connectors please</p>
+<h4 id="difference-3---triggers">Difference #3 - Triggers</h4>
+<p>Same for triggers. Not all triggers are supported, even when using Azure connector for the same service. There is like 90% parity, but ensure to check this out.</p>
+<h4 id="difference-4---parameters">Difference #4 - Parameters</h4>
+<p>Third&rsquo;s time the charm? Yep. Same with parameters. Logic app can have the same connector, for the same service, and even the same action. But out of nowhere it might require different parameters, or outright miss some of the ones that azure connector had.</p>
+<p>I&rsquo;m not sure how there is no backward compatibility when implementing new connectors, and I&rsquo;m yet to ask Microsoft product group about it.</p>
+<h4 id="difference-5---triggering-logic">Difference #5 - Triggering Logic</h4>
+<p>This was is a surprising and frustrating for many people moving over, and I don&rsquo;t blame them. You would expect when you see a trigger &ldquo;When SQL table row is added/changed&rdquo; on Azure SQL trigger you would expect this to work the same way between in-app and azure connectors, and yet, it doesn&rsquo;t.</p>
+<p>The example that I gave is actually one of bigger surprises that I&rsquo;ve encountered when moving logic apps to a standard sku. SQL trigger in standard SKU creates CDC tables in your schema?! It not only does it but it generates some random names and uses odd conventions, so this can mess up with your SQL CICD depending on how it was implemented.</p>
+<h4 id="difference-6---permissions">Difference #6 - Permissions</h4>
+<p>You would think there were enough challenges and watch-outs already, but here is another one.</p>
+<h4 id="difference-7---authentication">Difference #7 - Authentication</h4>
+<p>To make things even trickier, some connectors do not support all authentication types. The biggest impact is when your organization doesn&rsquo;t allow access keys/account keys and an in-app connector api connection requires it. Odd choice to be frank, but well, it is what it is.</p>
+<p>I&rsquo;m making a note of it because for many, many months after the release of standard logic apps Azure Blob Connector did not support managed identity. Worth checking if you use a different connectors.</p>
+<h4 id="difference-8---not-all-connectors-exist">Difference #8 - Not all connectors exist</h4>
+<p>Sometimes this isn&rsquo;t an issue. A connector like SharePoint does not need to have an equivalent of in-app connector. But for some connectors this might be a blocker due to security policies and firewall restrictions. So always worth checking.</p>
+<p>But at very least remember, if there is no in-app, that means executions are paid. Be aware not to get surprised.</p>
+<h4 id="difference-9---credentials-are-managed-differently">Difference #9 - Credentials are managed differently</h4>
+<h4 id="watchout---migrations">Watchout - Migrations</h4>
+<p>When migrating over to standard logic apps from consumption logic apps remember about one very important thing that is often not mentioned in the, when you export and import your logic app. All connectors are still Azure connectors. They don&rsquo;t magically change into in-app conenctors.</p>
+<p>Hence, if you are migrating to standard logic apps because</p>
+<ol>
+<li>You plan to save money on execution costs</li>
+<li>You need to move to secure private network environment</li>
+</ol>
+<p>Then you need to update all connectors &amp; actions from azure to in-app, sometimes this might require rework and refactoring from your end.</p>
+<p>The main change is &lsquo;basic&rsquo; connectors. Basic connectors are automatically becoming in-app conenctors, hence will be free by default.</p>
+<h3 id="checklist">Checklist</h3>
+<p>Here is my migration checklist which you should run for EVERY connector and EVERY action you use</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Question</th>
+<th>OK?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connector</td>
+<td>Does in-app connector equivalent exists? (Cost / Networking)</td>
+<td>✅ or 🛑</td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>Does in-app connector support my preferred authentication type?</td>
+<td>✅ or 🛑</td>
+</tr>
+<tr>
+<td>Actions</td>
+<td>Does in-app connector has the actions I use?</td>
+<td>✅ or 🛑</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>Does in-app connector action support the paratemers that I use, or has equivalent of these parameters that I can use?</td>
+<td>✅ or 🛑</td>
+</tr>
+<tr>
+<td>Permissions</td>
+<td>Does the trigger or action require the same permissions on the system that I&rsquo;m connecting to?</td>
+<td>✅ or 🛑</td>
+</tr>
+<tr>
+<td>CICD</td>
+<td>Did I adjust my CICD to replace credentials for in-app service connections?</td>
+<td>✅ or 🛑</td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>If the trigger exist, does it work the same way?</td>
+<td>✅ or 🛑</td>
+</tr>
+</tbody>
+</table>
+<h3 id="summary">Summary</h3>
+<p>Hopefully this helps you out on your logic app journey!</p>
 <h3 id="next-actions">Next Actions</h3>
 <p>Here are some recommendations from me on what you can check out next if you want to learn more</p>
+<ul>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+</ul>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -255,8 +359,8 @@ s.setAttribute('data-timestamp', +new Date());
 <ul>
         <li><b class="list-header">2025 March</b></li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips: TF AzureRM is not supported for Standard SKU" rel="bookmark">
-                <b>30th </b>Logic App Tips: TF AzureRM is not supported for Standard SKU
+            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips Tip &amp; Tricks Series" rel="bookmark">
+                <b>30th </b>Logic App Tips Tip &amp; Tricks Series
             </a>
         </li>
         <li class="indented">

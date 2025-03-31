@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Logic App Tips: TF AzureRM is not supported for Standard SKU | Marczak.IO | Adam Marczak</title>
+<title>Logic App Tips Tip &amp; Tricks Series | Marczak.IO | Adam Marczak</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="https://marczak.io/images/favicon-32x32.png" sizes="32x32" />
 <link rel="icon" type="image/png" href="https://marczak.io/images/favicon-16x16.png" sizes="16x16" />
@@ -18,11 +18,11 @@
 <meta name="description" content="Here is long-overdue and my promised top 20 Azure Logic Apps tips &amp; tricks">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
-<meta name="title" content="Logic App Tips: TF AzureRM is not supported for Standard SKU | Marczak.IO | Adam Marczak">
+<meta name="title" content="Logic App Tips Tip &amp; Tricks Series | Marczak.IO | Adam Marczak">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Logic App Tips: TF AzureRM is not supported for Standard SKU">
+<meta property="og:title" content="Logic App Tips Tip &amp; Tricks Series">
 <meta property="og:description" content="Here is long-overdue and my promised top 20 Azure Logic Apps tips &amp; tricks">
 <meta property="og:url" content="https://marczak.io/posts/2025/03/logic-app-tips-miniseries/">
 <meta property="og:site_name" content="Marczak.IO">
@@ -30,7 +30,7 @@
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
-<meta name="twitter:title" content="Logic App Tips: TF AzureRM is not supported for Standard SKU">
+<meta name="twitter:title" content="Logic App Tips Tip &amp; Tricks Series">
 <meta name="twitter:description" content="Here is long-overdue and my promised top 20 Azure Logic Apps tips &amp; tricks">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/03/logic-app-tips-miniseries/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
@@ -92,7 +92,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1 text-center">
-          <h1 class="hestia-title">Logic App Tips: TF AzureRM is not supported for Standard SKU</h1>
+          <h1 class="hestia-title">Logic App Tips Tip &amp; Tricks Series</h1>
           
             <h4 class="author">
               Published by<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2025-03-30 17:00:23 &#43;0200 CEST">Mar 30 2025</time>
@@ -115,30 +115,36 @@
     <img data-src="/images/2024-la-images/la-series.png" src=""/> 
 </div> <h2>Highlight</h2>
         <p>Here is long-overdue and my promised top 20 Azure Logic Apps tips &amp; tricks</p>
-<more>
-<h3 id="series">Series</h3>
-<p>Here are my top 20+ tips for Azure Logic Apps service</p>
+<p>I&rsquo;ve been building logic apps for what it feels foerver, I think it&rsquo;s 8 year now, which is almost as long as I&rsquo;ve been using Azure, almost&hellip;</p>
+<p>I&rsquo;ve often been asked to create my top tips &amp; tricks for this great integration service, so here are my top 20+ tips for Logic App service. This has been updated for 2025 changes as well!</p>
+<h3 id="before-you-start">Before you start</h3>
+<p>I would advise everyone to check my post where I outline updates for logic apps in the last 15 months, so up until Match 2025. This post can be found <a href="/posts/2025/03/logic-app-news-2025/">here</a>.</p>
+<p>This list isn&rsquo;t exhastive, but it&rsquo;s a collection of updates that I&rsquo;ve found most interesting and most impactful for our day-2-day work.</p>
+<h3 id="mini-series">Mini-series</h3>
+<p>Here are my top tips for Azure Logic Apps service</p>
 <ul>
-<li><a href="/posts/2024/09/logic-app-tip-connector-network">Build Git Integraiton to replicate Data Factory like experience</a></li>
-<li><a href="/posts/2025/01/logic-app-tip-connector-differences/">Triggers and Actions vary between SKUs</a></li>
-<li><a href="/posts/2025/01/logic-app-tip-disable-workflows/">Disable Workflows when doing CICD</a></li>
-<li><a href="/posts/2025/01/logic-app-tip-connector-costs/">Watch out for In-App vs Azure connector costs</a></li>
-<li><a href="/posts/2025/01/logic-app-tip-connector-network/">Watch out for In-App vs Azure Connector Networking</a></li>
-<li><a href="/posts/2025/01/logic-app-tip-find-underutilized-apps/">Find underutilized Logic Apps</a></li>
-<li><a href="/posts/2025/01/logic-app-tip-storage-cant-be-shared/">Storage Accounts can&rsquo;t be shared</a></li>
-<li><a href="/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/">SQL db can&rsquo;t be shared, but&hellip;</a></li>
-<li><a href="/posts/2025/02/logic-app-tip-http-connectors-to-rescue/">HTTP connectors to the rescue</a></li>
-<li><a href="/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/">Parallelization &amp; retries matter</a></li>
-<li><a href="/posts/2025/02/logic-app-tip-exporting-workflows/">Exporting Workflows</a></li>
-<li><a href="/posts/2025/02/logic-app-tip-hide-your-storage/">Hide your storage! :)</a></li>
-<li><a href="/posts/2025/02/logic-app-tip-try-catch-finally/">Replicate Try-Catch-Finally flow</a></li>
-<li><a href="/posts/2025/02/logic-app-tip-orphaned-api-connections/">Find Orphaned API connections</a></li>
-<li><a href="/posts/2025/02/logic-app-tip-avoid-personal-accounts/">Personal Account is an issue</a></li>
-<li><a href="/posts/2025/03/logic-app-tip-entra-id-auth-for-http/">Entra ID Authentication for HTTP connectors without API Management</a></li>
-<li><a href="/posts/2025/03/logic-app-tip-hide-secrets/">Hide secrets in your workflows</a></li>
-<li><a href="/posts/2025/03/logic-app-tip-tf-not-supported/">TF AzureRM is not supported for Standard SKU</a></li>
-<li><a href="/posts/2025/03/logic-app-tip-retries-cost/">Retries cost</a></li>
-<li><a href="/posts/2025/03/logic-app-tip-pooling-costs/">Pooling costs</a></li>
+<li><a href="/posts/2024/12/logic-app-tip-git-integration-ci/">Build Git Integraiton for Standard Logic Apps</a> - replicate behavior similar to Azure Data Factory - so develop in the portal, and sync your code back to Azure DevOps repo</li>
+<li><a href="/posts/2025/01/logic-app-tip-connector-differences/">Triggers and Actions vary between SKUs</a> - when migrating logic apps from consumption to standard SKU, so from Azure connectors to In-App connectors you might find ourself in a difficult situation, so here is what you should be aware of</li>
+<li><a href="/posts/2025/01/logic-app-tip-disable-workflows/">Disable Workflows when doing CICD</a> - did you know you can disable Logic App Standard workflows before even deploying them? This could be very useful to ensure you won&rsquo;t start triggering them before rest of the app is still deploying</li>
+<li><a href="/posts/2025/01/logic-app-tip-connector-costs/">Watch out for In-App vs Azure connector costs</a> - In-App and Azure connectors are priced differently compared to Consumption logic apps, make sure to remember about it</li>
+<li><a href="/posts/2025/01/logic-app-tip-connector-network/">Watch out for In-App vs Azure connector networking</a> - similarly, networking between these two connectors is different, so in this tip I&rsquo;ll explain the key difference and why it matters</li>
+<li><a href="/posts/2025/01/logic-app-tip-effect-of-scale-cost/">Watch out for the &lsquo;effect of scale&rsquo;</a> - private networking costs, and let me tell you it&rsquo;s not cheap</li>
+<li><a href="/posts/2025/01/logic-app-tip-find-underutilized-apps/">Find underutilized Logic Apps</a> - Underutilized logic apps might cause governance headache, in this post I&rsquo;ll covery why and how to get rid of them</li>
+<li><a href="/posts/2025/01/logic-app-tip-storage-cant-be-shared/">Storage Accounts can&rsquo;t be shared</a> - When implementing Logic Apps at scale, you might want to know if you can share their state on centrally shared storage account</li>
+<li><a href="/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/">SQL db can&rsquo;t be shared, but&hellip;</a> - SQL Database can be used to store logic app state, but should it be? Is there any advantage over storage accounts?</li>
+<li><a href="/posts/2025/02/logic-app-tip-http-connectors-to-rescue/">HTTP connectors to the rescue</a> - What to do when there is no connector, or it doesn&rsquo;t support your actions? Logic Apps HTTP connector is usually the solution</li>
+<li><a href="/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/">Parallelization &amp; retries matter</a> - By default logic apps parallize and retry actions, read here why is it important from my perspective</li>
+<li><a href="/posts/2025/02/logic-app-tip-exporting-workflows/">Exporting Consumption Workflows</a> - When moving over, or just deploying to a higher environment, it&rsquo;s good to know how can you export your logic app workflows</li>
+<li><a href="/posts/2025/02/logic-app-tip-hide-your-storage/">Hide your storage! :)</a> - Hide what? Yea, so this one is a bit less about technical adoption, and more about realistic approach to Azure governance</li>
+<li><a href="/posts/2025/02/logic-app-tip-try-catch-finally/">Replicate Try-Catch-Finally flow</a> - Try/Catch/Finally has been staple of any object oriented programming for many years, in this post, did you know you can also do it in Logic Apps?</li>
+<li><a href="/posts/2025/02/logic-app-tip-orphaned-api-connections/">Find Orphaned API connections</a> - Re-authenticating from the logic app designer is a nightmare for management of logic apps at scale, in this post I&rsquo;ll explain why and how to clean this situation</li>
+<li><a href="/posts/2025/02/logic-app-tip-avoid-personal-accounts/">Personal Account is an issue</a> - Connections, connections, connections, if not orphaned, then using an incorrect account. Here is why you shouldn&rsquo;t do it, and what you should use</li>
+<li><a href="/posts/2025/03/logic-app-tip-entra-id-auth-for-http/">Entra ID Authentication for HTTP connectors without API Management</a> - If you look at blog posts they will suggest to use APIM to provide entra ID authentication for your HTTP REST endpoint workflows, but there is a cheaper way</li>
+<li><a href="/posts/2025/03/logic-app-tip-hide-secrets/">Hide secrets in your workflows</a> - Reaching to key vault for a secret? Getting a access token manually? Operating on PII data? Yea, it will be visible in your Logic App logs, so you need to hide it!</li>
+<li><a href="/posts/2025/03/logic-app-tip-tf-not-supported/">TF AzureRM is not supported for Standard SKU</a> - Did you find an odd error when deploying Logic Apps Standard from Terraform AzureRM provider? Did MS support reply this isn&rsquo;t supported? We did too, and I&rsquo;ve reached out to a Product Team to find out more</li>
+<li><a href="/posts/2025/03/logic-app-tip-retries-cost/">Retries cost</a> - If you build pipelines and expect failures, ensure to configure retries appropierately, or you will pay for it</li>
+<li><a href="/posts/2025/03/logic-app-tip-pooling-costs/">Pooling costs</a> - Are you using one of those &ldquo;check every X seconds&rdquo; triggers? Yea, this will cost you&hellip;
+`</li>
 </ul>
 <h3 id="next-actions">Next Actions</h3>
 <p>Here are some recommendations from me on what you can check out next if you want to learn mores</p>
@@ -179,7 +185,7 @@
    rel="tooltip" 
    data-original-title="Share on Twitter" 
    class="btn btn-just-icon btn-share btn-twitter" 
-   href="https://twitter.com/home?status=Logic%20App%20Tips%3a%20TF%20AzureRM%20is%20not%20supported%20for%20Standard%20SKU - https%3a%2f%2fmarczak.io%2fposts%2f2025%2f03%2flogic-app-tips-miniseries%2f">
+   href="https://twitter.com/home?status=Logic%20App%20Tips%20Tip%20%26%20Tricks%20Series - https%3a%2f%2fmarczak.io%2fposts%2f2025%2f03%2flogic-app-tips-miniseries%2f">
    <i class="fa fa-twitter"></i>
 </a>
 <a target="_blank" 
@@ -282,8 +288,8 @@ s.setAttribute('data-timestamp', +new Date());
 <ul>
         <li><b class="list-header">2025 March</b></li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips: TF AzureRM is not supported for Standard SKU" rel="bookmark">
-                <b>30th </b>Logic App Tips: TF AzureRM is not supported for Standard SKU
+            <a href="/posts/2025/03/logic-app-tips-miniseries/" title="Logic App Tips Tip &amp; Tricks Series" rel="bookmark">
+                <b>30th </b>Logic App Tips Tip &amp; Tricks Series
             </a>
         </li>
         <li class="indented">

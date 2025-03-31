@@ -11,7 +11,7 @@
     
     
     <item>
-      <title>Logic App Tips: TF AzureRM is not supported for Standard SKU</title>
+      <title>Logic App Tips Tip &amp; Tricks Series</title>
       <link>https://marczak.io/posts/2025/03/logic-app-tips-miniseries/</link>
       <pubDate>Sun, 30 Mar 2025 17:00:23 +0200</pubDate>
       
@@ -30,7 +30,7 @@
       <guid>https://marczak.io/posts/2025/03/logic-app-tip-pooling-costs/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-22.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -42,7 +42,7 @@
       <guid>https://marczak.io/posts/2025/03/logic-app-tip-retries-cost/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-21.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -54,7 +54,7 @@
       <guid>https://marczak.io/posts/2025/03/logic-app-tip-tf-not-supported/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-20.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -66,7 +66,7 @@
       <guid>https://marczak.io/posts/2025/03/logic-app-tip-hide-secrets/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-19.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -78,7 +78,7 @@
       <guid>https://marczak.io/posts/2025/03/logic-app-tip-entra-id-auth-for-http/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-18.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -114,7 +114,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-orphaned-api-connections/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-16.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -126,7 +126,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-try-catch-finally/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-15.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -138,7 +138,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-hide-your-storage/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-14.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -150,7 +150,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-exporting-workflows/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-13.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -162,7 +162,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-12.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -174,7 +174,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-http-connectors-to-rescue/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-11.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -186,7 +186,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-10.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -198,7 +198,7 @@
       <guid>https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2025-pbi/rest-api.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        &lt;p&gt;Did you try to query Azure Management REST API from Power Query? Did you notice paging doesn&amp;rsquo;t work&amp;hellip; yeah&amp;hellip;&lt;/p&gt;
       </description>
     </item>
     
@@ -210,7 +210,7 @@
       <guid>https://marczak.io/posts/2025/01/logic-app-tip-storage-cant-be-shared/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-8.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        &lt;p&gt;Azure Logic Apps store their state on storage accounts, and they require dedicated account, or do they?&lt;/p&gt;
       </description>
     </item>
     
@@ -222,7 +222,7 @@
       <guid>https://marczak.io/posts/2025/01/logic-app-tip-find-underutilized-apps/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-7.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        &lt;p&gt;If you read my previous post on logic app costs and effect of scale, here is another tip for you&lt;/p&gt;
       </description>
     </item>
     
@@ -234,7 +234,7 @@
       <guid>https://marczak.io/posts/2025/01/logic-app-tip-effect-of-scale-cost/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-6.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        &lt;p&gt;When it comes to private networking there is a new element that must be considered when rolling out solutions at scale, and that is&amp;hellip;&lt;/p&gt;
       </description>
     </item>
     
@@ -246,7 +246,7 @@
       <guid>https://marczak.io/posts/2025/01/logic-app-tip-connector-network/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-5.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        &lt;p&gt;Did you know azure connectors are still paid in logic app standard?&lt;/p&gt;
       </description>
     </item>
     
@@ -258,7 +258,7 @@
       <guid>https://marczak.io/posts/2025/01/logic-app-tip-connector-costs/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-4.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        &lt;p&gt;Did you know azure connectors are still paid in logic app standard?&lt;/p&gt;
       </description>
     </item>
     
@@ -294,7 +294,7 @@
       <guid>https://marczak.io/posts/2024/12/logic-app-tip-git-integration-ci/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-1.png&quot;&gt;
-        
+        &lt;p&gt;Logic Apps more and more move into classic development paradigm, for better or for worse, but not all clients need it. If you want more simplistic approach you can build a git-integration like feature yourself.&lt;/p&gt;
       </description>
     </item>
     
