@@ -3,18 +3,99 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://marczak.io/tags/azure/</loc>
-    <lastmod>2024-03-03T17:00:23+02:00</lastmod>
+    <lastmod>2025-03-30T17:00:23+02:00</lastmod>
   </url><url>
-    <loc>https://marczak.io/tags/data-factory/</loc>
-    <lastmod>2024-03-03T17:00:23+02:00</lastmod>
+    <loc>https://marczak.io/posts/2025/03/logic-app-tips-miniseries/</loc>
+    <lastmod>2025-03-30T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/logic-apps/</loc>
+    <lastmod>2025-03-30T17:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/</loc>
-    <lastmod>2024-03-03T17:00:23+02:00</lastmod>
+    <lastmod>2025-03-30T17:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/</loc>
-    <lastmod>2024-03-03T17:00:23+02:00</lastmod>
+    <lastmod>2025-03-30T17:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/tags/</loc>
+    <lastmod>2025-03-30T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/03/logic-app-tip-pooling-costs/</loc>
+    <lastmod>2025-03-18T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/03/logic-app-tip-retries-cost/</loc>
+    <lastmod>2025-03-14T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/03/logic-app-tip-tf-not-supported/</loc>
+    <lastmod>2025-03-11T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/03/logic-app-tip-hide-secrets/</loc>
+    <lastmod>2025-03-08T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/03/logic-app-tip-entra-id-auth-for-http/</loc>
+    <lastmod>2025-03-05T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/03/logic-app-news-2025/</loc>
+    <lastmod>2025-03-02T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/02/logic-app-tip-avoid-personal-accounts/</loc>
+    <lastmod>2025-02-19T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/02/logic-app-tip-orphaned-api-connections/</loc>
+    <lastmod>2025-02-15T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/02/logic-app-tip-try-catch-finally/</loc>
+    <lastmod>2025-02-13T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/02/logic-app-tip-hide-your-storage/</loc>
+    <lastmod>2025-02-11T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/02/logic-app-tip-exporting-workflows/</loc>
+    <lastmod>2025-02-09T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/</loc>
+    <lastmod>2025-02-07T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/02/logic-app-tip-http-connectors-to-rescue/</loc>
+    <lastmod>2025-02-05T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/</loc>
+    <lastmod>2025-02-02T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/power-bi/</loc>
+    <lastmod>2025-02-02T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/</loc>
+    <lastmod>2025-02-02T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/01/logic-app-tip-storage-cant-be-shared/</loc>
+    <lastmod>2025-01-27T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/01/logic-app-tip-find-underutilized-apps/</loc>
+    <lastmod>2025-01-23T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/01/logic-app-tip-effect-of-scale-cost/</loc>
+    <lastmod>2025-01-20T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/01/logic-app-tip-connector-network/</loc>
+    <lastmod>2025-01-12T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/01/logic-app-tip-connector-costs/</loc>
+    <lastmod>2025-01-07T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/01/logic-app-tip-connector-differences/</loc>
+    <lastmod>2025-01-05T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/01/logic-app-tip-disable-workflows/</loc>
+    <lastmod>2025-01-03T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2024/12/logic-app-tip-git-integration-ci/</loc>
+    <lastmod>2024-12-04T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2024/09/logic-app-tip-connector-network/</loc>
+    <lastmod>2024-09-11T17:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/data-factory/</loc>
     <lastmod>2024-03-03T17:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2024/03/graphapi-delegated-vs-app-flow/</loc>
@@ -24,9 +105,6 @@
     <lastmod>2024-03-01T17:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2024/02/azure-logic-apps-gitintegration/</loc>
-    <lastmod>2024-02-04T17:00:23+02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/logic-apps/</loc>
     <lastmod>2024-02-04T17:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2024/02/azure-logic-apps-cicd-2024/</loc>
