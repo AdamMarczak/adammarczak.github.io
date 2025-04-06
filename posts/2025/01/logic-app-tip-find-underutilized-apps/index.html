@@ -124,17 +124,130 @@
 <p>Which is, how to find underutilized logic apps to save a lot of money for your org!</p>
 <h3 id="intro">Intro</h3>
 <p>Every single logic app that is not used in a private network environment will cos you around 25-32 USD per month, so the more you find the better.</p>
-<p>Why? I&rsquo;ve covered this here</p>
+<p>Why? I&rsquo;ve covered this in the article about the effect of scale. But in short, it&rsquo;s about the cost, or more, about reduction of it. With private network environment each underutilized logic app will cost you, hence finding out underutilized logic apps will save you a ton of money.</p>
 <ul>
-<li><a href="/posts/2025/01/logic-app-tip-effect-of-scale-cost/">Watch out for the &lsquo;effect of scale&rsquo;</a></li>
+<li>Reference article     <a href="/posts/2025/01/logic-app-tip-effect-of-scale-cost/">Watch out for the &lsquo;effect of scale&rsquo;</a></li>
 </ul>
 <p>Myself, I&rsquo;m a simple person, a simple problem must have a simple solution. So I&rsquo;ve wrote this script. It run for 30 minutes (API is slow for some reason), and I&rsquo;ve found <strong>50,000 USD yearly savings for my organization</strong>. Big win in 30 minutes, don&rsquo;t you think?</p>
 <p>It&rsquo;s open source so feel free to use it :)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"></code></pre></div><p>Just update this part with your management groups, or remove this where to search all azure subscriptions you have access to</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Ensure you are logged into Azure</span>
+<span class="c"># Connect-AzAccount</span>
+ 
+<span class="c"># Install Az.ResourceGraph module if not installed</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="p">(</span><span class="nb">Get-Module</span> <span class="n">-ListAvailable</span> <span class="n">-Name</span> <span class="n">Az</span><span class="p">.</span><span class="n">ResourceGraph</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">Az</span><span class="p">.</span><span class="n">ResourceGraph</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span> <span class="n">-Force</span>
+<span class="p">}</span>
+ 
+<span class="c"># Query Azure Resource Graph to get all App Service resource IDs</span>
+<span class="nv">$query</span> <span class="p">=</span> <span class="sh">@&#34;
+</span><span class="sh">resourcecontainers
+</span><span class="sh">| where [&#39;type&#39;] == &#39;microsoft.resources/subscriptions&#39;
+</span><span class="sh">| where properties.managementGroupAncestorsChain[0].displayName startswith &#34;Tenant Root Group&#34;
+</span><span class="sh">         or properties.managementGroupAncestorsChain[0].displayName startswith &#34;B&#34;
+</span><span class="sh">         or properties.managementGroupAncestorsChain[0].displayName startswith &#34;C&#34;
+</span><span class="sh">         or properties.managementGroupAncestorsChain[0].displayName startswith &#34;D&#34;
+</span><span class="sh">| project subscriptionId
+</span><span class="sh">| join kind=inner (
+</span><span class="sh">    resources
+</span><span class="sh">    | where type =~ &#39;microsoft.web/sites&#39;
+</span><span class="sh">    | where kind == &#39;functionapp,workflowapp&#39;
+</span><span class="sh">) on subscriptionId
+</span><span class="sh">| project id
+</span><span class="sh">&#34;@</span>
+ 
+<span class="c"># Run the query across all subscriptions</span>
+<span class="nv">$appServices</span> <span class="p">=</span> <span class="nb">Search-AzGraph</span> <span class="n">-Query</span> <span class="nv">$query</span> <span class="n">-First</span> <span class="n">1000</span>
+ 
+<span class="c"># Output the list of resource IDs</span>
+<span class="nv">$appServices</span><span class="p">.</span><span class="n">id</span>
+ 
+<span class="nv">$laEmptyCount</span> <span class="p">=</span> <span class="n">0</span>
+<span class="k">foreach</span><span class="p">(</span> <span class="nv">$id</span> <span class="k">in</span> <span class="nv">$appServices</span><span class="p">.</span><span class="n">id</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$workflows</span> <span class="p">=</span> <span class="nb">Invoke-AzRestMethod</span> <span class="n">-Uri</span> <span class="s2">&#34;https://management.azure.com/$id/workflows?api-version=2024-04-01&#34;</span>
+    <span class="nv">$parsedResponse</span> <span class="p">=</span> <span class="nv">$workflows</span><span class="p">.</span><span class="n">Content</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
+    <span class="k">if</span><span class="p">(</span><span class="nv">$parsedResponse</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">Count</span> <span class="o">-eq</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$laEmptyCount</span> <span class="p">=</span> <span class="nv">$laEmptyCount</span> <span class="p">+</span> <span class="n">1</span>
+        <span class="nv">$laEmptyCount</span>
+        <span class="nb">Write-Host</span> <span class="s2">&#34;Unused LA: $id&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nb">Write-Host</span> <span class="s2">&#34;Unused logic apps count: $laEmptyCount&#34;</span>
+</code></pre></div><p>Just update this part with your management groups, or remove this where to search all azure subscriptions you have access to</p>
+<pre tabindex="0"><code class="language-kql" data-lang="kql">| where properties.managementGroupAncestorsChain[0].displayName startswith &quot;A&quot;
+         or properties.managementGroupAncestorsChain[0].displayName startswith &quot;B&quot;
+         or properties.managementGroupAncestorsChain[0].displayName startswith &quot;C&quot;
+         or properties.managementGroupAncestorsChain[0].displayName startswith &quot;D&quot;
+</code></pre><p>Either</p>
+<ul>
+<li>Use &ldquo;Tenant Root Group&rdquo; in the where statement to include all subscriptions under root management group or,</li>
+<li>Just remove entire where statement altogether</li>
+</ul>
+<p>Here is the code</p>
+<ul>
 <li>CODE: <a href="https://github.com/MarczakIO/azure-enterprise-templates/blob/main/extras/find-empty-la.ps1">https://github.com/MarczakIO/azure-enterprise-templates/blob/main/extras/find-empty-la.ps1</a></li>
 </ul>
-<h3 id="next-actions">Next Actions</h3>
+<h3 id="executing-the-code">Executing the code</h3>
+<p>If you run the code in <a href="https://shell.azure.com">https://shell.azure.com</a> you should see something like this</p>
+
+<div class="lazy" style="max-height: 705px">
+    <div style="padding-bottom:57.551%"></div>
+    <img data-src="/images/2024-la-images/tip-7-1.png" src=""/> 
+</div>
+<h4 id="output">Output</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">PS /home/adam&gt; <span class="c1"># Install Az.ResourceGraph module if not installed</span>
+PS /home/adam&gt; <span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span>Get-Module -ListAvailable -Name Az.ResourceGraph<span class="o">))</span> <span class="o">{</span>
+&gt;&gt;     Install-Module -Name Az.ResourceGraph -Scope CurrentUser -Force
+&gt;&gt; <span class="o">}</span>
+PS /home/adam&gt;  
+PS /home/adam&gt; <span class="c1"># Query Azure Resource Graph to get all App Service resource IDs</span>
+PS /home/adam&gt; <span class="nv">$query</span> <span class="o">=</span> @<span class="s2">&#34;
+</span><span class="s2">&gt;&gt; resourcecontainers
+</span><span class="s2">&gt;&gt; | where [&#39;type&#39;] == &#39;microsoft.resources/subscriptions&#39;
+</span><span class="s2">&gt;&gt; | where properties.managementGroupAncestorsChain[0].displayName startswith &#34;</span>Tenant Root Group<span class="s2">&#34;
+</span><span class="s2">&gt;&gt;          or properties.managementGroupAncestorsChain[0].displayName startswith &#34;</span>B<span class="s2">&#34;
+</span><span class="s2">&gt;&gt;          or properties.managementGroupAncestorsChain[0].displayName startswith &#34;</span>C<span class="s2">&#34;
+</span><span class="s2">&gt;&gt;          or properties.managementGroupAncestorsChain[0].displayName startswith &#34;</span>D<span class="s2">&#34;
+</span><span class="s2">&gt;&gt; | project subscriptionId
+</span><span class="s2">&gt;&gt; | join kind=inner (
+</span><span class="s2">&gt;&gt;     resources
+</span><span class="s2">&gt;&gt;     | where type =~ &#39;microsoft.web/sites&#39;
+</span><span class="s2">&gt;&gt;     | where kind == &#39;functionapp,workflowapp&#39;
+</span><span class="s2">&gt;&gt; ) on subscriptionId
+</span><span class="s2">&gt;&gt; | project id
+</span><span class="s2">&gt;&gt; &#34;</span>@
+PS /home/adam&gt;  
+PS /home/adam&gt; <span class="c1"># Run the query across all subscriptions</span>
+PS /home/adam&gt; <span class="nv">$appServices</span> <span class="o">=</span> Search-AzGraph -Query <span class="nv">$query</span> -First <span class="m">1000</span>
+PS /home/adam&gt;  
+PS /home/adam&gt; <span class="c1"># Output the list of resource IDs</span>
+PS /home/adam&gt; <span class="nv">$appServices</span>.id
+/subscriptions/f73706f8-c55b-42b7-9d31-6fc8e0d24146/resourceGroups/logic-apps-standard-cicd-rg/providers/Microsoft.Web/sites/logicappscicd
+/subscriptions/f73706f8-c55b-42b7-9d31-6fc8e0d24146/resourceGroups/logic-apps-standard-cicd-rg/providers/Microsoft.Web/sites/logicappscicd-prod
+/subscriptions/f73706f8-c55b-42b7-9d31-6fc8e0d24146/resourceGroups/sb-rg/providers/Microsoft.Web/sites/amdemosb
+PS /home/adam&gt;  
+PS /home/adam&gt; <span class="nv">$laEmptyCount</span> <span class="o">=</span> <span class="m">0</span>
+PS /home/adam&gt; foreach<span class="o">(</span> <span class="nv">$id</span> in <span class="nv">$appServices</span>.id <span class="o">)</span> <span class="o">{</span>
+&gt;&gt;     <span class="nv">$workflows</span> <span class="o">=</span> Invoke-AzRestMethod -Uri <span class="s2">&#34;https://management.azure.com/</span><span class="nv">$id</span><span class="s2">/workflows?api-version=2024-04-01&#34;</span>
+&gt;&gt;     <span class="nv">$parsedResponse</span> <span class="o">=</span> <span class="nv">$workflows</span>.Content <span class="p">|</span> ConvertFrom-Json
+&gt;&gt;     <span class="k">if</span><span class="o">(</span><span class="nv">$parsedResponse</span>.value.Count -eq 0<span class="o">)</span> <span class="o">{</span>
+&gt;&gt;         <span class="nv">$laEmptyCount</span> <span class="o">=</span> <span class="nv">$laEmptyCount</span> + <span class="m">1</span>
+&gt;&gt;         <span class="nv">$laEmptyCount</span>
+&gt;&gt;         Write-Host <span class="s2">&#34;Unused LA: </span><span class="nv">$id</span><span class="s2">&#34;</span>
+&gt;&gt;     <span class="o">}</span>
+&gt;&gt; <span class="o">}</span>
+</code></pre></div><p>Here is the key info</p>
+<h4 id="logic-app-standard-sku-found-in-your-selected-query">Logic App Standard SKU found in your selected query</h4>
+<pre tabindex="0"><code>PS /home/adam&gt; # Output the list of resource IDs
+PS /home/adam&gt; $appServices.id
+/subscriptions/f73706f8-c55b-42b7-9d31-6fc8e0d24146/resourceGroups/logic-apps-standard-cicd-rg/providers/Microsoft.Web/sites/logicappscicd
+/subscriptions/f73706f8-c55b-42b7-9d31-6fc8e0d24146/resourceGroups/logic-apps-standard-cicd-rg/providers/Microsoft.Web/sites/logicappscicd-prod
+/subscriptions/f73706f8-c55b-42b7-9d31-6fc8e0d24146/resourceGroups/sb-rg/providers/Microsoft.Web/sites/amdemosb
+</code></pre><p>And if you find a logic app which will be ununsed, then it will print something like this</p>
+<pre tabindex="0"><code>Unused LA: $/subscriptions/f73706f8-c55b-42b7-9d31-6fc8e0d24146/resourceGroups/sb-rg/providers/Microsoft.Web/sites/amdemosb
+</code></pre><p>And at the end the amount of unused logic apps</p>
+<pre tabindex="0"><code>Unused logic apps count: 1
+</code></pre><h3 id="next-actions">Next Actions</h3>
 <p>Here are some recommendations from me on what you can check out next if you want to learn more</p>
 <ul>
 <li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>

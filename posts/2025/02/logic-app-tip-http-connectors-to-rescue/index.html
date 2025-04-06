@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="description" content="Did you know that majority of these 1000&#43; connectors for logic apps are just HTTP calls? Do you know what does that mean for you?">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: HTTP connectors to the rescue | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: HTTP connectors to the rescue">
-<meta property="og:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta property="og:description" content="Did you know that majority of these 1000&#43; connectors for logic apps are just HTTP calls? Do you know what does that mean for you?">
 <meta property="og:url" content="https://marczak.io/posts/2025/02/logic-app-tip-http-connectors-to-rescue/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-11.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: HTTP connectors to the rescue">
-<meta name="twitter:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="twitter:description" content="Did you know that majority of these 1000&#43; connectors for logic apps are just HTTP calls? Do you know what does that mean for you?">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/02/logic-app-tip-http-connectors-to-rescue/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,7 +114,66 @@
     <div style="padding-bottom:62.62135922330097%"></div>
     <img data-src="/images/2024-la-images/tip-11.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <error>
+        <p>Did you know that majority of these 1000+ connectors for logic apps are just HTTP calls? Do you know what does that mean for you?</p>
+<p>The more you know, right? Let&rsquo;s explore if this can be leveraged to our advantage.</p>
+<h3 id="intro">Intro</h3>
+<p>I can&rsquo;t count how many times this saved me. Every time I find something missing in one of the connectors I typically revert back to HTTP connector. Because almost every single logic app connector is simply a wrapper for a preconfigured and predefined HTTP connector call. Even more, 99% of Azure services can be called via HTTP REST API. That means if something is in Azure, you can call it.</p>
+<h3 id="example-scenario-1---blob-vs-data-lake-with-acls">Example Scenario 1 - Blob vs. Data Lake with ACLs</h3>
+<p>A good example doesn&rsquo;t even take me far back. Recently I&rsquo;ve had a case where our team wants to save a file into Azure Data Lake Storage folder, and while you can just use Blob Connector it won&rsquo;t work if you granted the access via ACL (access control lists) instead of RBAC (role-based access control).</p>
+<p>Storage Account has something which is called multi-protocol access. That means you can use Blob and Data Lake APIs on both Blob Storage and Data Lake Storage. In 90% cases that is amazing, but it looks like the calls that Blob Storage connector makes do not use appropriate endpoints to leverage this great feature. That means if you applied your folder level access via ACL, then your connector will fail.</p>
+<p>In our team we thought to ourselves, can be fall back to HTTP calls and call data lake APIs outselves? and well, to surprise of noone, yes, yes you can. So we did just that.</p>
+<h4 id="rest-api-we-found">REST API we found</h4>
+<p>This is the equivalent API call that we&rsquo;ve found that works</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-HTTP" data-lang="HTTP"><span class="err">PUT https://{accountName}.{dnsSuffix}/{filesystem}/{path}
+</span></code></pre></div><p>or with params</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-HTTP" data-lang="HTTP"><span class="err">PUT https://{accountName}.{dnsSuffix}/{filesystem}/{path}?resource={resource}&amp;continuation={continuation}&amp;mode={mode}&amp;timeout={timeout}
+</span></code></pre></div><p>Reference: <a href="https://learn.microsoft.com/en-us/rest/api/storageservices/datalakestoragegen2/path/create?view=rest-storageservices-datalakestoragegen2-2019-12-12&amp;$WT.mc_id=AZ-MVP-5003556">https://learn.microsoft.com/en-us/rest/api/storageservices/datalakestoragegen2/path/create?view=rest-storageservices-datalakestoragegen2-2019-12-12</a></p>
+<p>Screenshot below shows how we did it</p>
+
+<div class="lazy" style="max-height: 589px">
+    <div style="padding-bottom:57.632%"></div>
+    <img data-src="/images/2024-la-images/tip-11-4.jpg" src=""/> 
+</div>
+<p>We ended up doing 3 calls</p>
+<ol>
+<li>Create Data Lake File</li>
+<li>Put file content into the file</li>
+<li>Flush file on data lake</li>
+</ol>
+<p>The collest thing is that HTTP action does have embeeded functionality for using managed identity of your logic app, as simple as shown below</p>
+
+<div class="lazy" style="max-height: 390px">
+    <div style="padding-bottom:58.735%"></div>
+    <img data-src="/images/2024-la-images/tip-11-5.jpg" src=""/> 
+</div>
+<h3 id="example-scenario-2---managed-identity-not-supported">Example Scenario 2 - Managed Identity Not Supported</h3>
+<p>When logic app standard began.</p>
+
+<div class="lazy" style="max-height: 267px">
+    <div style="padding-bottom:74.581%"></div>
+    <img data-src="/images/2024-la-images/tip-11-1.png" src=""/> 
+</div>
+<p>Now it does support managed identity</p>
+
+<div class="lazy" style="max-height: 342px">
+    <div style="padding-bottom:61.733%"></div>
+    <img data-src="/images/2024-la-images/tip-11-3.jpg" src=""/> 
+</div>
+<p>But before it did, we again used Logic Apps' HTTP connector similar to previous example. It&rsquo;s really that easy.</p>
+
+<div class="lazy" style="max-height: 390px">
+    <div style="padding-bottom:58.735%"></div>
+    <img data-src="/images/2024-la-images/tip-11-5.jpg" src=""/> 
+</div>
+<h3 id="summary">Summary</h3>
+<p>So remember, when there is no connector, or your connector does not have supported</p>
+<ul>
+<li>Authentication Type</li>
+<li>Action</li>
+<li>New API from a particular service</li>
+<li>Does not work as you expect it to</li>
+</ul>
+<p>Then remember <strong>HTTP connector</strong> can save you!</p>
     </article>
     <div class="section-blog-info">
         <div class="row">

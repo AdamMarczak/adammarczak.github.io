@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="description" content="Speaking of logic app state storage, what about SQL DB? Can SQL database be used to share state for many logic apps?">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: SQL db can&#39;t be shared, but... | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: SQL db can&#39;t be shared, but...">
-<meta property="og:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta property="og:description" content="Speaking of logic app state storage, what about SQL DB? Can SQL database be used to share state for many logic apps?">
 <meta property="og:url" content="https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-10.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: SQL db can&#39;t be shared, but...">
-<meta name="twitter:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="twitter:description" content="Speaking of logic app state storage, what about SQL DB? Can SQL database be used to share state for many logic apps?">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,7 +114,115 @@
     <div style="padding-bottom:62.68292682926829%"></div>
     <img data-src="/images/2024-la-images/tip-10.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <error>
+        <p>Speaking of logic app state storage, what about SQL DB? Can SQL database be used to share state for many logic apps?</p>
+<p>Some time ago Microsoft released a public preview of SQL database support for storing Logic App State. This might not be a big deal for many, but it might be interesting for some organizations that could leverage it to replace old school Storage Accounts for state management.</p>
+<h3 id="intro">Intro</h3>
+<p>As we know Azure Logic Apps use Storage Accounts to save their state. This state contains information about every workflow execution, logs, data, etc. <a href="/posts/2025/01/logic-app-tip-effect-of-scale-cost/">In one of my previous posts</a> I&rsquo;ve talked about how this can be a problem when building large platforms with many logic apps.</p>
+<p>So is Azure SQL a good alternative? Let&rsquo;s try to figure it out.</p>
+<h3 id="azure-sql-database-cant-be-shared-but">Azure SQL Database can&rsquo;t be shared, but&hellip;</h3>
+<p>First of all, one thing is certain. Azure SQL Database, similarly to Azure Storage Account can&rsquo;t be shared across many logic apps.</p>
+<p>Based on documentation, the way this works is that logic app needs a high-level permissions on three schemas in the database. Namely</p>
+<ul>
+<li><strong>dc</strong> - for data containers - this replicates storage blob containers</li>
+<li><strong>dq</strong> - for data queues - this replicates storage queues</li>
+<li><strong>dt</strong> - for data tables - this replaces storage tables</li>
+</ul>
+<p>Below diagram illustrates this</p>
+
+<div class="lazy" style="max-height: 472px">
+    <div style="padding-bottom:91.473%"></div>
+    <img data-src="/images/2024-la-images/tip-10-1.png" src=""/> 
+</div>
+<p>Similarly to Azure Storage Account. If we were to share SQL schemas there is an inevitable chance of data collisions which will mess up your logic apps state.</p>
+<h3 id="but-there-is-a-way">But&hellip; there is a way.</h3>
+<p>But not all is lost, there is one interesting fact here. Compared to storage accounts there is a difference here.</p>
+<p>In storage account you have a structure like this</p>
+<ul>
+<li>Logic App - <strong>1 Private Endpoint</strong></li>
+<li>Storage Account
+<ul>
+<li>Blob Storage - <strong>1 Private Endpoint</strong></li>
+<li>Queue Storage - <strong>1 Private Endpoint</strong></li>
+<li>Table Storage - <strong>1 Private Endpoint</strong></li>
+</ul>
+</li>
+</ul>
+<p>4 private endpoints in total, where as on Azure SQL it&rsquo;s as follows</p>
+<ul>
+<li>Logic App - <strong>1 Private Endpoint</strong></li>
+<li>Azure SQL Server - <strong>1 Private Endpoint</strong>
+<ul>
+<li>Azure SQL Database</li>
+</ul>
+</li>
+</ul>
+<p>So 2 private endpoints, instead of 4. But let&rsquo;s look at the effect of scale here.</p>
+<h3 id="effect-of-scale---scenario-with-10-logic-apps">Effect of scale - Scenario with 10 logic apps</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scenario 1</br>Storage for State</th>
+<th>Scenario 2</br>SQL for State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logic Apps (app service)</td>
+<td><strong>10x</strong> Private Endpoints</td>
+<td><strong>10x</strong> Private Endpoints</td>
+</tr>
+<tr>
+<td>- Storage Account</td>
+<td><strong>10x</strong> Private Endpoints</td>
+<td>&ndash;</td>
+</tr>
+<tr>
+<td>- Storage Blob Service</td>
+<td><strong>10x</strong> Private Endpoints</td>
+<td>&ndash;</td>
+</tr>
+<tr>
+<td>- Storage Table Service</td>
+<td><strong>10x</strong> Private Endpoints</td>
+<td>&ndash;</td>
+</tr>
+<tr>
+<td>- Storage Queue Service</td>
+<td><strong>10x</strong> Private Endpoints</td>
+<td>&ndash;</td>
+</tr>
+<tr>
+<td>Azure SQL Server</td>
+<td>&ndash;</td>
+<td><strong>1x</strong> Private Endpoints</td>
+</tr>
+<tr>
+<td>Azure SQL Database</td>
+<td>&ndash;</td>
+<td><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>If we have 10 logic apps in the first scenario you will get 40 private endpoints. But if you share Azure SQL server, which is actually something fairly easily doable, then you have have 10 logic apps on the single server. In which case you get 10 private endpoints for logic apps, and 1 shared private endpoint for all databases, since private endpoint is tied to the server, not the database. So you will end up in with 11 PEs.</p>
+<h3 id="summary">Summary</h3>
+<p>It&rsquo;s hard to say whenever SQL DB will be a good replacement for Storage Accounts for Logic Apps state, since cost is just one of many factors to take into account. There are also things like</p>
+<ol>
+<li>Subscription limits</li>
+<li>SQL limits</li>
+<li>SQL pricing at higher throughputs</li>
+<li>SQL management</li>
+</ol>
+<p>Time will tell, but it&rsquo;s definitely an interesting avenue to pursue</p>
+<p>Hear you next time</p>
+<h3 id="next-actions">Next Actions</h3>
+<p>Here are some recommendations from me on what you can check out next if you want to learn more</p>
+<ul>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+<li><a href="?WT.mc_id=AZ-MVP-5003556"></a></li>
+</ul>
     </article>
     <div class="section-blog-info">
         <div class="row">

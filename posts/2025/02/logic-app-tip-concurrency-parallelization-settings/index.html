@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Logic App Tips: Parallelization &amp; retries | Marczak.IO | Adam Marczak</title>
+<title>Logic App Tips: Parallelization &amp; concurrency | Marczak.IO | Adam Marczak</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="https://marczak.io/images/favicon-32x32.png" sizes="32x32" />
 <link rel="icon" type="image/png" href="https://marczak.io/images/favicon-16x16.png" sizes="16x16" />
@@ -15,23 +15,23 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="description" content="It&rsquo;s a small thing, but somehow many people forget about this.">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
-<meta name="title" content="Logic App Tips: Parallelization &amp; retries | Marczak.IO | Adam Marczak">
+<meta name="title" content="Logic App Tips: Parallelization &amp; concurrency | Marczak.IO | Adam Marczak">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Logic App Tips: Parallelization &amp; retries">
-<meta property="og:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta property="og:title" content="Logic App Tips: Parallelization &amp; concurrency">
+<meta property="og:description" content="It&rsquo;s a small thing, but somehow many people forget about this.">
 <meta property="og:url" content="https://marczak.io/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-12.png">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
-<meta name="twitter:title" content="Logic App Tips: Parallelization &amp; retries">
-<meta name="twitter:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="twitter:title" content="Logic App Tips: Parallelization &amp; concurrency">
+<meta name="twitter:description" content="It&rsquo;s a small thing, but somehow many people forget about this.">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -92,7 +92,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1 text-center">
-          <h1 class="hestia-title">Logic App Tips: Parallelization &amp; retries</h1>
+          <h1 class="hestia-title">Logic App Tips: Parallelization &amp; concurrency</h1>
           
             <h4 class="author">
               Published by<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2025-02-07 17:00:23 &#43;0200 &#43;0200">Feb 7 2025</time>
@@ -114,7 +114,107 @@
     <div style="padding-bottom:61.56351791530945%"></div>
     <img data-src="/images/2024-la-images/tip-12.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <error>
+        <p>It&rsquo;s a small thing, but somehow many people forget about this.</p>
+<h3 id="intro">Intro</h3>
+<p>I can&rsquo;t count the amount of times that I&rsquo;ve had to look into a case of</p>
+<ul>
+<li>Expensive logic apps</li>
+<li>Long running logic apps</li>
+<li>Failing logic apps</li>
+<li>Random cases of overwritten variables</li>
+<li>and more&hellip;</li>
+</ul>
+<p>Only to find out it was either forgotten parallelization or concurrency behaviors</p>
+
+<div class="lazy" style="max-height: 380px">
+    <div style="padding-bottom:68.100%"></div>
+    <img data-src="/images/2024-la-images/tip-12-1.png" src=""/> 
+</div>
+<h3 id="parallelization">Parallelization</h3>
+<p>Most logic app actions that iterate have support for parallelization. It&rsquo;s basically a setting of how many executions of the iteration to do at the same time. This one can be confusing for those coming from other programming languages where for-each loops are sequential by default. If you want to have the same behavior set parallelization setting to 1.</p>
+<p>Old logic app designer showed this when clicking &ldquo;&hellip;&rdquo; three dots, and selecting settings option. New logic app designer, is much cleaner and this setting can be found in &ldquo;settings&rdquo; tab.</p>
+
+<div class="lazy" style="max-height: 414px">
+    <div style="padding-bottom:46.569%"></div>
+    <img data-src="/images/2024-la-images/tip-12-1.jpg" src=""/> 
+</div>
+<p>Note that the default is set to &ldquo;off&rdquo; this means logic app will try to parallelize this as much as possible. But that max is 50 anyways, so don&rsquo;t worry about it.</p>
+
+<div class="lazy" style="max-height: 171px">
+    <div style="padding-bottom:32.325%"></div>
+    <img data-src="/images/2024-la-images/tip-12-2.jpg" src=""/> 
+</div>
+<h4 id="why-should-i-care">Why should I care?</h4>
+<p>Let&rsquo;s make an example. If you use &lsquo;set variable&rsquo; or similar action which overrides existing variable or state of any object, if you parallelize you will run into racing conditions. Racing condition basically means, if you run 50 parallel threads, each tries to set a variable, all of them override it, and following actions which use these variables will act oddly which will be very hard to debug.</p>
+<p>For example let&rsquo;s assume our logic app is a simple one with two actions</p>
+<ol>
+<li>Loop through users &lsquo;Adam&rsquo; and &lsquo;Tom&rsquo;
+<ol>
+<li>Set variable &lsquo;UserName&rsquo; to current username to process</li>
+<li>Set &lsquo;out of office&rsquo; setting to that user (from variable UserName)</li>
+</ol>
+</li>
+</ol>
+<p>And then execute them in parallel</p>
+<ol>
+<li>Start loop for Adam and Tom - 2 parallel executions
+<ol>
+<li>Loop #1 sets variable &lsquo;UserName&rsquo; to &lsquo;Adam&rsquo;</li>
+<li>Loop #2 sets variable &lsquo;UserName&rsquo; to &lsquo;Tom&rsquo;</li>
+<li>Loop #1 uses &lsquo;UserName&rsquo; (currently set to &lsquo;Tom&rsquo;) variable to set out of office. Hence Tom has now out of office message.</li>
+<li>Loop #2 uses &lsquo;UserName&rsquo; (currently set to &lsquo;Tom&rsquo;) variable to set out of office. This either fails because Tom already has out of office set, or just does nothing.</li>
+</ol>
+</li>
+</ol>
+<p>Problem is fairly obvious, user Adam did not get his out of office setting becaus loop 2 changed variable to Tom before first parallel loop could do anything with it.</p>
+<p>So yea, parallelization is important. Especially with scoped variables.</p>
+<p>But other scenarios where parallelization is important is</p>
+<ol>
+<li>Long running workflows - technically you want to parallelize, just use actions that are scoped like ParseJson or ComposeJson which can act like Initialize or Set Variable</li>
+<li>Calling external APIs with rate limits - too many calls with start throwing errors, which in conjution with retry policies will cause major slow down of your logic app and potentially significantly raise the cost (read more in retry policies section)</li>
+</ol>
+<h4 id="parallelization-on-triggers">Parallelization on triggers</h4>
+<p>Did you know that you can greatly increase parallelization of you logic apps if you use &lsquo;SplitOn&rsquo; setting on your triggers? Many triggers do that by default, but if you haven&rsquo;t explored it make sure you do.</p>
+<p>For example, imagine you have this JSON as paylod for you logic app HTTP request trigger</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">items:</span> <span class="err">[</span>
+        <span class="err">{</span>
+            <span class="err">name:</span> <span class="nt">&#34;Adam&#34;</span>
+        <span class="p">}</span><span class="err">,</span>
+        <span class="p">{</span>
+            <span class="err">name:</span> <span class="nt">&#34;Tom&#34;</span>
+        <span class="p">}</span><span class="err">,</span>
+        <span class="p">{</span>
+            <span class="err">name:</span> <span class="nt">&#34;Jake&#34;</span>
+        <span class="p">}</span><span class="err">,</span>
+        <span class="p">{</span>
+            <span class="err">name:</span> <span class="nt">&#34;Jane&#34;</span>
+        <span class="p">}</span>
+    <span class="err">]</span>
+<span class="err">}</span>
+</code></pre></div><p>You can use SplitOn on your trigger using expression <code>RequestBody().items</code> which execute 4 entire new logic app workflows incread 1 workflow with 4 items as payload. Each instance would get instead a payload like this</p>
+<p>Logic App Instance #1</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">name:</span> <span class="nt">&#34;Adam&#34;</span>
+<span class="p">}</span>
+</code></pre></div><p>Logic App Instance #2</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">name:</span> <span class="nt">&#34;Tom&#34;</span>
+<span class="p">}</span>
+</code></pre></div><p>Logic App Instance #3</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">name:</span> <span class="nt">&#34;Jake&#34;</span>
+<span class="p">}</span>
+</code></pre></div><p>Logic App Instance #4</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">name:</span> <span class="nt">&#34;Jane&#34;</span>
+<span class="p">}</span>
+</code></pre></div><p>This is very neat and can be used to greatly increase parallelization of your logic apps.</p>
+<h4 id="when-not-to">When not to</h4>
+<p>Just remember to not parallelize when you need to ensure order or processing everything in a single transaction. Always use common sense for your use-case.</p>
+<h3 id="summary">Summary</h3>
+<p>I think we can all agree that while this is fairly straightforward, I really can&rsquo;t count the amount of times I&rsquo;ve seen someone struggle with logic apps at scale because of having these two core concepts wrong.</p>
+<p>Now that you know this you can take your logic app game to the next levels.</p>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -148,7 +248,7 @@
    rel="tooltip" 
    data-original-title="Share on Twitter" 
    class="btn btn-just-icon btn-share btn-twitter" 
-   href="https://twitter.com/home?status=Logic%20App%20Tips%3a%20Parallelization%20%26%20retries - https%3a%2f%2fmarczak.io%2fposts%2f2025%2f02%2flogic-app-tip-concurrency-parallelization-settings%2f">
+   href="https://twitter.com/home?status=Logic%20App%20Tips%3a%20Parallelization%20%26%20concurrency - https%3a%2f%2fmarczak.io%2fposts%2f2025%2f02%2flogic-app-tip-concurrency-parallelization-settings%2f">
    <i class="fa fa-twitter"></i>
 </a>
 <a target="_blank" 

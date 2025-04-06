@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="description" content="Exporting workflows is a most natural step for logic app developers. But what to use, and what NOT to use?">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: Exporting Workflows | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: Exporting Workflows">
-<meta property="og:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta property="og:description" content="Exporting workflows is a most natural step for logic app developers. But what to use, and what NOT to use?">
 <meta property="og:url" content="https://marczak.io/posts/2025/02/logic-app-tip-exporting-workflows/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-13.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: Exporting Workflows">
-<meta name="twitter:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="twitter:description" content="Exporting workflows is a most natural step for logic app developers. But what to use, and what NOT to use?">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/02/logic-app-tip-exporting-workflows/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,7 +114,83 @@
     <div style="padding-bottom:62.58116883116883%"></div>
     <img data-src="/images/2024-la-images/tip-13.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <error>
+        <p>Exporting workflows is a most natural step for logic app developers. But what to use, and what NOT to use?</p>
+<h3 id="intro">Intro</h3>
+<p>Almost anyone starting with logic app workflows will sooner or later export their workflow. This is because</p>
+<ol>
+<li>You started developing in Azure Portal</li>
+<li>You&rsquo;ve build logic apps in consumption, but need to move to standard SKU workflows</li>
+<li>You need to move your development to local environment with Visual Studio Code</li>
+<li>You need to move your workflows accross environments, be it manually or via CICD</li>
+</ol>
+<p>So, how do you do it? Here&rsquo;s how&hellip;</p>
+<h3 id="options">Options</h3>
+<p>In order to export logic apps you can use one of the following</p>
+<ol>
+<li>Azure Portal Code Designer - copy-paste the code into another logic app</li>
+<li>Azure Portal Export ARM template - export entire logic app as an ARM template</li>
+<li>Jeff Holan&rsquo;s Logic App Template Creator - as above, exports logic app as an ARM template</li>
+<li>Visual Studio Code Logic App Export Utility - exports entire logic app as an ARM template</li>
+</ol>
+<p>Which one to use?</p>
+<h3 id="azure-portal-code-designer">Azure Portal Code Designer</h3>
+<p>This one is bad. While initially I&rsquo;ve seen some people do it this way, it is a flawed approach by design because</p>
+<ol>
+<li>Doesn&rsquo;t export API connection objects</li>
+<li>Code references API connections of logic apps with hardcoded resoruce IDs so you need to create new connections or update resoruce IDs manually
+<ul>
+<li>Updating connections manually might also lead to <a href="/posts/2025/02/logic-app-tip-orphaned-api-connections/">many orphaned API connections</a> because creating new connection, creates an entirely new Azure resource</li>
+</ul>
+</li>
+<li>It&rsquo;s very error prone</li>
+<li>Misses a lot of external settings, just moves workflow logic</li>
+<li>Time consuming</li>
+</ol>
+<p>In short <strong>don&rsquo;t use this method</strong>.</p>
+<h3 id="azure-portal-export-arm-template">Azure Portal Export ARM template</h3>
+<p>This is a one of these &ldquo;one step forward, two steps back&rdquo; thing. While it does export logic apps and their setting as it&rsquo;s still a flawed approach because</p>
+<ol>
+<li>Exported API connections have incorrect parameters in the ARM template, you will need to look these up yourself and update ARM template every time manually</li>
+<li>Exported Logic Apps code is not very readable, there is a lot more exported that you need which makes updating the ARM templates a hassle</li>
+<li>Exported template lacks proper parametrization</li>
+</ol>
+<p>In short <strong>don&rsquo;t use this method</strong>.</p>
+<h3 id="jeff-holans-logic-app-template-creator">Jeff Holan&rsquo;s Logic App Template Creator</h3>
+<p>This one I&rsquo;ve found by googling around a bit. And surprisingly became my staple method for exporting Logic Apps in Consumption Tier</p>
+<p>Jeff Hollan&rsquo;s Github Project can be found here <a href="https://github.com/jeffhollan/LogicAppTemplateCreator">https://github.com/jeffhollan/LogicAppTemplateCreator</a></p>
+<p>There are three very very cool things about this</p>
+<ol>
+<li>It is an open-source project so you can not only use and review it freely, but you can also contribute to it</li>
+<li>It&rsquo;s available to be complied into .exe file so you can run it anywhere, including linux sicne it uses .NET core</li>
+<li>There is a powershell command available which can be imported into your local machine or devops to perform CICD</li>
+</ol>
+<p>There is only one disadvantage to this</p>
+<ol>
+<li>It doesn&rsquo;t work with Logic Apps Standard SKU</li>
+</ol>
+<p>In short <strong>use this method for consumption logic apps manual exports &amp; CICD</strong>.</p>
+<h3 id="visual-studio-code-logic-app-export-utility">Visual Studio Code Logic App Export Utility</h3>
+<p>Recently Microsoft added a support for Logic Apps Extensions for exporting logic apps.</p>
+<p>This is great for many reasons like</p>
+<ol>
+<li>It works out of the box after installing Logic Apps extensions in VS Code</li>
+<li>No extra setup required</li>
+<li>Works with consumption and standard logic apps</li>
+</ol>
+<p>But there is one drawback here</p>
+<ol>
+<li>It doesn&rsquo;t work for CICD since it&rsquo;s just local VS Code extension, so you can&rsquo;t use it for your CICD</li>
+</ol>
+<p>In short <strong>use this method for consumption logic apps manual exports</strong>.</p>
+<h4 id="what-if-i-need-cicd-for-logic-apps-standard-sku">What if I need CICD for Logic Apps Standard SKU?</h4>
+<p>Don&rsquo;t worry, just check my post how I approach this. <a href="/posts/2024/02/azure-logic-apps-cicd-2024/">Link</a></p>
+
+<div class="lazy" style="max-height: 353px">
+    <div style="padding-bottom:44.627%"></div>
+    <img data-src="/images/2024-la-images/tip-13-1.png" src=""/> 
+</div>
+<h3 id="summary">Summary</h3>
+<p>Which is the method that you use? did you try and disagree, or maybe you&rsquo;ve found a better way to approach logic apps exports? If so, let me know!</p>
     </article>
     <div class="section-blog-info">
         <div class="row">
