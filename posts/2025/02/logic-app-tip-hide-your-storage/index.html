@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="description" content="Security by obscurity? No, that&rsquo;s not my intention here, this is not a security recommendation, but an adoption one.">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: Hide your storage! :) | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: Hide your storage! :)">
-<meta property="og:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta property="og:description" content="Security by obscurity? No, that&rsquo;s not my intention here, this is not a security recommendation, but an adoption one.">
 <meta property="og:url" content="https://marczak.io/posts/2025/02/logic-app-tip-hide-your-storage/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-14.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: Hide your storage! :)">
-<meta name="twitter:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="twitter:description" content="Security by obscurity? No, that&rsquo;s not my intention here, this is not a security recommendation, but an adoption one.">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/02/logic-app-tip-hide-your-storage/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,7 +114,29 @@
     <div style="padding-bottom:63.10204081632653%"></div>
     <img data-src="/images/2024-la-images/tip-14.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <error>
+        <p>Security by obscurity? No, that&rsquo;s not my intention here, this is not a security recommendation, but an adoption one.</p>
+<h3 id="intro">Intro</h3>
+<p>If you read my post explaining why <a href="/posts/2025/01/logic-app-tip-storage-cant-be-shared/">storage accounts can&rsquo;t be shared for logic app state</a>, then you already know that each logic app needs it&rsquo;s own storage. Is there a risk attached to it? Kind off, but it&rsquo;s not a security one.</p>
+<h4 id="core-issue">Core issue</h4>
+<p>Many organizations try to tackle the issue of data siloing and unmanaged data respositories. Storage accounts is the most commony used data repository service in Azure, and for the right reasons. But this can become an issue at larger scale.</p>
+<p>Imagine your organization; as many on the plant currently are trying to; is trying to ensure a central data lake is used to store and process company&rsquo;s data. But instead of having a few central data lakes, your organization also deployed 100 logic apps, and that means 100 storage accounts.</p>
+<p>What will happen? The most human thing of course. Development teams instead of using central data lake they will see a storage account in their resource group and leverage it because very often they have full ownership of that RG. This might not be a problem if your organization is small, but at larger scale, it is really an issue. I&rsquo;ve seen organizations which found out that their storage accounts which were intended for logic apps suddenly were used by big data services like Synapse, Fabric or Databricks and stored up to 2 petabytes of data; yes, 2 petabytes. The only reason they&rsquo;ve found about it was because costs started ramping up where they shouldn&rsquo;t. Now imagine this problem in an enterprise scale company.</p>
+<h3 id="solution-not-really-but-it-helps">Solution? Not really, but it helps</h3>
+<p>My tip is a small, move the provisioned storage accounts into storage resource group where developers only have read access to storage and read/write storage data, nothing more.</p>
+
+<div class="lazy" style="max-height: 556px">
+    <div style="padding-bottom:81.406%"></div>
+    <img data-src="/images/2024-la-images/tip-14-1.png" src=""/> 
+</div>
+<p>Does it solve it?</p>
+<p>In short? <strong>No</strong>, but it helps. It helps because majority of developer&rsquo;s won&rsquo;t see the storage in their RG and will at least ask the right question first &ldquo;Where do I store my data?&rdquo; and the answer will be an organizational data lake.</p>
+<p>While there will still be these 1-5% of developers who will find this storage via logic app connection string and possibly do something they shouldn&rsquo;t it&rsquo;s stil much better solution. This is because it&rsquo;s easier to clean up after small fraction of use-cases than if 90% of them would do it, and trust me, they would.</p>
+<h3 id="real-solution">Real solution?</h3>
+<p>The real solution to this problem might be SQL database used to state storage, but Today this is still a preview feature, so we have to wait and find out how it ends up being.</p>
+<p>that said, I wrote a small blog post about SQL database and how it potentially can also reduce cost of your logic apps if you want to read about it <a href="/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/">here</a>.</p>
+<h3 id="summary">Summary</h3>
+<p>What do you think about it? Is the proper adoption of the platform worth extra effort* of provisioning storage in another RG? Let me know your thoughts?</p>
+<p>*Extra effort is a little far fetched obviously because with Bicep or Terraform this is very straightforward.</p>
     </article>
     <div class="section-blog-info">
         <div class="row">

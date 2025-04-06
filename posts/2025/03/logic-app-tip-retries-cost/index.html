@@ -115,6 +115,26 @@
     <img data-src="/images/2024-la-images/tip-21.png" src=""/> 
 </div> <h2>Highlight</h2>
         <error>
+<h3 id="retry-policies">Retry Policies</h3>
+<p>Retry policies is something that everyone working in the cloud should be aware of. The idea is fairly simple, if you fail to execute an action, try a few more times.</p>
+<p>Typically retry policies have two parameters that you set</p>
+<ul>
+<li><strong>Retries</strong> - how many times is a particular action going to be retried</li>
+<li><strong>Retry Interval</strong> - and how much time should pass between each individual retry, there are two settings for it
+<ul>
+<li><strong>Increasing Inteval</strong> - This means how much more time between each execution should pass, sometimes it&rsquo;s exponential, sometimes it&rsquo;s a flat addition, but generally it can go like (X*X seconds) 2s, 4s, 8s, 16s, etc. or flat calculation like (X + 2 seconds) 2s, 4s, 6s, 10s, etc.</li>
+<li><strong>Static Interval</strong> - Or simply set to always try every X seconds, like 2s, 2s, 2s, 2s, etc.</li>
+</ul>
+</li>
+</ul>
+<h4 id="why-should-i-care">Why should I care?</h4>
+<p>Again, great question. You should care because of two things</p>
+<ol>
+<li><strong>Every retry will extend the duration</strong> of your logic app workflow runs</li>
+<li><strong>Every retry will cost you</strong> - yes, you&rsquo;ve heard it, retries are not free, you will pay for every action. Although it should be noted that this is only the case for <strong>consumption</strong> logic apps, or <strong>azure</strong> connectors in <strong>logic app standard</strong>.</li>
+</ol>
+<p>And the point 2 is the important one, although 1 also has implications on it&rsquo;s own.</p>
+<p>So, why exactly is this important besides the obvious points? <strong>All Logic Apps connectors always have retry policies set to 4</strong>. So if you just leave the default, and your logic app will start failing, then all your logic aps will try 4 times each action before finally failing. This might overload your end APIs or create huge cost for your logic apps if you leverage consumption tier.</p>
     </article>
     <div class="section-blog-info">
         <div class="row">

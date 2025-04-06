@@ -102,7 +102,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-avoid-personal-accounts/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-17.png&quot;&gt;
-        &lt;p&gt;Some scenarios might require you do disable workflows before you deploy your code. Here is why&amp;hellip;&lt;/p&gt;
+        
       </description>
     </item>
     
@@ -119,14 +119,14 @@
     </item>
     
     <item>
-      <title>Logic App Tips: Replicate Try-Catch-Finally flow</title>
+      <title>Logic App Tips: Replicate Try-Catch-Finally pattern</title>
       <link>https://marczak.io/posts/2025/02/logic-app-tip-try-catch-finally/</link>
       <pubDate>Thu, 13 Feb 2025 17:00:23 +0200</pubDate>
       
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-try-catch-finally/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-15.png&quot;&gt;
-        
+        &lt;p&gt;Try / Catch / Finally programming blocks are the staple of any enterprise ready solution, and you can use this pattern in Logic Apps too!&lt;/p&gt;
       </description>
     </item>
     
@@ -138,7 +138,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-hide-your-storage/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-14.png&quot;&gt;
-        
+        &lt;p&gt;Security by obscurity? No, that&amp;rsquo;s not my intention here, this is not a security recommendation, but an adoption one.&lt;/p&gt;
       </description>
     </item>
     
@@ -150,19 +150,19 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-exporting-workflows/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-13.png&quot;&gt;
-        
+        &lt;p&gt;Exporting workflows is a most natural step for logic app developers. But what to use, and what NOT to use?&lt;/p&gt;
       </description>
     </item>
     
     <item>
-      <title>Logic App Tips: Parallelization &amp; retries</title>
+      <title>Logic App Tips: Parallelization &amp; concurrency</title>
       <link>https://marczak.io/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/</link>
       <pubDate>Fri, 07 Feb 2025 17:00:23 +0200</pubDate>
       
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-12.png&quot;&gt;
-        
+        &lt;p&gt;It&amp;rsquo;s a small thing, but somehow many people forget about this.&lt;/p&gt;
       </description>
     </item>
     
@@ -174,7 +174,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-http-connectors-to-rescue/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-11.png&quot;&gt;
-        
+        &lt;p&gt;Did you know that majority of these 1000+ connectors for logic apps are just HTTP calls? Do you know what does that mean for you?&lt;/p&gt;
       </description>
     </item>
     
@@ -186,7 +186,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-10.png&quot;&gt;
-        
+        &lt;p&gt;Speaking of logic app state storage, what about SQL DB? Can SQL database be used to share state for many logic apps?&lt;/p&gt;
       </description>
     </item>
     
