@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="description" content="Why it happens and how to solve orphaned API connections for azure logic apps?">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: Find Orphaned API connections | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: Find Orphaned API connections">
-<meta property="og:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta property="og:description" content="Why it happens and how to solve orphaned API connections for azure logic apps?">
 <meta property="og:url" content="https://marczak.io/posts/2025/02/logic-app-tip-orphaned-api-connections/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-16.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: Find Orphaned API connections">
-<meta name="twitter:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="twitter:description" content="Why it happens and how to solve orphaned API connections for azure logic apps?">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/02/logic-app-tip-orphaned-api-connections/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,7 +114,45 @@
     <div style="padding-bottom:62.7831715210356%"></div>
     <img data-src="/images/2024-la-images/tip-16.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <error>
+        <p>Why it happens and how to solve orphaned API connections for azure logic apps?</p>
+<h3 id="intro">Intro</h3>
+<p>This is probably one of the most common issues I see that clients have with logic apps. They develop logic apps, and after half a year they have dozens of connections in their resoruce group, often tens for each connector they use and the amount of connections varies between environments. So let&rsquo;s talk about, why is this happening.</p>
+<h4 id="what-is-orphanned-connection">What is orphanned connection?</h4>
+<p>Orphanned connection is simply an Azure Resource of type &lsquo;API connection&rsquo; that is not leveraged by any workflow (logic app). API connections can be leveraged by multiple logic app workflows, both consumption and standard, so it&rsquo;s quite tricky to identify the ones that can be safely deleted.</p>
+<p>These types of abandoned connections happen when developers instead of reauthenticating their api connections use &lsquo;Add Connection&rsquo; in their logic app to update the connection credentials. While seems like an obvious &lsquo;don&rsquo;t do it&rsquo; action, many still do that.</p>
+<p>The way you can see there are orphanned connections in your app is by looking at API connection resource names. They will be suffixed by a number (something like on the screenshot below). In majority of cases that is already a nice indication of a growing problem.</p>
+
+<div class="lazy" style="max-height: 208px">
+    <div style="padding-bottom:69.799%"></div>
+    <img data-src="/images/2024-la-images/tip-16-1.png" src=""/> 
+</div>
+<h4 id="is-there-a-no-solve-for-it">Is there a no solve for it?</h4>
+<p>Technically the solve is simple, educate people to use &lsquo;Authorize&rsquo; button on the API connection.</p>
+<p>You can find it by navigating</p>
+<ol>
+<li>Find you API connection in your resource group and click on it</li>
+<li>Navigate to General section into EDIT API Connection tab</li>
+<li>Click on Authorize</li>
+<li>If you changed the account to entirely different one, feel free to update Display Name to reflect that</li>
+</ol>
+
+<div class="lazy" style="max-height: 231px">
+    <div style="padding-bottom:47.629%"></div>
+    <img data-src="/images/2024-la-images/tip-16-2.png" src=""/> 
+</div>
+<h4 id="how-to-clean-it-up">How to clean it up?</h4>
+<p>I suggest using a script by Sandro Pereira, a great Microsoft Azure MVP who already tackled this issue for you.</p>
+<p>Ref: <a href="https://blog.sandro-pereira.com/2021/07/12/find-orphaned-azure-api-connectors-in-all-resource-groups-with-powershell/">Find Orphaned Azure API Connectors in all Resource Groups with PowerShell</a></p>
+<pre><code>
+<div class="lazy" style="max-height: 410px">
+    <div style="padding-bottom:61.934%"></div>
+    <img data-src="/images/2024-la-images/tip-16-3.jpg" src=""/> 
+</div>
+Image Source: https://blog.sandro-pereira.com
+</code></pre>
+<p>Once you try it, let me know your experience!</p>
+<h3 id="summary">Summary</h3>
+<p>While logic apps are a great service, something a small thing like this might cause a management overhead. Be sure to put a proper governance rules, automations and monitoring in place to ensure adoption goes as you envisioned.</p>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -266,8 +304,8 @@ s.setAttribute('data-timestamp', +new Date());
             </a>
         </li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tip-tf-not-supported/" title="Logic App Tips: TF AzureRM is not supported for Standard SKU" rel="bookmark">
-                <b>11th </b>Logic App Tips: TF AzureRM is not supported for Standard SKU
+            <a href="/posts/2025/03/logic-app-tip-tf-not-supported/" title="Logic App Tips: Terraform AzureRM is not supported for Logic Apps Standard SKU" rel="bookmark">
+                <b>11th </b>Logic App Tips: Terraform AzureRM is not supported for Logic Apps Standard SKU
             </a>
         </li>
         <li class="indented">

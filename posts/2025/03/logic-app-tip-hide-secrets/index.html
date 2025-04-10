@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="description" content="Secrets should remain secret, but they are not by default.">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: Hide secrets | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: Hide secrets">
-<meta property="og:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta property="og:description" content="Secrets should remain secret, but they are not by default.">
 <meta property="og:url" content="https://marczak.io/posts/2025/03/logic-app-tip-hide-secrets/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-19.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: Hide secrets">
-<meta name="twitter:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="twitter:description" content="Secrets should remain secret, but they are not by default.">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/03/logic-app-tip-hide-secrets/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,7 +114,39 @@
     <div style="padding-bottom:62.81529698942229%"></div>
     <img data-src="/images/2024-la-images/tip-19.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <error>
+        <p>Secrets should remain secret, but they are not by default.</p>
+<h3 id="intro">Intro</h3>
+<p>If you ever developed any integration using Azure logic apps, you probably appreciate how easy is it to debug your workflows using visual designer. Everything is clear and well laid out, every action can be reviewed with all input and output parameters. It&rsquo;s trully a fantastic way to build solutions.</p>
+<h3 id="problem-statement">Problem Statement</h3>
+<p>But, have you ever built a workflow which requires you to connect to key vault to grab a secret key, or some external API to generate some sort of API key, or maybe you needed to add a secret parameter. If you ever did that, then you know all these secrets will be visible in those logs that we all priase so much.</p>
+
+<div class="lazy" style="max-height: 493px">
+    <div style="padding-bottom:58.482%"></div>
+    <img data-src="/images/2024-la-images/tip-19-2.jpg" src=""/> 
+</div>
+<p>So what now?</p>
+<h3 id="solution">Solution</h3>
+<p>There is a feature called <strong>Secure Inputs</strong> and <strong>Secure Outputs</strong> which is available on almost any action in Logic Apps. It&rsquo;s pretty neat. The way it works is that it hides the values from the logic app run history.</p>
+<h4 id="how-it-works">How it works?</h4>
+<p>If you want to hide for example a secret value you retreived from the key vault, you just mark the action with <strong>Secure Outputs</strong> and it will take for you all of that.</p>
+
+<div class="lazy" style="max-height: 287px">
+    <div style="padding-bottom:39.208%"></div>
+    <img data-src="/images/2024-la-images/tip-19-3.jpg" src=""/> 
+</div>
+<p>The coolest thing is that every action which takes as an input, a value from a previously secured output. It will automatically get marked as secure input. Hence the value will not be shown in all dependant actions. Although, you use it in expression, it&rsquo;s stil possible you will see it.</p>
+
+<div class="lazy" style="max-height: 340px">
+    <div style="padding-bottom:58.824%"></div>
+    <img data-src="/images/2019-08-logic-apps-obfuscation/W000124.png" src=""/> 
+</div>
+<h4 id="need-extra-info-read-more">Need extra info? Read more.</h4>
+<p>If you want to learn more about how it work, feel free to read it here.</p>
+<ul>
+<li>Blog post <a href="/posts/2019/08/logic-apps-obfuscation/">Logic Apps Secret Obfuscation</a></li>
+</ul>
+<h3 id="summary">Summary</h3>
+<p>Secrets should never be exposed, under any circumstances. Whether that&rsquo;s CICD logs, log analytics diagnostic or app logs, or just azure portal UI &amp; logs. Secrets should always remain as the name suggests, a secret. This feature will allow you to achieve that.</p>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -266,8 +298,8 @@ s.setAttribute('data-timestamp', +new Date());
             </a>
         </li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tip-tf-not-supported/" title="Logic App Tips: TF AzureRM is not supported for Standard SKU" rel="bookmark">
-                <b>11th </b>Logic App Tips: TF AzureRM is not supported for Standard SKU
+            <a href="/posts/2025/03/logic-app-tip-tf-not-supported/" title="Logic App Tips: Terraform AzureRM is not supported for Logic Apps Standard SKU" rel="bookmark">
+                <b>11th </b>Logic App Tips: Terraform AzureRM is not supported for Logic Apps Standard SKU
             </a>
         </li>
         <li class="indented">

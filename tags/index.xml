@@ -47,14 +47,14 @@
     </item>
     
     <item>
-      <title>Logic App Tips: TF AzureRM is not supported for Standard SKU</title>
+      <title>Logic App Tips: Terraform AzureRM is not supported for Logic Apps Standard SKU</title>
       <link>https://marczak.io/posts/2025/03/logic-app-tip-tf-not-supported/</link>
       <pubDate>Tue, 11 Mar 2025 17:00:23 +0200</pubDate>
       
       <guid>https://marczak.io/posts/2025/03/logic-app-tip-tf-not-supported/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-20.png&quot;&gt;
-        
+        &lt;p&gt;I&amp;rsquo;m sorry, what?&lt;/p&gt;
       </description>
     </item>
     
@@ -66,7 +66,7 @@
       <guid>https://marczak.io/posts/2025/03/logic-app-tip-hide-secrets/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-19.png&quot;&gt;
-        
+        &lt;p&gt;Secrets should remain secret, but they are not by default.&lt;/p&gt;
       </description>
     </item>
     
@@ -102,7 +102,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-avoid-personal-accounts/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-17.png&quot;&gt;
-        
+        &lt;p&gt;Do you use your own accounts when developing your logic apps? Then stop!&lt;/p&gt;
       </description>
     </item>
     
@@ -114,7 +114,7 @@
       <guid>https://marczak.io/posts/2025/02/logic-app-tip-orphaned-api-connections/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-16.png&quot;&gt;
-        
+        &lt;p&gt;Why it happens and how to solve orphaned API connections for azure logic apps?&lt;/p&gt;
       </description>
     </item>
     

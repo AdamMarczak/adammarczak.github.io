@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="description" content="Do you use your own accounts when developing your logic apps? Then stop!">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: Personal Account is an issue | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: Personal Account is an issue">
-<meta property="og:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta property="og:description" content="Do you use your own accounts when developing your logic apps? Then stop!">
 <meta property="og:url" content="https://marczak.io/posts/2025/02/logic-app-tip-avoid-personal-accounts/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-17.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: Personal Account is an issue">
-<meta name="twitter:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="twitter:description" content="Do you use your own accounts when developing your logic apps? Then stop!">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/02/logic-app-tip-avoid-personal-accounts/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,7 +114,122 @@
     <div style="padding-bottom:59.803117309269894%"></div>
     <img data-src="/images/2024-la-images/tip-17.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <error>
+        <p>Do you use your own accounts when developing your logic apps? Then stop!</p>
+<p>This one is one of the most dangerous bad practices I&rsquo;ve seen when people develop logic apps. Let&rsquo;s talk about it.</p>
+<h3 id="intro">Intro</h3>
+<p>When developers build solutions using Logic Apps, they often will be required to connect to external services. When the services are within Azure, in majority of cases developers will use Service Principals or Managed Identity of the logic app.</p>
+<p>But when developers connect to services like</p>
+<ul>
+<li>Exchange / Outlook</li>
+<li>Gmail</li>
+<li>SharePoint</li>
+<li>OneDrive</li>
+<li>Box</li>
+<li>etc&hellip;</li>
+</ul>
+<p>Instead of requesting separate account, they just click and use their own personal account.</p>
+<h3 id="why-is-this-a-problem">Why is this a problem??</h3>
+<p>Honestly, this is a huuuge problem. Mainly for two reasons</p>
+<ol>
+<li>This is a security incident</li>
+<li>These connections fail when user moves or leaves the organization/team</li>
+</ol>
+<p>Let&rsquo;s discuss each separately</p>
+<h4 id="security-incident">Security Incident</h4>
+<p>One personal account is saved, Azure creates an API connection resource in your resource group. This resource can be <strong>reused</strong> by anyone with a development access in that RG!</p>
+<p>So basically, anyone with access to that RG can create a new logic app or edit existing logic app and leverage that connection.</p>
+
+<div class="lazy" style="max-height: 248px">
+    <div style="padding-bottom:44.765%"></div>
+    <img data-src="/images/2024-la-images/tip-17-1.png" src=""/> 
+</div>
+<h5 id="scenario-1---accessing-sharepoint">Scenario #1 - Accessing SharePoint</h5>
+<p>So for example, let&rsquo;s assume I&rsquo;ve logged in to SharePoint using my personal account <strong><a href="mailto:adam@marczak.io">adam@marczak.io</a></strong> to read a file from <strong>marczakio.sharepoint.com/sites/hr</strong> site.</p>
+<p>But this account has also access to these SharePoint sites</p>
+<ul>
+<li>hr</li>
+<li>finance</li>
+<li>dev team</li>
+</ul>
+<p>Now let&rsquo;s assume, a month later a new developer joins our dev team. He is an external partner with email ID <strong><a href="mailto:tom@cool-partner.com">tom@cool-partner.com</a></strong> and he&rsquo;s got contributor access to our RG.</p>
+<ol>
+<li>Tom creates a new logic app</li>
+<li>In it creates a new SharePoint list files action, in which he
+<ol>
+<li>Selects <strong>existing <a href="mailto:adam@marczak.io">adam@marczak.io</a> connection</strong></li>
+<li>Selects sites from dropdown and points to <strong>finance</strong> site</li>
+</ol>
+</li>
+<li>Creates a loop over all these files</li>
+<li>Adds SharePoint <strong>download file action</strong> into his private drop box</li>
+<li>Deletes the logic app</li>
+</ol>
+<p><strong>What happened?</strong>
+Well, now you allowed an external partner to exflitrate your finance data to his private resource. Without you even knowing. And in the logs it will looks like Adam did this. How do you even find this?!</p>
+<p>Can you imagine the implications of this?</p>
+<p>Now imagine scenarios like</p>
+<ul>
+<li>Sending emails or calendar invites as Adam because i&rsquo;ve saved my connections</li>
+<li>Deleting an entire email box</li>
+<li>Emptying OneDrive folder</li>
+<li>Downloading company&rsquo;s data from sharepoint</li>
+<li>Calling APIs on behalf of Adam, especially with Graph API</li>
+<li>etc. etc.</li>
+</ul>
+<p>Terrible&hellip; <strong>never do it!!!!</strong></p>
+<h4 id="scenario-2---connection-fails">Scenario #2 - Connection Fails</h4>
+<p>If you save connection credentials in Azure Logic App, typically this connection will wrok as long as this user is active (not left the org) and has permissions to access the source.</p>
+<p>If user either leaves the org or looses the access, all connections will be invalidated.</p>
+<p><strong>But that&rsquo;s good, no?</strong></p>
+<p>Generally speaking. Yes. It&rsquo;s very good.</p>
+<p>But what happens if a developer build 50 logic apps, rolled out to drop, and after 3 months left the company for another project. Immediately, one evening 50 production solutions will fail. That means 50 production incidents.</p>
+<p>And the fix isn&rsquo;t easy because it&rsquo;s either</p>
+<ol>
+<li>Authorize connections using different user, but that&rsquo;s just doing the same issue over again</li>
+<li>Create proper API connection using technical account
+<ol>
+<li>Create a new entra account like <a href="mailto:my-automation@marczak.io">my-automation@marczak.io</a></li>
+<li>Add permissions to your source system to <a href="mailto:my-automation@marczak.io">my-automation@marczak.io</a></li>
+<li>Assign appropriate licenses</li>
+<li>Re-authorize connection with <a href="mailto:my-automation@marczak.io">my-automation@marczak.io</a> instead of old personal account</li>
+</ol>
+</li>
+</ol>
+
+<div class="lazy" style="max-height: 231px">
+    <div style="padding-bottom:47.629%"></div>
+    <img data-src="/images/2024-la-images/tip-16-2.png" src=""/> 
+</div>
+<p>But that obviously will take time to do for these 50 solutions, so make sure to get ahead of this before it becomes an issue.</p>
+<h3 id="fix">Fix</h3>
+<p>Unfortunately there is no out of the box fix. While the fix is very easy to do, it&rsquo;s based on the organization setup.</p>
+<p>Why is it simple? Because it&rsquo;s just a script which will</p>
+<ol>
+<li>Pull all API connections from azure
+<pre tabindex="0"><code class="language-kql" data-lang="kql">resources 
+| where type =~ 'Microsoft.Web/connections'
+</code></pre>With results like
+
+<div class="lazy" style="max-height: 495px">
+    <div style="padding-bottom:53.169%"></div>
+    <img data-src="/images/2024-la-images/tip-17-2.jpg" src=""/> 
+</div></li>
+<li>Iterate over every connection and check
+<ol>
+<li>If that user is an entra user. You should find property called authenticated user, you can use that to make graph query.
+
+<div class="lazy" style="max-height: 386px">
+    <div style="padding-bottom:38.911%"></div>
+    <img data-src="/images/2024-la-images/tip-17-3.jpg" src=""/> 
+</div></li>
+<li>If that user is an actual user, not a technical user - and this part varies, it&rsquo;s why this isn&rsquo;t out of the box</li>
+</ol>
+</li>
+</ol>
+<h4 id="how-to-check-if-user-is-technical-user-or-real-user">How to check if user is technical user or real user?</h4>
+<p>It really depends on your org. Sometimes organizations mark their users with some property to indicate that this user is a technical user, sometimes they have central list of technical users, sometimes these users are member or technical user groups, or in other way around, they are not member of all-users or all-employees groups. Either way, depending on your org, that logic will vary, and you will have to find this yourself.</p>
+<h3 id="summary">Summary</h3>
+<p>As you can see, you can be in a big trouble</p>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -266,8 +381,8 @@ s.setAttribute('data-timestamp', +new Date());
             </a>
         </li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tip-tf-not-supported/" title="Logic App Tips: TF AzureRM is not supported for Standard SKU" rel="bookmark">
-                <b>11th </b>Logic App Tips: TF AzureRM is not supported for Standard SKU
+            <a href="/posts/2025/03/logic-app-tip-tf-not-supported/" title="Logic App Tips: Terraform AzureRM is not supported for Logic Apps Standard SKU" rel="bookmark">
+                <b>11th </b>Logic App Tips: Terraform AzureRM is not supported for Logic Apps Standard SKU
             </a>
         </li>
         <li class="indented">
