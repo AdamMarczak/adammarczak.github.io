@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="description" content="What is retry policy in logic apps, and why it costs?">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: Retries cost | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: Retries cost">
-<meta property="og:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta property="og:description" content="What is retry policy in logic apps, and why it costs?">
 <meta property="og:url" content="https://marczak.io/posts/2025/03/logic-app-tip-retries-cost/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-21.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: Retries cost">
-<meta name="twitter:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="twitter:description" content="What is retry policy in logic apps, and why it costs?">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/03/logic-app-tip-retries-cost/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,8 +114,9 @@
     <div style="padding-bottom:62.5%"></div>
     <img data-src="/images/2024-la-images/tip-21.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <h3 id="retry-policies">Retry Policies</h3>
-<p>Retry policies is something that everyone working in the cloud should be aware of. The idea is fairly simple, if you fail to execute an action, try a few more times.</p>
+        <p>What is retry policy in logic apps, and why it costs?</p>
+<h3 id="intro">Intro</h3>
+<p>Retry policies is something that everyone working in the cloud should be aware of. The idea is fairly simple, if you fail to execute an action, try again a few more times.</p>
 <p>Typically retry policies have two parameters that you set</p>
 <ul>
 <li><strong>Retries</strong> - how many times is a particular action going to be retried</li>
@@ -126,14 +127,26 @@
 </ul>
 </li>
 </ul>
+
+<div class="lazy" style="max-height: 479px">
+    <div style="padding-bottom:75.911%"></div>
+    <img data-src="/images/2024-la-images/tip-21-1.png" src=""/> 
+</div>
 <h4 id="why-should-i-care">Why should I care?</h4>
-<p>Again, great question. You should care because of two things</p>
+<p>Again, great question. You should you care? Well, mostly because of two things</p>
 <ol>
 <li><strong>Every retry will extend the duration</strong> of your logic app workflow runs</li>
 <li><strong>Every retry will cost you</strong> - yes, you&rsquo;ve heard it, retries are not free, you will pay for every action. Although it should be noted that this is only the case for <strong>consumption</strong> logic apps, or <strong>azure</strong> connectors in <strong>logic app standard</strong>.</li>
 </ol>
 <p>And the point 2 is the important one, although 1 also has implications on it&rsquo;s own.</p>
 <p>So, why exactly is this important besides the obvious points? <strong>All Logic Apps connectors always have retry policies set to 4</strong>. So if you just leave the default, and your logic app will start failing, then all your logic aps will try 4 times each action before finally failing. This might overload your end APIs or create huge cost for your logic apps if you leverage consumption tier.</p>
+
+<div class="lazy" style="max-height: 429px">
+    <div style="padding-bottom:90.890%"></div>
+    <img data-src="/images/2024-la-images/tip-21-2.png" src=""/> 
+</div>
+<h3 id="summary">Summary</h3>
+<p>Retries are a good thing, and you most likely should leave this as default in like 90% of cases. But being aware of this setting, might help tremendously with those 10% of cases where you should be changing this parameter.</p>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -275,8 +288,8 @@ s.setAttribute('data-timestamp', +new Date());
             </a>
         </li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tip-pooling-costs/" title="Logic App Tips: Pooling costs" rel="bookmark">
-                <b>18th </b>Logic App Tips: Pooling costs
+            <a href="/posts/2025/03/logic-app-tip-pooling-costs/" title="Logic App Tips: Polling costs" rel="bookmark">
+                <b>18th </b>Logic App Tips: Polling costs
             </a>
         </li>
         <li class="indented">
