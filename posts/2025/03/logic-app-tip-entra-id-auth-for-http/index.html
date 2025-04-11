@@ -15,7 +15,7 @@
 <link href='https://marczak.io/css/hestia.min.css?ver=1.24' rel="stylesheet" type="text/css" />
 <link href='https://marczak.io/css/main.min.css?ver=1.30' rel='stylesheet' type="text/css" />
 
-<meta name="description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="description" content="Do you need to protect your logic app with HTTP Entra ID authentication? Don&rsquo;t get fooled by online blogs on this. You don&rsquo;t need APIM!">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Logic App Tips: Entra ID Authentication for HTTP connectors without API Management | Marczak.IO | Adam Marczak">
@@ -23,7 +23,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logic App Tips: Entra ID Authentication for HTTP connectors without API Management">
-<meta property="og:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta property="og:description" content="Do you need to protect your logic app with HTTP Entra ID authentication? Don&rsquo;t get fooled by online blogs on this. You don&rsquo;t need APIM!">
 <meta property="og:url" content="https://marczak.io/posts/2025/03/logic-app-tip-entra-id-auth-for-http/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2024-la-images/tip-18.png">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Logic App Tips: Entra ID Authentication for HTTP connectors without API Management">
-<meta name="twitter:description" content="Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.">
+<meta name="twitter:description" content="Do you need to protect your logic app with HTTP Entra ID authentication? Don&rsquo;t get fooled by online blogs on this. You don&rsquo;t need APIM!">
 <meta name="twitter:url" content="https://marczak.io/posts/2025/03/logic-app-tip-entra-id-auth-for-http/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106560028-1"></script>
 <script>
@@ -114,7 +114,74 @@
     <div style="padding-bottom:62.91768541157294%"></div>
     <img data-src="/images/2024-la-images/tip-18.png" src=""/> 
 </div> <h2>Highlight</h2>
-        <error>
+        <p>Do you need to protect your logic app with HTTP Entra ID authentication? Don&rsquo;t get fooled by online blogs on this. You don&rsquo;t need APIM!</p>
+<h3 id="intro">Intro</h3>
+<p>Entra ID authentication with OAuth is a staple of how you authenticate requests in Azure to any API. It&rsquo;s just a perfect solution as it takes away all the complexity of rotating keys and managing security at scale.</p>
+<p>If you develop logic app which act as web services, i.e. they have HTTP Request Trigger, then by default this logic app is protected with a SAS token authroization.</p>
+
+<div class="lazy" style="max-height: 529px">
+    <div style="padding-bottom:53.059%"></div>
+    <img data-src="/images/2024-la-images/tip-18-1.jpg" src=""/> 
+</div>
+<p>A full URL with SAS token looks like this</p>
+<pre tabindex="0"><code>https://logicappscicd.azurewebsites.net:443/api/demo-http/triggers/When_a_HTTP_request_is_received/invoke?api-version=2022-05-01&amp;sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&amp;sv=1.0&amp;sig=qVukkGoYcS3mx5r_R2Vt423enLnFOP1Qkg-kq__L_U3xE
+</code></pre><p>Where the SAS is exactly the part after <code>sig=</code>.</p>
+<pre tabindex="0"><code>sig=qVukkGoYcS3mx5r_R2Vt423enLnFOP1Qkg-kq__L_U3xE
+</code></pre><p>Ref: <a href="https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app?tabs=azure-porta&amp;$=WT.mc_id=AZ-MVP-5003556#generate-a-shared-access-signature-sas-key-or-token">Generate a shared access signature (SAS) key or token</a></p>
+<h3 id="problem-statement">Problem Statement</h3>
+<p>The biggest issue of using SAS token is that if user leaves project / or even company, it continues to work, exposing your project to a risk. But there are many scenarios where this can screw up your project/platform</p>
+<ol>
+<li>Your developer mistakenly commits key to a public repository</li>
+<li>Your key gets stolen by a bad actor</li>
+<li>Developer makes a mistake and uses key in prod instead of switching to dev</li>
+<li>etc&hellip;</li>
+</ol>
+<p>It&rsquo;s just a risk of using it. But there is a better way, which is turning off SAS token authentication and using Entra ID authentication instead.</p>
+<h3 id="solution-consumption-logic-apps">Solution (Consumption Logic Apps)</h3>
+<p>If you search the web on how to enable Entra ID authentication</p>
+<h4 id="step-1---enable-entra-id-auth">Step 1 - enable Entra ID auth</h4>
+<p>Authorization Policies is a way to allow users and solutions to authenticate to your logic app HTTP endpoints using Entra ID (service principals / managed identities). It&rsquo;s just a few clicks on done.
+
+<div class="lazy" style="max-height: 256px">
+    <div style="padding-bottom:48.577%"></div>
+    <img data-src="/images/2024-la-images/tip-18-1.png" src=""/> 
+</div></p>
+<p>Here is MS&rsquo;s guide on how to do it step by step</p>
+<p>Ref: <a href="https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app?tabs=azure-portal&amp;4=WT.mc_id=AZ-MVP-5003556#enable-oauth-with-microsoft-entra-id-for-your-consumption-logic-app-resource">Enable OAuth with Microsoft Entra ID for your Consumption logic app resource</a></p>
+<h4 id="step-2---disable-sas-auth">Step 2 - disable SAS auth</h4>
+<p>In logic apps consumption the authentication pattern requirement uses &ldquo;OR&rdquo; logical statement</p>
+<p>So if you enable EntraID auth, you will end up with two authentication/authorization schemed available</p>
+<ul>
+<li>SAS token</li>
+<li>Entra ID using Bearer token</li>
+</ul>
+<p>If you pass key, you will skip entra ID auth, so it&rsquo;s recommended to disable it.</p>
+<p>So you need to disable SAS token, and the way you do it is by making a small addition into your logic app</p>
+
+<div class="lazy" style="max-height: 219px">
+    <div style="padding-bottom:48.451%"></div>
+    <img data-src="/images/2024-la-images/tip-18-2.png" src=""/> 
+</div>
+<p>Copy-paste :)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;properties&#34;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&#34;accessControl&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;triggers&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;sasAuthenticationPolicy&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;state&#34;</span><span class="p">:</span> <span class="s2">&#34;Disabled&#34;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>Ref: <a href="https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app?tabs=azure-portal&amp;$=WT.mc_id=AZ-MVP-5003556#disable-shared-access-signature-sas-authentication-consumption-only">Disable shared access signature (SAS) authentication (Consumption only)</a></p>
+<h3 id="solution-standard-logic-apps">Solution (Standard Logic Apps)</h3>
+<p>For Standard Logic Apps, because they are hosted on Azure App Services, you can leverage EasyAuth. it&rsquo;s a built in feature of Azure App Service that allows you to protect all hosted APIs with Entra ID, and it works with logic apps too!</p>
+<p>Here is MS&rsquo;s guide on how to do it</p>
+<ul>
+<li><a href="https://techcommunity.microsoft.com/blog/integrationsonazureblog/trigger-workflows-in-standard-logic-apps-with-easy-auth/3207378?WT.mc_id=AZ-MVP-5003556">Trigger workflows in Standard logic apps with Easy Auth</a></li>
+</ul>
+<h3 id="summary">Summary</h3>
+<p>As you see, there are ways to protect your Azure Logic App endpoints with Entra ID authentication without a need for APIM. While APIM is great and can serve that purpose as well, it&rsquo;s not as cheap. These features are free and you can leverage them Today without any extra knowledge.</p>
+<p>APIM still should be used, don&rsquo;t get me wrong. Just you don&rsquo;t have to for this particular reason.</p>
     </article>
     <div class="section-blog-info">
         <div class="row">
@@ -256,8 +323,8 @@ s.setAttribute('data-timestamp', +new Date());
             </a>
         </li>
         <li class="indented">
-            <a href="/posts/2025/03/logic-app-tip-pooling-costs/" title="Logic App Tips: Pooling costs" rel="bookmark">
-                <b>18th </b>Logic App Tips: Pooling costs
+            <a href="/posts/2025/03/logic-app-tip-pooling-costs/" title="Logic App Tips: Polling costs" rel="bookmark">
+                <b>18th </b>Logic App Tips: Polling costs
             </a>
         </li>
         <li class="indented">

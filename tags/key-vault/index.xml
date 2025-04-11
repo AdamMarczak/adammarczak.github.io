@@ -23,14 +23,14 @@
     </item>
     
     <item>
-      <title>Logic App Tips: Pooling costs</title>
+      <title>Logic App Tips: Polling costs</title>
       <link>https://marczak.io/posts/2025/03/logic-app-tip-pooling-costs/</link>
       <pubDate>Tue, 18 Mar 2025 17:00:23 +0200</pubDate>
       
       <guid>https://marczak.io/posts/2025/03/logic-app-tip-pooling-costs/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-22.png&quot;&gt;
-        
+        &lt;p&gt;Pooling, what polling? and why does it cost you?&lt;/p&gt;
       </description>
     </item>
     
@@ -42,7 +42,7 @@
       <guid>https://marczak.io/posts/2025/03/logic-app-tip-retries-cost/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-21.png&quot;&gt;
-        
+        &lt;p&gt;What is retry policy in logic apps, and why it costs?&lt;/p&gt;
       </description>
     </item>
     
@@ -78,7 +78,7 @@
       <guid>https://marczak.io/posts/2025/03/logic-app-tip-entra-id-auth-for-http/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-18.png&quot;&gt;
-        
+        &lt;p&gt;Do you need to protect your logic app with HTTP Entra ID authentication? Don&amp;rsquo;t get fooled by online blogs on this. You don&amp;rsquo;t need APIM!&lt;/p&gt;
       </description>
     </item>
     
