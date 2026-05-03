@@ -5,10 +5,94 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Mar 2025 17:00:23 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 10 Feb 2026 17:00:00 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/tags/logic-apps/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Why I Love Azure Logic Apps: 10 Years of Lessons</title>
+      <link>https://marczak.io/posts/2026/02/why-i-love-azure-logic-apps/</link>
+      <pubDate>Tue, 10 Feb 2026 17:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2026/02/why-i-love-azure-logic-apps/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2026-logic-apps/thumb.jpg&quot;&gt;
+        &lt;p&gt;Over the past decade, Azure Logic Apps has been my go-to for building reliable, scalable integrations without the hassle of custom code. Trust me, it&amp;rsquo;s transformed how I approach automation—let me share why.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Azure Databricks Lessons Learned Series - part 6: Unity Catalog Migration Part 6: Final Tips and Tricks</title>
+      <link>https://marczak.io/posts/2026/01/unity-catalog-migration-part-6-tips-and-tricks/</link>
+      <pubDate>Tue, 06 Jan 2026 17:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2026/01/unity-catalog-migration-part-6-tips-and-tricks/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/last.png&quot;&gt;
+        &lt;p&gt;This is the final wrap-up in our Unity Catalog migration series. These are the practical tips we landed on after the migration, the ones that would have saved us time if we had known them before we started.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Azure Databricks Lessons Learned Series - part 5: Governance in Unity Catalog: Defining Projects and Roles</title>
+      <link>https://marczak.io/posts/2025/12/governance-in-unity-catalog-defining-projects-and-roles/</link>
+      <pubDate>Tue, 30 Dec 2025 17:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/12/governance-in-unity-catalog-defining-projects-and-roles/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2025-uc-migration/thumb2.jpg&quot;&gt;
+        &lt;p&gt;The most important migration decision was not technical. It was about teams and roles. In Unity Catalog, the wrong role model makes the whole platform hard to operate.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Azure Databricks Lessons Learned Series - part 4: Structuring Your Unity Catalog for Success</title>
+      <link>https://marczak.io/posts/2025/12/structuring-your-unity-catalog-for-success/</link>
+      <pubDate>Tue, 23 Dec 2025 17:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/12/structuring-your-unity-catalog-for-success/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2025-uc-migration/thumb1.jpg&quot;&gt;
+        &lt;p&gt;In our platform, one of the first questions we answered was: what is a project in Unity Catalog? That decision shaped every later governance and onboarding choice.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Azure Databricks Lessons Learned Series - part 2: Navigating Limits in Unity Catalog</title>
+      <link>https://marczak.io/posts/2025/12/navigating-limits-in-unity-catalog/</link>
+      <pubDate>Tue, 16 Dec 2025 17:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/12/navigating-limits-in-unity-catalog/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2025-uc-migration/thumb4.jpg&quot;&gt;
+        &lt;p&gt;One of the biggest surprises in our Unity Catalog migration was how much of the design depended on product limits. If you do not know which limits are soft and which are fixed, you can build a design that stops before it starts.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Azure Databricks Lessons Learned Series - part 2: How Previews Saved Our Unity Catalog Migration</title>
+      <link>https://marczak.io/posts/2025/12/how-previews-saved-our-unity-catalog-migration/</link>
+      <pubDate>Tue, 09 Dec 2025 17:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/12/how-previews-saved-our-unity-catalog-migration/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2025-uc-migration/thumb3.jpg&quot;&gt;
+        &lt;p&gt;The most surprising part of our Databricks migration was this: without previews, we would not have finished. The features we used were not in plain sight, but they were the only path through several blockers.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Azure Databricks Lessons Learned Series - part 1: Migrating to Unity Catalog: The Big Picture</title>
+      <link>https://marczak.io/posts/2025/12/migrating-to-unity-catalog-the-big-picture/</link>
+      <pubDate>Tue, 02 Dec 2025 17:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/12/migrating-to-unity-catalog-the-big-picture/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2025-uc-migration/part1.png&quot;&gt;
+        &lt;p&gt;This was the one part of the migration where the word &amp;ldquo;catalog&amp;rdquo; almost hid the real work. We were not just moving metadata; we were rebuilding a platform with Azure Landing Zone thinking and Unity Catalog governance baked in.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>Logic App Tips Tip &amp; Tricks Series</title>
