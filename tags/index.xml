@@ -5,10 +5,22 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Feb 2026 17:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2026 17:00:23 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Azure Logic Apps AI Agent Workflows in Early 2026</title>
+      <link>https://marczak.io/posts/2026/03/logic-apps-agent-workflows-early-2026/</link>
+      <pubDate>Tue, 03 Mar 2026 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2026/03/logic-apps-agent-workflows-early-2026/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2026-logic-apps/ai-agents-2.jpg&quot;&gt;
+        &lt;p&gt;I’ve been building Logic App workflows for AI agents lately-both autonomous and conversational patterns-and the experience is interesting. This post summarizes what I found from the current documentation and my own experiments.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>Why I Love Azure Logic Apps: 10 Years of Lessons</title>
@@ -18,7 +30,7 @@
       <guid>https://marczak.io/posts/2026/02/why-i-love-azure-logic-apps/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2026-logic-apps/thumb.jpg&quot;&gt;
-        &lt;p&gt;Over the past decade, Azure Logic Apps has been my go-to for building reliable, scalable integrations without the hassle of custom code. Trust me, it&amp;rsquo;s transformed how I approach automation—let me share why.&lt;/p&gt;
+        &lt;p&gt;Over the past decade, Azure Logic Apps has been my go-to for building reliable, scalable integrations without the hassle of custom code. Trust me, it&amp;rsquo;s transformed how I approach automation; let me share why.&lt;/p&gt;
       </description>
     </item>
     
