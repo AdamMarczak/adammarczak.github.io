@@ -3,21 +3,45 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://marczak.io/tags/azure/</loc>
-    <lastmod>2025-03-30T17:00:23+02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/posts/2025/03/logic-app-tips-miniseries/</loc>
-    <lastmod>2025-03-30T17:00:23+02:00</lastmod>
+    <lastmod>2026-02-10T17:00:00+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/tags/logic-apps/</loc>
-    <lastmod>2025-03-30T17:00:23+02:00</lastmod>
+    <lastmod>2026-02-10T17:00:00+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/</loc>
-    <lastmod>2025-03-30T17:00:23+02:00</lastmod>
+    <lastmod>2026-02-10T17:00:00+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/</loc>
-    <lastmod>2025-03-30T17:00:23+02:00</lastmod>
+    <lastmod>2026-02-10T17:00:00+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/tags/</loc>
+    <lastmod>2026-02-10T17:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2026/02/why-i-love-azure-logic-apps/</loc>
+    <lastmod>2026-02-10T17:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2026/01/unity-catalog-migration-part-6-tips-and-tricks/</loc>
+    <lastmod>2026-01-06T17:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/databricks/</loc>
+    <lastmod>2026-01-06T17:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/12/governance-in-unity-catalog-defining-projects-and-roles/</loc>
+    <lastmod>2025-12-30T17:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/12/structuring-your-unity-catalog-for-success/</loc>
+    <lastmod>2025-12-23T17:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/12/navigating-limits-in-unity-catalog/</loc>
+    <lastmod>2025-12-16T17:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/12/how-previews-saved-our-unity-catalog-migration/</loc>
+    <lastmod>2025-12-09T17:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/12/migrating-to-unity-catalog-the-big-picture/</loc>
+    <lastmod>2025-12-02T17:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2025/03/logic-app-tips-miniseries/</loc>
     <lastmod>2025-03-30T17:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2025/03/logic-app-tip-polling-costs/</loc>
@@ -112,9 +136,6 @@
   </url><url>
     <loc>https://marczak.io/posts/2023/09/adf-automated-plantuml-mermaid-diagrams/</loc>
     <lastmod>2023-09-18T17:00:23+02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/databricks/</loc>
-    <lastmod>2023-03-18T17:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2023/03/quick-cicd-for-databricks/</loc>
     <lastmod>2023-03-18T17:00:23+02:00</lastmod>
