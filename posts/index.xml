@@ -107,6 +107,18 @@
     </item>
     
     <item>
+      <title>Building Azure Data Platforms at Scale: Data Landing Zones After 2.5 Years</title>
+      <link>https://marczak.io/posts/2025/09/azure-data-landing-zones-at-scale/</link>
+      <pubDate>Mon, 08 Sep 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/09/azure-data-landing-zones-at-scale/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/025-data-landing-zones/thumb.jpg&quot;&gt;
+        &lt;p&gt;We spent the last two and a half years building a new Azure data platform from scratch using the Data Landing Zone approach. After migrating thousands of workloads and managing dozens of subscriptions, I thought it would be useful to share what actually worked, what we did differently, and the honest answer to the question: would I do it again?&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
       <title>Logic App Tips Tip &amp; Tricks Series</title>
       <link>https://marczak.io/posts/2025/03/logic-app-tips-miniseries/</link>
       <pubDate>Sun, 30 Mar 2025 17:00:23 +0200</pubDate>
