@@ -163,7 +163,7 @@ aside .widget a {
   visibility: visible;
   text-transform: none;
   padding:7px 14px;
-  background-color:#2a2a2a;
+  background-color:#120130;
   color:white
 }
 .btn-friendly-site > img {
@@ -232,8 +232,8 @@ div.avatar {
   color: #323538;
 }
 .btn-social-small {
-  background: #323538;
-  border: 1px solid #323538;
+  background: #120130;
+  border: 1px solid #120130;
   color: #999999;
   box-shadow: none;
   margin-top: 0px;
@@ -517,4 +517,8 @@ form.quiz > button.reset-answer {
 .banner-mvp {
   margin:20px 30px 20px 0;
   max-width:180px;
+}
+
+.footer-black {
+  background-color: #120130;
 }
