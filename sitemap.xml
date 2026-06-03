@@ -260,13 +260,7 @@
     <loc>https://marczak.io/videos/2020/07/az900-ep07/</loc>
     <lastmod>2020-07-30T13:00:23+02:00</lastmod>
   </url><url>
-    <loc>https://marczak.io/youtube/2/</loc>
-    <lastmod>2020-07-21T16:00:23+02:00</lastmod>
-  </url><url>
     <loc>https://marczak.io/videos/2020/07/azure-excel-files-data-factory-n-databricks/</loc>
-    <lastmod>2020-07-21T16:00:23+02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/youtube/</loc>
     <lastmod>2020-07-21T16:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/videos/2020/07/az900-ep06/</loc>
@@ -282,6 +276,9 @@
     <lastmod>2020-07-07T16:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/az-900/</loc>
+    <lastmod>2020-07-07T16:00:23+02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/youtube/</loc>
     <lastmod>2020-07-07T16:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/videos/2020/07/az900-ep03/</loc>
@@ -302,7 +299,7 @@
     <loc>https://marczak.io/videos/2020/07/az900-ep00/</loc>
     <lastmod>2020-07-07T10:00:23+02:00</lastmod>
   </url><url>
-    <loc>https://marczak.io/youtube/3/</loc>
+    <loc>https://marczak.io/youtube/2/</loc>
     <lastmod>2020-06-29T16:00:23+02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/videos/2020/06/azure-active-directory-intro/</loc>
