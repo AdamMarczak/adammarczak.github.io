@@ -1,0 +1,41 @@
+{
+  "name": "Marczak.IO Agent Discovery",
+  "description": "Agent discovery metadata for Marczak.IO, exposing searchable blog content and Azure 4 Everyone YouTube video metadata.",
+  "version": "1.0.0",
+  "owner": {
+    "@type": "Person",
+    "name": "Adam Marczak",
+    "url": "https://marczak.io/about",
+    "email": "adam@marczak.io"
+  },
+  "website": "https://marczak.io",
+  "contact": {
+    "email": "adam@marczak.io",
+    "twitter": "https://twitter.com/MarczakIO",
+    "youtube": "https://www.youtube.com/azure4everyone",
+    "github": "https://github.com/MarczakIO"
+  },
+  "discovery": {
+    "llms": "https://marczak.io/llms.txt",
+    "llms_full": "https://marczak.io/llms-full.txt",
+    "plugin_manifest": "https://marczak.io/.well-known/ai-plugin.json",
+    "openapi_yaml": "https://marczak.io/.well-known/openapi.yaml",
+    "openapi_json": "https://marczak.io/.well-known/openapi.json"
+  },
+  "endpoints": {
+    "search": "/search",
+    "page": "/page/{slug}",
+    "youtube": "/youtube"
+  },
+  "supported_models": [
+    "all"
+  ],
+  "tags": [
+    "azure",
+    "logic-apps",
+    "integration",
+    "serverless",
+    "ai",
+    "youtube"
+  ]
+}
