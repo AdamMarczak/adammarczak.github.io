@@ -1,0 +1,17 @@
+# llms.txt - plain-text discovery metadata for LLMs and AI crawlers
+name: Marczak.IO
+author: Adam Marczak
+url: https://marczak.io
+description: Azure architecture, Logic Apps, integration, serverless, automation, and AI blog with Azure 4 Everyone YouTube content.
+content: Blog posts, tutorials, and video guides on Azure integration, Logic Apps, cloud automation, AI, and developer architecture.
+youtube: https://www.youtube.com/azure4everyone
+youtube_description: Azure 4 Everyone YouTube channel with video tutorials on Azure integration, Logic Apps, serverless, security, and AI.
+sitemap: https://marczak.io/sitemap.xml
+robots: https://marczak.io/robots.txt
+plugin_manifest: https://marczak.io/.well-known/ai-plugin.json
+openapi_yaml: https://marczak.io/.well-known/openapi.yaml
+openapi_json: https://marczak.io/.well-known/openapi.json
+agent_manifest: https://marczak.io/.well-known/agent.json
+llms_full: https://marczak.io/llms-full.txt
+contact: adam@marczak.io
+tags: azure,logic-apps,serverless,integration,ai,youtube

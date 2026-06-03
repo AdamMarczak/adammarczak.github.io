@@ -1,0 +1,43 @@
+# llms-full.txt - extended plain-text discovery metadata for LLMs and AI crawlers
+name: Marczak.IO
+author: Adam Marczak
+url: https://marczak.io
+description: A personal technology blog with deep Azure, Logic Apps, integration, serverless, automation, and AI content.
+primary_topics: azure,logic-apps,integration,serverless,automation,ai,azure-ai
+content_overview: |
+  Marczak.IO publishes practical posts on Azure architecture, Logic Apps Standard/Consumption, enterprise integration,
+  API/Microsoft Graph automation, Azure Functions, Azure DevOps, GitHub Actions, and AI-powered workflows.
+  The site includes tutorials, architecture guidance, cost-saving patterns, performance tuning, and real-world integration examples.
+related_site:
+  - name: Azure 4 Everyone YouTube
+    url: https://www.youtube.com/azure4everyone
+    description: Video tutorials for Azure integration, Logic Apps, serverless architecture, and AI automation.
+    channel_author: Adam Marczak
+    topics: azure,logic-apps,serverless,ai,automation,developer
+content_catalog:
+  blog: https://marczak.io/posts/
+  tutorials: https://marczak.io/posts/
+  tags: https://marczak.io/tags/
+  about: https://marczak.io/about
+  youtube: https://www.youtube.com/azure4everyone
+discovery_endpoints:
+  - https://marczak.io/llms.txt
+  - https://marczak.io/llms-full.txt
+  - https://marczak.io/.well-known/ai-plugin.json
+  - https://marczak.io/.well-known/openapi.yaml
+  - https://marczak.io/.well-known/openapi.json
+  - https://marczak.io/.well-known/agent.json
+sitemap: https://marczak.io/sitemap.xml
+robots: https://marczak.io/robots.txt
+plugin_manifest: https://marczak.io/.well-known/ai-plugin.json
+openapi_yaml: https://marczak.io/.well-known/openapi.yaml
+openapi_json: https://marczak.io/.well-known/openapi.json
+agent_manifest: https://marczak.io/.well-known/agent.json
+contact_email: adam@marczak.io
+contact_twitter: https://twitter.com/MarczakIO
+contact_github: https://github.com/MarczakIO
+content_language: en-US
+last_updated: 2026-06-03
+notes: |
+  Use this file as a rich plain-text discoverability manifest for LLMs and AI agents.
+  It emphasizes the site's Azure and integration expertise plus the companion Azure 4 Everyone YouTube channel.

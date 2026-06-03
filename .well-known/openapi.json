@@ -1,0 +1,192 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Marczak.IO Content Discovery API",
+    "description": "Lightweight discovery API manifest for Marczak.IO. This helps AI assistants and crawlers understand available blog posts and Azure 4 Everyone YouTube content on a site dedicated to Azure architecture, Logic Apps, integration, automation, and AI.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://marczak.io"
+    }
+  ],
+  "paths": {
+    "/search": {
+      "get": {
+        "summary": "Search website content and video metadata",
+        "description": "Search Marczak.IO blog posts, tutorials, and Azure 4 Everyone YouTube resources by query.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search query string",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of matching pages and videos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "query": {
+                      "type": "string"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/components/schemas/PageSummary"
+                          },
+                          {
+                            "$ref": "#/components/schemas/VideoSummary"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/page/{slug}": {
+      "get": {
+        "summary": "Retrieve a single page",
+        "description": "Get metadata for a blog page or article by slug.",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Page metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageSummary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/youtube": {
+      "get": {
+        "summary": "Browse Azure 4 Everyone YouTube videos",
+        "description": "Browse recent video titles and channel metadata from Adam Marczak’s Azure 4 Everyone channel.",
+        "responses": {
+          "200": {
+            "description": "A list of recent videos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "channel": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "videos": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/VideoSummary"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PageSummary": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "category": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      },
+      "VideoSummary": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "youtube_id": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "channel": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

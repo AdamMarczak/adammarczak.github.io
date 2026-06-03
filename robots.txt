@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Sitemap: https://marczak.io/sitemap.xml
+Host: marczak.io
+
+# Marczak.IO publishes Azure architecture, serverless, Logic Apps, integration,
+# automation, and AI blog content with a companion Azure 4 Everyone YouTube channel.
+# AI discovery endpoints:
+# - https://marczak.io/llms.txt
+# - https://marczak.io/llms-full.txt
+# - https://marczak.io/.well-known/ai-plugin.json
+# - https://marczak.io/.well-known/openapi.yaml
+# - https://marczak.io/.well-known/openapi.json
+# - https://marczak.io/.well-known/agent.json
