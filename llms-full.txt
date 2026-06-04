@@ -17,12 +17,14 @@ related_site:
 content_catalog:
   blog: https://marczak.io/posts/
   tutorials: https://marczak.io/posts/
+  posts_json: https://marczak.io/posts.json
   tags: https://marczak.io/tags/
   about: https://marczak.io/about
   youtube: https://www.youtube.com/azure4everyone
 discovery_endpoints:
   - https://marczak.io/llms.txt
   - https://marczak.io/llms-full.txt
+  - https://marczak.io/posts.json
   - https://marczak.io/.well-known/ai-plugin.json
   - https://marczak.io/.well-known/openapi.yaml
   - https://marczak.io/.well-known/openapi.json
