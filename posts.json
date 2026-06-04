@@ -1,0 +1,1018 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-06-04T06:57:12Z",
+  "site": {
+    "name": "Marczak.IO",
+    "url": "https://marczak.io/",
+    "author": "Adam Marczak",
+    "description": "Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.",
+    "llms": "https://marczak.io/llms.txt",
+    "sitemap": "https://marczak.io/sitemap.xml",
+    "feed": "https://marczak.io/feed.xml"
+  },
+  "statistics": {
+    "total_posts": 60,
+    "total_tags": 46,
+    "last_post_date": "2026-03-03"
+  },
+  "topics": [
+    {
+      "name": "azure",
+      "slug": "azure",
+      "url": "https://marczak.io/tags/azure/",
+      "post_count": 148
+    },
+    {
+      "name": "az-900",
+      "slug": "az-900",
+      "url": "https://marczak.io/tags/az-900/",
+      "post_count": 40
+    },
+    {
+      "name": "logic-apps",
+      "slug": "logic-apps",
+      "url": "https://marczak.io/tags/logic-apps/",
+      "post_count": 39
+    },
+    {
+      "name": "data-factory",
+      "slug": "data-factory",
+      "url": "https://marczak.io/tags/data-factory/",
+      "post_count": 13
+    },
+    {
+      "name": "databricks",
+      "slug": "databricks",
+      "url": "https://marczak.io/tags/databricks/",
+      "post_count": 11
+    },
+    {
+      "name": "arm",
+      "slug": "arm",
+      "url": "https://marczak.io/tags/arm/",
+      "post_count": 8
+    },
+    {
+      "name": "bot-service",
+      "slug": "bot-service",
+      "url": "https://marczak.io/tags/bot-service/",
+      "post_count": 6
+    },
+    {
+      "name": "active-directory",
+      "slug": "active-directory",
+      "url": "https://marczak.io/tags/active-directory/",
+      "post_count": 5
+    },
+    {
+      "name": "storage-account",
+      "slug": "storage-account",
+      "url": "https://marczak.io/tags/storage-account/",
+      "post_count": 5
+    },
+    {
+      "name": "analysis-services",
+      "slug": "analysis-services",
+      "url": "https://marczak.io/tags/analysis-services/",
+      "post_count": 4
+    },
+    {
+      "name": "functions",
+      "slug": "functions",
+      "url": "https://marczak.io/tags/functions/",
+      "post_count": 4
+    },
+    {
+      "name": "security",
+      "slug": "security",
+      "url": "https://marczak.io/tags/security/",
+      "post_count": 4
+    },
+    {
+      "name": "sql",
+      "slug": "sql",
+      "url": "https://marczak.io/tags/sql/",
+      "post_count": 4
+    },
+    {
+      "name": "app-service",
+      "slug": "app-service",
+      "url": "https://marczak.io/tags/app-service/",
+      "post_count": 3
+    },
+    {
+      "name": "key-vault",
+      "slug": "key-vault",
+      "url": "https://marczak.io/tags/key-vault/",
+      "post_count": 3
+    },
+    {
+      "name": "visual-studio",
+      "slug": "visual-studio",
+      "url": "https://marczak.io/tags/visual-studio/",
+      "post_count": 3
+    },
+    {
+      "name": "cognitive-services",
+      "slug": "cognitive-services",
+      "url": "https://marczak.io/tags/cognitive-services/",
+      "post_count": 2
+    },
+    {
+      "name": "cosmos-db",
+      "slug": "cosmos-db",
+      "url": "https://marczak.io/tags/cosmos-db/",
+      "post_count": 2
+    },
+    {
+      "name": "dotnet-core",
+      "slug": "dotnet-core",
+      "url": "https://marczak.io/tags/dotnet-core/",
+      "post_count": 2
+    },
+    {
+      "name": "event-grid",
+      "slug": "event-grid",
+      "url": "https://marczak.io/tags/event-grid/",
+      "post_count": 2
+    },
+    {
+      "name": "power-bi",
+      "slug": "power-bi",
+      "url": "https://marczak.io/tags/power-bi/",
+      "post_count": 2
+    },
+    {
+      "name": "teams",
+      "slug": "teams",
+      "url": "https://marczak.io/tags/teams/",
+      "post_count": 2
+    },
+    {
+      "name": "visual-studio-code",
+      "slug": "visual-studio-code",
+      "url": "https://marczak.io/tags/visual-studio-code/",
+      "post_count": 2
+    },
+    {
+      "name": "vue.js",
+      "slug": "vue.js",
+      "url": "https://marczak.io/tags/vue.js/",
+      "post_count": 2
+    },
+    {
+      "name": "api-management",
+      "slug": "api-management",
+      "url": "https://marczak.io/tags/api-management/",
+      "post_count": 1
+    },
+    {
+      "name": "app-configuration",
+      "slug": "app-configuration",
+      "url": "https://marczak.io/tags/app-configuration/",
+      "post_count": 1
+    },
+    {
+      "name": "application-insights",
+      "slug": "application-insights",
+      "url": "https://marczak.io/tags/application-insights/",
+      "post_count": 1
+    },
+    {
+      "name": "automation",
+      "slug": "automation",
+      "url": "https://marczak.io/tags/automation/",
+      "post_count": 1
+    },
+    {
+      "name": "blob-storage",
+      "slug": "blob-storage",
+      "url": "https://marczak.io/tags/blob-storage/",
+      "post_count": 1
+    },
+    {
+      "name": "container-instances",
+      "slug": "container-instances",
+      "url": "https://marczak.io/tags/container-instances/",
+      "post_count": 1
+    },
+    {
+      "name": "data-gateway",
+      "slug": "data-gateway",
+      "url": "https://marczak.io/tags/data-gateway/",
+      "post_count": 1
+    },
+    {
+      "name": "data-lake-gen2",
+      "slug": "data-lake-gen2",
+      "url": "https://marczak.io/tags/data-lake-gen2/",
+      "post_count": 1
+    },
+    {
+      "name": "event-hub",
+      "slug": "event-hub",
+      "url": "https://marczak.io/tags/event-hub/",
+      "post_count": 1
+    },
+    {
+      "name": "file-service",
+      "slug": "file-service",
+      "url": "https://marczak.io/tags/file-service/",
+      "post_count": 1
+    },
+    {
+      "name": "flow",
+      "slug": "flow",
+      "url": "https://marczak.io/tags/flow/",
+      "post_count": 1
+    },
+    {
+      "name": "load-balancer",
+      "slug": "load-balancer",
+      "url": "https://marczak.io/tags/load-balancer/",
+      "post_count": 1
+    },
+    {
+      "name": "luis",
+      "slug": "luis",
+      "url": "https://marczak.io/tags/luis/",
+      "post_count": 1
+    },
+    {
+      "name": "powershell",
+      "slug": "powershell",
+      "url": "https://marczak.io/tags/powershell/",
+      "post_count": 1
+    },
+    {
+      "name": "queue",
+      "slug": "queue",
+      "url": "https://marczak.io/tags/queue/",
+      "post_count": 1
+    },
+    {
+      "name": "stream-analytics",
+      "slug": "stream-analytics",
+      "url": "https://marczak.io/tags/stream-analytics/",
+      "post_count": 1
+    },
+    {
+      "name": "table-storage",
+      "slug": "table-storage",
+      "url": "https://marczak.io/tags/table-storage/",
+      "post_count": 1
+    },
+    {
+      "name": "text-analytics",
+      "slug": "text-analytics",
+      "url": "https://marczak.io/tags/text-analytics/",
+      "post_count": 1
+    },
+    {
+      "name": "traffic-manager",
+      "slug": "traffic-manager",
+      "url": "https://marczak.io/tags/traffic-manager/",
+      "post_count": 1
+    },
+    {
+      "name": "vm",
+      "slug": "vm",
+      "url": "https://marczak.io/tags/vm/",
+      "post_count": 1
+    },
+    {
+      "name": "webpack",
+      "slug": "webpack",
+      "url": "https://marczak.io/tags/webpack/",
+      "post_count": 1
+    },
+    {
+      "name": "youtube",
+      "slug": "youtube",
+      "url": "https://marczak.io/tags/youtube/",
+      "post_count": 1
+    }
+  ],
+  "posts": [
+    {
+      "title": "Azure Logic Apps AI Agent Workflows in Early 2026",
+      "url": "https://marczak.io/posts/2026/03/logic-apps-agent-workflows-early-2026/",
+      "slug": "logic-apps-agent-workflows-early-2026",
+      "published_at": "2026-03-03",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "I’ve been building Logic App workflows for AI agents lately-both autonomous and conversational patterns-and the experience is interesting. This post summarizes what I found from the current documentation and my own experiments.\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 5,
+      "canonical_url": "https://marczak.io/posts/2026/03/logic-apps-agent-workflows-early-2026/"
+    },
+    {
+      "title": "Why I Love Azure Logic Apps: 10 Years of Lessons",
+      "url": "https://marczak.io/posts/2026/02/why-i-love-azure-logic-apps/",
+      "slug": "why-i-love-azure-logic-apps",
+      "published_at": "2026-02-10",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Over the past decade, Azure Logic Apps has been my go-to for building reliable, scalable integrations without the hassle of custom code. Trust me, it’s transformed how I approach automation; let me share why.\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2026/02/why-i-love-azure-logic-apps/"
+    },
+    {
+      "title": "Azure Databricks Lessons Learned Series - part 6: Unity Catalog Migration Part 6: Final Tips and Tricks",
+      "url": "https://marczak.io/posts/2026/01/unity-catalog-migration-part-6-tips-and-tricks/",
+      "slug": "unity-catalog-migration-part-6-tips-and-tricks",
+      "published_at": "2026-01-06",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "This is the final wrap-up in our Unity Catalog migration series. These are the practical tips we landed on after the migration, the ones that would have saved us time if we had known them before we started.\n",
+      "tags": ["Azure","databricks"],
+      "reading_time_minutes": 5,
+      "canonical_url": "https://marczak.io/posts/2026/01/unity-catalog-migration-part-6-tips-and-tricks/"
+    },
+    {
+      "title": "Azure Databricks Lessons Learned Series - part 5: Governance in Unity Catalog: Defining Projects and Roles",
+      "url": "https://marczak.io/posts/2025/12/governance-in-unity-catalog-defining-projects-and-roles/",
+      "slug": "governance-in-unity-catalog-defining-projects-and-roles",
+      "published_at": "2025-12-30",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "The most important migration decision was not technical. It was about teams and roles. In Unity Catalog, the wrong role model makes the whole platform hard to operate.\n",
+      "tags": ["Azure","databricks"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2025/12/governance-in-unity-catalog-defining-projects-and-roles/"
+    },
+    {
+      "title": "Azure Databricks Lessons Learned Series - part 4: Structuring Your Unity Catalog for Success",
+      "url": "https://marczak.io/posts/2025/12/structuring-your-unity-catalog-for-success/",
+      "slug": "structuring-your-unity-catalog-for-success",
+      "published_at": "2025-12-23",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "In our platform, one of the first questions we answered was: what is a project in Unity Catalog? That decision shaped every later governance and onboarding choice.\n",
+      "tags": ["Azure","databricks"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2025/12/structuring-your-unity-catalog-for-success/"
+    },
+    {
+      "title": "Azure Databricks Lessons Learned Series - part 2: Navigating Limits in Unity Catalog",
+      "url": "https://marczak.io/posts/2025/12/navigating-limits-in-unity-catalog/",
+      "slug": "navigating-limits-in-unity-catalog",
+      "published_at": "2025-12-16",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "One of the biggest surprises in our Unity Catalog migration was how much of the design depended on product limits. If you do not know which limits are soft and which are fixed, you can build a design that stops before it starts.\n",
+      "tags": ["Azure","databricks"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2025/12/navigating-limits-in-unity-catalog/"
+    },
+    {
+      "title": "Azure Databricks Lessons Learned Series - part 2: How Previews Saved Our Unity Catalog Migration",
+      "url": "https://marczak.io/posts/2025/12/how-previews-saved-our-unity-catalog-migration/",
+      "slug": "how-previews-saved-our-unity-catalog-migration",
+      "published_at": "2025-12-09",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "The most surprising part of our Databricks migration was this: without previews, we would not have finished. The features we used were not in plain sight, but they were the only path through several blockers.\n",
+      "tags": ["Azure","databricks"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2025/12/how-previews-saved-our-unity-catalog-migration/"
+    },
+    {
+      "title": "Azure Databricks Lessons Learned Series - part 1: Migrating to Unity Catalog: The Big Picture",
+      "url": "https://marczak.io/posts/2025/12/migrating-to-unity-catalog-the-big-picture/",
+      "slug": "migrating-to-unity-catalog-the-big-picture",
+      "published_at": "2025-12-02",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "This was the one part of the migration where the word “catalog” almost hid the real work. We were not just moving metadata; we were rebuilding a platform with Azure Landing Zone thinking and Unity Catalog governance baked in.\n",
+      "tags": ["Azure","databricks"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2025/12/migrating-to-unity-catalog-the-big-picture/"
+    },
+    {
+      "title": "Building Azure Data Platforms at Scale: Data Landing Zones After 2.5 Years",
+      "url": "https://marczak.io/posts/2025/09/azure-data-landing-zones-at-scale/",
+      "slug": "azure-data-landing-zones-at-scale",
+      "published_at": "2025-09-08",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "We spent the last two and a half years building a new Azure data platform from scratch using the Data Landing Zone approach. After migrating thousands of workloads and managing dozens of subscriptions, I thought it would be useful to share what actually worked, what we did differently, and the honest answer to the question: would I do it again?\n",
+      "tags": ["Azure"],
+      "reading_time_minutes": 7,
+      "canonical_url": "https://marczak.io/posts/2025/09/azure-data-landing-zones-at-scale/"
+    },
+    {
+      "title": "Logic App Tips Tip \u0026 Tricks Series",
+      "url": "https://marczak.io/posts/2025/03/logic-app-tips-miniseries/",
+      "slug": "logic-app-tips-miniseries",
+      "published_at": "2025-03-30",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Here is long-overdue and my promised top 20 Azure Logic Apps tips \u0026 tricks\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 4,
+      "canonical_url": "https://marczak.io/posts/2025/03/logic-app-tips-miniseries/"
+    },
+    {
+      "title": "Logic App Tips: Polling costs",
+      "url": "https://marczak.io/posts/2025/03/logic-app-tip-polling-costs/",
+      "slug": "logic-app-tip-polling-costs",
+      "published_at": "2025-03-18",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Pooling, what polling? and why does it cost you?\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2025/03/logic-app-tip-polling-costs/"
+    },
+    {
+      "title": "Logic App Tips: Retries cost",
+      "url": "https://marczak.io/posts/2025/03/logic-app-tip-retries-cost/",
+      "slug": "logic-app-tip-retries-cost",
+      "published_at": "2025-03-14",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "What is retry policy in logic apps, and why it costs?\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2025/03/logic-app-tip-retries-cost/"
+    },
+    {
+      "title": "Logic App Tips: Terraform AzureRM is not supported for Logic Apps Standard SKU",
+      "url": "https://marczak.io/posts/2025/03/logic-app-tip-tf-not-supported/",
+      "slug": "logic-app-tip-tf-not-supported",
+      "published_at": "2025-03-11",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "I’m sorry, what?\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2025/03/logic-app-tip-tf-not-supported/"
+    },
+    {
+      "title": "Logic App Tips: Hide secrets",
+      "url": "https://marczak.io/posts/2025/03/logic-app-tip-hide-secrets/",
+      "slug": "logic-app-tip-hide-secrets",
+      "published_at": "2025-03-08",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Secrets should remain secret, but they are not by default.\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2025/03/logic-app-tip-hide-secrets/"
+    },
+    {
+      "title": "Logic App Tips: Entra ID Authentication for HTTP connectors without API Management",
+      "url": "https://marczak.io/posts/2025/03/logic-app-tip-entra-id-auth-for-http/",
+      "slug": "logic-app-tip-entra-id-auth-for-http",
+      "published_at": "2025-03-05",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Do you need to protect your logic app with HTTP Entra ID authentication? Don’t get fooled by online blogs on this. You don’t need APIM!\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2025/03/logic-app-tip-entra-id-auth-for-http/"
+    },
+    {
+      "title": "Logic App Tips Notable news from 2024 \u0026 early 2025",
+      "url": "https://marczak.io/posts/2025/03/logic-app-news-2025/",
+      "slug": "logic-app-news-2025",
+      "published_at": "2025-03-02",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Here are my personal highlights for the best Azure Logic Apps news in the last 15 months\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 5,
+      "canonical_url": "https://marczak.io/posts/2025/03/logic-app-news-2025/"
+    },
+    {
+      "title": "Logic App Tips: Personal Account is an issue",
+      "url": "https://marczak.io/posts/2025/02/logic-app-tip-avoid-personal-accounts/",
+      "slug": "logic-app-tip-avoid-personal-accounts",
+      "published_at": "2025-02-19",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Do you use your own accounts when developing your logic apps? Then stop!\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 4,
+      "canonical_url": "https://marczak.io/posts/2025/02/logic-app-tip-avoid-personal-accounts/"
+    },
+    {
+      "title": "Logic App Tips: Find Orphaned API connections",
+      "url": "https://marczak.io/posts/2025/02/logic-app-tip-orphaned-api-connections/",
+      "slug": "logic-app-tip-orphaned-api-connections",
+      "published_at": "2025-02-15",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Why it happens and how to solve orphaned API connections for azure logic apps?\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2025/02/logic-app-tip-orphaned-api-connections/"
+    },
+    {
+      "title": "Logic App Tips: Replicate Try-Catch-Finally pattern",
+      "url": "https://marczak.io/posts/2025/02/logic-app-tip-try-catch-finally/",
+      "slug": "logic-app-tip-try-catch-finally",
+      "published_at": "2025-02-13",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Try / Catch / Finally programming blocks are the staple of any enterprise ready solution, and you can use this pattern in Logic Apps too!\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 4,
+      "canonical_url": "https://marczak.io/posts/2025/02/logic-app-tip-try-catch-finally/"
+    },
+    {
+      "title": "Logic App Tips: Hide your storage! :)",
+      "url": "https://marczak.io/posts/2025/02/logic-app-tip-hide-your-storage/",
+      "slug": "logic-app-tip-hide-your-storage",
+      "published_at": "2025-02-11",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Security by obscurity? No, that’s not my intention here, this is not a security recommendation, but an adoption one.\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2025/02/logic-app-tip-hide-your-storage/"
+    },
+    {
+      "title": "Logic App Tips: Exporting Workflows",
+      "url": "https://marczak.io/posts/2025/02/logic-app-tip-exporting-workflows/",
+      "slug": "logic-app-tip-exporting-workflows",
+      "published_at": "2025-02-09",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Exporting workflows is a most natural step for logic app developers. But what to use, and what NOT to use?\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2025/02/logic-app-tip-exporting-workflows/"
+    },
+    {
+      "title": "Logic App Tips: Parallelization \u0026 concurrency",
+      "url": "https://marczak.io/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/",
+      "slug": "logic-app-tip-concurrency-parallelization-settings",
+      "published_at": "2025-02-07",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "It’s a small thing, but somehow many people forget about this.\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 4,
+      "canonical_url": "https://marczak.io/posts/2025/02/logic-app-tip-concurrency-parallelization-settings/"
+    },
+    {
+      "title": "Logic App Tips: HTTP connectors to the rescue",
+      "url": "https://marczak.io/posts/2025/02/logic-app-tip-http-connectors-to-rescue/",
+      "slug": "logic-app-tip-http-connectors-to-rescue",
+      "published_at": "2025-02-05",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Did you know that majority of these 1000+ connectors for logic apps are just HTTP calls? Do you know what does that mean for you?\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2025/02/logic-app-tip-http-connectors-to-rescue/"
+    },
+    {
+      "title": "Power BI: Query Azure REST API Management and page results",
+      "url": "https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/",
+      "slug": "power-bi-query-azure-rest-api",
+      "published_at": "2025-02-02",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Did you try to query Azure Management REST API from Power Query? Did you notice paging doesn’t work… yeah…\n",
+      "tags": ["Azure","Power BI"],
+      "reading_time_minutes": 1,
+      "canonical_url": "https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/"
+    },
+    {
+      "title": "Logic App Tips: SQL db can't be shared, but...",
+      "url": "https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/",
+      "slug": "logic-app-tip-sql-cant-be-shared-but",
+      "published_at": "2025-02-02",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Speaking of logic app state storage, what about SQL DB? Can SQL database be used to share state for many logic apps?\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/"
+    },
+    {
+      "title": "Logic App Tips: Storage Accounts can't be shared",
+      "url": "https://marczak.io/posts/2025/01/logic-app-tip-storage-cant-be-shared/",
+      "slug": "logic-app-tip-storage-cant-be-shared",
+      "published_at": "2025-01-27",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Azure Logic Apps store their state on storage accounts, and they require dedicated account, or do they?\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2025/01/logic-app-tip-storage-cant-be-shared/"
+    },
+    {
+      "title": "Logic App Tips: Find underutilized Logic Apps",
+      "url": "https://marczak.io/posts/2025/01/logic-app-tip-find-underutilized-apps/",
+      "slug": "logic-app-tip-find-underutilized-apps",
+      "published_at": "2025-01-23",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "If you read my previous post on logic app costs and effect of scale, here is another tip for you\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 4,
+      "canonical_url": "https://marczak.io/posts/2025/01/logic-app-tip-find-underutilized-apps/"
+    },
+    {
+      "title": "Logic App Tips: Watch out for the 'effect of scale'",
+      "url": "https://marczak.io/posts/2025/01/logic-app-tip-effect-of-scale-cost/",
+      "slug": "logic-app-tip-effect-of-scale-cost",
+      "published_at": "2025-01-20",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "When it comes to private networking there is a new element that must be considered when rolling out solutions at scale, and that is…\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2025/01/logic-app-tip-effect-of-scale-cost/"
+    },
+    {
+      "title": "Logic App Tips: In-App vs Azure Connector Networking",
+      "url": "https://marczak.io/posts/2025/01/logic-app-tip-connector-network/",
+      "slug": "logic-app-tip-connector-network",
+      "published_at": "2025-01-12",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Did you know azure connectors are still paid in logic app standard?\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2025/01/logic-app-tip-connector-network/"
+    },
+    {
+      "title": "Logic App Tips: In-App vs Azure connector costs",
+      "url": "https://marczak.io/posts/2025/01/logic-app-tip-connector-costs/",
+      "slug": "logic-app-tip-connector-costs",
+      "published_at": "2025-01-07",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Did you know azure connectors are still paid in logic app standard?\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2025/01/logic-app-tip-connector-costs/"
+    },
+    {
+      "title": "Logic App Tips: Triggers and Actions vary between SKUs",
+      "url": "https://marczak.io/posts/2025/01/logic-app-tip-connector-differences/",
+      "slug": "logic-app-tip-connector-differences",
+      "published_at": "2025-01-05",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Some scenarios might require you do disable workflows before you deploy your code. Here is why…\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 5,
+      "canonical_url": "https://marczak.io/posts/2025/01/logic-app-tip-connector-differences/"
+    },
+    {
+      "title": "Logic App Tips: Disable Workflows when doing CICD",
+      "url": "https://marczak.io/posts/2025/01/logic-app-tip-disable-workflows/",
+      "slug": "logic-app-tip-disable-workflows",
+      "published_at": "2025-01-03",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Some scenarios might require you do disable workflows before you deploy your code. Here is why…\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2025/01/logic-app-tip-disable-workflows/"
+    },
+    {
+      "title": "Logic App Tips: Build a Git-integration like pipeline for standard SKU logic apps",
+      "url": "https://marczak.io/posts/2024/12/logic-app-tip-git-integration-ci/",
+      "slug": "logic-app-tip-git-integration-ci",
+      "published_at": "2024-12-04",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Logic Apps more and more move into classic development paradigm, for better or for worse, but not all clients need it. If you want more simplistic approach you can build a git-integration like feature yourself.\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 7,
+      "canonical_url": "https://marczak.io/posts/2024/12/logic-app-tip-git-integration-ci/"
+    },
+    {
+      "title": "Report your logic app statuses based on app insights",
+      "url": "https://marczak.io/posts/2024/09/logic-app-tip-connector-network/",
+      "slug": "logic-app-tip-connector-network",
+      "published_at": "2024-09-11",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "If you need to report status of your logic apps, you can, and it’s easy with app insights. Let me show you how.\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2024/09/logic-app-tip-connector-network/"
+    },
+    {
+      "title": "What's the difference between Application and Degelated flows for accessing OneDrive via Graph API",
+      "url": "https://marczak.io/posts/2024/03/graphapi-delegated-vs-app-flow/",
+      "slug": "graphapi-delegated-vs-app-flow",
+      "published_at": "2024-03-03",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "How to access onedrive files using Graph API? Currently there are two ways, those are delegated and application flows, and in this article I’ll briefly explain both.\n",
+      "tags": ["Azure","data-factory"],
+      "reading_time_minutes": 6,
+      "canonical_url": "https://marczak.io/posts/2024/03/graphapi-delegated-vs-app-flow/"
+    },
+    {
+      "title": "Azure Bicep Update (merge) App Service Configuration",
+      "url": "https://marczak.io/posts/2024/03/azure-bicep-update-app-config/",
+      "slug": "azure-bicep-update-app-config",
+      "published_at": "2024-03-01",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "How to update (merge) your app setting without overriding them using Azure Bicep? Let me show you :)\n",
+      "tags": ["Azure","data-factory"],
+      "reading_time_minutes": 1,
+      "canonical_url": "https://marczak.io/posts/2024/03/azure-bicep-update-app-config/"
+    },
+    {
+      "title": "Git Integration for Azure Logic Apps (Standard) with Azure DevOps",
+      "url": "https://marczak.io/posts/2024/02/azure-logic-apps-gitintegration/",
+      "slug": "azure-logic-apps-gitintegration",
+      "published_at": "2024-02-04",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Need to have Git Integration like functionality for Azure Logic Apps? Here’s how :)\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2024/02/azure-logic-apps-gitintegration/"
+    },
+    {
+      "title": "CICD for Azure Logic Apps (Standard) with Azure DevOps",
+      "url": "https://marczak.io/posts/2024/02/azure-logic-apps-cicd-2024/",
+      "slug": "azure-logic-apps-cicd-2024",
+      "published_at": "2024-02-01",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Here’s how you can deploy Azure Logic Apps standard in a quick and easy way with Azure DevOps.\n",
+      "tags": ["Azure","logic-apps"],
+      "reading_time_minutes": 4,
+      "canonical_url": "https://marczak.io/posts/2024/02/azure-logic-apps-cicd-2024/"
+    },
+    {
+      "title": "Automated Data Factory diagrams with PlantUML / MermaidJS with Azure DevOps",
+      "url": "https://marczak.io/posts/2023/09/adf-automated-plantuml-mermaid-diagrams/",
+      "slug": "adf-automated-plantuml-mermaid-diagrams",
+      "published_at": "2023-09-18",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Need to build WIKI flows in automated way for Azure Data Factory? Here’s how!\n",
+      "tags": ["Azure","data-factory"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2023/09/adf-automated-plantuml-mermaid-diagrams/"
+    },
+    {
+      "title": "How to implement a quick CI/CD for Azure Databricks notebooks using Azure DevOps",
+      "url": "https://marczak.io/posts/2023/03/quick-cicd-for-databricks/",
+      "slug": "quick-cicd-for-databricks",
+      "published_at": "2023-03-18",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "If your developers are building notebooks directly in Azure Databricks portal, then you can quickly enhance their productivity but adding a simple CI/CD pipelines with Azure DevOps. In this article I’ll show you how!\n",
+      "tags": ["Azure","databricks"],
+      "reading_time_minutes": 7,
+      "canonical_url": "https://marczak.io/posts/2023/03/quick-cicd-for-databricks/"
+    },
+    {
+      "title": "How to implement a quick CI/CD for Azure Data Factory using Azure DevOps",
+      "url": "https://marczak.io/posts/2023/02/quick-cicd-for-data-factory/",
+      "slug": "quick-cicd-for-data-factory",
+      "published_at": "2023-02-12",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "If you need to set up CI/CD for your Data Factory, here is how to do it in less than 30 minutes!\n",
+      "tags": ["Azure","data factory"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/2023/02/quick-cicd-for-data-factory/"
+    },
+    {
+      "title": "How to query SharePoint with Graph API using Azure Service Principals and Managed Identities",
+      "url": "https://marczak.io/posts/2023/01/sharepoint-graph-and-azure-sp/",
+      "slug": "sharepoint-graph-and-azure-sp",
+      "published_at": "2023-01-29",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Do you want to query SharePoint and get the files or list information in a secure way using Azure’s Service Principals or Managed Identities? Here is a short guide on how to do it.\n",
+      "tags": ["Azure","active-directory"],
+      "reading_time_minutes": 8,
+      "canonical_url": "https://marczak.io/posts/2023/01/sharepoint-graph-and-azure-sp/"
+    },
+    {
+      "title": "AZ-900 Microsoft Azure Fundamentals full course",
+      "url": "https://marczak.io/posts/2020/07/az-900-full-course/",
+      "slug": "az-900-full-course",
+      "published_at": "2020-07-07",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "AZ-900 Microsoft Azure Fundamentals certification is the first and the most important certification for anyone who is just starting with Azure. It’s very exciting for me to release this course to everyone!\n",
+      "tags": ["Azure","YouTube"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2020/07/az-900-full-course/"
+    },
+    {
+      "title": "Automating Enterprise Azure billing using Logic Apps for 0.03$/month",
+      "url": "https://marczak.io/posts/2019/10/ea-consumption-automation-with-logic-apps/",
+      "slug": "ea-consumption-automation-with-logic-apps",
+      "published_at": "2019-10-25",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Started up as manual extraction, evolved into PowerShell scripts, serverless Functions and ended up as Logic Apps. Read how this great service solved our business need for just 3 cents a month.\n",
+      "tags": ["Azure","Logic Apps","Key Vault"],
+      "reading_time_minutes": 5,
+      "canonical_url": "https://marczak.io/posts/2019/10/ea-consumption-automation-with-logic-apps/"
+    },
+    {
+      "title": "Enhancing Logic Apps security with obfuscation",
+      "url": "https://marczak.io/posts/2019/08/logic-apps-obfuscation/",
+      "slug": "logic-apps-obfuscation",
+      "published_at": "2019-08-16",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Introduction of obfuscation feature in Azure Logic Apps for input and output blocks allows for better secret management and enhanced security. This article will focus on presenting capabilities of this feature.\n",
+      "tags": ["Azure","Logic Apps","Security"],
+      "reading_time_minutes": 5,
+      "canonical_url": "https://marczak.io/posts/2019/08/logic-apps-obfuscation/"
+    },
+    {
+      "title": "Securing Logic App with Azure AD authentication using API Management",
+      "url": "https://marczak.io/posts/2019/08/secure-logic-app-with-api-management/",
+      "slug": "secure-logic-app-with-api-management",
+      "published_at": "2019-08-08",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Logic Apps are great but exposing them as publicly available HTTP service is clearly far from perfect. This article shows how to solve this challenge by using API Management service which be used to secure Logic Apps HTTP endpoint with Azure AD token authentication.\n",
+      "tags": ["Azure","API Management","Logic Apps","Active Directory","Security"],
+      "reading_time_minutes": 10,
+      "canonical_url": "https://marczak.io/posts/2019/08/secure-logic-app-with-api-management/"
+    },
+    {
+      "title": "Securing Azure Services with Managed Identities",
+      "url": "https://marczak.io/posts/2019/07/securing-websites-with-msi/",
+      "slug": "securing-websites-with-msi",
+      "published_at": "2019-07-19",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Managing application account credentials is just another thing to worry for application developers; especially in public cloud. Learn what is Managed Identity for Azure Services and how does it solve this problem.\n",
+      "tags": ["Azure","Security","App Service","Logic Apps","Functions","Active Directory"],
+      "reading_time_minutes": 9,
+      "canonical_url": "https://marczak.io/posts/2019/07/securing-websites-with-msi/"
+    },
+    {
+      "title": "Azure Jumpstart - how to learn, practice and certify in Azure",
+      "url": "https://marczak.io/posts/2019/07/azure-jumpstart/",
+      "slug": "azure-jumpstart",
+      "published_at": "2019-07-08",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "How to start with Azure at no cost? Where to learn and practice Azure? Which subscription is the best for me? Are there any services for free to use? I’m preparing for certification, are there any labs I can practice on? Those are typical questions asked by a lot of IT specialists every day. This article puts anyone on the right track.\n",
+      "tags": ["Azure"],
+      "reading_time_minutes": 15,
+      "canonical_url": "https://marczak.io/posts/2019/07/azure-jumpstart/"
+    },
+    {
+      "title": "Azure Data Factory versus Logic Apps for Analysis Services Refresh",
+      "url": "https://marczak.io/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/",
+      "slug": "logic-app-vs-data-factory-for-aas-refresh",
+      "published_at": "2019-06-28",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Data factory is currently go-to service for data load and transformation processes in Azure. In this article a common scenario of refreshing models in Azure Analysis Services will be implemented using ADF components including a comparison with the same process using Azure Logic Apps.\n",
+      "tags": ["Logic Apps","Azure","Analysis Services","Data Factory"],
+      "reading_time_minutes": 8,
+      "canonical_url": "https://marczak.io/posts/2019/06/logic-app-vs-data-factory-for-aas-refresh/"
+    },
+    {
+      "title": "Refreshing Azure Analysis Services models using Logic Apps",
+      "url": "https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/",
+      "slug": "logic-apps-refresh-analysis-services",
+      "published_at": "2019-06-15",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "In 2017 asynchronous refresh API was released for Azure Analysis Services which allows users to refresh their models with simple REST calls. This allows for easy integration with their orchestration solutions. Learn how to build very simple logic apps and manage Azure Analysis Services refresh schedule.\n",
+      "tags": ["Logic Apps","Azure","Analysis Services"],
+      "reading_time_minutes": 8,
+      "canonical_url": "https://marczak.io/posts/2019/06/logic-apps-refresh-analysis-services/"
+    },
+    {
+      "title": "Azure Analysis Services hybrid enrivonment with on-premises databases",
+      "url": "https://marczak.io/posts/analysis-services-onprem-integration/",
+      "slug": "analysis-services-onprem-integration",
+      "published_at": "2018-06-26",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Integration with on premises environments is one of more common cloud scenarios. Learn how to set up and Analysis Services hybrid environment with use of On-Premises Data Gateway.\n",
+      "tags": ["Visual Studio","Analysis Services","SQL","Azure","Data gateway"],
+      "reading_time_minutes": 5,
+      "canonical_url": "https://marczak.io/posts/analysis-services-onprem-integration/"
+    },
+    {
+      "title": "Quick, easy and cheap way to automate data loading from CSV file into Azure SQL",
+      "url": "https://marczak.io/posts/azure-loading-csv-to-sql/",
+      "slug": "azure-loading-csv-to-sql",
+      "published_at": "2018-06-03",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Check out how to leverage Azure Blob Storage and Logic Apps for simple scenario of data loading from CSV into Azure SQL in less than 30 minutes and with almost no coding.\n",
+      "tags": ["Logic Apps","Azure","SQL"],
+      "reading_time_minutes": 7,
+      "canonical_url": "https://marczak.io/posts/azure-loading-csv-to-sql/"
+    },
+    {
+      "title": "Effective chatbot development with ngrok",
+      "url": "https://marczak.io/posts/botseries-dev-done-easy/",
+      "slug": "botseries-dev-done-easy",
+      "published_at": "2018-03-12",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Proper set up of environment is one of most important things during development. Leverage ngrok tunneling service to speed up development process.\n",
+      "tags": ["Bot Service","Azure","Teams","Visual Studio"],
+      "reading_time_minutes": 5,
+      "canonical_url": "https://marczak.io/posts/botseries-dev-done-easy/"
+    },
+    {
+      "title": "Build CRUD operations in SPA using Vue.js, .NET Core 2.0 and Azure Cosmos DB",
+      "url": "https://marczak.io/posts/netcore-vuejs-crud/",
+      "slug": "netcore-vuejs-crud",
+      "published_at": "2018-02-17",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Storing data is key aspect of every application out there. Learn how to use Azure Cosmos DB with .NET Core to deliver CRUD operation capabilities to application of any kind, and how to handle those operations in real time on front-end using Vue.js.\n",
+      "tags": ["Vue.js","Cosmos DB","Visual Studio Code","dotNET Core","Azure"],
+      "reading_time_minutes": 14,
+      "canonical_url": "https://marczak.io/posts/netcore-vuejs-crud/"
+    },
+    {
+      "title": "Building .NET Core 2.0 web apps with Vue.js single file components using VS Code",
+      "url": "https://marczak.io/posts/netcore-vuejs/",
+      "slug": "netcore-vuejs",
+      "published_at": "2018-02-04",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Single Page Applications are one of the best experiences that a web developer can deliver to their customers. See how to build SPA using Vue.js with .NET Core 2.0 backend.\n",
+      "tags": ["Vue.js","Webpack","Visual Studio Code","dotNET Core"],
+      "reading_time_minutes": 11,
+      "canonical_url": "https://marczak.io/posts/netcore-vuejs/"
+    },
+    {
+      "title": "Analyze user's feedback with sentiment analysis",
+      "url": "https://marczak.io/posts/cognitive-text-analytics/",
+      "slug": "cognitive-text-analytics",
+      "published_at": "2017-12-10",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Building brand visibility requires a lot of effort. Analysis of social media reactions is key aspect of this process. With Azure Cognitive Services Text Analytics API companies can start analyzing feedback right away with ease.\n",
+      "tags": ["Flow","Azure","Cognitive Services","Text Analytics","Teams"],
+      "reading_time_minutes": 3,
+      "canonical_url": "https://marczak.io/posts/cognitive-text-analytics/"
+    },
+    {
+      "title": "Better chatbot interactions with Rich Cards",
+      "url": "https://marczak.io/posts/botseries-rich-cards/",
+      "slug": "botseries-rich-cards",
+      "published_at": "2017-11-18",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Driving user conversations is key for any successful bot. By leveraging bot framework’s rich cards in conversations developers can enrich user experience by allowing them to interact with bots without need of a typing.\n",
+      "tags": ["Bot Service","Azure"],
+      "reading_time_minutes": 12,
+      "canonical_url": "https://marczak.io/posts/botseries-rich-cards/"
+    },
+    {
+      "title": "Smarter bots with natural language processing",
+      "url": "https://marczak.io/posts/botseries-smarter-bots-with-nlp/",
+      "slug": "botseries-smarter-bots-with-nlp",
+      "published_at": "2017-11-06",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "The closer bot interaction gets to the one of a human the better the end user experience will be. See how to leverage Microsoft Cognitive Services LUIS for natural language processing so that users can type naturally while allowing bots to understand and act.\n",
+      "tags": ["Bot Service","Azure","LUIS","Cognitive Services"],
+      "reading_time_minutes": 9,
+      "canonical_url": "https://marczak.io/posts/botseries-smarter-bots-with-nlp/"
+    },
+    {
+      "title": "Introduction to chatbots",
+      "url": "https://marczak.io/posts/botseries-introductiontobots/",
+      "slug": "botseries-introductiontobots",
+      "published_at": "2017-10-22",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Microsoft Bot Framework with conjunction with Azure Bot Service provides the platform for quick bot development. Learn what are chat bots for and how to leverage those tools to deliver basic bots in just minutes.\n",
+      "tags": ["Bot Service","Azure"],
+      "reading_time_minutes": 6,
+      "canonical_url": "https://marczak.io/posts/botseries-introductiontobots/"
+    },
+    {
+      "title": "Precompiled Bots with VS 2017 tooling",
+      "url": "https://marczak.io/posts/precompiled-bots-for-bot-service/",
+      "slug": "precompiled-bots-for-bot-service",
+      "published_at": "2017-09-30",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "With the release of Visual Studio 2017 15.3 developers can take advantage of new Tools for Azure Functions. Learn how to take advantage of those tools to deliver pre-compiled bots for Azure Bot Service.\n",
+      "tags": ["Functions","Bot Service","Azure","Visual Studio"],
+      "reading_time_minutes": 5,
+      "canonical_url": "https://marczak.io/posts/precompiled-bots-for-bot-service/"
+    }
+  ]
+}
