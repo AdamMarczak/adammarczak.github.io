@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-04T10:56:24Z",
+  "generated_at": "2026-06-05T09:05:38Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -11,16 +11,16 @@
     "feed": "https://marczak.io/feed.xml"
   },
   "statistics": {
-    "total_posts": 60,
+    "total_posts": 61,
     "total_tags": 46,
-    "last_post_date": "2026-03-03"
+    "last_post_date": "2026-06-05"
   },
   "topics": [
     {
       "name": "azure",
       "slug": "azure",
       "url": "https://marczak.io/tags/azure/",
-      "post_count": 148
+      "post_count": 149
     },
     {
       "name": "az-900",
@@ -38,7 +38,7 @@
       "name": "data-factory",
       "slug": "data-factory",
       "url": "https://marczak.io/tags/data-factory/",
-      "post_count": 13
+      "post_count": 14
     },
     {
       "name": "databricks",
@@ -294,6 +294,18 @@
     }
   ],
   "posts": [
+    {
+      "title": "Data Factory parametrization via external mapping/config tables",
+      "url": "https://marczak.io/posts/2026/06/data-factory-parametrization-with-config-tables/",
+      "slug": "data-factory-parametrization-with-config-tables",
+      "published_at": "2026-06-05",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Hitting a limits of 256 paramters in Data Factory, or maybe you are tired to parametrizing dozens of pipelines. If yes, this blog entry is for you.\n",
+      "tags": ["azure","data-factory"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2026/06/data-factory-parametrization-with-config-tables/"
+    },
     {
       "title": "Azure Logic Apps AI Agent Workflows in Early 2026",
       "url": "https://marczak.io/posts/2026/03/logic-apps-agent-workflows-early-2026/",
@@ -571,18 +583,6 @@
       "canonical_url": "https://marczak.io/posts/2025/02/logic-app-tip-http-connectors-to-rescue/"
     },
     {
-      "title": "Power BI: Query Azure REST API Management and page results",
-      "url": "https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/",
-      "slug": "power-bi-query-azure-rest-api",
-      "published_at": "2025-02-02",
-      "updated_at": null,
-      "author": "Adam Marczak",
-      "summary": "Did you try to query Azure Management REST API from Power Query? Did you notice paging doesn’t work… yeah…\n",
-      "tags": ["Azure","Power BI"],
-      "reading_time_minutes": 1,
-      "canonical_url": "https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/"
-    },
-    {
       "title": "Logic App Tips: SQL db can't be shared, but...",
       "url": "https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/",
       "slug": "logic-app-tip-sql-cant-be-shared-but",
@@ -593,6 +593,18 @@
       "tags": ["Azure","logic-apps"],
       "reading_time_minutes": 3,
       "canonical_url": "https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/"
+    },
+    {
+      "title": "Power BI: Query Azure REST API Management and page results",
+      "url": "https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/",
+      "slug": "power-bi-query-azure-rest-api",
+      "published_at": "2025-02-02",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Did you try to query Azure Management REST API from Power Query? Did you notice paging doesn’t work… yeah…\n",
+      "tags": ["Azure","Power BI"],
+      "reading_time_minutes": 1,
+      "canonical_url": "https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/"
     },
     {
       "title": "Logic App Tips: Storage Accounts can't be shared",
