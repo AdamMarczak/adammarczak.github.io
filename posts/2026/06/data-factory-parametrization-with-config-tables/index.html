@@ -202,6 +202,8 @@
     <div style="padding-bottom:111.346%"></div>
     <img data-src="/images/2026/2026-06-data-factory-parametrization-with-config-tables/screenshot-000003.jpg" src=""/> 
 </div></p>
+<h3 id="alternatives">Alternatives</h3>
+<p>You can use different metadata storage options like Table Storage or Cosmos DB, it&rsquo;s really yp to you. I like SQL as it provides a bit more control over the data and schema + more rich query language.</p>
 <h2 id="adding-adf-mi-to-read-it">Adding ADF MI to read it</h2>
 <p>Ensure ADF can connect to SQL and read the data. You can technically use SQL auth, but it&rsquo;s not recommended these days.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="p">[</span><span class="n">adf_name</span><span class="p">]</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">EXTERNAL</span><span class="w"> </span><span class="n">PROVIDER</span><span class="p">;</span><span class="w">
