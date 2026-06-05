@@ -5,10 +5,22 @@
     <description>Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Mar 2024 17:00:23 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 07:00:00 +0200</lastBuildDate>
     
         <atom:link href="https://marczak.io/tags/data-factory/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Factory parametrization via external mapping/config tables</title>
+      <link>https://marczak.io/posts/2026/06/data-factory-parametrization-with-config-tables/</link>
+      <pubDate>Fri, 05 Jun 2026 07:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2026/06/data-factory-parametrization-with-config-tables/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2026/2026-06-data-factory-parametrization-with-config-tables/splash.jpg&quot;&gt;
+        &lt;p&gt;Hitting a limits of 256 paramters in Data Factory, or maybe you are tired to parametrizing dozens of pipelines. If yes, this blog entry is for you.&lt;/p&gt;
+      </description>
+    </item>
     
     <item>
       <title>Azure Logic Apps AI Agent Workflows in Early 2026</title>
