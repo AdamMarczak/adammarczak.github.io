@@ -241,18 +241,36 @@
     <img data-src="/images/2026/2026-06-data-factory-parametrization-with-config-tables/screenshot-000005.jpg" src=""/> 
 </div>
 <p>If you want you can use query which automatically prepares the pivot.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DECLARE</span><span class="w"> </span><span class="o">@</span><span class="n">PipelineName</span><span class="w"> </span><span class="n">sysname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Pipeline A&#39;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">DECLARE</span><span class="w"> </span><span class="o">@</span><span class="n">cols</span><span class="w"> </span><span class="n">nvarchar</span><span class="p">(</span><span class="k">max</span><span class="p">);</span><span class="w">
+</span><span class="w"></span><span class="k">DECLARE</span><span class="w"> </span><span class="o">@</span><span class="k">sql</span><span class="w">  </span><span class="n">nvarchar</span><span class="p">(</span><span class="k">max</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">STRING_AGG</span><span class="p">(</span><span class="n">QUOTENAME</span><span class="p">(</span><span class="k">Parameter</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w">
 </span><span class="w"></span><span class="k">FROM</span><span class="w">
 </span><span class="w"></span><span class="p">(</span><span class="w">
-</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">PipelineName</span><span class="p">,</span><span class="w"> </span><span class="k">Parameter</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w">
+</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="k">Parameter</span><span class="w">
 </span><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">dbo</span><span class="p">.</span><span class="n">PipelineConfig</span><span class="w">
-</span><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">PipelineName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Pipeline A&#39;</span><span class="w">
-</span><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">src</span><span class="w">
-</span><span class="w"></span><span class="n">PIVOT</span><span class="w">
-</span><span class="w"></span><span class="p">(</span><span class="w">
-</span><span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">Value</span><span class="p">)</span><span class="w">
-</span><span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="k">Parameter</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">([</span><span class="n">Region</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="n">Timeout</span><span class="p">])</span><span class="w">
+</span><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">PipelineName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">PipelineName</span><span class="w">
 </span><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="k">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="s1">&#39;
+</span><span class="s1">SELECT PipelineName, &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">@</span><span class="n">cols</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">N</span><span class="s1">&#39;
+</span><span class="s1">FROM
+</span><span class="s1">(
+</span><span class="s1">    SELECT PipelineName, Parameter, Value
+</span><span class="s1">    FROM dbo.PipelineConfig
+</span><span class="s1">    WHERE PipelineName = @PipelineName
+</span><span class="s1">) src
+</span><span class="s1">PIVOT
+</span><span class="s1">(
+</span><span class="s1">    MAX(Value)
+</span><span class="s1">    FOR Parameter IN (&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">@</span><span class="n">cols</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">N</span><span class="s1">&#39;)
+</span><span class="s1">) p;&#39;</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">EXEC</span><span class="w"> </span><span class="n">sp_executesql</span><span class="w">
+</span><span class="w">    </span><span class="o">@</span><span class="k">sql</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">N</span><span class="s1">&#39;@PipelineName sysname&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="o">@</span><span class="n">PipelineName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">PipelineName</span><span class="p">;</span><span class="w">
 </span></code></pre></div><h2 id="testing">Testing</h2>
 <p>Now just testing remains
 

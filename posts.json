@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-05T09:17:46Z",
+  "generated_at": "2026-06-05T09:21:22Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -303,7 +303,7 @@
       "author": "Adam Marczak",
       "summary": "Hitting a limits of 256 paramters in Data Factory, or maybe you are tired to parametrizing dozens of pipelines. If yes, this blog entry is for you.\n",
       "tags": ["azure","data-factory"],
-      "reading_time_minutes": 2,
+      "reading_time_minutes": 3,
       "canonical_url": "https://marczak.io/posts/2026/06/data-factory-parametrization-with-config-tables/"
     },
     {
