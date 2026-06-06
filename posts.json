@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-05T09:21:22Z",
+  "generated_at": "2026-06-06T19:34:07Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -12,7 +12,7 @@
   },
   "statistics": {
     "total_posts": 61,
-    "total_tags": 46,
+    "total_tags": 47,
     "last_post_date": "2026-06-05"
   },
   "topics": [
@@ -62,6 +62,12 @@
       "name": "active-directory",
       "slug": "active-directory",
       "url": "https://marczak.io/tags/active-directory/",
+      "post_count": 5
+    },
+    {
+      "name": "entra",
+      "slug": "entra",
+      "url": "https://marczak.io/tags/entra/",
       "post_count": 5
     },
     {
@@ -806,7 +812,7 @@
       "updated_at": null,
       "author": "Adam Marczak",
       "summary": "Do you want to query SharePoint and get the files or list information in a secure way using Azure’s Service Principals or Managed Identities? Here is a short guide on how to do it.\n",
-      "tags": ["Azure","active-directory"],
+      "tags": ["Azure","active-directory","entra"],
       "reading_time_minutes": 8,
       "canonical_url": "https://marczak.io/posts/2023/01/sharepoint-graph-and-azure-sp/"
     },
@@ -854,7 +860,7 @@
       "updated_at": null,
       "author": "Adam Marczak",
       "summary": "Logic Apps are great but exposing them as publicly available HTTP service is clearly far from perfect. This article shows how to solve this challenge by using API Management service which be used to secure Logic Apps HTTP endpoint with Azure AD token authentication.\n",
-      "tags": ["Azure","API Management","Logic Apps","Active Directory","Security"],
+      "tags": ["Azure","API Management","Logic Apps","Active Directory","Security","Entra"],
       "reading_time_minutes": 10,
       "canonical_url": "https://marczak.io/posts/2019/08/secure-logic-app-with-api-management/"
     },
@@ -866,7 +872,7 @@
       "updated_at": null,
       "author": "Adam Marczak",
       "summary": "Managing application account credentials is just another thing to worry for application developers; especially in public cloud. Learn what is Managed Identity for Azure Services and how does it solve this problem.\n",
-      "tags": ["Azure","Security","App Service","Logic Apps","Functions","Active Directory"],
+      "tags": ["Azure","Security","App Service","Logic Apps","Functions","Active Directory","Entra"],
       "reading_time_minutes": 9,
       "canonical_url": "https://marczak.io/posts/2019/07/securing-websites-with-msi/"
     },
