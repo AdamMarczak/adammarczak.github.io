@@ -293,7 +293,7 @@
 </ul>
 <p>Which means process should check for either <strong>failed</strong> or <strong>succeeded</strong>. All responses are returned with 200 http status call.</p>
 <h3 id="authentication">Authentication</h3>
-<p>All calls must be authenticated with a valid Azure Active Directory (OAuth 2) token in the Authorization header and must meet the following requirements:</p>
+<p>All calls must be authenticated with a valid Microsoft Entra (former Azure Active Directory) (OAuth 2) token in the Authorization header and must meet the following requirements:</p>
 <ul>
 <li>Only user or service principal tokens are accepted. If you want to use MSI (Managed Service Identity), then you must enable identity on logic app and use CLI or PowerShell to get application ID of new service principal. Which then must be added as admin to analysis Services.</li>
 <li>Audience of the token must be set to https://*.asazure.windows.net.</li>
@@ -337,7 +337,7 @@
 <h2 id="application-account">Application Account</h2>
 <p>Log into <a href="https://portal.azure.com">Azure Portal</a> and start creating resources.</p>
 <ol>
-<li>Go to <strong>Azure Active Directory</strong> into <strong>App registrations</strong>
+<li>Go to <strong>Microsoft Entra (former Azure Active Directory)</strong> into <strong>App registrations</strong>
 
 <div class="lazy" style="max-height: 546px">
     <div style="padding-bottom:105.609%"></div>
@@ -385,7 +385,7 @@
     <div style="padding-bottom:20.436%"></div>
     <img data-src="/images/logic-apps-refresh-analysis-services/34.png" src=""/> 
 </div></li>
-<li>Go to <strong>Azure Active Directory</strong> into <strong>Properties</strong></li>
+<li>Go to <strong>Microsoft Entra (former Azure Active Directory)</strong> into <strong>Properties</strong></li>
 <li>Copy <strong>Directory ID</strong>, this will be required for later steps
 
 <div class="lazy" style="max-height: 489px">

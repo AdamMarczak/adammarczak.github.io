@@ -263,7 +263,7 @@ Alternatively, you can search by logic app name
     <img data-src="/images/logic-app-vs-data-factory-for-aas-refresh/000058.png" src=""/> 
 </div>
 From the output of this script two things should be saved</li>
-<li><strong>TenantId</strong> - this is Directory ID of Azure Active Directory where the managed identity is located</li>
+<li><strong>TenantId</strong> - this is Directory ID of Microsoft Entra (former Azure Active Directory) where the managed identity is located</li>
 <li><strong>ApplicationId</strong> - application ID of managed identity</li>
 <li>Since Data Factory doesn&rsquo;t give out right Object ID of its identity the simplest way is to find it by azure resource name. In the same PowerShell window run command to find application ID of data factory identity. 
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"> <span class="nb">Get-AzADServicePrincipal</span> <span class="n">-DisplayName</span> <span class="s2">&#34;&lt;name of data factory&gt;&#34;</span></code></pre></div>
