@@ -318,7 +318,11 @@
 <pre tabindex="0"><code>@activity('Get Params').output.firstRow.&lt;paramName&gt;
 </code></pre><p>Like so</p>
 <pre tabindex="0"><code>@activity('Get Params').output.firstRow.Region
-</code></pre><h2 id="conclusion">Conclusion</h2>
+
+</code></pre><h2 id="cicd">CICD?</h2>
+<p>If you plan to deploy this via CICD, remember to also deploy metadata of this table alongside the Data Factory to avoid human mistakes.</p>
+<p>Deploying Azure SQL DB is not part of this blog because it&rsquo;s fairly common practice, but it also depends heavily on the choosen DevOps tool.</p>
+<h2 id="conclusion">Conclusion</h2>
 <p>This is a very scalable and mature approach to metadata driven pipeline management. Instead of thousands of parameters all over, a single config table to manage them all. You can also define global parameters like this too!</p>
 <h2 id="related-reading">Related Reading</h2>
 <ul>
