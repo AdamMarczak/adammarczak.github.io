@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-08T07:53:32Z",
+  "generated_at": "2026-06-08T07:54:48Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -319,7 +319,7 @@
       "published_at": "2026-06-05",
       "updated_at": null,
       "author": "Adam Marczak",
-      "summary": "Hitting a limits of 256 paramters in Azure Data Factory, or maybe you are tired of parametrizing dozens of pipelines. If yes, this blog entry is for you.\n",
+      "summary": "Hitting a limits of 256 template paramters in Azure Data Factory, or maybe you are tired of parametrizing dozens of pipelines. If yes, this blog entry is for you.\n",
       "tags": ["azure","data-factory","fabric","fabric data factory"],
       "reading_time_minutes": 3,
       "canonical_url": "https://marczak.io/posts/2026/06/data-factory-parametrization-with-config-tables/"

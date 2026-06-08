@@ -18,7 +18,7 @@
       <guid>https://marczak.io/posts/2026/06/data-factory-parametrization-with-config-tables/</guid>
       <description>
         &lt;img src=&quot;https://marczak.io/images/2026/2026-06-data-factory-parametrization-with-config-tables/thumbnail.jpg&quot;&gt;
-        &lt;p&gt;Hitting a limits of 256 paramters in Azure Data Factory, or maybe you are tired of parametrizing dozens of pipelines. If yes, this blog entry is for you.&lt;/p&gt;
+        &lt;p&gt;Hitting a limits of 256 template paramters in Azure Data Factory, or maybe you are tired of parametrizing dozens of pipelines. If yes, this blog entry is for you.&lt;/p&gt;
       </description>
     </item>
     
