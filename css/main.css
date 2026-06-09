@@ -250,7 +250,8 @@ div.avatar {
 .btn-basic { background-color: #67b2ec; color: black; }
 .btn-basic:hover { background-color: #24a0ff; color: white; }
 
-body,h1,h2,h3,h4,h5,h6{font-family:Arial,Arial,sans-serif;font-weight:300;margin-top:30px;}
+body,h1,h2,h3,h4,h5,h6{font-family:Arial,Arial,sans-serif;font-weight:300;}
+h1,h2,h3,h4,h5,h6{margin: top 35px;}
 
 .connected-title {
   margin-bottom: 4px;
