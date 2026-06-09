@@ -250,7 +250,7 @@ div.avatar {
 .btn-basic { background-color: #67b2ec; color: black; }
 .btn-basic:hover { background-color: #24a0ff; color: white; }
 
-body,h1,h2,h3,h4,h5,h6{font-family:Arial,Arial,sans-serif;font-weight:300}
+body,h1,h2,h3,h4,h5,h6{font-family:Arial,Arial,sans-serif;font-weight:300;margin-top:30px;}
 
 .connected-title {
   margin-bottom: 4px;
@@ -521,4 +521,59 @@ form.quiz > button.reset-answer {
 
 .footer-black {
   background-color: #120130;
+}
+
+/* Minimal table design for post content */
+.single-posts-wrap table,
+.blog-posts-wrap table,
+article table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 0;
+  margin: 24px 0;
+  background: #ffffff;
+}
+
+.single-posts-wrap thead th,
+.blog-posts-wrap thead th,
+article thead th {
+  background: #f8f9fb;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.single-posts-wrap th,
+.single-posts-wrap td,
+.blog-posts-wrap th,
+.blog-posts-wrap td,
+article th,
+article td {
+  padding: 12px 14px;
+  border: 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* Keep only internal vertical separators */
+.single-posts-wrap th + th,
+.single-posts-wrap td + td,
+.blog-posts-wrap th + th,
+.blog-posts-wrap td + td,
+article th + th,
+article td + td {
+  border-left: 1px solid #e5e7eb;
+}
+
+/* Keep only internal horizontal separators */
+.single-posts-wrap tbody tr > *,
+.blog-posts-wrap tbody tr > *,
+article tbody tr > * {
+  border-top: 1px solid #e5e7eb;
+}
+
+.single-posts-wrap tbody tr:first-child > *,
+.blog-posts-wrap tbody tr:first-child > *,
+article tbody tr:first-child > * {
+  border-top-color: #dfe3e8;
 }
