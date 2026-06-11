@@ -16,8 +16,12 @@ related_site:
     topics: azure,logic-apps,serverless,ai,automation,developer
 content_catalog:
   blog: https://marczak.io/posts/
+  videos: https://marczak.io/videos/
+  news: https://marczak.io/news/
   tutorials: https://marczak.io/posts/
   posts_json: https://marczak.io/posts.json
+  videos_json: https://marczak.io/videos.json
+  news_json: https://marczak.io/news.json
   tags: https://marczak.io/tags/
   about: https://marczak.io/about
   youtube: https://www.youtube.com/azure4everyone
@@ -25,6 +29,8 @@ discovery_endpoints:
   - https://marczak.io/llms.txt
   - https://marczak.io/llms-full.txt
   - https://marczak.io/posts.json
+  - https://marczak.io/videos.json
+  - https://marczak.io/news.json
   - https://marczak.io/.well-known/ai-plugin.json
   - https://marczak.io/.well-known/openapi.yaml
   - https://marczak.io/.well-known/openapi.json

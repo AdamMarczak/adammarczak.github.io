@@ -117,6 +117,39 @@
           }
         }
       }
+    },
+    "/posts.json": {
+      "get": {
+        "summary": "Get blog posts catalog",
+        "description": "Retrieve the machine-readable JSON catalog for blog posts.",
+        "responses": {
+          "200": {
+            "description": "Posts JSON catalog"
+          }
+        }
+      }
+    },
+    "/videos.json": {
+      "get": {
+        "summary": "Get videos catalog",
+        "description": "Retrieve the machine-readable JSON catalog for video content.",
+        "responses": {
+          "200": {
+            "description": "Videos JSON catalog"
+          }
+        }
+      }
+    },
+    "/news.json": {
+      "get": {
+        "summary": "Get news catalog",
+        "description": "Retrieve the machine-readable JSON catalog for news content.",
+        "responses": {
+          "200": {
+            "description": "News JSON catalog"
+          }
+        }
+      }
     }
   },
   "components": {

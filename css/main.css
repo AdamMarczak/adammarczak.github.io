@@ -150,6 +150,12 @@ aside .widget a {
   padding:9px 15px;
   background-color:white;
 }
+.btn-nav {
+  padding:6px 20px;
+  background-color:white;
+  background:rgba(230, 230, 230, 0.45);
+  color:white;
+}
 .btn-img > img {
   height:26px;
 }

@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Modernizing my blog with AI using GitHub Copilot | Marczak.IO | Adam Marczak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="https://marczak.io/images/favicon.ico" sizes="32x32" />
+<link rel="icon" href="https://marczak.io/images/favicon.ico" sizes="16x16" />
+<link rel="canonical" href="https://marczak.io/posts/2026/06/modernizing-my-blog-with-ai-using-github-copilot/">
+<link rel="apple-touch-icon-precomposed" href="https://marczak.io/images/iphone-icon.png"/>
+<link rel="stylesheet" id="hestia_fonts-css" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700%7CRoboto+Slab%3A400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+<link href='https://marczak.io/css/hestia.min.css?ver=1.25' rel="stylesheet" type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.35' rel='stylesheet' type="text/css" />
+<link href="https://marczak.io/posts.json" rel="alternate" type="application/json" title="Posts JSON Feed" />
+<link href="https://marczak.io/videos.json" rel="alternate" type="application/json" title="Videos JSON Feed" />
+<link href="https://marczak.io/news.json" rel="alternate" type="application/json" title="News JSON Feed" />
+
+<meta name="description" content="Let me tell you why I started using AI to modernize this blog. At first, it was just an expertiment, but it saved time, removed boring repetition, and let me focus on the parts that actually matter; cool examples, and opinions.  :).">
+<meta name="author" content="Adam Marczak">
+<meta name="copyright" content="Adam Marczak">
+<meta name="title" content="Modernizing my blog with AI using GitHub Copilot | Marczak.IO | Adam Marczak">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.facebook.com/MarczakIO/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Modernizing my blog with AI using GitHub Copilot">
+<meta property="og:description" content="Let me tell you why I started using AI to modernize this blog. At first, it was just an expertiment, but it saved time, removed boring repetition, and let me focus on the parts that actually matter; cool examples, and opinions.  :).">
+<meta property="og:url" content="https://marczak.io/posts/2026/06/modernizing-my-blog-with-ai-using-github-copilot/">
+<meta property="og:site_name" content="Marczak.IO">
+<meta property="og:image" content="https://marczak.io/images/2026/2026-06-modernizing-blog-with-ai/splash.jpg">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@MarczakIO">
+<meta name="twitter:title" content="Modernizing my blog with AI using GitHub Copilot">
+<meta name="twitter:description" content="Let me tell you why I started using AI to modernize this blog. At first, it was just an expertiment, but it saved time, removed boring repetition, and let me focus on the parts that actually matter; cool examples, and opinions.  :).">
+<meta name="twitter:url" content="https://marczak.io/posts/2026/06/modernizing-my-blog-with-ai-using-github-copilot/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/marczak.io\/posts\/2026\/06\/modernizing-my-blog-with-ai-using-github-copilot\/"
+  },
+  "headline": "Modernizing my blog with AI using GitHub Copilot",
+  "description": "Let me tell you why I started using AI to modernize this blog. At first, it was just an expertiment, but it saved time, removed boring repetition, and let me focus on the parts that actually matter; cool examples, and opinions. :). ",
+  "url": "https:\/\/marczak.io\/posts\/2026\/06\/modernizing-my-blog-with-ai-using-github-copilot\/",
+  "datePublished": "2026-06-11T06:00:00\u002b02:00",
+  "dateModified": "2026-06-11T06:00:00\u002b02:00",
+  "author": {
+    "@type": "Person",
+    "name": "Adam Marczak"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Marczak.IO",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/marczak.io\/images\/favicon.ico"
+    }
+  },
+  "image": [
+    "https:\/\/marczak.io\/2026\/2026-06-modernizing-blog-with-ai\/splash.jpg"
+  ],
+  "keywords": "GitHub, copilot"
+}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GB7TL4ZQW9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GB7TL4ZQW9');
+</script>
+</head>
+<body class="home blog">
+  <div class="wrapper"><header class="header">
+  <nav class="navbar navbar-default hestia_left">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="title-logo-wrapper">
+          <a class="navbar-brand" href="/" title="Marczak.IO">
+            <img src="/images/favicon.svg" style="height: 30px;"/>
+          </a>
+        </div>
+      </div>
+      <div id="main-navigation" class="navbar-custom">
+        <div class="entry-social">
+  <a target="_top" class="btn btn-just-icon btn-social btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_top" class="btn btn-img" 
+      href="https://www.patreon.com/marczakio">
+      <img src="\images\patreon-black.svg">
+  </a>
+  <a target="_top" class="btn btn-img" 
+      style="padding-top: 14px;padding-bottom: 13px;background:#210159;"
+      href="https://www.youtube.com/azure4everyone">
+      <img src="/images/youtube.svg" style="height: 17px;margin-right:10px"/>
+      <span>My YouTube Channel</span>
+  </a>
+  
+</div>
+      </div>
+    </div>
+  </nav>
+  <div id="primary" class="boxed-layout-header page-header header-small" data-parallax="active" style="margin-top: -20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+          <h1 class="hestia-title">Modernizing my blog with AI using GitHub Copilot</h1>
+          
+            <h4 class="author">
+              Published by&nbsp;<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2026-06-11 06:00:00 &#43;0200 CEST">Jun 11 2026</time>
+            </h4>
+           
+        </div>
+      </div>
+    </div>
+    <div class="header-filter" style="background-image: url('/images/background.jpg');background-color: #283743;"></div>
+  </div>
+</header>
+    <div class="main main-raised">
+      
+      
+      
+      <div class="site-nav-buttons" style="position: absolute;margin-top: -45px">
+        <a href="/" class="btn btn-nav btn-outline">Posts (62)</a>
+        <a href="/videos/" class="btn btn-nav btn-outline">Videos (89)</a>
+        <a href="/news/" class="btn btn-nav btn-outline">News (2)</a>
+      </div>
+      <div class="hestia-blogs">
+        <div class="container">
+          
+          <div class="row">
+<div class="col-md-9 single-posts-wrap">
+    <article id="/posts/2026/06/modernizing-my-blog-with-ai-using-github-copilot/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 685px">
+    <div style="padding-bottom:66.63424124513618%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/splash.jpg" src=""/> 
+</div> <h2>Highlight</h2>
+        <p>Let me tell you why I started using AI to modernize this blog. At first, it was just an expertiment, but it saved time, removed boring repetition, and let me focus on the parts that actually matter; cool examples, and opinions.  :).</p>
+<p>I&rsquo;m what I call &lsquo;positively lazy&rsquo;, so I don&rsquo;t want to spend time on mundane tasks, but something that provides value.</p>
+<p>I&rsquo;m not here to sell you AI, but I did use it and I&rsquo;ve found it quite useful for my workflows. So this blog is exactly for that. Sharing what I did, and how it worked, the good or the bad.</p>
+<h2 id="background">Background</h2>
+<p>I run this blog using <a href="https://gohugo.io/content-management/formats/">Hugo</a>, which is a static website generator from markdown. It&rsquo;s a simple yet elegant thing.</p>
+<p>The way this entire thing is structured, makes it so my blog costs me 0$ to run by having</p>
+<ul>
+<li>GitHub pages to host my website</li>
+<li>Cloudflare free tier for DNS and CDN</li>
+<li>Disqus for comment section</li>
+<li>Hugo to generate website, Jeckyll is a good alternative now that GitHub has a native support for it</li>
+</ul>
+<p>All of this is free. The only thing that costs me money is my domain, but that is like 12USD per year.</p>
+<h2 id="challenges">Challenges</h2>
+<p>Here are the top things that are annoying to me when writing a blog using Hugo</p>
+<ul>
+<li>Adding new post templates</li>
+<li>Adding external links to MS docs so people can follow up, and including my MVP ID in the URL</li>
+<li>Checking grammar</li>
+<li>Generating thumbnails</li>
+<li>Moving posts across from my second blog I wanted to decomission</li>
+<li>Adding necessary summaries for SEO</li>
+<li>Finding issues when creating hugo templates</li>
+</ul>
+<h2 id="quick-summary-with-personal-scores">Quick summary with personal scores</h2>
+<p>Below are tasks I&rsquo;ve performed and my personal score from 1 (very bad) to 5 (excellent) how AI assisted me.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th style="text-align:center">Score</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="#task-1-setup-up-ai-to-work-with-hugo-and-my-custom-templates">Settup up AI to work with Hugo and my custom templates</a></td>
+<td style="text-align:center">⭐️⭐️⭐️⭐️⭐️</td>
+<td>Overall it went way better than I&rsquo;ve expected</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="#task-2-generating-new-post">Generating new posts skill</a></td>
+<td style="text-align:center">⭐️⭐️⭐️⭐️</td>
+<td>Initially I would give it 3 stars, depending on what is your goal, but it did too much, and needed tweaking. Now it&rsquo;s great overall.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="#task-3-moving-90-blog-entries-from-my-other-blog-and-changing-templates-for-it">Moving 90+ blog entries from my other blog, and changing templates for it</a></td>
+<td style="text-align:center">⭐️⭐️⭐️⭐️⭐️</td>
+<td>Excellent all the way. Probably 10+ hours saved easily.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="#task-4-new-navigation">New navigation</a></td>
+<td style="text-align:center">⭐️⭐️⭐️⭐️</td>
+<td>New buttons were like 90% there, a few small tweaks and it was there</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="#task-5-adding-youtube-button-for-my-channel">Adding YouTube button for my channel</a></td>
+<td style="text-align:center">⭐️⭐️⭐️⭐️⭐️</td>
+<td>One prompt and it worked. No fuss.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="#task-6-adding-recent-videos-section">Adding recent videos section</a></td>
+<td style="text-align:center">⭐️⭐️⭐️⭐️⭐️</td>
+<td>Again, this was one prompt and perfect result</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="#task-7-generate-new-post-about-data-factory-parametrization">Generate new post about Data Factory parametrization</a></td>
+<td style="text-align:center">⭐️⭐️⭐️⭐️</td>
+<td>Overall great, but required tweaks to skill</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="#task-8-generating-thumbnail">Generating thumbnail</a></td>
+<td style="text-align:center">⭐️</td>
+<td>Copilot is not the greatest to generate images. I would rate ChatGPT at 5 stars, which is what I ended up using.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="#task-9-fixing-google-analytics-after-7-years">Fixing google analytics</a></td>
+<td style="text-align:center">⭐️⭐️⭐️⭐️⭐️</td>
+<td>That was just too easy</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="#task-10-adding-llms-files-for-indexing">Adding LLMs files for indexing</a></td>
+<td style="text-align:center">⭐️⭐️⭐️</td>
+<td>This required multiple prompts for AI to get it right, but in the end the result was great, and plenty of hours still saved</td>
+</tr>
+<tr>
+<td>11+</td>
+<td><a href="#task-11-20-other-small-tasks">Other small tasks</a></td>
+<td style="text-align:center">⭐️⭐️⭐️⭐️⭐️</td>
+<td>Small tasks around the blog with AI, overall again, great, simple tasks are no challenge to AI</td>
+</tr>
+</tbody>
+</table>
+<p>Overall the experience was great. It was expected to be honest. All of these are simple coding tasks, and AI is already proved to be great at it.</p>
+<h2 id="task-1-setup-up-ai-to-work-with-hugo-and-my-custom-templates">Task 1: Setup up AI to work with Hugo and my custom templates</h2>
+<p>No bull**** here, just how it went.</p>
+<p>This was a fun experiment. I was generally curious how the AI will work for this. What I did was I&rsquo;ve &ldquo;played dumb&rdquo;. So I prompted AI saying</p>
+<pre><code>I want to setup this project GitHub copilot, it's written in Hugo, it's a static HTML page, and all the content is in /content/posts. Also, check my current writing style and ensure instructions are set up accordingly for future posts and AI work.
+</code></pre>
+<p>Needless to say, it did an excellent job.
+
+<div class="lazy" style="max-height: 82px">
+    <div style="padding-bottom:27.152%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000007.jpg" src=""/> 
+</div></p>
+<h3 id="result">Result</h3>
+<p>It works! This worked flawlessly, thumbs up! Author and styling was also generated, which I did not expect, but I&rsquo;ve found neat. It&rsquo;s surely interesting to see how AI sees your posts and their tone. I specifially liked &ldquo;note salesy&rdquo; part :)</p>
+<p>What else did it figure out from my blog structure and content</p>
+<ul>
+<li>author&rsquo;s voice and tone</li>
+<li>flow &amp; writing styles</li>
+<li>avoding sales and high-level statements</li>
+<li>post structure</li>
+<li>post location</li>
+<li>folder structure /yyyy/mm/dd/&lt;post_name&gt;.md</li>
+<li>even my custom templates that I created my myself! big plus!</li>
+<li>typical sections in the post
+<ul>
+<li>intro</li>
+<li>challenge</li>
+<li>solution</li>
+<li>read more</li>
+</ul>
+</li>
+<li>links that should include my MVP ID when referring to MS Learn and Microsoft websites (?WT.mc_id=AZ-MVP-5003556)</li>
+<li>file naming conventions</li>
+</ul>
+
+<div class="lazy" style="max-height: 256px">
+    <div style="padding-bottom:25.024%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000008.jpg" src=""/> 
+</div>
+<h2 id="task-2-generating-new-post">Task 2: Generating new post</h2>
+<p>Initially I&rsquo;ve generated new posts using promots, which was fine, but I&rsquo;ve quickly moved to skill. Again, I played dumb, so I said to AI to generate a skill for me called &ldquo;generate-new-post&rdquo; which encapsulates the core info, so I can only add custom info about the post itself.</p>
+<p>And so it did.</p>
+
+<div class="lazy" style="max-height: 163px">
+    <div style="padding-bottom:48.802%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000010.jpg" src=""/> 
+</div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">---
+name: &#34;new-blog-entry&#34;
+description: &#34;Create a new Marczak.IO blog post entry in /content/posts using the repository&#39;s existing post structure and style.&#34;
+---
+
+<span class="gh"># New Blog Entry Skill
+</span><span class="gh"></span>
+Use this skill to generate a new blog post file under <span class="sb">`/content/posts`</span> that follows the Marczak.IO format and voice.
+
+<span class="gu">## Behavior
+</span><span class="gu"></span><span class="k">-</span> Create the file path as <span class="sb">`/content/posts/YYYY/MM/topic-name-lowercase.md`</span>.
+<span class="k">-</span> Use at least 2 tags, with the primary topic first. Tags must be present in the /static/images/tags/ where tag name is a file name without extension. 
+<span class="k">-</span> Use <span class="sb">`featured_image`</span> and <span class="sb">`o_image`</span> in front matter, and keep them the same value.
+<span class="k">-</span> Write <span class="sb">`date`</span> in ISO 8601 format with <span class="sb">`+02:00`</span> timezone.
+<span class="k">-</span> Keep the introduction short and end it with <span class="sb">`&lt;!--more--&gt;`</span>.
+<span class="k">-</span> Use <span class="sb">`{ { &lt; lazyimage src=&#34;/images/...&#34; &gt; } }`</span> for images.
+<span class="k">-</span> Use headings and subsections that match existing blog structure.
+<span class="k">-</span> Add a <span class="sb">`## Related Reading`</span> section at the end.
+<span class="k">-</span> Use Microsoft Learn links with URL parameter <span class="sb">`WT.mc_id=AZ-MVP-5003556`</span> when linking docs. 
+<span class="k">-</span> End with a positive actionable closing statement (no thank you request language).
+<span class="k">-</span> All images must go to <span class="sb">`/static/images/YYYY/topic-name-lowercase/`</span> folder
+
+<span class="gu">## Output format
+</span><span class="gu"></span>Produce valid Markdown content only, with no additional wrapper text.
+
+<span class="gu">## Example skeleton
+</span><span class="gu"></span>--
+title: &#34;Your Post Title&#34;
+date: 2026-06-05T12:00:00+02:00
+tags: [&#34;Azure&#34;, &#34;integration&#34;]
+featured_image: &#34;2026-06-your-topic/splash.png&#34;
+o_image: &#34;2026-06-your-topic/splash.png&#34;
+--
+
+Short intro paragraph. Practical hook and problem statement.<span class="c">&lt;!--more--&gt;</span>
+
+<span class="gu">## Intro
+</span><span class="gu"></span>
+Background context and what the post covers.
+
+<span class="gu">## The Challenge
+</span><span class="gu"></span>
+Describe the problem or gap.
+
+<span class="gu">## My Approach
+</span><span class="gu"></span>
+Explain the solution with steps or examples.
+
+<span class="gu">## Implementation
+</span><span class="gu"></span>
+Add code, config, images, or architecture details.
+
+<span class="gu">## Related Reading
+</span><span class="gu"></span>If you want to start, here are a few more cool posts too read through
+<span class="k">-</span> [<span class="nt">Related post</span>](<span class="na">/posts/2025/03/logic-app-tip-polling-costs/</span>)
+<span class="k">-</span> [<span class="nt">Microsoft Learn article</span>](<span class="na">https://learn.microsoft.com/...WT.mc_id=AZ-MVP-5003556</span>)
+
+
+Happy building! 🚀
+</code></pre></div><h3 id="result-1">Result</h3>
+<p>It worked great. AI is perfect at repeatable structured tasks.</p>
+<h2 id="task-3-moving-90-blog-entries-from-my-other-blog-and-changing-templates-for-it">Task 3: Moving 90+ blog entries from my other blog, and changing templates for it</h2>
+<p>I&rsquo;ve moved all my previous video blog posts from azure4everyone.com as I generally don&rsquo;t maintain this website. But on my other blog, all of them use /posts/ structure, but here I wanted to distinct them from my typical blog posts, and make it under /videos/. So I&rsquo;ve made a few prompts after moving all markdown files under /videos/.</p>
+<h3 id="adding-new-template-and-url-to-recognize-videos-path">Adding new template and URL to recognize /videos/* path</h3>
+<p>So what AI did?</p>
+<p>It added a new section for it.
+
+<div class="lazy" style="max-height: 299px">
+    <div style="padding-bottom:129.437%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000011.jpg" src=""/> 
+</div></p>
+<p>And a new hugo template to display this.
+
+<div class="lazy" style="max-height: 317px">
+    <div style="padding-bottom:111.620%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000012.jpg" src=""/> 
+</div></p>
+<h3 id="result-2">Result</h3>
+<p>Again, without a single interaction it did a great job, and my video blog posts were under a new URL migrated to a new blog.</p>
+<h3 id="task-4-new-navigation">Task 4: New navigation</h3>
+<p>Then I said to the model that</p>
+<pre><code>I need new buttons to navigate between posts and videos, and so that the buttons should be right above the blog content and include post and video counts
+</code></pre>
+
+<div class="lazy" style="max-height: 391px">
+    <div style="padding-bottom:48.034%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000013.jpg" src=""/> 
+</div>
+<h3 id="result-3">Result</h3>
+<p>This time I needed to tweak the CSS a bit, but it was 90% there. A few tweaks later, and I was home.</p>
+<h2 id="task-5-adding-youtube-button-for-my-channel">Task 5: Adding YouTube button for my channel</h2>
+<p>This was super easy task.</p>
+<pre><code>Add a button after Patreon button leading to my YouTube channel. The background color should match my background color of my blog. Add YouTube icon before the text.
+</code></pre>
+
+<div class="lazy" style="max-height: 116px">
+    <div style="padding-bottom:21.091%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000014.jpg" src=""/> 
+</div>
+<p>It also added the appropriate URL to my YouTube without me needing to prompt it for it.</p>
+<h2 id="task-6-adding-recent-videos-section">Task 6: Adding recent videos section</h2>
+<p>I already had a section featured videos and recent blog posts, so I asked AI to generate a recent videos section</p>
+<p>
+<div class="lazy" style="max-height: 539px">
+    <div style="padding-bottom:185.862%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000017.jpg" src=""/> 
+</div>
+
+<div class="lazy" style="max-height: 491px">
+    <div style="padding-bottom:49.100%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000018.jpg" src=""/> 
+</div>
+
+<div class="lazy" style="max-height: 688px">
+    <div style="padding-bottom:315.596%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000016.jpg" src=""/> 
+</div></p>
+<h3 id="result-4">Result</h3>
+<p>It nicely figured out even the styling used in other sections. Perfect and quick addition to my blog.</p>
+<h2 id="task-7-generate-new-post-about-data-factory-parametrization">Task 7: Generate new post about Data Factory parametrization</h2>
+<p>This one was a bit trickier. But did work out well.</p>
+<p>Initially AI overdid this, because what I wanted and intended AI to do is to do the boring boilerplate work for me. Instead AI generated the whole post with entire content.</p>
+<p>Writing as me, but not really as me. Lots of AI-like statements, no point of the post itself, just random high-level mumbling.</p>
+<p>I tweaked the skill, and asked it not to generate the content and only the entry point of the blog. And then it was perfect.
+
+<div class="lazy" style="max-height: 453px">
+    <div style="padding-bottom:97.629%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000019.jpg" src=""/> 
+</div></p>
+<h3 id="result-5">Result</h3>
+<p>What worked nice</p>
+<ul>
+<li>the post was in the right place</li>
+<li>it figured out the general theme of the post</li>
+<li>it added tags, although this was hit and miss, I&rsquo;ve told it repeatably to only use tags I have in my tags folder, but sometimes it randomly generates tags anyways. Which isn&rsquo;t bad in case you are writing about a new topic, but isn&rsquo;t perfect when you are not.</li>
+</ul>
+<h2 id="task-8-generating-thumbnail">Task 8: Generating thumbnail</h2>
+<p>After testing multiple models like Claude, Copilot, and ChatGPT I liked ChatGPT the best. I think their drawing models are the best right now, things might change in the future, but Today I liked results the best.</p>
+
+<div class="lazy" style="max-height: 276px">
+    <div style="padding-bottom:34.243%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000020.jpg" src=""/> 
+</div>
+<h2 id="task-9-fixing-google-analytics-after-7-years">Task 9: Fixing google analytics after 7 years</h2>
+<p>I&rsquo;ve started this blog 7 years ago, back then I&rsquo;ve set up google analytics. I never did anything with it after that time.</p>
+<p>I remembered that there were some emails a few years back about breaking change in google analytics, so I said to AI</p>
+<pre><code>Please review current google analytics setup and recommend latest setup, fix the code too
+</code></pre>
+<p>It prompted me asking to provide it with a new ID for google analytics which apparently changed way back. I did provide it and then AI quickly fixed the HTML and code.</p>
+
+<div class="lazy" style="max-height: 155px">
+    <div style="padding-bottom:16.385%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000042.jpg" src=""/> 
+</div>
+<p>Cool thing is that is also recognized HUGO dynamic markup instead of hardcoding the value. So it added the value into config.toml file</p>
+
+<div class="lazy" style="max-height: 240px">
+    <div style="padding-bottom:44.610%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000043.jpg" src=""/> 
+</div>
+<p>Flawless experience.</p>
+<h2 id="task-10-adding-llms-files-for-indexing">Task 10: Adding LLMs files for indexing</h2>
+<p>I did read somewhere that now besides typial SEO stuff, there are extra files to help AI LLM models better understand your blog and index it. So I asked AI to do this.</p>
+<p>It went and created the files, but it missed a few things.</p>
+<p>So what <strong>worked well</strong></p>
+<ul>
+<li>Added .well-known path wtih good files for agents</li>
+<li>Added openapi files and filled it with description for my blog
+
+<div class="lazy" style="max-height: 161px">
+    <div style="padding-bottom:77.404%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000044.jpg" src=""/> 
+</div>
+
+<div class="lazy" style="max-height: 238px">
+    <div style="padding-bottom:100.847%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000045.jpg" src=""/> 
+</div></li>
+<li>Added JSON-LD sections to my blog, it even generated article and video optimized versions
+
+<div class="lazy" style="max-height: 1128px">
+    <div style="padding-bottom:61.404%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/screenshot-000049.jpg" src=""/> 
+</div></li>
+</ul>
+<p><strong>What it missed</strong> and <strong>needed extra knowledge and guidance</strong> from my part</p>
+<ul>
+<li>Didn&rsquo;t add llms.txt at first, nor llms-full.txt files</li>
+<li>Didn&rsquo;t add posts.json file, needed extra prompts</li>
+<li>Files which require dynamically generated content, like posts.json were not dynamically genearated</li>
+<li>It broke RSS file</li>
+<li>When adding new files, it kept forgetting to update global files like sitemap.xml, openapi.json, etc.</li>
+</ul>
+<h2 id="task-11-20-other-small-tasks">Task 11-20: Other small tasks</h2>
+<p>I did plenty of other smaller tweaks and tasks, so I just wanted to make a note of this here, becasue all of this I did manage as part of the free license.</p>
+<p>Things I did</p>
+<ul>
+<li>optimized blog for LLMs and openapi searches</li>
+<li>optimized blog for SEO and modern SEO recommendations</li>
+<li>modernized blog for latest Google Analytics package, funnily enough, I did ask it if it&rsquo;s outdated, and it said yes, and fixed it, just asked me for a new GA4 ID</li>
+<li>optimized some pictures from PNG to JPG to lower the image size</li>
+<li>&hellip;and plenty more</li>
+</ul>
+<h2 id="summary-and-tokens-consumed">Summary and tokens consumed</h2>
+<p>So here are the highlights from this excersise</p>
+<ul>
+<li>I&rsquo;ve used <strong>Copilot Free</strong> at first, entire excersise <strong>consumed entire 1000 free tokens</strong>, which honstely, totally worth it! Now moving to Copilot Pro to see if there will be a difference, but already 7000 tokens.</li>
+<li>In this 1000 tokens I did
+<ul>
+<li><strong>Two (2) blog posts</strong> from scratch, but I created content myself, so it was only generating the template</li>
+<li><strong>Modernized my blog HTML templates</strong> by adding SEO, LLM, etc. files</li>
+<li><strong>Optimized my CSS</strong> by optimizing redundant entires</li>
+<li><strong>Moved my entire content from azure4everyone.com to marczak.io</strong> and updating templates to fit entire content under /videos/ part. Also added buttons.</li>
+<li><strong>Generated new buttons, background, and a few visual elements</strong> to modernize look a bit, and add relevant new stuff</li>
+</ul>
+</li>
+</ul>
+<p>To be fair, <strong>quite a lot</strong> for a free license. All of it took two days with lots of tweaking and playing around. A lot of <strong>time saved</strong>.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>Overall, I&rsquo;m not surprised AI can do this. But wanted to share because it saved me a lot of time, and maybe it will save some time for you too. This blog serves only a purpose of showing what it can assist with.</p>
+<h1 id="but-remember">But remember!</h1>
+<h3><i>Remeber where your value is. AI is to assist you, if you hand off too much to AI, where is the value that you provide. Remember about your value, and protect it!</i><h3>
+<h2 id="related-reading">Related Reading</h2>
+<p>If you want to start, here are a few more cool posts too read through</p>
+<ul>
+<li><a href="https://learn.microsoft.com/visualstudio/ide/visual-studio-github-copilot-get-started?WT.mc_id=AZ-MVP-5003556">Get started with GitHub Copilot in Visual Studio Code</a></li>
+<li><a href="https://learn.microsoft.com/training/modules/prompt-engineering-with-github-copilot/?WT.mc_id=AZ-MVP-5003556">Prompt engineering techniques with GitHub Copilot</a></li>
+<li><a href="https://learn.microsoft.com/visualstudio/ide/copilot-chat-context?WT.mc_id=AZ-MVP-5003556">Use custom instructions with GitHub Copilot</a></li>
+<li><a href="https://learn.microsoft.com/visualstudio/ide/copilot-chat-prompt-engineering?WT.mc_id=AZ-MVP-5003556">Write better prompts for GitHub Copilot Chat</a></li>
+</ul>
+<h2 id="next-steps-and-recommendations">Next Steps and Recommendations</h2>
+<ul>
+<li>If you have a task that is mundane, try AI, maybe it will just do the work for you, it&rsquo;s a no regret handoff</li>
+<li>Remeber to retain your own value as a blog writer, people came here to listn to you, not AI</li>
+</ul>
+<p>Practically speaking, this has let me spend more time on architecture and examples and less time on repetitive edits. Trust me, it works.</p>
+<p>Happy building!</p>
+    </article>
+    <div class="section-blog-info">
+        <div class="row">
+            <div class="col-md-12">
+<div class="authorblock">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="avatar"></div>
+        </div>
+        <div class="col-sm-9">
+            <h4><b>Adam Marczak</b></h4>
+            <p>I’ve spent most of my career working with software and cloud technologies, but at heart I’m simply someone who loves learning new things and sharing what I discover. Through this blog and my Azure 4 Everyone YouTube channel, I try to make Azure and cloud computing more approachable for developers, architects, and anyone curious about technology.</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="text-center">Did you enjoy the article?</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <h4 class="">Share it!</h4><a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Facebook" 
+   class="btn btn-just-icon btn-share btn-facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmarczak.io%2fposts%2f2026%2f06%2fmodernizing-my-blog-with-ai-using-github-copilot%2f">
+    <i class="fa fa-facebook"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Twitter" 
+   class="btn btn-just-icon btn-share btn-twitter" 
+   href="https://twitter.com/home?status=Modernizing%20my%20blog%20with%20AI%20using%20GitHub%20Copilot - https%3a%2f%2fmarczak.io%2fposts%2f2026%2f06%2fmodernizing-my-blog-with-ai-using-github-copilot%2f">
+   <i class="fa fa-twitter"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Google+" 
+   class="btn btn-just-icon btn-share btn-google" 
+   href="https://plus.google.com/share?url=https%3a%2f%2fmarczak.io%2fposts%2f2026%2f06%2fmodernizing-my-blog-with-ai-using-github-copilot%2f"><i 
+   class="fa fa-google"></i>
+</a>
+            
+            </div>
+            <div class="col-md-6 text-center large">
+                <h4 class="">More tagged posts</h4>
+  <div class="tag-list">
+    <a href="https://marczak.io/tags/copilot" title="View all posts in copilot">
+      <img src="https://marczak.io/images/tags/copilot.svg" alt="copilot"/>
+    </a>
+    <a href="https://marczak.io/tags/github" title="View all posts in GitHub">
+      <img src="https://marczak.io/images/tags/github.svg" alt="GitHub"/>
+    </a>
+  </div>
+            </div>
+        </div>
+        <div class="row comments">
+            <div class="col-md-12"><div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "https:\/\/marczak.io\/posts\/2026\/06\/modernizing-my-blog-with-ai-using-github-copilot\/"; 
+this.page.identifier = "\/posts\/2026\/06\/modernizing-my-blog-with-ai-using-github-copilot\/";
+};
+
+(function() {
+if (window.location.hostname == "localhost")return;
+var d = document, s = d.createElement('script');
+s.src = 'https://marczak-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+            </div>
+        </div> 
+    </div>
+</div>
+            <div class="col-md-3 blog-sidebar-wrapper">
+              <aside id="secondary" class="blog-sidebar" role="complementary"><div id="mvp" class="banner-mvp" style="border: solid 2px #210159;padding-top:10px;">
+<p style="text-align: center;font-size: 18px">Adam Marczak</p>
+<img src="/images/avatar.jpg" style="padding-bottom: 10px;"/>
+<p style="text-align: center;">Microsoft Azure MVP</p>
+<img src="/images/mvp.svg" />
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Courses</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px">
+    <a href="https://marczak.io/az-900" >
+        <img src="/images/az-900/cert.svg" style="width:60px;margin-right:10px;;float:left;"></img> AZ-900 <br/>Microsoft Azure Fundamentlas
+    </a>
+</div>
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Featured Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/NPEsD6n9A_I" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-00-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Full Course</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<div style="margin-top:10px;">
+    <a href="https://www.youtube.com/watch?v=63PDmCe3OlA" > 
+<div class="lazy" style="max-height: 547px">
+    <div style="padding-bottom:55.87334014300306%"></div>
+    <img data-src="/images/2025-uc-migration/thumb5.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">UC migration series</p>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Recent Posts</h5>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/posts/2026/06/modernizing-my-blog-with-ai-using-github-copilot/" > 
+<div class="lazy" style="max-height: 685px">
+    <div style="padding-bottom:66.63424124513618%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/splash.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Modernizing my blog with AI using GitHub Copilot</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/posts/2026/06/data-factory-parametrization-with-config-tables/" > 
+<div class="lazy" style="max-height: 683px">
+    <div style="padding-bottom:66.69921875%"></div>
+    <img data-src="/images/2026/2026-06-data-factory-parametrization-with-config-tables/thumbnail.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Data Factory pipeline parametrization via external mapping/config tables</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/posts/2026/03/logic-apps-agent-workflows-early-2026/" > 
+<div class="lazy" style="max-height: 861px">
+    <div style="padding-bottom:66.43518518518519%"></div>
+    <img data-src="/images/2026-logic-apps/ai-agents-2.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Azure Logic Apps AI Agent Workflows in Early 2026</p>
+
+</div>
+</div><div id="recent-videos" class="recent-posts widget widget_recent_entries">
+<h5>Recent Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/videos/2021/04/az900-ep38/" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-39-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 39 | Service Lifecycle in Azure | Public Preview and General Availability</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/videos/2021/03/az900-ep38/" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-38-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 38 | SLA in Azure and Composite SLA</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/videos/2021/03/az900-ep37/" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-37-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 37 | Azure Cost Management</p>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+</div><div id="categories-3" class="widget widget_categories" style="float: left;">
+  <h5>Tags</h5>
+  <ul class="tag-list">
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/active-directory">Active Directory (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
+        </div> 
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-configuration.svg" alt="App Configuration"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-configuration">App Configuration (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-service.svg" alt="App Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-service">App Service (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/application-insights.svg" alt="Application Insights"/> 
+        </div> 
+        <a href="https://marczak.io/tags/application-insights">Application Insights (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/arm.svg" alt="ARM"/> 
+        </div> 
+        <a href="https://marczak.io/tags/arm">ARM (8)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/automation.svg" alt="Automation"/> 
+        </div> 
+        <a href="https://marczak.io/tags/automation">Automation (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/az-900.svg" alt="AZ-900"/> 
+        </div> 
+        <a href="https://marczak.io/tags/az-900">AZ-900 (40)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (150)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/blob-storage.svg" alt="Blob Storage"/> 
+        </div> 
+        <a href="https://marczak.io/tags/blob-storage">Blob Storage (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/bot-service.svg" alt="Bot Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/bot-service">Bot Service (6)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/container-instances.svg" alt="Container Instances"/> 
+        </div> 
+        <a href="https://marczak.io/tags/container-instances">Container Instances (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/copilot.svg" alt="Copilot"/> 
+        </div> 
+        <a href="https://marczak.io/tags/copilot">Copilot (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-factory.svg" alt="Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-factory">Data Factory (14)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-lake-gen2.svg" alt="Data Lake Gen2"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-lake-gen2">Data Lake Gen2 (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/databricks.svg" alt="Databricks"/> 
+        </div> 
+        <a href="https://marczak.io/tags/databricks">Databricks (12)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
+        </div> 
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/entra.svg" alt="Entra"/> 
+        </div> 
+        <a href="https://marczak.io/tags/entra">Entra (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/event-grid.svg" alt="Event Grid"/> 
+        </div> 
+        <a href="https://marczak.io/tags/event-grid">Event Grid (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/event-hub.svg" alt="Event Hub"/> 
+        </div> 
+        <a href="https://marczak.io/tags/event-hub">Event Hub (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/fabric.svg" alt="Fabric"/> 
+        </div> 
+        <a href="https://marczak.io/tags/fabric">Fabric (2)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/fabric-data-factory.svg" alt="Fabric Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/fabric-data-factory">Fabric Data Factory (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/file-service.svg" alt="File Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/file-service">File Service (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/flow.svg" alt="Flow"/> 
+        </div> 
+        <a href="https://marczak.io/tags/flow">Flow (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/functions.svg" alt="Functions"/> 
+        </div> 
+        <a href="https://marczak.io/tags/functions">Functions (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/github.svg" alt="GitHub"/> 
+        </div> 
+        <a href="https://marczak.io/tags/github">GitHub (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/key-vault.svg" alt="Key Vault"/> 
+        </div> 
+        <a href="https://marczak.io/tags/key-vault">Key Vault (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/load-balancer.svg" alt="Load Balancer"/> 
+        </div> 
+        <a href="https://marczak.io/tags/load-balancer">Load Balancer (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (39)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/power-bi.svg" alt="Power BI"/> 
+        </div> 
+        <a href="https://marczak.io/tags/power-bi">Power BI (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/powershell.svg" alt="PowerShell"/> 
+        </div> 
+        <a href="https://marczak.io/tags/powershell">PowerShell (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/queue.svg" alt="Queue"/> 
+        </div> 
+        <a href="https://marczak.io/tags/queue">Queue (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/security.svg" alt="Security"/> 
+        </div> 
+        <a href="https://marczak.io/tags/security">Security (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
+        </div> 
+        <a href="https://marczak.io/tags/sql">SQL (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/storage-account.svg" alt="Storage Account"/> 
+        </div> 
+        <a href="https://marczak.io/tags/storage-account">Storage Account (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/stream-analytics.svg" alt="Stream Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/stream-analytics">Stream Analytics (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/table-storage.svg" alt="Table Storage"/> 
+        </div> 
+        <a href="https://marczak.io/tags/table-storage">Table Storage (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/teams.svg" alt="Teams"/> 
+        </div> 
+        <a href="https://marczak.io/tags/teams">Teams (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/traffic-manager.svg" alt="Traffic Manager"/> 
+        </div> 
+        <a href="https://marczak.io/tags/traffic-manager">Traffic Manager (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vm.svg" alt="VM"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vm">VM (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vue.js.svg" alt="Vue.js"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/webpack.svg" alt="Webpack"/> 
+        </div> 
+        <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
+        </div> 
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
+      </li>
+  </ul>
+</div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+<footer class="footer footer-black footer-big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="connected-title">Stay Connected</h5>
+                <div class="">
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-about"
+     href="/about">
+    <i class="fa fa-user"></i>
+  </a>
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-github"
+     href="https://github.com/MarczakIO">
+    <i class="fa fa-github"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
+     href="https://marczak.io/index.xml">
+    <i class="fa fa-rss"></i>
+  </a>
+</div>
+            </div>
+            &copy;<a href="/about" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> <a href="https://themeisle.com/themes/hestia/" target="_blank" rel="nofollow">Hestia Theme</a>
+        </div>
+    </div>
+</footer>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
+  
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="https:\/\/marczak.io\/js\/bootstrap.min.js"><\/script>')}</script>
+  
+  <div id="bootstrapCssTest" class="hidden"></div>
+  <script>
+    $(function() {
+      if ($('#bootstrapCssTest').is(':visible')) {
+        $("head").prepend('<link rel="stylesheet" href="https:\/\/marczak.io\/css\/bootstrap.min.css">');
+      }
+    });
+  </script>
+  <script type="text/javascript" src="https://marczak.io/js/main.min.js?ver=1.16"></script>
+</body>
+</html>

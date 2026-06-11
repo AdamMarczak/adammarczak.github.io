@@ -19,6 +19,8 @@
     "llms": "https://marczak.io/llms.txt",
     "llms_full": "https://marczak.io/llms-full.txt",
     "posts_json": "https://marczak.io/posts.json",
+    "videos_json": "https://marczak.io/videos.json",
+    "news_json": "https://marczak.io/news.json",
     "plugin_manifest": "https://marczak.io/.well-known/ai-plugin.json",
     "openapi_yaml": "https://marczak.io/.well-known/openapi.yaml",
     "openapi_json": "https://marczak.io/.well-known/openapi.json"

@@ -1,0 +1,905 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-06-11T05:08:10Z",
+  "site": {
+    "name": "Marczak.IO",
+    "url": "https://marczak.io/",
+    "videos_url": "https://marczak.io/videos/"
+  },
+  "statistics": {
+    "total_videos": 89,
+    "last_video_date": "2021-04-23"
+  },
+  "videos": [
+    {
+      "title": "AZ-900 Episode 39 | Service Lifecycle in Azure | Public Preview and General Availability",
+      "url": "https://marczak.io/videos/2021/04/az900-ep38/",
+      "slug": "az900-ep38",
+      "published_at": "2021-04-23",
+      "updated_at": null,
+      "summary": " Describe the service lifecycle in Azure (Public Preview and General Availability) ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2021/04/az900-ep38/"
+    },
+    {
+      "title": "AZ-900 Episode 38 | SLA in Azure and Composite SLA",
+      "url": "https://marczak.io/videos/2021/03/az900-ep38/",
+      "slug": "az900-ep38",
+      "published_at": "2021-03-31",
+      "updated_at": null,
+      "summary": " Describe the purpose of an Azure Service Level Agreement (SLA) Identify actions that can impact an SLA (i.e. Availability Zones ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2021/03/az900-ep38/"
+    },
+    {
+      "title": "AZ-900 Episode 37 | Azure Cost Management",
+      "url": "https://marczak.io/videos/2021/03/az900-ep37/",
+      "slug": "az900-ep37",
+      "published_at": "2021-03-12",
+      "updated_at": null,
+      "summary": " Describe the functionality and usage of Azure Cost Management ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2021/03/az900-ep37/"
+    },
+    {
+      "title": "AZ-900 Episode 36 | Cost Reduction Methods",
+      "url": "https://marczak.io/videos/2021/02/az900-ep36/",
+      "slug": "az900-ep36",
+      "published_at": "2021-02-20",
+      "updated_at": null,
+      "summary": " Identify factors that can reduce costs (reserved instances, reserved capacity, hybrid use benefit, spot pricing) Describe the functionality and usage of the Pricing calculator and the Total Cost of Ownership (TCO) calculator ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2021/02/az900-ep36/"
+    },
+    {
+      "title": "AZ-900 Episode 35 | Cost Affecting Factors",
+      "url": "https://marczak.io/videos/2021/02/az900-ep35/",
+      "slug": "az900-ep35",
+      "published_at": "2021-02-15",
+      "updated_at": null,
+      "summary": " Identify factors that can affect costs (resource types, services, locations, ingress and egress traffic) ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2021/02/az900-ep35/"
+    },
+    {
+      "title": "AZ-900 Episode 34 | Core tenets of Security, Privacy, and Compliance",
+      "url": "https://marczak.io/videos/2021/01/az900-ep34/",
+      "slug": "az900-ep34",
+      "published_at": "2021-02-05",
+      "updated_at": null,
+      "summary": "-Describe the purpose of the Microsoft Privacy Statement, Online Services Terms (OST) and Data Protection Amendment (DPA) -Describe the purpose of the Trust Center -Describe the purpose of the Azure compliance documentation -Describe the purpose of Azure Sovereign Regions (Azure Government cloud services and Azure China cloud services)\n",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2021/01/az900-ep34/"
+    },
+    {
+      "title": "AZ-900 Episode 33 | Cloud Adoption Framework for Azure",
+      "url": "https://marczak.io/videos/2021/01/az900-ep33/",
+      "slug": "az900-ep33",
+      "published_at": "2021-01-14",
+      "updated_at": null,
+      "summary": "-Describe the Cloud Adoption Framework for Azure\n",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2021/01/az900-ep33/"
+    },
+    {
+      "title": "AZ-900 Episode 32 | Azure Blueprints",
+      "url": "https://marczak.io/videos/2020/12/az900-ep32/",
+      "slug": "az900-ep32",
+      "published_at": "2020-12-18",
+      "updated_at": null,
+      "summary": "-Describe the functionality and usage of Azure Blueprints\n",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/12/az900-ep32/"
+    },
+    {
+      "title": "AZ-900 Episode 31 | Azure Policy",
+      "url": "https://marczak.io/videos/2020/12/az900-ep31/",
+      "slug": "az900-ep31",
+      "published_at": "2020-12-09",
+      "updated_at": null,
+      "summary": "-Describe the functionality and usage of Azure Policy\n",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/12/az900-ep31/"
+    },
+    {
+      "title": "AZ-900 Episode 30 | Azure Resource Locks",
+      "url": "https://marczak.io/videos/2020/11/az900-ep30/",
+      "slug": "az900-ep30",
+      "published_at": "2020-11-16",
+      "updated_at": null,
+      "summary": "-Describe the functionality and usage of tags\n",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/11/az900-ep30/"
+    },
+    {
+      "title": "AZ-900 Episode 29 | Azure Resource Locks",
+      "url": "https://marczak.io/videos/2020/11/az900-ep29/",
+      "slug": "az900-ep29",
+      "published_at": "2020-11-11",
+      "updated_at": null,
+      "summary": "-Describe the functionality and usage of resource locks\n",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/11/az900-ep29/"
+    },
+    {
+      "title": "AZ-900 Episode 28 | Azure Role-based Access Control (RBAC)",
+      "url": "https://marczak.io/videos/2020/10/az900-ep28/",
+      "slug": "az900-ep28",
+      "published_at": "2020-11-06",
+      "updated_at": null,
+      "summary": "-Describe the functionality and usage of Role-Based Access Control (RBAC)\n",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/10/az900-ep28/"
+    },
+    {
+      "title": "AZ-900 Episode 27 | Azure Key Vault | Keys, Secrets \u0026 Certificates",
+      "url": "https://marczak.io/videos/2020/10/az900-ep27/",
+      "slug": "az900-ep27",
+      "published_at": "2020-10-21",
+      "updated_at": null,
+      "summary": " Describe Azure Key Vault ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/10/az900-ep27/"
+    },
+    {
+      "title": "AZ-900 Episode 26 | Azure Security Center and usage scenarios",
+      "url": "https://marczak.io/videos/2020/10/az900-ep26/",
+      "slug": "az900-ep26",
+      "published_at": "2020-10-20",
+      "updated_at": null,
+      "summary": " Describe Azure Security Center Describe Azure Security Center usage scenarios ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/10/az900-ep26/"
+    },
+    {
+      "title": "AZ-900 Episode 25 | Azure Identity Services | Authentication, Authorization \u0026 Active Directory (AD)",
+      "url": "https://marczak.io/videos/2020/10/az900-ep25/",
+      "slug": "az900-ep25",
+      "published_at": "2020-10-13",
+      "updated_at": null,
+      "summary": " Describe the difference between authentication and authorization Describe Microsoft Entra (former Azure Active Directory) Describe Azure Multi-Factor Authentication ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/10/az900-ep25/"
+    },
+    {
+      "title": "AZ-900 Episode 24 | Azure DDoS Protection | Distributed Denial of Service",
+      "url": "https://marczak.io/videos/2020/10/az900-ep24/",
+      "slug": "az900-ep24",
+      "published_at": "2020-10-09",
+      "updated_at": null,
+      "summary": " Describe Azure DDoS Protection ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/10/az900-ep24/"
+    },
+    {
+      "title": "AZ-900 Episode 23 | Azure Firewall",
+      "url": "https://marczak.io/videos/2020/10/az900-ep23/",
+      "slug": "az900-ep23",
+      "published_at": "2020-10-09",
+      "updated_at": null,
+      "summary": " Describe Azure Firewall ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/10/az900-ep23/"
+    },
+    {
+      "title": "AZ-900 Episode 22 | User-defined Routes (UDR) with Route Tables",
+      "url": "https://marczak.io/videos/2020/10/az900-ep22/",
+      "slug": "az900-ep22",
+      "published_at": "2020-10-07",
+      "updated_at": null,
+      "summary": " Describe User-defined Routes (UDR) ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/10/az900-ep22/"
+    },
+    {
+      "title": "AZ-900 Episode 21 | Azure Security Groups | Network and Application Security Groups (NSG, ASG)",
+      "url": "https://marczak.io/videos/2020/10/az900-ep21/",
+      "slug": "az900-ep21",
+      "published_at": "2020-10-05",
+      "updated_at": null,
+      "summary": " Describe Network Security Groups (NSG) Describe Application Security Groups (ASG) ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/10/az900-ep21/"
+    },
+    {
+      "title": "AZ-900 Episode 20 | Azure Advisor",
+      "url": "https://marczak.io/videos/2020/10/az900-ep20/",
+      "slug": "az900-ep20",
+      "published_at": "2020-10-01",
+      "updated_at": null,
+      "summary": " Describe Azure Advisor ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/10/az900-ep20/"
+    },
+    {
+      "title": "AZ-900 Episode 19 | Azure Tools | Azure Portal, CLI, PowerShell \u0026 Cloud Shell",
+      "url": "https://marczak.io/videos/2020/09/az900-ep19/",
+      "slug": "az900-ep19",
+      "published_at": "2020-09-30",
+      "updated_at": null,
+      "summary": " Describe Azure tools such as Azure Portal, Azure PowerShell, Azure CLI and Cloud Shell ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/09/az900-ep19/"
+    },
+    {
+      "title": "AZ-900 Episode 18 | Azure DevOps Solutions | Azure DevOps, DevTest Labs",
+      "url": "https://marczak.io/videos/2020/09/az900-ep18/",
+      "slug": "az900-ep18",
+      "published_at": "2020-09-29",
+      "updated_at": null,
+      "summary": " Describe DevOps solutions available on Azure such as Azure DevOps and Azure DevTest Labs ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/09/az900-ep18/"
+    },
+    {
+      "title": "AZ-900 Episode 17 | Azure Serverless Computing Services | Functions, Logic Apps, Event Grid",
+      "url": "https://marczak.io/videos/2020/09/az900-ep17/",
+      "slug": "az900-ep17",
+      "published_at": "2020-09-23",
+      "updated_at": null,
+      "summary": " Describe Serverless computing and Azure products that are available for serverless computing such as Azure Functions, Logic Apps, and Event Grid ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/09/az900-ep17/"
+    },
+    {
+      "title": "AZ-900 Episode 16 | Azure Artificial Intelligence (AI) Services | Machine Learning Studio \u0026 Service",
+      "url": "https://marczak.io/videos/2020/09/az900-ep16/",
+      "slug": "az900-ep16",
+      "published_at": "2020-09-21",
+      "updated_at": null,
+      "summary": " Describe Artificial Intelligence (AI) and products that are available for AI such as Azure Machine Learning Service and Studio. ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/09/az900-ep16/"
+    },
+    {
+      "title": "AZ-900 Episode 15 | Azure Big Data \u0026 Analytics Services | Synapse, HDInsight, Databricks",
+      "url": "https://marczak.io/videos/2020/09/az900-ep15/",
+      "slug": "az900-ep15",
+      "published_at": "2020-09-17",
+      "updated_at": null,
+      "summary": " Describe Azure Big Data \u0026 Analytics Services such as  Azure Synapse Analytics Azure HDInsight Azure Databricks   ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/09/az900-ep15/"
+    },
+    {
+      "title": "AZ-900 Episode 14 | Azure IoT Services | IoT Hub, IoT Central, Azure Sphere",
+      "url": "https://marczak.io/videos/2020/09/az900-ep14/",
+      "slug": "az900-ep14",
+      "published_at": "2020-09-10",
+      "updated_at": null,
+      "summary": " Describe Azure IoT Services such as  IoT Hub IoT Central Azure Sphere   ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/09/az900-ep14/"
+    },
+    {
+      "title": "AZ-900 Episode 13 | Azure Marketplace",
+      "url": "https://marczak.io/videos/2020/09/az900-ep13/",
+      "slug": "az900-ep13",
+      "published_at": "2020-09-09",
+      "updated_at": null,
+      "summary": " Describe Azure Marketplace ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/09/az900-ep13/"
+    },
+    {
+      "title": "AZ-900 Episode 12 | Database Services | Cosmos DB, SQL Database, Db for MySQL \u0026 PostgreSQL",
+      "url": "https://marczak.io/videos/2020/08/az900-ep12/",
+      "slug": "az900-ep12",
+      "published_at": "2020-09-03",
+      "updated_at": null,
+      "summary": " Describe the benefits and usage of  Cosmos DB, Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL, and SQL Managed Instance   ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/08/az900-ep12/"
+    },
+    {
+      "title": "AZ-900 Episode 11 | Storage Services | Blob, Queue, Table, Files, Disk Storage and Storage Tiers",
+      "url": "https://marczak.io/videos/2020/08/az900-ep11/",
+      "slug": "az900-ep11",
+      "published_at": "2020-09-02",
+      "updated_at": null,
+      "summary": " Describe products available for Storage such as  Blob Storage, Files Storage, Queue Storage, Table Storage, Disk Storage and Storage Tiers   ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/08/az900-ep11/"
+    },
+    {
+      "title": "AZ-900 Episode 10 | Networking Services | Virtual Network, VPN Gateway, CDN, Load Balancer, App GW",
+      "url": "https://marczak.io/videos/2020/08/az900-ep10/",
+      "slug": "az900-ep10",
+      "published_at": "2020-08-18",
+      "updated_at": null,
+      "summary": " Describe products available for Networking such as  Virtual Network, Load Balancer, VPN Gateway, Application Gateway and Content Delivery Network   ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/08/az900-ep10/"
+    },
+    {
+      "title": "AZ-900 Episode 9 | Compute Services | Vms, VM Scale Set, App Service, Functions, ACI, AKS",
+      "url": "https://marczak.io/videos/2020/08/az900-ep09/",
+      "slug": "az900-ep09",
+      "published_at": "2020-08-14",
+      "updated_at": null,
+      "summary": " Describe products available for Compute such as  Virtual Machines, Virtual Machine Scale Sets, App Services, Functions, Azure Container Instances (ACI) and Azure Kubernetes Service (AKS)   ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/08/az900-ep09/"
+    },
+    {
+      "title": "AZ-900 Episode 8 | Resources, Resource Groups \u0026 Resource Manager",
+      "url": "https://marczak.io/videos/2020/08/az900-ep08/",
+      "slug": "az900-ep08",
+      "published_at": "2020-08-03",
+      "updated_at": null,
+      "summary": " Describe Resources Describe Resource Groups Describe Resource Manager Describe the benefits and usage of core Azure architectural components ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/08/az900-ep08/"
+    },
+    {
+      "title": "AZ-900 Episode 7 | Geographies, Regions \u0026 Availability Zones | Microsoft Azure Fundamentals Course",
+      "url": "https://marczak.io/videos/2020/07/az900-ep07/",
+      "slug": "az900-ep07",
+      "published_at": "2020-07-30",
+      "updated_at": null,
+      "summary": " Describe Data Centers Describe Regions \u0026 Region Pairs Describe Geographies Describe Availability Zones Describe the benefits and usage of core Azure architectural components ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/07/az900-ep07/"
+    },
+    {
+      "title": "Process Excel files in Azure with Data Factory and Databricks | Tutorial",
+      "url": "https://marczak.io/videos/2020/07/azure-excel-files-data-factory-n-databricks/",
+      "slug": "azure-excel-files-data-factory-n-databricks",
+      "published_at": "2020-07-21",
+      "updated_at": null,
+      "summary": "Excel files are one of the most commonly used file format on the market. Popularity of the tool itself among the business users, business analysts and data engineers is driven by its flexibility, ease of use, powerful integration features and low price.\n",
+      "tags": ["Azure","Databricks","Data Factory"],
+      "canonical_url": "https://marczak.io/videos/2020/07/azure-excel-files-data-factory-n-databricks/"
+    },
+    {
+      "title": "AZ-900 Episode 6 | Public, Private \u0026 Hybrid cloud deployment models",
+      "url": "https://marczak.io/videos/2020/07/az900-ep06/",
+      "slug": "az900-ep06",
+      "published_at": "2020-07-14",
+      "updated_at": null,
+      "summary": " Describe Public cloud Describe Private cloud Describe Hybrid cloud Compare and contrast the three different cloud models ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/07/az900-ep06/"
+    },
+    {
+      "title": "AZ-900 Episode 5 | IaaS vs PaaS vs SaaS cloud service models",
+      "url": "https://marczak.io/videos/2020/07/az900-ep05/",
+      "slug": "az900-ep05",
+      "published_at": "2020-07-14",
+      "updated_at": null,
+      "summary": " Describe Infrastructure-as-a-Service (IaaS) Describe Platform-as-a-Service (PaaS) Describe Software-as-a-Service (SaaS) Compare and contrast the three different service types ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/07/az900-ep05/"
+    },
+    {
+      "title": "AZ-900 Episode 4 | Consumption-based Model ",
+      "url": "https://marczak.io/videos/2020/07/az900-ep01/",
+      "slug": "az900-ep01",
+      "published_at": "2020-07-14",
+      "updated_at": null,
+      "summary": " Describe the consumption-based model ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/07/az900-ep01/"
+    },
+    {
+      "title": "AZ-900 Episode 3 | CapEx vs OpEx and their differences",
+      "url": "https://marczak.io/videos/2020/07/az900-ep03/",
+      "slug": "az900-ep03",
+      "published_at": "2020-07-07",
+      "updated_at": null,
+      "summary": " Describe the principles of economies of scale ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/07/az900-ep03/"
+    },
+    {
+      "title": "AZ-900 Episode 2 | Principle of economies of scale",
+      "url": "https://marczak.io/videos/2020/07/az900-ep02/",
+      "slug": "az900-ep02",
+      "published_at": "2020-07-07",
+      "updated_at": null,
+      "summary": " Describe the differences between Capital Expenditure (CapEx) and Operational Expenditure (OpEx) ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/07/az900-ep02/"
+    },
+    {
+      "title": "AZ-900 Episode 1 | Cloud Computing and Vocabulary",
+      "url": "https://marczak.io/videos/2020/07/az900-ep04/",
+      "slug": "az900-ep04",
+      "published_at": "2020-07-07",
+      "updated_at": null,
+      "summary": " Describe what is Cloud Computing Describe terms such as High Availability, Scalability, Elasticity, Agility, Fault Tolerance, and Disaster Recovery ",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/07/az900-ep04/"
+    },
+    {
+      "title": "AZ-900 | Course Overview",
+      "url": "https://marczak.io/videos/2020/07/az900-ep00/",
+      "slug": "az900-ep00",
+      "published_at": "2020-07-07",
+      "updated_at": null,
+      "summary": "Azure Fundamentals certification is an opportunity to prove knowledge of cloud concepts, core Azure services, Azure pricing, SLA, and lifecycle, and the fundamentals of cloud security, privacy, compliance, and trust.\n",
+      "tags": ["Azure","AZ-900"],
+      "canonical_url": "https://marczak.io/videos/2020/07/az900-ep00/"
+    },
+    {
+      "title": "",
+      "url": "https://marczak.io/videos/2020/06/azure-active-directory-intro/",
+      "slug": "azure-active-directory-intro",
+      "published_at": "2020-06-23",
+      "updated_at": null,
+      "summary": "My latest tutorial about basics of Microsoft Entra (former Azure Active Directory) is here. It is a very powerful identity and access management service that is very well integrated with majority of Microsoft’s cloud services.\n",
+      "tags": ["Azure","Active Directory","Entra"],
+      "canonical_url": "https://marczak.io/videos/2020/06/azure-active-directory-intro/"
+    },
+    {
+      "title": "Azure Data Factory Custom Email Notifications Tutorial",
+      "url": "https://marczak.io/videos/2020/06/azure-data-factory-sending-emails/",
+      "slug": "azure-data-factory-sending-emails",
+      "published_at": "2020-06-16",
+      "updated_at": null,
+      "summary": "Deep-dive episode on implementing end-2-end email notifications in Azure Data Factory. In this episode I will describe out of the box options with Azure Monitor and explain why Logic Apps are better choice.\n",
+      "tags": ["Azure","Data Factory"],
+      "canonical_url": "https://marczak.io/videos/2020/06/azure-data-factory-sending-emails/"
+    },
+    {
+      "title": "Azure Stream Analytics Tutorial | Processing stream data with SQL",
+      "url": "https://marczak.io/videos/2020/06/azure-stream-analytics-intro/",
+      "slug": "azure-stream-analytics-intro",
+      "published_at": "2020-06-02",
+      "updated_at": null,
+      "summary": "Azure Stream Analytics offer SQL Query language over stream of data, out of the box Azure integrations and custom functions support. Today a quick tutorial around this easy to use streaming service.\n",
+      "tags": ["Azure","Stream Analytics"],
+      "canonical_url": "https://marczak.io/videos/2020/06/azure-stream-analytics-intro/"
+    },
+    {
+      "title": "Azure Files Tutorial | Easy file shares in the cloud",
+      "url": "https://marczak.io/videos/2020/05/azure-file-service-intro/",
+      "slug": "azure-file-service-intro",
+      "published_at": "2020-05-26",
+      "updated_at": null,
+      "summary": "If you want to start using File Shares quickly then Azure has you covered. With Azure Files you can create file shares in the cloud and start using them immediately. Minimum configuration needed. It’s also amazing when extending local on-premises file servers.\n",
+      "tags": ["Azure","Storage Account","File Service"],
+      "canonical_url": "https://marczak.io/videos/2020/05/azure-file-service-intro/"
+    },
+    {
+      "title": "Managed Identities with Microsoft Entra (former Azure Active Directory) Tutorial",
+      "url": "https://marczak.io/videos/2020/05/azure-ad-managed-identity/",
+      "slug": "azure-ad-managed-identity",
+      "published_at": "2020-05-19",
+      "updated_at": null,
+      "summary": "Azure AD Managed Identities are one of the best features when it comes to authentication across multiple Azure services. They are secure, managed by Azure AD and incur no additional cost.\n",
+      "tags": ["Azure","Active Directory","Entra"],
+      "canonical_url": "https://marczak.io/videos/2020/05/azure-ad-managed-identity/"
+    },
+    {
+      "title": "Azure Event Hub Tutorial | Big data message streaming service",
+      "url": "https://marczak.io/videos/2020/05/azure-event-hubs-intro/",
+      "slug": "azure-event-hubs-intro",
+      "published_at": "2020-05-12",
+      "updated_at": null,
+      "summary": "Azure Event Hubs is highly scalable big data event processing service capable of processing millions of events per second.\n",
+      "tags": ["Azure","Event Hub"],
+      "canonical_url": "https://marczak.io/videos/2020/05/azure-event-hubs-intro/"
+    },
+    {
+      "title": "Azure Cost Management Tutorial | Analyzing and reacting to changes in billing",
+      "url": "https://marczak.io/videos/2020/05/azure-cost-management-intro/",
+      "slug": "azure-cost-management-intro",
+      "published_at": "2020-05-05",
+      "updated_at": null,
+      "summary": "Understanding costs of your Azure resource is one of the most critical items when driving cloud transformation for your organization. In this episode we will take a look at Azure Cost Management.\n",
+      "tags": ["Azure"],
+      "canonical_url": "https://marczak.io/videos/2020/05/azure-cost-management-intro/"
+    },
+    {
+      "title": "Azure Logic Apps Trusted Connectivity to Firewall Protected Blob Storage",
+      "url": "https://marczak.io/videos/2020/04/azure-logic-apps-trusted-blob-connection/",
+      "slug": "azure-logic-apps-trusted-blob-connection",
+      "published_at": "2020-04-28",
+      "updated_at": null,
+      "summary": "Protecting sensitive data is one of the most critical tasks when it comes to designing cloud applications. But sometimes this imposes challenges when using out of the box components, like in case of logic apps connecting to firewall protected blob storage.\n",
+      "tags": ["Azure","Blob Storage","Storage Account","Logic Apps","Security"],
+      "canonical_url": "https://marczak.io/videos/2020/04/azure-logic-apps-trusted-blob-connection/"
+    },
+    {
+      "title": "Azure Data Factory | Copy multiple tables in Bulk with Lookup \u0026 ForEach",
+      "url": "https://marczak.io/videos/2020/04/azure-data-factory-lookup-activity/",
+      "slug": "azure-data-factory-lookup-activity",
+      "published_at": "2020-04-21",
+      "updated_at": null,
+      "summary": "With Azure Data Factory Lookup and ForEach activities you can perform dynamic copies of your data tables in bulk within a single pipeline.\n",
+      "tags": ["Azure","Data Factory"],
+      "canonical_url": "https://marczak.io/videos/2020/04/azure-data-factory-lookup-activity/"
+    },
+    {
+      "title": "Azure Cloud Shell Tutorial",
+      "url": "https://marczak.io/videos/2020/04/azure-cloud-shell-intro/",
+      "slug": "azure-cloud-shell-intro",
+      "published_at": "2020-04-14",
+      "updated_at": null,
+      "summary": "Modularization of ARM templates is one of the key concepts for delivering reusable and easy to maintain components for your application infrastructure.\n",
+      "tags": ["Azure","ARM"],
+      "canonical_url": "https://marczak.io/videos/2020/04/azure-cloud-shell-intro/"
+    },
+    {
+      "title": "ARM Templates Modularization",
+      "url": "https://marczak.io/videos/2020/04/arm-nested-and-linked-templates/",
+      "slug": "arm-nested-and-linked-templates",
+      "published_at": "2020-04-11",
+      "updated_at": null,
+      "summary": "Modularization of ARM templates is one of the key concepts for delivering reusable and easy to maintain components for your application infrastructure.\n",
+      "tags": ["Azure","ARM"],
+      "canonical_url": "https://marczak.io/videos/2020/04/arm-nested-and-linked-templates/"
+    },
+    {
+      "title": "ARM Templates Parameter Files",
+      "url": "https://marczak.io/videos/2020/03/arm-conditions/",
+      "slug": "arm-conditions",
+      "published_at": "2020-03-21",
+      "updated_at": null,
+      "summary": "With ARM templates you can perform conditional deployment of your Azure infrastructure with ease. All it takes is a simple evaluation.\n",
+      "tags": ["Azure","ARM"],
+      "canonical_url": "https://marczak.io/videos/2020/03/arm-conditions/"
+    },
+    {
+      "title": "ARM Templates Copy Elements",
+      "url": "https://marczak.io/videos/2020/03/arm-copy-loops/",
+      "slug": "arm-copy-loops",
+      "published_at": "2020-03-20",
+      "updated_at": null,
+      "summary": "With Copy Elements you can deploy multiple instances of your resources or properties, all in a single Resource Manager template.\n",
+      "tags": ["Azure","ARM"],
+      "canonical_url": "https://marczak.io/videos/2020/03/arm-copy-loops/"
+    },
+    {
+      "title": "ARM Templates Orchestration",
+      "url": "https://marczak.io/videos/2020/03/arm-orchestration/",
+      "slug": "arm-orchestration",
+      "published_at": "2020-03-11",
+      "updated_at": null,
+      "summary": "If you need to deploy multiple services and combine them together using ARM templates, then this episode is for you. This time we are going to look at orchestration using dependencies and references.\n",
+      "tags": ["Azure","ARM"],
+      "canonical_url": "https://marczak.io/videos/2020/03/arm-orchestration/"
+    },
+    {
+      "title": "ARM Templates Parameter Files",
+      "url": "https://marczak.io/videos/2020/03/arm-parameter-files/",
+      "slug": "arm-parameter-files",
+      "published_at": "2020-03-03",
+      "updated_at": null,
+      "summary": "With JSON-based Parameter Files you can supply environment variables consistently and conviniently to your ARM Templates.\n",
+      "tags": ["Azure","ARM"],
+      "canonical_url": "https://marczak.io/videos/2020/03/arm-parameter-files/"
+    },
+    {
+      "title": "ARM Templates Parametrization",
+      "url": "https://marczak.io/videos/2020/02/arm-parametrization/",
+      "slug": "arm-parametrization",
+      "published_at": "2020-02-25",
+      "updated_at": null,
+      "summary": "Expressions, parameters and variables allow anyone to build flexible and reusable ARM templates. They are indeed a powerful tool in hands of skillful developers and administrators.\n",
+      "tags": ["Azure","ARM"],
+      "canonical_url": "https://marczak.io/videos/2020/02/arm-parametrization/"
+    },
+    {
+      "title": "ARM Templates Introduction",
+      "url": "https://marczak.io/videos/2020/02/arm-tempaltes-intro/",
+      "slug": "arm-tempaltes-intro",
+      "published_at": "2020-02-18",
+      "updated_at": null,
+      "summary": "Azure Resource Manager Templates provide simple and unified way to create and manage your Azure environments for both developers and administrators. With simple JSON files you can deploy your environment in consistent fashion and at great speed.\n",
+      "tags": ["Azure","ARM"],
+      "canonical_url": "https://marczak.io/videos/2020/02/arm-tempaltes-intro/"
+    },
+    {
+      "title": "Azure App Configuration Introduction",
+      "url": "https://marczak.io/videos/2020/02/app-configuration-intro/",
+      "slug": "app-configuration-intro",
+      "published_at": "2020-02-13",
+      "updated_at": null,
+      "summary": "Applications running in the cloud have many distributed components. By centralizing application settings and feature flags you can reduce operational costs and complexity of your solutions. Azure App Configuration service delivers all that in simple and clean manner.\n",
+      "tags": ["Azure","App Configuration"],
+      "canonical_url": "https://marczak.io/videos/2020/02/app-configuration-intro/"
+    },
+    {
+      "title": "Azure Application Insights Introduction",
+      "url": "https://marczak.io/videos/2020/02/application-insights-intro/",
+      "slug": "application-insights-intro",
+      "published_at": "2020-02-04",
+      "updated_at": null,
+      "summary": "Creating logging and performance tracking solution for your applications can be challenging, especially in multi-service cloud environment. In this video I will show you why Azure Application Insights is the right tool for the job.\n",
+      "tags": ["Azure","Application Insights"],
+      "canonical_url": "https://marczak.io/videos/2020/02/application-insights-intro/"
+    },
+    {
+      "title": "Azure Table Storage Introduction",
+      "url": "https://marczak.io/videos/2020/01/table-storage-intro/",
+      "slug": "table-storage-intro",
+      "published_at": "2020-01-28",
+      "updated_at": null,
+      "summary": "Do you need simple but scalable NoSQL database in a cloud? Look no further, with Azure Table Storage you can create applications extremely easy while maintaining all the best features of Storage Accounts like geo-replication, security, scalability, high availability and low price. Join me for quick introduction video.\n",
+      "tags": ["Azure","Table Storage","Storage Account"],
+      "canonical_url": "https://marczak.io/videos/2020/01/table-storage-intro/"
+    },
+    {
+      "title": "Azure Queue Storage Introduction",
+      "url": "https://marczak.io/videos/2020/01/queue-storage-intro/",
+      "slug": "queue-storage-intro",
+      "published_at": "2020-01-23",
+      "updated_at": null,
+      "summary": "Azure Queue Storage is simple yet powerful service for storing large number of messages. It is one of core services for implementing scenarios like load-leveling, fan-out, fan-in and those relying on retry capabilities.\n",
+      "tags": ["Azure","Queue","Storage Account"],
+      "canonical_url": "https://marczak.io/videos/2020/01/queue-storage-intro/"
+    },
+    {
+      "title": "Azure Data Factory Self-hosted Integration Runtime",
+      "url": "https://marczak.io/videos/2020/01/adf-integration-runtime/",
+      "slug": "adf-integration-runtime",
+      "published_at": "2020-01-09",
+      "updated_at": null,
+      "summary": "With Azure Data Factory Self-hosted integration runtime, you can now integrate your on-premise, virtual private network data sources as well as those which require your own drivers.\n",
+      "tags": ["Azure","Data Factory","SQL"],
+      "canonical_url": "https://marczak.io/videos/2020/01/adf-integration-runtime/"
+    },
+    {
+      "title": "Azure Load Balancer Introduction",
+      "url": "https://marczak.io/videos/2020/01/load-balancer-intro/",
+      "slug": "load-balancer-intro",
+      "published_at": "2020-01-09",
+      "updated_at": null,
+      "summary": "Azure Load balancing allows for distribution of load or incoming network traffic across a group of backend resources or servers. It operates at layer 4 of the Open Systems Interconnection (OSI) model. It is the single point of contact for clients.\n",
+      "tags": ["Azure","Load Balancer"],
+      "canonical_url": "https://marczak.io/videos/2020/01/load-balancer-intro/"
+    },
+    {
+      "title": "Azure Traffic Manager Introduction",
+      "url": "https://marczak.io/videos/2020/01/traffic-manager-intro/",
+      "slug": "traffic-manager-intro",
+      "published_at": "2020-01-02",
+      "updated_at": null,
+      "summary": "Azure Traffic Manager is a DNS-based traffic load balancer that enables you to distribute traffic optimally to services across global Azure regions, while providing high availability and responsiveness.\n",
+      "tags": ["Azure","Traffic Manager"],
+      "canonical_url": "https://marczak.io/videos/2020/01/traffic-manager-intro/"
+    },
+    {
+      "title": "Azure Virtual Machine Introduction",
+      "url": "https://marczak.io/videos/2019/12/virtual-machines-intro/",
+      "slug": "virtual-machines-intro",
+      "published_at": "2019-12-26",
+      "updated_at": null,
+      "summary": "Virtual Machines are beating heart and a core component of any cloud. With wide range of use cases and flexibility of virtualizing most of commonly known operating systems it is possible to move pretty much any software to the cloud.\n",
+      "tags": ["Azure","VM"],
+      "canonical_url": "https://marczak.io/videos/2019/12/virtual-machines-intro/"
+    },
+    {
+      "title": "Azure Databricks Secret Scopes",
+      "url": "https://marczak.io/videos/2019/12/databricks-secret-scopes/",
+      "slug": "databricks-secret-scopes",
+      "published_at": "2019-12-22",
+      "updated_at": null,
+      "summary": "When building solutions in Databricks you need to ensure that all your credentials are securely stored. Today I will show you how to do it using Databricks Secret Scopes and how can you integrate them with Azure Key Vault.\n",
+      "tags": ["Azure","Databricks","Key Vault"],
+      "canonical_url": "https://marczak.io/videos/2019/12/databricks-secret-scopes/"
+    },
+    {
+      "title": "Azure Data Lake Storage (Gen 2) Introduction",
+      "url": "https://marczak.io/videos/2019/12/data-lake-storage-intro/",
+      "slug": "data-lake-storage-intro",
+      "published_at": "2019-12-18",
+      "updated_at": null,
+      "summary": "Data Lake Storage Gen 2 is the best storage solution for big data analytics in Azure. With its Hadoop compatible access, it is a perfect fit for existing platforms like Databricks, Cloudera, Hortonworks, Hadoop, HDInsight and many more. Take advantage of both blob storage and data lake in one service!\n",
+      "tags": ["Azure","Data Lake Gen2","Databricks"],
+      "canonical_url": "https://marczak.io/videos/2019/12/data-lake-storage-intro/"
+    },
+    {
+      "title": "Azure Analysis Services Intro",
+      "url": "https://marczak.io/videos/2019/12/analysis-services-intro/",
+      "slug": "analysis-services-intro",
+      "published_at": "2019-12-07",
+      "updated_at": null,
+      "summary": "With Azure Analysis Services you can scale your Power BI reports up to tens and hundreds of gigabytes of data. It is very fast in-memory database and analytical progressing engine with all the benefits of cloud scaling and security.\n",
+      "tags": ["Azure","Analysis Services","Power BI"],
+      "canonical_url": "https://marczak.io/videos/2019/12/analysis-services-intro/"
+    },
+    {
+      "title": "Azure PowerShell Introduction",
+      "url": "https://marczak.io/videos/2019/11/powershell-intro/",
+      "slug": "powershell-intro",
+      "published_at": "2019-11-30",
+      "updated_at": null,
+      "summary": "Azure PowerShell allows for task automation and operational management of Azure resources at no cost or effort using popular PowerShell scripting language.\n",
+      "tags": ["Azure","PowerShell"],
+      "canonical_url": "https://marczak.io/videos/2019/11/powershell-intro/"
+    },
+    {
+      "title": "Azure CLI Introduction",
+      "url": "https://marczak.io/videos/2019/11/cli-intro/",
+      "slug": "cli-intro",
+      "published_at": "2019-11-19",
+      "updated_at": null,
+      "summary": "Azure CLI (Command Line Interface) allows developers and operations to complete nearly any scenario for management and automation of Azure resources in no time.\n",
+      "tags": ["Azure"],
+      "canonical_url": "https://marczak.io/videos/2019/11/cli-intro/"
+    },
+    {
+      "title": "Azure Automation Introduction",
+      "url": "https://marczak.io/videos/2019/11/automation-intro/",
+      "slug": "automation-intro",
+      "published_at": "2019-11-12",
+      "updated_at": null,
+      "summary": "Azure Automation service is designed specifically to help with day to day operational challenges around process automation, configuration management and update management for both Azure and non-Azure environments. Join me and see what is this service all about.\n",
+      "tags": ["Azure","Automation"],
+      "canonical_url": "https://marczak.io/videos/2019/11/automation-intro/"
+    },
+    {
+      "title": "Azure Azure Data Factory Mapping Data Flow",
+      "url": "https://marczak.io/videos/2019/11/adf-mapping-data-flow/",
+      "slug": "adf-mapping-data-flow",
+      "published_at": "2019-11-05",
+      "updated_at": null,
+      "summary": "With Azure Data Factory Mapping Data Flow, you can create fast and scalable on-demand transformations by using visual user interface. In just minutes you can leverage power of Spark with not a single line of code written.\n",
+      "tags": ["Azure","Data Factory"],
+      "canonical_url": "https://marczak.io/videos/2019/11/adf-mapping-data-flow/"
+    },
+    {
+      "title": "Azure SQL Database Intro",
+      "url": "https://marczak.io/videos/2019/10/sqldatabase-intro/",
+      "slug": "sqldatabase-intro",
+      "published_at": "2019-10-29",
+      "updated_at": null,
+      "summary": "Azure SQL Database is one of the key data storage solution for structured data in Azure. If you need to manage structured data via schema, constraints and relationships or you need to explore your data via rich query language then this might be the right service for you.\n",
+      "tags": ["Azure","SQL"],
+      "canonical_url": "https://marczak.io/videos/2019/10/sqldatabase-intro/"
+    },
+    {
+      "title": "Azure Bot Service Intro",
+      "url": "https://marczak.io/videos/2019/10/botservice-intro/",
+      "slug": "botservice-intro",
+      "published_at": "2019-10-22",
+      "updated_at": null,
+      "summary": "Azure Bot Service and Bot Framework provide tools to build, test, deploy, and manage intelligent bots all in one place.\n",
+      "tags": ["Azure","Bot Service"],
+      "canonical_url": "https://marczak.io/videos/2019/10/botservice-intro/"
+    },
+    {
+      "title": "Azure Key Vault Intro",
+      "url": "https://marczak.io/videos/2019/10/keyvault-intro/",
+      "slug": "keyvault-intro",
+      "published_at": "2019-10-15",
+      "updated_at": null,
+      "summary": "Using Azure Key Vault Service allows for centralization and protection of your application secrets, certificates but also encryption keys for Virtual Machines..\n",
+      "tags": ["Azure","Key Vault"],
+      "canonical_url": "https://marczak.io/videos/2019/10/keyvault-intro/"
+    },
+    {
+      "title": "Azure Data Factory Triggers",
+      "url": "https://marczak.io/videos/2019/10/datafactory-triggers/",
+      "slug": "datafactory-triggers",
+      "published_at": "2019-10-07",
+      "updated_at": null,
+      "summary": "Choosing the right trigger type is very important task when designing data factory workflows. Today I will show you four ways to trigger data factory pipelines so you can make sure you react to your business needs better.\n",
+      "tags": ["Azure","Data Factory","Logic Apps","Event Grid"],
+      "canonical_url": "https://marczak.io/videos/2019/10/datafactory-triggers/"
+    },
+    {
+      "title": "Azure Event Grid Intro",
+      "url": "https://marczak.io/videos/2019/09/eventgrid-intro/",
+      "slug": "eventgrid-intro",
+      "published_at": "2019-09-30",
+      "updated_at": null,
+      "summary": "Azure Event Grid is fast and reliable event routing service allowing developers to create real time applications and decouple their systems at ease. Thanks to event grid built in events you can quickly automate Azure subscription for all your operation needs.\n",
+      "tags": ["Azure","Event Grid"],
+      "canonical_url": "https://marczak.io/videos/2019/09/eventgrid-intro/"
+    },
+    {
+      "title": "Continuous Deployment using App Service Deployment Center",
+      "url": "https://marczak.io/videos/2019/09/appservice-deployment-center/",
+      "slug": "appservice-deployment-center",
+      "published_at": "2019-09-23",
+      "updated_at": null,
+      "summary": "Continuous Deployment is great way to increase productivity for developers in any technology out there. With Azure App Service deployment center, you can quickly set up continuous deployment for your web apps and serverless functions without need to learn complicated external tools and platforms, all this in just few minutes.\n",
+      "tags": ["Azure","Functions","App Service"],
+      "canonical_url": "https://marczak.io/videos/2019/09/appservice-deployment-center/"
+    },
+    {
+      "title": "Azure Container Instances Intro",
+      "url": "https://marczak.io/videos/2019/09/aci-intro/",
+      "slug": "aci-intro",
+      "published_at": "2019-09-16",
+      "updated_at": null,
+      "summary": "If you are looking for a quick way to host your containers in Azure, then look no further. With Azure Container Instances you can host your containers in minutes without need to run complicated provisioning or infrastructure management. A true container service for beginners.\n",
+      "tags": ["Azure","Container Instances"],
+      "canonical_url": "https://marczak.io/videos/2019/09/aci-intro/"
+    },
+    {
+      "title": "Azure Logic Apps Conditions, Loops, Parallel Executions and more using Control Actions",
+      "url": "https://marczak.io/videos/2019/09/logicapps-controlactions/",
+      "slug": "logicapps-controlactions",
+      "published_at": "2019-09-09",
+      "updated_at": null,
+      "summary": "Using conditions, loops and parallel execution allows developers to implement much more complex Enterprise Integration scenarios using Azure Logic Apps. All those actions are available through Control Actions group which we will learn all about Today.\n",
+      "tags": ["Azure","Logic Apps"],
+      "canonical_url": "https://marczak.io/videos/2019/09/logicapps-controlactions/"
+    },
+    {
+      "title": "Azure Cosmos DB Intro",
+      "url": "https://marczak.io/videos/2019/09/cosmosdb-intro/",
+      "slug": "cosmosdb-intro",
+      "published_at": "2019-09-02",
+      "updated_at": null,
+      "summary": "Azure Cosmos DB is globally distributed and highly responsive database in the cloud. With just few clicks you can get multi-regional distribution and redundancy with high availability of 99.999%.\n",
+      "tags": ["Azure","Cosmos DB"],
+      "canonical_url": "https://marczak.io/videos/2019/09/cosmosdb-intro/"
+    },
+    {
+      "title": "Azure Data Factory Parametrization",
+      "url": "https://marczak.io/videos/2019/08/datafactory-params/",
+      "slug": "datafactory-params",
+      "published_at": "2019-08-26",
+      "updated_at": null,
+      "summary": "Parametrization in Azure Data Factory is essential to achieve good design and reusability as well as low cost of solution maintenance. Using parameters also speeds up implementation of new features in your pipelines.\n",
+      "tags": ["Azure","Data Factory"],
+      "canonical_url": "https://marczak.io/videos/2019/08/datafactory-params/"
+    },
+    {
+      "title": "Azure Databricks Intro",
+      "url": "https://marczak.io/videos/2019/08/databricks-intro/",
+      "slug": "databricks-intro",
+      "published_at": "2019-08-19",
+      "updated_at": null,
+      "summary": "Azure Databricks is fast, easy to use and scalable big data collaboration platform. Based on Apache Spark brings high performance and benefits of spark without need of having high technical knowledge. You just write Python/Scala scripts and you are ready to go.\n",
+      "tags": ["Azure","Databricks"],
+      "canonical_url": "https://marczak.io/videos/2019/08/databricks-intro/"
+    },
+    {
+      "title": "Azure Function Apps Intro",
+      "url": "https://marczak.io/videos/2019/08/function-apps-intro/",
+      "slug": "function-apps-intro",
+      "published_at": "2019-08-12",
+      "updated_at": null,
+      "summary": "Serverless is powerful and flexible way of delivering fast and scalable solutions in Azure. Today we will get introduction about Azure Function Apps, one of my favorite services and one of the best serverless services out there.\n",
+      "tags": ["Azure","Functions"],
+      "canonical_url": "https://marczak.io/videos/2019/08/function-apps-intro/"
+    },
+    {
+      "title": "Azure Storage Intro",
+      "url": "https://marczak.io/videos/2019/08/storage-intro/",
+      "slug": "storage-intro",
+      "published_at": "2019-08-05",
+      "updated_at": null,
+      "summary": "Choosing the right storage solution is critical part of every application design. Azure Storage is one of the most flexible and powerful, yet simple services in Azure. With its four services (file, blob, queue and table) it can feed most of common needs.\n",
+      "tags": ["Azure","Storage Account"],
+      "canonical_url": "https://marczak.io/videos/2019/08/storage-intro/"
+    },
+    {
+      "title": "Azure App Service Introduction",
+      "url": "https://marczak.io/videos/2019/07/app-service-intro/",
+      "slug": "app-service-intro",
+      "published_at": "2019-07-28",
+      "updated_at": null,
+      "summary": "Web development is the beating heart of cloud applications. Azure App Service is one of key compute services which streamlines development and maintenance of web applications. It is powerful Platform as a Service offering with many of security and DevOps features.\n",
+      "tags": ["Azure","App Service"],
+      "canonical_url": "https://marczak.io/videos/2019/07/app-service-intro/"
+    },
+    {
+      "title": "Azure Data Factory Introduction",
+      "url": "https://marczak.io/videos/2019/07/data-factory-intro/",
+      "slug": "data-factory-intro",
+      "published_at": "2019-07-22",
+      "updated_at": null,
+      "summary": "Azure Data Factory is essential service in all data related activities in Azure. It is flexible and powerful Platform as a Service offering with multitude of connectors and inetgration capabilities. It is a heart of ETL in Azure.\n",
+      "tags": ["Azure","Data Factory"],
+      "canonical_url": "https://marczak.io/videos/2019/07/data-factory-intro/"
+    },
+    {
+      "title": "Azure Logic Apps Introduction",
+      "url": "https://marczak.io/videos/2019/07/logic-apps-intro/",
+      "slug": "logic-apps-intro",
+      "published_at": "2019-07-14",
+      "updated_at": null,
+      "summary": "Azure Logic Apps are Enterprise Integration Service and as such their main purpose is orchestration, integration and scheduling of tasks in a simple way. With easy to use user interface, no coding design and powerful extensibility you can easily integrate services in minutes.\n",
+      "tags": ["Azure","Logic Apps"],
+      "canonical_url": "https://marczak.io/videos/2019/07/logic-apps-intro/"
+    }
+  ]
+}

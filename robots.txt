@@ -12,3 +12,6 @@ Host: marczak.io
 # - https://marczak.io/.well-known/openapi.yaml
 # - https://marczak.io/.well-known/openapi.json
 # - https://marczak.io/.well-known/agent.json
+# - https://marczak.io/posts.json
+# - https://marczak.io/videos.json
+# - https://marczak.io/news.json

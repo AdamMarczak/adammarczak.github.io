@@ -14,5 +14,7 @@ openapi_json: https://marczak.io/.well-known/openapi.json
 agent_manifest: https://marczak.io/.well-known/agent.json
 llms_full: https://marczak.io/llms-full.txt
 posts_json: https://marczak.io/posts.json
+videos_json: https://marczak.io/videos.json
+news_json: https://marczak.io/news.json
 contact: adam@marczak.io
 tags: azure,logic-apps,serverless,integration,ai,youtube
