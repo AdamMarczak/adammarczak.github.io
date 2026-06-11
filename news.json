@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-11T08:10:19Z",
+  "generated_at": "2026-06-11T12:51:46Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -17,7 +17,7 @@
       "slug": "microsoft-news-may-2026",
       "published_at": "2026-06-09",
       "updated_at": null,
-      "summary": "Welcome to another Microsoft Fabric news post for May 2026.\n",
+      "summary": "May in Fabric was busier than it first looked. The interesting part was not just the platform features, but also the tooling, ecosystem items, and guidance that fill the gaps around them.\n",
       "tags": ["Fabric"],
       "canonical_url": "https://marczak.io/news/2026/05/microsoft-news-may-2026/"
     },
@@ -27,7 +27,7 @@
       "slug": "databricks-news-may-2026",
       "published_at": "2026-06-09",
       "updated_at": null,
-      "summary": "Welcome to another Azure Databricks news post, this time there is a lot of ground to cover. Grab and coffee and let’s go.\n",
+      "summary": "May was a busy Databricks month, and the interesting part was not just the headline platform launches. The real story was the spread across governance, Lakeflow, apps, AI, and operational polish.\n",
       "tags": ["Azure","databricks"],
       "canonical_url": "https://marczak.io/news/2026/05/databricks-news-may-2026/"
     }

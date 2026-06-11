@@ -14,12 +14,12 @@
 <link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
 <link href='https://marczak.io/css/hestia.min.css?ver=1.25' rel="stylesheet" type="text/css" />
-<link href='https://marczak.io/css/main.min.css?ver=1.35' rel='stylesheet' type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.36' rel='stylesheet' type="text/css" />
 <link href="https://marczak.io/posts.json" rel="alternate" type="application/json" title="Posts JSON Feed" />
 <link href="https://marczak.io/videos.json" rel="alternate" type="application/json" title="Videos JSON Feed" />
 <link href="https://marczak.io/news.json" rel="alternate" type="application/json" title="News JSON Feed" />
 
-<meta name="description" content="Welcome to another Microsoft Fabric news post for May 2026.">
+<meta name="description" content="May in Fabric was busier than it first looked. The interesting part was not just the platform features, but also the tooling, ecosystem items, and guidance that fill the gaps around them.">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Microsoft Fabric News - May 2026 | Marczak.IO | Adam Marczak">
@@ -27,15 +27,15 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Microsoft Fabric News - May 2026">
-<meta property="og:description" content="Welcome to another Microsoft Fabric news post for May 2026.">
+<meta property="og:description" content="May in Fabric was busier than it first looked. The interesting part was not just the platform features, but also the tooling, ecosystem items, and guidance that fill the gaps around them.">
 <meta property="og:url" content="https://marczak.io/news/2026/05/microsoft-news-may-2026/">
 <meta property="og:site_name" content="Marczak.IO">
-<meta property="og:image" content="https://marczak.io/images/2026/news/fab-2026-05.jpg">
+<meta property="og:image" content="https://marczak.io/images/2026/05/microsoft-news-may-2026/splash.jpg">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Microsoft Fabric News - May 2026">
-<meta name="twitter:description" content="Welcome to another Microsoft Fabric news post for May 2026.">
+<meta name="twitter:description" content="May in Fabric was busier than it first looked. The interesting part was not just the platform features, but also the tooling, ecosystem items, and guidance that fill the gaps around them.">
 <meta name="twitter:url" content="https://marczak.io/news/2026/05/microsoft-news-may-2026/">
 
 
@@ -138,10 +138,13 @@
       
       
       
-      <div class="site-nav-buttons" style="position: absolute;margin-top: -45px">
-        <a href="/" class="btn btn-nav btn-outline">Posts (62)</a>
-        <a href="/videos/" class="btn btn-nav btn-outline">Videos (89)</a>
-        <a href="/news/" class="btn btn-nav btn-outline">News (2)</a>
+      
+      
+      
+      <div class="site-nav-buttons" role="tablist" aria-label="Content type navigation">
+        <a href="/" class="btn btn-nav">Posts (62)</a>
+        <a href="/videos/" class="btn btn-nav">Videos (89)</a>
+        <a href="/news/" class="btn btn-nav active" aria-current="page">News (2)</a>
       </div>
       <div class="hestia-blogs">
         <div class="container">
@@ -149,21 +152,20 @@
           <div class="row">
 <div class="col-md-9 single-posts-wrap">
     <article id="/news/2026/05/microsoft-news-may-2026/" class="article-section section-text"> 
-<div class="lazy" style="max-height: 1024px">
-    <div style="padding-bottom:66.66666666666667%"></div>
-    <img data-src="/images/2026/news/fab-2026-05.jpg" src=""/> 
+<div class="lazy" style="max-height: 683px">
+    <div style="padding-bottom:66.69921875%"></div>
+    <img data-src="/images/2026/05/microsoft-news-may-2026/splash.jpg" src=""/> 
 </div> <h2>Highlight</h2>
-        <p>Welcome to another Microsoft Fabric news post for May 2026.</p>
-<p>This is a may roundup, automated this, and testing this. If you feel this list is missing anything, or the scores are wrong. Please do let me know. This is a dryrun of this kind of posts.</p>
-<h2 id="big-changes">Big Changes</h2>
-<p>These are the updates that can materially change platform strategy.</p>
+        <p>May in Fabric was busier than it first looked. The interesting part was not just the platform features, but also the tooling, ecosystem items, and guidance that fill the gaps around them.</p>
+<h2 id="important-announcements">Important Announcements</h2>
+<p>These are the updates that can change how teams govern, build, and operate Fabric.</p>
 <table>
 <thead>
 <tr>
 <th>Persona</th>
 <th style="text-align:center">Impact Score</th>
 <th>News</th>
-<th>Why it&rsquo;s important</th>
+<th>Why it matters</th>
 <th>News Link</th>
 </tr>
 </thead>
@@ -172,98 +174,175 @@
 <td>Administrators</td>
 <td style="text-align:center">⭐⭐⭐⭐⭐</td>
 <td>OneLake security and OneLake data access roles are now GA</td>
-<td>This is a major governance milestone. You now have stronger, more granular control over access patterns in OneLake, which directly impacts enterprise security posture and auditability</td>
+<td>This is the big governance milestone for May. You now get fine-grained access control for OneLake with folder, row, and column-level security, which materially changes how enterprises can secure shared data</td>
 <td><a href="https://learn.microsoft.com/fabric/onelake/security/get-started-onelake-security?WT.mc_id=AZ-MVP-5003556">OneLake security GA</a></td>
 </tr>
 <tr>
 <td>Architects</td>
 <td style="text-align:center">⭐⭐⭐⭐⭐</td>
 <td>OneLake catalog is natively available in Microsoft Foundry (GA)</td>
-<td>This bridges governed data and AI workloads in a cleaner way. Architecture teams can now connect data discovery and AI solution design without as much glue code and process overhead</td>
+<td>This bridges governed data and AI workloads in a much cleaner way. Architects can connect discovery, endorsement, and AI solution design without as much glue code</td>
 <td><a href="https://learn.microsoft.com/fabric/onelake/onelake-foundry-knowledge?WT.mc_id=AZ-MVP-5003556">OneLake for Microsoft Foundry</a></td>
 </tr>
 <tr>
 <td>Administrators</td>
 <td style="text-align:center">⭐⭐⭐⭐</td>
-<td>Capacity health and Chargeback app capabilities are now GA</td>
-<td>Cost transparency and accountability get soo much better here. Teams can track usage by workspace and operation and implement internal chargeback with fewer manual reports</td>
-<td><a href="https://learn.microsoft.com/fabric/enterprise/chargeback-app?WT.mc_id=AZ-MVP-5003556">Fabric Chargeback app</a></td>
+<td>Capacity metrics app enhancements and the Chargeback app are GA</td>
+<td>Cost visibility gets much better here. Teams can break down consumption by workspace, item, operation, and user, which makes internal chargeback and accountability far more practical</td>
+<td><a href="https://learn.microsoft.com/fabric/enterprise/chargeback-app?WT.mc_id=AZ-MVP-5003556">Chargeback app</a></td>
 </tr>
 <tr>
 <td>Data Engineers</td>
 <td style="text-align:center">⭐⭐⭐⭐</td>
-<td>Refresh SQL endpoint activity in Data Factory is now GA</td>
-<td>This removes custom workarounds and gives pipeline teams a native orchestration step for keeping SQL endpoint data fresh and consistent</td>
+<td>Refresh SQL endpoint activity is now GA</td>
+<td>This removes another orchestration gap. Pipeline teams can refresh the Lakehouse SQL analytics endpoint on demand or on schedule without custom workarounds</td>
 <td><a href="https://learn.microsoft.com/fabric/data-factory/refresh-sql-endpoint-activity?WT.mc_id=AZ-MVP-5003556">Refresh SQL endpoint activity</a></td>
 </tr>
 <tr>
 <td>Data Engineers</td>
 <td style="text-align:center">⭐⭐⭐⭐</td>
 <td>Workspace Identity in Fabric Airflow Jobs</td>
-<td>This reduces secrets management overhead and tightens security by using workspace identity instead of distributing credentials across jobs and teams</td>
+<td>This is a real security and ops improvement. Using workspace identity instead of per-job credentials reduces secret sprawl and simplifies access management</td>
 <td><a href="https://learn.microsoft.com/fabric/data-factory/apache-airflow-jobs-workspace-identity?WT.mc_id=AZ-MVP-5003556">Workspace Identity in Airflow Jobs</a></td>
+</tr>
+<tr>
+<td>Developers</td>
+<td style="text-align:center">⭐⭐⭐⭐</td>
+<td>Fabric Apps (Preview)</td>
+<td>Fabric Apps gives teams a way to build data-driven applications on Fabric with TypeScript-based data models, generated APIs, authentication, and hosting in one workflow</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/apps/overview?WT.mc_id=AZ-MVP-5003556">Fabric Apps overview</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐⭐</td>
+<td>High Concurrency Support for the Fabric Livy API (Preview)</td>
+<td>Multiple Spark workloads can share a single managed session with isolated REPLs. For teams running lots of notebook-style work, that is a meaningful productivity improvement</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#fabric-data-engineering">Fabric Data Engineering updates</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="medium-changes">Medium Changes</h2>
-<p>Important updates, but usually scoped to specific workloads.</p>
+<h2 id="useful-announcements">Useful Announcements</h2>
+<p>Important improvements, but usually scoped to specific workloads or operating models.</p>
 <table>
 <thead>
 <tr>
 <th>Persona</th>
 <th style="text-align:center">Impact Score</th>
 <th>News</th>
-<th>Why it&rsquo;s good to know</th>
+<th>Why it is useful</th>
 <th>News Link</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Data Engineers</td>
-<td style="text-align:center">⭐⭐⭐</td>
-<td>Resource Profiles in Fabric Data Engineering (Preview)</td>
-<td>This simplifies Spark tuning with predefined workload profiles and helps teams avoid spending hours on trial-and-error cluster configs</td>
-<td><a href="https://learn.microsoft.com/fabric/data-engineering/configure-resource-profile-configurations?WT.mc_id=AZ-MVP-5003556">Resource profile configurations</a></td>
+<td style="text-align:center">⭐⭐⭐⭐</td>
+<td>Approval activity in Data Factory pipelines (Preview)</td>
+<td>Human-in-the-loop pipeline steps are a big deal for business workflows. This makes Fabric pipelines much better for approvals, reviews, and controlled execution</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#data-factory-in-microsoft-fabric">Approval activity</a></td>
 </tr>
 <tr>
 <td>Data Engineers</td>
-<td style="text-align:center">⭐⭐⭐</td>
-<td>New SQL analytics endpoint metadata sync option (Preview)</td>
-<td>Faster and more controllable metadata sync can improve reliability in SQL endpoint workflows and reduce operational drift issues</td>
-<td><a href="https://learn.microsoft.com/fabric/data-engineering/sql-analytics-endpoint-metadata-sync?WT.mc_id=AZ-MVP-5003556#new-metadata-sync-preview">Metadata sync preview</a></td>
+<td style="text-align:center">⭐⭐⭐⭐</td>
+<td>Copy job for SAP via ABAP Add-On (Preview)</td>
+<td>This extends Fabric deeper into SAP extraction scenarios. For teams moving SAP data, this is a practical new path with full and incremental copy support</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#data-factory-in-microsoft-fabric">Copy job for SAP via ABAP Add-On</a></td>
+</tr>
+<tr>
+<td>Developers</td>
+<td style="text-align:center">⭐⭐⭐⭐</td>
+<td>Data Factory MCP (Preview)</td>
+<td>This lowers the friction for AI-assisted data workflow creation. It is one of the more interesting developer-facing items in the May roundup</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#data-factory-in-microsoft-fabric">Data Factory MCP</a></td>
 </tr>
 <tr>
 <td>Administrators</td>
 <td style="text-align:center">⭐⭐⭐</td>
 <td>Notebook export controls</td>
-<td>This is a strong compliance feature. Tenant and workspace admins can reduce data exfiltration risk by controlling notebook export behavior</td>
+<td>This is a strong compliance feature. Blocking notebook downloads and rich DataFrame export helps close a real data exfiltration path</td>
 <td><a href="https://learn.microsoft.com/fabric/data-engineering/notebook-data-export-controls?WT.mc_id=AZ-MVP-5003556">Notebook data export controls</a></td>
 </tr>
 <tr>
 <td>Architects</td>
 <td style="text-align:center">⭐⭐⭐</td>
 <td>OneLake storage tiers and lifecycle management (Preview)</td>
-<td>What does this mean for us? Better long-term storage economics with policy-driven tiering, especially for rarely accessed historical datasets</td>
-<td><a href="https://learn.microsoft.com/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#microsoft-fabric-platform-features">OneLake storage tiers and lifecycle</a></td>
+<td>Hot, cool, and cold tiers finally give Fabric a clearer storage lifecycle story. That matters for long-retention and low-access datasets</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#microsoft-fabric-platform-features">OneLake storage tiers</a></td>
 </tr>
 <tr>
 <td>Administrators</td>
 <td style="text-align:center">⭐⭐⭐</td>
 <td>OneLake item-size reporting (Preview)</td>
-<td>Clearer visibility into storage usage by item gives platform teams a practical way to spot growth hotspots before costs spike</td>
-<td><a href="https://learn.microsoft.com/fabric/onelake/how-to-get-item-size?WT.mc_id=AZ-MVP-5003556">Get the size of OneLake items</a></td>
+<td>This gives platform teams a practical way to see where storage is growing before cost and governance issues show up</td>
+<td><a href="https://learn.microsoft.com/fabric/onelake/how-to-get-item-size?WT.mc_id=AZ-MVP-5003556">OneLake item-size reporting</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Resource Profiles in Fabric Data Engineering (Preview)</td>
+<td>Preconfigured Spark profiles reduce the time spent on manual tuning and make compute defaults more predictable across environments</td>
+<td><a href="https://learn.microsoft.com/fabric/data-engineering/configure-resource-profile-configurations?WT.mc_id=AZ-MVP-5003556">Resource profile configurations</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>New SQL analytics endpoint metadata sync option (Preview)</td>
+<td>Faster metadata sync and time-travel querying make this a useful quality-of-life improvement for SQL endpoint workflows</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#fabric-data-warehouse">Metadata sync option</a></td>
+</tr>
+<tr>
+<td>Developers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Service principal support for Fabric data agents (Preview)</td>
+<td>Application identity support is important for building agents and custom apps without depending on delegated user tokens</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#fabric-iq-preview">Fabric IQ updates</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Fabric Data Warehouse upgrades in SSMS 22.5</td>
+<td>For SQL-heavy teams, direct create/rename/delete in Object Explorer and easier project generation are very practical improvements</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#fabric-data-warehouse">Fabric Data Warehouse updates</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Edit Copy job via JSON payloads (GA)</td>
+<td>This makes Copy job more automation-friendly and better suited for bulk, repeatable updates across environments</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#data-factory-in-microsoft-fabric">Copy job updates</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Switch between full and incremental copy mode in Copy job (GA)</td>
+<td>This is one of those small-but-useful changes that makes Copy job easier to evolve as sources change over time</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#data-factory-in-microsoft-fabric">Incremental copy in Copy job</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Data Warehouse Monitor (Preview)</td>
+<td>A unified monitoring UI for Fabric Data Warehouse is exactly the kind of improvement teams notice once they start tuning real workloads</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#fabric-data-warehouse">Warehouse monitor</a></td>
+</tr>
+<tr>
+<td>Data Scientists</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Data Agent support for Eventhouse functions, materialized views, and shortcuts (Preview)</td>
+<td>This makes AI workloads smarter and faster by letting agents use validated KQL logic and pre-aggregated views</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#fabric-data-science">Fabric Data Agents</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="small-but-still-relevant">Small but Still Relevant</h2>
-<p>Useful updates that might not change your day-to-day immediately.</p>
+<h2 id="minor-announcements">Minor Announcements</h2>
+<p>Small changes, but still worth knowing if you work in Fabric every day.</p>
 <table>
 <thead>
 <tr>
 <th>Persona</th>
 <th style="text-align:center">Impact Score</th>
 <th>News</th>
-<th>Why it&rsquo;s not top priority for most teams</th>
+<th>Why it is minor</th>
 <th>News Link</th>
 </tr>
 </thead>
@@ -271,34 +350,105 @@
 <tr>
 <td>Data Engineers</td>
 <td style="text-align:center">⭐⭐</td>
+<td>My queries in Dataflow Gen2 (Preview)</td>
+<td>Helpful for query reuse, but it is mainly a productivity tweak for authors who already spend time in Dataflow Gen2</td>
+<td><a href="https://learn.microsoft.com/fabric/data-factory/dataflow-gen2-my-queries?WT.mc_id=AZ-MVP-5003556">My queries in Dataflow Gen2</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐</td>
 <td>Refresh Materialized Lake View activity in Data Factory pipelines</td>
-<td>Helpful for teams using materialized lake views, but the impact is narrower unless this is already central to your architecture</td>
+<td>Useful if you already depend on materialized lake views, but it is a narrower workflow improvement than the major May changes</td>
 <td><a href="https://learn.microsoft.com/fabric/data-factory/refresh-materialized-lake-view-activity?WT.mc_id=AZ-MVP-5003556">Refresh Materialized Lake View activity</a></td>
 </tr>
 <tr>
 <td>Data Engineers</td>
 <td style="text-align:center">⭐⭐</td>
-<td>My queries in Dataflow Gen2 (Preview)</td>
-<td>Nice productivity improvement for reusable query logic, especially in iterative data prep scenarios</td>
-<td><a href="https://learn.microsoft.com/fabric/data-factory/dataflow-gen2-my-queries?WT.mc_id=AZ-MVP-5003556">My queries in Dataflow Gen2</a></td>
+<td>Pipeline canvas node experience updates</td>
+<td>This is a usability polish item more than a functional shift, but it still makes the authoring experience feel better</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#data-factory-in-microsoft-fabric">Pipeline canvas reference</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐</td>
+<td>On-premises data gateway May 2026 release</td>
+<td>Important for admin workflows, but still a release-management item rather than a platform capability change</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#data-factory-in-microsoft-fabric">Gateway update</a></td>
 </tr>
 <tr>
 <td>Users</td>
 <td style="text-align:center">⭐</td>
-<td>Create support tickets directly from Fabric (GA)</td>
-<td>Operationally useful, but it does not fundamentally change platform architecture or pipeline behavior</td>
+<td>Create support tickets from within Microsoft Fabric (GA)</td>
+<td>Operationally handy, but it does not really change how the platform works day to day</td>
 <td><a href="https://learn.microsoft.com/power-bi/support/create-support-ticket?WT.mc_id=AZ-MVP-5003556">Create a Fabric and Power BI support ticket</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="community-samples-and-ecosystem">Community, Samples, and Ecosystem</h2>
+<p>This is the part that used to get missed if the post only tracked product features.</p>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th style="text-align:center">Impact Score</th>
+<th>News</th>
+<th>Why it matters</th>
+<th>News Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform Engineers</td>
+<td style="text-align:center">⭐⭐⭐⭐</td>
+<td>Fabric Jumpstart</td>
+<td>This is the kind of accelerator that shortens time-to-value. Real examples and starter assets are often what get teams moving faster than docs alone</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#community">Fabric Jumpstart</a></td>
+</tr>
+<tr>
+<td>Architects</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Pipelines are evolving beyond ETL</td>
+<td>This perspective piece is a good signal that Fabric pipelines are moving toward broader workflow orchestration, not just data movement</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#data-factory-in-microsoft-fabric">Pipelines are evolving beyond ETL</a></td>
+</tr>
+<tr>
+<td>Architects</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Fabric Data Warehouse as the modernization path for Synapse Dedicated SQL Pool</td>
+<td>This is useful guidance for teams planning migrations or modernization work, especially if Synapse is still part of the conversation</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#fabric-data-warehouse">Warehouse modernization guidance</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Direct Lake on SQL with Fabric Data Warehouse</td>
+<td>This is a good best-practices article for teams working through Warehouse and Direct Lake design choices</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#fabric-data-warehouse-samples-and-guidance">Direct Lake on SQL</a></td>
+</tr>
+<tr>
+<td>Administrators</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Understand your storage with OneLake item-size reporting</td>
+<td>The sample guidance is practical for platform admins who want to understand where storage growth is actually happening</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#fabric-data-engineering-samples-and-guidance">Storage guidance</a></td>
+</tr>
+<tr>
+<td>Community</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Fabric Influencers Spotlight May 2026</td>
+<td>Good community signal, especially if you want to track what MVPs and Super Users are sharing this month</td>
+<td><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556#community">Fabric community</a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="related-reading">Related Reading</h2>
 <ul>
-<li><a href="https://learn.microsoft.com/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556">What&rsquo;s new in Microsoft Fabric</a></li>
-<li><a href="https://learn.microsoft.com/fabric/data-factory/?WT.mc_id=AZ-MVP-5003556">Fabric Data Factory documentation</a></li>
-<li><a href="https://learn.microsoft.com/fabric/onelake/security/?WT.mc_id=AZ-MVP-5003556">OneLake security overview</a></li>
-<li><a href="https://marczak.io/posts/2026/06/data-factory-parametrization-with-config-tables/">Data Factory parametrization with config tables</a></li>
+<li><a href="https://learn.microsoft.com/en-us/fabric/fundamentals/whats-new?WT.mc_id=AZ-MVP-5003556">What&rsquo;s new in Microsoft Fabric</a></li>
+<li><a href="https://learn.microsoft.com/en-us/fabric/data-factory/?WT.mc_id=AZ-MVP-5003556">Fabric Data Factory documentation</a></li>
+<li><a href="https://learn.microsoft.com/en-us/fabric/apps/overview?WT.mc_id=AZ-MVP-5003556">Fabric Apps overview</a></li>
+<li><a href="https://learn.microsoft.com/en-us/fabric/onelake/security/?WT.mc_id=AZ-MVP-5003556">OneLake security overview</a></li>
 </ul>
-<p>Happy building</p>
+<p>Happy building! 🚀</p>
     </article>
     <div class="section-blog-info">
         <div class="row">

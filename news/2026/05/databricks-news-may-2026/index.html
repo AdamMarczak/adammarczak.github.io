@@ -14,12 +14,12 @@
 <link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
 <link href='https://marczak.io/css/hestia.min.css?ver=1.25' rel="stylesheet" type="text/css" />
-<link href='https://marczak.io/css/main.min.css?ver=1.35' rel='stylesheet' type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.36' rel='stylesheet' type="text/css" />
 <link href="https://marczak.io/posts.json" rel="alternate" type="application/json" title="Posts JSON Feed" />
 <link href="https://marczak.io/videos.json" rel="alternate" type="application/json" title="Videos JSON Feed" />
 <link href="https://marczak.io/news.json" rel="alternate" type="application/json" title="News JSON Feed" />
 
-<meta name="description" content="Welcome to another Azure Databricks  news post, this time there is a lot of ground to cover. Grab and coffee and let&rsquo;s go.">
+<meta name="description" content="May was a busy Databricks month, and the interesting part was not just the headline platform launches. The real story was the spread across governance, Lakeflow, apps, AI, and operational polish.">
 <meta name="author" content="Adam Marczak">
 <meta name="copyright" content="Adam Marczak">
 <meta name="title" content="Azure Databricks News - May 2026 | Marczak.IO | Adam Marczak">
@@ -27,7 +27,7 @@
 <meta property="article:author" content="https://www.facebook.com/MarczakIO/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure Databricks News - May 2026">
-<meta property="og:description" content="Welcome to another Azure Databricks  news post, this time there is a lot of ground to cover. Grab and coffee and let&rsquo;s go.">
+<meta property="og:description" content="May was a busy Databricks month, and the interesting part was not just the headline platform launches. The real story was the spread across governance, Lakeflow, apps, AI, and operational polish.">
 <meta property="og:url" content="https://marczak.io/news/2026/05/databricks-news-may-2026/">
 <meta property="og:site_name" content="Marczak.IO">
 <meta property="og:image" content="https://marczak.io/images/2026/news/dbr-2026-05.jpg">
@@ -35,7 +35,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@MarczakIO">
 <meta name="twitter:title" content="Azure Databricks News - May 2026">
-<meta name="twitter:description" content="Welcome to another Azure Databricks  news post, this time there is a lot of ground to cover. Grab and coffee and let&rsquo;s go.">
+<meta name="twitter:description" content="May was a busy Databricks month, and the interesting part was not just the headline platform launches. The real story was the spread across governance, Lakeflow, apps, AI, and operational polish.">
 <meta name="twitter:url" content="https://marczak.io/news/2026/05/databricks-news-may-2026/">
 
 
@@ -138,10 +138,13 @@
       
       
       
-      <div class="site-nav-buttons" style="position: absolute;margin-top: -45px">
-        <a href="/" class="btn btn-nav btn-outline">Posts (62)</a>
-        <a href="/videos/" class="btn btn-nav btn-outline">Videos (89)</a>
-        <a href="/news/" class="btn btn-nav btn-outline">News (2)</a>
+      
+      
+      
+      <div class="site-nav-buttons" role="tablist" aria-label="Content type navigation">
+        <a href="/" class="btn btn-nav">Posts (62)</a>
+        <a href="/videos/" class="btn btn-nav">Videos (89)</a>
+        <a href="/news/" class="btn btn-nav active" aria-current="page">News (2)</a>
       </div>
       <div class="hestia-blogs">
         <div class="container">
@@ -153,17 +156,16 @@
     <div style="padding-bottom:66.66666666666667%"></div>
     <img data-src="/images/2026/news/dbr-2026-05.jpg" src=""/> 
 </div> <h2>Highlight</h2>
-        <p>Welcome to another Azure Databricks  news post, this time there is a lot of ground to cover. Grab and coffee and let&rsquo;s go.</p>
-<p>This is a may roundup, automated this, and testing this. If you feel this list is missing anything, or the scores are wrong. Please do let me know. This is a dryrun of this kind of posts.</p>
-<h2 id="big-changes">Big Changes</h2>
-<p>These are the updates that can materially change platform strategy</p>
+        <p>May was a busy Databricks month, and the interesting part was not just the headline platform launches. The real story was the spread across governance, Lakeflow, apps, AI, and operational polish.</p>
+<h2 id="important-announcements">Important Announcements</h2>
+<p>These are the updates that can change architecture, governance, or day-to-day platform strategy.</p>
 <table>
 <thead>
 <tr>
 <th>Persona</th>
 <th style="text-align:center">Impact Score</th>
 <th>News</th>
-<th>Why it&rsquo;s important</th>
+<th>Why it matters</th>
 <th>News Link</th>
 </tr>
 </thead>
@@ -171,77 +173,98 @@
 <tr>
 <td>Architects</td>
 <td style="text-align:center">⭐⭐⭐⭐⭐</td>
-<td>Unity Catalog Iceberg capabilities are now GA</td>
-<td>Managed Iceberg tables, foreign Iceberg tables, and Iceberg v3 features moving to GA is a big interoperability milestone and affects long-term architecture choices across engines</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#unity-catalog-managed-apache-iceberg-tables-foreign-apache-iceberg-tables-and-apache-iceberg-v3-features-are-generally-available">Unity Catalog Iceberg GA</a></td>
+<td>Unity Catalog managed Apache Iceberg tables, foreign Apache Iceberg tables, and Apache Iceberg v3 features are generally available</td>
+<td>This is one of the most important interoperability milestones in the month. It broadens Databricks storage and table compatibility across engines and keeps Iceberg front and center for long-term platform choices</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#unity-catalog-managed-apache-iceberg-tables-foreign-apache-iceberg-tables-and-apache-iceberg-v3-features-are-generally-available">Iceberg GA</a></td>
 </tr>
 <tr>
 <td>Administrators</td>
 <td style="text-align:center">⭐⭐⭐⭐⭐</td>
 <td>Automatic identity management with Microsoft Entra ID is now GA</td>
-<td>This removes a lot of SCIM operational friction and improves identity consistency, including groups and service principals, which matters in large enterprises</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#automatic-identity-management-with-microsoft-entra-id-is-now-ga">Automatic identity management GA</a></td>
+<td>This removes a lot of SCIM and identity-handling friction. For larger enterprises, the impact is operational as much as it is architectural</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#automatic-identity-management-with-microsoft-entra-id-is-now-ga">Automatic identity management</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐⭐⭐</td>
+<td>Catalog commits are now generally available</td>
+<td>Catalog commits unlock multi-statement and multi-table coordination for managed tables. That is a meaningful step up for reliable data product design and cross-engine consistency</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#catalog-commits-are-now-generally-available">Catalog commits</a></td>
 </tr>
 <tr>
 <td>Data Engineers</td>
 <td style="text-align:center">⭐⭐⭐⭐</td>
-<td>Lakeflow Connect query-based connectors are now GA</td>
-<td>You can ingest directly with cursor-based queries without full CDC and gateways, which simplifies many source onboarding patterns</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#query-based-connectors-for-lakeflow-connect-are-now-generally-available">Query-based connectors GA</a></td>
+<td>Lakeflow Connect query-based connectors are now generally available</td>
+<td>Source onboarding gets simpler when you can query directly instead of relying on CDC or gateways. This is a strong fit for many operational database and warehouse ingestion patterns</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#query-based-connectors-for-lakeflow-connect-are-now-generally-available">Query-based connectors</a></td>
 </tr>
 <tr>
 <td>Data Engineers</td>
 <td style="text-align:center">⭐⭐⭐⭐</td>
-<td>Real-time mode in Lakeflow Spark Declarative Pipelines is now Public Preview</td>
-<td>With low-latency update semantics and update_flow, this can shift how teams design streaming and decision pipelines</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#real-time-mode-in-lakeflow-spark-declarative-pipelines-and-the-update_flow-api-are-now-available-public-preview">Real-time mode for Lakeflow Spark Declarative Pipelines</a></td>
+<td>Real-time mode in Lakeflow Spark Declarative Pipelines and the update_flow API are now available in Public Preview</td>
+<td>This is a real shift for low-latency pipeline design. Five-millisecond-end-to-end scenarios are not a cosmetic improvement; they open up new classes of operational workloads</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#real-time-mode-in-lakeflow-spark-declarative-pipelines-and-the-update_flow-api-are-now-available-public-preview">Real-time mode</a></td>
 </tr>
 <tr>
 <td>Developers</td>
 <td style="text-align:center">⭐⭐⭐⭐</td>
 <td>Databricks CLI is now GA</td>
-<td>A GA CLI with secure OS-native token storage is a major quality jump for automation and DevEx in enterprise CI/CD</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#databricks-cli-is-now-ga">Databricks CLI GA</a></td>
+<td>A stable CLI with OS-native secure token storage makes automation and local developer workflows much easier to trust in enterprise environments</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#databricks-cli-is-now-ga">Databricks CLI</a></td>
 </tr>
 <tr>
 <td>Developers</td>
 <td style="text-align:center">⭐⭐⭐⭐</td>
 <td>Databricks Apps horizontal scaling is in Beta</td>
-<td>Better app resilience and zero-downtime deployment options are meaningful for teams exposing internal or customer-facing apps</td>
+<td>Apps can now run across multiple instances behind one URL, which improves resilience and makes zero-downtime deployment patterns much more realistic</td>
 <td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#databricks-apps-horizontal-scaling-beta">Databricks Apps horizontal scaling</a></td>
 </tr>
 <tr>
 <td>Architects</td>
 <td style="text-align:center">⭐⭐⭐⭐</td>
-<td>Vector Search storage-optimized endpoints are now GA</td>
-<td>Higher scale capacity and faster indexing can significantly reduce operational pain for large vector workloads</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#vector-search-storage-optimized-endpoints-are-ga">Vector Search storage-optimized endpoints GA</a></td>
+<td>Vector Search storage-optimized endpoints are GA</td>
+<td>Larger vector workloads need scale and faster indexing. This is the kind of change that can materially affect cost and performance planning</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#vector-search-storage-optimized-endpoints-are-ga">Vector Search endpoints</a></td>
 </tr>
 <tr>
 <td>Data Engineers</td>
 <td style="text-align:center">⭐⭐⭐⭐</td>
-<td>Catalog commits are now GA</td>
-<td>Multi-table and multi-statement consistency capabilities are a big deal for robust data product design and cross-engine coordination</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#catalog-commits-are-now-generally-available">Catalog commits GA</a></td>
+<td>Lakeflow Spark Declarative Pipelines sinks are now generally available</td>
+<td>Native sinks for Delta, Kafka, Event Hubs, and Python data sources simplify production pipeline design and reduce glue code</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#lakeflow-spark-declarative-pipelines-sinks-are-now-generally-available">Lakeflow sinks</a></td>
+</tr>
+<tr>
+<td>Users</td>
+<td style="text-align:center">⭐⭐⭐⭐</td>
+<td>Databricks SQL alerts are now generally available</td>
+<td>SQL alerts are one of the most practical day-to-day monitoring features in the month. They make KPI and anomaly monitoring much easier to operationalize</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#databricks-sql-alerts-are-now-generally-available">Databricks SQL alerts</a></td>
 </tr>
 <tr>
 <td>Data Engineers</td>
 <td style="text-align:center">⭐⭐⭐⭐</td>
-<td>Lakeflow Spark Declarative Pipelines sinks are now GA</td>
-<td>Direct sinks for Delta, Kafka, Event Hubs, and Python data sources simplify production pipeline outputs</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#lakeflow-spark-declarative-pipelines-sinks-are-now-generally-available">Lakeflow Spark Declarative Pipelines sinks GA</a></td>
+<td>Lakeflow Pipelines Editor is now generally available</td>
+<td>The editor is a notable usability jump for people building and debugging pipelines. The agent-first workflow is a meaningful product direction signal</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#lakeflow-pipelines-editor-is-now-generally-available">Lakeflow Pipelines Editor</a></td>
+</tr>
+<tr>
+<td>Architects</td>
+<td style="text-align:center">⭐⭐⭐⭐</td>
+<td>Publish a Unity Catalog catalog to Microsoft Fabric is in Beta</td>
+<td>Cross-platform interoperability matters. This gives Databricks users a clearer path to sharing governed data into Fabric without copying it around</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#publish-a-unity-catalog-catalog-to-microsoft-fabric-beta">Publish to Microsoft Fabric</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="medium-changes">Medium Changes</h2>
-<p>Important updates, but usually scoped to specific workloads or teams</p>
+<h2 id="useful-announcements">Useful Announcements</h2>
+<p>These are strong improvements that matter to specific teams, but they are not broad platform pivots for everyone.</p>
 <table>
 <thead>
 <tr>
 <th>Persona</th>
 <th style="text-align:center">Impact Score</th>
 <th>News</th>
-<th>Why it&rsquo;s good to know</th>
+<th>Why it&rsquo;s useful</th>
 <th>News Link</th>
 </tr>
 </thead>
@@ -250,65 +273,226 @@
 <td>Administrators</td>
 <td style="text-align:center">⭐⭐⭐</td>
 <td>Instance events and instance pools system tables are in Public Preview</td>
-<td>Better observability over compute lifecycle and pool history supports stronger governance and troubleshooting workflows</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#instance-events-and-instance-pools-system-tables-are-now-available-public-preview">Compute system tables preview</a></td>
-</tr>
-<tr>
-<td>Users</td>
-<td style="text-align:center">⭐⭐⭐</td>
-<td>Databricks SQL alerts are now GA</td>
-<td>This strengthens proactive KPI monitoring and can reduce the lag between data drift and business action</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#databricks-sql-alerts-are-now-generally-available">Databricks SQL alerts GA</a></td>
-</tr>
-<tr>
-<td>Data Engineers</td>
-<td style="text-align:center">⭐⭐⭐</td>
-<td>Databricks Runtime 18.2 is now GA</td>
-<td>Important for upgrade planning, but rollout pace depends on your compatibility and testing windows</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#databricks-runtime-182-is-now-ga">Databricks Runtime 18.2 GA</a></td>
+<td>Better visibility into compute lifecycle and pool history is valuable for governance and troubleshooting, especially in larger estates</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#instance-events-and-instance-pools-system-tables-are-now-available-public-preview">Compute system tables</a></td>
 </tr>
 <tr>
 <td>Developers</td>
 <td style="text-align:center">⭐⭐⭐</td>
 <td>Faster package installs with %uv pip in serverless notebooks</td>
-<td>Better notebook iteration speed, but only directly impacts teams heavily using notebook package installation loops</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#faster-package-installs-with-uv-pip-in-serverless-notebooks">Faster installs with %uv pip</a></td>
+<td>This is a very practical quality-of-life improvement for notebook-heavy teams. Faster install loops mean faster iteration</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#faster-package-installs-with-uv-pip-in-serverless-notebooks">uv pip in notebooks</a></td>
 </tr>
 <tr>
 <td>Developers</td>
 <td style="text-align:center">⭐⭐⭐</td>
 <td>Edits to resources in the UI now automatically update YAML</td>
-<td>Nice quality-of-life improvement for bundle workflows, though it is incremental rather than transformational</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#edits-to-resources-in-the-ui-now-automatically-update-yaml">UI edits auto-update YAML</a></td>
+<td>Small on paper, but useful if you work in bundle-based workflows and want the UI and source to stay in sync</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#edits-to-resources-in-the-ui-now-automatically-update-yaml">UI edits update YAML</a></td>
+</tr>
+<tr>
+<td>Users</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Unified runs list is generally available</td>
+<td>A single runs view for jobs and pipelines makes day-to-day ops easier. This is the sort of feature people feel immediately once they adopt it</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#unified-runs-list-is-generally-available">Unified runs list</a></td>
+</tr>
+<tr>
+<td>Administrators</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Workspace admin setting for serverless notebook execution timeout</td>
+<td>This gives admins better control over serverless spend and prevents runaway notebook sessions from becoming a surprise</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#workspace-admin-setting-for-serverless-notebook-execution-timeout">Serverless timeout setting</a></td>
+</tr>
+<tr>
+<td>Administrators</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Workspace sidebar navigation updates</td>
+<td>Mostly UX cleanup, but it is still worth knowing because it changes how users discover core workspace sections</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#workspace-sidebar-navigation-updates">Sidebar updates</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Databricks Runtime 18.2 is now GA</td>
+<td>Runtime upgrades always matter to platform teams, even when they are not flashy. This one is especially relevant if you standardize on newer Spark behavior</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#databricks-runtime-182-is-now-ga">Runtime 18.2</a></td>
+</tr>
+<tr>
+<td>Developers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Databricks Container Services for standard compute is now available in Beta</td>
+<td>Custom containers on standard compute expand what teams can run, but this is still a targeted feature rather than a broad platform shift</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#databricks-container-services-for-standard-compute-is-now-available-beta">Container Services</a></td>
+</tr>
+<tr>
+<td>Developers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>App telemetry for Databricks Apps is now in Public Preview</td>
+<td>Telemetry is a practical prerequisite for real apps, so this matters if you are building production-facing Databricks applications</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#app-telemetry-for-databricks-apps-is-now-in-public-preview">App telemetry</a></td>
+</tr>
+<tr>
+<td>Developers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Lakeflow Designer updates for May 29, 2026</td>
+<td>This is the kind of authoring polish that improves the product without changing the platform model underneath it</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#lakeflow-designer-updates-for-may-29-2026">Lakeflow Designer updates</a></td>
+</tr>
+<tr>
+<td>Users</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Native data profiling for notebook results tables</td>
+<td>Helpful for exploratory work, but it is a focused productivity boost rather than a broad platform change</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#native-data-profiling-for-notebook-results-tables">Notebook profiling</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>Google Drive managed ingestion connector is in Beta</td>
+<td>Another useful ingestion source, especially if your data estate still includes team-managed files in Drive</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#google-drive-managed-ingestion-connector-beta">Google Drive connector</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐⭐</td>
+<td>HubSpot connector is GA</td>
+<td>If you move marketing data into Databricks, this is a practical connector release rather than a flashy headline item</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#hubspot-connector-ga">HubSpot connector</a></td>
+</tr>
+<tr>
+<td>Users</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Outlook managed ingestion connector is in Beta</td>
+<td>Useful for some ingestion scenarios, but narrower in reach than the bigger Lakeflow and governance changes</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#outlook-managed-ingestion-connector-beta">Outlook connector</a></td>
+</tr>
+<tr>
+<td>Users</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Smartsheet managed ingestion connector is in Beta</td>
+<td>Same story as Outlook: practical for specific teams, but not a broad platform reset</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#smartsheet-managed-ingestion-connector-beta">Smartsheet connector</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="small-but-still-relevant">Small but Still Relevant</h2>
-<p>These are meaningful, but they will not change every team&rsquo;s daily workflow immediately</p>
+<h2 id="minor-announcements">Minor Announcements</h2>
+<p>These are still worth tracking, but they mostly affect specific edge cases, admins, or early adopters.</p>
 <table>
 <thead>
 <tr>
 <th>Persona</th>
 <th style="text-align:center">Impact Score</th>
 <th>News</th>
-<th>Why it&rsquo;s not top priority for most teams</th>
+<th>Why it&rsquo;s minor</th>
 <th>News Link</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Lakeflow Spark Declarative Pipelines parameters are now in Beta</td>
+<td>Useful for pipeline authors, but this is still a fairly focused orchestration enhancement</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#lakeflow-spark-declarative-pipelines-parameters-are-now-in-beta">Pipeline parameters</a></td>
+</tr>
+<tr>
 <td>Users</td>
 <td style="text-align:center">⭐⭐</td>
-<td>Workspace sidebar navigation updates</td>
-<td>Useful UX cleanup, but mostly a navigation and terminology change instead of a platform capability change</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#workspace-sidebar-navigation-updates">Workspace sidebar navigation updates</a></td>
+<td>SQL alert task in Lakeflow Jobs is now in Public Preview</td>
+<td>Nice integration if you already use both features, but it is not a broad change for everyone</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#sql-alert-task-in-lakeflow-jobs-is-now-in-public-preview">SQL alert task</a></td>
 </tr>
 <tr>
 <td>Administrators</td>
 <td style="text-align:center">⭐⭐</td>
 <td>Additional recipient for workspace operational emails</td>
-<td>Helpful for operational communication hygiene, especially for shared operations teams and distro lists</td>
-<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#configure-an-additional-recipient-for-workspace-operational-emails">Additional workspace email recipient</a></td>
+<td>Operationally handy, but clearly a small admin improvement rather than a product capability shift</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#configure-an-additional-recipient-for-workspace-operational-emails">Operational email recipient</a></td>
+</tr>
+<tr>
+<td>Administrators</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Block identities from your Azure Databricks account with the account access denylist</td>
+<td>Important for security posture, but it is still a targeted control rather than a platform-wide change</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#block-identities-from-your-azure-databricks-account-with-the-account-access-denylist">Account access denylist</a></td>
+</tr>
+<tr>
+<td>Administrators</td>
+<td style="text-align:center">⭐⭐</td>
+<td>New Lakebase Autoscaling instances now scale to zero by default</td>
+<td>Good cost control, but limited to new Lakebase autoscaling projects and not every Databricks workload</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#new-lakebase-autoscaling-instances-now-scale-to-zero-by-default">Scale to zero default</a></td>
+</tr>
+<tr>
+<td>Developers</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Authenticate as a service principal using OAuth U2M is in Beta</td>
+<td>Helpful for identity and automation patterns, but still in beta and scoped to a specific auth flow</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#authenticate-as-a-service-principal-using-oauth-u2m-beta">OAuth U2M service principal</a></td>
+</tr>
+<tr>
+<td>Developers</td>
+<td style="text-align:center">⭐⭐</td>
+<td>AI Runtime 1xH100 accelerator is in Beta</td>
+<td>Relevant for model-serving teams, but it is a hardware option rather than a broad platform capability</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#ai-runtime-1xh100-accelerator-beta">AI Runtime H100</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐</td>
+<td>ai_parse_document is now available by default for compliant workspaces</td>
+<td>Useful for document workflows, but it mainly affects teams already using Databricks AI and compliance profiles</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#ai_parse_document-is-now-available-by-default-for-workspaces-with-the-compliance-security-profile-enabled">ai_parse_document</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Customer-managed keys now support MLflow managed evaluation features</td>
+<td>Good to know for regulated ML teams, but narrow in scope</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#customer-managed-keys-now-support-mlflow-managed-evaluation-features">MLflow CMK support</a></td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Recover a deleted Lakebase project within 7 days</td>
+<td>Nice safety net, but not a broad platform change</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#recover-a-deleted-lakebase-project-within-7-days">Recover deleted Lakebase project</a></td>
+</tr>
+<tr>
+<td>Developers</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Share Genie Code chat threads</td>
+<td>Useful for collaboration, but mostly a workflow convenience item</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#share-genie-code-chat-threads">Share Genie Code threads</a></td>
+</tr>
+<tr>
+<td>Developers</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Agent Bricks Supervisor Agent now supports nesting supervisor agents as subagent tools</td>
+<td>Interesting for multi-agent orchestration, but still a fairly specialized improvement</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#agent-bricks-supervisor-agent-now-supports-nesting-supervisor-agents-as-subagent-tools">Nested supervisor agents</a></td>
+</tr>
+<tr>
+<td>Developers</td>
+<td style="text-align:center">⭐⭐</td>
+<td>Agent Bricks Supervisor Agent now supports vector search indexes as subagent tools</td>
+<td>Good for agent builders, but it only affects a specific scenario</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#agent-bricks-supervisor-agent-now-supports-vector-search-indexes-as-subagent-tools">Vector search as tools</a></td>
+</tr>
+<tr>
+<td>Users</td>
+<td style="text-align:center">⭐</td>
+<td>Removed legacy Assistant slash commands</td>
+<td>Worth mentioning because it can break muscle memory, but the actual scope is small and well contained</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#removed-legacy-assistant-slash-commands">Slash command removal</a></td>
+</tr>
+<tr>
+<td>Administrators</td>
+<td style="text-align:center">⭐</td>
+<td>Databricks Runtime maintenance updates (05/26)</td>
+<td>Routine maintenance updates matter, but this is mostly a patch and compatibility note rather than a feature story</td>
+<td><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556#databricks-runtime-maintenance-updates-0526">Runtime maintenance</a></td>
 </tr>
 </tbody>
 </table>
@@ -317,9 +501,9 @@
 <li><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/may?WT.mc_id=AZ-MVP-5003556">Databricks Platform Release Notes - May 2026</a></li>
 <li><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/?WT.mc_id=AZ-MVP-5003556">Databricks Platform Release Notes Index</a></li>
 <li><a href="https://learn.microsoft.com/en-us/azure/databricks/release-notes/runtime/?WT.mc_id=AZ-MVP-5003556">Databricks Runtime release notes and compatibility</a></li>
-<li><a href="https://marczak.io/posts/2026/01/unity-catalog-migration-part-6-tips-and-tricks/">Azure Databricks Lessons Learned Series - part 6</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/horizontal-scaling?WT.mc_id=AZ-MVP-5003556">Databricks Apps horizontal scaling</a></li>
 </ul>
-<p>Happy building</p>
+<p>Happy building!</p>
     </article>
     <div class="section-blog-info">
         <div class="row">

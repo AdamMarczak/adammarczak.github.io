@@ -150,11 +150,42 @@ aside .widget a {
   padding:9px 15px;
   background-color:white;
 }
+.site-nav-buttons {
+  position: absolute;
+  margin-top: -40px;
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 12px 12px 0 0;
+}
 .btn-nav {
-  padding:6px 20px;
-  background-color:white;
-  background:rgba(230, 230, 230, 0.45);
-  color:white;
+  margin: 0;
+  padding: 9px 18px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  background: rgba(255, 255, 255, 0.16);
+  color: rgba(244, 249, 255, 0.92);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.site-nav-buttons .btn-nav:hover,
+.site-nav-buttons .btn-nav:focus {
+  background: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.site-nav-buttons .btn-nav.active,
+.site-nav-buttons .btn-nav[aria-current="page"] {
+  background: #ffffff;
+  color: #1d2733;
+  border-color: #ffffff;
+  box-shadow: 0 -1px 0 #ffffff inset;
 }
 .btn-img > img {
   height:26px;
@@ -188,6 +219,17 @@ aside .widget a {
 @media (max-width: 768px) {
   .btn-just-icon {
     display: none;
+  }
+  .site-nav-buttons {
+    margin-top: -46px;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 10px 10px 0 0;
+  }
+  .btn-nav {
+    padding: 8px 10px 7px;
+    font-size: 11px;
+    letter-spacing: 0.3px;
   }
   .blog .page-header.header-small .container {
     padding-top: 80px;

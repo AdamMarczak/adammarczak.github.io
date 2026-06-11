@@ -14,7 +14,7 @@
 <link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
 <link href='https://marczak.io/css/hestia.min.css?ver=1.25' rel="stylesheet" type="text/css" />
-<link href='https://marczak.io/css/main.min.css?ver=1.35' rel='stylesheet' type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.36' rel='stylesheet' type="text/css" />
 <link href="https://marczak.io/posts.json" rel="alternate" type="application/json" title="Posts JSON Feed" />
 <link href="https://marczak.io/videos.json" rel="alternate" type="application/json" title="Videos JSON Feed" />
 <link href="https://marczak.io/news.json" rel="alternate" type="application/json" title="News JSON Feed" />
@@ -173,10 +173,13 @@ Content Delivery Network
       
       
       
-      <div class="site-nav-buttons" style="position: absolute;margin-top: -45px">
-        <a href="/" class="btn btn-nav btn-outline">Posts (62)</a>
-        <a href="/videos/" class="btn btn-nav btn-outline">Videos (89)</a>
-        <a href="/news/" class="btn btn-nav btn-outline">News (2)</a>
+      
+      
+      
+      <div class="site-nav-buttons" role="tablist" aria-label="Content type navigation">
+        <a href="/" class="btn btn-nav">Posts (62)</a>
+        <a href="/videos/" class="btn btn-nav active" aria-current="page">Videos (89)</a>
+        <a href="/news/" class="btn btn-nav">News (2)</a>
       </div>
       <div class="hestia-blogs">
         <div class="container">
