@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-11T05:08:10Z",
+  "generated_at": "2026-06-11T08:10:19Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -2153,9 +2153,9 @@
       "published_at": "2026-06-09",
       "updated_at": null,
       "author": "Adam Marczak",
-      "summary": "May 2026 brought a lot of practical updates across Microsoft Fabric. Practically speaking, this month was about governance maturity, cost visibility, and stronger orchestration patterns that teams can apply right away. If you are running real workloads, this one is worth a careful read because several of these updates can change how you secure, monitor, and operate your platform.\n",
+      "summary": "Welcome to another Microsoft Fabric news post for May 2026.\n",
       "tags": ["Fabric"],
-      "reading_time_minutes": 4,
+      "reading_time_minutes": 3,
       "canonical_url": "https://marczak.io/news/2026/05/microsoft-news-may-2026/"
     },
     {
@@ -2165,7 +2165,7 @@
       "published_at": "2026-06-09",
       "updated_at": null,
       "author": "Adam Marczak",
-      "summary": "Welcome to another news post, this time there is a lot of ground to cover. Grab and coffee and let’s go.\n",
+      "summary": "Welcome to another Azure Databricks news post, this time there is a lot of ground to cover. Grab and coffee and let’s go.\n",
       "tags": ["Azure","databricks"],
       "reading_time_minutes": 4,
       "canonical_url": "https://marczak.io/news/2026/05/databricks-news-may-2026/"
