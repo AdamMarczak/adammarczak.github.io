@@ -23,7 +23,7 @@ content_catalog:
   videos_json: https://marczak.io/videos.json
   news_json: https://marczak.io/news.json
   tags: https://marczak.io/tags/
-  about: https://marczak.io/about
+  about: https://adammarczak.pl
   youtube: https://www.youtube.com/azure4everyone
 discovery_endpoints:
   - https://marczak.io/llms.txt
