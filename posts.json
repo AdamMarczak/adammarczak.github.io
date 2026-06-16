@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-15T12:24:27Z",
+  "generated_at": "2026-06-16T05:19:17Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -18,7 +18,7 @@
     "total_videos": 89,
     "total_news": 2,
     "total_content": 153,
-    "total_tags": 51,
+    "total_tags": 50,
     "last_content_date": "2026-06-11"
   },
   "topics": [
@@ -44,13 +44,13 @@
       "name": "data-factory",
       "slug": "data-factory",
       "url": "https://marczak.io/tags/data-factory/",
-      "post_count": 14
+      "post_count": 13
     },
     {
       "name": "databricks",
       "slug": "databricks",
       "url": "https://marczak.io/tags/databricks/",
-      "post_count": 12
+      "post_count": 13
     },
     {
       "name": "arm",
@@ -239,12 +239,6 @@
       "post_count": 1
     },
     {
-      "name": "fabric-data-factory",
-      "slug": "fabric-data-factory",
-      "url": "https://marczak.io/tags/fabric-data-factory/",
-      "post_count": 1
-    },
-    {
       "name": "file-service",
       "slug": "file-service",
       "url": "https://marczak.io/tags/file-service/",
@@ -350,7 +344,7 @@
       "updated_at": null,
       "author": "Adam Marczak",
       "summary": "Are your tired of parametrizing dozens of pipelines via templates, maybe you want a more metadata driven approach, or simply you are hitting ADF temmplate parameter limits. If yes, this blog entry is for you.\n",
-      "tags": ["azure","data-factory","fabric","fabric data factory"],
+      "tags": ["azure","fabric","databricks"],
       "reading_time_minutes": 3,
       "canonical_url": "https://marczak.io/posts/2026/06/data-factory-parametrization-with-config-tables/"
     },

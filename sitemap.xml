@@ -25,11 +25,7 @@
   </url><url>
     <loc>https://marczak.io/tags/databricks/</loc><lastmod>2026-06-09T17:00:23&#43;02:00</lastmod>
   </url><url>
-    <loc>https://marczak.io/tags/data-factory/</loc><lastmod>2026-06-05T07:00:00&#43;02:00</lastmod>
-  </url><url>
     <loc>https://marczak.io/posts/2026/06/data-factory-parametrization-with-config-tables/</loc><lastmod>2026-06-05T07:00:00&#43;02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/fabric-data-factory/</loc><lastmod>2026-06-05T07:00:00&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2026/03/logic-apps-agent-workflows-early-2026/</loc><lastmod>2026-03-03T17:00:23&#43;02:00</lastmod>
   </url><url>
@@ -102,6 +98,8 @@
     <loc>https://marczak.io/posts/2024/12/logic-app-tip-git-integration-ci/</loc><lastmod>2024-12-04T17:00:23&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2024/09/logic-app-tip-connector-network/</loc><lastmod>2024-09-11T17:00:23&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/data-factory/</loc><lastmod>2024-03-03T17:00:23&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2024/03/graphapi-delegated-vs-app-flow/</loc><lastmod>2024-03-03T17:00:23&#43;02:00</lastmod>
   </url><url>
@@ -585,39 +583,41 @@
   </url><url>
     <loc>https://marczak.io/az-900/episode-39/practice-test/</loc>
   </url><url>
+    <loc>https://marczak.io/tags/fabric-data-factory/</loc>
+  </url><url>
     <loc>https://marczak.io/openapi.json</loc>
-    <lastmod>2026-06-15T14:24:27&#43;02:00</lastmod>
+    <lastmod>2026-06-16T07:19:17&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/.well-known/openapi.json</loc>
-    <lastmod>2026-06-15T14:24:27&#43;02:00</lastmod>
+    <lastmod>2026-06-16T07:19:17&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/.well-known/agent.json</loc>
-    <lastmod>2026-06-15T14:24:27&#43;02:00</lastmod>
+    <lastmod>2026-06-16T07:19:17&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/.well-known/ai-plugin.json</loc>
-    <lastmod>2026-06-15T14:24:27&#43;02:00</lastmod>
+    <lastmod>2026-06-16T07:19:17&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/posts.json</loc>
-    <lastmod>2026-06-15T14:24:27&#43;02:00</lastmod>
+    <lastmod>2026-06-16T07:19:17&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/videos.json</loc>
-    <lastmod>2026-06-15T14:24:27&#43;02:00</lastmod>
+    <lastmod>2026-06-16T07:19:17&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/news.json</loc>
-    <lastmod>2026-06-15T14:24:27&#43;02:00</lastmod>
+    <lastmod>2026-06-16T07:19:17&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/llms.txt</loc>
-    <lastmod>2026-06-15T14:24:27&#43;02:00</lastmod>
+    <lastmod>2026-06-16T07:19:17&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/llms-full.txt</loc>
-    <lastmod>2026-06-15T14:24:27&#43;02:00</lastmod>
+    <lastmod>2026-06-16T07:19:17&#43;02:00</lastmod>
   </url>
 </urlset>
