@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Logic Apps Automation release, what is it, and how it works? | Marczak.IO | Adam Marczak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="https://marczak.io/images/favicon.ico" sizes="32x32" />
+<link rel="icon" href="https://marczak.io/images/favicon.ico" sizes="16x16" />
+<link rel="canonical" href="https://marczak.io/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/">
+<link rel="apple-touch-icon-precomposed" href="https://marczak.io/images/iphone-icon.png"/>
+<link rel="stylesheet" id="hestia_fonts-css" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700%7CRoboto+Slab%3A400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+<link href='https://marczak.io/css/hestia.min.css?ver=1.25' rel="stylesheet" type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.40' rel='stylesheet' type="text/css" />
+<link href="https://marczak.io/posts.json" rel="alternate" type="application/json" title="Posts JSON Feed" />
+<link href="https://marczak.io/videos.json" rel="alternate" type="application/json" title="Videos JSON Feed" />
+<link href="https://marczak.io/news.json" rel="alternate" type="application/json" title="News JSON Feed" />
+
+<meta name="description" content="Microsoft just added Logic Apps Automation to the mix. Technically, it&rsquo;s a new SKU, but it brings so much more.">
+<meta name="author" content="Adam Marczak">
+<meta name="copyright" content="Adam Marczak">
+<meta name="title" content="Logic Apps Automation release, what is it, and how it works? | Marczak.IO | Adam Marczak">
+<meta property="og:locale" content="en_US">
+
+
+<meta property="article:author" content="https://adammarczak.pl">
+<meta property="og:type" content="article">
+
+<meta property="og:title" content="Logic Apps Automation release, what is it, and how it works?">
+<meta property="og:description" content="Microsoft just added Logic Apps Automation to the mix. Technically, it&rsquo;s a new SKU, but it brings so much more.">
+<meta property="og:url" content="https://marczak.io/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/">
+<meta property="og:site_name" content="Marczak.IO">
+<meta property="og:image" content="https://marczak.io/images/2026/2026-06-logic-apps-automation/splash.jpg">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@MarczakIO">
+<meta name="twitter:title" content="Logic Apps Automation release, what is it, and how it works?">
+<meta name="twitter:description" content="Microsoft just added Logic Apps Automation to the mix. Technically, it&rsquo;s a new SKU, but it brings so much more.">
+<meta name="twitter:url" content="https://marczak.io/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/marczak.io\/posts\/2026\/06\/logic-apps-automation-released-what-it-is-and-how-it-works\/"
+  },
+  "headline": "Logic Apps Automation release, what is it, and how it works?",
+  "description": "Microsoft just added Logic Apps Automation to the mix. Technically, it\u0026amp;rsquo;s a new SKU, but it brings so much more. ",
+  "url": "https:\/\/marczak.io\/posts\/2026\/06\/logic-apps-automation-released-what-it-is-and-how-it-works\/",
+  "datePublished": "2026-06-15T05:00:00\u002b02:00",
+  "dateModified": "2026-06-15T05:00:00\u002b02:00",
+  "author": {
+    "@type": "Person",
+    "name": "Adam Marczak"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Marczak.IO",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/marczak.io\/images\/favicon.ico"
+    }
+  },
+  "image": [
+    "https:\/\/marczak.io\/2026\/2026-06-logic-apps-automation\/splash.jpg"
+  ],
+  "keywords": "Azure, logic-apps"
+}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GB7TL4ZQW9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GB7TL4ZQW9');
+</script>
+</head>
+<body class="home blog">
+  <div class="wrapper"><header class="header">
+  <nav class="navbar navbar-default hestia_left">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="title-logo-wrapper">
+          <a class="navbar-brand" href="/" title="Marczak.IO">
+            <img src="/images/favicon.svg" style="height: 30px;"/>
+          </a>
+        </div>
+      </div>
+      <div id="main-navigation" class="navbar-custom">
+        <div class="entry-social">
+  <a target="_top" class="btn btn-just-icon btn-social btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_top" class="btn btn-img" 
+      href="https://www.patreon.com/marczakio">
+      <img src="\images\patreon-black.svg">
+  </a>
+  <a target="_top" class="btn btn-img" 
+      style="padding-top: 14px;padding-bottom: 13px;background:#210159;"
+      href="https://www.youtube.com/azure4everyone">
+      <img src="/images/youtube.svg" style="height: 17px;margin-right:10px"/>
+      <span>My YouTube Channel</span>
+  </a>
+  
+</div>
+      </div>
+    </div>
+  </nav>
+  <div id="primary" class="boxed-layout-header page-header header-small" data-parallax="active" style="margin-top: -20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+          <h1 class="hestia-title">Logic Apps Automation release, what is it, and how it works?</h1>
+          
+            <h4 class="author">
+              Published by&nbsp;<a href="https://adammarczak.pl" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2026-06-15 05:00:00 &#43;0200 CEST">Jun 15 2026</time>
+            </h4>
+           
+        </div>
+      </div>
+    </div>
+    <div class="header-filter" style="background-image: url('/images/background.jpg');background-color: #283743;"></div>
+  </div>
+</header>
+    <div class="main main-raised">
+      
+      
+      
+      
+      
+      
+      <div class="site-nav-buttons" role="tablist" aria-label="Content type navigation">
+        <a href="/" class="btn btn-nav active" aria-current="page">Posts (63)</a>
+        <a href="/videos/" class="btn btn-nav">Videos (89)</a>
+        <a href="/news/" class="btn btn-nav">News (2)</a>
+      </div>
+      <div class="hestia-blogs">
+        <div class="container">
+          
+          <div class="row">
+<div class="col-md-9 single-posts-wrap">
+    <article id="/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 683px">
+    <div style="padding-bottom:66.69921875%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/splash.jpg" src=""/> 
+</div> <h2>Highlight</h2>
+        <p>Microsoft just added Logic Apps Automation to the mix. Technically, it&rsquo;s a new SKU, but it brings so much more.</p>
+<p>Here&rsquo;s the thing: after going through the public Logic Apps Labs content, one nuance became very clear. Logic Apps Automation is new, but agentic Logic Apps is not. Conversational agents, autonomous agents, MCP integration, and even deployable chat experiences already show up across the broader Azure Logic Apps story.</p>
+<h2 id="quick-overview">Quick overview</h2>
+<p>So here is a quick 3-min summary of Logic Apps Automation</p>
+<ul>
+<li><strong>New SKU</strong> but the <strong>same engine</strong> of logic apps, so still access to 1400+ connectors</li>
+<li><strong>AI-first design</strong> means different design principles and a different way to build AI solutions</li>
+<li><strong>New management objects/structure</strong> to even better govern your logic apps</li>
+<li><strong>New Automation portal</strong> (<a href="https://auto.azure.com">https://auto.azure.com</a>) with a completely <strong>new designer</strong></li>
+<li><strong>0-N scaling</strong> to even better support small to medium solutions</li>
+<li><strong>Sandboxes</strong> for AI testing</li>
+</ul>
+<p>What the Logic Apps Labs site makes very clear is that Microsoft is building a broader agentic story across Logic Apps, not only inside Automation. The labs already cover conversational agents, autonomous agents, multi-agent patterns, A2A, MCP tools, and Logic Apps acting as MCP servers.</p>
+<p>Here is what is still missing as of today (still in preview)</p>
+<ul>
+<li><strong>No CICD/deployment options</strong></li>
+<li><strong>No way to export the code of whole solution</strong>, versioning exists as a built-in feature, but it&rsquo;s on the workflow level</li>
+<li><strong>Conversational workflows are not supported</strong> in Automation today, but they are already documented in Logic Apps Labs for Consumption and Standard</li>
+<li>I know the intention is for this to have <strong>VNET integration</strong>, but it <strong>is missing</strong> in the preview state</li>
+</ul>
+<h2 id="new-marketplace-option">New marketplace option</h2>
+<p>Now when creating a new Azure Logic App from the marketplace, you will see a new option in the UI</p>
+
+<div class="lazy" style="max-height: 534px">
+    <div style="padding-bottom:38.528%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000097.jpg" src=""/> 
+</div>
+<p>Note: for this option to appear, you need to be enrolled in the preview.</p>
+<h2 id="new-structure">New structure</h2>
+<p>Logic App Automations is a bit different. Below diagram presents it&rsquo;s current structure.
+
+<div class="lazy" style="max-height: 704px">
+    <div style="padding-bottom:65.125%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000035.jpg" src=""/> 
+</div></p>
+<p>What I&rsquo;ve noticed</p>
+<ul>
+<li>Sandboxes are new, this is for AI testing scenarios</li>
+<li>Extra hierarchy, Apps are now bundled in projects (more on this in the following section)</li>
+<li>Rest is mostly the same</li>
+</ul>
+<p>Ref: <a href="https://auto.azure.com/docs/features/projects-and-applications/?WT.mc_id=AZ-MVP-5003556">https://auto.azure.com/docs/features/projects-and-applications/</a></p>
+<h2 id="resource-matching">Resource Matching</h2>
+<p>In this table you can see how the new structure maps to the current one.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th style="text-align:center">Consumption</th>
+<th style="text-align:center">Standard</th>
+<th style="text-align:center">Automation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project</td>
+<td style="text-align:center">❌</br>Resource Group</br>(technically?)</td>
+<td style="text-align:center">❌ </br>Resource Group</br>(technically?)</td>
+<td style="text-align:center"><strong>Automations Project</strong></br>Azure resource</td>
+</tr>
+<tr>
+<td>Group of workflows</td>
+<td style="text-align:center">❌</td>
+<td style="text-align:center"><strong>Logic App (Standard)</strong> </br>Azure resource</td>
+<td style="text-align:center"><strong>Application</strong></br>Azure child resource</td>
+</tr>
+<tr>
+<td>Workflow</td>
+<td style="text-align:center"><strong>Logic App (Consumption)</strong></br>Azure resource</td>
+<td style="text-align:center"><strong>Workflow</strong></br>JSON code in wwwroot</td>
+<td style="text-align:center"><strong>Workflow</strong></br>JSON code</td>
+</tr>
+</tbody>
+</table>
+<p>With new level of hierarchy it will be easier for you to manage a group of projects in Azure Automation. What are the use-cases, of course time will tell.</p>
+<p>Things that I&rsquo;ve tested and stood out to me</p>
+<ul>
+<li>The code of workflows is not visible in ARM template of logic apps automation</li>
+<li>Export Template tool fails in Azure Portal, it&rsquo;s not yet supported</li>
+<li>Code can be copy-pasted from automation portal</li>
+<li>There is no code definition of entire automation project, most likely will come in the future</li>
+</ul>
+<h2 id="new-portal">New Portal</h2>
+<p>New Logic App portal is available at <a href="https://auto.azure.com/">https://auto.azure.com/</a>. This doesn&rsquo;t replace current Azure Portal, it&rsquo;s just a new portal for Logic App Automation.
+
+<div class="lazy" style="max-height: 793px">
+    <div style="padding-bottom:57.505%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000099.jpg" src=""/> 
+</div></p>
+<h3 id="resources-in-portalazurecom-vs-autoazurecom">Resources in portal.azure.com vs auto.azure.com</h3>
+<p>If you open <a href="https://auto.azure.com">https://auto.azure.com</a> and navigate to <strong>projects</strong> you can see projects you&rsquo;ve created.
+
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:30.365%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000030.jpg" src=""/> 
+</div></p>
+<p>And in Azure portal resource group, each project is a separate resource.
+
+<div class="lazy" style="max-height: 403px">
+    <div style="padding-bottom:41.122%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000031.jpg" src=""/> 
+</div></p>
+<h2 id="new-developer-experince-ui">New Developer Experince (UI)</h2>
+<p>This UI reminds me of N8N, so it&rsquo;s a good choice that has proven its value. Experience overall is very fluid.</p>
+<h3 id="differences-in-typical-workflow">Differences in typical workflow</h3>
+<p>This is a simple HTML api which sends and email</p>
+<table>
+  <thead>
+    <tr>
+      <th>LA Standard</th>
+      <th>LA Automation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<div class="lazy" style="max-height: 455px">
+    <div style="padding-bottom:141.304%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000081.jpg" src=""/> 
+</div></td>
+      <td>
+<div class="lazy" style="max-height: 616px">
+    <div style="padding-bottom:133.913%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000082.jpg" src=""/> 
+</div> </br> or horizontal (defailt) 
+<div class="lazy" style="max-height: 241px">
+    <div style="padding-bottom:27.201%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000083.jpg" src=""/> 
+</div></td>
+    </tr>
+  </tbody>
+</table>
+<p>Key things I&rsquo;ve noticed</p>
+<ul>
+<li>Automations supports both horizontal and vertical layouts</li>
+<li>UI is different, but options are mostly the same</li>
+<li>I&rsquo;ve built a few logic apps and everything worked the same way</li>
+</ul>
+<p>This is a simple agent workflow</p>
+<table>
+  <thead>
+    <tr>
+      <th>LA Standard</th>
+      <th>LA Automation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<div class="lazy" style="max-height: 620px">
+    <div style="padding-bottom:129.436%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000085.jpg" src=""/> 
+</div></td>
+      <td>
+<div class="lazy" style="max-height: 663px">
+    <div style="padding-bottom:127.500%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000098.jpg" src=""/> 
+</div></td>
+    </tr>
+  </tbody>
+</table>
+<p>Key things I&rsquo;ve noticed</p>
+<ul>
+<li>Agent workflow look a bit different too, but mostly the same</li>
+<li>Previews of parameter values are amazing, big props!
+
+<div class="lazy" style="max-height: 305px">
+    <div style="padding-bottom:63.674%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000102.jpg" src=""/> 
+</div></li>
+<li>Not all models are supported yet, my workflows failed with GPT 5.1, but worked with 4.1, where in Logic App standard they worked fine</li>
+</ul>
+<h3 id="run-history">Run history</h3>
+<p>Logic App Standard history example
+
+<div class="lazy" style="max-height: 825px">
+    <div style="padding-bottom:96.042%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000093.jpg" src=""/> 
+</div></p>
+<p>Logic App Automation history example
+
+<div class="lazy" style="max-height: 782px">
+    <div style="padding-bottom:66.724%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/screenshot-000096.jpg" src=""/> 
+</div></p>
+<p>Key things I&rsquo;ve noticed</p>
+<ul>
+<li>Logic app automation has <strong>realtime history</strong>, which is amazing!</li>
+<li>Experience overall is much smoother in automation, but it isn&rsquo;t bad in standard either</li>
+<li>History looks more compact across workflow, much better AI support</li>
+</ul>
+<h2 id="contrasting-with-current-logic-apps-skus">Contrasting with current logic apps SKUs</h2>
+<p>So what&rsquo;s different?</p>
+<h3 id="hosting-and-scaling">Hosting and scaling</h3>
+<p>Here are top things from the perspective of hosting new agents</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Consumption</th>
+<th>Standard</th>
+<th>Automation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runtime model</td>
+<td>Multitenant Logic Apps runtime</td>
+<td>Single-tenant Logic Apps runtime</td>
+<td>Single-tenant Logic Apps runtime</td>
+</tr>
+<tr>
+<td>Compute management</td>
+<td>Microsoft-managed shared infrastructure</td>
+<td>Customer-provisioned hosting capacity</td>
+<td>Microsoft-managed hosting capacity</td>
+</tr>
+<tr>
+<td>Runtime isolation</td>
+<td>Shared</td>
+<td>Dedicated runtime boundary</td>
+<td>Dedicated runtime boundary</td>
+</tr>
+<tr>
+<td>Scale-to-zero</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Automatic scale-out</td>
+<td>Yes</td>
+<td>Yes (1–N)</td>
+<td>Yes (0–N)</td>
+</tr>
+<tr>
+<td>Multiple workflows per resource</td>
+<td>No (1 workflow per Logic App resource)</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>VNET/private networking</td>
+<td>Limited via connectors</td>
+<td>Yes</td>
+<td>Yes, but available yet in preview</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pricing-model">Pricing model</h3>
+<p>Cost for automation isn&rsquo;t finalized, but here is a high level overview</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Consumption</th>
+<th>Standard</th>
+<th>Automation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Billing approach</td>
+<td>Per executed action</td>
+<td>Provisioned capcity + autoscaled instances</td>
+<td>Based on scaled units uptime</td>
+</tr>
+<tr>
+<td>Pay per action/trigger</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Pay for reserved capacity</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Pay when completely idle</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Cost predictability</td>
+<td>Lower at high scale</td>
+<td>Highest</td>
+<td>Moderate to high</td>
+</tr>
+<tr>
+<td>Cost efficiency for sporadic workloads</td>
+<td>Excellent</td>
+<td>Poor</td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td>Cost efficiency for sustained workloads</td>
+<td>Can become expensive</td>
+<td>Excellent</td>
+<td>Depends on workload profile</td>
+</tr>
+</tbody>
+</table>
+<h3 id="decision-guidance">Decision guidance</h3>
+<p>Might change in the future, I&rsquo;m a bit trying to guess here based on the direction</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Recommended SKU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple event-driven automation</td>
+<td>Consumption</td>
+</tr>
+<tr>
+<td>AI workloads</td>
+<td>Automation</td>
+</tr>
+<tr>
+<td>Low-volume departmental workflows</td>
+<td>Consumption or Automation</td>
+</tr>
+<tr>
+<td>Highly variable workloads needing isolation</td>
+<td>Automation</td>
+</tr>
+<tr>
+<td>Workloads with long idle periods and traffic bursts</td>
+<td>Automation</td>
+</tr>
+<tr>
+<td>Enterprise integration platform</td>
+<td>Standard</td>
+</tr>
+<tr>
+<td>SAP, EDI, B2B integration</td>
+<td>Standard</td>
+</tr>
+<tr>
+<td>High-throughput API orchestration</td>
+<td>Standard</td>
+</tr>
+<tr>
+<td>Central Integration Services platform</td>
+<td>Standard</td>
+</tr>
+<tr>
+<td>Predictable 24x7 workload</td>
+<td>Standard</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-reading">Related Reading</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/logic-apps/automation/dynamic-workflow-automation-introduction?WT.mc_id=AZ-MVP-5003556">What is Logic Apps Automation?</a></li>
+<li><a href="https://auto.azure.com/docs/">Logic Apps Automation docs</a></li>
+<li><a href="https://azure.github.io/logicapps-labs/docs/logicapps-ai-course/overview">Logic Apps Labs overview</a></li>
+<li><a href="https://azure.github.io/logicapps-labs/docs/logicapps-ai-course/build_conversational_agents/create-first-conversational-agent">Build your first conversational agent in Azure Logic Apps</a></li>
+<li><a href="https://azure.github.io/logicapps-labs/docs/logicapps-ai-course/build_conversational_agents/deploy-agents-clients">Deploy your agentic workflows and clients</a></li>
+<li><a href="https://azure.github.io/logicapps-labs/docs/logicapps-ai-course/extend_agent_functionality_mcp/mcp-overview">MCP overview for Logic Apps agents</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/logic-apps/automation/compare-automation-services?WT.mc_id=AZ-MVP-5003556">Compare Logic Apps Automation, Azure Logic Apps, Microsoft Copilot Studio, and other automation platforms</a></li>
+</ul>
+<p>This is the useful mental model: Logic Apps Automation is not &ldquo;AI finally arrived in Logic Apps&rdquo;. It is Microsoft packaging agentic workflow capabilities into a new, more opinionated, AI-native SKU. Standard and Consumption are still very relevant, and Logic Apps Labs proves that a lot of the agent story is already there today.</p>
+    </article>
+    <div class="section-blog-info">
+        <div class="row">
+            <div class="col-md-12">
+<div class="authorblock">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="avatar"></div>
+        </div>
+        <div class="col-sm-9">
+            <h4><b>Adam Marczak</b></h4>
+            <p>I've spent most of my career working with software and cloud technologies, but at heart I'm simply someone who loves learning new things and sharing what I discover. Through this blog and my Azure 4 Everyone YouTube channel, I try to make Azure and cloud computing more approachable for developers, architects, and anyone curious about technology. For full profile details, visit <a href='https://adammarczak.pl' target='_blank' rel='noopener'>adammarczak.pl</a>.</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="text-center">Did you enjoy the article?</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <h4 class="">Share it!</h4><a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Facebook" 
+   class="btn btn-just-icon btn-share btn-facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmarczak.io%2fposts%2f2026%2f06%2flogic-apps-automation-released-what-it-is-and-how-it-works%2f">
+    <i class="fa fa-facebook"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Twitter" 
+   class="btn btn-just-icon btn-share btn-twitter" 
+   href="https://twitter.com/home?status=Logic%20Apps%20Automation%20release%2c%20what%20is%20it%2c%20and%20how%20it%20works%3f - https%3a%2f%2fmarczak.io%2fposts%2f2026%2f06%2flogic-apps-automation-released-what-it-is-and-how-it-works%2f">
+   <i class="fa fa-twitter"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Google+" 
+   class="btn btn-just-icon btn-share btn-google" 
+   href="https://plus.google.com/share?url=https%3a%2f%2fmarczak.io%2fposts%2f2026%2f06%2flogic-apps-automation-released-what-it-is-and-how-it-works%2f"><i 
+   class="fa fa-google"></i>
+</a>
+            
+            </div>
+            <div class="col-md-6 text-center large">
+                <h4 class="">More tagged posts</h4>
+  <div class="tag-list">
+    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
+      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
+    </a>
+    <a href="https://marczak.io/tags/logic-apps" title="View all posts in logic-apps">
+      <img src="https://marczak.io/images/tags/logic-apps.svg" alt="logic-apps"/>
+    </a>
+  </div>
+            </div>
+        </div>
+        <div class="row comments">
+            <div class="col-md-12"><div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "https:\/\/marczak.io\/posts\/2026\/06\/logic-apps-automation-released-what-it-is-and-how-it-works\/"; 
+this.page.identifier = "\/posts\/2026\/06\/logic-apps-automation-released-what-it-is-and-how-it-works\/";
+};
+
+(function() {
+if (window.location.hostname == "localhost")return;
+var d = document, s = d.createElement('script');
+s.src = 'https://marczak-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+            </div>
+        </div> 
+    </div>
+</div>
+            <div class="col-md-3 blog-sidebar-wrapper">
+              <aside id="secondary" class="blog-sidebar" role="complementary"><div id="mvp" class="banner-mvp" style="border: solid 2px #210159;padding-top:10px;">
+<p style="text-align: center;font-size: 18px">Adam Marczak</p>
+<img src="/images/avatar.jpg" style="padding-bottom: 10px;"/>
+<p style="text-align: center;">Microsoft Azure MVP</p>
+<img src="/images/mvp.svg" />
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Courses</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px">
+    <a href="https://marczak.io/az-900" >
+        <img src="/images/az-900/cert.svg" style="width:60px;margin-right:10px;;float:left;"></img> AZ-900 <br/>Microsoft Azure Fundamentlas
+    </a>
+</div>
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Featured Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/NPEsD6n9A_I" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-00-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Full Course</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<div style="margin-top:10px;">
+    <a href="https://www.youtube.com/watch?v=63PDmCe3OlA" > 
+<div class="lazy" style="max-height: 547px">
+    <div style="padding-bottom:55.87334014300306%"></div>
+    <img data-src="/images/2025-uc-migration/thumb5.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">UC migration series</p>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Recent Posts</h5>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/" > 
+<div class="lazy" style="max-height: 683px">
+    <div style="padding-bottom:66.69921875%"></div>
+    <img data-src="/images/2026/2026-06-logic-apps-automation/splash.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Logic Apps Automation release, what is it, and how it works?</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/posts/2026/06/modernizing-my-blog-with-ai-using-github-copilot/" > 
+<div class="lazy" style="max-height: 685px">
+    <div style="padding-bottom:66.63424124513618%"></div>
+    <img data-src="/images/2026/2026-06-modernizing-blog-with-ai/splash.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Modernizing my blog with AI using GitHub Copilot</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/posts/2026/06/data-factory-parametrization-with-config-tables/" > 
+<div class="lazy" style="max-height: 683px">
+    <div style="padding-bottom:66.69921875%"></div>
+    <img data-src="/images/2026/2026-06-data-factory-parametrization-with-config-tables/thumbnail.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Data Factory pipeline parametrization via external mapping/config tables</p>
+
+</div>
+</div><div id="recent-videos" class="recent-posts widget widget_recent_entries">
+<h5>Recent Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/videos/2021/04/az900-ep38/" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-39-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 39 | Service Lifecycle in Azure | Public Preview and General Availability</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/videos/2021/03/az900-ep38/" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-38-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 38 | SLA in Azure and Composite SLA</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/videos/2021/03/az900-ep37/" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-37-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 37 | Azure Cost Management</p>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+</div><div id="categories-3" class="widget widget_categories" style="float: left;">
+  <h5>Tags</h5>
+  <ul class="tag-list">
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/active-directory">Active Directory (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
+        </div> 
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-configuration.svg" alt="App Configuration"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-configuration">App Configuration (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-service.svg" alt="App Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-service">App Service (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/application-insights.svg" alt="Application Insights"/> 
+        </div> 
+        <a href="https://marczak.io/tags/application-insights">Application Insights (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/arm.svg" alt="ARM"/> 
+        </div> 
+        <a href="https://marczak.io/tags/arm">ARM (8)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/automation.svg" alt="Automation"/> 
+        </div> 
+        <a href="https://marczak.io/tags/automation">Automation (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/az-900.svg" alt="AZ-900"/> 
+        </div> 
+        <a href="https://marczak.io/tags/az-900">AZ-900 (40)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (151)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/blob-storage.svg" alt="Blob Storage"/> 
+        </div> 
+        <a href="https://marczak.io/tags/blob-storage">Blob Storage (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/bot-service.svg" alt="Bot Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/bot-service">Bot Service (6)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/container-instances.svg" alt="Container Instances"/> 
+        </div> 
+        <a href="https://marczak.io/tags/container-instances">Container Instances (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/copilot.svg" alt="Copilot"/> 
+        </div> 
+        <a href="https://marczak.io/tags/copilot">Copilot (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-factory.svg" alt="Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-factory">Data Factory (13)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-lake-gen2.svg" alt="Data Lake Gen2"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-lake-gen2">Data Lake Gen2 (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/databricks.svg" alt="Databricks"/> 
+        </div> 
+        <a href="https://marczak.io/tags/databricks">Databricks (13)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
+        </div> 
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/entra.svg" alt="Entra"/> 
+        </div> 
+        <a href="https://marczak.io/tags/entra">Entra (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/event-grid.svg" alt="Event Grid"/> 
+        </div> 
+        <a href="https://marczak.io/tags/event-grid">Event Grid (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/event-hub.svg" alt="Event Hub"/> 
+        </div> 
+        <a href="https://marczak.io/tags/event-hub">Event Hub (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/fabric.svg" alt="Fabric"/> 
+        </div> 
+        <a href="https://marczak.io/tags/fabric">Fabric (2)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/fabric-data-factory.svg" alt="Fabric Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/fabric-data-factory">Fabric Data Factory (0)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/file-service.svg" alt="File Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/file-service">File Service (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/flow.svg" alt="Flow"/> 
+        </div> 
+        <a href="https://marczak.io/tags/flow">Flow (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/functions.svg" alt="Functions"/> 
+        </div> 
+        <a href="https://marczak.io/tags/functions">Functions (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/github.svg" alt="GitHub"/> 
+        </div> 
+        <a href="https://marczak.io/tags/github">GitHub (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/key-vault.svg" alt="Key Vault"/> 
+        </div> 
+        <a href="https://marczak.io/tags/key-vault">Key Vault (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/load-balancer.svg" alt="Load Balancer"/> 
+        </div> 
+        <a href="https://marczak.io/tags/load-balancer">Load Balancer (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (40)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/power-bi.svg" alt="Power BI"/> 
+        </div> 
+        <a href="https://marczak.io/tags/power-bi">Power BI (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/powershell.svg" alt="PowerShell"/> 
+        </div> 
+        <a href="https://marczak.io/tags/powershell">PowerShell (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/queue.svg" alt="Queue"/> 
+        </div> 
+        <a href="https://marczak.io/tags/queue">Queue (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/security.svg" alt="Security"/> 
+        </div> 
+        <a href="https://marczak.io/tags/security">Security (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
+        </div> 
+        <a href="https://marczak.io/tags/sql">SQL (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/storage-account.svg" alt="Storage Account"/> 
+        </div> 
+        <a href="https://marczak.io/tags/storage-account">Storage Account (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/stream-analytics.svg" alt="Stream Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/stream-analytics">Stream Analytics (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/table-storage.svg" alt="Table Storage"/> 
+        </div> 
+        <a href="https://marczak.io/tags/table-storage">Table Storage (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/teams.svg" alt="Teams"/> 
+        </div> 
+        <a href="https://marczak.io/tags/teams">Teams (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/traffic-manager.svg" alt="Traffic Manager"/> 
+        </div> 
+        <a href="https://marczak.io/tags/traffic-manager">Traffic Manager (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vm.svg" alt="VM"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vm">VM (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vue.js.svg" alt="Vue.js"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/webpack.svg" alt="Webpack"/> 
+        </div> 
+        <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
+        </div> 
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
+      </li>
+  </ul>
+</div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+<footer class="footer footer-black footer-big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="connected-title">Stay Connected</h5>
+                <div class="">
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-about"
+     href="https://adammarczak.pl">
+    <i class="fa fa-user"></i>
+  </a>
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-twitter"
+     href="https://twitter.com/MarczakIO">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-github"
+     href="https://github.com/MarczakIO">
+    <i class="fa fa-github"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
+     href="https://www.youtube.com/azure4everyone">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
+     href="https://marczak.io/index.xml">
+    <i class="fa fa-rss"></i>
+  </a>
+</div>
+            </div>
+            &copy;<a href="https://adammarczak.pl" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> <a href="https://themeisle.com/themes/hestia/" target="_blank" rel="nofollow">Hestia Theme</a>
+        </div>
+    </div>
+</footer>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
+  
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="https:\/\/marczak.io\/js\/bootstrap.min.js"><\/script>')}</script>
+  
+  <div id="bootstrapCssTest" class="hidden"></div>
+  <script>
+    $(function() {
+      if ($('#bootstrapCssTest').is(':visible')) {
+        $("head").prepend('<link rel="stylesheet" href="https:\/\/marczak.io\/css\/bootstrap.min.css">');
+      }
+    });
+  </script>
+  <script type="text/javascript" src="https://marczak.io/js/main.min.js?ver=1.16"></script>
+</body>
+</html>
