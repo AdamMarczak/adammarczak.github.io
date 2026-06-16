@@ -14,7 +14,7 @@
 <link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
 <link href='https://marczak.io/css/hestia.min.css?ver=1.25' rel="stylesheet" type="text/css" />
-<link href='https://marczak.io/css/main.min.css?ver=1.40' rel='stylesheet' type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.46' rel='stylesheet' type="text/css" />
 <link href="https://marczak.io/posts.json" rel="alternate" type="application/json" title="Posts JSON Feed" />
 <link href="https://marczak.io/videos.json" rel="alternate" type="application/json" title="Videos JSON Feed" />
 <link href="https://marczak.io/news.json" rel="alternate" type="application/json" title="News JSON Feed" />
@@ -110,8 +110,7 @@
   <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
      href="https://www.linkedin.com/in/adam-marczak-96088929/">
     <i class="fa fa-linkedin"></i>
-  </a>
-    <a target="_blank" class="btn btn-img"
+  </a><a target="_blank" class="btn btn-img"
       style="padding-top: 14px;padding-bottom: 13px; color: #210159"
       href="https://www.youtube.com/@AdamMarczakYT/join" rel="noopener noreferrer">
       <i class="fa fa-user-plus" style="margin-right:10px"></i>
@@ -196,7 +195,7 @@
 </a>
     </article>
     <div class="section-blog-info">
-        <div class="row">
+        <div class="row author-block-row">
             <div class="col-md-12">
 <div class="authorblock">
     <div class="row">
@@ -210,13 +209,34 @@
     </div>
 </div>
             </div>
-        </div> 
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h3 class="text-center">Did you enjoy the article?</h3>
+        </div><section class="enjoy-article">
+    <div class="enjoy-article__shell">
+        <div class="enjoy-article__header text-center">
+            <h3 class="enjoy-article__title">Did you enjoy the article?</h3>
+        </div>
+        <div class="row enjoy-article__grid">
+            <div class="col-md-4 col-sm-6 enjoy-article__column">
+                <div class="enjoy-article__card enjoy-article__card--accent text-center">
+                    <div class="enjoy-article__icon">
+                        <i class="fa fa-heart-o"></i>
+                    </div>
+                    <h4 class="enjoy-article__card-title">Support me</h4>
+                    <div class="enjoy-article__action"><a target="_blank" class="btn btn-img"
+      style="padding-top: 14px;padding-bottom: 13px; color: #210159"
+      href="https://www.youtube.com/@AdamMarczakYT/join" rel="noopener noreferrer">
+      <i class="fa fa-user-plus" style="margin-right:10px"></i>
+      <span>Join as member</span>
+  </a>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 text-center">
-                <h4 class="">Share it!</h4><a target="_blank" 
+            <div class="col-md-4 col-sm-6 enjoy-article__column">
+                <div class="enjoy-article__card text-center">
+                    <div class="enjoy-article__icon">
+                        <i class="fa fa-bullhorn"></i>
+                    </div>
+                    <h4 class="enjoy-article__card-title">Share it</h4>
+                    <div class="enjoy-article__action enjoy-article__action--share"><a target="_blank" 
    rel="tooltip" 
    data-original-title="Share on Facebook" 
    class="btn btn-just-icon btn-share btn-facebook"
@@ -232,15 +252,22 @@
 </a>
 <a target="_blank" 
    rel="tooltip" 
-   data-original-title="Share on Google+" 
-   class="btn btn-just-icon btn-share btn-google" 
-   href="https://plus.google.com/share?url=https%3a%2f%2fmarczak.io%2fvideos%2f2019%2f08%2fdatabricks-intro%2f"><i 
-   class="fa fa-google"></i>
+   data-original-title="Share on LinkedIn" 
+   class="btn btn-just-icon btn-share btn-linkedin" 
+   href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fmarczak.io%2fvideos%2f2019%2f08%2fdatabricks-intro%2f"><i 
+   class="fa fa-linkedin"></i>
 </a>
             
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 text-center large">
-                <h4 class="">More tagged posts</h4>
+            <div class="col-md-4 col-sm-12 enjoy-article__column enjoy-article__column--wide">
+                <div class="enjoy-article__card enjoy-article__card--tags text-center">
+                    <div class="enjoy-article__icon">
+                        <i class="fa fa-compass"></i>
+                    </div>
+                    <h4 class="enjoy-article__card-title">More tagged posts</h4>
+                    <div class="enjoy-article__action enjoy-article__action--tags large">
   <div class="tag-list">
     <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
       <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
@@ -249,8 +276,12 @@
       <img src="https://marczak.io/images/tags/databricks.svg" alt="Databricks"/>
     </a>
   </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</section>
         <div class="row comments">
             <div class="col-md-12"><div id="disqus_thread"></div>
 <script>
