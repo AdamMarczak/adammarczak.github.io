@@ -42,6 +42,7 @@ openapi_yaml: https://marczak.io/.well-known/openapi.yaml
 openapi_json: https://marczak.io/.well-known/openapi.json
 agent_manifest: https://marczak.io/.well-known/agent.json
 contact_email: adam@marczak.io
+contact_x: https://x.com/MarczakIO
 contact_twitter: https://twitter.com/MarczakIO
 contact_github: https://github.com/MarczakIO
 content_language: en-US
