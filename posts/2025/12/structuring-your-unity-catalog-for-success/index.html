@@ -14,7 +14,7 @@
 <link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
 <link href='https://marczak.io/css/hestia.min.css?ver=1.25' rel="stylesheet" type="text/css" />
-<link href='https://marczak.io/css/main.min.css?ver=1.46' rel='stylesheet' type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.47' rel='stylesheet' type="text/css" />
 <link href="https://marczak.io/posts.json" rel="alternate" type="application/json" title="Posts JSON Feed" />
 <link href="https://marczak.io/videos.json" rel="alternate" type="application/json" title="Videos JSON Feed" />
 <link href="https://marczak.io/news.json" rel="alternate" type="application/json" title="News JSON Feed" />
@@ -44,32 +44,65 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https:\/\/marczak.io\/posts\/2025\/12\/structuring-your-unity-catalog-for-success\/"
-  },
-  "headline": "Azure Databricks Lessons Learned Series - part 4: Structuring Your Unity Catalog for Success",
-  "description": "In our platform, one of the first questions we answered was: what is a project in Unity Catalog? That decision shaped every later governance and onboarding choice. ",
-  "url": "https:\/\/marczak.io\/posts\/2025\/12\/structuring-your-unity-catalog-for-success\/",
-  "datePublished": "2025-12-23T17:00:00\u002b02:00",
-  "dateModified": "2025-12-23T17:00:00\u002b02:00",
-  "author": {
-    "@type": "Person",
-    "name": "Adam Marczak"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Marczak.IO",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https:\/\/marczak.io\/images\/favicon.ico"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https:\/\/adammarczak.pl\/#person",
+      "name": "Adam Marczak",
+      "url": "https:\/\/adammarczak.pl\/",
+      "sameAs": [
+        "https:\/\/www.wikidata.org\/wiki\/Q140276258",
+        "https:\/\/www.linkedin.com\/in\/adam-marczak\/",
+        "https:\/\/github.com\/MarczakIO",
+        "https:\/\/www.youtube.com\/@AdamMarczakYT",
+        "https:\/\/x.com\/MarczakIO",
+        "https:\/\/twitter.com\/MarczakIO",
+        "https:\/\/www.facebook.com\/MarczakIO\/",
+        "https:\/\/marczak.io\/"
+      ],
+      "knowsAbout": [
+        "Microsoft Azure",
+        "Cloud Architecture",
+        "Cloud Computing",
+        "Databricks",
+        "Microsoft Fabric",
+        "Data Engineering",
+        "Software Engineering"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https:\/\/marczak.io\/#website",
+      "url": "https:\/\/marczak.io\/",
+      "name": "Marczak.IO",
+      "alternateName": "Azure 4 Everyone",
+      "publisher": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https:\/\/marczak.io\/posts\/2025\/12\/structuring-your-unity-catalog-for-success\/#blogposting",
+      "headline": "Azure Databricks Lessons Learned Series - part 4: Structuring Your Unity Catalog for Success",
+      "description": "In our platform, one of the first questions we answered was: what is a project in Unity Catalog? That decision shaped every later governance and onboarding choice. ",
+      "url": "https:\/\/marczak.io\/posts\/2025\/12\/structuring-your-unity-catalog-for-success\/",
+      "datePublished": "2025-12-23T17:00:00\u002b02:00",
+      "dateModified": "2025-12-23T17:00:00\u002b02:00",
+      "isPartOf": {
+        "@id": "https:\/\/marczak.io\/#website"
+      },
+      "author": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      },
+      "publisher": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      },
+      "image": [
+        "https:\/\/marczak.io\/2025-uc-migration\/thumb1.jpg"
+      ],
+      "keywords": ["Azure","databricks"]
     }
-  },
-  "image": [
-    "https:\/\/marczak.io\/2025-uc-migration\/thumb1.jpg"
-  ],
-  "keywords": "Azure, databricks"
+  ]
 }
 </script>
 
@@ -107,7 +140,7 @@
     <i class="fa fa-twitter"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
-     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+     href="https://www.linkedin.com/in/adam-marczak/">
     <i class="fa fa-linkedin"></i>
   </a><a target="_blank" class="btn btn-img"
       style="padding-top: 14px;padding-bottom: 13px; color: #210159"
@@ -117,7 +150,7 @@
   </a>
   <a target="_top" class="btn btn-img" 
       style="padding-top: 14px;padding-bottom: 13px;background:#210159;"
-      href="https://www.youtube.com/azure4everyone">
+      href="https://www.youtube.com/@AdamMarczakYT">
       <img src="/images/youtube.svg" style="height: 17px;margin-right:10px"/>
       <span>My YouTube</span>
   </a>
@@ -150,8 +183,8 @@
       
       
       <div class="site-nav-buttons" role="tablist" aria-label="Content type navigation">
-        <a href="/" class="btn btn-nav active" aria-current="page">Posts (63)</a>
-        <a href="/videos/" class="btn btn-nav">Videos (89)</a>
+        <a href="/" class="btn btn-nav active" aria-current="page">Posts (64)</a>
+        <a href="/videos/" class="btn btn-nav">Videos (90)</a>
         <a href="/news/" class="btn btn-nav">News (2)</a>
       </div>
       <div class="hestia-blogs">
@@ -388,6 +421,20 @@ s.setAttribute('data-timestamp', +new Date());
 
 
 <div style="margin-top:10px;">
+    <a href="/posts/2026/06/azure-data-platforms-end-of-era-databricks-fabric/" > 
+<div class="lazy" style="max-height: 683px">
+    <div style="padding-bottom:66.69921875%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/splash.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">The end of a Azure Data Platforms era, and the future with Databricks- and Fabric-centric architectures</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
     <a href="/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/" > 
 <div class="lazy" style="max-height: 683px">
     <div style="padding-bottom:66.69921875%"></div>
@@ -412,22 +459,22 @@ s.setAttribute('data-timestamp', +new Date());
 <p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Modernizing my blog with AI using GitHub Copilot</p>
 
 </div>
+</div><div id="recent-videos" class="recent-posts widget widget_recent_entries">
+<h5>Recent Videos</h5>
 <div style="width:180px;margin-top:10px">
 
 
 <div style="margin-top:10px;">
-    <a href="/posts/2026/06/data-factory-parametrization-with-config-tables/" > 
-<div class="lazy" style="max-height: 683px">
-    <div style="padding-bottom:66.69921875%"></div>
-    <img data-src="/images/2026/2026-06-data-factory-parametrization-with-config-tables/thumbnail.jpg" src=""/> 
+    <a href="/videos/2026/06/sqlday-2025-unity-catalog-migrations/" > 
+<div class="lazy" style="max-height: 576px">
+    <div style="padding-bottom:56.25%"></div>
+    <img data-src="/images/2026/youtube/sqlday2025.jpg" src=""/> 
 </div> 
     </a>
 </div>
-<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Data Factory pipeline parametrization via external mapping/config tables</p>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">SQLDay 2025 Session: Migration to Unity Catalog | Lessons Learned</p>
 
 </div>
-</div><div id="recent-videos" class="recent-posts widget widget_recent_entries">
-<h5>Recent Videos</h5>
 <div style="width:180px;margin-top:10px">
 
 
@@ -454,20 +501,6 @@ s.setAttribute('data-timestamp', +new Date());
     </a>
 </div>
 <p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 38 | SLA in Azure and Composite SLA</p>
-
-</div>
-<div style="width:180px;margin-top:10px">
-
-
-<div style="margin-top:10px;">
-    <a href="/videos/2021/03/az900-ep37/" > 
-<div class="lazy" style="max-height: 416px">
-    <div style="padding-bottom:56.21621621621622%"></div>
-    <img data-src="/images/youtube/az-900-v4-ep-37-740.jpg" src=""/> 
-</div> 
-    </a>
-</div>
-<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 37 | Azure Cost Management</p>
 
 </div>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
@@ -532,7 +565,7 @@ s.setAttribute('data-timestamp', +new Date());
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
         </div> 
-        <a href="https://marczak.io/tags/azure">Azure (151)</a>
+        <a href="https://marczak.io/tags/azure">Azure (153)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -604,7 +637,7 @@ s.setAttribute('data-timestamp', +new Date());
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/databricks.svg" alt="Databricks"/> 
         </div> 
-        <a href="https://marczak.io/tags/databricks">Databricks (13)</a>
+        <a href="https://marczak.io/tags/databricks">Databricks (15)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -634,7 +667,7 @@ s.setAttribute('data-timestamp', +new Date());
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/fabric.svg" alt="Fabric"/> 
         </div> 
-        <a href="https://marczak.io/tags/fabric">Fabric (2)</a>
+        <a href="https://marczak.io/tags/fabric">Fabric (3)</a>
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -814,11 +847,11 @@ s.setAttribute('data-timestamp', +new Date());
     <i class="fa fa-github"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
-     href="https://www.youtube.com/azure4everyone">
+     href="https://www.youtube.com/@AdamMarczakYT">
     <i class="fa fa-youtube"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
-     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+     href="https://www.linkedin.com/in/adam-marczak/">
     <i class="fa fa-linkedin"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"

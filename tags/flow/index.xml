@@ -10,6 +10,18 @@
         <atom:link href="https://marczak.io/tags/flow/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>The end of a Azure Data Platforms era, and the future with Databricks- and Fabric-centric architectures</title>
+      <link>https://marczak.io/posts/2026/06/azure-data-platforms-end-of-era-databricks-fabric/</link>
+      <pubDate>Wed, 17 Jun 2026 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2026/06/azure-data-platforms-end-of-era-databricks-fabric/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2026/2026-06-end-of-azure-data-platforms/splash.jpg&quot;&gt;
+        &lt;p&gt;Recent announcements were a final call for many of us to change how we think about design of modern data platforms. The question is, are you ready, and what about your current real-estate?&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
       <title>Logic Apps Automation release, what is it, and how it works?</title>
       <link>https://marczak.io/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/</link>
       <pubDate>Mon, 15 Jun 2026 05:00:00 +0200</pubDate>
@@ -174,6 +186,18 @@
       <description>
         &lt;img src=&quot;https://marczak.io/images/025-data-landing-zones/thumb.jpg&quot;&gt;
         &lt;p&gt;We spent the last two and a half years building a new Azure data platform from scratch using the Data Landing Zone approach. After migrating thousands of workloads and managing dozens of subscriptions, I thought it would be useful to share what actually worked, what we did differently, and the honest answer to the question: would I do it again?&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>SQLDay 2025 Session: Migration to Unity Catalog | Lessons Learned</title>
+      <link>https://marczak.io/videos/2026/06/sqlday-2025-unity-catalog-migrations/</link>
+      <pubDate>Wed, 11 Jun 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/videos/2026/06/sqlday-2025-unity-catalog-migrations/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2026/youtube/sqlday2025.jpg&quot;&gt;
+        &lt;p&gt;In this SQLDay 2025 session, we explore the realities of migrating enterprise Databricks environments to Unity Catalog.&lt;/p&gt;
       </description>
     </item>
     
@@ -346,18 +370,6 @@
     </item>
     
     <item>
-      <title>Power BI: Query Azure REST API Management and page results</title>
-      <link>https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/</link>
-      <pubDate>Sun, 02 Feb 2025 17:00:23 +0200</pubDate>
-      
-      <guid>https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/</guid>
-      <description>
-        &lt;img src=&quot;https://marczak.io/images/2025-pbi/rest-api.png&quot;&gt;
-        &lt;p&gt;Did you try to query Azure Management REST API from Power Query? Did you notice paging doesn&amp;rsquo;t work&amp;hellip; yeah&amp;hellip;&lt;/p&gt;
-      </description>
-    </item>
-    
-    <item>
       <title>Logic App Tips: SQL db can&#39;t be shared, but...</title>
       <link>https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/</link>
       <pubDate>Sun, 02 Feb 2025 17:00:23 +0200</pubDate>
@@ -366,6 +378,18 @@
       <description>
         &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-10.png&quot;&gt;
         &lt;p&gt;Speaking of logic app state storage, what about SQL DB? Can SQL database be used to share state for many logic apps?&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Power BI: Query Azure REST API Management and page results</title>
+      <link>https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/</link>
+      <pubDate>Sun, 02 Feb 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2025-pbi/rest-api.png&quot;&gt;
+        &lt;p&gt;Did you try to query Azure Management REST API from Power Query? Did you notice paging doesn&amp;rsquo;t work&amp;hellip; yeah&amp;hellip;&lt;/p&gt;
       </description>
     </item>
     

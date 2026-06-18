@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-17T09:43:09Z",
+  "generated_at": "2026-06-18T09:30:12Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -14,19 +14,19 @@
     "news_feed": "https://marczak.io/news.json"
   },
   "statistics": {
-    "total_posts": 63,
-    "total_videos": 89,
+    "total_posts": 64,
+    "total_videos": 90,
     "total_news": 2,
-    "total_content": 154,
+    "total_content": 156,
     "total_tags": 50,
-    "last_content_date": "2026-06-15"
+    "last_content_date": "2026-06-17"
   },
   "topics": [
     {
       "name": "azure",
       "slug": "azure",
       "url": "https://marczak.io/tags/azure/",
-      "post_count": 151
+      "post_count": 153
     },
     {
       "name": "az-900",
@@ -41,15 +41,15 @@
       "post_count": 40
     },
     {
-      "name": "data-factory",
-      "slug": "data-factory",
-      "url": "https://marczak.io/tags/data-factory/",
-      "post_count": 13
-    },
-    {
       "name": "databricks",
       "slug": "databricks",
       "url": "https://marczak.io/tags/databricks/",
+      "post_count": 15
+    },
+    {
+      "name": "data-factory",
+      "slug": "data-factory",
+      "url": "https://marczak.io/tags/data-factory/",
       "post_count": 13
     },
     {
@@ -113,6 +113,12 @@
       "post_count": 3
     },
     {
+      "name": "fabric",
+      "slug": "fabric",
+      "url": "https://marczak.io/tags/fabric/",
+      "post_count": 3
+    },
+    {
       "name": "key-vault",
       "slug": "key-vault",
       "url": "https://marczak.io/tags/key-vault/",
@@ -146,12 +152,6 @@
       "name": "event-grid",
       "slug": "event-grid",
       "url": "https://marczak.io/tags/event-grid/",
-      "post_count": 2
-    },
-    {
-      "name": "fabric",
-      "slug": "fabric",
-      "url": "https://marczak.io/tags/fabric/",
       "post_count": 2
     },
     {
@@ -324,6 +324,18 @@
     }
   ],
   "posts": [
+    {
+      "title": "The end of a Azure Data Platforms era, and the future with Databricks- and Fabric-centric architectures",
+      "url": "https://marczak.io/posts/2026/06/azure-data-platforms-end-of-era-databricks-fabric/",
+      "slug": "azure-data-platforms-end-of-era-databricks-fabric",
+      "published_at": "2026-06-17",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Recent announcements were a final call for many of us to change how we think about design of modern data platforms. The question is, are you ready, and what about your current real-estate?\n",
+      "tags": ["Azure","Databricks","Fabric"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/posts/2026/06/azure-data-platforms-end-of-era-databricks-fabric/"
+    },
     {
       "title": "Logic Apps Automation release, what is it, and how it works?",
       "url": "https://marczak.io/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/",
@@ -1082,6 +1094,18 @@
     }
   ],
   "videos": [
+    {
+      "title": "SQLDay 2025 Session: Migration to Unity Catalog | Lessons Learned",
+      "url": "https://marczak.io/videos/2026/06/sqlday-2025-unity-catalog-migrations/",
+      "slug": "sqlday-2025-unity-catalog-migrations",
+      "published_at": "2025-06-11",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "In this SQLDay 2025 session, we explore the realities of migrating enterprise Databricks environments to Unity Catalog.\n",
+      "tags": ["Azure","Databricks"],
+      "reading_time_minutes": 2,
+      "canonical_url": "https://marczak.io/videos/2026/06/sqlday-2025-unity-catalog-migrations/"
+    },
     {
       "title": "AZ-900 Episode 39 | Service Lifecycle in Azure | Public Preview and General Availability",
       "url": "https://marczak.io/videos/2021/04/az900-ep38/",

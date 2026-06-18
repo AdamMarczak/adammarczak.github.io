@@ -14,7 +14,7 @@
 <link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
 <link href='https://marczak.io/css/hestia.min.css?ver=1.25' rel="stylesheet" type="text/css" />
-<link href='https://marczak.io/css/main.min.css?ver=1.46' rel='stylesheet' type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.47' rel='stylesheet' type="text/css" />
   <link href="https://marczak.io/az-900/index.xml" rel="alternate" type="application/rss+xml" title="Marczak.IO" />
   <link href="https://marczak.io/az-900/index.xml" rel="feed" type="application/rss+xml" title="Marczak.IO" />
 <link href="https://marczak.io/posts.json" rel="alternate" type="application/json" title="Posts JSON Feed" />
@@ -48,32 +48,73 @@ Path Overview  Navigation Start here!
  Episode 0: Course Overview Episode 1: Cloud Computing, High Availability, Scalability, Elasticity, Agility, Fault Tolerance, and Disaster Recovery Episode 2: Principles of economies of scale Episode 3: Capital Expenditure (CapEx) vs Operational Expenditure (OpEx) and their differences Episode 4: Consumption-based model Episode 5: IaaS, PaaS, SaaS and their differences Episode 6: Public, Private, Hybrid cloud and their differences Episode 7: Azure Regions and Availability Zones Episode 8: Azure Resource Groups and Resource Manager Episode 9: Azure Compute Services | Virtual Machine, VM Scale Set, App Service, Functions, Container Instances, Kubernetes Service Episode 10: Azure Networking Services | Virtual Network, Load Balancer, VPN Gateway, Application Gateway, CDN Episode 11: Azure Storage Services | Blob, Disk, File and Archive Episode 12: Database Services | Cosmos DB, SQL Database, SQL DB for MySQL and PostgreSQL, SQL Managed Instance Episode 13: Azure Marketplace Episode 14: Azure IoT Services | IoT Hub, IoT Central, Azure Sphere Episode 15: Azure Big Data and Analytics Services | Synapse Analytics (SQL Datawarehouse), HDInsight, Databricks Episode 16: Azure Artificial Intelligence (AI) Services | Machine Learning Studio and Service Episode 17: Azure Serverless Computing Services | Functions, Logic Apps, Event Grid Episode 18: Azure DevOps Solutions | Azure DevOps, DevTest Labs Episode 19: Azure Tools | Portal, PowerShell, CLI and CloudShell Episode 20: Azure Advisor Episode 21: Security Groups | NSG and ASG | Network Security Groups and Application Security grouyps Episode 22: User-defined Routes (UDR) Episode 23: Azure Firewall Episode 24: Azure DDoS Protection Episode 25: Azure Identity Services | Identity, Authentication, Authorization &amp; Azure AD Episode 26: Azure Security Center and usage scenarios Episode 27: Key Vault Episode 28: Role-Based Access Control (RBAC) Episode 29: Resource Locks Episode 30: Tags Episode 31: Azure Policy Episode 32: Azure Blueprints Episode 33: Cloud Adoption Framework Episode 34: Core tenets of Security, Privacy, and Compliance Episode 35: Cost Affecting Factors Episode 36: Cost Reduction Methods and Pricing, TCO Calculators Episode 37: Azure Cost Management Episode 38: Azure Service Level Agreement (SLA) Episode 39: Service lifecycle in Azure  Course Overview Start here!">
 <meta name="twitter:url" content="https://marczak.io/az-900/">
 
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "url": "https:\/\/marczak.io\/",
-  "name": "Marczak.IO",
-  "alternateName": "Azure 4 Everyone",
-  "description": "Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.",
-  "publisher": {
-    "@type": "Person",
-    "name": "Adam Marczak",
-    "url": "https:\/\/adammarczak.pl"
-  },
-  "sameAs": [
-    "https:\/\/x.com\/MarczakIO",
-    "https:\/\/twitter.com\/MarczakIO",
-    "https:\/\/www.facebook.com\/MarczakIO\/",
-    "https:\/\/www.youtube.com\/azure4everyone",
-    "https:\/\/github.com\/MarczakIO"
-  ],
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https:\/\/marczak.io\/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https:\/\/adammarczak.pl\/#person",
+      "name": "Adam Marczak",
+      "url": "https:\/\/adammarczak.pl\/",
+      "sameAs": [
+        "https:\/\/www.wikidata.org\/wiki\/Q140276258",
+        "https:\/\/www.linkedin.com\/in\/adam-marczak\/",
+        "https:\/\/github.com\/MarczakIO",
+        "https:\/\/www.youtube.com\/@AdamMarczakYT",
+        "https:\/\/x.com\/MarczakIO",
+        "https:\/\/twitter.com\/MarczakIO",
+        "https:\/\/www.facebook.com\/MarczakIO\/",
+        "https:\/\/marczak.io\/"
+      ],
+      "knowsAbout": [
+        "Microsoft Azure",
+        "Cloud Architecture",
+        "Cloud Computing",
+        "Databricks",
+        "Microsoft Fabric",
+        "Data Engineering",
+        "Software Engineering"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https:\/\/marczak.io\/#website",
+      "url": "https:\/\/marczak.io\/",
+      "name": "Marczak.IO",
+      "alternateName": "Azure 4 Everyone",
+      "publisher": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      }
+    },
+    {
+      "@type": "Course",
+      "@id": "https:\/\/marczak.io\/az-900\/#course",
+      "name": "AZ-900 Microsoft Azure Fundamentals Free Full Course and Study Guide",
+      "description": "Free Azure Fundamentals course by Adam Marczak for people preparing for the Microsoft AZ-900 certification exam.",
+      "url": "https:\/\/marczak.io\/az-900\/",
+      "inLanguage": "en",
+      "educationalLevel": "Beginner",
+      "isPartOf": {
+        "@id": "https:\/\/marczak.io\/#website"
+      },
+      "provider": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      },
+      "author": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      },
+      "publisher": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      },
+      "about": [
+        "Microsoft Azure",
+        "Azure Fundamentals",
+        "cloud computing",
+        "AZ-900"
+      ]
+    }
+  ]
 }
 </script>
 
@@ -111,7 +152,7 @@ Path Overview  Navigation Start here!
     <i class="fa fa-twitter"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
-     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+     href="https://www.linkedin.com/in/adam-marczak/">
     <i class="fa fa-linkedin"></i>
   </a><a target="_blank" class="btn btn-img"
       style="padding-top: 14px;padding-bottom: 13px; color: #210159"
@@ -121,7 +162,7 @@ Path Overview  Navigation Start here!
   </a>
   <a target="_top" class="btn btn-img" 
       style="padding-top: 14px;padding-bottom: 13px;background:#210159;"
-      href="https://www.youtube.com/azure4everyone">
+      href="https://www.youtube.com/@AdamMarczakYT">
       <img src="/images/youtube.svg" style="height: 17px;margin-right:10px"/>
       <span>My YouTube</span>
   </a>
@@ -154,8 +195,8 @@ Path Overview  Navigation Start here!
       
       
       <div class="site-nav-buttons" role="tablist" aria-label="Content type navigation">
-        <a href="/" class="btn btn-nav">Posts (63)</a>
-        <a href="/videos/" class="btn btn-nav">Videos (89)</a>
+        <a href="/" class="btn btn-nav">Posts (64)</a>
+        <a href="/videos/" class="btn btn-nav">Videos (90)</a>
         <a href="/news/" class="btn btn-nav">News (2)</a>
       </div>
       <div class="hestia-blogs">
@@ -1508,6 +1549,20 @@ s.setAttribute('data-timestamp', +new Date());
 
 
 <div style="margin-top:10px;">
+    <a href="/posts/2026/06/azure-data-platforms-end-of-era-databricks-fabric/" > 
+<div class="lazy" style="max-height: 683px">
+    <div style="padding-bottom:66.69921875%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/splash.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">The end of a Azure Data Platforms era, and the future with Databricks- and Fabric-centric architectures</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
     <a href="/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/" > 
 <div class="lazy" style="max-height: 683px">
     <div style="padding-bottom:66.69921875%"></div>
@@ -1532,22 +1587,22 @@ s.setAttribute('data-timestamp', +new Date());
 <p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Modernizing my blog with AI using GitHub Copilot</p>
 
 </div>
+</div><div id="recent-videos" class="recent-posts widget widget_recent_entries">
+<h5>Recent Videos</h5>
 <div style="width:180px;margin-top:10px">
 
 
 <div style="margin-top:10px;">
-    <a href="/posts/2026/06/data-factory-parametrization-with-config-tables/" > 
-<div class="lazy" style="max-height: 683px">
-    <div style="padding-bottom:66.69921875%"></div>
-    <img data-src="/images/2026/2026-06-data-factory-parametrization-with-config-tables/thumbnail.jpg" src=""/> 
+    <a href="/videos/2026/06/sqlday-2025-unity-catalog-migrations/" > 
+<div class="lazy" style="max-height: 576px">
+    <div style="padding-bottom:56.25%"></div>
+    <img data-src="/images/2026/youtube/sqlday2025.jpg" src=""/> 
 </div> 
     </a>
 </div>
-<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Data Factory pipeline parametrization via external mapping/config tables</p>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">SQLDay 2025 Session: Migration to Unity Catalog | Lessons Learned</p>
 
 </div>
-</div><div id="recent-videos" class="recent-posts widget widget_recent_entries">
-<h5>Recent Videos</h5>
 <div style="width:180px;margin-top:10px">
 
 
@@ -1574,20 +1629,6 @@ s.setAttribute('data-timestamp', +new Date());
     </a>
 </div>
 <p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 38 | SLA in Azure and Composite SLA</p>
-
-</div>
-<div style="width:180px;margin-top:10px">
-
-
-<div style="margin-top:10px;">
-    <a href="/videos/2021/03/az900-ep37/" > 
-<div class="lazy" style="max-height: 416px">
-    <div style="padding-bottom:56.21621621621622%"></div>
-    <img data-src="/images/youtube/az-900-v4-ep-37-740.jpg" src=""/> 
-</div> 
-    </a>
-</div>
-<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 37 | Azure Cost Management</p>
 
 </div>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
@@ -1652,7 +1693,7 @@ s.setAttribute('data-timestamp', +new Date());
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
         </div> 
-        <a href="https://marczak.io/tags/azure">Azure (151)</a>
+        <a href="https://marczak.io/tags/azure">Azure (153)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1724,7 +1765,7 @@ s.setAttribute('data-timestamp', +new Date());
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/databricks.svg" alt="Databricks"/> 
         </div> 
-        <a href="https://marczak.io/tags/databricks">Databricks (13)</a>
+        <a href="https://marczak.io/tags/databricks">Databricks (15)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1754,7 +1795,7 @@ s.setAttribute('data-timestamp', +new Date());
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/fabric.svg" alt="Fabric"/> 
         </div> 
-        <a href="https://marczak.io/tags/fabric">Fabric (2)</a>
+        <a href="https://marczak.io/tags/fabric">Fabric (3)</a>
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1934,11 +1975,11 @@ s.setAttribute('data-timestamp', +new Date());
     <i class="fa fa-github"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
-     href="https://www.youtube.com/azure4everyone">
+     href="https://www.youtube.com/@AdamMarczakYT">
     <i class="fa fa-youtube"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
-     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+     href="https://www.linkedin.com/in/adam-marczak/">
     <i class="fa fa-linkedin"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"

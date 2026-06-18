@@ -14,7 +14,7 @@
 <link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
 <link href='https://marczak.io/css/hestia.min.css?ver=1.25' rel="stylesheet" type="text/css" />
-<link href='https://marczak.io/css/main.min.css?ver=1.46' rel='stylesheet' type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.47' rel='stylesheet' type="text/css" />
   <link href="https://marczak.io/tags/azure/index.xml" rel="alternate" type="application/rss+xml" title="Marczak.IO" />
   <link href="https://marczak.io/tags/azure/index.xml" rel="feed" type="application/rss+xml" title="Marczak.IO" />
 <link href="https://marczak.io/posts.json" rel="alternate" type="application/json" title="Posts JSON Feed" />
@@ -46,28 +46,76 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "url": "https:\/\/marczak.io\/",
-  "name": "Marczak.IO",
-  "alternateName": "Azure 4 Everyone",
-  "description": "Adam Marczak blog created for purpose of personal contribution and sharing knowledge to communities everywhere.",
-  "publisher": {
-    "@type": "Person",
-    "name": "Adam Marczak",
-    "url": "https:\/\/adammarczak.pl"
-  },
-  "sameAs": [
-    "https:\/\/x.com\/MarczakIO",
-    "https:\/\/twitter.com\/MarczakIO",
-    "https:\/\/www.facebook.com\/MarczakIO\/",
-    "https:\/\/www.youtube.com\/azure4everyone",
-    "https:\/\/github.com\/MarczakIO"
-  ],
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https:\/\/marczak.io\/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https:\/\/adammarczak.pl\/#person",
+      "name": "Adam Marczak",
+      "url": "https:\/\/adammarczak.pl\/",
+      "sameAs": [
+        "https:\/\/www.wikidata.org\/wiki\/Q140276258",
+        "https:\/\/www.linkedin.com\/in\/adam-marczak\/",
+        "https:\/\/github.com\/MarczakIO",
+        "https:\/\/www.youtube.com\/@AdamMarczakYT",
+        "https:\/\/x.com\/MarczakIO",
+        "https:\/\/twitter.com\/MarczakIO",
+        "https:\/\/www.facebook.com\/MarczakIO\/",
+        "https:\/\/marczak.io\/"
+      ],
+      "knowsAbout": [
+        "Microsoft Azure",
+        "Cloud Architecture",
+        "Cloud Computing",
+        "Databricks",
+        "Microsoft Fabric",
+        "Data Engineering",
+        "Software Engineering"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https:\/\/marczak.io\/#website",
+      "url": "https:\/\/marczak.io\/",
+      "name": "Marczak.IO",
+      "alternateName": "Azure 4 Everyone",
+      "description": "Technical blog and learning platform focused on Microsoft Azure, Databricks, Microsoft Fabric, cloud architecture and data engineering.",
+      "publisher": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      },
+      "creator": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      },
+      "sameAs": [
+        "https:\/\/x.com\/MarczakIO",
+        "https:\/\/www.facebook.com\/MarczakIO\/",
+        "https:\/\/www.youtube.com\/@AdamMarczakYT",
+        "https:\/\/github.com\/MarczakIO"
+      ],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https:\/\/marczak.io\/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https:\/\/marczak.io\/tags\/azure\/#webpage",
+      "url": "https:\/\/marczak.io\/tags\/azure\/",
+      "name": "Marczak.IO - Practical Azure Engineering",
+      "isPartOf": {
+        "@id": "https:\/\/marczak.io\/#website"
+      },
+      "mainEntity": {
+        "@id": "https://adammarczak.pl/#person"
+      },
+      "author": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      },
+      "about": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      }
+    }
+  ]
 }
 </script>
 
@@ -105,7 +153,7 @@
     <i class="fa fa-twitter"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
-     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+     href="https://www.linkedin.com/in/adam-marczak/">
     <i class="fa fa-linkedin"></i>
   </a><a target="_blank" class="btn btn-img"
       style="padding-top: 14px;padding-bottom: 13px; color: #210159"
@@ -115,7 +163,7 @@
   </a>
   <a target="_top" class="btn btn-img" 
       style="padding-top: 14px;padding-bottom: 13px;background:#210159;"
-      href="https://www.youtube.com/azure4everyone">
+      href="https://www.youtube.com/@AdamMarczakYT">
       <img src="/images/youtube.svg" style="height: 17px;margin-right:10px"/>
       <span>My YouTube</span>
   </a>
@@ -146,8 +194,8 @@
       
       
       <div class="site-nav-buttons" role="tablist" aria-label="Content type navigation">
-        <a href="/" class="btn btn-nav">Posts (63)</a>
-        <a href="/videos/" class="btn btn-nav">Videos (89)</a>
+        <a href="/" class="btn btn-nav">Posts (64)</a>
+        <a href="/videos/" class="btn btn-nav">Videos (90)</a>
         <a href="/news/" class="btn btn-nav">News (2)</a>
       </div>
       <div class="hestia-blogs">
@@ -155,6 +203,76 @@
           
           <div class="row">
 <div class="col-md-9 blog-posts-wrap"><article id="post-19" class="card card-plain card-blog">
+  <div class="row">
+    <div class="col-md-5">
+      <a href="/videos/2020/09/az900-ep16/" class='thumbnail'> 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-16-740.jpg" src=""/> 
+</div> 
+      </a>
+    </div>
+    <div class="col-md-7">
+      
+  <div class="tag-list">
+    <a href="https://marczak.io/tags/az-900" title="View all posts in AZ-900">
+      <img src="https://marczak.io/images/tags/az-900.svg" alt="AZ-900"/>
+    </a>
+    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
+      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
+    </a>
+  </div>
+      <h2 class="card-title entry-title">
+        <a href="/videos/2020/09/az900-ep16/" title="AZ-900 Episode 16 | Azure Artificial Intelligence (AI) Services | Machine Learning Studio &amp; Service" rel="bookmark">AZ-900 Episode 16 | Azure Artificial Intelligence (AI) Services | Machine Learning Studio &amp; Service</a></h2>
+        <div class="card-description">
+        <p><ul>
+<li>Describe Artificial Intelligence (AI) and products that are available for AI such as Azure Machine Learning Service and Studio.</li>
+</ul> </p> 
+      </div>
+      <div class="author">
+        By <a href="https://adammarczak.pl" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a>, <time class="entry-date updated" datetime="2020-09-21 11:00:23 &#43;0200 CEST">September 21 2020</time>
+      </div>
+    </div>
+  </div>
+</article><article id="post-19" class="card card-plain card-blog">
+  <div class="row">
+    <div class="col-md-5">
+      <a href="/videos/2020/09/az900-ep15/" class='thumbnail'> 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-15-740.jpg" src=""/> 
+</div> 
+      </a>
+    </div>
+    <div class="col-md-7">
+      
+  <div class="tag-list">
+    <a href="https://marczak.io/tags/az-900" title="View all posts in AZ-900">
+      <img src="https://marczak.io/images/tags/az-900.svg" alt="AZ-900"/>
+    </a>
+    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
+      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
+    </a>
+  </div>
+      <h2 class="card-title entry-title">
+        <a href="/videos/2020/09/az900-ep15/" title="AZ-900 Episode 15 | Azure Big Data &amp; Analytics Services | Synapse, HDInsight, Databricks" rel="bookmark">AZ-900 Episode 15 | Azure Big Data &amp; Analytics Services | Synapse, HDInsight, Databricks</a></h2>
+        <div class="card-description">
+        <p><ul>
+<li>Describe Azure Big Data &amp; Analytics Services such as
+<ul>
+<li>Azure Synapse Analytics</li>
+<li>Azure HDInsight</li>
+<li>Azure Databricks</li>
+</ul>
+</li>
+</ul> </p> 
+      </div>
+      <div class="author">
+        By <a href="https://adammarczak.pl" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a>, <time class="entry-date updated" datetime="2020-09-17 11:00:23 &#43;0200 CEST">September 17 2020</time>
+      </div>
+    </div>
+  </div>
+</article><article id="post-19" class="card card-plain card-blog">
   <div class="row">
     <div class="col-md-5">
       <a href="/videos/2020/09/az900-ep14/" class='thumbnail'> 
@@ -455,74 +573,6 @@
       </div>
     </div>
   </div>
-</article><article id="post-19" class="card card-plain card-blog">
-  <div class="row">
-    <div class="col-md-5">
-      <a href="/videos/2020/07/azure-excel-files-data-factory-n-databricks/" class='thumbnail'> 
-<div class="lazy" style="max-height: 416px">
-    <div style="padding-bottom:56.21621621621622%"></div>
-    <img data-src="/images/youtube/49-AzureExcelFileProcessing-ADFandDatabricks-Tutorial-740.jpg" src=""/> 
-</div> 
-      </a>
-    </div>
-    <div class="col-md-7">
-      
-  <div class="tag-list">
-    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
-      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
-    </a>
-    <a href="https://marczak.io/tags/data-factory" title="View all posts in Data Factory">
-      <img src="https://marczak.io/images/tags/data-factory.svg" alt="Data Factory"/>
-    </a>
-    <a href="https://marczak.io/tags/databricks" title="View all posts in Databricks">
-      <img src="https://marczak.io/images/tags/databricks.svg" alt="Databricks"/>
-    </a>
-  </div>
-      <h2 class="card-title entry-title">
-        <a href="/videos/2020/07/azure-excel-files-data-factory-n-databricks/" title="Process Excel files in Azure with Data Factory and Databricks | Tutorial" rel="bookmark">Process Excel files in Azure with Data Factory and Databricks | Tutorial</a></h2>
-        <div class="card-description">
-        <p><p>Excel files are one of the most commonly used file format on the market. Popularity of the tool itself among the business users, business analysts and data engineers is driven by its flexibility, ease of use, powerful integration features and low price.</p> </p> 
-      </div>
-      <div class="author">
-        By <a href="https://adammarczak.pl" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a>, <time class="entry-date updated" datetime="2020-07-21 16:00:23 &#43;0200 CEST">July 21 2020</time>
-      </div>
-    </div>
-  </div>
-</article><article id="post-19" class="card card-plain card-blog">
-  <div class="row">
-    <div class="col-md-5">
-      <a href="/videos/2020/07/az900-ep06/" class='thumbnail'> 
-<div class="lazy" style="max-height: 416px">
-    <div style="padding-bottom:56.21621621621622%"></div>
-    <img data-src="/images/youtube/az-900-v4-ep-06-740.jpg" src=""/> 
-</div> 
-      </a>
-    </div>
-    <div class="col-md-7">
-      
-  <div class="tag-list">
-    <a href="https://marczak.io/tags/az-900" title="View all posts in AZ-900">
-      <img src="https://marczak.io/images/tags/az-900.svg" alt="AZ-900"/>
-    </a>
-    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
-      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
-    </a>
-  </div>
-      <h2 class="card-title entry-title">
-        <a href="/videos/2020/07/az900-ep06/" title="AZ-900 Episode 6 | Public, Private &amp; Hybrid cloud deployment models" rel="bookmark">AZ-900 Episode 6 | Public, Private &amp; Hybrid cloud deployment models</a></h2>
-        <div class="card-description">
-        <p><ul>
-<li>Describe Public cloud</li>
-<li>Describe Private cloud</li>
-<li>Describe Hybrid cloud</li>
-<li>Compare and contrast the three different cloud models</li>
-</ul> </p> 
-      </div>
-      <div class="author">
-        By <a href="https://adammarczak.pl" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a>, <time class="entry-date updated" datetime="2020-07-14 13:00:23 &#43;0200 CEST">July 14 2020</time>
-      </div>
-    </div>
-  </div>
 </article>
 </div>
             <div class="col-md-3 blog-sidebar-wrapper">
@@ -574,6 +624,20 @@
 
 
 <div style="margin-top:10px;">
+    <a href="/posts/2026/06/azure-data-platforms-end-of-era-databricks-fabric/" > 
+<div class="lazy" style="max-height: 683px">
+    <div style="padding-bottom:66.69921875%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/splash.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">The end of a Azure Data Platforms era, and the future with Databricks- and Fabric-centric architectures</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
     <a href="/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/" > 
 <div class="lazy" style="max-height: 683px">
     <div style="padding-bottom:66.69921875%"></div>
@@ -598,22 +662,22 @@
 <p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Modernizing my blog with AI using GitHub Copilot</p>
 
 </div>
+</div><div id="recent-videos" class="recent-posts widget widget_recent_entries">
+<h5>Recent Videos</h5>
 <div style="width:180px;margin-top:10px">
 
 
 <div style="margin-top:10px;">
-    <a href="/posts/2026/06/data-factory-parametrization-with-config-tables/" > 
-<div class="lazy" style="max-height: 683px">
-    <div style="padding-bottom:66.69921875%"></div>
-    <img data-src="/images/2026/2026-06-data-factory-parametrization-with-config-tables/thumbnail.jpg" src=""/> 
+    <a href="/videos/2026/06/sqlday-2025-unity-catalog-migrations/" > 
+<div class="lazy" style="max-height: 576px">
+    <div style="padding-bottom:56.25%"></div>
+    <img data-src="/images/2026/youtube/sqlday2025.jpg" src=""/> 
 </div> 
     </a>
 </div>
-<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Data Factory pipeline parametrization via external mapping/config tables</p>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">SQLDay 2025 Session: Migration to Unity Catalog | Lessons Learned</p>
 
 </div>
-</div><div id="recent-videos" class="recent-posts widget widget_recent_entries">
-<h5>Recent Videos</h5>
 <div style="width:180px;margin-top:10px">
 
 
@@ -640,20 +704,6 @@
     </a>
 </div>
 <p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 38 | SLA in Azure and Composite SLA</p>
-
-</div>
-<div style="width:180px;margin-top:10px">
-
-
-<div style="margin-top:10px;">
-    <a href="/videos/2021/03/az900-ep37/" > 
-<div class="lazy" style="max-height: 416px">
-    <div style="padding-bottom:56.21621621621622%"></div>
-    <img data-src="/images/youtube/az-900-v4-ep-37-740.jpg" src=""/> 
-</div> 
-    </a>
-</div>
-<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 37 | Azure Cost Management</p>
 
 </div>
 </div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
@@ -718,7 +768,7 @@
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
         </div> 
-        <a href="https://marczak.io/tags/azure">Azure (151)</a>
+        <a href="https://marczak.io/tags/azure">Azure (153)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -790,7 +840,7 @@
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/databricks.svg" alt="Databricks"/> 
         </div> 
-        <a href="https://marczak.io/tags/databricks">Databricks (13)</a>
+        <a href="https://marczak.io/tags/databricks">Databricks (15)</a>
       </li>
       <li>
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -820,7 +870,7 @@
         <div class="lazy" style="width:30px;height:20px;float:left;">
           <img src="" data-src="https://marczak.io/images/tags/fabric.svg" alt="Fabric"/> 
         </div> 
-        <a href="https://marczak.io/tags/fabric">Fabric (2)</a>
+        <a href="https://marczak.io/tags/fabric">Fabric (3)</a>
       </li>
       <li class="child"> 
         <div class="lazy" style="width:30px;height:20px;float:left;">
@@ -1083,11 +1133,11 @@
     <i class="fa fa-github"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
-     href="https://www.youtube.com/azure4everyone">
+     href="https://www.youtube.com/@AdamMarczakYT">
     <i class="fa fa-youtube"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
-     href="https://www.linkedin.com/in/adam-marczak-96088929/">
+     href="https://www.linkedin.com/in/adam-marczak/">
     <i class="fa fa-linkedin"></i>
   </a>
   <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
