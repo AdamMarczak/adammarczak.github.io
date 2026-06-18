@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-18T09:30:12Z",
+  "generated_at": "2026-06-18T13:14:04Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -8,14 +8,14 @@
   },
   "statistics": {
     "total_videos": 90,
-    "last_video_date": "2025-06-11"
+    "last_video_date": "2025-06-17"
   },
   "videos": [
     {
       "title": "SQLDay 2025 Session: Migration to Unity Catalog | Lessons Learned",
       "url": "https://marczak.io/videos/2026/06/sqlday-2025-unity-catalog-migrations/",
       "slug": "sqlday-2025-unity-catalog-migrations",
-      "published_at": "2025-06-11",
+      "published_at": "2025-06-17",
       "updated_at": null,
       "summary": "In this SQLDay 2025 session, we explore the realities of migrating enterprise Databricks environments to Unity Catalog.\n",
       "tags": ["Azure","Databricks"],
