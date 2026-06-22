@@ -204,7 +204,7 @@
 <p>That&rsquo;s a multi-million dollar project. That&rsquo;s also the kind of problem Data Landing Zones are designed to solve.</p>
 <h2 id="what-are-data-landing-zones">What are Data Landing Zones?</h2>
 <p>Let me tell you what Data Landing Zones are not: they&rsquo;re not a single service you deploy. They&rsquo;re not a tool you buy. They&rsquo;re a blueprint for Azure. Specifically for the data analytics area.</p>
-<p>The <a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/data-management/data-landing-zone-governance?WT.mc_id=AZ-MVP-5003556">Cloud Adoption Framework documentation on Data Landing Zones</a> is comprehensive—but it&rsquo;s also massive. The whole CAF is roughly 5,000 pages at this point. No one reads it all. The idea is to know where the info is and apply what makes sense for your organization.</p>
+<p>The <a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/data-management/data-landing-zone-governance?WT.mc_id=AZ-MVP-5003556">Cloud Adoption Framework documentation on Data Landing Zones</a> is comprehensive, but it&rsquo;s also massive. The whole CAF is roughly 5,000 pages at this point. No one reads it all. The idea is to know where the info is and apply what makes sense for your organization.</p>
 <p>The core premise: as you grow and add hundreds of projects, you don&rsquo;t want to fail on the basics. You don&rsquo;t want to hit networking limits. You don&rsquo;t want to have governance chaos. You don&rsquo;t want petabytes of siloed data you can&rsquo;t manage.</p>
 <p>Data Landing Zones give you a repeatable pattern so that when you scale, scaling itself doesn&rsquo;t break you.</p>
 
@@ -232,7 +232,7 @@
 <li>One for data (central lakes)</li>
 <li>One for compute (workspaces, clusters)</li>
 </ul>
-<p>Different teams can manage different parts. You can apply different policies to different RGs. You can audit costs and access by layer. That&rsquo;s not overhead—that&rsquo;s architecture.</p>
+<p>Different teams can manage different parts. You can apply different policies to different RGs. You can audit costs and access by layer. That&rsquo;s not overhead, that&rsquo;s architecture.</p>
 
 <div class="lazy" style="max-height: 599px">
     <div style="padding-bottom:63.252%"></div>
@@ -262,7 +262,7 @@
 <h3 id="the-networking-layer-selective-peering">The networking layer: selective peering</h3>
 <p>The CAF documentation recommends Full Mesh networking for Data Landing Zones. In theory, everything peers to everything.</p>
 <p>I partially disagree with this approach at scale.</p>
-<p>Here&rsquo;s why: if you have 500 subscriptions, the math of &ldquo;500 * 500&rdquo; peerings hits Azure limits. From a security perspective, one big flat peered network is also a risk—lateral movement becomes too easy.</p>
+<p>Here&rsquo;s why: if you have 500 subscriptions, the math of &ldquo;500 * 500&rdquo; peerings hits Azure limits. From a security perspective, one big flat peered network is also a risk, lateral movement becomes too easy.</p>
 <p>What we did instead: <strong>Selective Peering</strong>. Subscriptions that have the biggest data sets peer to each other. Smaller projects connect through a hub when needed. It&rsquo;s not pure Full Mesh, but it controls costs and improves security posture.</p>
 <p>The lesson: Microsoft&rsquo;s guidance is solid, but you have to make your own judgment calls on the last 20% based on your scale and your risk appetite.</p>
 
@@ -276,18 +276,18 @@
 <h3 id="shared-services-matter">Shared services matter</h3>
 <p>Here&rsquo;s a practical example: Databricks workspaces.</p>
 <p>If you give every project its own workspace, every project needs two subnets (one for workers, one for infrastructure). With hundreds of projects, you&rsquo;ll run out of IP addresses. You&rsquo;ll also have a management nightmare keeping patches and security controls aligned.</p>
-<p>Shared Databricks workspaces, with project-level isolation and RBAC, scale much better. One workspace serves multiple projects. Same with <a href="https://learn.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime?WT.mc_id=AZ-MVP-5003556">Integration Runtimes</a>—don&rsquo;t give every project its own IR. If they&rsquo;re connecting to the same on-premises source, share one. Manage it centrally.</p>
+<p>Shared Databricks workspaces, with project-level isolation and RBAC, scale much better. One workspace serves multiple projects. Same with <a href="https://learn.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime?WT.mc_id=AZ-MVP-5003556">Integration Runtimes</a>, don&rsquo;t give every project its own IR. If they&rsquo;re connecting to the same on-premises source, share one. Manage it centrally.</p>
 
 <div class="lazy" style="max-height: 470px">
     <div style="padding-bottom:45.943%"></div>
     <img data-src="/images/2025-data-landing-zones/dlz-9.jpg" src=""/> 
 </div>
 <h3 id="cicd-and-private-networking">CI/CD and private networking</h3>
-<p>In a private network, you need privately hosted agents for CI/CD. This is a hard requirement—you can&rsquo;t reach public DevOps endpoints from an isolated network.</p>
+<p>In a private network, you need privately hosted agents for CI/CD. This is a hard requirement, you can&rsquo;t reach public DevOps endpoints from an isolated network.</p>
 <p>We put agents in their own Resource Group, managed centrally. That said, newer managed agent pool capabilities in Azure DevOps might make this RG pattern less necessary in the future. Worth watching.</p>
 <h3 id="deny-assignments-and-deployment-stacks">Deny assignments and deployment stacks</h3>
 <p>One thing I love about Data Landing Zones: the idea of <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/deployment-stacks/overview?WT.mc_id=AZ-MVP-5003556">Deployment Stacks</a>.</p>
-<p>You can use Deny Assignments to prevent teams from modifying critical infrastructure—like route tables—even if they technically have subscription permissions. It&rsquo;s a nice middle ground between open access and absolute lockdown.</p>
+<p>You can use Deny Assignments to prevent teams from modifying critical infrastructure, like route tables, even if they technically have subscription permissions. It&rsquo;s a nice middle ground between open access and absolute lockdown.</p>
 <h2 id="scaling-through-infrastructure-as-code">Scaling through infrastructure as code</h2>
 <p>Here&rsquo;s where Data Landing Zones really shine: when you have this diagram, everything fits like Lego blocks.</p>
 <p>To provision a new project, you:</p>
@@ -364,9 +364,9 @@
 </ul>
 <p>If you&rsquo;re already at scale:</p>
 <ul>
-<li>Review your network topology—is it aligned with your cost and security goals?</li>
+<li>Review your network topology, is it aligned with your cost and security goals?</li>
 <li>Check if you&rsquo;re sharing expensive infrastructure (IRs, agents, compute) or duplicating it</li>
-<li>Audit your data storage—is it centralized or scattered?</li>
+<li>Audit your data storage, is it centralized or scattered?</li>
 </ul>
 <p>These are the levers you control once you understand Data Landing Zones.</p>
 <h2 id="if-you-know-polish-language-feel-free-to-watch-this">If you know polish language, feel free to watch this</h2>
