@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-18T13:14:04Z",
+  "generated_at": "2026-06-22T08:02:15Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -14,19 +14,19 @@
     "news_feed": "https://marczak.io/news.json"
   },
   "statistics": {
-    "total_posts": 63,
+    "total_posts": 64,
     "total_videos": 90,
     "total_news": 2,
-    "total_content": 155,
+    "total_content": 156,
     "total_tags": 50,
-    "last_content_date": "2026-06-15"
+    "last_content_date": "2026-06-22"
   },
   "topics": [
     {
       "name": "azure",
       "slug": "azure",
       "url": "https://marczak.io/tags/azure/",
-      "post_count": 152
+      "post_count": 153
     },
     {
       "name": "az-900",
@@ -44,7 +44,7 @@
       "name": "databricks",
       "slug": "databricks",
       "url": "https://marczak.io/tags/databricks/",
-      "post_count": 14
+      "post_count": 15
     },
     {
       "name": "data-factory",
@@ -113,6 +113,12 @@
       "post_count": 3
     },
     {
+      "name": "fabric",
+      "slug": "fabric",
+      "url": "https://marczak.io/tags/fabric/",
+      "post_count": 3
+    },
+    {
       "name": "key-vault",
       "slug": "key-vault",
       "url": "https://marczak.io/tags/key-vault/",
@@ -146,12 +152,6 @@
       "name": "event-grid",
       "slug": "event-grid",
       "url": "https://marczak.io/tags/event-grid/",
-      "post_count": 2
-    },
-    {
-      "name": "fabric",
-      "slug": "fabric",
-      "url": "https://marczak.io/tags/fabric/",
       "post_count": 2
     },
     {
@@ -324,6 +324,18 @@
     }
   ],
   "posts": [
+    {
+      "title": "The end of a Azure Data Platforms era, and the future with Databricks- and Fabric-centric architectures",
+      "url": "https://marczak.io/posts/2026/06/azure-data-platforms-end-of-era-databricks-fabric/",
+      "slug": "azure-data-platforms-end-of-era-databricks-fabric",
+      "published_at": "2026-06-22",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "Recent announcements were a final call for many of us to change how we think about design of modern data platforms. The question is, are you ready, and what about your current real-estate?\n",
+      "tags": ["Azure","Databricks","Fabric"],
+      "reading_time_minutes": 8,
+      "canonical_url": "https://marczak.io/posts/2026/06/azure-data-platforms-end-of-era-databricks-fabric/"
+    },
     {
       "title": "Logic Apps Automation release, what is it, and how it works?",
       "url": "https://marczak.io/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/",

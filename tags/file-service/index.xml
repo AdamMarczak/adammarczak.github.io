@@ -10,6 +10,18 @@
         <atom:link href="https://marczak.io/tags/file-service/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>The end of a Azure Data Platforms era, and the future with Databricks- and Fabric-centric architectures</title>
+      <link>https://marczak.io/posts/2026/06/azure-data-platforms-end-of-era-databricks-fabric/</link>
+      <pubDate>Mon, 22 Jun 2026 08:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2026/06/azure-data-platforms-end-of-era-databricks-fabric/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2026/2026-06-end-of-azure-data-platforms/splash.jpg&quot;&gt;
+        &lt;p&gt;Recent announcements were a final call for many of us to change how we think about design of modern data platforms. The question is, are you ready, and what about your current real-estate?&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
       <title>Logic Apps Automation release, what is it, and how it works?</title>
       <link>https://marczak.io/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/</link>
       <pubDate>Mon, 15 Jun 2026 05:00:00 +0200</pubDate>

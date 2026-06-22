@@ -86,8 +86,8 @@
       "headline": "The end of a Azure Data Platforms era, and the future with Databricks- and Fabric-centric architectures",
       "description": "Recent announcements were a final call for many of us to change how we think about design of modern data platforms. The question is, are you ready, and what about your current real-estate? ",
       "url": "https:\/\/marczak.io\/posts\/2026\/06\/azure-data-platforms-end-of-era-databricks-fabric\/",
-      "datePublished": "2026-06-17T17:00:23\u002b02:00",
-      "dateModified": "2026-06-17T17:00:23\u002b02:00",
+      "datePublished": "2026-06-22T08:00:23\u002b02:00",
+      "dateModified": "2026-06-22T08:00:23\u002b02:00",
       "isPartOf": {
         "@id": "https:\/\/marczak.io\/#website"
       },
@@ -166,7 +166,7 @@
           <h1 class="hestia-title">The end of a Azure Data Platforms era, and the future with Databricks- and Fabric-centric architectures</h1>
           
             <h4 class="author">
-              Published by&nbsp;<a href="https://adammarczak.pl" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2026-06-17 17:00:23 &#43;0200 CEST">Jun 17 2026</time>
+              Published by&nbsp;<a href="https://adammarczak.pl" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2026-06-22 08:00:23 &#43;0200 CEST">Jun 22 2026</time>
             </h4>
            
         </div>
@@ -198,10 +198,10 @@
     <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/splash.jpg" src=""/> 
 </div> <h2>Highlight</h2>
         <p>Recent announcements were a final call for many of us to change how we think about design of modern data platforms. The question is, are you ready, and what about your current real-estate?</p>
-<p>In this post I want to go over recent changes, and what they mean for us architects and platform owners.</p>
+<p>In this post, I want to go over recent changes and what they mean for us architects and platform owners.</p>
 <h2 id="intro">Intro</h2>
 <p>The whole thing is a little bit rough, but the signals were there for quite some time.</p>
-<p>Main things that happened over last 2 years were</p>
+<p>The main things that happened over the last 2 years were:</p>
 <ul>
 <li><strong>2 years ago</strong> <strong>Microsoft Fabric was announced</strong> with a mission to replace Azure as a platform for Data &amp; Analytics</li>
 <li><strong>1 year ago</strong> Microsoft <strong>removed all Azure Data role certifications</strong></li>
@@ -209,7 +209,7 @@
 </ul>
 <p>So it should not come as a surprise that this is finally here. But what is surprising is how fast this happened, especially the recent documentation removal.</p>
 <h2 id="march-2026-announcement">March 2026 Announcement</h2>
-<p>Let&rsquo;s start by unpacking the latest announcement, which is obviously a final nail to the coffin.</p>
+<p>Let&rsquo;s start by unpacking the latest announcement, which is obviously a final nail in the coffin.</p>
 <p>Here is the screenshot of the announcement
 
 <div class="lazy" style="max-height: 481px">
@@ -222,12 +222,15 @@
 <li>New guidance is called <a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/data/executive-strategy-unify-data-platform?WT.mc_id=AZ-MVP-5003556">Unified Data Platform</a> with Microsoft Fabric being the center of attention</li>
 <li><strong>April 2026 the entire cloud-scaled analytics, including data landing zones were removed from the docs!</strong></li>
 </ul>
-<p>What is a bit shocking here how brutal that change was. Docs were not just noted as (Deprecated) and recommended to follow the new approach, but completely removed.</p>
-<h3 id="what-if-im-still-in-azure">What if I&rsquo;m still in Azure</h3>
-<p>If you are still running your data platform on Azure, like many of us, remember that Microsoft docs were always a publicly available and open sourced on GitHub. If you need to find some docs from the past, they are available on their github on the last commit before April 30th.</p>
-<p>Ref: <a href="https://github.com/MicrosoftDocs/cloud-adoption-framework/tree/df7f62d9c5920d7de68a17a3a520b282d42e3280/docs">Microsoft Learn docs GitHub from 29th of April</a></p>
-<p>This isn&rsquo;t solving anything, but at least you still got access to the docs that you might need on your platform. Even if you plan to move, you are here and now, and this might be very helpful thing to have.</p>
-<h2 id="recommended-is-different-now">Recommended is different now</h2>
+<p>What is a bit shocking is how brutal that change was. Docs were not just marked as deprecated and recommended to follow the new approach, but completely removed.</p>
+<h3 id="recommended-approach-is-different-now">Recommended approach is different now</h3>
+<p>So what is new? Actually quite a lot</p>
+<ul>
+<li>Cloud-scaled Analytics doesn&rsquo;t exist anymore</li>
+<li>Data Landing Zones doesn&rsquo;t exist anymore</li>
+<li>New approach is Unified Data Platform with Microsoft Fabric in the center</li>
+</ul>
+<p>Here are side by side diagrams of the before and after approach</p>
 <table>
 <thead>
 <tr>
@@ -236,6 +239,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Before </br>- Core D&amp;A in Azure</br>- All reporting in Microsoft PowerBI</br>- Data Landing Zones are a core design choice</br>- Solutions grouped in Resource Groups</td>
+<td><strong>After</strong> </br>- All AI in Microsoft Foundry</br>- Data Landing Zones are for legacy workloads</br>- Azure is for networking, security, and governance</br>- Solutions grouped in Workspaces</td>
+</tr>
 <tr>
 <td>
 <div class="lazy" style="max-height: 1078px">
@@ -248,13 +255,145 @@
     <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/ss-2.png" src=""/> 
 </div></td>
 </tr>
+<tr>
+<td>Reference: <a href="https://github.com/MicrosoftDocs/cloud-adoption-framework/blob/df7f62d9c5920d7de68a17a3a520b282d42e3280/docs/scenarios/cloud-scale-analytics/architectures/data-landing-zone.md">GitHub history Link</a></td>
+<td>Reference: <a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/data/architecture-azure-landing-zones-unify-data-platform?WT.mc_id=AZ-MVP-5003556">Docs Link</a></td>
+</tr>
 </tbody>
 </table>
+<h3 id="what-if-im-still-in-azure">What if I&rsquo;m still in Azure</h3>
+<p>If you are still running your data platform on Azure, like many of us, remember that Microsoft docs were always a publicly available and open sourced on GitHub. If you need to find some docs from the past, they are available on their github on the last commit before April 30th.</p>
+<p>Ref: <a href="https://github.com/MicrosoftDocs/cloud-adoption-framework/tree/df7f62d9c5920d7de68a17a3a520b282d42e3280/docs">Microsoft Learn docs GitHub from April 29</a></p>
+<p>This isn&rsquo;t solving anything, but at least you still got access to the docs that you might need on your platform. Even if you plan to move, you are here and now, and this might be very helpful thing to have.</p>
+<h2 id="the-mindset-change">The mindset change</h2>
+<p>So what changes now? Anything, or everything, or something in between?</p>
+<h3 id="addressing-the-elephants-in-the-room">Addressing the Elephants in the room</h3>
+<p>Let&rsquo;s start with one of the first question that comes to mind.</p>
+<p><blockquote class="pronounced-quote" style="margin:24px 0;padding:14px 18px;border-left:4px solid #2b7bb9;background:rgba(43,123,185,0.06);color:inherit;">
+  <div style="font-size:14px;line-height:1.75;font-style:italic;font-family:inherit;">
+    But Adam, my Azure platform already runs 90% of workloads in Databricks (example)
+  </div>
+</blockquote>
+And this is the same for me, and many companies I work with. But this change is about chaging how you think about platforms and their design.</p>
+<p>Today we often will say
+<blockquote class="pronounced-quote" style="margin:24px 0;padding:14px 18px;border-left:4px solid #2b7bb9;background:rgba(43,123,185,0.06);color:inherit;">
+  <div style="font-size:14px;line-height:1.75;font-style:italic;font-family:inherit;">
+    This is <strong>Azure Data Platform</strong> with Databricks as the core ETL component
+  </div>
+</blockquote></p>
+
+<div class="lazy" style="max-height: 303px">
+    <div style="padding-bottom:73.902%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/screenshot-000143.jpg" src=""/> 
+</div>
+<p>But we need to shift this thinking into
+<blockquote class="pronounced-quote" style="margin:24px 0;padding:14px 18px;border-left:4px solid #2b7bb9;background:rgba(43,123,185,0.06);color:inherit;">
+  <div style="font-size:14px;line-height:1.75;font-style:italic;font-family:inherit;">
+    <strong>Databricks platform</strong>, with Azure for compute, storage, and networking components
+  </div>
+</blockquote>
+
+<div class="lazy" style="max-height: 497px">
+    <div style="padding-bottom:120.631%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/screenshot-000144.jpg" src=""/> 
+</div></p>
+<p>The story might be the same with Fabric; it&rsquo;s not a Databricks-specific problem. But Databricks is more well-established, so I used it as an example since it&rsquo;s a more common question for many of us.</p>
+<h3 id="new-thinking">New thinking</h3>
+<p>It&rsquo;s about a mindset change. Change how we are going to build our platforms and what is the centerpiece of that platform. Whether this is Fabric or Databricks is your choice, but moving forward, it should not be Azure. <strong>Azure will be a backbone, not the core</strong>.</p>
+<p>Once you decide that you are either Fabric or Databricks-centric, you will start thinking differently.</p>
+<p>For example, if you choose Databricks as your center, maybe it&rsquo;s worth asking a question <em>&ldquo;Do I even need to give people access to Azure?&quot;</em>. Because maybe you don&rsquo;t. Some data platform providers worked like that since forever.</p>
+<p>Asking questions like</p>
+<ul>
+<li>Do people need access to Azure resource groups?</li>
+<li>Do I need separate resource groups per data product/data solution?</li>
+<li>Do people need access to data lake, or should they only use unity as the access layer? What are the pros and cons?</li>
+<li>Do I still need a key vault in Azure? If I do, where does it go?</li>
+<li>Do people need access to Key Vault to manage secrets, or should they do it in Databricks via secret scopes? (missing UI, requires code)</li>
+<li>How do non-data &amp; analytics solutions source data from my Databricks platform?</li>
+<li>What formats should I use? delta, iceberg, parquets? and for which cases?</li>
+<li>Do I use managed tables or external tables?</li>
+<li>What about infamous vendor lock-in?</li>
+<li>How to allow different technologies to integrate with my platform? e.x. Snowflake, Fabric, etc</li>
+</ul>
+<p>And obviously more. But asking these questions in the context of Databricks being the core platform gives different answers than if we would ask them thinking that Azure is the platform.</p>
+<p>I&rsquo;m looking at <strong>Snowflake as a great example of that</strong>. In Snowflake setup, even if you set up Entra and Azure integration, you never give people access to Azure itself. You can, but you technically don&rsquo;t have to, and in most cases won&rsquo;t want to. For Snowflake, Azure is a transparent layer. Once configured by the platform team, you never have to think about it. In my opinion, we are in the same place with Databricks and Fabric. There might be gaps here and there, but the concept stays true.</p>
+<p>This story is the same for Microsoft Fabric data platforms.</p>
 <h2 id="interoperability-will-be-the-key-factor-in-design">Interoperability will be the key factor in design</h2>
+<p>The level of unknown, the level of uncertainty is probably the highest it&rsquo;s been in IT since most of us started working. It&rsquo;s hard to make a choice when everything changes at the speed of light. Every day brings new features, capabilities, methodologies, and patterns. How does one even decide?</p>
+<p>Obviously we have to decide to follow something. The reality is that most data platform providers probably have more than 90% of what you need, this means that regardless of the choice you make, you will be able to create value. The 10% matters too, but not in the context of choice, but at a design level, to at least have a plan on what to do with it.</p>
+<p>The way most clients tackle this is that they have something they call a <strong>leading platform</strong> and a <strong>supporting platform</strong>. The leading platform has 90% of data &amp; analytics solutions and is the default choice for everything unless specific requirements are met. Supporting platform(s) help with corner cases. For example, today this could be Azure Data Platforms for 90% of our D&amp;A cases, and Google BigQuery + Gemini for narrow and specific D&amp;A and AI use cases.</p>
+<p>Regardless of how you think about it, it&rsquo;s important to leave some room for change, multiple platforms and solutions, and to support evolution of our data platform. This is often done—but not limited to—by interoperability. In layman&rsquo;s terms, by thinking about how all these tools, systems, and platforms can talk to each other and exchange data and information. Be it by using unified storage solution, common protocols, APIs, data formats, etc. The key is to have that in mind.</p>
+<p>Because who knows, maybe the future of data platforms is to have platform that looks like this.
+
+<div class="lazy" style="max-height: 386px">
+    <div style="padding-bottom:85.022%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/screenshot-000147.jpg" src=""/> 
+</div></p>
+<h2 id="shifting-into-fabric--and-databricks-centric-world">Shifting into Fabric- and Databricks-centric world</h2>
+<p>The shift has been happening for quite some time. It&rsquo;s not a matter of asking if, but when—and recently the answer was already given: now. We must start changing the approach.</p>
+<p>While existing platforms will slowly transition into the new world, I would strongly advise against building any new platform with Azure-centric mindset.</p>
+<h3 id="data-products-today">Data Products Today</h3>
+<p>As of today, many data product solutions are built using the reference architecture below.
+
+<div class="lazy" style="max-height: 315px">
+    <div style="padding-bottom:112.500%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/screenshot-000149.jpg" src=""/> 
+</div></p>
+<p>This architecture commonly includes:</p>
+<ul>
+<li>Data Factory for data ingestion</li>
+<li>Data Factory for orchestration</li>
+<li>Databricks for transformation</li>
+<li>Data Lake to store data</li>
+<li>Key Vault to store secrets/credentials/keys</li>
+</ul>
+<h4 id="data-product-reference-closer-look">Data Product Reference closer look</h4>
+<p>If we look closer at a classic data product with Data Landing zones, and extra objects, most product would look like this</p>
+
+<div class="lazy" style="max-height: 773px">
+    <div style="padding-bottom:64.795%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/screenshot-000151.jpg" src=""/> 
+</div>
+<p>Or with Fabric:</p>
+
+<div class="lazy" style="max-height: 793px">
+    <div style="padding-bottom:64.682%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/screenshot-000152.jpg" src=""/> 
+</div>
+<h4 id="the-shift">The shift</h4>
+<p>But if we start thinking that Azure should be a transparent layer and will be a transparent layer, then there&rsquo;s no purpose in showing its components on diagrams. Maybe there is no longer a need to do it.</p>
+<p>So we show <strong>Databricks</strong> reference architectures as
+
+<div class="lazy" style="max-height: 385px">
+    <div style="padding-bottom:108.146%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/screenshot-000159.jpg" src=""/> 
+</div></p>
+<p>with a closer look
+
+<div class="lazy" style="max-height: 614px">
+    <div style="padding-bottom:89.504%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/screenshot-000160.jpg" src=""/> 
+</div></p>
+<p>So we show <strong>Fabric</strong> reference products as
+
+<div class="lazy" style="max-height: 399px">
+    <div style="padding-bottom:114.655%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/screenshot-000158.jpg" src=""/> 
+</div></p>
+<p>with a closer look
+
+<div class="lazy" style="max-height: 726px">
+    <div style="padding-bottom:100.000%"></div>
+    <img data-src="/images/2026/2026-06-end-of-azure-data-platforms/screenshot-000161.jpg" src=""/> 
+</div></p>
+<h2 id="this-is-all-semantics">This is all semantics</h2>
+<p>Yes, I know that most of this might be semantics to some. I don&rsquo;t disagree, but my perception is that this is much more. This is about changing how we approach platform design.</p>
+<p>Once you change the way you think, some answers will be different and might shape how you design your platform.</p>
+<p>The time to change our thinking is already here, so I&rsquo;m changing how I will design platforms. The question is, will you?</p>
 <h2 id="related-reading">Related Reading</h2>
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/whats-new?WT.mc_id=AZ-MVP-5003556#march-2026">Azure - March 2026 deprecation announcements</a></li>
-<li><a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/data/executive-strategy-unify-data-platform">https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/data/executive-strategy-unify-data-platform</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/data/executive-strategy-unify-data-platform?WT.mc_id=AZ-MVP-5003556#march-2026">Unified Data Platform</a></li>
 </ul>
 <p>Happy building.</p>
     </article>
