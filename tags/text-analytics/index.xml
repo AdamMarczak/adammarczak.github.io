@@ -10,6 +10,18 @@
         <atom:link href="https://marczak.io/tags/text-analytics/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>The evolution of Azure Data Platforms, and the future with Databricks- and Fabric-centric architectures</title>
+      <link>https://marczak.io/posts/2026/06/evolution-of-azure-data-platforms/</link>
+      <pubDate>Mon, 22 Jun 2026 08:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2026/06/evolution-of-azure-data-platforms/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2026/2026-06-evolution-of-azure-data-platforms/splash-2.jpg&quot;&gt;
+        &lt;p&gt;It is natural for platforms and cloud to evolve, the question is, are you and your platform ready for that?&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
       <title>Logic Apps Automation release, what is it, and how it works?</title>
       <link>https://marczak.io/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/</link>
       <pubDate>Mon, 15 Jun 2026 05:00:00 +0200</pubDate>

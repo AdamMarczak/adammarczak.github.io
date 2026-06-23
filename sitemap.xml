@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
-    <loc>https://marczak.io/tags/azure/</loc><lastmod>2026-06-15T05:00:00&#43;02:00</lastmod>
+    <loc>https://marczak.io/tags/azure/</loc><lastmod>2026-06-22T08:00:23&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/databricks/</loc><lastmod>2026-06-22T08:00:23&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/fabric/</loc><lastmod>2026-06-22T08:00:23&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/</loc><lastmod>2026-06-22T08:00:23&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/</loc><lastmod>2026-06-22T08:00:23&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/</loc><lastmod>2026-06-22T08:00:23&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2026/06/evolution-of-azure-data-platforms/</loc><lastmod>2026-06-22T08:00:23&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/tags/logic-apps/</loc><lastmod>2026-06-15T05:00:00&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2026/06/logic-apps-automation-released-what-it-is-and-how-it-works/</loc><lastmod>2026-06-15T05:00:00&#43;02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/</loc><lastmod>2026-06-15T05:00:00&#43;02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/posts/</loc><lastmod>2026-06-15T05:00:00&#43;02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/</loc><lastmod>2026-06-15T05:00:00&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/tags/copilot/</loc><lastmod>2026-06-11T06:00:00&#43;02:00</lastmod>
   </url><url>
@@ -19,15 +25,11 @@
   </url><url>
     <loc>https://marczak.io/posts/2026/06/modernizing-my-blog-with-ai-using-github-copilot/</loc><lastmod>2026-06-11T06:00:00&#43;02:00</lastmod>
   </url><url>
-    <loc>https://marczak.io/tags/fabric/</loc><lastmod>2026-06-09T18:00:00&#43;02:00</lastmod>
-  </url><url>
     <loc>https://marczak.io/news/2026/05/microsoft-news-may-2026/</loc><lastmod>2026-06-09T18:00:00&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/news/</loc><lastmod>2026-06-09T18:00:00&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/news/2026/05/databricks-news-may-2026/</loc><lastmod>2026-06-09T17:00:23&#43;02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/databricks/</loc><lastmod>2026-06-09T17:00:23&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2026/06/data-factory-parametrization-with-config-tables/</loc><lastmod>2026-06-05T07:00:00&#43;02:00</lastmod>
   </url><url>
@@ -590,38 +592,38 @@
     <loc>https://marczak.io/tags/fabric-data-factory/</loc>
   </url><url>
     <loc>https://marczak.io/openapi.json</loc>
-    <lastmod>2026-06-22T14:17:55&#43;02:00</lastmod>
+    <lastmod>2026-06-23T09:36:11&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/.well-known/openapi.json</loc>
-    <lastmod>2026-06-22T14:17:55&#43;02:00</lastmod>
+    <lastmod>2026-06-23T09:36:11&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/.well-known/agent.json</loc>
-    <lastmod>2026-06-22T14:17:55&#43;02:00</lastmod>
+    <lastmod>2026-06-23T09:36:11&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/.well-known/ai-plugin.json</loc>
-    <lastmod>2026-06-22T14:17:55&#43;02:00</lastmod>
+    <lastmod>2026-06-23T09:36:11&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/posts.json</loc>
-    <lastmod>2026-06-22T14:17:55&#43;02:00</lastmod>
+    <lastmod>2026-06-23T09:36:11&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/videos.json</loc>
-    <lastmod>2026-06-22T14:17:55&#43;02:00</lastmod>
+    <lastmod>2026-06-23T09:36:11&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/news.json</loc>
-    <lastmod>2026-06-22T14:17:55&#43;02:00</lastmod>
+    <lastmod>2026-06-23T09:36:11&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/llms.txt</loc>
-    <lastmod>2026-06-22T14:17:55&#43;02:00</lastmod>
+    <lastmod>2026-06-23T09:36:11&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/llms-full.txt</loc>
-    <lastmod>2026-06-22T14:17:55&#43;02:00</lastmod>
+    <lastmod>2026-06-23T09:36:11&#43;02:00</lastmod>
   </url>
 </urlset>
