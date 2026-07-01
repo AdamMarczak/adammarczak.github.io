@@ -10,6 +10,18 @@
         <atom:link href="https://marczak.io/tags/entra/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Creating Azure Sandbox Chatbot with Azure Logic Apps</title>
+      <link>https://marczak.io/posts/2026/07/azure-sandbox-chatbot-with-azure-logic-apps/</link>
+      <pubDate>Wed, 01 Jul 2026 07:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2026/07/azure-sandbox-chatbot-with-azure-logic-apps/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2026/2026-07-azure-sandbox-chatbot/splash.jpg&quot;&gt;
+        &lt;p&gt;If your organization needs a place to learn building and test Azure solutions, then ephemeral sandboxes might be the answer you need.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
       <title>The evolution of Azure Data Platforms, and the future with Databricks- and Fabric-centric architectures</title>
       <link>https://marczak.io/posts/2026/06/evolution-of-azure-data-platforms/</link>
       <pubDate>Mon, 22 Jun 2026 08:00:23 +0200</pubDate>
@@ -370,18 +382,6 @@
     </item>
     
     <item>
-      <title>Logic App Tips: SQL db can&#39;t be shared, but...</title>
-      <link>https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/</link>
-      <pubDate>Sun, 02 Feb 2025 17:00:23 +0200</pubDate>
-      
-      <guid>https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/</guid>
-      <description>
-        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-10.png&quot;&gt;
-        &lt;p&gt;Speaking of logic app state storage, what about SQL DB? Can SQL database be used to share state for many logic apps?&lt;/p&gt;
-      </description>
-    </item>
-    
-    <item>
       <title>Power BI: Query Azure REST API Management and page results</title>
       <link>https://marczak.io/posts/2025/02/power-bi-query-azure-rest-api/</link>
       <pubDate>Sun, 02 Feb 2025 17:00:23 +0200</pubDate>
@@ -390,6 +390,18 @@
       <description>
         &lt;img src=&quot;https://marczak.io/images/2025-pbi/rest-api.png&quot;&gt;
         &lt;p&gt;Did you try to query Azure Management REST API from Power Query? Did you notice paging doesn&amp;rsquo;t work&amp;hellip; yeah&amp;hellip;&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Logic App Tips: SQL db can&#39;t be shared, but...</title>
+      <link>https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/</link>
+      <pubDate>Sun, 02 Feb 2025 17:00:23 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2025/02/logic-app-tip-sql-cant-be-shared-but/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2024-la-images/tip-10.png&quot;&gt;
+        &lt;p&gt;Speaking of logic app state storage, what about SQL DB? Can SQL database be used to share state for many logic apps?&lt;/p&gt;
       </description>
     </item>
     

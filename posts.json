@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-23T10:01:12Z",
+  "generated_at": "2026-07-01T07:46:21Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -14,30 +14,30 @@
     "news_feed": "https://marczak.io/news.json"
   },
   "statistics": {
-    "total_posts": 64,
+    "total_posts": 65,
     "total_videos": 90,
     "total_news": 2,
-    "total_content": 156,
+    "total_content": 157,
     "total_tags": 50,
-    "last_content_date": "2026-06-22"
+    "last_content_date": "2026-07-01"
   },
   "topics": [
     {
       "name": "azure",
       "slug": "azure",
       "url": "https://marczak.io/tags/azure/",
-      "post_count": 153
-    },
-    {
-      "name": "az-900",
-      "slug": "az-900",
-      "url": "https://marczak.io/tags/az-900/",
-      "post_count": 40
+      "post_count": 154
     },
     {
       "name": "logic-apps",
       "slug": "logic-apps",
       "url": "https://marczak.io/tags/logic-apps/",
+      "post_count": 41
+    },
+    {
+      "name": "az-900",
+      "slug": "az-900",
+      "url": "https://marczak.io/tags/az-900/",
       "post_count": 40
     },
     {
@@ -125,6 +125,12 @@
       "post_count": 3
     },
     {
+      "name": "teams",
+      "slug": "teams",
+      "url": "https://marczak.io/tags/teams/",
+      "post_count": 3
+    },
+    {
       "name": "visual-studio",
       "slug": "visual-studio",
       "url": "https://marczak.io/tags/visual-studio/",
@@ -158,12 +164,6 @@
       "name": "power-bi",
       "slug": "power-bi",
       "url": "https://marczak.io/tags/power-bi/",
-      "post_count": 2
-    },
-    {
-      "name": "teams",
-      "slug": "teams",
-      "url": "https://marczak.io/tags/teams/",
       "post_count": 2
     },
     {
@@ -324,6 +324,18 @@
     }
   ],
   "posts": [
+    {
+      "title": "Creating Azure Sandbox Chatbot with Azure Logic Apps",
+      "url": "https://marczak.io/posts/2026/07/azure-sandbox-chatbot-with-azure-logic-apps/",
+      "slug": "azure-sandbox-chatbot-with-azure-logic-apps",
+      "published_at": "2026-07-01",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "If your organization needs a place to learn building and test Azure solutions, then ephemeral sandboxes might be the answer you need.\n",
+      "tags": ["Azure","logic-apps","teams"],
+      "reading_time_minutes": 9,
+      "canonical_url": "https://marczak.io/posts/2026/07/azure-sandbox-chatbot-with-azure-logic-apps/"
+    },
     {
       "title": "The evolution of Azure Data Platforms, and the future with Databricks- and Fabric-centric architectures",
       "url": "https://marczak.io/posts/2026/06/evolution-of-azure-data-platforms/",
