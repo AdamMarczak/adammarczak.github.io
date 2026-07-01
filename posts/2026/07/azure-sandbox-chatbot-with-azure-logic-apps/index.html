@@ -274,19 +274,7 @@
     <div style="padding-bottom:245.688%"></div>
     <img data-src="/images/2026/2026-07-azure-sandbox-chatbot/screenshot-000229.jpg" src=""/> 
 </div></p>
-<p>I&rsquo;ve exported it using Jeff Holan&rsquo;s template generator</p>
-<pre tabindex="0"><code>Install-Module LogicAppTemplate -Force
-Import-Module LogicAppTemplate
-
-$token = Get-AzAccessToken -ResourceUrl &quot;https://management.azure.com&quot; `
-  | Select-Object -ExpandProperty Token
-
-Get-LogicAppTemplate `
-  -LogicApp la-sandbox-check-teams `
-  -ResourceGroup la-sandbox-demo `
-  -SubscriptionId f73706f8-c55b-42b7-9d31-6fc8e0d24146 `
-  -Token $token -Verbose | Out-File template.json
-</code></pre><p>Source code: <a href="https://github.com/MarczakIO/marczakio-samples/blob/main/2026/2026-07-azure-sandbox-chatbot/logic-app.json">https://github.com/MarczakIO/marczakio-samples/blob/main/2026/2026-07-azure-sandbox-chatbot/logic-app.json</a></p>
+<p>Source code: <a href="https://github.com/MarczakIO/marczakio-samples/blob/main/2026/2026-07-azure-sandbox-chatbot/logic-app.json">https://github.com/MarczakIO/marczakio-samples/blob/main/2026/2026-07-azure-sandbox-chatbot/logic-app.json</a></p>
 <h3 id="testing-the-chat">Testing the chat</h3>
 <p>Search for your user in teams. Mine is called &ldquo;Azure Buddy&rdquo;
 
