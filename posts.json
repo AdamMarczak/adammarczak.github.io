@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-07-01T08:09:05Z",
+  "generated_at": "2026-07-07T07:24:24Z",
   "site": {
     "name": "Marczak.IO",
     "url": "https://marczak.io/",
@@ -14,25 +14,25 @@
     "news_feed": "https://marczak.io/news.json"
   },
   "statistics": {
-    "total_posts": 65,
+    "total_posts": 66,
     "total_videos": 90,
     "total_news": 2,
-    "total_content": 157,
+    "total_content": 158,
     "total_tags": 50,
-    "last_content_date": "2026-07-01"
+    "last_content_date": "2026-07-07"
   },
   "topics": [
     {
       "name": "azure",
       "slug": "azure",
       "url": "https://marczak.io/tags/azure/",
-      "post_count": 154
+      "post_count": 155
     },
     {
       "name": "logic-apps",
       "slug": "logic-apps",
       "url": "https://marczak.io/tags/logic-apps/",
-      "post_count": 41
+      "post_count": 42
     },
     {
       "name": "az-900",
@@ -89,6 +89,12 @@
       "post_count": 4
     },
     {
+      "name": "fabric",
+      "slug": "fabric",
+      "url": "https://marczak.io/tags/fabric/",
+      "post_count": 4
+    },
+    {
       "name": "functions",
       "slug": "functions",
       "url": "https://marczak.io/tags/functions/",
@@ -110,12 +116,6 @@
       "name": "app-service",
       "slug": "app-service",
       "url": "https://marczak.io/tags/app-service/",
-      "post_count": 3
-    },
-    {
-      "name": "fabric",
-      "slug": "fabric",
-      "url": "https://marczak.io/tags/fabric/",
       "post_count": 3
     },
     {
@@ -324,6 +324,18 @@
     }
   ],
   "posts": [
+    {
+      "title": "Creating Microsoft Fabric Sandbox Capacities Chatbot",
+      "url": "https://marczak.io/posts/2026/07/fabric-sandbox-capacities-chatbot-with-azure-logic-apps/",
+      "slug": "fabric-sandbox-capacities-chatbot-with-azure-logic-apps",
+      "published_at": "2026-07-07",
+      "updated_at": null,
+      "author": "Adam Marczak",
+      "summary": "If your organization wants to learn or test Microsoft Fabric capabilities but you are afraid of the cost or capacity management, the solution might be time-based ephemeral capacities.\n",
+      "tags": ["Azure","logic-apps","Fabric"],
+      "reading_time_minutes": 8,
+      "canonical_url": "https://marczak.io/posts/2026/07/fabric-sandbox-capacities-chatbot-with-azure-logic-apps/"
+    },
     {
       "title": "Creating Azure Sandbox Chatbot with Azure Logic Apps",
       "url": "https://marczak.io/posts/2026/07/azure-sandbox-chatbot-with-azure-logic-apps/",

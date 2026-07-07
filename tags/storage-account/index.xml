@@ -10,6 +10,18 @@
         <atom:link href="https://marczak.io/tags/storage-account/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Creating Microsoft Fabric Sandbox Capacities Chatbot</title>
+      <link>https://marczak.io/posts/2026/07/fabric-sandbox-capacities-chatbot-with-azure-logic-apps/</link>
+      <pubDate>Tue, 07 Jul 2026 07:00:00 +0200</pubDate>
+      
+      <guid>https://marczak.io/posts/2026/07/fabric-sandbox-capacities-chatbot-with-azure-logic-apps/</guid>
+      <description>
+        &lt;img src=&quot;https://marczak.io/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/splash-2.jpg&quot;&gt;
+        &lt;p&gt;If your organization wants to learn or test Microsoft Fabric capabilities but you are afraid of the cost or capacity management, the solution might be time-based ephemeral capacities.&lt;/p&gt;
+      </description>
+    </item>
+    
+    <item>
       <title>Creating Azure Sandbox Chatbot with Azure Logic Apps</title>
       <link>https://marczak.io/posts/2026/07/azure-sandbox-chatbot-with-azure-logic-apps/</link>
       <pubDate>Wed, 01 Jul 2026 07:00:23 +0200</pubDate>

@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
-    <loc>https://marczak.io/tags/azure/</loc><lastmod>2026-07-01T07:00:23&#43;02:00</lastmod>
+    <loc>https://marczak.io/tags/azure/</loc><lastmod>2026-07-07T07:00:00&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/2026/07/fabric-sandbox-capacities-chatbot-with-azure-logic-apps/</loc><lastmod>2026-07-07T07:00:00&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/fabric/</loc><lastmod>2026-07-07T07:00:00&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/logic-apps/</loc><lastmod>2026-07-07T07:00:00&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/</loc><lastmod>2026-07-07T07:00:00&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/posts/</loc><lastmod>2026-07-07T07:00:00&#43;02:00</lastmod>
+  </url><url>
+    <loc>https://marczak.io/tags/</loc><lastmod>2026-07-07T07:00:00&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2026/07/azure-sandbox-chatbot-with-azure-logic-apps/</loc><lastmod>2026-07-01T07:00:23&#43;02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/logic-apps/</loc><lastmod>2026-07-01T07:00:23&#43;02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/</loc><lastmod>2026-07-01T07:00:23&#43;02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/posts/</loc><lastmod>2026-07-01T07:00:23&#43;02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/</loc><lastmod>2026-07-01T07:00:23&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/tags/teams/</loc><lastmod>2026-07-01T07:00:23&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/tags/databricks/</loc><lastmod>2026-06-22T08:00:23&#43;02:00</lastmod>
-  </url><url>
-    <loc>https://marczak.io/tags/fabric/</loc><lastmod>2026-06-22T08:00:23&#43;02:00</lastmod>
   </url><url>
     <loc>https://marczak.io/posts/2026/06/evolution-of-azure-data-platforms/</loc><lastmod>2026-06-22T08:00:23&#43;02:00</lastmod>
   </url><url>
@@ -594,38 +596,38 @@
     <loc>https://marczak.io/tags/fabric-data-factory/</loc>
   </url><url>
     <loc>https://marczak.io/openapi.json</loc>
-    <lastmod>2026-07-01T10:09:05&#43;02:00</lastmod>
+    <lastmod>2026-07-07T09:24:24&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/.well-known/openapi.json</loc>
-    <lastmod>2026-07-01T10:09:05&#43;02:00</lastmod>
+    <lastmod>2026-07-07T09:24:24&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/.well-known/agent.json</loc>
-    <lastmod>2026-07-01T10:09:05&#43;02:00</lastmod>
+    <lastmod>2026-07-07T09:24:24&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/.well-known/ai-plugin.json</loc>
-    <lastmod>2026-07-01T10:09:05&#43;02:00</lastmod>
+    <lastmod>2026-07-07T09:24:24&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/posts.json</loc>
-    <lastmod>2026-07-01T10:09:05&#43;02:00</lastmod>
+    <lastmod>2026-07-07T09:24:24&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/videos.json</loc>
-    <lastmod>2026-07-01T10:09:05&#43;02:00</lastmod>
+    <lastmod>2026-07-07T09:24:24&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/news.json</loc>
-    <lastmod>2026-07-01T10:09:05&#43;02:00</lastmod>
+    <lastmod>2026-07-07T09:24:24&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/llms.txt</loc>
-    <lastmod>2026-07-01T10:09:05&#43;02:00</lastmod>
+    <lastmod>2026-07-07T09:24:24&#43;02:00</lastmod>
   </url>
   <url>
     <loc>https://marczak.io/llms-full.txt</loc>
-    <lastmod>2026-07-01T10:09:05&#43;02:00</lastmod>
+    <lastmod>2026-07-07T09:24:24&#43;02:00</lastmod>
   </url>
 </urlset>

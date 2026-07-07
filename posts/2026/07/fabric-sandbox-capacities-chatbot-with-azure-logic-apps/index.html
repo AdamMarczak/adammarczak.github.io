@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Creating Microsoft Fabric Sandbox Capacities Chatbot | Marczak.IO | Adam Marczak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="https://marczak.io/images/favicon.ico" sizes="32x32" />
+<link rel="icon" href="https://marczak.io/images/favicon.ico" sizes="16x16" />
+<link rel="canonical" href="https://marczak.io/posts/2026/07/fabric-sandbox-capacities-chatbot-with-azure-logic-apps/">
+<link rel="apple-touch-icon-precomposed" href="https://marczak.io/images/iphone-icon.png"/>
+<link rel="stylesheet" id="hestia_fonts-css" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700%7CRoboto+Slab%3A400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+<link href='https://marczak.io/css/hestia.min.css?ver=1.25' rel="stylesheet" type="text/css" />
+<link href='https://marczak.io/css/main.min.css?ver=1.47' rel='stylesheet' type="text/css" />
+<link href="https://marczak.io/posts.json" rel="alternate" type="application/json" title="Posts JSON Feed" />
+<link href="https://marczak.io/videos.json" rel="alternate" type="application/json" title="Videos JSON Feed" />
+<link href="https://marczak.io/news.json" rel="alternate" type="application/json" title="News JSON Feed" />
+
+<meta name="description" content="If your organization wants to learn or test Microsoft Fabric capabilities but you are afraid of the cost or capacity management, the solution might be time-based ephemeral capacities.">
+<meta name="author" content="Adam Marczak">
+<meta name="copyright" content="Adam Marczak">
+<meta name="title" content="Creating Microsoft Fabric Sandbox Capacities Chatbot | Marczak.IO | Adam Marczak">
+<meta property="og:locale" content="en_US">
+
+
+<meta property="article:author" content="https://adammarczak.pl">
+<meta property="og:type" content="article">
+
+<meta property="og:title" content="Creating Microsoft Fabric Sandbox Capacities Chatbot">
+<meta property="og:description" content="If your organization wants to learn or test Microsoft Fabric capabilities but you are afraid of the cost or capacity management, the solution might be time-based ephemeral capacities.">
+<meta property="og:url" content="https://marczak.io/posts/2026/07/fabric-sandbox-capacities-chatbot-with-azure-logic-apps/">
+<meta property="og:site_name" content="Marczak.IO">
+<meta property="og:image" content="https://marczak.io/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/splash-2.jpg">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@MarczakIO">
+<meta name="twitter:title" content="Creating Microsoft Fabric Sandbox Capacities Chatbot">
+<meta name="twitter:description" content="If your organization wants to learn or test Microsoft Fabric capabilities but you are afraid of the cost or capacity management, the solution might be time-based ephemeral capacities.">
+<meta name="twitter:url" content="https://marczak.io/posts/2026/07/fabric-sandbox-capacities-chatbot-with-azure-logic-apps/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https:\/\/adammarczak.pl\/#person",
+      "name": "Adam Marczak",
+      "url": "https:\/\/adammarczak.pl\/",
+      "sameAs": [
+        "https:\/\/www.wikidata.org\/wiki\/Q140276258",
+        "https:\/\/www.linkedin.com\/in\/adam-marczak\/",
+        "https:\/\/github.com\/MarczakIO",
+        "https:\/\/www.youtube.com\/@AdamMarczakYT",
+        "https:\/\/x.com\/MarczakIO",
+        "https:\/\/twitter.com\/MarczakIO",
+        "https:\/\/www.facebook.com\/MarczakIO\/",
+        "https:\/\/marczak.io\/"
+      ],
+      "knowsAbout": [
+        "Microsoft Azure",
+        "Cloud Architecture",
+        "Cloud Computing",
+        "Databricks",
+        "Microsoft Fabric",
+        "Data Engineering",
+        "Software Engineering"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https:\/\/marczak.io\/#website",
+      "url": "https:\/\/marczak.io\/",
+      "name": "Marczak.IO",
+      "alternateName": "Azure 4 Everyone",
+      "publisher": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https:\/\/marczak.io\/posts\/2026\/07\/fabric-sandbox-capacities-chatbot-with-azure-logic-apps\/#blogposting",
+      "headline": "Creating Microsoft Fabric Sandbox Capacities Chatbot",
+      "description": "If your organization wants to learn or test Microsoft Fabric capabilities but you are afraid of the cost or capacity management, the solution might be time-based ephemeral capacities. ",
+      "url": "https:\/\/marczak.io\/posts\/2026\/07\/fabric-sandbox-capacities-chatbot-with-azure-logic-apps\/",
+      "datePublished": "2026-07-07T07:00:00\u002b02:00",
+      "dateModified": "2026-07-07T07:00:00\u002b02:00",
+      "isPartOf": {
+        "@id": "https:\/\/marczak.io\/#website"
+      },
+      "author": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      },
+      "publisher": {
+        "@id": "https:\/\/adammarczak.pl\/#person"
+      },
+      "image": [
+        "https:\/\/marczak.io\/2026\/2026-07-fabric-emphemeral-sandbox-capacities\/splash-2.jpg"
+      ],
+      "keywords": ["Azure","logic-apps","Fabric"]
+    }
+  ]
+}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GB7TL4ZQW9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GB7TL4ZQW9');
+</script>
+</head>
+<body class="home blog">
+  <div class="wrapper"><header class="header">
+  <nav class="navbar navbar-default hestia_left">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="title-logo-wrapper">
+          <a class="navbar-brand" href="/" title="Marczak.IO">
+            <img src="/images/favicon.svg" style="height: 30px;"/>
+          </a>
+        </div>
+      </div>
+      <div id="main-navigation" class="navbar-custom">
+        <div class="entry-social">
+  <a target="_top" class="btn btn-just-icon btn-social btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-twitter"
+      href="https://x.com/MarczakIO" title="Follow on X (Twitter)" aria-label="Follow on X (Twitter)">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak/">
+    <i class="fa fa-linkedin"></i>
+  </a><a target="_blank" class="btn btn-img"
+      style="padding-top: 14px;padding-bottom: 13px; color: #210159"
+      href="https://www.youtube.com/@AdamMarczakYT/join" rel="noopener noreferrer">
+      <i class="fa fa-user-plus" style="margin-right:10px"></i>
+      <span>Join as member</span>
+  </a>
+  <a target="_top" class="btn btn-img" 
+      style="padding-top: 14px;padding-bottom: 13px;background:#210159;"
+      href="https://www.youtube.com/@AdamMarczakYT">
+      <img src="/images/youtube.svg" style="height: 17px;margin-right:10px"/>
+      <span>My YouTube</span>
+  </a>
+  
+</div>
+      </div>
+    </div>
+  </nav>
+  <div id="primary" class="boxed-layout-header page-header header-small" data-parallax="active" style="margin-top: -20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+          <h1 class="hestia-title">Creating Microsoft Fabric Sandbox Capacities Chatbot</h1>
+          
+            <h4 class="author">
+              Published by&nbsp;<a href="https://adammarczak.pl" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> on <time class="date updated published" datetime="2026-07-07 07:00:00 &#43;0200 CEST">Jul 7 2026</time>
+            </h4>
+           
+        </div>
+      </div>
+    </div>
+    <div class="header-filter" style="background-image: url('/images/background.jpg');background-color: #283743;"></div>
+  </div>
+</header>
+    <div class="main main-raised">
+      
+      
+      
+      
+      
+      
+      <div class="site-nav-buttons" role="tablist" aria-label="Content type navigation">
+        <a href="/" class="btn btn-nav active" aria-current="page">Posts (66)</a>
+        <a href="/videos/" class="btn btn-nav">Videos (90)</a>
+        <a href="/news/" class="btn btn-nav">News (2)</a>
+      </div>
+      <div class="hestia-blogs">
+        <div class="container">
+          
+          <div class="row">
+<div class="col-md-9 single-posts-wrap">
+    <article id="/posts/2026/07/fabric-sandbox-capacities-chatbot-with-azure-logic-apps/" class="article-section section-text"> 
+<div class="lazy" style="max-height: 683px">
+    <div style="padding-bottom:66.69921875%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/splash-2.jpg" src=""/> 
+</div> <a target="_blank" 
+   rel="tooltip" 
+   class="btn btn-github"
+   href="https://github.com/MarczakIO/marczakio-samples/blob/main/2026/2026-07-fabric-sandbox-chatbot/template.json">
+    <i class="fa fa-github"></i>
+    Source Code
+</a><h2>Highlight</h2>
+        <p>If your organization wants to learn or test Microsoft Fabric capabilities but you are afraid of the cost or capacity management, the solution might be time-based ephemeral capacities.</p>
+<p>Recently I&rsquo;ve found that colleagues in my company need Fabric capacities more and more, and not just for projects, but to test the latest announced features, a small proof of concept for a client, verify their concepts or prototypes/scripts, or simply learn. I didn&rsquo;t want to pay 250 USD per month for a capacity just so that it would be used for an hour or two a day. So I&rsquo;ve decided to automate it. This post is about my approach and findings.</p>
+<h2 id="ephemeral-capacities">Ephemeral capacities</h2>
+<p>The idea is fairly simple. We will use Azure to deploy Microsoft Fabric capacities for a certain amount of hours, and then delete them. Users will be admins so they can assign these capacities to their workspaces at any time.</p>
+<h3 id="what-happens-to-my-workspace-when-capacity-is-deleted">What happens to my workspace when capacity is deleted?</h3>
+<p>Microsoft does state that removing capacity will put all items in <strong>soft delete</strong> state. There is no documented hard delete, or any retention period but from my playing around they seem to stay there for long, I haven&rsquo;t seen any deletion yet, so it&rsquo;s perfect for sandbox purposes.</p>
+<p>From my testing, after capacity was deleted, I simply requested a new one and reassigned it and everything was working just fine.</p>
+<blockquote class="pronounced-quote" style="margin:24px 0;padding:14px 18px;border-left:4px solid #2b7bb9;background:rgba(43,123,185,0.06);color:inherit;">
+  <div style="font-size:14px;line-height:1.75;font-style:italic;font-family:inherit;">
+    <strong>When you delete</strong> a Power BI Premium, Trial or <strong>Fabric Capacity</strong>, <strong>non-Power BI Fabric items in workspaces</strong> assigned to the capacity <strong>are soft deleted</strong>. These Fabric items can still be seen in OneLake catalog and in the workspace list, but can&rsquo;t be opened or used. If the workspace that holds these items is associated to a capacity (other than Power BI Embedded) from the same region as the deleted capacity <strong>within seven days, the deleted items are restored</strong>. This seven-day period is separate from the workspace retention setting.
+  </div>
+</blockquote>
+<p>Ref: <a href="https://learn.microsoft.com/en-us/fabric/admin/capacity-settings?WT.mc_id=AZ-MVP-5003556#delete-a-capacity">https://learn.microsoft.com/en-us/fabric/admin/capacity-settings#delete-a-capacity</a></p>
+<p>Technically this says 7 days to restore your soft-deleted items, but when I was testing it seemed to be longer than that. I&rsquo;ve had my workspace with no capacity with non-PBI items for longer and they were not removed, and correctly restored after 2+ weeks. Note that this is not a guarantee of anything, but it&rsquo;s surely a good thing for now.</p>
+<h2 id="high-level-architecture">High level architecture</h2>
+<p>I&rsquo;ve decided to follow a similar approach to <a href="/posts/2026/07/azure-sandbox-chatbot-with-azure-logic-apps/">my previous post on Azure Sandboxes Chatbot with Azure Logic Apps</a>. It allowed me to extend an already existing approach of exposing this automation via Microsoft Teams as a chatbot.</p>
+<p>In summary, here is what I wanted to achieve</p>
+<ol>
+<li>Chatbot exposed via a Microsoft Teams user</li>
+<li>Capacities are provisioned for an amount of X hours defined by a parameter (in my current setup I used 4)</li>
+<li>Capacities are shared across users to lower the costs, but the solution supports per-user provisioning via parameter</li>
+<li>Capacities are extended if another user requests them</li>
+<li>Users are added as capacity admins so they can add capacity themselves to their Fabric workspaces</li>
+</ol>
+<p>Below is the architecture I used
+
+<div class="lazy" style="max-height: 481px">
+    <div style="padding-bottom:55.287%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000268.jpg" src=""/> 
+</div></p>
+<h3 id="components">Components</h3>
+<p>With the following components</p>
+<ol>
+<li>Logic App - main workflow execution service, this is where the magic happens</li>
+<li>Separate RG where capacities will be provisioned and removed (separate because it&rsquo;s a good practice)</li>
+<li>All in Azure because it allows creating and deleting capacities very fast, and it bills us per minute</li>
+</ol>
+<h3 id="architectural-decision-records">Architectural decision records</h3>
+<p>Here are decisions that I took under consideration</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">#</th>
+<th>Decision</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">001</td>
+<td>Use persistent capacity</td>
+<td>Too expensive for testing, a single F2 capacity is over 250 USD per month</td>
+</tr>
+<tr>
+<td style="text-align:center">002</td>
+<td>Use persistent capacity with start/pause automation, instead of creation/deletion</td>
+<td>If capacity is not deleted it will stay attached to any workspace created by a user for testing. Since we are not deleting workspaces, after a few tests F2 would simply be attached to too many workspaces and potentially could not work anymore due to its small size.</td>
+</tr>
+<tr>
+<td style="text-align:center">003</td>
+<td>Random capacity name, vs the same name</td>
+<td>Similar to ADR002, I wanted to make sure that resource ID of capacity changes, to ensure it won&rsquo;t be attached to anything that did exist before</td>
+</tr>
+<tr>
+<td style="text-align:center">004</td>
+<td>Shared capacity across users or per-user capacity</td>
+<td>Both have merits, and since either will work fine depending on your requirements. I added a parameter in the workflow to enable changing this </br></br>Naming convention</br>- If per-user: azfabricsbx <strong>user_name</strong> random_number</br>- If shared: azfabricsbx <strong>shared</strong> random_number</td>
+</tr>
+<tr>
+<td style="text-align:center">005</td>
+<td>Provision and delete fabric workspaces</td>
+<td>I opted out of this because I find it actually kind of cool that artifacts are only soft-deleted when we delete a capacity, and when the capacity is attached back, everything starts working again. It&rsquo;s a win-win scenario for me.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="workflow">Workflow</h2>
+<p>Let&rsquo;s go over how this was implemented. For the sake of the blog, I have everything in a single logic app workflow, but a good practice would be to separate it into a few smaller ones.</p>
+<h3 id="workflow-logic">Workflow logic</h3>
+<p>This is the summary of what the workflow does</p>
+<ol>
+<li>User writes on Teams</li>
+<li>Logic App picks up the event</li>
+<li>Sends an adaptive card on Teams with a list of options, in this demo, there is one called &ldquo;Fabric Sandbox Capacity&rdquo;</li>
+<li>User selects the option &ldquo;Fabric Learning Sandbox Capacity&rdquo;</li>
+<li>Logic App checks if a fabric capacity exists
+<ul>
+<li>If <strong>it doesn&rsquo;t</strong>, it creates it and adds user as an admin</li>
+<li>If <strong>it does</strong>, it extends it by X hours (defined by a parameter), and adds user as an admin</li>
+</ul>
+</li>
+<li>Replies to the user with details
+<ul>
+<li>at this moment, user can go to Microsoft Fabric portal and assign capacity to any workspace they want</li>
+</ul>
+</li>
+<li>Waits for X hours (defined by a parameter)</li>
+<li>Checks if the capacity can be deleted, defined by DeleteDate tag,
+<ul>
+<li>if <strong>it&rsquo;s past DeleteDate time</strong>, it deletes the capacity,</li>
+<li>if <strong>it&rsquo;s not past DeleteDate time</strong>, skips deletion (this means it was extended by another request/session)</li>
+</ul>
+</li>
+<li>Sends final info to user</li>
+</ol>
+<h3 id="source-code">Source code?</h3>
+<p>Yes, here is the source code I&rsquo;ve exported from Azure Portal. Azure Portal Export is not ideal, so beware.</p>
+<p>Link: <a href="https://github.com/MarczakIO/marczakio-samples/blob/main/2026/2026-07-fabric-sandbox-chatbot/template.json">https://github.com/MarczakIO/marczakio-samples/blob/main/2026/2026-07-fabric-sandbox-chatbot/template.json</a></p>
+<h3 id="workflow-in-logic-apps">Workflow in Logic Apps</h3>
+<p>This is how I&rsquo;ve built the logic app workflow
+
+<div class="lazy" style="max-height: 1705px">
+    <div style="padding-bottom:170.330%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000279.jpg" src=""/> 
+</div></p>
+<h4 id="create-fabric-scope">Create Fabric Scope</h4>
+
+<div class="lazy" style="max-height: 1298px">
+    <div style="padding-bottom:218.887%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000280.jpg" src=""/> 
+</div>
+<h4 id="delete-fabric-scope">Delete Fabric Scope</h4>
+
+<div class="lazy" style="max-height: 861px">
+    <div style="padding-bottom:143.261%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000281.jpg" src=""/> 
+</div>
+<h2 id="testing-the-workflow">Testing the workflow</h2>
+<p>So let&rsquo;s test the workflow</p>
+<ol>
+<li>Say anything to the bot user
+
+<div class="lazy" style="max-height: 563px">
+    <div style="padding-bottom:61.732%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000301.jpg" src=""/> 
+</div></li>
+<li>Select the fabric capacity and click &lsquo;Submit&rsquo;
+
+<div class="lazy" style="max-height: 603px">
+    <div style="padding-bottom:66.118%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000303.jpg" src=""/> 
+</div></li>
+<li>Go to <a href="https://app.fabric.microsoft.com/">https://app.fabric.microsoft.com/</a> and select your workspace, and assign capacity
+
+<div class="lazy" style="max-height: 857px">
+    <div style="padding-bottom:131.240%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000289.jpg" src=""/> 
+</div></li>
+<li>Done and done! Now you can learn about Fabric without worrying about the cost or deletion.</li>
+</ol>
+<h3 id="deletion-after-x-hours">Deletion after X hours</h3>
+<p>In my case I&rsquo;ve configured my chatbot to 1 hour, so in exactly one hour I&rsquo;ve got a message.</p>
+
+<div class="lazy" style="max-height: 490px">
+    <div style="padding-bottom:56.452%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000308.jpg" src=""/> 
+</div>
+<h3 id="extending-the-capacities">Extending the capacities</h3>
+<p>If a user writes to a chatbot requesting a capacity, but the capacity already exists, instead of creating a new one, the chatbot will extend it by X (parametrized) hours.</p>
+
+<div class="lazy" style="max-height: 517px">
+    <div style="padding-bottom:56.689%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000309.jpg" src=""/> 
+</div>
+<h2 id="enterprise-setup">Enterprise Setup</h2>
+<p>A few things are worth considering for enterprise-ready setup.</p>
+<h3 id="handling-deletion-failures">Handling deletion failures</h3>
+<p>Handling deletion failures is critical in a case like Fabric capacities. You don&rsquo;t want to get a surprise bill just because automation failed.</p>
+<p>A simple and effective approach is handling this within the workflow by adding a post message action on failures, skipped, or timed out runs. Below is a screenshot example.
+
+<div class="lazy" style="max-height: 265px">
+    <div style="padding-bottom:102.713%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000277.jpg" src=""/> 
+</div></p>
+<p>With following &ldquo;Run After&rdquo; configuration.
+
+<div class="lazy" style="max-height: 250px">
+    <div style="padding-bottom:57.078%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000278.jpg" src=""/> 
+</div></p>
+<p>This can ping you and the user whenever capacity deletion failed for whatever reason. Which would result in a message like this.
+
+<div class="lazy" style="max-height: 34px">
+    <div style="padding-bottom:5.431%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000291.jpg" src=""/> 
+</div></p>
+<p>In addition I would <strong>strongly advise</strong> setting up</p>
+<ol>
+<li>Budget &amp; alerts in Azure Portal</li>
+<li>General Logic App monitoring &amp; alert rules</li>
+</ol>
+<p>This is a simple way to start, but by no means it&rsquo;s an end-to-end bulletproof setup.</p>
+<h3 id="simplicity-and-the-future-maintenance">Simplicity and the future maintenance</h3>
+<p>If you plan to extend this chatbot with more options, my advice is to separate it into separate workflows to help with development, maintenance and debugging</p>
+<ol>
+<li>Main flow with switch</li>
+<li>Fabric - create capacity</li>
+<li>Fabric - delete capacity</li>
+<li>Azure - create resource group</li>
+<li>Azure - delete resource group</li>
+</ol>
+<p>This would greatly ease the effort when scaling this solution</p>
+<h3 id="azure-policies">Azure Policies</h3>
+<p>The following policies are something I always use (only 1 in case of this automation)</p>
+<ul>
+<li><strong>Allowed SKU</strong> for <strong>Microsoft.Fabric/capacities</strong> set to F2 - to avoid users ramping up expensive resources, as admins they can simply change the SKU</li>
+</ul>
+<h3 id="cost-tracking">Cost Tracking</h3>
+<p>This is the screenshot I have from my subscription where I have Fabric Capacities Chatbot in a dev environment, as you can see, nice and tidy per capacity costs. In my environment I had 1 hour deletion delay, but you can configure it as you want.</p>
+
+<div class="lazy" style="max-height: 827px">
+    <div style="padding-bottom:47.420%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/screenshot-000310.jpg" src=""/> 
+</div>
+<p>A few notes</p>
+<ul>
+<li>Ensure you have tag inheritance policy for each tag you want to track</li>
+<li>In Azure Logic App add tags depending on what you want to track</li>
+<li>Validate the costs every day for the first 2 weeks to find issues/abuse</li>
+</ul>
+<h2 id="final-takeaway">Final Takeaway</h2>
+<p>In just a couple of hours you can enable your organization to have a quick and easy Fabric sandbox solution that enables innovation, learning and many opportunities. All of that through a nice and convenient Microsoft Teams chatbot.</p>
+<p>Now, off you go to solve yet another organizational challenge!</p>
+<h2 id="related-reading">Related Reading</h2>
+<ul>
+<li><a href="/posts/2026/07/azure-sandbox-chatbot-with-azure-logic-apps/">My previous post on Azure Sandboxes Chatbot with Azure Logic Apps</a></li>
+<li><a href="https://learn.microsoft.com/azure/logic-apps/create-managed-service-identity?WT.mc_id=AZ-MVP-5003556">Use Azure Logic Apps with managed identities</a></li>
+<li><a href="https://learn.microsoft.com/fabric/get-started/microsoft-fabric-overview?WT.mc_id=AZ-MVP-5003556">What is Microsoft Fabric</a></li>
+<li><a href="https://learn.microsoft.com/azure/logic-apps/logic-apps-pricing?WT.mc_id=AZ-MVP-5003556">Azure Logic Apps pricing</a></li>
+<li><a href="https://learn.microsoft.com/azure/logic-apps/?WT.mc_id=AZ-MVP-5003556">Azure Logic Apps documentation</a></li>
+</ul><a target="_blank" 
+   rel="tooltip" 
+   class="btn btn-github"
+   href="https://github.com/MarczakIO/marczakio-samples/blob/main/2026/2026-07-fabric-sandbox-chatbot/template.json">
+    <i class="fa fa-github"></i>
+    Source Code
+</a>
+    </article>
+    <div class="section-blog-info">
+        <div class="row author-block-row">
+            <div class="col-md-12">
+<div class="authorblock">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="avatar"></div>
+        </div>
+        <div class="col-sm-9">
+            <h4><b>Adam Marczak</b></h4>
+            <p>I've spent most of my career working with software and cloud technologies, but at heart I'm simply someone who loves learning new things and sharing what I discover. Through this blog and my Azure 4 Everyone YouTube channel, I try to make Azure and cloud computing more approachable for developers, architects, and anyone curious about technology.</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </div><section class="enjoy-article">
+    <div class="enjoy-article__shell">
+        <div class="enjoy-article__header text-center">
+            <h3 class="enjoy-article__title">Did you enjoy the article?</h3>
+        </div>
+        <div class="row enjoy-article__grid">
+            <div class="col-md-4 col-sm-6 enjoy-article__column">
+                <div class="enjoy-article__card enjoy-article__card--accent text-center">
+                    <div class="enjoy-article__icon">
+                        <i class="fa fa-heart-o"></i>
+                    </div>
+                    <h4 class="enjoy-article__card-title">Support me</h4>
+                    <div class="enjoy-article__action"><a target="_blank" class="btn btn-img"
+      style="padding-top: 14px;padding-bottom: 13px; color: #210159"
+      href="https://www.youtube.com/@AdamMarczakYT/join" rel="noopener noreferrer">
+      <i class="fa fa-user-plus" style="margin-right:10px"></i>
+      <span>Join as member</span>
+  </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 enjoy-article__column">
+                <div class="enjoy-article__card text-center">
+                    <div class="enjoy-article__icon">
+                        <i class="fa fa-bullhorn"></i>
+                    </div>
+                    <h4 class="enjoy-article__card-title">Share it</h4>
+                    <div class="enjoy-article__action enjoy-article__action--share"><a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on Facebook" 
+   class="btn btn-just-icon btn-share btn-facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmarczak.io%2fposts%2f2026%2f07%2ffabric-sandbox-capacities-chatbot-with-azure-logic-apps%2f">
+    <i class="fa fa-facebook"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on X (Twitter)" 
+   class="btn btn-just-icon btn-share btn-twitter" 
+   href="https://x.com/intent/post?text=Creating&#43;Microsoft&#43;Fabric&#43;Sandbox&#43;Capacities&#43;Chatbot&url=https%3A%2F%2Fmarczak.io%2Fposts%2F2026%2F07%2Ffabric-sandbox-capacities-chatbot-with-azure-logic-apps%2F">
+   <i class="fa fa-twitter"></i>
+</a>
+<a target="_blank" 
+   rel="tooltip" 
+   data-original-title="Share on LinkedIn" 
+   class="btn btn-just-icon btn-share btn-linkedin" 
+   href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fmarczak.io%2fposts%2f2026%2f07%2ffabric-sandbox-capacities-chatbot-with-azure-logic-apps%2f"><i 
+   class="fa fa-linkedin"></i>
+</a>
+            
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 enjoy-article__column enjoy-article__column--wide">
+                <div class="enjoy-article__card enjoy-article__card--tags text-center">
+                    <div class="enjoy-article__icon">
+                        <i class="fa fa-compass"></i>
+                    </div>
+                    <h4 class="enjoy-article__card-title">More tagged posts</h4>
+                    <div class="enjoy-article__action enjoy-article__action--tags large">
+  <div class="tag-list">
+    <a href="https://marczak.io/tags/azure" title="View all posts in Azure">
+      <img src="https://marczak.io/images/tags/azure.svg" alt="Azure"/>
+    </a>
+    <a href="https://marczak.io/tags/fabric" title="View all posts in Fabric">
+      <img src="https://marczak.io/images/tags/fabric.svg" alt="Fabric"/>
+    </a>
+    <a href="https://marczak.io/tags/logic-apps" title="View all posts in logic-apps">
+      <img src="https://marczak.io/images/tags/logic-apps.svg" alt="logic-apps"/>
+    </a>
+  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        <div class="row comments">
+            <div class="col-md-12"><div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "https:\/\/marczak.io\/posts\/2026\/07\/fabric-sandbox-capacities-chatbot-with-azure-logic-apps\/"; 
+this.page.identifier = "\/posts\/2026\/07\/fabric-sandbox-capacities-chatbot-with-azure-logic-apps\/";
+};
+
+(function() {
+if (window.location.hostname == "localhost")return;
+var d = document, s = d.createElement('script');
+s.src = 'https://marczak-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+            </div>
+        </div> 
+    </div>
+</div>
+            <div class="col-md-3 blog-sidebar-wrapper">
+              <aside id="secondary" class="blog-sidebar" role="complementary"><div id="mvp" class="banner-mvp" style="border: solid 2px #210159;padding-top:10px;">
+<p style="text-align: center;font-size: 18px">Adam Marczak</p>
+<img src="/images/avatar.jpg" style="padding-bottom: 10px;"/>
+<p style="text-align: center;">Microsoft Azure MVP</p>
+<img src="/images/mvp.svg" />
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+<h5>Featured Courses</h5>
+<div style="width:180px;margin-top:25px">
+<div style="margin-top:10px">
+    <a href="https://marczak.io/az-900" >
+        <img src="/images/az-900/cert.svg" style="width:60px;margin-right:10px;;float:left;"></img> AZ-900 <br/>Microsoft Azure Fundamentlas
+    </a>
+</div>
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Featured Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+<div style="margin-top:10px;">
+    <a href="https://youtu.be/NPEsD6n9A_I" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-00-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Full Course</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+<div style="margin-top:10px;">
+    <a href="https://www.youtube.com/watch?v=63PDmCe3OlA" > 
+<div class="lazy" style="max-height: 547px">
+    <div style="padding-bottom:55.87334014300306%"></div>
+    <img data-src="/images/2025-uc-migration/thumb5.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">UC migration series</p>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries">
+<h5>Recent Posts</h5>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/posts/2026/07/fabric-sandbox-capacities-chatbot-with-azure-logic-apps/" > 
+<div class="lazy" style="max-height: 683px">
+    <div style="padding-bottom:66.69921875%"></div>
+    <img data-src="/images/2026/2026-07-fabric-emphemeral-sandbox-capacities/splash-2.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Creating Microsoft Fabric Sandbox Capacities Chatbot</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/posts/2026/07/azure-sandbox-chatbot-with-azure-logic-apps/" > 
+<div class="lazy" style="max-height: 683px">
+    <div style="padding-bottom:66.69921875%"></div>
+    <img data-src="/images/2026/2026-07-azure-sandbox-chatbot/splash.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">Creating Azure Sandbox Chatbot with Azure Logic Apps</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/posts/2026/06/evolution-of-azure-data-platforms/" > 
+<div class="lazy" style="max-height: 678px">
+    <div style="padding-bottom:66.2109375%"></div>
+    <img data-src="/images/2026/2026-06-evolution-of-azure-data-platforms/splash-4.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">The evolution of Azure Data Platforms, and the future with Databricks- and Fabric-centric architectures</p>
+
+</div>
+</div><div id="recent-videos" class="recent-posts widget widget_recent_entries">
+<h5>Recent Videos</h5>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/videos/2026/06/sqlday-2025-unity-catalog-migrations/" > 
+<div class="lazy" style="max-height: 576px">
+    <div style="padding-bottom:56.25%"></div>
+    <img data-src="/images/2026/youtube/sqlday2025.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">SQLDay 2025 Session: Migration to Unity Catalog | Lessons Learned</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/videos/2021/04/az900-ep38/" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-39-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 39 | Service Lifecycle in Azure | Public Preview and General Availability</p>
+
+</div>
+<div style="width:180px;margin-top:10px">
+
+
+<div style="margin-top:10px;">
+    <a href="/videos/2021/03/az900-ep38/" > 
+<div class="lazy" style="max-height: 416px">
+    <div style="padding-bottom:56.21621621621622%"></div>
+    <img data-src="/images/youtube/az-900-v4-ep-38-740.jpg" src=""/> 
+</div> 
+    </a>
+</div>
+<p style="font-weight:normal;color:rgb(94, 94, 94);font-size:12px;text-align:center;">AZ-900 Episode 38 | SLA in Azure and Composite SLA</p>
+
+</div>
+</div><div id="recent-posts" class="recent-posts widget widget_recent_entries" style="float:left;margin-right:10px;">
+</div><div id="categories-3" class="widget widget_categories" style="float: left;">
+  <h5>Tags</h5>
+  <ul class="tag-list">
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/active-directory.svg" alt="Active Directory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/active-directory">Active Directory (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/analysis-services.svg" alt="Analysis Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/analysis-services">Analysis Services (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/api-management.svg" alt="API Management"/> 
+        </div> 
+        <a href="https://marczak.io/tags/api-management">API Management (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-configuration.svg" alt="App Configuration"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-configuration">App Configuration (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/app-service.svg" alt="App Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/app-service">App Service (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/application-insights.svg" alt="Application Insights"/> 
+        </div> 
+        <a href="https://marczak.io/tags/application-insights">Application Insights (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/arm.svg" alt="ARM"/> 
+        </div> 
+        <a href="https://marczak.io/tags/arm">ARM (8)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/automation.svg" alt="Automation"/> 
+        </div> 
+        <a href="https://marczak.io/tags/automation">Automation (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/az-900.svg" alt="AZ-900"/> 
+        </div> 
+        <a href="https://marczak.io/tags/az-900">AZ-900 (40)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/azure.svg" alt="Azure"/> 
+        </div> 
+        <a href="https://marczak.io/tags/azure">Azure (155)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/blob-storage.svg" alt="Blob Storage"/> 
+        </div> 
+        <a href="https://marczak.io/tags/blob-storage">Blob Storage (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/bot-service.svg" alt="Bot Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/bot-service">Bot Service (6)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cognitive-services.svg" alt="Cognitive Services"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cognitive-services">Cognitive Services (2)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/text-analytics.svg" alt="Text Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/text-analytics">Text Analytics (1)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/luis.svg" alt="Luis"/> 
+        </div> 
+        <a href="https://marczak.io/tags/luis">Luis (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/container-instances.svg" alt="Container Instances"/> 
+        </div> 
+        <a href="https://marczak.io/tags/container-instances">Container Instances (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/copilot.svg" alt="Copilot"/> 
+        </div> 
+        <a href="https://marczak.io/tags/copilot">Copilot (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/cosmos-db.svg" alt="Cosmos DB"/> 
+        </div> 
+        <a href="https://marczak.io/tags/cosmos-db">Cosmos DB (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-factory.svg" alt="Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-factory">Data Factory (13)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-gateway.svg" alt="Data Gateway"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-gateway">Data Gateway (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/data-lake-gen2.svg" alt="Data Lake Gen2"/> 
+        </div> 
+        <a href="https://marczak.io/tags/data-lake-gen2">Data Lake Gen2 (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/databricks.svg" alt="Databricks"/> 
+        </div> 
+        <a href="https://marczak.io/tags/databricks">Databricks (15)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/dotnet-core.svg" alt="DotNET Core"/> 
+        </div> 
+        <a href="https://marczak.io/tags/dotnet-core">DotNET Core (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/entra.svg" alt="Entra"/> 
+        </div> 
+        <a href="https://marczak.io/tags/entra">Entra (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/event-grid.svg" alt="Event Grid"/> 
+        </div> 
+        <a href="https://marczak.io/tags/event-grid">Event Grid (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/event-hub.svg" alt="Event Hub"/> 
+        </div> 
+        <a href="https://marczak.io/tags/event-hub">Event Hub (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/fabric.svg" alt="Fabric"/> 
+        </div> 
+        <a href="https://marczak.io/tags/fabric">Fabric (4)</a>
+      </li>
+      <li class="child"> 
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/fabric-data-factory.svg" alt="Fabric Data Factory"/> 
+        </div> 
+        <a href="https://marczak.io/tags/fabric-data-factory">Fabric Data Factory (0)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/file-service.svg" alt="File Service"/> 
+        </div> 
+        <a href="https://marczak.io/tags/file-service">File Service (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/flow.svg" alt="Flow"/> 
+        </div> 
+        <a href="https://marczak.io/tags/flow">Flow (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/functions.svg" alt="Functions"/> 
+        </div> 
+        <a href="https://marczak.io/tags/functions">Functions (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/github.svg" alt="GitHub"/> 
+        </div> 
+        <a href="https://marczak.io/tags/github">GitHub (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/key-vault.svg" alt="Key Vault"/> 
+        </div> 
+        <a href="https://marczak.io/tags/key-vault">Key Vault (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/load-balancer.svg" alt="Load Balancer"/> 
+        </div> 
+        <a href="https://marczak.io/tags/load-balancer">Load Balancer (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/logic-apps.svg" alt="Logic Apps"/> 
+        </div> 
+        <a href="https://marczak.io/tags/logic-apps">Logic Apps (42)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/power-bi.svg" alt="Power BI"/> 
+        </div> 
+        <a href="https://marczak.io/tags/power-bi">Power BI (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/powershell.svg" alt="PowerShell"/> 
+        </div> 
+        <a href="https://marczak.io/tags/powershell">PowerShell (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/queue.svg" alt="Queue"/> 
+        </div> 
+        <a href="https://marczak.io/tags/queue">Queue (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/security.svg" alt="Security"/> 
+        </div> 
+        <a href="https://marczak.io/tags/security">Security (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/sql.svg" alt="SQL"/> 
+        </div> 
+        <a href="https://marczak.io/tags/sql">SQL (4)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/storage-account.svg" alt="Storage Account"/> 
+        </div> 
+        <a href="https://marczak.io/tags/storage-account">Storage Account (5)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/stream-analytics.svg" alt="Stream Analytics"/> 
+        </div> 
+        <a href="https://marczak.io/tags/stream-analytics">Stream Analytics (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/table-storage.svg" alt="Table Storage"/> 
+        </div> 
+        <a href="https://marczak.io/tags/table-storage">Table Storage (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/teams.svg" alt="Teams"/> 
+        </div> 
+        <a href="https://marczak.io/tags/teams">Teams (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/traffic-manager.svg" alt="Traffic Manager"/> 
+        </div> 
+        <a href="https://marczak.io/tags/traffic-manager">Traffic Manager (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio.svg" alt="Visual Studio"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio">Visual Studio (3)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/visual-studio-code.svg" alt="Visual Studio Code"/> 
+        </div> 
+        <a href="https://marczak.io/tags/visual-studio-code">Visual Studio Code (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vm.svg" alt="VM"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vm">VM (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/vue.js.svg" alt="Vue.js"/> 
+        </div> 
+        <a href="https://marczak.io/tags/vue.js">Vue.js (2)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/webpack.svg" alt="Webpack"/> 
+        </div> 
+        <a href="https://marczak.io/tags/webpack">Webpack (1)</a>
+      </li>
+      <li>
+        <div class="lazy" style="width:30px;height:20px;float:left;">
+          <img src="" data-src="https://marczak.io/images/tags/youtube.svg" alt="YouTube"/> 
+        </div> 
+        <a href="https://marczak.io/tags/youtube">YouTube (1)</a>
+      </li>
+  </ul>
+</div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+<footer class="footer footer-black footer-big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="connected-title">Stay Connected</h5>
+                <div class="">
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-about"
+     href="https://adammarczak.pl">
+    <i class="fa fa-user"></i>
+  </a>
+  <a target="_top" class="btn btn-just-icon btn-social-small btn-social-mail"
+     href="mailto:adam@marczak.io">
+    <i class="fa fa-envelope"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-facebook"
+     href="https://www.facebook.com/MarczakIO/">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-twitter"
+      href="https://x.com/MarczakIO" title="Follow on X (Twitter)" aria-label="Follow on X (Twitter)">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-github"
+     href="https://github.com/MarczakIO">
+    <i class="fa fa-github"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-youtube"
+     href="https://www.youtube.com/@AdamMarczakYT">
+    <i class="fa fa-youtube"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-linkedin"
+     href="https://www.linkedin.com/in/adam-marczak/">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a target="_blank" class="btn btn-just-icon btn-social-small btn-social-rss"
+     href="https://marczak.io/index.xml">
+    <i class="fa fa-rss"></i>
+  </a>
+</div>
+            </div>
+            &copy;<a href="https://adammarczak.pl" title="Adam Marczak" class="vcard author"><strong class="fn">Adam Marczak</strong></a> <a href="https://themeisle.com/themes/hestia/" target="_blank" rel="nofollow">Hestia Theme</a>
+        </div>
+    </div>
+</footer>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script>window.jQuery || document.write('<script src="https:\/\/marczak.io\/js\/jquery.js"><\/script>')</script>
+  
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="https:\/\/marczak.io\/js\/bootstrap.min.js"><\/script>')}</script>
+  
+  <div id="bootstrapCssTest" class="hidden"></div>
+  <script>
+    $(function() {
+      if ($('#bootstrapCssTest').is(':visible')) {
+        $("head").prepend('<link rel="stylesheet" href="https:\/\/marczak.io\/css\/bootstrap.min.css">');
+      }
+    });
+  </script>
+  <script type="text/javascript" src="https://marczak.io/js/main.min.js?ver=1.16"></script>
+</body>
+</html>
